@@ -1,0 +1,28 @@
+{
+  "name": "community-cart-monorepo",
+  "version": "1.0.0",
+  "description": "Monorepo for Community Cart applications",
+  "main": "index.js",
+  "engines": {
+    "node": ">=20.0.0",
+    "npm": ">=9.0.0"
+  },
+  "scripts": {
+    "dev": "node scripts/dev-setup.js",
+    "dev:backend": "cd apps/backend && npm start",
+    "dev:vendor": "cd apps/vendor-portal && npm run dev",
+    "dev:admin": "cd apps/admin-portal && npm run dev",
+    "dev:all": "concurrently \"npm run dev:backend\" \"npm run dev:vendor\" \"npm run dev:admin\"",
+    "kill:ports": "node scripts/dev-setup.js --kill-only",
+    "check:ports": "node scripts/dev-setup.js --check-only",
+    "clean": "node scripts/dev-setup.js --clean",
+    "install:all": "npm install && cd apps/backend && npm install && cd ../admin-portal && npm install && cd ../vendor-portal && npm install",
+    "build:all": "cd apps/admin-portal && npm run build && cd ../vendor-portal && npm run build"
+  },
+  "keywords": ["monorepo", "community-cart", "ecommerce", "supabase"],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
