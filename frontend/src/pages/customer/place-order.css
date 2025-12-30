@@ -1,0 +1,142 @@
+.place-page {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.page-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.page-kicker {
+  margin: 0 0 6px 0;
+  font-size: 13px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  font-weight: 700;
+}
+
+.page-title {
+  margin: 0 0 4px 0;
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.page-subtitle {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 15px;
+}
+
+.page-state {
+  padding: 16px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--bg-card);
+  color: var(--text-secondary);
+}
+
+.review-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.review-items {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.review-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.review-row:last-child {
+  border-bottom: none;
+}
+
+.review-name {
+  margin: 0;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.review-meta {
+  margin: 2px 0 0 0;
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.review-price {
+  margin: 0;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.review-total {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 800;
+  font-size: 16px;
+  color: var(--text-primary);
+}
+
+.btn-primary {
+  appearance: none;
+  background: var(--primary);
+  color: #fff;
+  border: 1px solid var(--primary);
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  text-align: center;
+  transition: background 140ms ease, box-shadow 140ms ease;
+}
+
+.btn-primary:hover {
+  background: color-mix(in srgb, var(--primary) 90%, black);
+  box-shadow: 0 0 12px color-mix(in srgb, var(--primary) 35%, transparent);
+}
+
+.btn-primary:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.btn-primary.full {
+  width: 100%;
+}
+
+.notice {
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.notice.success {
+  background: color-mix(in srgb, var(--primary) 12%, transparent);
+  border: 1px solid var(--primary);
+  color: var(--primary);
+}
+
+.notice.error {
+  background: color-mix(in srgb, var(--danger) 12%, transparent);
+  border: 1px solid var(--danger);
+  color: var(--danger);
+}

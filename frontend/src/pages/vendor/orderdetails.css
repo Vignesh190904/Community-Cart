@@ -1,0 +1,411 @@
+/* Vendor Order Details - Bill/Invoice Style */
+
+.order-details-container {
+  padding: 0;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.order-details-header {
+  margin-bottom: 24px;
+}
+
+.back-button {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.back-button:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+  border-color: var(--text-secondary);
+}
+
+.loading-state,
+.error-state {
+  text-align: center;
+  padding: 48px 24px;
+  color: var(--text-secondary);
+  font-size: 16px;
+}
+
+/* Bill Card */
+.order-bill-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+}
+
+/* Bill Header */
+.bill-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 32px 32px 24px;
+  border-bottom: 2px solid var(--divider);
+}
+
+.bill-title-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.bill-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.order-id-display {
+  font-size: 16px;
+  color: var(--text-secondary);
+  font-weight: 500;
+  font-family: 'Courier New', monospace;
+}
+
+.order-status-badge {
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.order-status-badge.pending {
+  background: #FFF3E0;
+  color: #E65100;
+}
+
+.order-status-badge.processing {
+  background: #E3F2FD;
+  color: #1565C0;
+}
+
+.order-status-badge.completed {
+  background: #E8F5E9;
+  color: #2E7D32;
+}
+
+.order-status-badge.cancelled {
+  background: #FFEBEE;
+  color: #C62828;
+}
+
+/* Bill Sections */
+.bill-section {
+  padding: 24px 32px;
+  border-bottom: 1px solid var(--divider);
+}
+
+.bill-section:last-child {
+  border-bottom: none;
+}
+
+.bill-section-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 16px 0;
+}
+
+/* Bill Info Grid */
+.bill-info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 16px;
+}
+
+.bill-info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.bill-info-item.full-width {
+  grid-column: 1 / -1;
+}
+
+.bill-info-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.bill-info-value {
+  font-size: 15px;
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+/* Bill Table */
+.bill-table-wrapper {
+  overflow-x: auto;
+  margin-top: 8px;
+}
+
+.bill-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 15px;
+}
+
+.bill-table thead th {
+  background: var(--bg-hover);
+  color: var(--text-secondary);
+  font-weight: 600;
+  text-align: left;
+  padding: 12px 16px;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 2px solid var(--divider);
+}
+
+.bill-table tbody tr {
+  border-bottom: 1px solid var(--divider);
+}
+
+.bill-table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.bill-table tbody td {
+  padding: 16px;
+  color: var(--text-primary);
+}
+
+.item-name-col {
+  width: 50%;
+}
+
+.item-price-col,
+.item-qty-col {
+  width: 15%;
+  text-align: right;
+}
+
+.item-total-col {
+  width: 20%;
+  text-align: right;
+}
+
+.item-name-cell {
+  font-weight: 500;
+}
+
+.item-price-cell,
+.item-qty-cell,
+.item-total-cell {
+  text-align: right;
+  font-family: 'Courier New', monospace;
+}
+
+.item-total-cell {
+  font-weight: 600;
+}
+
+/* Bill Summary */
+.bill-summary {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 400px;
+  margin-left: auto;
+}
+
+.bill-summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 15px;
+}
+
+.bill-summary-label {
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.bill-summary-value {
+  color: var(--text-primary);
+  font-weight: 600;
+  font-family: 'Courier New', monospace;
+}
+
+.bill-summary-row.bill-total {
+  margin-top: 8px;
+  padding-top: 12px;
+  border-top: 2px solid var(--divider);
+  font-size: 18px;
+}
+
+.bill-summary-row.bill-total .bill-summary-label {
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
+.bill-summary-row.bill-total .bill-summary-value {
+  color: var(--primary);
+  font-weight: 700;
+  font-size: 20px;
+}
+
+/* Bill Notes */
+.bill-notes {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.bill-note-item {
+  padding: 12px 16px;
+  background: var(--bg-hover);
+  border-radius: 6px;
+  font-size: 14px;
+  color: var(--text-primary);
+  line-height: 1.6;
+}
+
+.bill-note-item strong {
+  color: var(--text-secondary);
+  font-weight: 600;
+  display: block;
+  margin-bottom: 4px;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .order-details-container {
+    padding: 16px;
+  }
+
+  .bill-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 24px 20px;
+  }
+
+  .bill-title {
+    font-size: 24px;
+  }
+
+  .bill-section {
+    padding: 20px;
+  }
+
+  .bill-section-title {
+    font-size: 16px;
+  }
+
+  .bill-info-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .bill-table {
+    font-size: 14px;
+  }
+
+  .bill-table thead th {
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+
+  .bill-table tbody td {
+    padding: 12px;
+  }
+
+  .item-name-col {
+    width: 40%;
+  }
+
+  .item-price-col,
+  .item-qty-col,
+  .item-total-col {
+    width: 20%;
+  }
+
+  .bill-summary {
+    max-width: 100%;
+  }
+
+  .bill-summary-row {
+    font-size: 14px;
+  }
+
+  .bill-summary-row.bill-total {
+    font-size: 16px;
+  }
+
+  .bill-summary-row.bill-total .bill-summary-value {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .bill-table thead th,
+  .bill-table tbody td {
+    padding: 8px;
+  }
+
+  .bill-table {
+    font-size: 13px;
+  }
+
+  .bill-table thead th {
+    font-size: 11px;
+  }
+
+  .item-name-col {
+    width: 35%;
+  }
+
+  .item-price-col {
+    width: 20%;
+  }
+
+  .item-qty-col {
+    width: 15%;
+  }
+
+  .item-total-col {
+    width: 25%;
+  }
+}
+
+/* Dark theme adjustments */
+body.theme-dark .order-status-badge.pending {
+  background: #4A3000;
+  color: #FFB74D;
+}
+
+body.theme-dark .order-status-badge.processing {
+  background: #003D5C;
+  color: #4FC3F7;
+}
+
+body.theme-dark .order-status-badge.completed {
+  background: #1B3A1F;
+  color: #66BB6A;
+}
+
+body.theme-dark .order-status-badge.cancelled {
+  background: #4A1416;
+  color: #EF5350;
+}

@@ -1,0 +1,318 @@
+.vendorEarningsPage {
+  padding: 24px 28px;
+  background: var(--bg-main);
+  min-height: 100vh;
+  color: var(--text-primary);
+}
+
+.pageHeader {
+  margin-bottom: 18px;
+}
+
+.pageKicker {
+  margin: 0 0 6px 0;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  font-weight: 700;
+}
+
+.pageTitle {
+  margin: 0 0 4px 0;
+  font-size: 28px;
+  font-weight: 800;
+}
+
+.pageSubtitle {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+.filtersPanel {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-bottom: 20px;
+}
+
+/* Two-row layout */
+.filtersRow {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+  align-items: flex-end;
+}
+
+.primaryRow {
+  gap: 20px;
+}
+
+.secondaryRow {
+  gap: 14px;
+  opacity: 0.95;
+}
+
+.filterSection {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1 1 auto;
+  min-width: 280px;
+}
+
+.unifiedTimeGroup {
+  display: flex;
+  gap: 14px;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.orLabel {
+  color: var(--text-secondary);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+}
+
+.filterLabel {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-secondary);
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+}
+
+.presetRow,
+.statusRow {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.dateRow {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: flex-end;
+}
+.customRangeRow {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: baseline;
+}
+
+.rangeLabel {
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.customRangeRow input {
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg);
+  color: var(--text-primary);
+  font-size: 13px;
+  min-width: 140px;
+}
+.inlineControls {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: flex-end;
+}
+
+.chip {
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text-primary);
+  padding: 8px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 13px;
+  transition: border-color 120ms ease, background 120ms ease;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chip.active {
+  border-color: var(--primary);
+  background: color-mix(in srgb, var(--primary) 12%, transparent);
+  color: var(--text-primary);
+}
+
+.chip:hover,
+.chip:focus-visible {
+  border-color: var(--primary);
+}
+
+.dateInput {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.dateInput input {
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg);
+  color: var(--text-primary);
+  font-size: 13px;
+  min-width: 140px;
+}
+
+.dateInput input:focus-visible {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.12);
+}
+
+.toggleButton {
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text-primary);
+  padding: 8px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 13px;
+  transition: border-color 120ms ease, background 120ms ease;
+  white-space: nowrap;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 100px;
+}
+
+.toggleButton.active {
+  border-color: var(--primary);
+  background: color-mix(in srgb, var(--primary) 12%, transparent);
+  color: var(--primary);
+}
+
+.toggleButton:hover {
+  border-color: var(--primary);
+}
+
+.filterItem {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1 1 200px;
+  min-width: 180px;
+}
+
+.filterControls {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.numberInput {
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg);
+  color: var(--text-primary);
+  font-size: 13px;
+  min-width: 120px;
+  height: 34px;
+  box-sizing: border-box;
+}
+
+.numberInput:focus-visible {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.12);
+}
+
+.metricsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+}
+
+.metricCard {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 110px;
+}
+
+.metricLabel {
+  margin: 0;
+  font-size: 13px;
+  color: var(--text-secondary);
+  letter-spacing: 0.3px;
+}
+
+.metricValue {
+  margin: 0;
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.primary {
+  color: var(--primary);
+}
+
+.danger {
+  color: var(--danger);
+}
+
+.stateBox {
+  margin-top: 16px;
+  padding: 14px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--bg-card);
+  color: var(--text-secondary);
+}
+
+.stateBox.error {
+  color: var(--danger);
+  border-color: var(--danger);
+  background: color-mix(in srgb, var(--danger) 8%, transparent);
+}
+
+.ps-date label {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.ps-input-date {
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  font-size: 14px;
+}
+
+.ps-input-date:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary) 12%, transparent);
+}

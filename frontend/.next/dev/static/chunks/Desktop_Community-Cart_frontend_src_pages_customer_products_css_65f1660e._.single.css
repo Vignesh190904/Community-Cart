@@ -1,0 +1,142 @@
+/* [project]/Desktop/Community-Cart/frontend/src/pages/customer/products.css [client] (css) */
+.customer-products-container {
+  background: var(--bg-main);
+  min-height: 100vh;
+  padding: 32px 24px;
+}
+
+.customer-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.customer-title {
+  color: var(--primary);
+  margin: 0 0 8px;
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.customer-subtitle {
+  color: var(--text-secondary);
+  margin: 0 0 8px;
+  font-size: 16px;
+}
+
+.customer-info {
+  color: var(--text-primary);
+  margin: 0;
+  font-size: 14px;
+}
+
+.loading-state, .empty-state {
+  text-align: center;
+  color: var(--text-secondary);
+  padding: 48px 24px;
+  font-size: 16px;
+}
+
+.products-grid {
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+}
+
+.product-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  transition: transform .14s, box-shadow .14s;
+  overflow: hidden;
+}
+
+.product-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px #0000001a;
+}
+
+.product-image-wrapper {
+  background: var(--bg-hover);
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 200px;
+  display: flex;
+  overflow: hidden;
+}
+
+.product-image {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.product-info {
+  padding: 16px;
+}
+
+.product-name {
+  color: var(--text-primary);
+  margin: 0 0 4px;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.product-vendor {
+  color: var(--text-secondary);
+  margin: 0 0 8px;
+  font-size: 13px;
+}
+
+.product-description {
+  color: var(--text-secondary);
+  margin: 0 0 12px;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.product-footer {
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-top: 12px;
+  display: flex;
+}
+
+.product-price {
+  color: var(--primary);
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.btn-order {
+  appearance: none;
+  background: var(--primary);
+  color: #fff;
+  cursor: pointer;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 700;
+  transition: background .14s, box-shadow .14s;
+}
+
+.btn-order:hover {
+  background: color-mix(in srgb, var(--primary) 90%, black);
+  box-shadow: 0 0 12px color-mix(in srgb, var(--primary) 40%, transparent);
+}
+
+.btn-order:active {
+  transform: scale(.98);
+}
+
+.btn-order:disabled {
+  opacity: .7;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/*# sourceMappingURL=Desktop_Community-Cart_frontend_src_pages_customer_products_css_65f1660e._.single.css.map*/

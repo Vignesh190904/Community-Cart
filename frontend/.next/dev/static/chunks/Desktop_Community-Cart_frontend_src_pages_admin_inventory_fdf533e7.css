@@ -1,0 +1,232 @@
+/* [project]/Desktop/Community-Cart/frontend/src/pages/admin/inventory.css [client] (css) */
+.inventory-header {
+  margin-bottom: 2rem;
+}
+
+.inventory-title {
+  color: var(--text-primary);
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.inventory-loading {
+  text-align: center;
+  color: var(--text-secondary);
+  padding: 2rem;
+}
+
+.inventory-controls {
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  display: flex;
+}
+
+.filter-group {
+  align-items: center;
+  gap: .75rem;
+  display: flex;
+}
+
+.filter-group label {
+  color: var(--text-primary);
+  font-size: .95rem;
+  font-weight: 500;
+}
+
+.vendor-filter {
+  border: 1px solid var(--border-color);
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  cursor: pointer;
+  border-radius: 6px;
+  padding: .5rem .75rem;
+  font-size: .95rem;
+  transition: border-color .2s;
+}
+
+.vendor-filter:hover {
+  border-color: var(--primary-color);
+}
+
+.vendor-filter:focus {
+  border-color: var(--primary-color);
+  outline: none;
+  box-shadow: 0 0 0 3px #3b82f61a;
+}
+
+.inventory-stats {
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+  display: grid;
+}
+
+.stat-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  flex-direction: column;
+  gap: .5rem;
+  padding: 1.25rem;
+  display: flex;
+}
+
+.stat-label {
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  font-size: .85rem;
+  font-weight: 500;
+}
+
+.stat-value {
+  color: var(--primary-color);
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.inventory-section {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.section-title {
+  color: var(--text-primary);
+  border-bottom: 1px solid var(--border-color);
+  margin: 0;
+  padding: 1.5rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.inventory-table-wrap {
+  overflow-x: auto;
+}
+
+.inventory-table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: .95rem;
+}
+
+.inventory-table thead {
+  background: var(--bg-tertiary);
+  border-bottom: 2px solid var(--border-color);
+}
+
+.inventory-table th {
+  text-align: left;
+  color: var(--text-primary);
+  white-space: nowrap;
+  padding: 1rem 1.5rem;
+  font-weight: 600;
+}
+
+.inventory-table tbody tr {
+  border-bottom: 1px solid var(--border-color);
+  transition: background-color .2s;
+}
+
+.inventory-table tbody tr:hover {
+  background-color: var(--bg-tertiary);
+}
+
+.inventory-table td {
+  color: var(--text-primary);
+  padding: 1rem 1.5rem;
+}
+
+.product-name-cell {
+  align-items: center;
+  gap: .75rem;
+  display: flex;
+}
+
+.product-thumb {
+  object-fit: cover;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  width: 40px;
+  height: 40px;
+}
+
+.product-name {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.product-desc {
+  color: var(--text-secondary);
+  margin-top: .25rem;
+  font-size: .8rem;
+}
+
+.stock-badge {
+  white-space: nowrap;
+  border-radius: 20px;
+  padding: .35rem .75rem;
+  font-size: .85rem;
+  font-weight: 500;
+  display: inline-block;
+}
+
+.stock-badge.good {
+  color: #22c55e;
+  background: #22c55e1a;
+}
+
+.stock-badge.low {
+  color: #fb923c;
+  background: #fb923c1a;
+}
+
+.stock-badge.out {
+  color: #ef4444;
+  background: #ef44441a;
+}
+
+.status-badge {
+  white-space: nowrap;
+  border-radius: 20px;
+  padding: .35rem .75rem;
+  font-size: .85rem;
+  font-weight: 500;
+  display: inline-block;
+}
+
+.status-badge.active {
+  color: #22c55e;
+  background: #22c55e1a;
+}
+
+.status-badge.inactive {
+  color: #ef4444;
+  background: #ef44441a;
+}
+
+.empty-state {
+  text-align: center;
+  color: var(--text-secondary);
+  font-style: italic;
+  padding: 3rem 1.5rem !important;
+}
+
+body.theme-dark .inventory-header, body.theme-dark .inventory-controls {
+  color: var(--text-primary);
+}
+
+body.theme-dark .vendor-filter {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  border-color: var(--border-color);
+}
+
+body.theme-dark .product-thumb {
+  border-color: var(--border-color);
+}
+
+/*# sourceMappingURL=Desktop_Community-Cart_frontend_src_pages_admin_inventory_fdf533e7.css.map*/

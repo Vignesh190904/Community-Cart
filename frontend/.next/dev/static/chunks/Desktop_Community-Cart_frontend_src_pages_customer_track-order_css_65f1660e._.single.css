@@ -1,0 +1,120 @@
+/* [project]/Desktop/Community-Cart/frontend/src/pages/customer/track-order.css [client] (css) */
+.track-page {
+  flex-direction: column;
+  gap: 20px;
+  display: flex;
+}
+
+.page-head {
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  display: flex;
+}
+
+.page-kicker {
+  letter-spacing: .5px;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin: 0 0 6px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.page-title {
+  color: var(--text-primary);
+  margin: 0 0 4px;
+  font-size: 26px;
+  font-weight: 800;
+}
+
+.page-subtitle {
+  color: var(--text-secondary);
+  margin: 0;
+  font-size: 15px;
+}
+
+.page-state {
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  color: var(--text-secondary);
+  border-radius: 10px;
+  padding: 16px;
+}
+
+.page-state.error {
+  color: var(--danger);
+  border-color: var(--danger);
+  background: color-mix(in srgb, var(--danger) 8%, transparent);
+}
+
+.orders-list {
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 14px;
+  display: grid;
+}
+
+.order-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  flex-direction: column;
+  gap: 8px;
+  padding: 14px;
+  display: flex;
+}
+
+.order-row {
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  display: flex;
+}
+
+.label {
+  color: var(--text-secondary);
+  font-size: 13px;
+}
+
+.value {
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
+.status-badge {
+  text-transform: capitalize;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 6px 12px;
+  font-weight: 700;
+}
+
+.status-badge.pending {
+  color: var(--text-primary);
+  background: var(--bg-hover);
+}
+
+.status-badge.processing {
+  color: var(--primary);
+  border-color: var(--primary);
+  background: color-mix(in srgb, var(--primary) 10%, transparent);
+}
+
+.status-badge.completed {
+  color: #16a34a;
+  background: #16a34a1f;
+  border-color: #16a34a;
+}
+
+.status-badge.cancelled {
+  color: var(--danger);
+  border-color: var(--danger);
+  background: color-mix(in srgb, var(--danger) 12%, transparent);
+}
+
+.order-date {
+  color: var(--text-secondary);
+  font-size: 12px;
+}
+
+/*# sourceMappingURL=Desktop_Community-Cart_frontend_src_pages_customer_track-order_css_65f1660e._.single.css.map*/

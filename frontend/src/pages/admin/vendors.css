@@ -1,0 +1,560 @@
+/* Vendors Management Page Styles */
+
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+
+.page-header .btn-action.primary {
+  padding: 10px 14px;
+  border-radius: 10px;
+}
+
+.page-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 6px 0;
+}
+
+.page-subtitle {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.vendors-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.vendors-title {
+  font-size: 28px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.vendors-loading {
+  text-align: center;
+  padding: 40px;
+  color: var(--text-secondary);
+}
+
+.vendors-filters {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+  padding: 16px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+/* ROW 1: Vendor Search + Status */
+.filters-row-1 {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.vendor-search-wrapper {
+  flex: 1;
+  max-width: 420px;
+}
+
+.search-input-wrapper {
+  position: relative;
+}
+
+.vendor-search-input {
+  width: 100%;
+  height: 42px;
+  padding: 0 34px 0 14px;
+  font-size: 14px;
+  background: var(--bg-main);
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  transition: border-color 140ms ease;
+}
+
+.vendor-search-input::placeholder {
+  color: var(--text-muted);
+}
+
+.vendor-search-input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.1);
+}
+
+.search-clear-btn {
+  position: absolute;
+  top: 50%;
+  right: 8px;
+  transform: translateY(-50%);
+  height: 26px;
+  width: 26px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  color: var(--text-secondary);
+  background: transparent;
+  border: 1px solid var(--border);
+  cursor: pointer;
+}
+
+.search-clear-btn:hover {
+  color: var(--text-primary);
+  border-color: var(--primary);
+}
+
+.status-tabs {
+  display: flex;
+  gap: 6px;
+  padding: 4px;
+  background: var(--bg-main);
+  align-items: center;
+  border-radius: 8px;
+}
+
+.status-tab {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 42px;
+  padding: 0 16px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  background: transparent;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 140ms ease;
+  white-space: nowrap;
+}
+
+.status-tab:hover {
+  color: var(--text-primary);
+  background: var(--bg-hover);
+}
+
+.status-tab.active {
+  color: var(--primary);
+  background: var(--bg-surface);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+/* ROW 2: Capability & Health + Clear */
+.filters-row-2 {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+
+.segmented-toggle {
+  display: flex;
+  gap: 8px;
+  padding: 4px;
+  background: var(--bg-main);
+  border-radius: 8px;
+}
+
+.segmented-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 42px;
+  padding: 0 14px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  background: transparent;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 140ms ease;
+  white-space: nowrap;
+}
+
+.segmented-pill:hover {
+  color: var(--text-primary);
+  background: var(--bg-hover);
+}
+
+.segmented-pill.active {
+  color: var(--primary);
+  background: var(--bg-surface);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+.clear-filters-btn {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 42px;
+  padding: 0 14px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--error);
+  background: transparent;
+  border: 1px solid var(--error);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 140ms ease, color 140ms ease, border-color 140ms ease;
+  white-space: nowrap;
+}
+
+.clear-filters-btn:hover {
+  background: color-mix(in srgb, var(--error) 10%, transparent);
+}
+
+.vendors-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.stat-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px;
+}
+
+.stat-label {
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+}
+
+.stat-value {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.vendors-section {
+  margin-bottom: 32px;
+}
+
+.vendors-table-wrap {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.vendors-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.vendors-table thead {
+  background: var(--bg-hover);
+}
+
+.vendors-table th {
+  padding: 12px 14px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 12px;
+  color: var(--text-secondary);
+  border-bottom: 1px solid var(--divider);
+}
+
+.vendors-table td {
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--divider);
+  color: var(--text-primary);
+}
+
+.vendors-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.vendors-table tbody tr:hover {
+  background: var(--bg-hover);
+}
+
+.empty-state {
+  text-align: center;
+  color: var(--text-secondary);
+  padding: 40px !important;
+}
+
+.status-badge {
+  display: inline-block;
+  font-size: 11px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.status-badge.active {
+  background: color-mix(in srgb, var(--success) 12%, transparent);
+  color: var(--success);
+}
+
+.status-badge.disabled {
+  background: color-mix(in srgb, var(--text-secondary) 12%, transparent);
+  color: var(--text-secondary);
+}
+
+.action-btns {
+  display: flex;
+  gap: 8px;
+}
+
+.btn-primary,
+.btn-secondary,
+.btn-edit,
+.btn-delete {
+  appearance: none;
+  border: 1px solid var(--border);
+  background: var(--primary);
+  color: white;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.btn-primary:hover {
+  background: color-mix(in srgb, var(--primary) 85%, black);
+}
+
+.btn-primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--text-primary);
+}
+
+.btn-secondary:hover {
+  background: var(--bg-hover);
+}
+
+.btn-edit {
+  background: color-mix(in srgb, var(--info) 90%, white);
+  color: white;
+  border-color: var(--info);
+}
+
+.btn-edit:hover {
+  background: var(--info);
+}
+
+.btn-delete {
+  background: transparent;
+  color: var(--error);
+  border-color: var(--error);
+}
+
+.btn-delete:hover {
+  background: color-mix(in srgb, var(--error) 12%, transparent);
+}
+
+/* Vendor Form */
+
+.vendor-form {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 24px;
+}
+
+.form-section {
+  margin-bottom: 32px;
+}
+
+.form-section:last-of-type {
+  margin-bottom: 0;
+}
+
+.form-section-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--divider);
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-field label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.form-field input,
+.form-field select,
+.form-field textarea {
+  appearance: none;
+  border: 1px solid var(--border);
+  background: var(--bg-main);
+  color: var(--text-primary);
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: inherit;
+}
+
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus {
+  outline: 2px solid color-mix(in srgb, var(--primary) 40%, transparent);
+  outline-offset: 2px;
+}
+
+.form-field select {
+  cursor: pointer;
+}
+
+.form-field textarea {
+  resize: vertical;
+}
+
+.form-field-checkbox {
+  flex-direction: row;
+  align-items: center;
+}
+
+.form-field-checkbox label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  color: var(--text-primary);
+}
+
+.form-field-checkbox input[type='checkbox'] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  margin: 0;
+}
+
+.form-field-full {
+  grid-column: 1 / -1;
+}
+
+.form-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid var(--divider);
+}
+
+.form-actions .btn-primary,
+.form-actions .btn-secondary {
+  appearance: none;
+  padding: 0;
+  height: 40px;
+  width: 140px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 140ms ease;
+  background: transparent;
+  border: 1.5px solid var(--border);
+  color: var(--text-primary);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-actions .btn-primary {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.form-actions .btn-primary:hover {
+  background: color-mix(in srgb, var(--primary) 8%, transparent);
+  border-color: var(--primary);
+}
+
+.form-actions .btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.form-actions .btn-secondary {
+  border-color: var(--border);
+  color: var(--text-secondary);
+}
+
+.form-actions .btn-secondary:hover {
+  background: var(--bg-hover);
+  border-color: var(--text-secondary);
+  color: var(--text-primary);
+}
+
+/* Responsive */
+
+@media (max-width: 1024px) {
+  .vendors-filters {
+    gap: 12px;
+  }
+  .filters-row-1,
+  .filters-row-2 {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .vendor-search-wrapper {
+    max-width: none;
+  }
+  .vendors-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .vendors-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .vendors-stats {
+    grid-template-columns: 1fr;
+  }
+  .vendors-table-wrap {
+    overflow-x: auto;
+  }
+  .vendors-table {
+    min-width: 600px;
+  }
+}

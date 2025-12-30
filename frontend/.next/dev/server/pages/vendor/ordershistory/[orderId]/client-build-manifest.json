@@ -1,0 +1,5 @@
+{
+  "/vendor/ordershistory/[orderId]": [
+    "static/chunks/pages/vendor/ordershistory/[orderId].js"
+  ]
+}

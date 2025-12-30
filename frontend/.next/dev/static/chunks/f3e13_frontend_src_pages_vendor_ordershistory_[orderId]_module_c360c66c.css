@@ -1,0 +1,398 @@
+/* [project]/Desktop/Community-Cart/frontend/src/pages/vendor/ordershistory/[orderId].module.css [client] (css) */
+.\[orderId\]-module__VRWM_a__orderDetailsContainer {
+  background: var(--bg-main);
+  max-width: 900px;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.\[orderId\]-module__VRWM_a__orderDetailsHeader {
+  margin-bottom: 24px;
+}
+
+.\[orderId\]-module__VRWM_a__backButton {
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  cursor: pointer;
+  background: none;
+  border-radius: 6px;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all .2s;
+}
+
+.\[orderId\]-module__VRWM_a__backButton:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+  border-color: var(--text-secondary);
+}
+
+.\[orderId\]-module__VRWM_a__loadingState, .\[orderId\]-module__VRWM_a__errorState {
+  text-align: center;
+  color: var(--text-secondary);
+  padding: 48px 24px;
+  font-size: 16px;
+}
+
+.\[orderId\]-module__VRWM_a__orderBillCard {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px #0000000d;
+}
+
+.\[orderId\]-module__VRWM_a__billHeader {
+  border-bottom: 2px solid var(--divider);
+  justify-content: space-between;
+  align-items: center;
+  padding: 32px 32px 24px;
+  display: flex;
+}
+
+.\[orderId\]-module__VRWM_a__billTitleSection {
+  flex-direction: column;
+  gap: 8px;
+  display: flex;
+}
+
+.\[orderId\]-module__VRWM_a__billTitle {
+  color: var(--text-primary);
+  margin: 0;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.\[orderId\]-module__VRWM_a__orderIdDisplay {
+  color: var(--text-secondary);
+  font-family: Courier New, monospace;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.\[orderId\]-module__VRWM_a__orderStatusBadge {
+  text-transform: capitalize;
+  border-radius: 20px;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.\[orderId\]-module__VRWM_a__orderStatusBadge.\[orderId\]-module__VRWM_a__pending {
+  color: #e65100;
+  background: #fff3e0;
+}
+
+.\[orderId\]-module__VRWM_a__orderStatusBadge.\[orderId\]-module__VRWM_a__processing {
+  color: #1565c0;
+  background: #e3f2fd;
+}
+
+.\[orderId\]-module__VRWM_a__orderStatusBadge.\[orderId\]-module__VRWM_a__completed {
+  color: #2e7d32;
+  background: #e8f5e9;
+}
+
+.\[orderId\]-module__VRWM_a__orderStatusBadge.\[orderId\]-module__VRWM_a__cancelled {
+  color: #c62828;
+  background: #ffebee;
+}
+
+.\[orderId\]-module__VRWM_a__billSection {
+  border-bottom: 1px solid var(--divider);
+  padding: 24px 32px;
+}
+
+.\[orderId\]-module__VRWM_a__billSection:last-child {
+  border-bottom: none;
+}
+
+.\[orderId\]-module__VRWM_a__billSectionTitle {
+  color: var(--text-primary);
+  margin: 0 0 16px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.\[orderId\]-module__VRWM_a__billInfoGrid {
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 16px;
+  display: grid;
+}
+
+.\[orderId\]-module__VRWM_a__billInfoItem {
+  flex-direction: column;
+  gap: 4px;
+  display: flex;
+}
+
+.\[orderId\]-module__VRWM_a__billInfoItem.\[orderId\]-module__VRWM_a__fullWidth {
+  grid-column: 1 / -1;
+}
+
+.\[orderId\]-module__VRWM_a__billInfoLabel {
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.\[orderId\]-module__VRWM_a__billInfoValue {
+  color: var(--text-primary);
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.\[orderId\]-module__VRWM_a__billTableWrapper {
+  margin-top: 8px;
+  overflow-x: auto;
+}
+
+.\[orderId\]-module__VRWM_a__billTable {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 15px;
+}
+
+.\[orderId\]-module__VRWM_a__billTable thead th {
+  background: var(--bg-hover);
+  color: var(--text-secondary);
+  text-align: left;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  border-bottom: 2px solid var(--divider);
+  padding: 12px 16px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.\[orderId\]-module__VRWM_a__billTable tbody tr {
+  border-bottom: 1px solid var(--divider);
+}
+
+.\[orderId\]-module__VRWM_a__billTable tbody tr:last-child {
+  border-bottom: none;
+}
+
+.\[orderId\]-module__VRWM_a__billTable tbody td {
+  color: var(--text-primary);
+  padding: 16px;
+}
+
+.\[orderId\]-module__VRWM_a__itemNameCol {
+  width: 50%;
+}
+
+.\[orderId\]-module__VRWM_a__itemPriceCol, .\[orderId\]-module__VRWM_a__itemQtyCol {
+  text-align: right;
+  width: 15%;
+}
+
+.\[orderId\]-module__VRWM_a__itemTotalCol {
+  text-align: right;
+  width: 20%;
+}
+
+.\[orderId\]-module__VRWM_a__itemNameCell {
+  font-weight: 500;
+}
+
+.\[orderId\]-module__VRWM_a__itemPriceCell, .\[orderId\]-module__VRWM_a__itemQtyCell, .\[orderId\]-module__VRWM_a__itemTotalCell {
+  text-align: right;
+  font-family: Courier New, monospace;
+}
+
+.\[orderId\]-module__VRWM_a__itemTotalCell {
+  font-weight: 600;
+}
+
+.\[orderId\]-module__VRWM_a__billSummary {
+  flex-direction: column;
+  gap: 12px;
+  max-width: 400px;
+  margin-left: auto;
+  display: flex;
+}
+
+.\[orderId\]-module__VRWM_a__billSummaryRow {
+  justify-content: space-between;
+  align-items: center;
+  font-size: 15px;
+  display: flex;
+}
+
+.\[orderId\]-module__VRWM_a__billSummaryLabel {
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.\[orderId\]-module__VRWM_a__billSummaryValue {
+  color: var(--text-primary);
+  font-family: Courier New, monospace;
+  font-weight: 600;
+}
+
+.\[orderId\]-module__VRWM_a__billSummaryRow.\[orderId\]-module__VRWM_a__billTotal {
+  border-top: 2px solid var(--divider);
+  margin-top: 8px;
+  padding-top: 12px;
+  font-size: 18px;
+}
+
+.\[orderId\]-module__VRWM_a__billSummaryRow.\[orderId\]-module__VRWM_a__billTotal .\[orderId\]-module__VRWM_a__billSummaryLabel {
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
+.\[orderId\]-module__VRWM_a__billSummaryRow.\[orderId\]-module__VRWM_a__billTotal .\[orderId\]-module__VRWM_a__billSummaryValue {
+  color: var(--primary);
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.\[orderId\]-module__VRWM_a__billNotes {
+  flex-direction: column;
+  gap: 12px;
+  display: flex;
+}
+
+.\[orderId\]-module__VRWM_a__billNoteItem {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+  border-radius: 6px;
+  padding: 12px 16px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.\[orderId\]-module__VRWM_a__billNoteItem strong {
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  margin-bottom: 4px;
+  font-size: 13px;
+  font-weight: 600;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .\[orderId\]-module__VRWM_a__orderDetailsContainer {
+    padding: 16px;
+  }
+
+  .\[orderId\]-module__VRWM_a__billHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 24px 20px;
+  }
+
+  .\[orderId\]-module__VRWM_a__billTitle {
+    font-size: 24px;
+  }
+
+  .\[orderId\]-module__VRWM_a__billSection {
+    padding: 20px;
+  }
+
+  .\[orderId\]-module__VRWM_a__billSectionTitle {
+    font-size: 16px;
+  }
+
+  .\[orderId\]-module__VRWM_a__billInfoGrid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .\[orderId\]-module__VRWM_a__billTable {
+    font-size: 14px;
+  }
+
+  .\[orderId\]-module__VRWM_a__billTable thead th {
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+
+  .\[orderId\]-module__VRWM_a__billTable tbody td {
+    padding: 12px;
+  }
+
+  .\[orderId\]-module__VRWM_a__itemNameCol {
+    width: 40%;
+  }
+
+  .\[orderId\]-module__VRWM_a__itemPriceCol, .\[orderId\]-module__VRWM_a__itemQtyCol, .\[orderId\]-module__VRWM_a__itemTotalCol {
+    width: 20%;
+  }
+
+  .\[orderId\]-module__VRWM_a__billSummary {
+    max-width: 100%;
+  }
+
+  .\[orderId\]-module__VRWM_a__billSummaryRow {
+    font-size: 14px;
+  }
+
+  .\[orderId\]-module__VRWM_a__billSummaryRow.\[orderId\]-module__VRWM_a__billTotal {
+    font-size: 16px;
+  }
+
+  .\[orderId\]-module__VRWM_a__billSummaryRow.\[orderId\]-module__VRWM_a__billTotal .\[orderId\]-module__VRWM_a__billSummaryValue {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .\[orderId\]-module__VRWM_a__billTable thead th, .\[orderId\]-module__VRWM_a__billTable tbody td {
+    padding: 8px;
+  }
+
+  .\[orderId\]-module__VRWM_a__billTable {
+    font-size: 13px;
+  }
+
+  .\[orderId\]-module__VRWM_a__billTable thead th {
+    font-size: 11px;
+  }
+
+  .\[orderId\]-module__VRWM_a__itemNameCol {
+    width: 35%;
+  }
+
+  .\[orderId\]-module__VRWM_a__itemPriceCol {
+    width: 20%;
+  }
+
+  .\[orderId\]-module__VRWM_a__itemQtyCol {
+    width: 15%;
+  }
+
+  .\[orderId\]-module__VRWM_a__itemTotalCol {
+    width: 25%;
+  }
+}
+
+body.\[orderId\]-module__VRWM_a__theme-dark .\[orderId\]-module__VRWM_a__orderStatusBadge.\[orderId\]-module__VRWM_a__pending {
+  color: #ffb74d;
+  background: #4a3000;
+}
+
+body.\[orderId\]-module__VRWM_a__theme-dark .\[orderId\]-module__VRWM_a__orderStatusBadge.\[orderId\]-module__VRWM_a__processing {
+  color: #4fc3f7;
+  background: #003d5c;
+}
+
+body.\[orderId\]-module__VRWM_a__theme-dark .\[orderId\]-module__VRWM_a__orderStatusBadge.\[orderId\]-module__VRWM_a__completed {
+  color: #66bb6a;
+  background: #1b3a1f;
+}
+
+body.\[orderId\]-module__VRWM_a__theme-dark .\[orderId\]-module__VRWM_a__orderStatusBadge.\[orderId\]-module__VRWM_a__cancelled {
+  color: #ef5350;
+  background: #4a1416;
+}
+
+/*# sourceMappingURL=f3e13_frontend_src_pages_vendor_ordershistory_%5BorderId%5D_module_c360c66c.css.map*/

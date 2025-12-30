@@ -1,0 +1,312 @@
+.inventoryPage {
+  padding: 24px 28px;
+  background: var(--bg-main);
+  min-height: 100vh;
+  color: var(--text-primary);
+}
+
+.pageHeader {
+  margin-bottom: 24px;
+}
+
+.pageKicker {
+  margin: 0 0 6px 0;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  font-weight: 700;
+}
+
+.pageTitle {
+  margin: 0 0 4px 0;
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.pageSubtitle {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+.searchFilterBar {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.searchBox {
+  flex: 1;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg-main);
+  color: var(--text-primary);
+  font-size: 14px;
+  transition: border-color 150ms ease, box-shadow 150ms ease;
+}
+
+.searchInput:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.12);
+}
+
+.searchInput::placeholder {
+  color: var(--text-muted);
+}
+
+.filterButtons {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.filterBtn {
+  padding: 8px 14px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg-main);
+  color: var(--text-primary);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 150ms ease;
+}
+
+.filterBtn:hover {
+  border-color: var(--primary);
+  background: var(--bg-hover);
+}
+
+.filterBtn.active {
+  border-color: var(--primary);
+  background: color-mix(in srgb, var(--primary) 12%, transparent);
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
+.clearBtn {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 8px;
+  background: var(--error);
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 150ms ease;
+}
+
+.clearBtn:hover {
+  opacity: 0.9;
+}
+
+.tableWrapper {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow-x: auto;
+}
+
+.inventoryTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.inventoryTable thead {
+  background: var(--bg-main);
+  border-bottom: 1px solid var(--border);
+}
+
+.inventoryTable th {
+  padding: 14px;
+  text-align: left;
+  font-weight: 700;
+  color: var(--text-secondary);
+  font-size: 12px;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+}
+
+.inventoryTable tbody tr {
+  border-bottom: 1px solid var(--divider);
+  transition: background-color 150ms ease;
+}
+
+.inventoryTable tbody tr:hover {
+  background-color: var(--bg-hover);
+}
+
+.inventoryTable td {
+  padding: 14px;
+  color: var(--text-primary);
+}
+
+.imageCell {
+  width: 80px;
+}
+
+.productImage {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 6px;
+  background: var(--bg-hover);
+}
+
+.imagePlaceholder {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-hover);
+  border-radius: 6px;
+  color: var(--text-muted);
+  font-size: 18px;
+}
+
+.nameCell {
+  font-weight: 600;
+  max-width: 200px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.categoryCell {
+  color: var(--text-secondary);
+  font-size: 13px;
+}
+
+.stockCell,
+.priceCell {
+  font-weight: 500;
+}
+
+.numberInput {
+  width: 90px;
+  padding: 8px 10px;
+  border: 1px solid var(--primary);
+  border-radius: 6px;
+  background: var(--bg-main);
+  color: var(--text-primary);
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
+  transition: box-shadow 150ms ease;
+}
+
+.numberInput:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.12);
+}
+
+.numberInput:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.statusCell {
+  width: 120px;
+}
+
+.statusBadge {
+  display: inline-block;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.statusBadge.out {
+  background: color-mix(in srgb, var(--error) 12%, transparent);
+  color: var(--error);
+}
+
+.statusBadge.low {
+  background: color-mix(in srgb, var(--warning) 12%, transparent);
+  color: var(--warning);
+}
+
+.statusBadge.medium {
+  background: color-mix(in srgb, var(--info) 12%, transparent);
+  color: var(--info);
+}
+
+.statusBadge.high {
+  background: color-mix(in srgb, var(--success) 12%, transparent);
+  color: var(--success);
+}
+
+.actionCell {
+  width: 110px;
+}
+
+.editBtn,
+.updateBtn,
+.viewSalesBtn {
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--bg-main);
+  color: var(--text-primary);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 150ms ease;
+}
+
+.editBtn:hover {
+  .viewSalesBtn {
+    background: var(--info);
+    color: #ffffff;
+    border-color: var(--info);
+    font-size: 12px;
+  }
+
+  .viewSalesBtn:hover {
+    background: color-mix(in srgb, var(--info) 80%, #000000);
+    border-color: color-mix(in srgb, var(--info) 80%, #000000);
+  }
+
+  border-color: var(--primary);
+  background: color-mix(in srgb, var(--primary) 12%, transparent);
+}
+
+.updateBtn {
+  background: var(--primary);
+  color: #ffffff;
+  border-color: var(--primary);
+}
+
+.updateBtn:hover:not(:disabled) {
+  background: var(--primary-dark);
+  border-color: var(--primary-dark);
+}
+
+.updateBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.page-state {
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--text-secondary);
+}

@@ -1,0 +1,5 @@
+{
+  "/customer/place-order": [
+    "static/chunks/pages/customer/place-order.js"
+  ]
+}

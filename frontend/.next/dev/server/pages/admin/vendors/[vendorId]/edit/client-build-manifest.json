@@ -1,0 +1,5 @@
+{
+  "/admin/vendors/[vendorId]/edit": [
+    "static/chunks/pages/admin/vendors/[vendorId]/edit.js"
+  ]
+}

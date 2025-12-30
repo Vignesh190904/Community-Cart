@@ -1,0 +1,117 @@
+.track-page {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.page-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.page-kicker {
+  margin: 0 0 6px 0;
+  font-size: 13px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  font-weight: 700;
+}
+
+.page-title {
+  margin: 0 0 4px 0;
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.page-subtitle {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 15px;
+}
+
+.page-state {
+  padding: 16px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--bg-card);
+  color: var(--text-secondary);
+}
+
+.page-state.error {
+  color: var(--danger);
+  border-color: var(--danger);
+  background: color-mix(in srgb, var(--danger) 8%, transparent);
+}
+
+.orders-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 14px;
+}
+
+.order-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.order-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  align-items: center;
+}
+
+.label {
+  color: var(--text-secondary);
+  font-size: 13px;
+}
+
+.value {
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
+.status-badge {
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-weight: 700;
+  text-transform: capitalize;
+  border: 1px solid var(--border);
+}
+
+.status-badge.pending {
+  color: var(--text-primary);
+  background: var(--bg-hover);
+}
+
+.status-badge.processing {
+  color: var(--primary);
+  border-color: var(--primary);
+  background: color-mix(in srgb, var(--primary) 10%, transparent);
+}
+
+.status-badge.completed {
+  color: #16a34a;
+  border-color: #16a34a;
+  background: color-mix(in srgb, #16a34a 12%, transparent);
+}
+
+.status-badge.cancelled {
+  color: var(--danger);
+  border-color: var(--danger);
+  background: color-mix(in srgb, var(--danger) 12%, transparent);
+}
+
+.order-date {
+  color: var(--text-secondary);
+  font-size: 12px;
+}
