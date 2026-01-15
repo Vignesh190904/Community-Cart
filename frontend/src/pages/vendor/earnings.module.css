@@ -37,25 +37,55 @@
   padding: 16px;
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 10px;
   margin-bottom: 20px;
 }
 
 /* Two-row layout */
 .filtersRow {
   display: flex;
-  gap: 18px;
+  gap: 8px;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
+.filterItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.filterControls {
+  display: flex;
+  gap: 8px;
   flex-wrap: wrap;
-  align-items: flex-end;
 }
 
-.primaryRow {
-  gap: 20px;
+.clearBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 42px;
+  padding: 0 16px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--error);
+  background: transparent;
+  border: 1px solid var(--error);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 140ms ease;
+  white-space: nowrap;
+  margin-left: auto;
 }
 
-.secondaryRow {
-  gap: 14px;
-  opacity: 0.95;
+.clearBtn:hover,
+.clearBtn:focus-visible {
+  background: color-mix(in srgb, var(--error) 10%, transparent);
+}
+
+.clearBtn:focus-visible {
+  outline: none;
 }
 
 .filterSection {
@@ -113,35 +143,56 @@
 .rangeLabel {
   font-size: 13px;
   color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+.filtersRow input[type="date"] {
+  height: 42px;
+  padding: 0 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg-main);
+  color: var(--text-primary);
+  font-size: 14px;
+  min-width: 140px;
+  transition: border-color 140ms ease;
+}
+
+.filtersRow input[type="date"]:focus-visible {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.1);
 }
 
 .customRangeRow input {
-  padding: 8px 10px;
+  height: 42px;
+  padding: 0 12px;
   border: 1px solid var(--border);
   border-radius: 8px;
-  background: var(--bg);
+  background: var(--bg-main);
   color: var(--text-primary);
-  font-size: 13px;
+  font-size: 14px;
   min-width: 140px;
+  transition: border-color 140ms ease;
 }
 .inlineControls {
   display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-  align-items: flex-end;
+  gap: 8px;
+  flex-wrap: nowrap;
+  align-items: center;
 }
 
 .chip {
   border: 1px solid var(--border);
-  background: var(--bg);
+  background: var(--bg-main);
   color: var(--text-primary);
-  padding: 8px 12px;
-  border-radius: 10px;
+  padding: 0 16px;
+  border-radius: 8px;
   cursor: pointer;
-  font-weight: 700;
-  font-size: 13px;
+  font-weight: 600;
+  font-size: 14px;
   transition: border-color 120ms ease, background 120ms ease;
-  height: 34px;
+  height: 42px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -167,33 +218,35 @@
 }
 
 .dateInput input {
-  padding: 8px 10px;
+  height: 42px;
+  padding: 0 12px;
   border: 1px solid var(--border);
   border-radius: 8px;
-  background: var(--bg);
+  background: var(--bg-main);
   color: var(--text-primary);
-  font-size: 13px;
+  font-size: 14px;
   min-width: 140px;
+  transition: border-color 140ms ease;
 }
 
 .dateInput input:focus-visible {
   outline: none;
   border-color: var(--primary);
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.12);
+  box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.1);
 }
 
 .toggleButton {
   border: 1px solid var(--border);
-  background: var(--bg);
+  background: var(--bg-main);
   color: var(--text-primary);
-  padding: 8px 12px;
-  border-radius: 10px;
+  padding: 0 16px;
+  border-radius: 8px;
   cursor: pointer;
-  font-weight: 700;
-  font-size: 13px;
+  font-weight: 600;
+  font-size: 14px;
   transition: border-color 120ms ease, background 120ms ease;
   white-space: nowrap;
-  height: 34px;
+  height: 42px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -226,21 +279,22 @@
 }
 
 .numberInput {
-  padding: 8px 10px;
+  height: 42px;
+  padding: 0 12px;
   border: 1px solid var(--border);
   border-radius: 8px;
-  background: var(--bg);
+  background: var(--bg-main);
   color: var(--text-primary);
-  font-size: 13px;
-  min-width: 120px;
-  height: 34px;
+  font-size: 14px;
+  min-width: 160px;
   box-sizing: border-box;
+  transition: border-color 140ms ease;
 }
 
 .numberInput:focus-visible {
   outline: none;
   border-color: var(--primary);
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.12);
+  box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.1);
 }
 
 .metricsGrid {

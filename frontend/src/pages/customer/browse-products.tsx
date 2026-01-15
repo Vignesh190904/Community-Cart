@@ -15,12 +15,21 @@ interface Product {
 
 const API_BASE = 'http://localhost:5000/api';
 
+const CATEGORIES = [
+  { name: 'Grocery', icon: '🧺', color: '#EDE7F6', iconColor: '#7E57C2' },
+  { name: 'Vegies', icon: '🥬', color: '#E8F5E9', iconColor: '#4CAF50' },
+  { name: 'Fruits', icon: '🍎', color: '#FFEBEE', iconColor: '#EF5350' },
+  { name: 'Bakery', icon: '🍔', color: '#FCE4EC', iconColor: '#EC407A' }, // Using burger as placeholder for Bakery/Fast food
+  { name: 'Laundry', icon: '👕', color: '#EDE7F6', iconColor: '#5E35B1' }, // Placeholder
+];
+
 export default function BrowseProducts() {
-  const { addToCart, ensureCustomerId, cart } = useCustomerStore();
+  const { addToCart, updateQuantity, ensureCustomerId, cart } = useCustomerStore();
   const { pushToast } = useToast();
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+  const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
     const load = async () => {
@@ -54,6 +63,9 @@ export default function BrowseProducts() {
       pushToast({ type: 'warning', title: 'Stock limit', message: `Only ${stock} left for ${product.name}` });
       return;
     }
+
+    // If not in cart, add with qty 1. If in cart, we use the quantity controls instead usually.
+    // But for the main button "Add to Cart", we just add 1.
     addToCart({
       _id: product._id,
       name: product.name,
@@ -64,47 +76,106 @@ export default function BrowseProducts() {
     }, stock);
   };
 
+  const updateItemQty = (product: Product, delta: number) => {
+    const currentQty = cartMap.get(product._id) || 0;
+    const newQty = currentQty + delta;
+    if (newQty <= 0) {
+      // Remove functionality if needed, or just set to 0 (which customer store handles as remove usually? Verify store logic)
+      // Store logic: if nextQty <= 0 return null (filter out). So yes, removes.
+      updateQuantity(product._id, 0); // Logic says updateQuantity(id, qty).
+    } else {
+      updateQuantity(product._id, newQty);
+    }
+  };
+
+  const filteredProducts = products.filter(p => p.name.toLowerCase().includes(searchTerm.toLowerCase()));
+
   return (
     <CustomerLayout>
       <div className="browse-page">
-        <div className="page-head">
-          <div>
-            <p className="page-kicker">Browse</p>
-            <h1 className="page-title">Products</h1>
-            <p className="page-subtitle">Add items to your cart to place a test order.</p>
+        {/* Search Bar */}
+        <div className="search-container">
+          <div className="search-bar">
+            <span className="search-icon">🔍</span>
+            <input
+              type="text"
+              placeholder="Search keywords.."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
           </div>
         </div>
+
+        {/* Categories */}
+        <div className="categories-list">
+          {CATEGORIES.map((cat) => (
+            <div key={cat.name} className="category-item">
+              <div className="cat-icon-circle" style={{ backgroundColor: cat.color }}>
+                <span style={{ color: cat.iconColor }}>{cat.icon}</span>
+              </div>
+              <span className="cat-name">{cat.name}</span>
+            </div>
+          ))}
+        </div>
+
+        <h2 className="section-title">Featured Products <span style={{ fontSize: '20px', float: 'right' }}>❯</span></h2>
 
         {loading && <div className="page-state">Loading products…</div>}
         {error && !loading && <div className="page-state error">{error}</div>}
 
         {!loading && !error && (
           <div className="products-grid">
-            {products.map((product) => (
-              <article key={product._id} className="product-card">
-                <div className="product-image-wrap">
-                  {product.image ? (
-                    <img src={product.image} alt={product.name} className="product-image" />
-                  ) : (
-                    <div className="image-placeholder">No Image</div>
-                  )}
-                </div>
-                <div className="product-body">
-                  <p className="product-name">{product.name}</p>
-                  <p className="product-vendor">{product.vendor?.name || 'Vendor'}</p>
-                  <p className="product-price">₹{product.price?.toFixed(2)}</p>
-                  <p className="product-stock">In stock: {product.stock ?? 0}</p>
-                  <button
-                    className="btn-primary"
-                    disabled={(product.stock ?? 0) <= 0}
-                    onClick={() => handleAdd(product)}
-                  >
-                    {product.stock && product.stock > 0 ? 'Add to Cart' : 'Out of Stock'}
-                  </button>
-                </div>
-              </article>
-            ))}
-            {products.length === 0 && <div className="page-state">No products available.</div>}
+            {filteredProducts.map((product, index) => {
+              const qtyInCart = cartMap.get(product._id) || 0;
+              const isEven = index % 2 === 0;
+
+              // Dummy Logic for tags
+              const discount = isEven ? '-16%' : null;
+              const isNew = !isEven;
+
+              return (
+                <article key={product._id} className="product-card">
+                  <div className="card-top">
+                    {discount && <span className="tag discount">{discount}</span>}
+                    {isNew && <span className="tag new">NEW</span>}
+                    <button className="wishlist-btn">♡</button>
+
+                    <div className="product-image-wrap">
+                      {product.image ? (
+                        <img src={product.image} alt={product.name} className="product-image" />
+                      ) : (
+                        <div className="image-placeholder" />
+                      )}
+                    </div>
+                  </div>
+
+                  <div className="product-info">
+                    <h3 className="product-name">{product.name}</h3>
+                    <p className="product-qty-label">Quantity</p>
+                    <p className="product-price">₹{product.price.toFixed(2)}</p>
+                  </div>
+
+                  <div className="card-actions">
+                    {qtyInCart > 0 ? (
+                      <div className="qty-controls">
+                        <button className="qty-btn" onClick={() => updateItemQty(product, 1)}>+</button>
+                        <span className="qty-val">{qtyInCart}</span>
+                        <button className="qty-btn" onClick={() => updateItemQty(product, -1)}>−</button>
+                      </div>
+                    ) : (
+                      <button
+                        className="add-to-cart-btn"
+                        onClick={() => handleAdd(product)}
+                        disabled={(product.stock ?? 0) <= 0}
+                      >
+                        <span className="cart-icon">🛍️</span> Add to cart
+                      </button>
+                    )}
+                  </div>
+                </article>
+              );
+            })}
+            {filteredProducts.length === 0 && <div className="page-state">No products found.</div>}
           </div>
         )}
       </div>

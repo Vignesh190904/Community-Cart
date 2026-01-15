@@ -142,6 +142,17 @@ export default function VendorEarnings() {
     if (field === 'to') setToDate(value);
   };
 
+  const handleClear = () => {
+    setPreset('month');
+    const range = getPresetRange('month');
+    setFromDate(range.from);
+    setToDate(range.to);
+    setStatus('both');
+    setOrderAboveAvg(false);
+    setMinUnitsPerOrder('');
+    setMinOrderValue('');
+  };
+
   const valueOrDash = (val?: number) =>
     typeof val === 'number' && !Number.isNaN(val) ? val.toFixed(2) : '—';
 
@@ -155,116 +166,84 @@ export default function VendorEarnings() {
       </header>
 
       <section className={styles.filtersPanel}>
-        {/* Row 1: Date Context */}
+        {/* Row 1: Time presets and custom date range */}
         <div className={styles.filtersRow}>
-          {/* Presets */}
-          <div className={styles.filterSection}>
-            <p className={styles.filterLabel}>Date Preset</p>
-            <div className={styles.presetRow}>
-              {[
-                { id: 'today', label: 'Today' },
-                { id: 'week', label: 'This Week' },
-                { id: 'month', label: 'This Month' },
-                { id: 'year', label: 'This Year' },
-                { id: 'all', label: 'All Time' },
-              ].map((option) => (
-                <button
-                  key={option.id}
-                  className={`${styles.chip} ${preset === option.id ? styles.active : ''}`}
-                  onClick={() => handlePresetChange(option.id as Preset)}
-                >
-                  {option.label}
-                </button>
-              ))}
-            </div>
-          </div>
+          {[
+            { id: 'today', label: 'Today' },
+            { id: 'week', label: 'This Week' },
+            { id: 'month', label: 'This Month' },
+            { id: 'year', label: 'This Year' },
+            { id: 'all', label: 'All Time' },
+          ].map((option) => (
+            <button
+              key={option.id}
+              className={`${styles.chip} ${preset === option.id ? styles.active : ''}`}
+              onClick={() => handlePresetChange(option.id as Preset)}
+            >
+              {option.label}
+            </button>
+          ))}
 
-          {/* Custom Date Range */}
-          <div className={styles.filterSection}>
-            <p className={styles.filterLabel}>Custom Range</p>
-            <div className={styles.customRangeRow}>
-              <span className={styles.rangeLabel}>From:</span>
-              <input
-                type="date"
-                value={fromDate}
-                onChange={(e) => handleCustomDateChange('from', e.target.value)}
-              />
-              <span className={styles.rangeLabel}>To:</span>
-              <input
-                type="date"
-                value={toDate}
-                onChange={(e) => handleCustomDateChange('to', e.target.value)}
-              />
-            </div>
-          </div>
+          <span className={styles.rangeLabel}>From:</span>
+          <input
+            type="date"
+            value={fromDate}
+            onChange={(e) => handleCustomDateChange('from', e.target.value)}
+          />
+          <span className={styles.rangeLabel}>To:</span>
+          <input
+            type="date"
+            value={toDate}
+            onChange={(e) => handleCustomDateChange('to', e.target.value)}
+          />
         </div>
 
-        {/* Row 2: Order Qualification */}
+        {/* Row 2: Status, filters, and clear button */}
         <div className={styles.filtersRow}>
-          {/* Status */}
-          <div className={styles.filterItem}>
-            <p className={styles.filterLabel}>Status</p>
-            <div className={styles.filterControls}>
-              {[
-                { id: 'both', label: 'Both' },
-                { id: 'completed', label: 'Completed' },
-                { id: 'cancelled', label: 'Cancelled' },
-              ].map((option) => (
-                <button
-                  key={option.id}
-                  className={`${styles.chip} ${status === option.id ? styles.active : ''}`}
-                  onClick={() => setStatus(option.id as StatusFilter)}
-                >
-                  {option.label}
-                </button>
-              ))}
-            </div>
-          </div>
+          {[
+            { id: 'both', label: 'Both' },
+            { id: 'completed', label: 'Completed' },
+            { id: 'cancelled', label: 'Cancelled' },
+          ].map((option) => (
+            <button
+              key={option.id}
+              className={`${styles.chip} ${status === option.id ? styles.active : ''}`}
+              onClick={() => setStatus(option.id as StatusFilter)}
+            >
+              {option.label}
+            </button>
+          ))}
 
-          {/* Orders above Avg Order Value */}
-          <div className={styles.filterItem}>
-            <p className={styles.filterLabel}>Above Avg</p>
-            <div className={styles.filterControls}>
-              <button
-                className={`${styles.toggleButton} ${orderAboveAvg ? styles.active : ''}`}
-                onClick={() => setOrderAboveAvg(!orderAboveAvg)}
-                role="button"
-                aria-pressed={orderAboveAvg}
-              >
-                {orderAboveAvg ? 'Enabled' : 'Disabled'}
-              </button>
-            </div>
-          </div>
+          <button
+            className={`${styles.toggleButton} ${orderAboveAvg ? styles.active : ''}`}
+            onClick={() => setOrderAboveAvg(!orderAboveAvg)}
+            role="button"
+            aria-pressed={orderAboveAvg}
+          >
+            Above Avg
+          </button>
 
-          {/* Min Units per Order */}
-          <div className={styles.filterItem}>
-            <p className={styles.filterLabel}>Min Units/Order</p>
-            <div className={styles.filterControls}>
-              <input
-                type="number"
-                className={styles.numberInput}
-                value={minUnitsPerOrder}
-                onChange={(e) => setMinUnitsPerOrder(e.target.value)}
-                min="0"
-                placeholder="0"
-              />
-            </div>
-          </div>
+          <input
+            type="number"
+            className={styles.numberInput}
+            value={minUnitsPerOrder}
+            onChange={(e) => setMinUnitsPerOrder(e.target.value)}
+            min="0"
+            placeholder="Min Units/Order"
+          />
 
-          {/* Min Order Value */}
-          <div className={styles.filterItem}>
-            <p className={styles.filterLabel}>Min Value/Order</p>
-            <div className={styles.filterControls}>
-              <input
-                type="number"
-                className={styles.numberInput}
-                value={minOrderValue}
-                onChange={(e) => setMinOrderValue(e.target.value)}
-                min="0"
-                placeholder="₹0"
-              />
-            </div>
-          </div>
+          <input
+            type="number"
+            className={styles.numberInput}
+            value={minOrderValue}
+            onChange={(e) => setMinOrderValue(e.target.value)}
+            min="0"
+            placeholder="Min Order Value"
+          />
+
+          <button className={styles.clearBtn} onClick={handleClear}>
+            Clear
+          </button>
         </div>
       </section>
 

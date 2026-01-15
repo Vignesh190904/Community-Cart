@@ -6,6 +6,7 @@ const navLinks = [
   { href: '/customer/dashboard', label: 'Dashboard' },
   { href: '/customer/browse-products', label: 'Browse Products' },
   { href: '/customer/cart', label: 'Cart' },
+  { href: '/customer/cart-pro', label: 'Cart-Pro' },
   { href: '/customer/track-order', label: 'Track Orders' },
 ];
 
@@ -52,8 +53,8 @@ export default function CustomerLayout({ children }: { children: React.ReactNode
               </Link>
             );
           })}
-          <button 
-            className="customer-theme-toggle" 
+          <button
+            className="customer-theme-toggle"
             onClick={toggleTheme}
             title={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
             aria-label="Toggle theme"

@@ -480,13 +480,7 @@ const authHeaders = (extra = {})=>{
     const headers = {
         ...extra
     };
-    // Always try to get token from localStorage if not set in memory
-    const token = authToken || (("TURBOPACK compile-time truthy", 1) ? localStorage.getItem('cc_token') : "TURBOPACK unreachable");
-    if (token) {
-        headers['Authorization'] = `Bearer ${token}`;
-    } else {
-        console.warn('[api] No auth token found in memory or localStorage');
-    }
+    if (authToken) headers['Authorization'] = `Bearer ${authToken}`;
     return headers;
 };
 const api = {
@@ -520,8 +514,7 @@ const api = {
             const response = await fetch(`${API_BASE}/vendors/${id}`, {
                 method: 'PUT',
                 headers: {
-                    'Content-Type': 'application/json',
-                    ...authHeaders()
+                    'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(data)
             });
@@ -530,26 +523,16 @@ const api = {
         },
         forceLogout: async (id)=>{
             const response = await fetch(`${API_BASE}/vendors/${id}/force-logout`, {
-                method: 'POST',
-                headers: authHeaders()
+                method: 'POST'
             });
             if (!response.ok) throw new Error('Failed to force logout vendor');
             return response.json();
         },
         delete: async (id)=>{
             const response = await fetch(`${API_BASE}/vendors/${id}`, {
-                method: 'DELETE',
-                headers: authHeaders()
+                method: 'DELETE'
             });
             if (!response.ok) throw new Error('Failed to delete vendor');
-            return response.json();
-        },
-        getEarnings: async (id, params)=>{
-            const suffix = params ? `?${params.toString()}` : '';
-            const response = await fetch(`${API_BASE}/vendors/${id}/earnings${suffix}`, {
-                headers: authHeaders()
-            });
-            if (!response.ok) throw new Error('Failed to fetch vendor earnings');
             return response.json();
         }
     },
@@ -610,52 +593,16 @@ const api = {
             const response = await fetch(`${API_BASE}/customers`, {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json',
-                    ...authHeaders()
+                    'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(data)
             });
-            if (!response.ok) {
-                const err = await response.json().catch(()=>({}));
-                throw new Error(err.error || 'Failed to create customer');
-            }
+            if (!response.ok) throw new Error('Failed to create customer');
             return response.json();
         },
         getAll: async ()=>{
-            const response = await fetch(`${API_BASE}/customers`, {
-                headers: authHeaders()
-            });
+            const response = await fetch(`${API_BASE}/customers`);
             if (!response.ok) throw new Error('Failed to fetch customers');
-            return response.json();
-        },
-        getById: async (id)=>{
-            const response = await fetch(`${API_BASE}/customers/${id}`, {
-                headers: authHeaders()
-            });
-            if (!response.ok) throw new Error('Failed to fetch customer');
-            return response.json();
-        },
-        update: async (id, data)=>{
-            const response = await fetch(`${API_BASE}/customers/${id}`, {
-                method: 'PATCH',
-                headers: {
-                    'Content-Type': 'application/json',
-                    ...authHeaders()
-                },
-                body: JSON.stringify(data)
-            });
-            if (!response.ok) {
-                const err = await response.json().catch(()=>({}));
-                throw new Error(err.error || 'Failed to update customer');
-            }
-            return response.json();
-        },
-        delete: async (id)=>{
-            const response = await fetch(`${API_BASE}/customers/${id}`, {
-                method: 'DELETE',
-                headers: authHeaders()
-            });
-            if (!response.ok) throw new Error('Failed to delete customer');
             return response.json();
         }
     },
@@ -665,8 +612,7 @@ const api = {
             const response = await fetch(`${API_BASE}/products`, {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json',
-                    ...authHeaders()
+                    'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(data)
             });
@@ -687,8 +633,7 @@ const api = {
             const response = await fetch(`${API_BASE}/products/${id}`, {
                 method: 'PUT',
                 headers: {
-                    'Content-Type': 'application/json',
-                    ...authHeaders()
+                    'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(data)
             });
@@ -697,8 +642,7 @@ const api = {
         },
         delete: async (id)=>{
             const response = await fetch(`${API_BASE}/products/${id}`, {
-                method: 'DELETE',
-                headers: authHeaders()
+                method: 'DELETE'
             });
             if (!response.ok) throw new Error('Failed to delete product');
             return response.json();
@@ -716,9 +660,7 @@ const api = {
                     }
                 });
             }
-            const response = await fetch(`${API_BASE}/product-sales/analytics?${params.toString()}`, {
-                headers: authHeaders()
-            });
+            const response = await fetch(`${API_BASE}/product-sales/analytics?${params.toString()}`);
             if (!response.ok) throw new Error('Failed to fetch product sales analytics');
             return response.json();
         },
@@ -727,9 +669,7 @@ const api = {
             params.append('vendorId', vendorId);
             if (filters?.startDate) params.append('startDate', filters.startDate);
             if (filters?.endDate) params.append('endDate', filters.endDate);
-            const response = await fetch(`${API_BASE}/product-sales/kpis?${params.toString()}`, {
-                headers: authHeaders()
-            });
+            const response = await fetch(`${API_BASE}/product-sales/kpis?${params.toString()}`);
             if (!response.ok) throw new Error('Failed to fetch KPIs');
             return response.json();
         },
@@ -738,53 +678,8 @@ const api = {
             params.append('vendorId', vendorId);
             if (filters?.startDate) params.append('startDate', filters.startDate);
             if (filters?.endDate) params.append('endDate', filters.endDate);
-            const response = await fetch(`${API_BASE}/product-sales/detail/${productId}?${params.toString()}`, {
-                headers: authHeaders()
-            });
+            const response = await fetch(`${API_BASE}/product-sales/detail/${productId}?${params.toString()}`);
             if (!response.ok) throw new Error('Failed to fetch product detail');
-            return response.json();
-        }
-    },
-    // Orders
-    orders: {
-        create: async (data)=>{
-            const response = await fetch(`${API_BASE}/orders`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    ...authHeaders()
-                },
-                body: JSON.stringify(data)
-            });
-            if (!response.ok) throw new Error('Failed to create order');
-            return response.json();
-        },
-        getAll: async ()=>{
-            const response = await fetch(`${API_BASE}/orders`, {
-                headers: authHeaders()
-            });
-            if (!response.ok) throw new Error('Failed to fetch orders');
-            return response.json();
-        },
-        getById: async (id)=>{
-            const response = await fetch(`${API_BASE}/orders/${id}`, {
-                headers: authHeaders()
-            });
-            if (!response.ok) throw new Error('Failed to fetch order');
-            return response.json();
-        },
-        updateStatus: async (id, status)=>{
-            const response = await fetch(`${API_BASE}/orders/${id}`, {
-                method: 'PATCH',
-                headers: {
-                    'Content-Type': 'application/json',
-                    ...authHeaders()
-                },
-                body: JSON.stringify({
-                    status
-                })
-            });
-            if (!response.ok) throw new Error('Failed to update order status');
             return response.json();
         }
     }
@@ -909,880 +804,11 @@ if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelper
     __turbopack_context__.k.registerExports(__turbopack_context__.m, globalThis.$RefreshHelpers$);
 }
 }),
-"[project]/Desktop/Community-Cart/frontend/src/pages/admin/inventory.tsx [client] (ecmascript)", ((__turbopack_context__) => {
-"use strict";
+"[project]/Desktop/Community-Cart/frontend/src/pages/admin/inventory.tsx [client] (ecmascript)", ((__turbopack_context__, module, exports) => {
 
-__turbopack_context__.s([
-    "default",
-    ()=>AdminInventory
-]);
-var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/Community-Cart/frontend/node_modules/react/jsx-dev-runtime.js [client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/Community-Cart/frontend/node_modules/react/index.js [client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$src$2f$services$2f$api$2e$ts__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/Community-Cart/frontend/src/services/api.ts [client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$src$2f$components$2f$ui$2f$ToastProvider$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/Community-Cart/frontend/src/components/ui/ToastProvider.tsx [client] (ecmascript)");
-;
-var _s = __turbopack_context__.k.signature();
-;
-;
-;
-function AdminInventory() {
-    _s();
-    const { pushToast } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$src$2f$components$2f$ui$2f$ToastProvider$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__["useToast"])();
-    const [products, setProducts] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useState"])([]);
-    const [vendors, setVendors] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useState"])([]);
-    const [loading, setLoading] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useState"])(false);
-    // Filters
-    const [vendorSearch, setVendorSearch] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useState"])('');
-    const [productSearch, setProductSearch] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useState"])('');
-    const [stockStatus, setStockStatus] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useState"])('all');
-    const [selectedCategory, setSelectedCategory] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useState"])('all');
-    const [lastUpdated, setLastUpdated] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useState"])('any');
-    const [minPrice, setMinPrice] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useState"])('');
-    const [maxPrice, setMaxPrice] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useState"])('');
-    const [availabilityFilter, setAvailabilityFilter] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useState"])('all');
-    (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useEffect"])({
-        "AdminInventory.useEffect": ()=>{
-            loadData();
-        }
-    }["AdminInventory.useEffect"], []);
-    const loadData = async ()=>{
-        try {
-            setLoading(true);
-            const [productsData, vendorsData] = await Promise.all([
-                __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$src$2f$services$2f$api$2e$ts__$5b$client$5d$__$28$ecmascript$29$__["api"].products.getAll(),
-                __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$src$2f$services$2f$api$2e$ts__$5b$client$5d$__$28$ecmascript$29$__["api"].vendors.getAll()
-            ]);
-            setProducts(productsData);
-            setVendors(vendorsData);
-        } catch (error) {
-            console.error('Error loading data:', error);
-            pushToast({
-                type: 'error',
-                title: 'Load Failed',
-                message: 'Failed to load inventory data'
-            });
-        } finally{
-            setLoading(false);
-        }
-    };
-    const getVendorName = (vendor)=>{
-        if (typeof vendor === 'string') {
-            const vendorObj = vendors.find((v)=>v._id === vendor);
-            return vendorObj?.storeName || 'Unknown Vendor';
-        }
-        return vendor.storeName || 'Unknown Vendor';
-    };
-    const getVendorEmail = (vendor)=>{
-        if (typeof vendor === 'string') {
-            const vendorObj = vendors.find((v)=>v._id === vendor);
-            return vendorObj?.email || '';
-        }
-        return vendor.email || '';
-    };
-    const getVendorId = (vendor)=>{
-        if (typeof vendor === 'string') {
-            return vendor;
-        }
-        return vendor._id;
-    };
-    // Debounced vendor search
-    const [debouncedVendorSearch, setDebouncedVendorSearch] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useState"])('');
-    (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useEffect"])({
-        "AdminInventory.useEffect": ()=>{
-            const timer = setTimeout({
-                "AdminInventory.useEffect.timer": ()=>{
-                    setDebouncedVendorSearch(vendorSearch);
-                }
-            }["AdminInventory.useEffect.timer"], 300);
-            return ({
-                "AdminInventory.useEffect": ()=>clearTimeout(timer)
-            })["AdminInventory.useEffect"];
-        }
-    }["AdminInventory.useEffect"], [
-        vendorSearch
-    ]);
-    // Get unique categories
-    const categories = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useMemo"])({
-        "AdminInventory.useMemo[categories]": ()=>{
-            const cats = new Set();
-            products.forEach({
-                "AdminInventory.useMemo[categories]": (p)=>{
-                    if (p.category) cats.add(p.category);
-                }
-            }["AdminInventory.useMemo[categories]"]);
-            return Array.from(cats).sort();
-        }
-    }["AdminInventory.useMemo[categories]"], [
-        products
-    ]);
-    // Filter products
-    const filteredProducts = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useMemo"])({
-        "AdminInventory.useMemo[filteredProducts]": ()=>{
-            let filtered = [
-                ...products
-            ];
-            // Vendor search
-            if (debouncedVendorSearch.trim()) {
-                const search = debouncedVendorSearch.toLowerCase();
-                filtered = filtered.filter({
-                    "AdminInventory.useMemo[filteredProducts]": (product)=>{
-                        const vendorName = getVendorName(product.vendor).toLowerCase();
-                        const vendorEmail = getVendorEmail(product.vendor).toLowerCase();
-                        return vendorName.includes(search) || vendorEmail.includes(search);
-                    }
-                }["AdminInventory.useMemo[filteredProducts]"]);
-            }
-            // Product search
-            if (productSearch.trim()) {
-                const search = productSearch.toLowerCase();
-                filtered = filtered.filter({
-                    "AdminInventory.useMemo[filteredProducts]": (product)=>{
-                        return product.name.toLowerCase().includes(search);
-                    }
-                }["AdminInventory.useMemo[filteredProducts]"]);
-            }
-            // Stock status filter
-            if (stockStatus !== 'all') {
-                filtered = filtered.filter({
-                    "AdminInventory.useMemo[filteredProducts]": (product)=>{
-                        if (stockStatus === 'in-stock') return product.stock > 0;
-                        if (stockStatus === 'low-stock') return product.stock > 0 && product.stock <= 10;
-                        if (stockStatus === 'out-of-stock') return product.stock === 0;
-                        return true;
-                    }
-                }["AdminInventory.useMemo[filteredProducts]"]);
-            }
-            // Category filter
-            if (selectedCategory !== 'all') {
-                filtered = filtered.filter({
-                    "AdminInventory.useMemo[filteredProducts]": (product)=>product.category === selectedCategory
-                }["AdminInventory.useMemo[filteredProducts]"]);
-            }
-            // Last updated filter
-            if (lastUpdated !== 'any') {
-                const now = new Date();
-                const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-                const last7Days = new Date(today.getTime() - 7 * 24 * 60 * 60 * 1000);
-                const last30Days = new Date(today.getTime() - 30 * 24 * 60 * 60 * 1000);
-                filtered = filtered.filter({
-                    "AdminInventory.useMemo[filteredProducts]": (product)=>{
-                        if (!product.createdAt) return false;
-                        const productDate = new Date(product.createdAt);
-                        if (lastUpdated === 'today') return productDate >= today;
-                        if (lastUpdated === 'week') return productDate >= last7Days;
-                        if (lastUpdated === 'month') return productDate >= last30Days;
-                        return true;
-                    }
-                }["AdminInventory.useMemo[filteredProducts]"]);
-            }
-            // Price range filter
-            const min = minPrice ? parseFloat(minPrice) : null;
-            const max = maxPrice ? parseFloat(maxPrice) : null;
-            if (min !== null || max !== null) {
-                filtered = filtered.filter({
-                    "AdminInventory.useMemo[filteredProducts]": (product)=>{
-                        if (min !== null && product.price < min) return false;
-                        if (max !== null && product.price > max) return false;
-                        return true;
-                    }
-                }["AdminInventory.useMemo[filteredProducts]"]);
-            }
-            // Availability filter
-            if (availabilityFilter === 'active') {
-                filtered = filtered.filter({
-                    "AdminInventory.useMemo[filteredProducts]": (p)=>p.isAvailable
-                }["AdminInventory.useMemo[filteredProducts]"]);
-            } else if (availabilityFilter === 'disabled') {
-                filtered = filtered.filter({
-                    "AdminInventory.useMemo[filteredProducts]": (p)=>!p.isAvailable
-                }["AdminInventory.useMemo[filteredProducts]"]);
-            }
-            return filtered;
-        }
-    }["AdminInventory.useMemo[filteredProducts]"], [
-        products,
-        debouncedVendorSearch,
-        productSearch,
-        stockStatus,
-        selectedCategory,
-        lastUpdated,
-        minPrice,
-        maxPrice,
-        availabilityFilter
-    ]);
-    // Calculate stats
-    const stats = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useMemo"])({
-        "AdminInventory.useMemo[stats]": ()=>{
-            return {
-                total: filteredProducts.length,
-                available: filteredProducts.filter({
-                    "AdminInventory.useMemo[stats]": (p)=>p.isAvailable
-                }["AdminInventory.useMemo[stats]"]).length,
-                outOfStock: filteredProducts.filter({
-                    "AdminInventory.useMemo[stats]": (p)=>p.stock === 0
-                }["AdminInventory.useMemo[stats]"]).length,
-                lowStock: filteredProducts.filter({
-                    "AdminInventory.useMemo[stats]": (p)=>p.stock > 0 && p.stock <= 10
-                }["AdminInventory.useMemo[stats]"]).length
-            };
-        }
-    }["AdminInventory.useMemo[stats]"], [
-        filteredProducts
-    ]);
-    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["Fragment"], {
-        children: [
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "inventory-header",
-                children: [
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
-                        className: "inventory-title",
-                        children: "Product Inventory"
-                    }, void 0, false, {
-                        fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/inventory.tsx",
-                        lineNumber: 192,
-                        columnNumber: 9
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                        className: "inventory-subtitle",
-                        children: "Manage product inventory across all vendors"
-                    }, void 0, false, {
-                        fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/inventory.tsx",
-                        lineNumber: 193,
-                        columnNumber: 9
-                    }, this)
-                ]
-            }, void 0, true, {
-                fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/inventory.tsx",
-                lineNumber: 191,
-                columnNumber: 7
-            }, this),
-            loading ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "inventory-loading",
-                children: "Loading inventory..."
-            }, void 0, false, {
-                fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/inventory.tsx",
-                lineNumber: 197,
-                columnNumber: 9
-            }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["Fragment"], {
-                children: [
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "inventory-filters",
-                        children: [
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "filters-row-1",
-                                children: [
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "vendor-search-wrapper",
-                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
-                                            type: "text",
-                                            className: "search-input",
-                                            placeholder: "Search by vendor name or email...",
-                                            value: vendorSearch,
-                                            onChange: (e)=>setVendorSearch(e.target.value)
-                                        }, void 0, false, {
-                                            fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/inventory.tsx",
-                                            lineNumber: 205,
-                                            columnNumber: 17
-                                        }, this)
-                                    }, void 0, false, {
-                                        fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/inventory.tsx",
-                                        lineNumber: 204,
-                                        columnNumber: 15
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "product-search-wrapper",
-                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
-                                            type: "text",
-                                            className: "search-input",
-                                            placeholder: "Search by product name...",
-                                            value: productSearch,
-                                            onChange: (e)=>setProductSearch(e.target.value)
-                                        }, void 0, false, {
-                                            fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/inventory.tsx",
-                                            lineNumber: 215,
-                                            columnNumber: 17
-                                        }, this)
-                                    }, void 0, false, {
-                                        fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/inventory.tsx",
-                                        lineNumber: 214,
-                                        columnNumber: 15
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "stock-status-tabs",
-                                        children: [
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                                className: `status-tab ${stockStatus === 'all' ? 'active' : ''}`,
-                                                onClick: ()=>setStockStatus('all'),
-                                                children: "All"
-                                            }, void 0, false, {
-                                                fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/inventory.tsx",
-                                                lineNumber: 225,
-                                                columnNumber: 17
-                                            }, this),
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                                className: `status-tab ${stockStatus === 'in-stock' ? 'active' : ''}`,
-                                                onClick: ()=>setStockStatus('in-stock'),
-                                                children: "In Stock"
-                                            }, void 0, false, {
-                                                fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/inventory.tsx",
-                                                lineNumber: 231,
-                                                columnNumber: 17
-                                            }, this),
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                                className: `status-tab ${stockStatus === 'low-stock' ? 'active' : ''}`,
-                                                onClick: ()=>setStockStatus('low-stock'),
-                                                children: "Low Stock"
-                                            }, void 0, false, {
-                                                fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/inventory.tsx",
-                                                lineNumber: 237,
-                                                columnNumber: 17
-                                            }, this),
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                                className: `status-tab ${stockStatus === 'out-of-stock' ? 'active' : ''}`,
-                                                onClick: ()=>setStockStatus('out-of-stock'),
-                                                children: "Out of Stock"
-                                            }, void 0, false, {
-                                                fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/inventory.tsx",
-                                                lineNumber: 243,
-                                                columnNumber: 17
-                                            }, this)
-                                        ]
-                                    }, void 0, true, {
-                                        fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/inventory.tsx",
-                                        lineNumber: 224,
-                                        columnNumber: 15
-                                    }, this)
-                                ]
-                            }, void 0, true, {
-                                fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/inventory.tsx",
-                                lineNumber: 203,
-                                columnNumber: 13
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "filters-row-2",
-                                children: [
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "category-filter",
-                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
-                                            value: selectedCategory,
-                                            onChange: (e)=>setSelectedCategory(e.target.value),
-                                            className: "filter-select",
-                                            children: [
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
-                                                    value: "all",
-                                                    children: "All Categories"
-                                                }, void 0, false, {
-                                                    fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/inventory.tsx",
-                                                    lineNumber: 260,
-                                                    columnNumber: 19
-                                                }, this),
-                                                categories.map((cat)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
-                                                        value: cat,
-                                                        children: cat
-                                                    }, cat, false, {
-                                                        fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/inventory.tsx",
-                                                        lineNumber: 262,
-                                                        columnNumber: 21
-                                                    }, this))
-                                            ]
-                                        }, void 0, true, {
-                                            fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/inventory.tsx",
-                                            lineNumber: 255,
-                                            columnNumber: 17
-                                        }, this)
-                                    }, void 0, false, {
-                                        fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/inventory.tsx",
-                                        lineNumber: 254,
-                                        columnNumber: 15
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "last-updated-filter",
-                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
-                                            value: lastUpdated,
-                                            onChange: (e)=>setLastUpdated(e.target.value),
-                                            className: "filter-select",
-                                            children: [
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
-                                                    value: "any",
-                                                    children: "Any time"
-                                                }, void 0, false, {
-                                                    fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/inventory.tsx",
-                                                    lineNumber: 273,
-                                                    columnNumber: 19
-                                                }, this),
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
-                                                    value: "today",
-                                                    children: "Updated today"
-                                                }, void 0, false, {
-                                                    fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/inventory.tsx",
-                                                    lineNumber: 274,
-                                                    columnNumber: 19
-                                                }, this),
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
-                                                    value: "week",
-                                                    children: "Updated in last 7 days"
-                                                }, void 0, false, {
-                                                    fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/inventory.tsx",
-                                                    lineNumber: 275,
-                                                    columnNumber: 19
-                                                }, this),
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
-                                                    value: "month",
-                                                    children: "Updated in last 30 days"
-                                                }, void 0, false, {
-                                                    fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/inventory.tsx",
-                                                    lineNumber: 276,
-                                                    columnNumber: 19
-                                                }, this)
-                                            ]
-                                        }, void 0, true, {
-                                            fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/inventory.tsx",
-                                            lineNumber: 268,
-                                            columnNumber: 17
-                                        }, this)
-                                    }, void 0, false, {
-                                        fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/inventory.tsx",
-                                        lineNumber: 267,
-                                        columnNumber: 15
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "price-range-wrapper",
-                                        children: [
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
-                                                type: "number",
-                                                className: "price-input",
-                                                placeholder: "Min Price",
-                                                value: minPrice,
-                                                onChange: (e)=>setMinPrice(e.target.value),
-                                                min: "0"
-                                            }, void 0, false, {
-                                                fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/inventory.tsx",
-                                                lineNumber: 281,
-                                                columnNumber: 17
-                                            }, this),
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
-                                                type: "number",
-                                                className: "price-input",
-                                                placeholder: "Max Price",
-                                                value: maxPrice,
-                                                onChange: (e)=>setMaxPrice(e.target.value),
-                                                min: "0"
-                                            }, void 0, false, {
-                                                fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/inventory.tsx",
-                                                lineNumber: 289,
-                                                columnNumber: 17
-                                            }, this)
-                                        ]
-                                    }, void 0, true, {
-                                        fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/inventory.tsx",
-                                        lineNumber: 280,
-                                        columnNumber: 15
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "availability-toggle",
-                                        children: [
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                                className: `availability-pill ${availabilityFilter === 'all' ? 'active' : ''}`,
-                                                onClick: ()=>setAvailabilityFilter('all'),
-                                                children: "All"
-                                            }, void 0, false, {
-                                                fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/inventory.tsx",
-                                                lineNumber: 300,
-                                                columnNumber: 17
-                                            }, this),
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                                className: `availability-pill ${availabilityFilter === 'active' ? 'active' : ''}`,
-                                                onClick: ()=>setAvailabilityFilter('active'),
-                                                children: "Active"
-                                            }, void 0, false, {
-                                                fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/inventory.tsx",
-                                                lineNumber: 306,
-                                                columnNumber: 17
-                                            }, this),
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                                className: `availability-pill ${availabilityFilter === 'disabled' ? 'active' : ''}`,
-                                                onClick: ()=>setAvailabilityFilter('disabled'),
-                                                children: "Disabled"
-                                            }, void 0, false, {
-                                                fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/inventory.tsx",
-                                                lineNumber: 312,
-                                                columnNumber: 17
-                                            }, this)
-                                        ]
-                                    }, void 0, true, {
-                                        fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/inventory.tsx",
-                                        lineNumber: 299,
-                                        columnNumber: 15
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                        type: "button",
-                                        className: "clear-filters-btn",
-                                        onClick: ()=>{
-                                            setVendorSearch('');
-                                            setProductSearch('');
-                                            setStockStatus('all');
-                                            setSelectedCategory('all');
-                                            setLastUpdated('any');
-                                            setMinPrice('');
-                                            setMaxPrice('');
-                                            setAvailabilityFilter('all');
-                                        },
-                                        children: "Clear"
-                                    }, void 0, false, {
-                                        fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/inventory.tsx",
-                                        lineNumber: 320,
-                                        columnNumber: 15
-                                    }, this)
-                                ]
-                            }, void 0, true, {
-                                fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/inventory.tsx",
-                                lineNumber: 253,
-                                columnNumber: 13
-                            }, this)
-                        ]
-                    }, void 0, true, {
-                        fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/inventory.tsx",
-                        lineNumber: 201,
-                        columnNumber: 11
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "inventory-stats",
-                        children: [
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "stat-card",
-                                children: [
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                        className: "stat-label",
-                                        children: "Total Products"
-                                    }, void 0, false, {
-                                        fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/inventory.tsx",
-                                        lineNumber: 342,
-                                        columnNumber: 15
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                        className: "stat-value",
-                                        children: stats.total
-                                    }, void 0, false, {
-                                        fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/inventory.tsx",
-                                        lineNumber: 343,
-                                        columnNumber: 15
-                                    }, this)
-                                ]
-                            }, void 0, true, {
-                                fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/inventory.tsx",
-                                lineNumber: 341,
-                                columnNumber: 13
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "stat-card",
-                                children: [
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                        className: "stat-label",
-                                        children: "Available"
-                                    }, void 0, false, {
-                                        fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/inventory.tsx",
-                                        lineNumber: 346,
-                                        columnNumber: 15
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                        className: "stat-value",
-                                        children: stats.available
-                                    }, void 0, false, {
-                                        fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/inventory.tsx",
-                                        lineNumber: 347,
-                                        columnNumber: 15
-                                    }, this)
-                                ]
-                            }, void 0, true, {
-                                fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/inventory.tsx",
-                                lineNumber: 345,
-                                columnNumber: 13
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "stat-card",
-                                children: [
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                        className: "stat-label",
-                                        children: "Out of Stock"
-                                    }, void 0, false, {
-                                        fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/inventory.tsx",
-                                        lineNumber: 350,
-                                        columnNumber: 15
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                        className: "stat-value",
-                                        children: stats.outOfStock
-                                    }, void 0, false, {
-                                        fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/inventory.tsx",
-                                        lineNumber: 351,
-                                        columnNumber: 15
-                                    }, this)
-                                ]
-                            }, void 0, true, {
-                                fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/inventory.tsx",
-                                lineNumber: 349,
-                                columnNumber: 13
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "stat-card",
-                                children: [
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                        className: "stat-label",
-                                        children: "Low Stock"
-                                    }, void 0, false, {
-                                        fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/inventory.tsx",
-                                        lineNumber: 354,
-                                        columnNumber: 15
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                        className: "stat-value",
-                                        children: stats.lowStock
-                                    }, void 0, false, {
-                                        fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/inventory.tsx",
-                                        lineNumber: 355,
-                                        columnNumber: 15
-                                    }, this)
-                                ]
-                            }, void 0, true, {
-                                fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/inventory.tsx",
-                                lineNumber: 353,
-                                columnNumber: 13
-                            }, this)
-                        ]
-                    }, void 0, true, {
-                        fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/inventory.tsx",
-                        lineNumber: 340,
-                        columnNumber: 11
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
-                        className: "inventory-section",
-                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "inventory-table-wrap",
-                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("table", {
-                                className: "inventory-table",
-                                children: [
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("thead", {
-                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
-                                            children: [
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
-                                                    children: "Name"
-                                                }, void 0, false, {
-                                                    fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/inventory.tsx",
-                                                    lineNumber: 365,
-                                                    columnNumber: 21
-                                                }, this),
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
-                                                    children: "Vendor"
-                                                }, void 0, false, {
-                                                    fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/inventory.tsx",
-                                                    lineNumber: 366,
-                                                    columnNumber: 21
-                                                }, this),
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
-                                                    children: "Category"
-                                                }, void 0, false, {
-                                                    fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/inventory.tsx",
-                                                    lineNumber: 367,
-                                                    columnNumber: 21
-                                                }, this),
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
-                                                    children: "Price"
-                                                }, void 0, false, {
-                                                    fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/inventory.tsx",
-                                                    lineNumber: 368,
-                                                    columnNumber: 21
-                                                }, this),
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
-                                                    children: "Stock"
-                                                }, void 0, false, {
-                                                    fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/inventory.tsx",
-                                                    lineNumber: 369,
-                                                    columnNumber: 21
-                                                }, this),
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
-                                                    children: "Status"
-                                                }, void 0, false, {
-                                                    fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/inventory.tsx",
-                                                    lineNumber: 370,
-                                                    columnNumber: 21
-                                                }, this)
-                                            ]
-                                        }, void 0, true, {
-                                            fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/inventory.tsx",
-                                            lineNumber: 364,
-                                            columnNumber: 19
-                                        }, this)
-                                    }, void 0, false, {
-                                        fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/inventory.tsx",
-                                        lineNumber: 363,
-                                        columnNumber: 17
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tbody", {
-                                        children: [
-                                            filteredProducts.map((product)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
-                                                    children: [
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
-                                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                className: "product-name-cell",
-                                                                children: [
-                                                                    product.image && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
-                                                                        src: product.image,
-                                                                        alt: product.name,
-                                                                        className: "product-thumb"
-                                                                    }, void 0, false, {
-                                                                        fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/inventory.tsx",
-                                                                        lineNumber: 379,
-                                                                        columnNumber: 29
-                                                                    }, this),
-                                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                        children: [
-                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                                className: "product-name",
-                                                                                children: product.name
-                                                                            }, void 0, false, {
-                                                                                fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/inventory.tsx",
-                                                                                lineNumber: 382,
-                                                                                columnNumber: 29
-                                                                            }, this),
-                                                                            product.description && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                                className: "product-desc",
-                                                                                children: [
-                                                                                    product.description.substring(0, 50),
-                                                                                    "..."
-                                                                                ]
-                                                                            }, void 0, true, {
-                                                                                fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/inventory.tsx",
-                                                                                lineNumber: 384,
-                                                                                columnNumber: 31
-                                                                            }, this)
-                                                                        ]
-                                                                    }, void 0, true, {
-                                                                        fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/inventory.tsx",
-                                                                        lineNumber: 381,
-                                                                        columnNumber: 27
-                                                                    }, this)
-                                                                ]
-                                                            }, void 0, true, {
-                                                                fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/inventory.tsx",
-                                                                lineNumber: 377,
-                                                                columnNumber: 25
-                                                            }, this)
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/inventory.tsx",
-                                                            lineNumber: 376,
-                                                            columnNumber: 23
-                                                        }, this),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
-                                                            children: getVendorName(product.vendor)
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/inventory.tsx",
-                                                            lineNumber: 389,
-                                                            columnNumber: 23
-                                                        }, this),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
-                                                            children: product.category || '—'
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/inventory.tsx",
-                                                            lineNumber: 390,
-                                                            columnNumber: 23
-                                                        }, this),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
-                                                            children: [
-                                                                "₹",
-                                                                product.price.toFixed(2)
-                                                            ]
-                                                        }, void 0, true, {
-                                                            fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/inventory.tsx",
-                                                            lineNumber: 391,
-                                                            columnNumber: 23
-                                                        }, this),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
-                                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                                className: `stock-badge ${product.stock === 0 ? 'out' : product.stock <= 10 ? 'low' : 'good'}`,
-                                                                children: product.stock
-                                                            }, void 0, false, {
-                                                                fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/inventory.tsx",
-                                                                lineNumber: 393,
-                                                                columnNumber: 25
-                                                            }, this)
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/inventory.tsx",
-                                                            lineNumber: 392,
-                                                            columnNumber: 23
-                                                        }, this),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
-                                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                                className: `status-badge ${product.isAvailable ? 'active' : 'inactive'}`,
-                                                                children: product.isAvailable ? 'Available' : 'Disabled'
-                                                            }, void 0, false, {
-                                                                fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/inventory.tsx",
-                                                                lineNumber: 402,
-                                                                columnNumber: 25
-                                                            }, this)
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/inventory.tsx",
-                                                            lineNumber: 401,
-                                                            columnNumber: 23
-                                                        }, this)
-                                                    ]
-                                                }, product._id, true, {
-                                                    fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/inventory.tsx",
-                                                    lineNumber: 375,
-                                                    columnNumber: 21
-                                                }, this)),
-                                            filteredProducts.length === 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
-                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
-                                                    colSpan: 6,
-                                                    className: "empty-state",
-                                                    children: "No products match the selected filters."
-                                                }, void 0, false, {
-                                                    fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/inventory.tsx",
-                                                    lineNumber: 410,
-                                                    columnNumber: 23
-                                                }, this)
-                                            }, void 0, false, {
-                                                fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/inventory.tsx",
-                                                lineNumber: 409,
-                                                columnNumber: 21
-                                            }, this)
-                                        ]
-                                    }, void 0, true, {
-                                        fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/inventory.tsx",
-                                        lineNumber: 373,
-                                        columnNumber: 17
-                                    }, this)
-                                ]
-                            }, void 0, true, {
-                                fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/inventory.tsx",
-                                lineNumber: 362,
-                                columnNumber: 15
-                            }, this)
-                        }, void 0, false, {
-                            fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/inventory.tsx",
-                            lineNumber: 361,
-                            columnNumber: 13
-                        }, this)
-                    }, void 0, false, {
-                        fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/inventory.tsx",
-                        lineNumber: 360,
-                        columnNumber: 11
-                    }, this)
-                ]
-            }, void 0, true)
-        ]
-    }, void 0, true);
-}
-_s(AdminInventory, "oXAb1HvI+pxOhYgJvCWavo535m4=", false, function() {
-    return [
-        __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$src$2f$components$2f$ui$2f$ToastProvider$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__["useToast"]
-    ];
-});
-_c = AdminInventory;
-var _c;
-__turbopack_context__.k.register(_c, "AdminInventory");
-if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
-    __turbopack_context__.k.registerExports(__turbopack_context__.m, globalThis.$RefreshHelpers$);
-}
+const e = new Error("Could not parse module '[project]/Desktop/Community-Cart/frontend/src/pages/admin/inventory.tsx', file not found");
+e.code = 'MODULE_UNPARSABLE';
+throw e;
 }),
 "[next]/entry/page-loader.ts { PAGE => \"[project]/Desktop/Community-Cart/frontend/src/pages/admin/inventory.tsx [client] (ecmascript)\" } [client] (ecmascript)", ((__turbopack_context__, module, exports) => {
 

@@ -1,0 +1,256 @@
+/* [project]/Desktop/Community-Cart/frontend/src/styles/filters_styling.css [client] (css) */
+body.theme-light {
+  --bg-main: #f4f5f9;
+  --bg-card: #fff;
+  --bg-surface: #fff;
+  --bg-hover: #ddd;
+  --text-primary: #000;
+  --text-secondary: #2e2e2e;
+  --text-muted: #4d4d4d;
+  --text-disabled: #6f6f6f;
+  --primary: #44b92b;
+  --danger: #ef574b;
+}
+
+body.theme-dark {
+  --bg-main: #000;
+  --bg-card: #1f1f1f;
+  --bg-surface: #2a2a2a;
+  --bg-hover: #3c3c3c;
+  --text-primary: #fff;
+  --text-secondary: #d1d1d1;
+  --text-muted: #a0a0a0;
+  --text-disabled: #6f6f6f;
+  --primary: #44b92b;
+  --danger: #ef574b;
+}
+
+body {
+  background-color: var(--bg-main);
+  margin: 0;
+  font-family: system-ui, Arial, sans-serif;
+}
+
+.filter-bar {
+  background-color: var(--bg-card);
+  border-radius: 8px;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  display: flex;
+}
+
+.filter-input, .filter-number-input, .filter-date-input {
+  height: 42px;
+  color: var(--text-primary);
+  border: 1px solid var(--bg-hover);
+  border-radius: 8px;
+  outline: none;
+  padding: 0 12px;
+  font-size: 14px;
+  font-weight: 550;
+  transition: border-color .14s;
+  background-color: var(--bg-main) !important;
+}
+
+.filter-input::placeholder {
+  color: var(--text-disabled);
+  font-weight: 550;
+}
+
+.filter-input:focus, .filter-number-input:focus, .filter-date-input:focus {
+  border-color: var(--primary);
+  color: var(--text-primary);
+}
+
+.filter-number-input {
+  appearance: textfield;
+  -webkit-appearance: none;
+  -moz-appearance: textfield;
+}
+
+.filter-number-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.filter-number-input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.filter-button {
+  border: 1px solid var(--bg-hover);
+  background-color: var(--bg-surface);
+  height: 40px;
+  color: var(--text-primary);
+  cursor: pointer;
+  border-radius: 8px;
+  padding: 0 16px;
+  font-size: 14px;
+  font-weight: 550;
+  transition: border-color .12s, background-color .12s;
+}
+
+.filter-button.active {
+  border-color: var(--primary);
+  background-color: color-mix(in srgb, var(--primary) 12%, var(--bg-surface));
+  color: var(--text-primary);
+}
+
+.filter-button:hover {
+  border-color: var(--primary);
+}
+
+.filter-clear-button {
+  border: 1px solid var(--danger);
+  background-color: var(--bg-surface);
+  height: 40px;
+  color: var(--danger);
+  cursor: pointer;
+  border-radius: 8px;
+  padding: 0 16px;
+  font-size: 14px;
+  font-weight: 550;
+}
+
+.filter-dropdown {
+  position: relative;
+}
+
+.filter-dropdown-btn {
+  border: 1px solid var(--bg-hover);
+  background-color: var(--bg-surface);
+  min-width: 160px;
+  height: 40px;
+  color: var(--text-primary);
+  cursor: pointer;
+  border-radius: 8px;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  padding: 0 14px;
+  font-size: 14px;
+  font-weight: 550;
+  display: flex;
+}
+
+.filter-dropdown.open .filter-dropdown-btn {
+  border-color: var(--primary);
+  background-color: color-mix(in srgb, var(--primary) 10%, var(--bg-surface));
+}
+
+.filter-dropdown-chevron {
+  justify-content: center;
+  align-items: center;
+  width: 12px;
+  height: 12px;
+  transition: transform .16s;
+  display: flex;
+}
+
+.filter-dropdown-chevron:before {
+  content: "";
+  border-right: 1.8px solid var(--text-primary);
+  border-bottom: 1.8px solid var(--text-primary);
+  width: 8px;
+  height: 8px;
+  transform: rotate(45deg);
+}
+
+.filter-dropdown.open .filter-dropdown-chevron {
+  transform: rotate(-180deg);
+}
+
+.filter-dropdown-menu {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--bg-hover);
+  z-index: 10;
+  border-radius: 8px;
+  width: 100%;
+  padding: 6px 0;
+  display: none;
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  box-shadow: 0 6px 20px #0000001f;
+}
+
+.filter-dropdown.open .filter-dropdown-menu {
+  display: block;
+}
+
+.filter-dropdown-item {
+  color: var(--text-primary);
+  cursor: pointer;
+  padding: 8px 14px;
+  font-size: 14px;
+  font-weight: 550;
+}
+
+.filter-dropdown-item:hover {
+  background-color: var(--bg-hover);
+}
+
+body.theme-dark .filter-bar {
+  background-color: var(--bg-card);
+}
+
+body.theme-dark .filter-input, body.theme-dark .filter-number-input, body.theme-dark .filter-date-input {
+  border-color: var(--bg-hover);
+  color: var(--text-primary);
+  background-color: var(--bg-card) !important;
+}
+
+body.theme-dark .filter-input::placeholder, body.theme-dark .filter-number-input::placeholder {
+  color: var(--text-muted);
+}
+
+body.theme-dark .filter-button {
+  background-color: var(--bg-card);
+  border-color: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+body.theme-dark .filter-button.active {
+  border-color: var(--primary);
+  background-color: color-mix(in srgb, var(--primary) 10%, var(--bg-card));
+  color: var(--text-primary);
+}
+
+body.theme-dark .filter-clear-button {
+  background-color: var(--bg-card);
+  border-color: var(--danger);
+  color: var(--danger);
+}
+
+body.theme-dark .filter-dropdown-btn {
+  background-color: var(--bg-card);
+  border-color: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+body.theme-dark .filter-dropdown.open .filter-dropdown-btn {
+  border-color: var(--primary);
+  background-color: color-mix(in srgb, var(--primary) 10%, var(--bg-card));
+}
+
+body.theme-dark .filter-dropdown-menu {
+  background-color: var(--bg-card);
+  border-color: var(--bg-hover);
+}
+
+body.theme-dark .filter-dropdown-item {
+  color: var(--text-secondary);
+}
+
+body.theme-dark .filter-dropdown-item:hover {
+  background-color: var(--bg-hover);
+}
+
+body.theme-dark .filter-dropdown-chevron:before {
+  border-right-color: var(--text-secondary);
+  border-bottom-color: var(--text-secondary);
+}
+
+/*# sourceMappingURL=Desktop_Community-Cart_frontend_src_styles_filters_styling_5cf03085.css.map*/

@@ -325,15 +325,13 @@ export default function AdminCustomers() {
           </div>
         </header>
 
-        {/* FILTERS SECTION - 2 ROWS */}
-        <div className="customers-filters">
-          {/* ROW 1: Search + Status */}
+        <div className="vendors-filters">
           <div className="filters-row-1">
-            <div className="customer-search-wrapper">
+            <div className="vendor-search-wrapper">
               <div className="search-input-wrapper">
                 <input
                   type="text"
-                  className="customer-search-input"
+                  className="vendor-search-input"
                   placeholder="Search by name, email, or phone..."
                   value={customerSearch}
                   onChange={(e) => setCustomerSearch(e.target.value)}
@@ -367,7 +365,6 @@ export default function AdminCustomers() {
             </div>
           </div>
 
-          {/* ROW 2: Has Orders + Clear */}
           <div className="filters-row-2">
             <div className="segmented-toggle">
               <button

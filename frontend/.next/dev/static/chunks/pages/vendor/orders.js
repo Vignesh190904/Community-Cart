@@ -9,7 +9,7 @@ __turbopack_load_page_chunks__("/vendor/orders", [
   "static/chunks/48ebd_react-dom_43235666._.js",
   "static/chunks/48ebd_@hello-pangea_dnd_dist_dnd_esm_ab2ad8cc.js",
   "static/chunks/48ebd_88a179e1._.js",
-  "static/chunks/[root-of-the-server]__1db84c35._.js",
+  "static/chunks/[root-of-the-server]__8a3e4167._.js",
   "static/chunks/Desktop_Community-Cart_frontend_src_pages_vendor_orders_tsx_2da965e7._.js",
-  "static/chunks/turbopack-Desktop_Community-Cart_frontend_src_pages_vendor_orders_tsx_f15d98e1._.js"
+  "static/chunks/turbopack-Desktop_Community-Cart_frontend_src_pages_vendor_orders_tsx_3209f853._.js"
 ])

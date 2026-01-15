@@ -205,7 +205,7 @@ export default function ProductSalesPage() {
         </div>
         <div className="ps-toolbar-row-2">
           <div className="ps-filter">
-            <label className="ps-filter-label">Custom range</label>
+            <label className="ps-filter-label" style={{ display: 'none' }}>Custom range</label>
             <div className="ps-date">
               <label>From:</label>
               <input type="date" className="ps-input-date" value={startDate} onChange={(e) => { const v = e.target.value; setStartDate(v); const todayStr = formatDateInput(new Date()); setIsTodayQuick(v === todayStr && endDate === todayStr); }} />
@@ -214,22 +214,29 @@ export default function ProductSalesPage() {
             </div>
           </div>
           <div className="ps-filter">
-            <label className="ps-filter-label">Stock Status</label>
+            <label className="ps-filter-label"></label>
             <select className="ps-filter-select" value={stockStatus} onChange={(e) => setStockStatus(e.target.value)}>
-              <option value="">All</option>
+              <option value="">Stock status</option>
               <option value="in">In Stock</option>
               <option value="low">Low Stock</option>
               <option value="out">Out of Stock</option>
             </select>
           </div>
           <div className="ps-filter">
-            <label className="ps-filter-label">Min Units Sold</label>
-            <input type="number" className="ps-filter-input" value={minUnitsSold} onChange={(e) => setMinUnitsSold(e.target.value)} min="0" />
+            <input type="number" className="ps-filter-input" placeholder="Min Units Sold" value={minUnitsSold} onChange={(e) => setMinUnitsSold(e.target.value)} min="0" />
           </div>
           <div className="ps-filter">
-            <label className="ps-filter-label">Min Revenue (₹)</label>
-            <input type="number" className="ps-filter-input" value={minRevenue} onChange={(e) => setMinRevenue(e.target.value)} min="0" />
+            <input type="number" className="ps-filter-input" placeholder="Min Revenue (₹)" value={minRevenue} onChange={(e) => setMinRevenue(e.target.value)} min="0" />
           </div>
+          <button className="ps-clear-btn" onClick={() => {
+            setSearch('');
+            setStockStatus('');
+            setMinUnitsSold('');
+            setMinRevenue('');
+            setZeroSalesOnly(false);
+          }}>
+            Clear
+          </button>
         </div>
       </div>
 

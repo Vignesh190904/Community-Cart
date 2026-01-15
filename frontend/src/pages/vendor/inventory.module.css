@@ -31,24 +31,27 @@
   font-size: 14px;
 }
 
+
 .searchFilterBar {
   background: var(--bg-surface);
   border: 1px solid var(--border);
   border-radius: 12px;
   padding: 16px;
   display: flex;
-  flex-direction: column;
-  gap: 16px;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
   margin-bottom: 24px;
 }
 
 .searchBox {
-  flex: 1;
+  flex: 1 1 280px;
 }
 
 .searchInput {
   width: 100%;
-  padding: 10px 14px;
+  height: 42px;
+  padding: 0 12px;
   border: 1px solid var(--border);
   border-radius: 8px;
   background: var(--bg-main);
@@ -67,14 +70,17 @@
   color: var(--text-muted);
 }
 
+
 .filterButtons {
-  display: flex;
+  display: inline-flex;
   gap: 8px;
   flex-wrap: wrap;
+  align-items: center;
 }
 
 .filterBtn {
-  padding: 8px 14px;
+  height: 42px;
+  padding: 0 16px;
   border: 1px solid var(--border);
   border-radius: 8px;
   background: var(--bg-main);
@@ -83,6 +89,7 @@
   font-weight: 600;
   cursor: pointer;
   transition: all 150ms ease;
+  white-space: nowrap;
 }
 
 .filterBtn:hover {
@@ -93,24 +100,30 @@
 .filterBtn.active {
   border-color: var(--primary);
   background: color-mix(in srgb, var(--primary) 12%, transparent);
-  color: var(--text-primary);
+  color: var(--primary);
   font-weight: 700;
 }
 
 .clearBtn {
-  padding: 8px 14px;
-  border: none;
-  border-radius: 8px;
-  background: var(--error);
-  color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 42px;
+  padding: 0 16px;
   font-size: 13px;
   font-weight: 600;
+  color: var(--error);
+  background: transparent;
+  border: 1px solid var(--error);
+  border-radius: 8px;
   cursor: pointer;
-  transition: opacity 150ms ease;
+  transition: all 140ms ease;
+  white-space: nowrap;
+  margin-left: auto;
 }
 
 .clearBtn:hover {
-  opacity: 0.9;
+  background: color-mix(in srgb, var(--error) 10%, transparent);
 }
 
 .tableWrapper {

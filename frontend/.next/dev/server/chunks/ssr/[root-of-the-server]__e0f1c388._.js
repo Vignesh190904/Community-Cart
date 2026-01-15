@@ -281,7 +281,7 @@ const itemsByRole = {
         },
         {
             label: 'Products',
-            href: '/admin/inventory'
+            href: '/admin/products'
         },
         {
             label: 'Orders',
@@ -788,6 +788,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart
 ;
 ;
 ;
+;
 function MyApp({ Component, pageProps }) {
     const router = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$next$2f$router$2e$js__$5b$ssr$5d$__$28$ecmascript$29$__["useRouter"])();
     (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react__$5b$external$5d$__$28$react$2c$__cjs$29$__["useEffect"])(()=>{
@@ -831,7 +832,7 @@ function MyApp({ Component, pageProps }) {
         ...pageProps
     }, void 0, false, {
         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/_app.tsx",
-        lineNumber: 114,
+        lineNumber: 115,
         columnNumber: 30
     }, this);
     if (isAdminPage) {
@@ -841,12 +842,12 @@ function MyApp({ Component, pageProps }) {
                 ...pageProps
             }, void 0, false, {
                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/_app.tsx",
-                lineNumber: 119,
+                lineNumber: 120,
                 columnNumber: 9
             }, this)
         }, void 0, false, {
             fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/_app.tsx",
-            lineNumber: 118,
+            lineNumber: 119,
             columnNumber: 7
         }, this);
     } else if (isVendorPage) {
@@ -856,12 +857,12 @@ function MyApp({ Component, pageProps }) {
                 ...pageProps
             }, void 0, false, {
                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/_app.tsx",
-                lineNumber: 125,
+                lineNumber: 126,
                 columnNumber: 9
             }, this)
         }, void 0, false, {
             fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/_app.tsx",
-            lineNumber: 124,
+            lineNumber: 125,
             columnNumber: 7
         }, this);
     }
@@ -870,12 +871,12 @@ function MyApp({ Component, pageProps }) {
             children: content
         }, void 0, false, {
             fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/_app.tsx",
-            lineNumber: 132,
+            lineNumber: 133,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/_app.tsx",
-        lineNumber: 131,
+        lineNumber: 132,
         columnNumber: 5
     }, this);
 }

@@ -480,13 +480,7 @@ const authHeaders = (extra = {})=>{
     const headers = {
         ...extra
     };
-    // Always try to get token from localStorage if not set in memory
-    const token = authToken || (("TURBOPACK compile-time truthy", 1) ? localStorage.getItem('cc_token') : "TURBOPACK unreachable");
-    if (token) {
-        headers['Authorization'] = `Bearer ${token}`;
-    } else {
-        console.warn('[api] No auth token found in memory or localStorage');
-    }
+    if (authToken) headers['Authorization'] = `Bearer ${authToken}`;
     return headers;
 };
 const api = {
@@ -520,8 +514,7 @@ const api = {
             const response = await fetch(`${API_BASE}/vendors/${id}`, {
                 method: 'PUT',
                 headers: {
-                    'Content-Type': 'application/json',
-                    ...authHeaders()
+                    'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(data)
             });
@@ -530,26 +523,16 @@ const api = {
         },
         forceLogout: async (id)=>{
             const response = await fetch(`${API_BASE}/vendors/${id}/force-logout`, {
-                method: 'POST',
-                headers: authHeaders()
+                method: 'POST'
             });
             if (!response.ok) throw new Error('Failed to force logout vendor');
             return response.json();
         },
         delete: async (id)=>{
             const response = await fetch(`${API_BASE}/vendors/${id}`, {
-                method: 'DELETE',
-                headers: authHeaders()
+                method: 'DELETE'
             });
             if (!response.ok) throw new Error('Failed to delete vendor');
-            return response.json();
-        },
-        getEarnings: async (id, params)=>{
-            const suffix = params ? `?${params.toString()}` : '';
-            const response = await fetch(`${API_BASE}/vendors/${id}/earnings${suffix}`, {
-                headers: authHeaders()
-            });
-            if (!response.ok) throw new Error('Failed to fetch vendor earnings');
             return response.json();
         }
     },
@@ -610,52 +593,16 @@ const api = {
             const response = await fetch(`${API_BASE}/customers`, {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json',
-                    ...authHeaders()
+                    'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(data)
             });
-            if (!response.ok) {
-                const err = await response.json().catch(()=>({}));
-                throw new Error(err.error || 'Failed to create customer');
-            }
+            if (!response.ok) throw new Error('Failed to create customer');
             return response.json();
         },
         getAll: async ()=>{
-            const response = await fetch(`${API_BASE}/customers`, {
-                headers: authHeaders()
-            });
+            const response = await fetch(`${API_BASE}/customers`);
             if (!response.ok) throw new Error('Failed to fetch customers');
-            return response.json();
-        },
-        getById: async (id)=>{
-            const response = await fetch(`${API_BASE}/customers/${id}`, {
-                headers: authHeaders()
-            });
-            if (!response.ok) throw new Error('Failed to fetch customer');
-            return response.json();
-        },
-        update: async (id, data)=>{
-            const response = await fetch(`${API_BASE}/customers/${id}`, {
-                method: 'PATCH',
-                headers: {
-                    'Content-Type': 'application/json',
-                    ...authHeaders()
-                },
-                body: JSON.stringify(data)
-            });
-            if (!response.ok) {
-                const err = await response.json().catch(()=>({}));
-                throw new Error(err.error || 'Failed to update customer');
-            }
-            return response.json();
-        },
-        delete: async (id)=>{
-            const response = await fetch(`${API_BASE}/customers/${id}`, {
-                method: 'DELETE',
-                headers: authHeaders()
-            });
-            if (!response.ok) throw new Error('Failed to delete customer');
             return response.json();
         }
     },
@@ -665,8 +612,7 @@ const api = {
             const response = await fetch(`${API_BASE}/products`, {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json',
-                    ...authHeaders()
+                    'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(data)
             });
@@ -687,8 +633,7 @@ const api = {
             const response = await fetch(`${API_BASE}/products/${id}`, {
                 method: 'PUT',
                 headers: {
-                    'Content-Type': 'application/json',
-                    ...authHeaders()
+                    'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(data)
             });
@@ -697,8 +642,7 @@ const api = {
         },
         delete: async (id)=>{
             const response = await fetch(`${API_BASE}/products/${id}`, {
-                method: 'DELETE',
-                headers: authHeaders()
+                method: 'DELETE'
             });
             if (!response.ok) throw new Error('Failed to delete product');
             return response.json();
@@ -716,9 +660,7 @@ const api = {
                     }
                 });
             }
-            const response = await fetch(`${API_BASE}/product-sales/analytics?${params.toString()}`, {
-                headers: authHeaders()
-            });
+            const response = await fetch(`${API_BASE}/product-sales/analytics?${params.toString()}`);
             if (!response.ok) throw new Error('Failed to fetch product sales analytics');
             return response.json();
         },
@@ -727,9 +669,7 @@ const api = {
             params.append('vendorId', vendorId);
             if (filters?.startDate) params.append('startDate', filters.startDate);
             if (filters?.endDate) params.append('endDate', filters.endDate);
-            const response = await fetch(`${API_BASE}/product-sales/kpis?${params.toString()}`, {
-                headers: authHeaders()
-            });
+            const response = await fetch(`${API_BASE}/product-sales/kpis?${params.toString()}`);
             if (!response.ok) throw new Error('Failed to fetch KPIs');
             return response.json();
         },
@@ -738,53 +678,8 @@ const api = {
             params.append('vendorId', vendorId);
             if (filters?.startDate) params.append('startDate', filters.startDate);
             if (filters?.endDate) params.append('endDate', filters.endDate);
-            const response = await fetch(`${API_BASE}/product-sales/detail/${productId}?${params.toString()}`, {
-                headers: authHeaders()
-            });
+            const response = await fetch(`${API_BASE}/product-sales/detail/${productId}?${params.toString()}`);
             if (!response.ok) throw new Error('Failed to fetch product detail');
-            return response.json();
-        }
-    },
-    // Orders
-    orders: {
-        create: async (data)=>{
-            const response = await fetch(`${API_BASE}/orders`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    ...authHeaders()
-                },
-                body: JSON.stringify(data)
-            });
-            if (!response.ok) throw new Error('Failed to create order');
-            return response.json();
-        },
-        getAll: async ()=>{
-            const response = await fetch(`${API_BASE}/orders`, {
-                headers: authHeaders()
-            });
-            if (!response.ok) throw new Error('Failed to fetch orders');
-            return response.json();
-        },
-        getById: async (id)=>{
-            const response = await fetch(`${API_BASE}/orders/${id}`, {
-                headers: authHeaders()
-            });
-            if (!response.ok) throw new Error('Failed to fetch order');
-            return response.json();
-        },
-        updateStatus: async (id, status)=>{
-            const response = await fetch(`${API_BASE}/orders/${id}`, {
-                method: 'PATCH',
-                headers: {
-                    'Content-Type': 'application/json',
-                    ...authHeaders()
-                },
-                body: JSON.stringify({
-                    status
-                })
-            });
-            if (!response.ok) throw new Error('Failed to update order status');
             return response.json();
         }
     }

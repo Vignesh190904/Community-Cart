@@ -1,0 +1,560 @@
+.inventory-header {
+  margin-bottom: 24px;
+}
+
+.inventory-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 6px 0;
+}
+
+.inventory-subtitle {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.inventory-loading {
+  text-align: center;
+  padding: 24px;
+  color: var(--text-secondary);
+}
+
+/* ========== FILTERS SECTION - 2 ROWS ========== */
+
+.inventory-filters {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+  padding: 16px;
+  background: var(--bg-card);
+  border: 1px solid var(--bg-hover);
+  border-radius: 12px;
+}
+
+/* Filter row base styles */
+.filter-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+  padding: 16px;
+  background: var(--bg-card);
+  border: 1px solid var(--bg-hover);
+  border-radius: 12px;
+}
+
+.filter-row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.filter-row-primary {
+  gap: 16px;
+}
+
+.filter-row-secondary {
+  gap: 16px;
+  justify-content: space-between;
+}
+
+.filter-group {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex: 1;
+  min-width: 300px;
+}
+
+.filter-input {
+  min-width: 350px;
+  flex: 1;
+}
+
+.filter-actions {
+  margin-left: auto;
+}
+
+/* ROW 1: Vendor Search + Product Search + Stock Tabs */
+.filters-row-1 {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.vendor-search-wrapper,
+.product-search-wrapper {
+  flex: 1;
+}
+
+.vendor-search-wrapper {
+  max-width: 300px;
+}
+
+.product-search-wrapper {
+  max-width: 300px;
+}
+
+.search-input {
+  width: 100%;
+  height: 42px;
+  padding: 0 14px;
+  font-size: 14px;
+  background: var(--bg-main);
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  transition: border-color 140ms ease;
+}
+
+.search-input::placeholder {
+  color: var(--text-muted);
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.1);
+}
+
+.stock-status-tabs {
+  display: flex;
+  gap: 6px;
+  padding: 4px;
+  background: var(--bg-main);
+  border-radius: 8px;
+}
+
+.status-tab {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 42px;
+  padding: 0 16px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  background: transparent;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 140ms ease;
+  white-space: nowrap;
+}
+
+.status-tab:hover {
+  color: var(--text-primary);
+  background: var(--bg-hover);
+}
+
+.status-tab.active {
+  color: var(--primary);
+  background: var(--bg-surface);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+/* ROW 2: Category + Last Updated + Price Range + Availability */
+.filters-row-2 {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.category-filter,
+.last-updated-filter {
+  flex: 0 1 200px;
+}
+
+.filter-select {
+  width: 100%;
+  height: 42px;
+  padding: 0 12px;
+  font-size: 14px;
+  background: var(--bg-main);
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: border-color 140ms ease;
+}
+
+.filter-select:hover {
+  border-color: var(--primary);
+}
+
+.filter-select:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.1);
+}
+
+.price-range-wrapper {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex: 0 1 240px;
+}
+
+.price-input {
+  flex: 1;
+  height: 42px;
+  padding: 0 12px;
+  font-size: 14px;
+  background: var(--bg-main);
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  transition: border-color 140ms ease;
+}
+
+.price-input::placeholder {
+  color: var(--text-muted);
+}
+
+.price-input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.1);
+}
+
+.availability-toggle {
+  display: flex;
+  gap: 8px;
+  padding: 4px;
+  background: var(--bg-main);
+  border-radius: 8px;
+  flex: 0 1 auto;
+}
+
+.availability-pill {
+  height: 42px;
+  padding: 0 14px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  background: transparent;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 140ms ease;
+  white-space: nowrap;
+}
+
+.availability-pill:hover {
+  color: var(--text-primary);
+  background: var(--bg-hover);
+}
+
+.availability-pill.active {
+  color: var(--primary);
+  background: var(--bg-surface);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+/* Clear Filters button (Row 2) */
+.clear-filters-btn {
+  height: 42px;
+  padding: 0 14px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--error);
+  background: transparent;
+  border: 1px solid var(--error);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 140ms ease, color 140ms ease, border-color 140ms ease;
+  white-space: nowrap;
+  margin-left: auto;
+}
+
+.clear-filters-btn:hover {
+  background: color-mix(in srgb, var(--error) 10%, transparent);
+}
+
+/* ========== STATS CARDS ========== */
+
+.inventory-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.stat-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.stat-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.stat-value {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+/* ========== INVENTORY SECTION ========== */
+
+.inventory-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.inventory-table thead {
+  background: var(--bg-hover);
+}
+
+.inventory-table th {
+  padding: 12px 14px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 12px;
+  color: var(--text-secondary);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.inventory-table td {
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--divider);
+  color: var(--text-primary);
+}
+
+.inventory-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.inventory-table tbody tr:hover {
+  background: var(--bg-hover);
+}
+
+.product-name-cell {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.product-thumb {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.product-name {
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.product-desc {
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-top: 2px;
+}
+
+.stock-badge {
+  display: inline-block;
+  font-size: 12px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-weight: 700;
+}
+
+.stock-badge.good {
+  background: color-mix(in srgb, var(--primary) 12%, transparent);
+  color: var(--primary);
+}
+
+.stock-badge.low {
+  background: color-mix(in srgb, var(--warning) 12%, transparent);
+  color: var(--warning);
+}
+
+.stock-badge.out {
+  background: color-mix(in srgb, var(--error) 12%, transparent);
+  color: var(--error);
+}
+
+.status-badge {
+  display: inline-block;
+  font-size: 12px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+
+.status-badge.active {
+  background: color-mix(in srgb, var(--primary) 12%, transparent);
+  color: var(--primary);
+}
+
+.status-badge.inactive {
+  background: color-mix(in srgb, var(--text-secondary) 12%, transparent);
+  color: var(--text-secondary);
+}
+
+.empty-state {
+  text-align: center;
+  padding: 24px;
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+/* ========== RESPONSIVE ========== */
+
+@media (max-width: 1024px) {
+  .filters-row-1 {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .vendor-search-wrapper,
+  .product-search-wrapper {
+    max-width: none;
+  }
+
+  .stock-status-tabs {
+    justify-content: center;
+  }
+
+  .filters-row-2 {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .category-filter,
+  .last-updated-filter {
+    max-width: none;
+  }
+
+  .filter-section {
+    flex-direction: column;
+  }
+
+  .filter-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .filter-row-secondary {
+    justify-content: stretch;
+  }
+
+  .filter-actions {
+    margin-left: 0;
+  }
+
+  .inventory-stats {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  }
+}
+
+.stock-badge.low {
+  background: color-mix(in srgb, var(--warning) 12%, transparent);
+  color: var(--warning);
+}
+
+.stock-badge.out {
+  background: color-mix(in srgb, var(--error) 12%, transparent);
+  color: var(--error);
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+.status-badge.active {
+  background: color-mix(in srgb, var(--primary) 15%, transparent);
+  color: var(--primary);
+}
+
+.status-badge.inactive {
+  background: color-mix(in srgb, var(--text-secondary) 10%, transparent);
+  color: var(--text-secondary);
+}
+
+.empty-state {
+  text-align: center;
+  padding: 2rem;
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+.action-btns {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.btn-edit,
+.btn-delete {
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: 1px solid var(--border-color);
+  background: transparent;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-edit {
+  background: transparent;
+  color: var(--primary);
+  border-color: var(--primary);
+  border: 1px solid var(--primary);
+}
+
+.btn-edit:hover {
+  background: color-mix(in srgb, var(--primary) 12%, transparent);
+}
+
+.btn-delete {
+  background: transparent;
+  color: var(--error);
+  border-color: var(--error);
+  border: 1px solid var(--warning);
+}
+
+.btn-delete:hover {
+  background: color-mix(in srgb, var(--error) 12%, transparent);
+}
+
+/* Dark theme adjustments */
+body.theme-dark .inventory-header,
+body.theme-dark .inventory-controls {
+  color: var(--text-primary);
+}
+
+body.theme-dark .vendor-filter {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  border-color: var(--border-color);
+}
+
+body.theme-dark .product-thumb {
+  border-color: var(--border-color);
+}

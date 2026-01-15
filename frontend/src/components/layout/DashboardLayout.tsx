@@ -14,7 +14,7 @@ const itemsByRole: Record<Role, Array<{ label: string; href: string }>> = {
   admin: [
     { label: 'Dashboard Overview', href: '/admin/dashboard' },
     { label: 'Vendors', href: '/admin/vendors' },
-    { label: 'Products', href: '/admin/inventory' },
+    { label: 'Products', href: '/admin/products' },
     { label: 'Orders', href: '/admin/orders' },
     { label: 'Reports', href: '/admin/reports' },
     { label: 'Customers', href: '/admin/customers' },

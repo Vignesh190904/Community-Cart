@@ -231,11 +231,9 @@ export default function VendorInventory() {
             High Stock
           </button>
         </div>
-        {(search || filters !== 'all') && (
-          <button className={styles.clearBtn} onClick={handleClearFilters}>
-            Clear Filters
-          </button>
-        )}
+        <button className={styles.clearBtn} onClick={handleClearFilters}>
+          Clear
+        </button>
       </div>
 
       {filteredProducts.length === 0 ? (

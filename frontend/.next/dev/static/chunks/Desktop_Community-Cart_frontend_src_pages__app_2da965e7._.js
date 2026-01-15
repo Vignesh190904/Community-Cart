@@ -11,7 +11,7 @@
   "static/chunks/48ebd_react-dom_43235666._.js",
   "static/chunks/48ebd_c0e1799f._.js",
   "static/chunks/[root-of-the-server]__fc0fd692._.js",
-  "static/chunks/Desktop_Community-Cart_frontend_src_073b96b7._.css"
+  "static/chunks/Desktop_Community-Cart_frontend_src_6836d55a._.css"
 ],
     source: "entry"
 });

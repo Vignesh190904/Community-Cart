@@ -36,26 +36,55 @@
   border: 1px solid var(--border);
   border-radius: 12px;
   flex-direction: column;
-  gap: 18px;
+  gap: 10px;
   margin-bottom: 20px;
   padding: 16px;
   display: flex;
 }
 
 .earnings-module__H337RG__filtersRow {
-  flex-wrap: wrap;
-  align-items: flex-end;
-  gap: 18px;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 8px;
   display: flex;
 }
 
-.earnings-module__H337RG__primaryRow {
-  gap: 20px;
+.earnings-module__H337RG__filterItem {
+  align-items: center;
+  gap: 8px;
+  display: flex;
 }
 
-.earnings-module__H337RG__secondaryRow {
-  opacity: .95;
-  gap: 14px;
+.earnings-module__H337RG__filterControls {
+  flex-wrap: wrap;
+  gap: 8px;
+  display: flex;
+}
+
+.earnings-module__H337RG__clearBtn {
+  height: 42px;
+  color: var(--error);
+  border: 1px solid var(--error);
+  cursor: pointer;
+  white-space: nowrap;
+  background: none;
+  border-radius: 8px;
+  justify-content: center;
+  align-items: center;
+  margin-left: auto;
+  padding: 0 16px;
+  font-size: 13px;
+  font-weight: 600;
+  transition: all .14s;
+  display: inline-flex;
+}
+
+.earnings-module__H337RG__clearBtn:hover, .earnings-module__H337RG__clearBtn:focus-visible {
+  background: color-mix(in srgb, var(--error) 10%, transparent);
+}
+
+.earnings-module__H337RG__clearBtn:focus-visible {
+  outline: none;
 }
 
 .earnings-module__H337RG__filterSection {
@@ -112,38 +141,59 @@
 
 .earnings-module__H337RG__rangeLabel {
   color: var(--text-secondary);
+  white-space: nowrap;
   font-size: 13px;
+}
+
+.earnings-module__H337RG__filtersRow input[type="date"] {
+  border: 1px solid var(--border);
+  background: var(--bg-main);
+  height: 42px;
+  color: var(--text-primary);
+  border-radius: 8px;
+  min-width: 140px;
+  padding: 0 12px;
+  font-size: 14px;
+  transition: border-color .14s;
+}
+
+.earnings-module__H337RG__filtersRow input[type="date"]:focus-visible {
+  border-color: var(--primary);
+  outline: none;
+  box-shadow: 0 0 0 3px #2e7d321a;
 }
 
 .earnings-module__H337RG__customRangeRow input {
   border: 1px solid var(--border);
-  background: var(--bg);
+  background: var(--bg-main);
+  height: 42px;
   color: var(--text-primary);
   border-radius: 8px;
   min-width: 140px;
-  padding: 8px 10px;
-  font-size: 13px;
+  padding: 0 12px;
+  font-size: 14px;
+  transition: border-color .14s;
 }
 
 .earnings-module__H337RG__inlineControls {
-  flex-wrap: wrap;
-  align-items: flex-end;
-  gap: 12px;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 8px;
   display: flex;
 }
 
 .earnings-module__H337RG__chip {
   border: 1px solid var(--border);
-  background: var(--bg);
+  background: var(--bg-main);
   color: var(--text-primary);
   cursor: pointer;
-  border-radius: 10px;
+  border-radius: 8px;
   justify-content: center;
   align-items: center;
-  height: 34px;
-  padding: 8px 12px;
-  font-size: 13px;
-  font-weight: 700;
+  height: 42px;
+  padding: 0 16px;
+  font-size: 14px;
+  font-weight: 600;
   transition: border-color .12s, background .12s;
   display: flex;
 }
@@ -168,34 +218,36 @@
 
 .earnings-module__H337RG__dateInput input {
   border: 1px solid var(--border);
-  background: var(--bg);
+  background: var(--bg-main);
+  height: 42px;
   color: var(--text-primary);
   border-radius: 8px;
   min-width: 140px;
-  padding: 8px 10px;
-  font-size: 13px;
+  padding: 0 12px;
+  font-size: 14px;
+  transition: border-color .14s;
 }
 
 .earnings-module__H337RG__dateInput input:focus-visible {
   border-color: var(--primary);
   outline: none;
-  box-shadow: 0 0 0 3px #3b82f61f;
+  box-shadow: 0 0 0 3px #2e7d321a;
 }
 
 .earnings-module__H337RG__toggleButton {
   border: 1px solid var(--border);
-  background: var(--bg);
+  background: var(--bg-main);
   color: var(--text-primary);
   cursor: pointer;
   white-space: nowrap;
-  border-radius: 10px;
+  border-radius: 8px;
   justify-content: center;
   align-items: center;
   min-width: 100px;
-  height: 34px;
-  padding: 8px 12px;
-  font-size: 13px;
-  font-weight: 700;
+  height: 42px;
+  padding: 0 16px;
+  font-size: 14px;
+  font-weight: 600;
   transition: border-color .12s, background .12s;
   display: flex;
 }
@@ -227,20 +279,21 @@
 
 .earnings-module__H337RG__numberInput {
   border: 1px solid var(--border);
-  background: var(--bg);
+  background: var(--bg-main);
+  height: 42px;
   color: var(--text-primary);
   box-sizing: border-box;
   border-radius: 8px;
-  min-width: 120px;
-  height: 34px;
-  padding: 8px 10px;
-  font-size: 13px;
+  min-width: 160px;
+  padding: 0 12px;
+  font-size: 14px;
+  transition: border-color .14s;
 }
 
 .earnings-module__H337RG__numberInput:focus-visible {
   border-color: var(--primary);
   outline: none;
-  box-shadow: 0 0 0 3px #3b82f61f;
+  box-shadow: 0 0 0 3px #2e7d321a;
 }
 
 .earnings-module__H337RG__metricsGrid {

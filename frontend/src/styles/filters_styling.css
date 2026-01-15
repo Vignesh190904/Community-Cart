@@ -1,0 +1,347 @@
+/* ==================================================
+   THEME VARIABLES (FINAL)
+================================================== */
+
+body.theme-light {
+  --bg-main: #F4F5F9;
+  --bg-card: #FFFFFF;
+  --bg-surface: #FFFFFF;
+  --bg-hover: #DDDDDD;
+
+  --text-primary: #000000;
+  --text-secondary: #2E2E2E;
+  --text-muted: #4D4D4D;
+  --text-disabled: #6F6F6F;
+
+  --primary: #44B92B;
+  --danger: #EF574B;
+}
+
+body.theme-dark {
+  --bg-main: #000000;
+  --bg-card: #1F1F1F;
+  --bg-surface: #2A2A2A;
+  --bg-hover: #3C3C3C;
+
+  --text-primary: #FFFFFF;
+  --text-secondary: #D1D1D1;
+  --text-muted: #A0A0A0;
+  --text-disabled: #6F6F6F;
+
+  --primary: #44B92B;
+  --danger: #EF574B;
+}
+
+/* ==================================================
+   BASE
+================================================== */
+
+body {
+  margin: 0;
+  font-family: system-ui, Arial, sans-serif;
+  background-color: var(--bg-main);
+}
+
+/* ==================================================
+   FILTER SECTION – LIGHT THEME BASE RULES
+   (Dark theme handled via overrides below)
+================================================== */
+
+/* Filter container */
+.filter-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background-color: var(--bg-card);
+  border-radius: 8px;
+}
+
+/* ==================================================
+   INPUT FIELDS (search, number, date)
+================================================== */
+
+.filter-input,
+.filter-number-input,
+.filter-date-input {
+  padding: 0 12px;
+  border-radius: 8px;
+  outline: none;
+  height: 42px;
+
+  font-size: 14px;
+  font-weight: 550;
+
+  background-color: var(--bg-main) !important;
+  color: var(--text-primary);
+  border: 1px solid var(--bg-hover);
+
+  transition: border-color 140ms ease;
+}
+
+.filter-input::placeholder {
+  color: var(--text-disabled);
+  font-weight: 550;
+}
+
+/* Focus */
+.filter-input:focus,
+.filter-number-input:focus,
+.filter-date-input:focus {
+  border-color: var(--primary);
+  color: var(--text-primary);
+}
+
+/* Remove number spinners */
+.filter-number-input {
+  appearance: textfield;
+  -webkit-appearance: none;
+  -moz-appearance: textfield;
+}
+
+.filter-number-input::-webkit-inner-spin-button,
+.filter-number-input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* ==================================================
+   FILTER BUTTONS
+================================================== */
+
+.filter-button {
+  height: 40px;
+  padding: 0 16px;
+  border-radius: 8px;
+
+  border: 1px solid var(--bg-hover);
+  background-color: var(--bg-surface);
+  color: var(--text-primary);
+
+  font-size: 14px;
+  font-weight: 550;
+  cursor: pointer;
+
+  transition: border-color 120ms ease, background-color 120ms ease;
+}
+
+/* Active — subtle primary tint */
+.filter-button.active {
+  border-color: var(--primary);
+  background-color: color-mix(
+    in srgb,
+    var(--primary) 12%,
+    var(--bg-surface)
+  );
+  color: var(--text-primary);
+}
+
+/* Hover */
+.filter-button:hover {
+  border-color: var(--primary);
+}
+
+/* ==================================================
+   CLEAR BUTTON
+================================================== */
+
+.filter-clear-button {
+  height: 40px;
+  padding: 0 16px;
+  border-radius: 8px;
+
+  border: 1px solid var(--danger);
+  background-color: var(--bg-surface);
+  color: var(--danger);
+
+  font-size: 14px;
+  font-weight: 550;
+  cursor: pointer;
+}
+
+/* ==================================================
+   CUSTOM FILTER DROPDOWN
+================================================== */
+
+.filter-dropdown {
+  position: relative;
+}
+
+/* Trigger */
+.filter-dropdown-btn {
+  height: 40px;
+  min-width: 160px;
+  padding: 0 14px;
+
+  border-radius: 8px;
+  border: 1px solid var(--bg-hover);
+  background-color: var(--bg-surface);
+  color: var(--text-primary);
+
+  font-size: 14px;
+  font-weight: 550;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+
+  cursor: pointer;
+}
+
+/* Open state */
+.filter-dropdown.open .filter-dropdown-btn {
+  border-color: var(--primary);
+  background-color: color-mix(
+    in srgb,
+    var(--primary) 10%,
+    var(--bg-surface)
+  );
+}
+
+/* Chevron */
+.filter-dropdown-chevron {
+  width: 12px;
+  height: 12px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: transform 160ms ease;
+}
+
+.filter-dropdown-chevron::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+
+  border-right: 1.8px solid var(--text-primary);
+  border-bottom: 1.8px solid var(--text-primary);
+
+  transform: rotate(45deg);
+}
+
+/* Rotate on open */
+.filter-dropdown.open .filter-dropdown-chevron {
+  transform: rotate(-180deg);
+}
+
+/* Dropdown menu */
+.filter-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  width: 100%;
+
+  background-color: var(--bg-surface);
+  border: 1px solid var(--bg-hover);
+  border-radius: 8px;
+
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+  padding: 6px 0;
+
+  display: none;
+  z-index: 10;
+}
+
+.filter-dropdown.open .filter-dropdown-menu {
+  display: block;
+}
+
+/* Dropdown item */
+.filter-dropdown-item {
+  padding: 8px 14px;
+  font-size: 14px;
+  font-weight: 550;
+
+  color: var(--text-primary);
+  cursor: pointer;
+}
+
+.filter-dropdown-item:hover {
+  background-color: var(--bg-hover);
+}
+
+/* ==================================================
+   DARK THEME OVERRIDES — FILTER UI
+================================================== */
+
+body.theme-dark .filter-bar {
+  background-color: var(--bg-card);
+}
+
+/* Inputs */
+body.theme-dark .filter-input,
+body.theme-dark .filter-number-input,
+body.theme-dark .filter-date-input {
+  background-color: var(--bg-card) !important;
+  border-color: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+body.theme-dark .filter-input::placeholder,
+body.theme-dark .filter-number-input::placeholder {
+  color: var(--text-muted);
+}
+
+/* Buttons */
+body.theme-dark .filter-button {
+  background-color: var(--bg-card);
+  border-color: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+body.theme-dark .filter-button.active {
+  border-color: var(--primary);
+  background-color: color-mix(
+    in srgb,
+    var(--primary) 10%,
+    var(--bg-card)
+  );
+  color: var(--text-primary);
+}
+
+/* Clear button */
+body.theme-dark .filter-clear-button {
+  background-color: var(--bg-card);
+  border-color: var(--danger);
+  color: var(--danger);
+}
+
+/* Dropdown trigger */
+body.theme-dark .filter-dropdown-btn {
+  background-color: var(--bg-card);
+  border-color: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+body.theme-dark .filter-dropdown.open .filter-dropdown-btn {
+  border-color: var(--primary);
+  background-color: color-mix(
+    in srgb,
+    var(--primary) 10%,
+    var(--bg-card)
+  );
+}
+
+/* Dropdown menu */
+body.theme-dark .filter-dropdown-menu {
+  background-color: var(--bg-card);
+  border-color: var(--bg-hover);
+}
+
+/* Dropdown items */
+body.theme-dark .filter-dropdown-item {
+  color: var(--text-secondary);
+}
+
+body.theme-dark .filter-dropdown-item:hover {
+  background-color: var(--bg-hover);
+}
+
+/* Chevron softening (dark theme) */
+body.theme-dark .filter-dropdown-chevron::before {
+  border-right-color: var(--text-secondary);
+  border-bottom-color: var(--text-secondary);
+}

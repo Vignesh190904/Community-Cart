@@ -35,12 +35,12 @@
   margin: 0;
 }
 
-/* ========== FILTERS SECTION - 2 ROWS ========== */
+/* ========== FILTERS SECTION ========== */
 
-.customers-filters {
+.filter-section {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
   margin-bottom: 20px;
   padding: 16px;
   background: var(--bg-surface);
@@ -48,69 +48,58 @@
   border-radius: 12px;
 }
 
-/* ROW 1: Search + Status */
-.filters-row-1 {
+.filter-row {
   display: flex;
-  gap: 16px;
+  gap: 8px;
   align-items: center;
+  flex-wrap: nowrap;
 }
 
-.customer-search-wrapper {
-  flex: 1;
-  max-width: 420px;
+.filter-row-primary {
+  gap: 8px;
 }
 
-.search-input-wrapper { position: relative; }
+.filter-row-secondary {
+  gap: 8px;
+  justify-content: flex-start;
+}
 
-.customer-search-input {
-  width: 100%;
+.filter-group {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  flex: 0 1 auto;
+}
+
+.filter-input {
   height: 42px;
-  padding: 0 34px 0 14px;
+  padding: 0 14px;
   font-size: 14px;
   background: var(--bg-main);
   color: var(--text-primary);
   border: 1px solid var(--border);
   border-radius: 8px;
   transition: border-color 140ms ease;
+  min-width: 250px;
+  flex: 1;
 }
 
-.customer-search-input::placeholder { color: var(--text-muted); }
+.filter-input::placeholder {
+  color: var(--text-muted);
+}
 
-.customer-search-input:focus {
+.filter-input:focus {
   outline: none;
   border-color: var(--primary);
   box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.1);
 }
 
-.search-clear-btn {
-  position: absolute;
-  top: 50%;
-  right: 8px;
-  transform: translateY(-50%);
-  height: 26px;
-  width: 26px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 6px;
-  color: var(--text-secondary);
-  background: transparent;
-  border: 1px solid var(--border);
-  cursor: pointer;
+.filter-actions {
+  margin-left: auto;
 }
 
-.search-clear-btn:hover { color: var(--text-primary); border-color: var(--primary); }
-
-.status-tabs {
-  display: flex;
-  gap: 6px;
-  padding: 4px;
-  background: var(--bg-main);
-  border-radius: 8px;
-  align-items: center;
-}
-
-.status-tab {
+/* Override global filter-button styles for customers page */
+.admin-customers-container .filter-button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -118,60 +107,35 @@
   padding: 0 16px;
   font-size: 13px;
   font-weight: 600;
-  color: var(--text-secondary);
-  background: transparent;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: all 140ms ease;
-  white-space: nowrap;
-}
-
-.status-tab:hover { color: var(--text-primary); background: var(--bg-hover); }
-.status-tab.active { color: var(--primary); background: var(--bg-surface); box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
-
-/* ROW 2: Has Orders + Clear */
-.filters-row-2 {
-  display: flex;
-  gap: 14px;
-  align-items: center;
-}
-
-.segmented-toggle {
-  display: flex;
-  gap: 8px;
-  padding: 4px;
+  color: var(--text-primary);
   background: var(--bg-main);
-  border-radius: 8px;
-}
-
-.segmented-pill {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  height: 42px;
-  padding: 0 14px;
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--text-secondary);
-  background: transparent;
-  border: none;
+  border: 1px solid var(--border);
   border-radius: 6px;
   cursor: pointer;
   transition: all 140ms ease;
   white-space: nowrap;
 }
 
-.segmented-pill:hover { color: var(--text-primary); background: var(--bg-hover); }
-.segmented-pill.active { color: var(--primary); background: var(--bg-surface); box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+.admin-customers-container .filter-button:hover {
+    background: var(--bg-hover);
+  color: var(--text-primary);
+  border-color: var(--primary);
+}
 
-.clear-filters-btn {
-  margin-left: auto;
+.admin-customers-container .filter-button.active {
+  color: var(--primary);
+  background: var(--bg-main);
+    box-shadow: inset 0 0 0 1px var(--primary);
+  border-color: var(--primary);
+}
+
+/* Clear button styling to match orders page */
+.admin-customers-container .filter-clear-button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   height: 42px;
-  padding: 0 14px;
+  padding: 0 16px;
   font-size: 13px;
   font-weight: 600;
   color: var(--error);
@@ -179,11 +143,13 @@
   border: 1px solid var(--error);
   border-radius: 6px;
   cursor: pointer;
-  transition: background 140ms ease, color 140ms ease, border-color 140ms ease;
+  transition: all 140ms ease;
   white-space: nowrap;
 }
 
-.clear-filters-btn:hover { background: color-mix(in srgb, var(--error) 10%, transparent); }
+.admin-customers-container .filter-clear-button:hover {
+  background: color-mix(in srgb, var(--error) 10%, transparent);
+}
 
 .customers-table-wrapper {
   background: var(--bg-surface);
@@ -462,10 +428,21 @@
     gap: 12px;
   }
 
-  .filters-row-1,
-  .filters-row-2 {
+  .filter-section {
+    flex-direction: column;
+  }
+
+  .filter-row {
     flex-direction: column;
     align-items: stretch;
+  }
+
+  .filter-row-secondary {
+    justify-content: stretch;
+  }
+
+  .filter-actions {
+    margin-left: 0;
   }
   
   .customers-table-wrapper {

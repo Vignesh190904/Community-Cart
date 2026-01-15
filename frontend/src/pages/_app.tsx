@@ -1,8 +1,9 @@
 import '../styles/globals.css';
+import '../styles/filters_styling.css';
 import '../components/layout/DashboardLayout.css';
 import './admin/dashboard.css';
 import './admin/vendors.css';
-import './admin/inventory.css';
+import './admin/products.css';
 import './admin/orders.css';
 import './admin/customers.css';
 import './admin/vendor-edit.css';

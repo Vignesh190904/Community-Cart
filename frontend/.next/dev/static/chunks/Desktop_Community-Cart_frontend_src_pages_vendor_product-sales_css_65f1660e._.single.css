@@ -35,7 +35,7 @@
 
 .ps-input-date {
   border: 1px solid var(--border);
-  background: var(--bg-surface);
+  background: var(--bg-main);
   color: var(--text-primary);
   border-radius: 8px;
   padding: 10px 12px;
@@ -83,15 +83,16 @@
   border: 1px solid var(--border);
   border-radius: 12px;
   flex-direction: column;
-  gap: 16px;
+  gap: 12px;
   margin-bottom: 24px;
   padding: 16px;
   display: flex;
 }
 
 .ps-toolbar-row-1 {
+  flex-wrap: wrap;
   align-items: center;
-  gap: 12px;
+  gap: 16px;
   display: flex;
 }
 
@@ -106,7 +107,7 @@
 .ps-toolbar-row-2 {
   flex-wrap: wrap;
   align-items: flex-end;
-  gap: 12px;
+  gap: 16px;
   display: flex;
 }
 
@@ -115,20 +116,32 @@
   min-width: 180px;
 }
 
+.ps-search {
+  flex: auto;
+  min-width: 200px;
+}
+
 .ps-search-input {
   border: 1px solid var(--border);
-  background: var(--bg-surface);
+  background: var(--bg-main);
   width: 100%;
+  max-width: 360px;
+  height: 42px;
   color: var(--text-primary);
   border-radius: 8px;
-  padding: 10px 14px;
+  padding: 0 14px;
   font-size: 14px;
+  transition: border-color .14s;
+}
+
+.ps-search-input::placeholder {
+  color: var(--text-muted);
 }
 
 .ps-search-input:focus {
   border-color: var(--primary);
-  box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary) 12%, transparent);
   outline: none;
+  box-shadow: 0 0 0 3px #2e7d321a;
 }
 
 .ps-filter {
@@ -145,12 +158,20 @@
 
 .ps-filter-input, .ps-filter-select {
   border: 1px solid var(--border);
-  background: var(--bg-surface);
+  background: var(--bg-main);
+  height: 42px;
   color: var(--text-primary);
   border-radius: 8px;
   min-width: 160px;
-  padding: 10px 12px;
+  padding: 0 12px;
   font-size: 14px;
+  transition: border-color .14s;
+}
+
+.ps-filter-input:focus, .ps-filter-select:focus {
+  border-color: var(--primary);
+  outline: none;
+  box-shadow: 0 0 0 3px #2e7d321a;
 }
 
 .ps-filter-checkbox {
@@ -162,29 +183,54 @@
 
 .ps-toggle-card {
   border: 1px solid var(--border);
-  background: var(--bg-surface);
+  background: var(--bg-main);
+  height: 42px;
   color: var(--text-primary);
   cursor: pointer;
   -webkit-user-select: none;
   user-select: none;
-  border-radius: 10px;
+  white-space: nowrap;
+  border-radius: 8px;
+  justify-content: center;
   align-items: center;
-  gap: 8px;
-  padding: 10px 12px;
-  font-size: 14px;
+  padding: 0 16px;
+  font-size: 13px;
   font-weight: 600;
-  transition: background-color .12s, border-color .12s, color .12s;
+  transition: all .14s;
   display: inline-flex;
 }
 
 .ps-toggle-card:hover {
   background: var(--bg-hover);
+  border-color: var(--primary);
 }
 
 .ps-toggle-card.active {
   border-color: var(--primary);
-  background: color-mix(in srgb, var(--primary) 10%, var(--bg-surface));
+  background: color-mix(in srgb, var(--primary) 12%, transparent);
   color: var(--primary);
+}
+
+.ps-clear-btn {
+  height: 42px;
+  color: var(--error);
+  border: 1px solid var(--error);
+  cursor: pointer;
+  white-space: nowrap;
+  background: none;
+  border-radius: 8px;
+  justify-content: center;
+  align-items: center;
+  margin-left: auto;
+  padding: 0 16px;
+  font-size: 13px;
+  font-weight: 600;
+  transition: all .14s;
+  display: inline-flex;
+}
+
+.ps-clear-btn:hover {
+  background: color-mix(in srgb, var(--error) 10%, transparent);
 }
 
 .ps-table {

@@ -39,7 +39,7 @@
   padding: 10px 12px;
   border: 1px solid var(--border);
   border-radius: 8px;
-  background: var(--bg-surface);
+  background: var(--bg-main);
   color: var(--text-primary);
   font-size: 14px;
 }
@@ -83,21 +83,22 @@
 
 /* Toolbar: two-row layout with primary and secondary filters */
 .ps-toolbar {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 24px;
+  padding: 16px;
   background: var(--bg-surface);
   border: 1px solid var(--border);
   border-radius: 12px;
-  padding: 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  margin-bottom: 24px;
 }
 
 /* Row 1: Search (primary) + Zero-sales toggle */
 .ps-toolbar-row-1 {
   display: flex;
+  gap: 16px;
   align-items: center;
-  gap: 12px;
+  flex-wrap: wrap;
 }
 
 .ps-toolbar-row-1 .ps-search {
@@ -111,8 +112,8 @@
 /* Row 2: Secondary filters */
 .ps-toolbar-row-2 {
   display: flex;
+  gap: 16px;
   align-items: flex-end;
-  gap: 12px;
   flex-wrap: wrap;
 }
 
@@ -121,20 +122,32 @@
   min-width: 180px;
 }
 
+.ps-search {
+  flex: 1 1 auto;
+  min-width: 200px;
+}
+
 .ps-search-input {
   width: 100%;
-  padding: 10px 14px;
+  max-width: 360px;
+  height: 42px;
+  padding: 0 14px;
   border: 1px solid var(--border);
   border-radius: 8px;
-  background: var(--bg-surface);
+  background: var(--bg-main);
   color: var(--text-primary);
   font-size: 14px;
+  transition: border-color 140ms ease;
+}
+
+.ps-search-input::placeholder {
+  color: var(--text-muted);
 }
 
 .ps-search-input:focus {
   outline: none;
   border-color: var(--primary);
-  box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary) 12%, transparent);
+  box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.1);
 }
 
 .ps-filter {
@@ -151,13 +164,22 @@
 
 .ps-filter-input,
 .ps-filter-select {
-  padding: 10px 12px;
+  height: 42px;
+  padding: 0 12px;
   border: 1px solid var(--border);
   border-radius: 8px;
-  background: var(--bg-surface);
+  background: var(--bg-main);
   color: var(--text-primary);
   font-size: 14px;
   min-width: 160px;
+  transition: border-color 140ms ease;
+}
+
+.ps-filter-input:focus,
+.ps-filter-select:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.1);
 }
 
 .ps-filter-checkbox {
@@ -171,25 +193,52 @@
 .ps-toggle-card {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 10px 12px;
+  justify-content: center;
+  height: 42px;
+  padding: 0 16px;
   border: 1px solid var(--border);
-  border-radius: 10px;
-  background: var(--bg-surface);
+  border-radius: 8px;
+  background: var(--bg-main);
   color: var(--text-primary);
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 600;
   cursor: pointer;
   user-select: none;
-  transition: background-color 120ms ease, border-color 120ms ease, color 120ms ease;
+  transition: all 140ms ease;
+  white-space: nowrap;
 }
 
-.ps-toggle-card:hover { background: var(--bg-hover); }
+.ps-toggle-card:hover {
+  background: var(--bg-hover);
+  border-color: var(--primary);
+}
 
 .ps-toggle-card.active {
   border-color: var(--primary);
-  background: color-mix(in srgb, var(--primary) 10%, var(--bg-surface));
+  background: color-mix(in srgb, var(--primary) 12%, transparent);
   color: var(--primary);
+}
+
+.ps-clear-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 42px;
+  padding: 0 16px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--error);
+  background: transparent;
+  border: 1px solid var(--error);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 140ms ease;
+  white-space: nowrap;
+  margin-left: auto;
+}
+
+.ps-clear-btn:hover {
+  background: color-mix(in srgb, var(--error) 10%, transparent);
 }
 
 /* Table */
