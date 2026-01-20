@@ -1,0 +1,193 @@
+/* properties from globals.css are available */
+.checkout-page {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--bg-surface);
+    color: var(--text-primary);
+    overflow: hidden;
+    z-index: 500;
+    /* Above layout base, below navbar (1000) */
+}
+
+/* Header */
+.checkout-header {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    padding: 16px;
+    background-color: var(--bg-surface);
+    /* minimal border or shadow */
+}
+
+.checkout-back-btn {
+    background: none;
+    border: none;
+    padding: 8px;
+    margin-right: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.checkout-title {
+    font-size: 20px;
+    /* Mobile header size */
+    font-weight: 700;
+    margin: 0;
+    flex-grow: 1;
+    text-align: center;
+    /* Generally center or left? User mockup shows centered usually or clean left. Let's center based on "Checkout" title being significant. Or left to match back button flow. Let's center it for "App-like" feel. */
+    /* Actually, looking at typical mobile designs (iOS/Android), title is often centered or left. Let's stick to simple text. */
+    padding-right: 40px;
+    /* Balance the back button for centering */
+}
+
+/* Order Summary (Scrollable) */
+.order-summary-section {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px 16px;
+    background-color: var(--bg-main);
+    /* Slight contrast background for list */
+}
+
+.summary-title {
+    font-size: 24px;
+    font-weight: 800;
+    margin-bottom: 24px;
+    color: var(--text-primary);
+}
+
+.summary-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    /* Align top in case of wrapping */
+    font-size: 16px;
+    color: var(--text-secondary);
+}
+
+.item-info {
+    display: flex;
+    gap: 8px;
+}
+
+.item-name {
+    color: var(--text-secondary);
+    /* Somewhat muted per mockup logic? Or primary? User said: "Momos x 1 ... price". Let's use specific styling. */
+    font-weight: 500;
+}
+
+.item-qty {
+    color: var(--text-muted);
+}
+
+.item-price {
+    font-weight: 600;
+    color: var(--text-muted);
+    /* Based on user request/mock or standard? Usually price is clear. */
+}
+
+/* Bottom Summary (Fixed) */
+.bottom-summary-section {
+    flex: 0 0 auto;
+    background-color: var(--bg-surface);
+    padding: 20px 16px calc(60px) 16px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.bottom-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 18px;
+}
+
+.bottom-label {
+    font-weight: 600;
+}
+
+.bottom-value {
+    font-weight: 700;
+}
+
+.total-row {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.total-price {
+    font-size: 32px;
+    /* Prominent total */
+}
+
+/* Address Selector */
+.address-selector {
+    display: flex;
+    gap: 16px;
+    justify-content: stretch;
+    /* Stretch pills to fill width if needed, or stick to center? User said "Two pill-style toggle buttons". Mockup: They look like equal width pills. */
+    width: 100%;
+}
+
+.address-pill {
+    flex: 1;
+    padding: 12px;
+    border-radius: 20px;
+    /* More pill-like */
+    border: none;
+    background-color: #F0F0F0;
+    /* Light gray default */
+    color: var(--text-primary);
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: center;
+    /* Ensure clickable area is good */
+}
+
+.address-pill.active {
+    background-color: var(--primary);
+    /* Green */
+    color: white;
+    box-shadow: 0 4px 12px rgba(46, 125, 50, 0.2);
+}
+
+
+
+/* Place Order Button */
+.place-order-btn {
+    width: 100%;
+    padding: 16px;
+    border-radius: 24px;
+    border: none;
+    background-color: var(--primary);
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.1s, background-color 0.2s;
+    box-shadow: 0 4px 12px rgba(46, 125, 50, 0.3);
+}
+
+.place-order-btn:active {
+    transform: scale(0.98);
+}

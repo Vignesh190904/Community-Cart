@@ -744,12 +744,24 @@ const ToastProvider = ({ children })=>{
     }["ToastProvider.useCallback[pushToast]"], [
         remove
     ]);
+    const showToast = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useCallback"])({
+        "ToastProvider.useCallback[showToast]": (message, type = 'info')=>{
+            pushToast({
+                message,
+                type
+            });
+        }
+    }["ToastProvider.useCallback[showToast]"], [
+        pushToast
+    ]);
     const value = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useMemo"])({
         "ToastProvider.useMemo[value]": ()=>({
-                pushToast
+                pushToast,
+                showToast
             })
     }["ToastProvider.useMemo[value]"], [
-        pushToast
+        pushToast,
+        showToast
     ]);
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(ToastContext.Provider, {
         value: value,
@@ -767,7 +779,7 @@ const ToastProvider = ({ children })=>{
                                 children: t.title
                             }, void 0, false, {
                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/components/ui/ToastProvider.tsx",
-                                lineNumber: 48,
+                                lineNumber: 53,
                                 columnNumber: 25
                             }, ("TURBOPACK compile-time value", void 0)),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -775,28 +787,28 @@ const ToastProvider = ({ children })=>{
                                 children: t.message
                             }, void 0, false, {
                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/components/ui/ToastProvider.tsx",
-                                lineNumber: 49,
+                                lineNumber: 54,
                                 columnNumber: 13
                             }, ("TURBOPACK compile-time value", void 0))
                         ]
                     }, t.id, true, {
                         fileName: "[project]/Desktop/Community-Cart/frontend/src/components/ui/ToastProvider.tsx",
-                        lineNumber: 47,
+                        lineNumber: 52,
                         columnNumber: 11
                     }, ("TURBOPACK compile-time value", void 0)))
             }, void 0, false, {
                 fileName: "[project]/Desktop/Community-Cart/frontend/src/components/ui/ToastProvider.tsx",
-                lineNumber: 45,
+                lineNumber: 50,
                 columnNumber: 7
             }, ("TURBOPACK compile-time value", void 0))
         ]
     }, void 0, true, {
         fileName: "[project]/Desktop/Community-Cart/frontend/src/components/ui/ToastProvider.tsx",
-        lineNumber: 43,
+        lineNumber: 48,
         columnNumber: 5
     }, ("TURBOPACK compile-time value", void 0));
 };
-_s1(ToastProvider, "YyZ2Yx9om8AunuV0FxvbvXebM+U=");
+_s1(ToastProvider, "nIpGmHUZtAQItsai3y3sIhTRZoE=");
 _c = ToastProvider;
 var _c;
 __turbopack_context__.k.register(_c, "ToastProvider");

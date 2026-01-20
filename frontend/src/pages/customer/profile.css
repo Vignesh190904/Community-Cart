@@ -1,0 +1,174 @@
+/* Profile Page Styles */
+.profile-page-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: 100vh;
+    background-color: var(--bg-main, #f5f5f5);
+    position: relative;
+    padding-bottom: 80px;
+    /* Space for bottom nav */
+}
+
+/* Green Header Background */
+.profile-header-bg {
+    background-color: var(--primary, #4ADE80);
+    /* Bright green matching reference */
+    padding: 24px 20px 80px 20px;
+    /* Bottom padding to allow for overlap */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* Space title and toggle */
+}
+
+/* Theme Toggle */
+.theme-toggle-mini {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.2s;
+    backdrop-filter: blur(4px);
+}
+
+.theme-toggle-mini:active {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(0.95);
+}
+
+.theme-icon {
+    width: 20px;
+    height: 20px;
+    display: block;
+}
+
+.header-title {
+    color: white;
+    font-size: 20px;
+    font-weight: 700;
+    margin: 0;
+}
+
+/* Profile Card - Overlapping */
+.profile-card {
+    background-color: var(--bg-surface, #ffffff);
+    margin: -50px 16px 24px 16px;
+    /* Negative top margin for overlap */
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    position: relative;
+    z-index: 10;
+}
+
+.profile-info-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.profile-avatar-container {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+    background-color: #eee;
+}
+
+.profile-avatar-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile-text-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.profile-name {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-primary, #333);
+    margin: 0;
+}
+
+.profile-email {
+    font-size: 13px;
+    color: var(--text-secondary, #888);
+    margin: 0;
+}
+
+.edit-profile-btn {
+    background: none;
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.6;
+}
+
+/* Menu List */
+.profile-menu-list {
+    background-color: var(--bg-surface, #ffffff);
+    margin-top: 0;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    background-color: var(--bg-surface, #ffffff);
+    border-bottom: 1px solid var(--border, #f0f0f0);
+    /* Very subtle divider */
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.menu-item:active {
+    background-color: var(--bg-hover, #f9f9f9);
+}
+
+.menu-item-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.menu-icon {
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+    /* Icons in reference are gray-ish, ensuring they aren't fully black */
+    opacity: 0.7;
+}
+
+.menu-label {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-primary, #333);
+}
+
+.menu-chevron {
+    color: var(--text-secondary, #ccc);
+    font-size: 20px;
+    font-weight: 300;
+}
+
+/* Remove last border if desired, but reference shows dividers */
+.menu-item:last-child {
+    border-bottom: none;
+    /* Actually reference has dashed lines maybe? Hard to see. Standard solid light line is safe. */
+}

@@ -39,6 +39,26 @@ body.theme-dark {
   --info: #4fc3f7;
 }
 
+img[src*=".svg"], svg {
+  color: #000;
+}
+
+body.theme-dark img[src*=".svg"], body.theme-dark svg {
+  color: #fff;
+}
+
+.icon-success {
+  color: #22c55e !important;
+}
+
+.icon-warning {
+  color: #facc15 !important;
+}
+
+.icon-danger {
+  color: #ef4444 !important;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;

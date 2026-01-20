@@ -61,7 +61,7 @@ export default function VendorProfilePage() {
 
   // Load vendor data
   useEffect(() => {
-    const token = typeof window !== 'undefined' ? localStorage.getItem('cc_token') : null;
+    const token = typeof window !== 'undefined' ? localStorage.getItem('auth_token') : null;
     const vendorId = typeof window !== 'undefined' ? localStorage.getItem('cc_vendorId') : null;
     if (!token || !vendorId) {
       router.replace('/login');
@@ -205,7 +205,7 @@ export default function VendorProfilePage() {
     if (Object.keys(errs).length) return;
 
     try {
-      const token = typeof window !== 'undefined' ? localStorage.getItem('cc_token') : null;
+      const token = typeof window !== 'undefined' ? localStorage.getItem('auth_token') : null;
       if (!token || !vendor) throw new Error('Not authenticated');
       setAuthToken(token);
       // Implemented in backend: POST /api/auth/change-password
@@ -421,7 +421,7 @@ export default function VendorProfilePage() {
                 aria-invalid={!!errors.pwdCurrent}
               />
               <button type="button" className="eye-btn" aria-label={showCurrent ? 'Hide password' : 'Show password'} onClick={() => setShowCurrent((s) => !s)}>
-                <svg viewBox="0 0 24 24" className="eye-icon" aria-hidden="true"><path d="M12 5c-7.633 0-11 7-11 7s3.367 7 11 7 11-7 11-7-3.367-7-11-7Zm0 12a5 5 0 1 1 0-10 5 5 0 0 1 0 10Z"/></svg>
+                <svg viewBox="0 0 24 24" className="eye-icon" aria-hidden="true"><path d="M12 5c-7.633 0-11 7-11 7s3.367 7 11 7 11-7 11-7-3.367-7-11-7Zm0 12a5 5 0 1 1 0-10 5 5 0 0 1 0 10Z" /></svg>
               </button>
             </div>
             {errors.pwdCurrent && <div className="field-error">{errors.pwdCurrent}</div>}
@@ -439,7 +439,7 @@ export default function VendorProfilePage() {
                 aria-invalid={!!errors.pwdNew}
               />
               <button type="button" className="eye-btn" aria-label={showNew ? 'Hide password' : 'Show password'} onClick={() => setShowNew((s) => !s)}>
-                <svg viewBox="0 0 24 24" className="eye-icon" aria-hidden="true"><path d="M12 5c-7.633 0-11 7-11 7s3.367 7 11 7 11-7 11-7-3.367-7-11-7Zm0 12a5 5 0 1 1 0-10 5 5 0 0 1 0 10Z"/></svg>
+                <svg viewBox="0 0 24 24" className="eye-icon" aria-hidden="true"><path d="M12 5c-7.633 0-11 7-11 7s3.367 7 11 7 11-7 11-7-3.367-7-11-7Zm0 12a5 5 0 1 1 0-10 5 5 0 0 1 0 10Z" /></svg>
               </button>
             </div>
             {errors.pwdNew && <div className="field-error">{errors.pwdNew}</div>}
@@ -457,7 +457,7 @@ export default function VendorProfilePage() {
                 aria-invalid={!!errors.pwdConfirm}
               />
               <button type="button" className="eye-btn" aria-label={showConfirm ? 'Hide password' : 'Show password'} onClick={() => setShowConfirm((s) => !s)}>
-                <svg viewBox="0 0 24 24" className="eye-icon" aria-hidden="true"><path d="M12 5c-7.633 0-11 7-11 7s3.367 7 11 7 11-7 11-7-3.367-7-11-7Zm0 12a5 5 0 1 1 0-10 5 5 0 0 1 0 10Z"/></svg>
+                <svg viewBox="0 0 24 24" className="eye-icon" aria-hidden="true"><path d="M12 5c-7.633 0-11 7-11 7s3.367 7 11 7 11-7 11-7-3.367-7-11-7Zm0 12a5 5 0 1 1 0-10 5 5 0 0 1 0 10Z" /></svg>
               </button>
             </div>
             {errors.pwdConfirm && <div className="field-error">{errors.pwdConfirm}</div>}

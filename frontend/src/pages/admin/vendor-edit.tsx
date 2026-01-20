@@ -37,7 +37,7 @@ export default function AdminVendorEditPage() {
   const [showPassword, setShowPassword] = useState(false);
 
   useEffect(() => {
-    const token = typeof window !== 'undefined' ? localStorage.getItem('cc_token') : null;
+    const token = typeof window !== 'undefined' ? localStorage.getItem('auth_token') : null;
     if (token) setAuthToken(token);
   }, []);
 
@@ -325,11 +325,11 @@ export default function AdminVendorEditPage() {
         </div>
       </section>
 
-         <div className="actions-row">
-          <button className="btn outline" onClick={handleSave} disabled={!dirty || saving}>{saving ? 'Saving…' : 'Save'}</button>
-          <button className="btn danger" onClick={handleCancel}>Cancel</button>
-        </div>
-        
+      <div className="actions-row">
+        <button className="btn outline" onClick={handleSave} disabled={!dirty || saving}>{saving ? 'Saving…' : 'Save'}</button>
+        <button className="btn danger" onClick={handleCancel}>Cancel</button>
+      </div>
+
       <section className="vendor-edit-card">
         <div className="force-row">
           <div>

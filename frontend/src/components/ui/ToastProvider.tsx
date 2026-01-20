@@ -1,17 +1,22 @@
 import React, { createContext, useCallback, useContext, useMemo, useState } from 'react';
+import Toast from './Toast';
 
 export type ToastType = 'success' | 'error' | 'info' | 'warning';
 
-export interface Toast {
+export interface ToastItem {
   id: string;
   type: ToastType;
-  title?: string;
   message: string;
-  duration?: number; // ms
+  timestamp: number;
 }
 
 interface ToastContextValue {
-  pushToast: (toast: Omit<Toast, 'id'>) => void;
+  queue: ToastItem[];
+  enqueueToast: (message: string, type?: ToastType) => void;
+  dismissToast: (id: string) => void;
+  // Legacy compatibility
+  showToast: (message: string, type?: ToastType) => void;
+  pushToast: (toast: { message: string; type?: ToastType }) => void;
 }
 
 const ToastContext = createContext<ToastContextValue | undefined>(undefined);
@@ -23,33 +28,59 @@ export const useToast = () => {
 };
 
 export const ToastProvider: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {
-  const [toasts, setToasts] = useState<Toast[]>([]);
+  const [queue, setQueue] = useState<ToastItem[]>([]);
 
-  const remove = useCallback((id: string) => {
-    setToasts((prev) => prev.filter((t) => t.id !== id));
+  const enqueueToast = useCallback((message: string, type: ToastType = 'info') => {
+    const newToast: ToastItem = {
+      id: `toast-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
+      message,
+      type,
+      timestamp: Date.now(),
+    };
+
+    setQueue((prevQueue) => [...prevQueue, newToast]);
   }, []);
 
-  const pushToast = useCallback((toast: Omit<Toast, 'id'>) => {
-    const id = Math.random().toString(36).slice(2);
-    const duration = toast.duration ?? 4000;
-    const t: Toast = { id, ...toast, duration };
-    setToasts((prev) => [t, ...prev]);
-    window.setTimeout(() => remove(id), duration);
-  }, [remove]);
+  const dismissToast = useCallback((id: string) => {
+    setQueue((prevQueue) => prevQueue.filter((toast) => toast.id !== id));
+  }, []);
 
-  const value = useMemo(() => ({ pushToast }), [pushToast]);
+  // Legacy compatibility methods
+  const showToast = useCallback((message: string, type: ToastType = 'info') => {
+    enqueueToast(message, type);
+  }, [enqueueToast]);
+
+  const pushToast = useCallback((toast: { message: string; type?: ToastType }) => {
+    enqueueToast(toast.message, toast.type);
+  }, [enqueueToast]);
+
+  const value = useMemo(() => ({
+    queue,
+    enqueueToast,
+    dismissToast,
+    showToast,
+    pushToast
+  }), [queue, enqueueToast, dismissToast, showToast, pushToast]);
+
+  // Only render the first 2 toasts (2-toast limit)
+  const visibleToasts = queue.slice(0, 2);
 
   return (
     <ToastContext.Provider value={value}>
       {children}
-      <div className="toast-container" aria-live="polite" aria-atomic="true">
-        {toasts.map((t) => (
-          <div key={t.id} className={`toast ${t.type}`}>
-            {t.title && <div className="toast-title">{t.title}</div>}
-            <div className="toast-message">{t.message}</div>
-          </div>
-        ))}
-      </div>
+      {visibleToasts.length > 0 && (
+        <div className="toast-container" aria-live="polite" aria-atomic="true">
+          {visibleToasts.map((toast) => (
+            <Toast
+              key={toast.id}
+              id={toast.id}
+              message={toast.message}
+              type={toast.type}
+              onDismiss={dismissToast}
+            />
+          ))}
+        </div>
+      )}
     </ToastContext.Provider>
   );
 };

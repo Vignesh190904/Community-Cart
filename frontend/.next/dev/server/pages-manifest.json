@@ -3,14 +3,14 @@
   "/_app": "pages/_app.js",
   "/_document": "pages/_document.js",
   "/_error": "pages/_error.js",
-  "/admin/dashboard": "pages/admin/dashboard.js",
-  "/admin/orders": "pages/admin/orders.js",
-  "/admin/products": "pages/admin/products.js",
-  "/admin/vendors": "pages/admin/vendors.js",
+  "/customer/address": "pages/customer/address.js",
   "/customer/browse-products": "pages/customer/browse-products.js",
-  "/customer/cart": "pages/customer/cart.js",
-  "/customer/cart-pro": "pages/customer/cart-pro.js",
-  "/customer/dashboard": "pages/customer/dashboard.js",
-  "/login": "pages/login.js",
-  "/setup": "pages/setup.js"
+  "/customer/edit-address": "pages/customer/edit-address.js",
+  "/customer/edit-profile": "pages/customer/edit-profile.js",
+  "/customer/home": "pages/customer/home.js",
+  "/customer/profile": "pages/customer/profile.js",
+  "/customer/signin": "pages/customer/signin.js",
+  "/customer/signup": "pages/customer/signup.js",
+  "/customer/verify-mobile": "pages/customer/verify-mobile.js",
+  "/customer/verify-otp": "pages/customer/verify-otp.js"
 }

@@ -1,99 +1,159 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useRouter } from 'next/router';
 import CustomerLayout from '../../components/customer/CustomerLayout';
 import { useCustomerStore } from '../../context/CustomerStore';
-
-const API_BASE = 'http://localhost:5000/api';
+import { useToast } from '../../components/ui/ToastProvider';
 
 export default function PlaceOrderPage() {
   const router = useRouter();
-  const { cart, customerId, ensureCustomerId, clearCart, totalPrice } = useCustomerStore();
-  const [placing, setPlacing] = useState(false);
-  const [message, setMessage] = useState('');
-  const [error, setError] = useState('');
+  const { cart, totalPrice, totalItems, clearCart, customerId } = useCustomerStore();
+  const { pushToast } = useToast();
+  const [loading, setLoading] = useState(false);
+  const [formData, setFormData] = useState({
+    deliveryAddress: '',
+    phone: '',
+    notes: '',
+  });
 
-  useEffect(() => {
-    ensureCustomerId();
-  }, [ensureCustomerId]);
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
 
-  const placeOrder = async () => {
-    setMessage('');
-    setError('');
-    if (!cart.length) {
-      setError('Cart is empty.');
+    if (!customerId) {
+      pushToast({ type: 'error', title: 'Error', message: 'Customer ID not found' });
       return;
     }
 
-    const cid = customerId || (await ensureCustomerId());
-    if (!cid) {
-      setError('Customer not ready.');
+    if (cart.length === 0) {
+      pushToast({ type: 'warning', title: 'Empty Cart', message: 'Your cart is empty' });
       return;
     }
 
-    setPlacing(true);
+    setLoading(true);
+
     try {
-      const productIds: string[] = [];
-      cart.forEach((item) => {
-        for (let i = 0; i < item.quantity; i += 1) {
-          productIds.push(item.product._id);
-        }
-      });
+      const orderPayload = {
+        customerId,
+        items: cart.map((item) => ({
+          productId: item.product._id,
+          quantity: item.quantity,
+          price: item.product.price,
+        })),
+        deliveryAddress: formData.deliveryAddress || 'Test Address, Bangalore',
+        phone: formData.phone || '9999999999',
+        notes: formData.notes,
+        totalAmount: totalPrice,
+      };
 
-      const res = await fetch(`${API_BASE}/orders`, {
+      const res = await fetch('http://localhost:5000/api/orders', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ customerId: cid, productIds }),
+        body: JSON.stringify(orderPayload),
       });
 
       if (!res.ok) throw new Error('Failed to place order');
+
       const order = await res.json();
       clearCart();
-      setMessage(`Order placed successfully (Order ID: ${order.orderNumber || order._id})`);
+      pushToast({ type: 'success', title: 'Success', message: 'Order placed successfully!' });
       router.push('/customer/track-order');
-    } catch (err: any) {
-      setError(err.message || 'Could not place order');
+    } catch (error: any) {
+      pushToast({ type: 'error', title: 'Error', message: error.message || 'Failed to place order' });
     } finally {
-      setPlacing(false);
+      setLoading(false);
     }
   };
 
+  if (cart.length === 0) {
+    return (
+      <CustomerLayout>
+        <div className="checkout-page">
+          <div className="checkout-empty">
+            <span className="empty-icon">🛒</span>
+            <p className="empty-text">Your cart is empty</p>
+            <button onClick={() => router.push('/customer/browse-products')} className="empty-action">
+              Browse Products
+            </button>
+          </div>
+        </div>
+      </CustomerLayout>
+    );
+  }
+
   return (
     <CustomerLayout>
-      <div className="place-page">
-        <div className="page-head">
-          <div>
-            <p className="page-kicker">Place Order</p>
-            <h1 className="page-title">Review and Submit</h1>
-            <p className="page-subtitle">We will send this order to the vendor for processing.</p>
+      <div className="checkout-page">
+        {/* Header */}
+        <div className="checkout-header">
+          <h1 className="checkout-title">Checkout</h1>
+          <p className="checkout-subtitle">Complete your order</p>
+        </div>
+
+        {/* Order Summary */}
+        <div className="checkout-summary">
+          <h2 className="summary-heading">Order Summary</h2>
+          <div className="summary-items">
+            {cart.map((item) => (
+              <div key={item.product._id} className="summary-item">
+                <span className="summary-item-name">
+                  {item.product.name} × {item.quantity}
+                </span>
+                <span className="summary-item-price">
+                  ₹{(item.product.price * item.quantity).toFixed(2)}
+                </span>
+              </div>
+            ))}
+          </div>
+          <div className="summary-divider"></div>
+          <div className="summary-total-row">
+            <span className="summary-total-label">Total ({totalItems} items)</span>
+            <span className="summary-total-value">₹{totalPrice.toFixed(2)}</span>
           </div>
         </div>
 
-        {cart.length === 0 ? (
-          <div className="page-state">Your cart is empty. Add products first.</div>
-        ) : (
-          <div className="review-card">
-            <div className="review-items">
-              {cart.map((item) => (
-                <div key={item.product._id} className="review-row">
-                  <div>
-                    <p className="review-name">{item.product.name}</p>
-                    <p className="review-meta">Qty: {item.quantity}</p>
-                  </div>
-                  <p className="review-price">₹{(item.product.price * item.quantity).toFixed(2)}</p>
-                </div>
-              ))}
-            </div>
-            <div className="review-total">
-              <span>Total</span>
-              <span>₹{totalPrice.toFixed(2)}</span>
-            </div>
-            <button className="btn-primary full" onClick={placeOrder} disabled={placing}>
-              {placing ? 'Placing…' : 'Place Order'}
-            </button>
-            {message && <div className="notice success">{message}</div>}
-            {error && <div className="notice error">{error}</div>}
+        {/* Delivery Form */}
+        <form onSubmit={handleSubmit} className="checkout-form">
+          <h2 className="form-heading">Delivery Details</h2>
+
+          <div className="form-group">
+            <label htmlFor="address" className="form-label">Delivery Address</label>
+            <textarea
+              id="address"
+              className="form-input form-textarea"
+              placeholder="Enter your delivery address"
+              value={formData.deliveryAddress}
+              onChange={(e) => setFormData({ ...formData, deliveryAddress: e.target.value })}
+              rows={3}
+            />
           </div>
-        )}
+
+          <div className="form-group">
+            <label htmlFor="phone" className="form-label">Phone Number</label>
+            <input
+              id="phone"
+              type="tel"
+              className="form-input"
+              placeholder="Enter your phone number"
+              value={formData.phone}
+              onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+            />
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="notes" className="form-label">Order Notes (Optional)</label>
+            <textarea
+              id="notes"
+              className="form-input form-textarea"
+              placeholder="Any special instructions?"
+              value={formData.notes}
+              onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
+              rows={2}
+            />
+          </div>
+
+          <button type="submit" className="place-order-btn" disabled={loading}>
+            {loading ? 'Placing Order...' : `Place Order • ₹${totalPrice.toFixed(2)}`}
+          </button>
+        </form>
       </div>
     </CustomerLayout>
   );

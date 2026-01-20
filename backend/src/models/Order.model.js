@@ -12,9 +12,17 @@ const orderSchema = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Customer',
     },
+
     vendorId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Vendor',
+    },
+
+    /* ---------- Customer Snapshot (NEW) ---------- */
+    customer_snapshot: {
+      name: String,
+      phone: String,
+      email: String,
     },
 
     items: [
@@ -49,9 +57,12 @@ const orderSchema = new mongoose.Schema(
       expectedDate: Date,
     },
 
-    status: { type: String, default: 'pending' }, // pending, accepted, delivered, cancelled
-    notes: String,
+    status: {
+      type: String,
+      default: 'pending', // pending, accepted, delivered, cancelled
+    },
 
+    notes: String,
     extra: mongoose.Schema.Types.Mixed,
   },
   { timestamps: true }

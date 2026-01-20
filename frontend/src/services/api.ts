@@ -1,14 +1,14 @@
 const API_BASE = 'http://localhost:5000/api';
 
-let authToken: string | null = null;
+let auth_token: string | null = null;
 
 export const setAuthToken = (token: string | null) => {
-  authToken = token;
+  auth_token = token;
 };
 
 const authHeaders = (extra: Record<string, string> = {}) => {
   const headers: Record<string, string> = { ...extra };
-  if (authToken) headers['Authorization'] = `Bearer ${authToken}`;
+  if (auth_token) headers['Authorization'] = `Bearer ${auth_token}`;
   return headers;
 };
 

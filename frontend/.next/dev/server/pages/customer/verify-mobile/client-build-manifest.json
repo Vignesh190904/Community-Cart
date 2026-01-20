@@ -1,0 +1,5 @@
+{
+  "/customer/verify-mobile": [
+    "static/chunks/pages/customer/verify-mobile.js"
+  ]
+}

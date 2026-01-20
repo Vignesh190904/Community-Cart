@@ -5,35 +5,35 @@ self.__BUILD_MANIFEST = {
   "/_error": [
     "static/chunks/pages/_error.js"
   ],
-  "/admin/dashboard": [
-    "static/chunks/pages/admin/dashboard.js"
-  ],
-  "/admin/orders": [
-    "static/chunks/pages/admin/orders.js"
-  ],
-  "/admin/products": [
-    "static/chunks/pages/admin/products.js"
-  ],
-  "/admin/vendors": [
-    "static/chunks/pages/admin/vendors.js"
+  "/customer/address": [
+    "static/chunks/pages/customer/address.js"
   ],
   "/customer/browse-products": [
     "static/chunks/pages/customer/browse-products.js"
   ],
-  "/customer/cart": [
-    "static/chunks/pages/customer/cart.js"
+  "/customer/edit-address": [
+    "static/chunks/pages/customer/edit-address.js"
   ],
-  "/customer/cart-pro": [
-    "static/chunks/pages/customer/cart-pro.js"
+  "/customer/edit-profile": [
+    "static/chunks/pages/customer/edit-profile.js"
   ],
-  "/customer/dashboard": [
-    "static/chunks/pages/customer/dashboard.js"
+  "/customer/home": [
+    "static/chunks/pages/customer/home.js"
   ],
-  "/login": [
-    "static/chunks/pages/login.js"
+  "/customer/profile": [
+    "static/chunks/pages/customer/profile.js"
   ],
-  "/setup": [
-    "static/chunks/pages/setup.js"
+  "/customer/signin": [
+    "static/chunks/pages/customer/signin.js"
+  ],
+  "/customer/signup": [
+    "static/chunks/pages/customer/signup.js"
+  ],
+  "/customer/verify-mobile": [
+    "static/chunks/pages/customer/verify-mobile.js"
+  ],
+  "/customer/verify-otp": [
+    "static/chunks/pages/customer/verify-otp.js"
   ],
   "__rewrites": {
     "afterFiles": [],
@@ -50,13 +50,31 @@ self.__BUILD_MANIFEST = {
     "/admin/products",
     "/admin/vendor-edit",
     "/admin/vendors",
+    "/customer/BottomNavbar",
+    "/customer/address",
+    "/customer/apploading",
     "/customer/browse-products",
     "/customer/cart",
-    "/customer/cart-pro",
+    "/customer/category",
+    "/customer/checkout",
     "/customer/dashboard",
+    "/customer/edit-address",
+    "/customer/edit-profile",
+    "/customer/favorites",
+    "/customer/forgot-password",
+    "/customer/home",
+    "/customer/onboarding",
+    "/customer/orders",
     "/customer/place-order",
+    "/customer/product/[id]",
     "/customer/products",
+    "/customer/profile",
+    "/customer/reset-password",
+    "/customer/signin",
+    "/customer/signup",
     "/customer/track-order",
+    "/customer/verify-mobile",
+    "/customer/verify-otp",
     "/login",
     "/setup",
     "/vendor/dashboard",

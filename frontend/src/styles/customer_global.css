@@ -1,0 +1,613 @@
+/* ==========================================================================
+   Community Cart – Unified Light & Dark Theme (FINAL)
+   Source of truth for the entire Customer UI
+   ========================================================================== */
+
+/* ------------------------------
+   ROOT THEME TOKENS (LIGHT)
+-------------------------------- */
+:root {
+    /* ---------- Brand ---------- */
+    --primary: #2E7D32;
+    --primary-light: #60AD5E;
+    --primary-dark: #1B5E20;
+    --secondary: #FF8F00;
+
+    /* ---------- Backgrounds ---------- */
+    --bg-main: #F7F9FC;
+    --bg-surface: #FFFFFF;
+    --bg-surface-alt: #FAFAFA;
+    --bg-hover: #F0F0F0;
+
+    /* ---------- Text ---------- */
+    --text-primary: #1A1A1A;
+    --text-secondary: #4F4F4F;
+    --text-muted: #8A8A8A;
+    --text-disabled: #BDBDBD;
+
+    /* ---------- UI ---------- */
+    --border: #E0E0E0;
+    --divider: #ECECEC;
+
+    /* ---------- Status ---------- */
+    --success: #2E7D32;
+    --warning: #ED6C02;
+    --error: #D32F2F;
+    --info: #0288D1;
+
+    /* ---------- Elevation / Shadows ---------- */
+    --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.04);
+    --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.08);
+    --shadow-md: 0 6px 16px rgba(0, 0, 0, 0.12);
+    --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.16);
+
+    /* ---------- Motion ---------- */
+    --motion-fast: 120ms;
+    --motion-medium: 180ms;
+    --motion-slow: 280ms;
+    --ease-standard: ease-in-out;
+
+    /* ---------- Radius & Touch ---------- */
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 14px;
+    --tap-target-min: 44px;
+
+    /* ---------- Layout ---------- */
+    --header-height: 56px;
+    --bottom-nav-height: 64px;
+    --safe-padding-top: 16px;
+    --safe-padding-bottom: 16px;
+
+    /* ---------- Z-Index ---------- */
+    --z-header: 100;
+    --z-bottom-nav: 90;
+    --z-toast: 1000;
+    --z-modal: 1100;
+}
+
+/* ------------------------------
+   DARK THEME OVERRIDES
+-------------------------------- */
+body.theme-dark {
+    --primary: #66BB6A;
+    --primary-light: #81C784;
+    --primary-dark: #388E3C;
+    --secondary: #FFB74D;
+
+    --bg-main: #0E1117;
+    --bg-surface: #161B22;
+    --bg-surface-alt: #1B222C;
+    --bg-hover: #1F2933;
+
+    --text-primary: #FFFFFF;
+    --text-secondary: #D1D5DB;
+    --text-muted: #9CA3AF;
+    --text-disabled: #6B7280;
+
+    --border: #2D333B;
+    --divider: #30363D;
+
+    --success: #66BB6A;
+    --warning: #FFB74D;
+    --error: #EF5350;
+    --info: #4FC3F7;
+}
+
+/* ------------------------------
+   ICON COLOR STANDARDIZATION
+-------------------------------- */
+img[src*=".svg"],
+svg {
+    color: var(--text-primary);
+}
+
+body.theme-dark img[src*=".svg"],
+body.theme-dark svg {
+    color: var(--text-primary);
+}
+
+.icon-success {
+    color: #22c55e !important;
+}
+
+.icon-warning {
+    color: #facc15 !important;
+}
+
+.icon-danger {
+    color: #ef4444 !important;
+}
+
+/* ------------------------------
+   RESET & BASE STYLES
+-------------------------------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+        'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
+        'Droid Sans', 'Helvetica Neue', sans-serif;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+
+    transition:
+        background-color var(--motion-medium) var(--ease-standard),
+        color var(--motion-medium) var(--ease-standard);
+
+    min-height: 100vh;
+}
+
+/* ------------------------------
+   CONTAINER (GENERIC)
+-------------------------------- */
+.container {
+    background: var(--bg-surface);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    padding: 40px;
+    max-width: 500px;
+    width: 100%;
+    margin: 20px;
+    border: 1px solid var(--border);
+}
+
+/* ------------------------------
+   TYPOGRAPHY
+-------------------------------- */
+h1 {
+    color: var(--text-primary);
+    margin-bottom: 10px;
+    text-align: center;
+    font-size: 28px;
+}
+
+.subtitle {
+    color: var(--text-secondary);
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 14px;
+}
+
+/* ------------------------------
+   TABS
+-------------------------------- */
+.tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid var(--divider);
+    padding-bottom: 10px;
+}
+
+.tab {
+    flex: 1;
+    padding: 12px 16px;
+    border: none;
+    background: transparent;
+    border-radius: var(--radius-md) var(--radius-md) 0 0;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-secondary);
+
+    transition:
+        color var(--motion-fast) var(--ease-standard),
+        background var(--motion-fast) var(--ease-standard);
+}
+
+.tab:hover {
+    color: var(--primary);
+    background: var(--bg-hover);
+}
+
+.tab.active {
+    color: var(--primary);
+    border-bottom: 3px solid var(--primary);
+}
+
+/* ------------------------------
+   FORMS
+-------------------------------- */
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.form h2 {
+    color: var(--text-primary);
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+input,
+select,
+textarea {
+    min-height: var(--tap-target-min);
+    padding: 12px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    background: var(--bg-surface);
+    color: var(--text-primary);
+    font-family: inherit;
+
+    transition:
+        border-color var(--motion-fast) var(--ease-standard),
+        box-shadow var(--motion-fast) var(--ease-standard);
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: var(--text-muted);
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary) 10%, transparent);
+}
+
+textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+/* ------------------------------
+   BUTTONS
+-------------------------------- */
+button[type='submit'] {
+    min-height: var(--tap-target-min);
+    padding: 12px;
+    background: linear-gradient(135deg,
+            var(--primary) 0%,
+            var(--primary-dark) 100%);
+    color: white;
+    border: none;
+    border-radius: var(--radius-sm);
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+
+    transition:
+        transform var(--motion-fast) var(--ease-standard),
+        box-shadow var(--motion-fast) var(--ease-standard),
+        opacity var(--motion-fast) var(--ease-standard);
+
+    margin-top: 10px;
+}
+
+button[type='submit']:hover:not(:disabled) {
+    transform: scale(0.98);
+    box-shadow: var(--shadow-sm);
+}
+
+button[type='submit']:active:not(:disabled) {
+    transform: scale(0.96);
+}
+
+button[type='submit']:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+/* ------------------------------
+   MESSAGES / TOASTS
+-------------------------------- */
+.message {
+    padding: 12px 16px;
+    border-radius: var(--radius-sm);
+    margin-bottom: 20px;
+    font-size: 14px;
+    border-left: 4px solid;
+    animation: slideIn var(--motion-fast) var(--ease-standard);
+}
+
+.message.success {
+    background: color-mix(in srgb, var(--success) 10%, transparent);
+    color: var(--success);
+    border-left-color: var(--success);
+}
+
+.message.error {
+    background: color-mix(in srgb, var(--error) 10%, transparent);
+    color: var(--error);
+    border-left-color: var(--error);
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ------------------------------
+   RESPONSIVE
+-------------------------------- */
+/* ------------------------------
+   RESPONSIVE
+-------------------------------- */
+@media (max-width: 600px) {
+    .container {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    .tabs {
+        gap: 5px;
+    }
+
+    .tab {
+        padding: 10px 12px;
+        font-size: 12px;
+    }
+}
+
+/* ------------------------------
+   UTILITIES & INTERACTIONS
+-------------------------------- */
+.touchable {
+    transition: transform var(--motion-fast) var(--ease-standard), opacity var(--motion-fast) var(--ease-standard);
+    cursor: pointer;
+}
+
+.touchable:active {
+    transform: scale(0.96);
+    opacity: 0.8;
+}
+
+/* Apply touchable to standard interactive elements */
+button,
+.address-card,
+.product-card,
+.nav-item,
+.bottom-nav-item {
+    transition: transform var(--motion-fast) var(--ease-standard), opacity var(--motion-fast) var(--ease-standard);
+    cursor: pointer;
+}
+
+button:active:not(:disabled),
+.address-card:active,
+.product-card:active,
+.nav-item:active,
+.bottom-nav-item:active {
+    transform: scale(0.96);
+    opacity: 0.8;
+}
+
+/* ------------------------------
+   SKELETON LOADING
+-------------------------------- */
+@keyframes shimmer {
+    0% {
+        background-position: -200% 0;
+    }
+
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+.skeleton {
+    background: linear-gradient(90deg,
+            var(--bg-hover) 25%,
+            var(--divider) 50%,
+            var(--bg-hover) 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: var(--radius-sm);
+    display: inline-block;
+}
+
+.theme-dark .skeleton {
+    background: linear-gradient(90deg,
+            var(--bg-hover) 25%,
+            #2d333b 50%,
+            var(--bg-hover) 75%);
+    background-size: 200% 100%;
+}
+
+.skeleton-text {
+    height: 1em;
+    width: 100%;
+    margin-bottom: 0.5em;
+    border-radius: 4px;
+}
+
+.skeleton-rect {
+    width: 100%;
+    height: 100%;
+}
+
+.skeleton-circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+/* ------------------------------
+   PAGE TRANSITIONS
+-------------------------------- */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.page-transition {
+    animation: fadeIn var(--motion-medium) var(--ease-standard);
+}
+
+/* ------------------------------
+   LAYOUT FIXES
+-------------------------------- */
+.customer-shell {
+    padding-bottom: calc(var(--bottom-nav-height) + var(--safe-padding-bottom));
+    min-height: 100vh;
+    background-color: var(--bg-main);
+}
+
+/* Fixed Bottom Nav */
+.customer-bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 600px;
+    /* Constrain on large screens */
+    height: var(--bottom-nav-height);
+    background: var(--bg-surface);
+    border-top: 1px solid var(--divider);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    z-index: var(--z-bottom-nav);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    /* Ensure it sits above content */
+    box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.05);
+}
+
+.theme-dark .customer-bottom-nav {
+    background: rgba(22, 27, 34, 0.9);
+    /* Slightly transparent for blur */
+}
+
+.bottom-nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    border-radius: var(--radius-md);
+    position: relative;
+    /* Remove default link styles */
+    text-decoration: none;
+}
+
+.bottom-nav-item.active::after {
+    content: '';
+    position: absolute;
+    bottom: 4px;
+    width: 4px;
+    height: 4px;
+    background-color: var(--primary);
+    border-radius: 50%;
+}
+
+.nav-icon-img {
+    width: 24px;
+    height: 24px;
+    filter: grayscale(1);
+    opacity: 0.6;
+    transition: filter var(--motion-fast), opacity var(--motion-fast);
+}
+
+.bottom-nav-item.active .nav-icon-img {
+    filter: none;
+    /* Use original color or apply primary filter via CSS mask if needed. Current icons are black/white. */
+    opacity: 1;
+    /* If we want to colorize SVG icons without mask: 
+       We can't easily colorize img tags. 
+       Assuming current standard is black/white icons. 
+       Active state indicates selected. 
+       Let's stick to opacity/dot indicator for now as per design patterns, 
+       or if icons are SVGs we can use filter to tint them if we really want. 
+       For "Primary" color, we'd need SVG components or masks. 
+       Let's use a simple filter for primary color if we can approx strictly for "active" 
+       but `filter: sepia(1) hue-rotate(...)` is brittle.
+       Better: standard icons are simple. 
+    */
+}
+
+/* Fixed Header Utility */
+.fixed-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: var(--z-header);
+    background: var(--bg-surface);
+    border-bottom: 1px solid var(--divider);
+    height: var(--header-height);
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.has-fixed-header {
+    padding-top: var(--header-height);
+}
+
+/* ------------------------------
+   DEV INDICATORS (HIDE)
+-------------------------------- */
+#__next-build-indicator,
+#__next-build-watcher,
+.nextjs-devtools-indicator,
+.nextjs-devtools-indicator-root,
+[data-nextjs-dev-indicator] {
+    display: none !important;
+}
+
+/* Hide scrollbar globally */
+
+/* Chrome, Edge, Safari */
+::-webkit-scrollbar {
+    width: 0px;
+    height: 0px;
+}
+
+/* Firefox */
+html {
+    scrollbar-width: none;
+}
+
+/* IE / Edge Legacy */
+body {
+    -ms-overflow-style: none;
+}

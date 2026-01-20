@@ -1,21 +1,24 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
+import BottomNavbar from '../../pages/customer/BottomNavbar';
+import { useAuth } from '../../context/AuthContext';
 
-const navLinks = [
-  { href: '/customer/dashboard', label: 'Dashboard' },
-  { href: '/customer/browse-products', label: 'Browse Products' },
-  { href: '/customer/cart', label: 'Cart' },
-  { href: '/customer/cart-pro', label: 'Cart-Pro' },
-  { href: '/customer/track-order', label: 'Track Orders' },
-];
-
-export default function CustomerLayout({ children }: { children: React.ReactNode }) {
+export default function CustomerLayout({
+  children,
+  disablePadding = false,
+  fullWidth = false
+}: {
+  children: React.ReactNode;
+  disablePadding?: boolean;
+  fullWidth?: boolean
+}) {
   const router = useRouter();
+  const { is_authenticated, loading } = useAuth();
   const [isDark, setIsDark] = useState<boolean>(false);
 
+  // 1. THEME LOGIC
   useEffect(() => {
-    // Load theme preference
     if (typeof window !== 'undefined') {
       const theme = localStorage.getItem('cc_theme');
       const prefersDark = theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches);
@@ -28,42 +31,68 @@ export default function CustomerLayout({ children }: { children: React.ReactNode
     }
   }, []);
 
-  const toggleTheme = () => {
-    const newTheme = !isDark;
-    setIsDark(newTheme);
-    if (newTheme) {
-      document.body.classList.add('theme-dark');
-      localStorage.setItem('cc_theme', 'dark');
-    } else {
-      document.body.classList.remove('theme-dark');
-      localStorage.setItem('cc_theme', 'light');
+  // 2. THEME TOGGLE EXPORT
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      (window as any).toggleCustomerTheme = () => {
+        const newTheme = !isDark;
+        setIsDark(newTheme);
+        if (newTheme) {
+          document.body.classList.add('theme-dark');
+          localStorage.setItem('cc_theme', 'dark');
+        } else {
+          document.body.classList.remove('theme-dark');
+          localStorage.setItem('cc_theme', 'light');
+        }
+      };
     }
-  };
+  }, [isDark]);
+
+  // 3. GLOBAL AUTHENTICATION GUARD
+  useEffect(() => {
+    // Prevent auto-logout/redirect loop by waiting for AuthContext to finish loading
+    if (!loading) {
+      if (!is_authenticated) {
+        // No valid session found after revalidation
+        router.replace('/customer/signin');
+      }
+      // Onboarding redirect logic removed - users navigate directly to Home after signup
+    }
+  }, [is_authenticated, loading, router]);
+
+  // 4. LOADING STATE
+  // Show a clean loading screen while AuthContext verifies the token/cookie
+  if (loading) {
+    return (
+      <div style={{
+        height: '100vh',
+        width: '100vw',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: isDark ? '#121212' : '#ffffff',
+        color: isDark ? '#ffffff' : '#000000',
+        fontFamily: 'sans-serif'
+      }}>
+        <div style={{ textAlign: 'center' }}>
+          <p style={{ fontWeight: '500', fontSize: '16px' }}>Securely loading session...</p>
+        </div>
+      </div>
+    );
+  }
+
+  // 5. RENDER PROTECTION
+  // If not authenticated and finished loading, render nothing while redirecting
+  if (!is_authenticated) {
+    return null;
+  }
 
   return (
-    <div className="customer-shell">
-      <header className="customer-topbar">
-        <div className="customer-brand">Customer Test Console</div>
-        <nav className="customer-nav">
-          {navLinks.map((link) => {
-            const active = router.pathname === link.href;
-            return (
-              <Link key={link.href} href={link.href} className={`customer-nav-link ${active ? 'active' : ''}`}>
-                {link.label}
-              </Link>
-            );
-          })}
-          <button
-            className="customer-theme-toggle"
-            onClick={toggleTheme}
-            title={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
-            aria-label="Toggle theme"
-          >
-            {isDark ? '☀️' : '🌙'}
-          </button>
-        </nav>
-      </header>
-      <main className="customer-main">{children}</main>
+    <div className={`customer-shell ${fullWidth ? 'full-width' : ''}`}>
+      <main className={`customer-main ${disablePadding ? 'no-padding' : ''} page-transition`}>
+        {children}
+      </main>
+      <BottomNavbar />
     </div>
   );
 }

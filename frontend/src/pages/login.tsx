@@ -11,8 +11,8 @@ export default function Login() {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    const storedToken = typeof window !== 'undefined' ? localStorage.getItem('cc_token') : null;
-    const storedUser = typeof window !== 'undefined' ? localStorage.getItem('cc_user') : null;
+    const storedToken = typeof window !== 'undefined' ? localStorage.getItem('auth_token') : null;
+    const storedUser = typeof window !== 'undefined' ? localStorage.getItem('auth_user') : null;
     if (storedToken && storedUser) {
       const user = JSON.parse(storedUser);
       setAuthToken(storedToken);
@@ -26,7 +26,7 @@ export default function Login() {
     } else if (role === 'vendor') {
       router.replace('/vendor/dashboard');
     } else {
-      router.replace('/customer/dashboard');
+      router.replace('/customer/browse-products');
     }
   };
 
@@ -38,10 +38,10 @@ export default function Login() {
 
     try {
       const res = await api.auth.login({ email, password });
-      const { token, user } = res.data;
+      const { auth_token, user } = res.data;
       if (typeof window !== 'undefined') {
-        localStorage.setItem('cc_token', token);
-        localStorage.setItem('cc_user', JSON.stringify(user));
+        localStorage.setItem('auth_token', auth_token);
+        localStorage.setItem('auth_user', JSON.stringify(user));
         if (user.role === 'vendor') {
           localStorage.setItem('cc_vendorId', user.id);
         }
@@ -49,7 +49,7 @@ export default function Login() {
           localStorage.setItem('cc_customerId', user.id);
         }
       }
-      setAuthToken(token);
+      setAuthToken(auth_token);
       setMessage('✅ Login successful');
       setMessageType('success');
       redirectByRole(user.role);

@@ -1,6 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 1, "column": 0}, "map": {"version":3,"sources":["file:///C:/Users/vigne/Desktop/Community-Cart/frontend/src/pages/admin/dashboard.css"],"sourcesContent":[".adm-title {\r\n  font-size: 24px;\r\n  font-weight: 700;\r\n  margin-bottom: 18px;\r\n}\r\n\r\n.adm-section {\r\n  margin-top: 24px;\r\n}\r\n\r\n.adm-onboarding {\r\n  display: grid;\r\n  grid-template-columns: repeat(3, 1fr);\r\n  gap: 16px;\r\n}\r\n\r\n@media (max-width: 1200px) {\r\n  .adm-onboarding { grid-template-columns: 1fr; }\r\n}\r\n"],"names":[],"mappings":"AAAA;;;;;;AAMA;;;;AAIA;;;;;;AAMA;EACE"}}]
-}

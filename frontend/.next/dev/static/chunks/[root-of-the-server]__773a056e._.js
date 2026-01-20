@@ -729,7 +729,7 @@ function Login() {
         } else if (role === 'vendor') {
             router.replace('/vendor/dashboard');
         } else {
-            router.replace('/customer/dashboard');
+            router.replace('/customer/browse-products');
         }
     };
     const handleSubmit = async (e)=>{

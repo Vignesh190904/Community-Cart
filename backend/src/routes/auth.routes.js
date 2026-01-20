@@ -4,6 +4,7 @@ import jwt from 'jsonwebtoken';
 import User from '../../models/User.model.js';
 import Vendor from '../models/Vendor.model.js';
 import Customer from '../models/Customer.model.js';
+import { logout } from '../controllers/authCustomer.controller.js';
 
 const router = express.Router();
 
@@ -18,234 +19,125 @@ const signToken = (user) => {
 
 const authGuard = async (req, res, next) => {
   try {
-    const header = req.headers.authorization || '';
-    if (!header.startsWith('Bearer ')) {
-      return res.status(401).json({ success: false, message: 'Authorization header missing' });
+    const auth_token = req.cookies?.auth_token || (req.headers.authorization?.startsWith('Bearer ') ? req.headers.authorization.split(' ')[1] : null);
+
+    if (!auth_token) {
+      return res.status(401).json({ success: false, message: 'Authorization token missing' });
     }
-    const token = header.split(' ')[1];
-    const decoded = jwt.verify(token, JWT_SECRET);
+
+    const decoded = jwt.verify(auth_token, JWT_SECRET);
 
     let principal = null;
     if (decoded.role === 'vendor') {
       principal = await Vendor.findById(decoded.id).select('-password');
       if (principal && decoded.tokenVersion !== undefined && decoded.tokenVersion !== principal.tokenVersion) {
-        return res.status(401).json({ success: false, message: 'Session expired. Please sign in again.' });
+        return res.status(401).json({ success: false, message: 'Session expired.' });
       }
     } else {
       principal = await User.findById(decoded.id).select('-password');
-      if (!principal && decoded.role === 'user') {
+      if (!principal) {
         principal = await Customer.findById(decoded.id).select('-password');
       }
     }
 
     if (!principal || principal.isActive === false) {
-      return res.status(401).json({ success: false, message: 'Account not found or inactive' });
+      return res.status(401).json({ success: false, message: 'Account inactive' });
     }
+
     req.user = principal;
     req.userRole = decoded.role;
     next();
   } catch (error) {
-    return res.status(401).json({ success: false, message: 'Invalid or expired token' });
+    return res.status(401).json({ success: false, message: 'Invalid token' });
   }
 };
+
+router.post('/logout', logout);
+
+router.get('/me', authGuard, (req, res) => {
+  try {
+    const customer = req.user;
+    const is_onboarded = !!(customer.name && customer.phone && customer.addresses?.some(a => a.is_primary));
+
+    return res.status(200).json({
+      success: true,
+      data: {
+        user: {
+          id: customer._id,
+          name: customer.name,
+          email: customer.email,
+          method: customer.auth?.method || 'manual',
+          is_onboarded: is_onboarded,
+          ui_preferences: customer.ui_preferences || { theme: 'light' }
+        }
+      }
+    });
+  } catch (error) {
+    return res.status(500).json({ success: false, message: 'Server error' });
+  }
+});
 
 router.post('/register', async (req, res) => {
   try {
     const { name, email, password, role = 'user' } = req.body;
-    if (!name || !email || !password) {
-      return res.status(400).json({ success: false, message: 'name, email, and password are required' });
-    }
+    if (!name || !email || !password) return res.status(400).json({ success: false, message: 'Missing fields' });
 
     const existing = await User.findOne({ email });
-    if (existing) {
-      return res.status(400).json({ success: false, message: 'Email already registered' });
-    }
+    if (existing) return res.status(400).json({ success: false, message: 'Email registered' });
 
     const hashed = await bcrypt.hash(password, 10);
     const user = await User.create({ name, email, password: hashed, role });
-    const token = signToken(user);
+    const auth_token = signToken(user);
 
-    return res.status(201).json({
-      success: true,
-      message: 'Registration successful',
-      data: {
-        user: {
-          id: user._id,
-          name: user.name,
-          email: user.email,
-          role: user.role,
-          isActive: user.isActive
-        },
-        token
-      }
-    });
+    return res.status(201).json({ success: true, data: { user, auth_token } });
   } catch (error) {
-    return res.status(500).json({ success: false, message: 'Server error during registration', error: error.message });
+    return res.status(500).json({ success: false, message: 'Registration failed' });
   }
 });
 
 router.post('/login', async (req, res) => {
   try {
     const { email, password } = req.body;
-    if (!email || !password) {
-      return res.status(400).json({ success: false, message: 'email and password are required' });
-    }
-
-    // First, try to find user in User collection
     let user = await User.findOne({ email });
-    let role = null;
     let userData = null;
 
-    if (user && user.isActive) {
-      const match = await bcrypt.compare(password, user.password);
-      if (match) {
-        role = user.role;
-        userData = {
-          id: user._id,
-          name: user.name,
-          email: user.email,
-          role: user.role,
-          isActive: user.isActive
-        };
-      }
+    if (user && user.isActive && await bcrypt.compare(password, user.password)) {
+      userData = { id: user._id, name: user.name, email: user.email, role: user.role };
     }
 
-    // If not found in User collection, check Vendor collection
     if (!userData) {
       const vendor = await Vendor.findOne({ 'contact.email': email });
-      if (vendor && vendor.isActive) {
-        const match = await bcrypt.compare(password, vendor.password);
-        if (match) {
-          role = 'vendor';
-          userData = {
-            id: vendor._id,
-            name: vendor.storeName,
-            email: vendor.contact.email,
-            role: 'vendor',
-            isActive: vendor.isActive,
-            tokenVersion: vendor.tokenVersion || 0,
-          };
-        }
+      if (vendor && vendor.isActive && await bcrypt.compare(password, vendor.password)) {
+        userData = { id: vendor._id, name: vendor.storeName, email: vendor.contact.email, role: 'vendor' };
       }
     }
 
-    // If not found in User or Vendor, check Customer collection
     if (!userData) {
       const customer = await Customer.findOne({ email });
       if (customer && customer.isActive) {
-        const stored = customer.password || '';
-        const looksHashed = stored.startsWith('$2a$') || stored.startsWith('$2b$') || stored.startsWith('$2y$');
-        let match = false;
-
-        if (stored && looksHashed) {
-          try {
-            match = await bcrypt.compare(password, stored);
-          } catch (_) {
-            match = false;
-          }
-        } else if (stored && !looksHashed) {
-          // Legacy plaintext password: compare directly, then upgrade to hashed
-          if (password === stored) {
-            match = true;
-            try {
-              const hashed = await bcrypt.hash(stored, 10);
-              customer.password = hashed;
-              await customer.save();
-            } catch (_) {}
-          }
-        }
-
-        if (match) {
-          role = 'user';
-          userData = {
-            id: customer._id,
-            name: customer.name,
-            email: customer.email,
-            role: 'user',
-            isActive: customer.isActive
-          };
+        const stored = customer.password || customer.auth?.manual?.password_hash || '';
+        if (await bcrypt.compare(password, stored)) {
+          userData = { id: customer._id, name: customer.name, email: customer.email, role: 'user' };
         }
       }
     }
 
-    if (!userData) {
-      return res.status(401).json({ success: false, message: 'Invalid credentials' });
-    }
+    if (!userData) return res.status(401).json({ success: false, message: 'Invalid credentials' });
 
-    const token = signToken({ _id: userData.id, role: userData.role, tokenVersion: userData.tokenVersion });
+    const auth_token = signToken({ _id: userData.id, role: userData.role });
 
-    return res.json({
-      success: true,
-      message: 'Login successful',
-      data: {
-        user: userData,
-        token
-      }
+    res.cookie('auth_token', auth_token, {
+      httpOnly: true,
+      secure: true,
+      maxAge: 7 * 24 * 60 * 60 * 1000,
+      sameSite: 'lax',
+      path: '/'
     });
+
+    // CRITICAL: Return token in body as well
+    return res.json({ success: true, data: { user: userData, auth_token } });
   } catch (error) {
-    return res.status(500).json({ success: false, message: 'Server error during login', error: error.message });
-  }
-});
-
-router.get('/me', authGuard, (req, res) => {
-  const base = req.user && typeof req.user.toObject === 'function' ? req.user.toObject() : req.user;
-  const user = { ...base, role: req.userRole };
-  return res.json({ success: true, data: { user } });
-});
-
-// Change password (vendor-side allowed; requires current password)
-router.post('/change-password', async (req, res) => {
-  try {
-    const header = req.headers.authorization || '';
-    if (!header.startsWith('Bearer ')) {
-      return res.status(401).json({ success: false, message: 'Authorization header missing' });
-    }
-    const token = header.split(' ')[1];
-    const decoded = jwt.verify(token, JWT_SECRET);
-
-    const { currentPassword, newPassword } = req.body || {};
-    if (!currentPassword || !newPassword) {
-      return res.status(400).json({ success: false, message: 'currentPassword and newPassword are required' });
-    }
-    if (typeof newPassword !== 'string' || newPassword.length < 8) {
-      return res.status(400).json({ success: false, message: 'New password must be at least 8 characters' });
-    }
-
-    // Support vendor and user/customer accounts
-    let principal = null;
-    let modelType = decoded.role;
-    if (decoded.role === 'vendor') {
-      principal = await Vendor.findById(decoded.id);
-    } else if (decoded.role === 'user') {
-      principal = await Customer.findById(decoded.id);
-    } else {
-      principal = await User.findById(decoded.id);
-    }
-
-    if (!principal || principal.isActive === false) {
-      return res.status(401).json({ success: false, message: 'Account not found or inactive' });
-    }
-
-    const stored = principal.password || '';
-    const looksHashed = stored.startsWith('$2a$') || stored.startsWith('$2b$') || stored.startsWith('$2y$');
-    let match = false;
-    if (stored && looksHashed) {
-      match = await bcrypt.compare(currentPassword, stored);
-    } else {
-      // Legacy plaintext support
-      match = currentPassword === stored;
-    }
-    if (!match) {
-      return res.status(400).json({ success: false, message: 'Current password is incorrect' });
-    }
-
-    const hashed = await bcrypt.hash(newPassword, 10);
-    principal.password = hashed;
-    await principal.save();
-
-    return res.json({ success: true, message: 'Password updated successfully', data: { role: modelType, id: principal._id } });
-  } catch (error) {
-    return res.status(401).json({ success: false, message: 'Invalid or expired token' });
+    return res.status(500).json({ success: false, message: 'Login failed' });
   }
 });
 

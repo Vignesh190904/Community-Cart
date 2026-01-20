@@ -53,6 +53,29 @@ body.theme-dark {
   --info: #4FC3F7;
 }
 
+/* Icon Color Standardization */
+img[src*=".svg"],
+svg {
+  color: #000000;
+}
+
+body.theme-dark img[src*=".svg"],
+body.theme-dark svg {
+  color: #FFFFFF;
+}
+
+.icon-success {
+  color: #22c55e !important;
+}
+
+.icon-warning {
+  color: #facc15 !important;
+}
+
+.icon-danger {
+  color: #ef4444 !important;
+}
+
 /* Reset & Base Styles */
 * {
   margin: 0;
@@ -237,6 +260,7 @@ button[type='submit']:disabled {
     opacity: 0;
     transform: translateY(-10px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);

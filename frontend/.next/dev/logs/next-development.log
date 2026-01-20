@@ -1,70 +1,135 @@
-[00:00:34.374] Server  LOG      ✓ Ready in 22.9s
-[00:00:37.403] Server  LOG      ○ Compiling / ...
-[00:00:54.981] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[00:01:08.474] Server  ERROR   C:\Users\vigne\Desktop\Community-Cart\frontend\node_modules\next\dist\server\dev\on-demand-entry-handler.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:01:08.507] Server  ERROR   C:\Users\vigne\Desktop\Community-Cart\frontend\node_modules\next\dist\server\dev\hot-reloader-turbopack.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:01:08.509] Server  ERROR   C:\Users\vigne\Desktop\Community-Cart\frontend\node_modules\next\dist\trace\trace.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:01:08.513] Server  ERROR   C:\Users\vigne\Desktop\Community-Cart\frontend\node_modules\next\dist\server\lib\router-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:01:08.518] Server  ERROR   C:\Users\vigne\Desktop\Community-Cart\frontend\node_modules\next\dist\server\lib\start-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:01:08.527] Server  ERROR   PageNotFoundError: Cannot find module for page: /admin/reports
-[00:01:14.100] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[00:02:12.524] Server  WARN     ⚠ Fast Refresh had to perform a full reload when ./Desktop/Community-Cart/frontend/src/pages/index.tsx changed. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
-[00:02:12.546] Server  LOG      ✓ Compiled in 104ms
-[00:02:12.654] Server  ERROR   C:\Users\vigne\Desktop\Community-Cart\frontend\node_modules\next\dist\compiled\next-server\pages-turbo.runtime.dev.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:02:12.662] Server  ERROR   C:\Users\vigne\Desktop\Community-Cart\frontend\.next\dev\server\chunks\ssr\48ebd_next_dist_7b5f75e4._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:02:12.667] Server  ERROR   C:\Users\vigne\Desktop\Community-Cart\frontend\node_modules\next\dist\server\base-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:02:12.672] Server  ERROR   C:\Users\vigne\Desktop\Community-Cart\frontend\node_modules\next\dist\server\next-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:02:12.675] Server  ERROR   C:\Users\vigne\Desktop\Community-Cart\frontend\node_modules\next\dist\server\dev\next-dev-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:02:12.676] Server  ERROR   C:\Users\vigne\Desktop\Community-Cart\frontend\node_modules\next\dist\trace\trace.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:02:12.676] Server  ERROR   C:\Users\vigne\Desktop\Community-Cart\frontend\node_modules\next\dist\server\lib\router-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:02:12.677] Server  ERROR   C:\Users\vigne\Desktop\Community-Cart\frontend\node_modules\next\dist\server\lib\start-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:02:12.678] Server  ERROR    ⨯ Error: The default export is not a React Component in page: "/"
-[00:02:12.684] Server  ERROR   C:\Users\vigne\Desktop\Community-Cart\frontend\node_modules\next\dist\compiled\next-server\pages-turbo.runtime.dev.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:02:12.685] Server  ERROR   C:\Users\vigne\Desktop\Community-Cart\frontend\.next\dev\server\chunks\ssr\48ebd_next_dist_7b5f75e4._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:02:12.686] Server  ERROR   C:\Users\vigne\Desktop\Community-Cart\frontend\node_modules\next\dist\server\base-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:02:12.686] Server  ERROR   C:\Users\vigne\Desktop\Community-Cart\frontend\node_modules\next\dist\server\next-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:02:12.687] Server  ERROR   C:\Users\vigne\Desktop\Community-Cart\frontend\node_modules\next\dist\server\dev\next-dev-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:02:12.688] Server  ERROR   C:\Users\vigne\Desktop\Community-Cart\frontend\node_modules\next\dist\trace\trace.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:02:12.688] Server  ERROR   C:\Users\vigne\Desktop\Community-Cart\frontend\node_modules\next\dist\server\lib\router-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:02:12.688] Server  ERROR   C:\Users\vigne\Desktop\Community-Cart\frontend\node_modules\next\dist\server\lib\start-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:02:12.689] Server  ERROR    ⨯ Error: The default export is not a React Component in page: "/"
-[00:02:12.807] Server  ERROR   C:\Users\vigne\Desktop\Community-Cart\frontend\node_modules\next\dist\compiled\next-server\pages-turbo.runtime.dev.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:02:12.808] Server  ERROR   C:\Users\vigne\Desktop\Community-Cart\frontend\.next\dev\server\chunks\ssr\48ebd_next_dist_7b5f75e4._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:02:12.809] Server  ERROR   C:\Users\vigne\Desktop\Community-Cart\frontend\node_modules\next\dist\server\base-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:02:12.809] Server  ERROR   C:\Users\vigne\Desktop\Community-Cart\frontend\node_modules\next\dist\server\next-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:02:12.809] Server  ERROR   C:\Users\vigne\Desktop\Community-Cart\frontend\node_modules\next\dist\server\dev\next-dev-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:02:12.810] Server  ERROR   C:\Users\vigne\Desktop\Community-Cart\frontend\node_modules\next\dist\trace\trace.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:02:12.810] Server  ERROR   C:\Users\vigne\Desktop\Community-Cart\frontend\node_modules\next\dist\server\lib\router-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:02:12.810] Server  ERROR   C:\Users\vigne\Desktop\Community-Cart\frontend\node_modules\next\dist\server\lib\start-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:02:12.811] Server  ERROR    ⨯ Error: The default export is not a React Component in page: "/"
-[00:02:12.812] Server  ERROR   C:\Users\vigne\Desktop\Community-Cart\frontend\node_modules\next\dist\compiled\next-server\pages-turbo.runtime.dev.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:02:12.813] Server  ERROR   C:\Users\vigne\Desktop\Community-Cart\frontend\.next\dev\server\chunks\ssr\48ebd_next_dist_7b5f75e4._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:02:12.813] Server  ERROR   C:\Users\vigne\Desktop\Community-Cart\frontend\node_modules\next\dist\server\base-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:02:12.815] Server  ERROR   C:\Users\vigne\Desktop\Community-Cart\frontend\node_modules\next\dist\server\next-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:02:12.817] Server  ERROR   C:\Users\vigne\Desktop\Community-Cart\frontend\node_modules\next\dist\server\dev\next-dev-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:02:12.819] Server  ERROR   C:\Users\vigne\Desktop\Community-Cart\frontend\node_modules\next\dist\trace\trace.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:02:12.820] Server  ERROR   C:\Users\vigne\Desktop\Community-Cart\frontend\node_modules\next\dist\server\lib\router-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:02:12.821] Server  ERROR   C:\Users\vigne\Desktop\Community-Cart\frontend\node_modules\next\dist\server\lib\start-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:02:12.821] Server  ERROR    ⨯ Error: The default export is not a React Component in page: "/"
-[00:02:13.038] Browser ERROR   uncaughtError: Error: The default export is not a React Component in page: "/"
-[00:02:17.997] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
-[00:02:18.101] Server  LOG      ✓ Compiled in 63ms
-[00:02:23.315] Server  LOG      ✓ Compiled in 16ms
-[00:02:27.012] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[00:03:06.561] Server  LOG      ✓ Compiled in 37ms
-[00:05:11.253] Server  LOG      ✓ Compiled in 29ms
-[00:06:16.950] Server  LOG      ✓ Compiled in 34ms
-[00:06:55.498] Server  LOG      ✓ Compiled in 28ms
-[00:07:28.129] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[00:10:36.489] Server  LOG      ✓ Compiled in 23ms
-[00:10:53.224] Server  ERROR   C:\Users\vigne\Desktop\Community-Cart\frontend\node_modules\next\dist\server\dev\on-demand-entry-handler.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:10:53.225] Server  ERROR   C:\Users\vigne\Desktop\Community-Cart\frontend\node_modules\next\dist\server\dev\hot-reloader-turbopack.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:10:53.226] Server  ERROR   C:\Users\vigne\Desktop\Community-Cart\frontend\node_modules\next\dist\trace\trace.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:10:53.228] Server  ERROR   C:\Users\vigne\Desktop\Community-Cart\frontend\node_modules\next\dist\server\lib\router-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:10:53.229] Server  ERROR   C:\Users\vigne\Desktop\Community-Cart\frontend\node_modules\next\dist\server\lib\start-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:10:53.231] Server  ERROR   PageNotFoundError: Cannot find module for page: /customer/cart-pro
-[00:10:58.281] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[00:13:29.197] Server  LOG      ✓ Compiled in 66ms
-[00:13:48.557] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[00:17:47.738] Server  LOG      ✓ Compiled in 28ms
-[00:18:13.458] Server  LOG      ✓ Compiled in 38ms
+[00:00:24.102] Server  LOG      ✓ Ready in 17.3s
+[00:00:27.207] Server  LOG      ○ Compiling / ...
+[00:01:12.246] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:02:07.622] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:10:51.971] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:13:36.889] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:26:13.324] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:26:36.094] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:27:12.741] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:27:16.022] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:33:41.460] Server  LOG      ✓ Compiled in 428ms
+[00:33:46.253] Server  LOG      ✓ Compiled in 27ms
+[00:35:07.906] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:40:06.853] Server  LOG      ✓ Compiled in 817ms
+[00:40:07.848] Server  LOG      ✓ Compiled in 38ms
+[00:40:39.279] Server  LOG      ✓ Compiled in 55ms
+[00:40:41.195] Server  LOG      ✓ Compiled in 52ms
+[00:46:02.937] Server  LOG      ✓ Compiled in 107ms
+[00:46:03.229] Server  LOG      ✓ Compiled in 238ms
+[00:47:02.057] Server  LOG      ✓ Compiled in 40ms
+[00:47:13.184] Server  LOG      ✓ Compiled in 126ms
+[00:48:49.937] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:49:14.326] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[01:01:23.136] Server  LOG      ✓ Compiled in 351ms
+[01:01:37.215] Server  LOG      ✓ Compiled in 287ms
+[01:02:12.276] Server  LOG      ✓ Compiled in 236ms
+[01:02:49.527] Server  LOG      ✓ Compiled in 87ms
+[01:07:28.666] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[01:07:45.645] Browser LOG     [VerifyMobile] Component Rendered {"email":"","intent":null}
+[01:07:45.645] Browser LOG     [VerifyMobile] Component Rendered {"email":"","intent":null}
+[01:07:53.821] Browser ERROR   {}
+[01:07:53.822] Browser ERROR   {}
+[01:09:28.504] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[01:11:49.822] Server  LOG      ✓ Compiled in 63ms
+[01:11:51.072] Server  LOG      ✓ Compiled in 15ms
+[01:11:54.272] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[01:12:04.837] Server  LOG      ✓ Compiled in 34ms
+[01:12:06.255] Server  LOG      ✓ Compiled in 22ms
+[01:12:14.707] Server  LOG      ✓ Compiled in 18ms
+[01:12:30.892] Server  LOG      ✓ Compiled in 19ms
+[01:12:39.622] Server  LOG      ✓ Compiled in 39ms
+[01:12:48.501] Server  LOG      ✓ Compiled in 31ms
+[01:12:51.488] Server  LOG      ✓ Compiled in 18ms
+[01:13:03.801] Server  LOG      ✓ Compiled in 19ms
+[01:13:05.787] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[01:13:11.166] Server  LOG      ✓ Compiled in 22ms
+[01:13:13.269] Server  LOG      ✓ Compiled in 27ms
+[01:13:19.066] Server  LOG      ✓ Compiled in 13ms
+[01:13:29.118] Server  LOG      ✓ Compiled in 15ms
+[01:13:41.034] Server  LOG      ✓ Compiled in 16ms
+[01:13:47.700] Server  LOG      ✓ Compiled in 16ms
+[01:13:51.483] Server  LOG      ✓ Compiled in 24ms
+[01:15:40.588] Server  LOG      ✓ Compiled in 19ms
+[01:15:44.820] Server  LOG      ✓ Compiled in 27ms
+[01:15:55.359] Server  LOG      ✓ Compiled in 32ms
+[01:16:05.975] Server  LOG      ✓ Compiled in 21ms
+[01:16:18.798] Server  LOG      ✓ Compiled in 24ms
+[01:16:21.569] Server  LOG      ✓ Compiled in 15ms
+[01:16:22.704] Server  LOG      ✓ Compiled in 23ms
+[01:20:35.995] Server  LOG      ✓ Compiled in 152ms
+[01:23:40.026] Server  ERROR   C:\Users\vigne\Desktop\Community-Cart\frontend\.next\dev\server\chunks\ssr\[root-of-the-server]__12465e96._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[01:23:40.044] Server  ERROR   TypeError: Cannot read properties of null (reading 'phone')
+[01:23:40.056] Server  ERROR   C:\Users\vigne\Desktop\Community-Cart\frontend\.next\dev\server\chunks\ssr\[root-of-the-server]__12465e96._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[01:23:40.064] Server  ERROR    ⨯ TypeError: Cannot read properties of null (reading 'phone')
+[01:23:40.074] Server  ERROR   C:\Users\vigne\Desktop\Community-Cart\frontend\.next\dev\server\chunks\ssr\[root-of-the-server]__12465e96._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[01:23:40.085] Server  ERROR    ⨯ TypeError: Cannot read properties of null (reading 'phone')
+[01:23:40.955] Browser ERROR   uncaughtError: TypeError: Cannot read properties of null (reading 'phone')
+[01:23:46.852] Server  ERROR   C:\Users\vigne\Desktop\Community-Cart\frontend\.next\dev\server\chunks\ssr\[root-of-the-server]__12465e96._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[01:23:46.856] Server  ERROR   TypeError: Cannot read properties of null (reading 'phone')
+[01:23:46.859] Server  ERROR   C:\Users\vigne\Desktop\Community-Cart\frontend\.next\dev\server\chunks\ssr\[root-of-the-server]__12465e96._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[01:23:46.862] Server  ERROR    ⨯ TypeError: Cannot read properties of null (reading 'phone')
+[01:23:46.868] Server  ERROR   C:\Users\vigne\Desktop\Community-Cart\frontend\.next\dev\server\chunks\ssr\[root-of-the-server]__12465e96._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[01:23:46.873] Server  ERROR    ⨯ TypeError: Cannot read properties of null (reading 'phone')
+[01:23:47.124] Browser ERROR   uncaughtError: TypeError: Cannot read properties of null (reading 'phone')
+[01:24:12.328] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[01:24:12.360] Server  LOG      ✓ Compiled in 53ms
+[01:24:22.278] Server  LOG      ✓ Compiled in 25ms
+[01:24:41.938] Server  LOG      ✓ Compiled in 37ms
+[01:25:04.448] Server  LOG      ✓ Compiled in 41ms
+[01:25:05.253] Browser ERROR   uncaughtError: TypeError: Cannot read properties of null (reading 'phone')
+[01:25:05.253] Browser ERROR   Warning: An error occurred during hydration. The server HTML was replaced with client content in <%s>. div
+[01:25:05.253] Browser ERROR   uncaughtError: TypeError: Cannot read properties of null (reading 'phone')
+[01:25:05.253] Browser ERROR   The above error occurred in the <EditProfilePage> component:
+
+    at EditProfilePage (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__bb4dcc2b._.js?id=%255Bproject%255D%252FDesktop%252FCommunity-Cart%252Ffrontend%252Fsrc%252Fpages%252Fcustomer%252Fedit-profile.tsx+%255Bclient%255D+%2528ecmascript%2529:26:204)
+    at CustomerStoreProvider (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__b91b3d3b._.js?ts=1768841674240:1310:34)
+    at AuthProvider (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__b91b3d3b._.js?ts=1768841674240:1502:25)
+    at ToastProvider (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__b91b3d3b._.js?ts=1768841674240:1193:26)
+    at MyApp (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__b91b3d3b._.js?ts=1768841674240:1681:18)
+    at PathnameContextProviderAdapter (http://localhost:4646/_next/static/chunks/48ebd_next_dist_shared_lib_2dd775c2._.js?ts=1768841674240:5052:43)
+    at PagesDevOverlayErrorBoundary (http://localhost:4646/_next/static/chunks/48ebd_next_dist_6f9203da._.js?ts=1768841674240:1142:9)
+    at PagesDevOverlayBridge (http://localhost:4646/_next/static/chunks/48ebd_next_dist_6f9203da._.js?ts=1768841674240:1919:34)
+    at Container (http://localhost:4646/_next/static/chunks/48ebd_next_dist_client_990bb439._.js?ts=1768841674240:3041:1)
+    at AppContainer (http://localhost:4646/_next/static/chunks/48ebd_next_dist_client_990bb439._.js?ts=1768841674240:3140:25)
+    at Root (http://localhost:4646/_next/static/chunks/48ebd_next_dist_client_990bb439._.js?ts=1768841674240:3348:17)
+
+React will try to recreate this component tree from scratch using the error boundary you provided, PagesDevOverlayErrorBoundary.
+[01:25:05.253] Browser ERROR   uncaughtError: Error: There was an error while hydrating. Because the error happened outside of a Suspense boundary, the entire root will switch to client rendering.
+[01:25:06.860] Server  ERROR   C:\Users\vigne\Desktop\Community-Cart\frontend\.next\dev\server\chunks\ssr\[root-of-the-server]__12465e96._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[01:25:06.866] Server  ERROR   TypeError: Cannot read properties of null (reading 'phone')
+[01:25:06.868] Server  ERROR   C:\Users\vigne\Desktop\Community-Cart\frontend\.next\dev\server\chunks\ssr\[root-of-the-server]__12465e96._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[01:25:06.873] Server  ERROR    ⨯ TypeError: Cannot read properties of null (reading 'phone')
+[01:25:06.876] Server  ERROR   C:\Users\vigne\Desktop\Community-Cart\frontend\.next\dev\server\chunks\ssr\[root-of-the-server]__12465e96._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[01:25:06.882] Server  ERROR    ⨯ TypeError: Cannot read properties of null (reading 'phone')
+[01:25:07.186] Browser ERROR   uncaughtError: TypeError: Cannot read properties of null (reading 'phone')
+[01:25:17.428] Server  ERROR   C:\Users\vigne\Desktop\Community-Cart\frontend\.next\dev\server\chunks\ssr\[root-of-the-server]__12465e96._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[01:25:17.442] Server  ERROR   TypeError: Cannot read properties of null (reading 'phone')
+[01:25:17.446] Server  ERROR   C:\Users\vigne\Desktop\Community-Cart\frontend\.next\dev\server\chunks\ssr\[root-of-the-server]__12465e96._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[01:25:17.458] Server  ERROR    ⨯ TypeError: Cannot read properties of null (reading 'phone')
+[01:25:17.463] Server  ERROR   C:\Users\vigne\Desktop\Community-Cart\frontend\.next\dev\server\chunks\ssr\[root-of-the-server]__12465e96._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[01:25:17.475] Server  ERROR    ⨯ TypeError: Cannot read properties of null (reading 'phone')
+[01:25:17.741] Browser ERROR   uncaughtError: TypeError: Cannot read properties of null (reading 'phone')
+[01:25:26.240] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[01:25:26.344] Server  ERROR   C:\Users\vigne\Desktop\Community-Cart\frontend\.next\dev\server\chunks\ssr\[root-of-the-server]__12465e96._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[01:25:26.349] Server  ERROR   TypeError: Cannot read properties of null (reading 'phone')
+[01:25:26.350] Server  ERROR   C:\Users\vigne\Desktop\Community-Cart\frontend\.next\dev\server\chunks\ssr\[root-of-the-server]__12465e96._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[01:25:26.353] Server  ERROR    ⨯ TypeError: Cannot read properties of null (reading 'phone')
+[01:25:26.354] Server  ERROR   C:\Users\vigne\Desktop\Community-Cart\frontend\.next\dev\server\chunks\ssr\[root-of-the-server]__12465e96._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[01:25:26.356] Server  ERROR    ⨯ TypeError: Cannot read properties of null (reading 'phone')
+[01:25:26.359] Server  LOG      ✓ Compiled in 65ms
+[01:25:26.638] Browser ERROR   uncaughtError: TypeError: Cannot read properties of null (reading 'phone')
+[01:28:34.262] Server  LOG      ✓ Compiled in 46ms
+[01:31:47.815] Server  LOG      ✓ Compiled in 59ms
+[01:31:48.833] Server  LOG      ✓ Compiled in 24ms
+[01:32:01.035] Server  LOG      ✓ Compiled in 30ms
+[01:32:04.585] Server  LOG      ✓ Compiled in 26ms
+[01:32:14.784] Server  LOG      ✓ Compiled in 24ms
+[01:32:49.924] Server  LOG      ✓ Compiled in 38ms
+[01:35:55.792] Server  LOG      ✓ Compiled in 498ms
+[01:39:00.336] Server  LOG      ✓ Compiled in 100ms
+[01:41:31.783] Server  LOG      ✓ Compiled in 366ms
+[01:46:03.634] Server  LOG      ✓ Compiled in 274ms
+[01:46:32.747] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[01:46:38.950] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[01:50:14.498] Server  LOG      ✓ Compiled in 70ms
