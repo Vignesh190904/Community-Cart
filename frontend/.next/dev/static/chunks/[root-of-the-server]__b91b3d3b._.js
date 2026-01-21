@@ -781,7 +781,8 @@ function DashboardLayout({ role, children }) {
             // Read from localStorage if available (set during login)
             if ("TURBOPACK compile-time truthy", 1) {
                 try {
-                    const stored = localStorage.getItem('cc_user');
+                    // Read from auth_user (set by login page)
+                    const stored = localStorage.getItem('auth_user');
                     if (stored) {
                         const parsed = JSON.parse(stored);
                         if (parsed?.name) setUserName(parsed.name);
@@ -800,7 +801,7 @@ function DashboardLayout({ role, children }) {
                 // Load vendor avatar if role is vendor
                 try {
                     if (role === 'vendor') {
-                        const token = localStorage.getItem('cc_token');
+                        const token = localStorage.getItem('auth_token');
                         const vendorId = localStorage.getItem('cc_vendorId');
                         if (token && vendorId) {
                             (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$src$2f$services$2f$api$2e$ts__$5b$client$5d$__$28$ecmascript$29$__["setAuthToken"])(token);
@@ -840,7 +841,7 @@ function DashboardLayout({ role, children }) {
                         children: "Community Cart"
                     }, void 0, false, {
                         fileName: "[project]/Desktop/Community-Cart/frontend/src/components/layout/DashboardLayout.tsx",
-                        lineNumber: 95,
+                        lineNumber: 96,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("nav", {
@@ -865,7 +866,7 @@ function DashboardLayout({ role, children }) {
                                                 children: "▣"
                                             }, void 0, false, {
                                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/components/layout/DashboardLayout.tsx",
-                                                lineNumber: 107,
+                                                lineNumber: 108,
                                                 columnNumber: 21
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -873,29 +874,29 @@ function DashboardLayout({ role, children }) {
                                                 children: item.label
                                             }, void 0, false, {
                                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/components/layout/DashboardLayout.tsx",
-                                                lineNumber: 108,
+                                                lineNumber: 109,
                                                 columnNumber: 21
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/Desktop/Community-Cart/frontend/src/components/layout/DashboardLayout.tsx",
-                                        lineNumber: 106,
+                                        lineNumber: 107,
                                         columnNumber: 19
                                     }, this)
                                 }, item.href, false, {
                                     fileName: "[project]/Desktop/Community-Cart/frontend/src/components/layout/DashboardLayout.tsx",
-                                    lineNumber: 105,
+                                    lineNumber: 106,
                                     columnNumber: 17
                                 }, this);
                             })
                         }, void 0, false, {
                             fileName: "[project]/Desktop/Community-Cart/frontend/src/components/layout/DashboardLayout.tsx",
-                            lineNumber: 97,
+                            lineNumber: 98,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/Desktop/Community-Cart/frontend/src/components/layout/DashboardLayout.tsx",
-                        lineNumber: 96,
+                        lineNumber: 97,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -914,12 +915,12 @@ function DashboardLayout({ role, children }) {
                                             alt: "Profile"
                                         }, void 0, false, {
                                             fileName: "[project]/Desktop/Community-Cart/frontend/src/components/layout/DashboardLayout.tsx",
-                                            lineNumber: 119,
+                                            lineNumber: 120,
                                             columnNumber: 17
                                         }, this) : (userName || 'U').trim().charAt(0).toUpperCase()
                                     }, void 0, false, {
                                         fileName: "[project]/Desktop/Community-Cart/frontend/src/components/layout/DashboardLayout.tsx",
-                                        lineNumber: 117,
+                                        lineNumber: 118,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -930,7 +931,7 @@ function DashboardLayout({ role, children }) {
                                                 children: userName || 'User'
                                             }, void 0, false, {
                                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/components/layout/DashboardLayout.tsx",
-                                                lineNumber: 125,
+                                                lineNumber: 126,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -938,19 +939,19 @@ function DashboardLayout({ role, children }) {
                                                 children: userEmail || '—'
                                             }, void 0, false, {
                                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/components/layout/DashboardLayout.tsx",
-                                                lineNumber: 126,
+                                                lineNumber: 127,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/Desktop/Community-Cart/frontend/src/components/layout/DashboardLayout.tsx",
-                                        lineNumber: 124,
+                                        lineNumber: 125,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/components/layout/DashboardLayout.tsx",
-                                lineNumber: 116,
+                                lineNumber: 117,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -960,34 +961,40 @@ function DashboardLayout({ role, children }) {
                                 children: isDark ? 'Light' : 'Dark'
                             }, void 0, false, {
                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/components/layout/DashboardLayout.tsx",
-                                lineNumber: 129,
+                                lineNumber: 130,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                 className: "dash-logout-btn",
                                 onClick: ()=>{
                                     if ("TURBOPACK compile-time truthy", 1) {
+                                        // Clear all authentication tokens
+                                        localStorage.removeItem('auth_token');
+                                        localStorage.removeItem('auth_user');
                                         localStorage.removeItem('cc_token');
                                         localStorage.removeItem('cc_user');
+                                        localStorage.removeItem('cc_vendorId');
+                                        localStorage.removeItem('cc_customerId');
                                     }
+                                    (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$src$2f$services$2f$api$2e$ts__$5b$client$5d$__$28$ecmascript$29$__["setAuthToken"])(''); // Clear API token
                                     router.replace('/login');
                                 },
                                 children: "Logout"
                             }, void 0, false, {
                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/components/layout/DashboardLayout.tsx",
-                                lineNumber: 136,
+                                lineNumber: 137,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/Desktop/Community-Cart/frontend/src/components/layout/DashboardLayout.tsx",
-                        lineNumber: 115,
+                        lineNumber: 116,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/Desktop/Community-Cart/frontend/src/components/layout/DashboardLayout.tsx",
-                lineNumber: 94,
+                lineNumber: 95,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("main", {
@@ -996,13 +1003,13 @@ function DashboardLayout({ role, children }) {
                 children: children
             }, void 0, false, {
                 fileName: "[project]/Desktop/Community-Cart/frontend/src/components/layout/DashboardLayout.tsx",
-                lineNumber: 150,
+                lineNumber: 157,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/Desktop/Community-Cart/frontend/src/components/layout/DashboardLayout.tsx",
-        lineNumber: 93,
+        lineNumber: 94,
         columnNumber: 5
     }, this);
 }
@@ -1594,7 +1601,7 @@ function AuthProvider({ children }) {
         children: children
     }, void 0, false, {
         fileName: "[project]/Desktop/Community-Cart/frontend/src/context/AuthContext.tsx",
-        lineNumber: 117,
+        lineNumber: 118,
         columnNumber: 9
     }, this);
 }
@@ -1630,6 +1637,8 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart
 var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$src$2f$context$2f$AuthContext$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/Community-Cart/frontend/src/context/AuthContext.tsx [client] (ecmascript)");
 ;
 var _s = __turbopack_context__.k.signature();
+;
+;
 ;
 ;
 ;
@@ -1805,7 +1814,7 @@ function MyApp({ Component, pageProps }) {
         ...pageProps
     }, void 0, false, {
         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/_app.tsx",
-        lineNumber: 164,
+        lineNumber: 166,
         columnNumber: 38
     }, this));
     if (isAdminPage) {
@@ -1815,12 +1824,12 @@ function MyApp({ Component, pageProps }) {
                 ...pageProps
             }, void 0, false, {
                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/_app.tsx",
-                lineNumber: 169,
+                lineNumber: 171,
                 columnNumber: 9
             }, this)
         }, void 0, false, {
             fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/_app.tsx",
-            lineNumber: 168,
+            lineNumber: 170,
             columnNumber: 7
         }, this);
     } else if (isVendorPage) {
@@ -1830,12 +1839,12 @@ function MyApp({ Component, pageProps }) {
                 ...pageProps
             }, void 0, false, {
                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/_app.tsx",
-                lineNumber: 175,
+                lineNumber: 177,
                 columnNumber: 9
             }, this)
         }, void 0, false, {
             fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/_app.tsx",
-            lineNumber: 174,
+            lineNumber: 176,
             columnNumber: 7
         }, this);
     }
@@ -1858,7 +1867,7 @@ function MyApp({ Component, pageProps }) {
                 }
             }, void 0, false, {
                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/_app.tsx",
-                lineNumber: 183,
+                lineNumber: 185,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$src$2f$components$2f$ui$2f$ToastProvider$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__["ToastProvider"], {
@@ -1867,17 +1876,17 @@ function MyApp({ Component, pageProps }) {
                         children: content
                     }, void 0, false, {
                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/_app.tsx",
-                        lineNumber: 203,
+                        lineNumber: 205,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/_app.tsx",
-                    lineNumber: 202,
+                    lineNumber: 204,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/_app.tsx",
-                lineNumber: 200,
+                lineNumber: 202,
                 columnNumber: 7
             }, this)
         ]

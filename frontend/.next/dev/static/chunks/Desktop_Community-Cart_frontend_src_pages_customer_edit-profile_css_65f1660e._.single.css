@@ -66,6 +66,26 @@
   right: 0;
 }
 
+.delete-avatar-btn {
+  cursor: pointer;
+  background-color: #ef4444;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.delete-avatar-btn:disabled, .edit-avatar-btn:disabled {
+  opacity: .5;
+  cursor: not-allowed;
+}
+
 .edit-fields-container {
   flex-direction: column;
   gap: 24px;
@@ -126,8 +146,15 @@
 .valid-check-icon {
   width: 24px;
   height: 24px;
-  color: var(--primary);
   margin-left: 8px;
+}
+
+.valid-check-icon.saved {
+  filter: brightness(0) saturate() invert(64%) sepia(98%) saturate(451%) hue-rotate(76deg) brightness(91%) contrast(86%);
+}
+
+.valid-check-icon.editing {
+  filter: var(--icon-filter, brightness(0) invert(0));
 }
 
 .save-profile-btn {

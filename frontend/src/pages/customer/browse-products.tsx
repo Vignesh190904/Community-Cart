@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import CustomerLayout from '../../components/customer/CustomerLayout';
 import { useCustomerStore } from '../../context/CustomerStore';
 import { useToast } from '../../components/ui/ToastProvider';
+import { addToWishlist, removeFromWishlist, fetchWishlist, WishlistItem } from '../../services/wishlistApi';
 
 interface Product {
     _id: string;
@@ -32,15 +33,57 @@ export default function BrowseProducts() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
     const [searchTerm, setSearchTerm] = useState('');
-    const [wishlist, setWishlist] = useState<Set<string>>(new Set());
+    const [wishlist, setWishlist] = useState<WishlistItem[]>([]);
+    const [wishlistLoading, setWishlistLoading] = useState(false);
 
-    const toggleWishlist = (id: string) => {
-        setWishlist(prev => {
-            const next = new Set(prev);
-            if (next.has(id)) next.delete(id);
-            else next.add(id);
-            return next;
-        });
+    // Fetch wishlist from backend
+    useEffect(() => {
+        const loadWishlist = async () => {
+            try {
+                const data = await fetchWishlist();
+                setWishlist(data);
+            } catch (err: any) {
+                // Silent fail - user might not be logged in yet
+                console.error('Failed to load wishlist:', err);
+            }
+        };
+        loadWishlist();
+    }, []);
+
+    const toggleWishlist = async (productId: string) => {
+        const isCurrentlyInWishlist = wishlist.some(item => item.product._id === productId);
+
+        // Optimistic UI update
+        if (isCurrentlyInWishlist) {
+            setWishlist(prev => prev.filter(item => item.product._id !== productId));
+        } else {
+            // We'll refetch after adding to get the complete data
+            setWishlistLoading(true);
+        }
+
+        try {
+            if (isCurrentlyInWishlist) {
+                await removeFromWishlist(productId);
+                pushToast({ type: 'success', message: 'Removed from favorites' });
+            } else {
+                await addToWishlist(productId);
+                // Refetch wishlist to get the complete item data
+                const updatedWishlist = await fetchWishlist();
+                setWishlist(updatedWishlist);
+                pushToast({ type: 'success', message: 'Added to favorites' });
+            }
+        } catch (err: any) {
+            // Revert optimistic update on error
+            if (isCurrentlyInWishlist) {
+                const updatedWishlist = await fetchWishlist();
+                setWishlist(updatedWishlist);
+            } else {
+                setWishlist(prev => prev.filter(item => item.product._id !== productId));
+            }
+            pushToast({ type: 'error', message: err.message || 'Failed to update wishlist' });
+        } finally {
+            setWishlistLoading(false);
+        }
     };
 
     useEffect(() => {
@@ -72,7 +115,7 @@ export default function BrowseProducts() {
         const currentQty = cartMap.get(product._id) || 0;
         if (stock <= 0) return;
         if (currentQty >= stock) {
-            pushToast({ type: 'warning', title: 'Stock limit', message: `Only ${stock} left for ${product.name}` });
+            pushToast({ type: 'warning', message: `Only ${stock} left for ${product.name}` });
             return;
         }
 
@@ -147,7 +190,7 @@ export default function BrowseProducts() {
                                         {isNew && <span className="product-badge new">NEW</span>}
                                         <button className="product-wishlist-btn" onClick={(e) => { e.stopPropagation(); toggleWishlist(product._id); }}>
                                             <img
-                                                src={wishlist.has(product._id) ? "/customer/assets/icons/favorite-filled.svg" : "/customer/assets/icons/favorite.svg"}
+                                                src={wishlist.some(item => item.product._id === product._id) ? "/customer/assets/icons/favorite-filled.svg" : "/customer/assets/icons/favorite.svg"}
                                                 alt="Wishlist"
                                                 style={{ width: '24px', height: '24px' }}
                                             />

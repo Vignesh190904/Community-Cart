@@ -43,13 +43,14 @@ export default function DashboardLayout({ role, children }: DashboardLayoutProps
     // Read from localStorage if available (set during login)
     if (typeof window !== 'undefined') {
       try {
-        const stored = localStorage.getItem('cc_user');
+        // Read from auth_user (set by login page)
+        const stored = localStorage.getItem('auth_user');
         if (stored) {
           const parsed = JSON.parse(stored);
           if (parsed?.name) setUserName(parsed.name);
           if (parsed?.email) setUserEmail(parsed.email);
         }
-      } catch {}
+      } catch { }
 
       // Load theme preference
       const theme = localStorage.getItem('cc_theme');
@@ -63,17 +64,17 @@ export default function DashboardLayout({ role, children }: DashboardLayoutProps
       // Load vendor avatar if role is vendor
       try {
         if (role === 'vendor') {
-          const token = localStorage.getItem('cc_token');
+          const token = localStorage.getItem('auth_token');
           const vendorId = localStorage.getItem('cc_vendorId');
           if (token && vendorId) {
             setAuthToken(token);
             api.vendors.getById(vendorId).then((data: any) => {
               const url = data?.media?.logoUrl || '';
               if (url) setAvatarUrl(url);
-            }).catch(() => {});
+            }).catch(() => { });
           }
         }
-      } catch {}
+      } catch { }
     }
   }, []);
 
@@ -137,9 +138,15 @@ export default function DashboardLayout({ role, children }: DashboardLayoutProps
             className="dash-logout-btn"
             onClick={() => {
               if (typeof window !== 'undefined') {
+                // Clear all authentication tokens
+                localStorage.removeItem('auth_token');
+                localStorage.removeItem('auth_user');
                 localStorage.removeItem('cc_token');
                 localStorage.removeItem('cc_user');
+                localStorage.removeItem('cc_vendorId');
+                localStorage.removeItem('cc_customerId');
               }
+              setAuthToken(''); // Clear API token
               router.replace('/login');
             }}
           >

@@ -79,6 +79,28 @@
     cursor: pointer;
 }
 
+.delete-avatar-btn {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: #EF4444;
+    /* Red color for delete */
+    border: 2px solid white;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.delete-avatar-btn:disabled,
+.edit-avatar-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
 /* Input Fields Section */
 .edit-fields-container {
     width: 100%;
@@ -143,9 +165,19 @@
 .valid-check-icon {
     width: 24px;
     height: 24px;
-    color: var(--primary);
-    /* Green check */
     margin-left: 8px;
+}
+
+/* Green when saved (not changed) */
+.valid-check-icon.saved {
+    filter: brightness(0) saturate(100%) invert(64%) sepia(98%) saturate(451%) hue-rotate(76deg) brightness(91%) contrast(86%);
+    /* Green color filter */
+}
+
+/* Theme color when editing (changed but not saved) */
+.valid-check-icon.editing {
+    filter: var(--icon-filter, brightness(0) invert(0));
+    /* Dark in light mode, white in dark mode */
 }
 
 /* Save Button */

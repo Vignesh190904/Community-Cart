@@ -1,135 +1,92 @@
-[00:00:24.102] Server  LOG      ✓ Ready in 17.3s
-[00:00:27.207] Server  LOG      ○ Compiling / ...
-[00:01:12.246] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[00:02:07.622] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[00:10:51.971] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[00:13:36.889] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[00:26:13.324] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[00:26:36.094] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[00:27:12.741] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[00:27:16.022] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[00:33:41.460] Server  LOG      ✓ Compiled in 428ms
-[00:33:46.253] Server  LOG      ✓ Compiled in 27ms
-[00:35:07.906] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[00:40:06.853] Server  LOG      ✓ Compiled in 817ms
-[00:40:07.848] Server  LOG      ✓ Compiled in 38ms
-[00:40:39.279] Server  LOG      ✓ Compiled in 55ms
-[00:40:41.195] Server  LOG      ✓ Compiled in 52ms
-[00:46:02.937] Server  LOG      ✓ Compiled in 107ms
-[00:46:03.229] Server  LOG      ✓ Compiled in 238ms
-[00:47:02.057] Server  LOG      ✓ Compiled in 40ms
-[00:47:13.184] Server  LOG      ✓ Compiled in 126ms
-[00:48:49.937] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[00:49:14.326] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[01:01:23.136] Server  LOG      ✓ Compiled in 351ms
-[01:01:37.215] Server  LOG      ✓ Compiled in 287ms
-[01:02:12.276] Server  LOG      ✓ Compiled in 236ms
-[01:02:49.527] Server  LOG      ✓ Compiled in 87ms
-[01:07:28.666] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[01:07:45.645] Browser LOG     [VerifyMobile] Component Rendered {"email":"","intent":null}
-[01:07:45.645] Browser LOG     [VerifyMobile] Component Rendered {"email":"","intent":null}
-[01:07:53.821] Browser ERROR   {}
-[01:07:53.822] Browser ERROR   {}
-[01:09:28.504] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[01:11:49.822] Server  LOG      ✓ Compiled in 63ms
-[01:11:51.072] Server  LOG      ✓ Compiled in 15ms
-[01:11:54.272] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[01:12:04.837] Server  LOG      ✓ Compiled in 34ms
-[01:12:06.255] Server  LOG      ✓ Compiled in 22ms
-[01:12:14.707] Server  LOG      ✓ Compiled in 18ms
-[01:12:30.892] Server  LOG      ✓ Compiled in 19ms
-[01:12:39.622] Server  LOG      ✓ Compiled in 39ms
-[01:12:48.501] Server  LOG      ✓ Compiled in 31ms
-[01:12:51.488] Server  LOG      ✓ Compiled in 18ms
-[01:13:03.801] Server  LOG      ✓ Compiled in 19ms
-[01:13:05.787] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[01:13:11.166] Server  LOG      ✓ Compiled in 22ms
-[01:13:13.269] Server  LOG      ✓ Compiled in 27ms
-[01:13:19.066] Server  LOG      ✓ Compiled in 13ms
-[01:13:29.118] Server  LOG      ✓ Compiled in 15ms
-[01:13:41.034] Server  LOG      ✓ Compiled in 16ms
-[01:13:47.700] Server  LOG      ✓ Compiled in 16ms
-[01:13:51.483] Server  LOG      ✓ Compiled in 24ms
-[01:15:40.588] Server  LOG      ✓ Compiled in 19ms
-[01:15:44.820] Server  LOG      ✓ Compiled in 27ms
-[01:15:55.359] Server  LOG      ✓ Compiled in 32ms
-[01:16:05.975] Server  LOG      ✓ Compiled in 21ms
-[01:16:18.798] Server  LOG      ✓ Compiled in 24ms
-[01:16:21.569] Server  LOG      ✓ Compiled in 15ms
-[01:16:22.704] Server  LOG      ✓ Compiled in 23ms
-[01:20:35.995] Server  LOG      ✓ Compiled in 152ms
-[01:23:40.026] Server  ERROR   C:\Users\vigne\Desktop\Community-Cart\frontend\.next\dev\server\chunks\ssr\[root-of-the-server]__12465e96._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[01:23:40.044] Server  ERROR   TypeError: Cannot read properties of null (reading 'phone')
-[01:23:40.056] Server  ERROR   C:\Users\vigne\Desktop\Community-Cart\frontend\.next\dev\server\chunks\ssr\[root-of-the-server]__12465e96._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[01:23:40.064] Server  ERROR    ⨯ TypeError: Cannot read properties of null (reading 'phone')
-[01:23:40.074] Server  ERROR   C:\Users\vigne\Desktop\Community-Cart\frontend\.next\dev\server\chunks\ssr\[root-of-the-server]__12465e96._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[01:23:40.085] Server  ERROR    ⨯ TypeError: Cannot read properties of null (reading 'phone')
-[01:23:40.955] Browser ERROR   uncaughtError: TypeError: Cannot read properties of null (reading 'phone')
-[01:23:46.852] Server  ERROR   C:\Users\vigne\Desktop\Community-Cart\frontend\.next\dev\server\chunks\ssr\[root-of-the-server]__12465e96._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[01:23:46.856] Server  ERROR   TypeError: Cannot read properties of null (reading 'phone')
-[01:23:46.859] Server  ERROR   C:\Users\vigne\Desktop\Community-Cart\frontend\.next\dev\server\chunks\ssr\[root-of-the-server]__12465e96._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[01:23:46.862] Server  ERROR    ⨯ TypeError: Cannot read properties of null (reading 'phone')
-[01:23:46.868] Server  ERROR   C:\Users\vigne\Desktop\Community-Cart\frontend\.next\dev\server\chunks\ssr\[root-of-the-server]__12465e96._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[01:23:46.873] Server  ERROR    ⨯ TypeError: Cannot read properties of null (reading 'phone')
-[01:23:47.124] Browser ERROR   uncaughtError: TypeError: Cannot read properties of null (reading 'phone')
-[01:24:12.328] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
-[01:24:12.360] Server  LOG      ✓ Compiled in 53ms
-[01:24:22.278] Server  LOG      ✓ Compiled in 25ms
-[01:24:41.938] Server  LOG      ✓ Compiled in 37ms
-[01:25:04.448] Server  LOG      ✓ Compiled in 41ms
-[01:25:05.253] Browser ERROR   uncaughtError: TypeError: Cannot read properties of null (reading 'phone')
-[01:25:05.253] Browser ERROR   Warning: An error occurred during hydration. The server HTML was replaced with client content in <%s>. div
-[01:25:05.253] Browser ERROR   uncaughtError: TypeError: Cannot read properties of null (reading 'phone')
-[01:25:05.253] Browser ERROR   The above error occurred in the <EditProfilePage> component:
+[00:00:23.205] Server  LOG      ✓ Ready in 14.8s
+[00:00:35.998] Server  LOG      ○ Compiling / ...
+[00:00:48.599] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:01:59.805] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:06:12.095] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:06:27.881] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:06:36.044] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:10:29.747] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:10:41.663] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:13:45.853] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:14:39.500] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:14:55.089] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:15:03.541] Server  LOG      ✓ Compiled in 107ms
+[00:15:04.048] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:15:08.380] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:15:17.766] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:15:31.777] Server  LOG      ✓ Compiled in 91ms
+[00:15:47.927] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:15:57.532] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:18:48.543] Server  LOG      ✓ Compiled in 55ms
+[00:20:21.429] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:20:38.554] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:21:12.010] Browser LOG     [vendor:loadOrders] vendorId= 69440dabd39acfb6ef8909e5
+[00:21:12.010] Browser LOG     [vendor:loadOrders] vendorId= 69440dabd39acfb6ef8909e5
+[00:21:12.010] Browser LOG     [vendor:loadOrders] fetched orders count= 1
+[00:21:12.010] Browser LOG     [vendor:loadOrders] fetched orders count= 1
+[00:21:46.058] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:22:51.470] Server  LOG      ✓ Compiled in 33ms
+[00:23:24.103] Server  LOG      ✓ Compiled in 21ms
+[00:24:06.664] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:24:40.578] Server  LOG      ✓ Compiled in 14ms
+[00:25:49.459] Server  LOG      ✓ Compiled in 171ms
+[00:25:49.692] Browser LOG     Refreshing page data due to server-side change
+[00:25:49.693] Browser LOG     Refreshing page data due to server-side change
+[00:26:06.991] Server  LOG      ✓ Compiled in 26ms
+[00:28:18.432] Server  LOG      ✓ Compiled in 25ms
+[00:28:20.034] Server  LOG      ✓ Compiled in 25ms
+[00:28:25.772] Server  LOG      ✓ Compiled in 124ms
+[00:28:26.685] Browser LOG     Refreshing page data due to server-side change
+[00:28:26.685] Browser ERROR   ./Desktop/Community-Cart/frontend/src/pages/login.tsx:91:13
+Parsing ecmascript source code failed
+  89 |             onChange={(e) => setPassword(e.target.value)}
+  90 |             required
+> 91 |             <button
+     |             ^
+  92 |             type="button"
+  93 |             className="password-toggle-btn"
+  94 |             onClick={() => setShowPassword(!showPassword)}
 
-    at EditProfilePage (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__bb4dcc2b._.js?id=%255Bproject%255D%252FDesktop%252FCommunity-Cart%252Ffrontend%252Fsrc%252Fpages%252Fcustomer%252Fedit-profile.tsx+%255Bclient%255D+%2528ecmascript%2529:26:204)
-    at CustomerStoreProvider (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__b91b3d3b._.js?ts=1768841674240:1310:34)
-    at AuthProvider (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__b91b3d3b._.js?ts=1768841674240:1502:25)
-    at ToastProvider (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__b91b3d3b._.js?ts=1768841674240:1193:26)
-    at MyApp (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__b91b3d3b._.js?ts=1768841674240:1681:18)
-    at PathnameContextProviderAdapter (http://localhost:4646/_next/static/chunks/48ebd_next_dist_shared_lib_2dd775c2._.js?ts=1768841674240:5052:43)
-    at PagesDevOverlayErrorBoundary (http://localhost:4646/_next/static/chunks/48ebd_next_dist_6f9203da._.js?ts=1768841674240:1142:9)
-    at PagesDevOverlayBridge (http://localhost:4646/_next/static/chunks/48ebd_next_dist_6f9203da._.js?ts=1768841674240:1919:34)
-    at Container (http://localhost:4646/_next/static/chunks/48ebd_next_dist_client_990bb439._.js?ts=1768841674240:3041:1)
-    at AppContainer (http://localhost:4646/_next/static/chunks/48ebd_next_dist_client_990bb439._.js?ts=1768841674240:3140:25)
-    at Root (http://localhost:4646/_next/static/chunks/48ebd_next_dist_client_990bb439._.js?ts=1768841674240:3348:17)
-
-React will try to recreate this component tree from scratch using the error boundary you provided, PagesDevOverlayErrorBoundary.
-[01:25:05.253] Browser ERROR   uncaughtError: Error: There was an error while hydrating. Because the error happened outside of a Suspense boundary, the entire root will switch to client rendering.
-[01:25:06.860] Server  ERROR   C:\Users\vigne\Desktop\Community-Cart\frontend\.next\dev\server\chunks\ssr\[root-of-the-server]__12465e96._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[01:25:06.866] Server  ERROR   TypeError: Cannot read properties of null (reading 'phone')
-[01:25:06.868] Server  ERROR   C:\Users\vigne\Desktop\Community-Cart\frontend\.next\dev\server\chunks\ssr\[root-of-the-server]__12465e96._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[01:25:06.873] Server  ERROR    ⨯ TypeError: Cannot read properties of null (reading 'phone')
-[01:25:06.876] Server  ERROR   C:\Users\vigne\Desktop\Community-Cart\frontend\.next\dev\server\chunks\ssr\[root-of-the-server]__12465e96._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[01:25:06.882] Server  ERROR    ⨯ TypeError: Cannot read properties of null (reading 'phone')
-[01:25:07.186] Browser ERROR   uncaughtError: TypeError: Cannot read properties of null (reading 'phone')
-[01:25:17.428] Server  ERROR   C:\Users\vigne\Desktop\Community-Cart\frontend\.next\dev\server\chunks\ssr\[root-of-the-server]__12465e96._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[01:25:17.442] Server  ERROR   TypeError: Cannot read properties of null (reading 'phone')
-[01:25:17.446] Server  ERROR   C:\Users\vigne\Desktop\Community-Cart\frontend\.next\dev\server\chunks\ssr\[root-of-the-server]__12465e96._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[01:25:17.458] Server  ERROR    ⨯ TypeError: Cannot read properties of null (reading 'phone')
-[01:25:17.463] Server  ERROR   C:\Users\vigne\Desktop\Community-Cart\frontend\.next\dev\server\chunks\ssr\[root-of-the-server]__12465e96._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[01:25:17.475] Server  ERROR    ⨯ TypeError: Cannot read properties of null (reading 'phone')
-[01:25:17.741] Browser ERROR   uncaughtError: TypeError: Cannot read properties of null (reading 'phone')
-[01:25:26.240] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
-[01:25:26.344] Server  ERROR   C:\Users\vigne\Desktop\Community-Cart\frontend\.next\dev\server\chunks\ssr\[root-of-the-server]__12465e96._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[01:25:26.349] Server  ERROR   TypeError: Cannot read properties of null (reading 'phone')
-[01:25:26.350] Server  ERROR   C:\Users\vigne\Desktop\Community-Cart\frontend\.next\dev\server\chunks\ssr\[root-of-the-server]__12465e96._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[01:25:26.353] Server  ERROR    ⨯ TypeError: Cannot read properties of null (reading 'phone')
-[01:25:26.354] Server  ERROR   C:\Users\vigne\Desktop\Community-Cart\frontend\.next\dev\server\chunks\ssr\[root-of-the-server]__12465e96._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[01:25:26.356] Server  ERROR    ⨯ TypeError: Cannot read properties of null (reading 'phone')
-[01:25:26.359] Server  LOG      ✓ Compiled in 65ms
-[01:25:26.638] Browser ERROR   uncaughtError: TypeError: Cannot read properties of null (reading 'phone')
-[01:28:34.262] Server  LOG      ✓ Compiled in 46ms
-[01:31:47.815] Server  LOG      ✓ Compiled in 59ms
-[01:31:48.833] Server  LOG      ✓ Compiled in 24ms
-[01:32:01.035] Server  LOG      ✓ Compiled in 30ms
-[01:32:04.585] Server  LOG      ✓ Compiled in 26ms
-[01:32:14.784] Server  LOG      ✓ Compiled in 24ms
-[01:32:49.924] Server  LOG      ✓ Compiled in 38ms
-[01:35:55.792] Server  LOG      ✓ Compiled in 498ms
-[01:39:00.336] Server  LOG      ✓ Compiled in 100ms
-[01:41:31.783] Server  LOG      ✓ Compiled in 366ms
-[01:46:03.634] Server  LOG      ✓ Compiled in 274ms
-[01:46:32.747] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[01:46:38.950] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[01:50:14.498] Server  LOG      ✓ Compiled in 70ms
+Expression expected
+[00:28:36.699] Server  LOG      ✓ Compiled in 13ms
+[00:28:37.682] Browser LOG     Refreshing page data due to server-side change
+[00:28:40.282] Server  LOG      ✓ Compiled in 12ms
+[00:29:25.413] Server  LOG      ✓ Compiled in 38ms
+[00:29:35.729] Server  LOG      ✓ Compiled in 45ms
+[00:34:38.650] Server  LOG      ✓ Compiled in 148ms
+[00:34:50.278] Server  LOG      ✓ Compiled in 52ms
+[00:35:24.624] Server  LOG      ✓ Compiled in 39ms
+[00:35:28.375] Server  LOG      ✓ Compiled in 24ms
+[00:36:10.589] Server  LOG      ✓ Compiled in 30ms
+[00:44:26.746] Server  LOG      ✓ Compiled in 913ms
+[00:44:54.578] Server  LOG      ✓ Compiled in 46ms
+[00:45:16.474] Server  LOG      ✓ Compiled in 107ms
+[00:45:39.872] Server  LOG      ✓ Compiled in 61ms
+[00:45:52.681] Server  LOG      ✓ Compiled in 53ms
+[00:49:55.705] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:49:55.912] Browser ERROR   Failed to load wishlist: {}
+[00:49:55.913] Browser ERROR   Failed to load wishlist: {}
+[00:50:34.922] Browser ERROR   Failed to load wishlist: {}
+[00:50:34.922] Browser ERROR   Failed to load wishlist: {}
+[00:51:25.288] Server  LOG      ✓ Compiled in 157ms
+[00:51:25.680] Browser ERROR   Failed to load wishlist: {}
+[00:52:44.887] Browser ERROR   Failed to load wishlist: {}
+[00:52:44.887] Browser ERROR   Failed to load wishlist: {}
+[00:53:31.293] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:56:07.186] Browser ERROR   Failed to load wishlist: {}
+[00:56:07.186] Browser ERROR   Failed to load wishlist: {}
+[00:56:11.381] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:56:14.580] Browser ERROR   Failed to load wishlist: {}
+[00:56:14.580] Browser ERROR   Failed to load wishlist: {}
+[00:56:22.741] Browser ERROR   Failed to load wishlist: {}
+[00:56:22.741] Browser ERROR   Failed to load wishlist: {}
+[00:56:24.609] Browser ERROR   Failed to load wishlist: {}
+[00:56:24.609] Browser ERROR   Failed to load wishlist: {}
+[00:59:44.852] Server  LOG      ✓ Compiled in 61ms
+[01:01:07.282] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[01:01:17.082] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[01:02:25.635] Server  LOG      ✓ Compiled in 180ms
+[01:05:48.291] Server  LOG      ✓ Compiled in 172ms
+[01:06:27.636] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[01:10:07.321] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[01:10:11.133] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior

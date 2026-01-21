@@ -623,7 +623,7 @@ function AuthProvider({ children }) {
             // 3. Sync with Backend
             if (token) {
                 try {
-                    await fetch('http://localhost:5000/api/customer/ui-preferences', {
+                    await fetch('http://localhost:5000/api/customers/ui-preferences', {
                         method: 'PATCH',
                         headers: {
                             'Content-Type': 'application/json',
@@ -659,7 +659,7 @@ function AuthProvider({ children }) {
         children: children
     }, void 0, false, {
         fileName: "[project]/Desktop/Community-Cart/frontend/src/context/AuthContext.tsx",
-        lineNumber: 117,
+        lineNumber: 118,
         columnNumber: 9
     }, this);
 }
@@ -1133,15 +1133,23 @@ function EditAddressPage() {
         community: 'Community Cart',
         block: '',
         floor: '',
-        flat_number: ''
+        flat_number: '',
+        is_primary: false
     });
+    const [originalForm, setOriginalForm] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useState"])({
+        community: 'Community Cart',
+        block: '',
+        floor: '',
+        flat_number: '',
+        is_primary: false
+    });
+    const [allAddresses, setAllAddresses] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useState"])([]);
     const [loading, setLoading] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useState"])(false);
     const [pageLoading, setPageLoading] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useState"])(false);
     /* ===== LOAD EXISTING ADDRESS (EDIT MODE) ===== */ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useEffect"])({
         "EditAddressPage.useEffect": ()=>{
-            if (!id) return;
-            setPageLoading(true);
             const token = localStorage.getItem('auth_token');
+            setPageLoading(true);
             fetch('http://localhost:5000/api/customers/addresses', {
                 headers: {
                     'Content-Type': 'application/json',
@@ -1151,23 +1159,29 @@ function EditAddressPage() {
                 "EditAddressPage.useEffect": (res)=>res.json()
             }["EditAddressPage.useEffect"]).then({
                 "EditAddressPage.useEffect": (addresses)=>{
-                    const addr = addresses.find({
-                        "EditAddressPage.useEffect.addr": (a)=>a._id === id
-                    }["EditAddressPage.useEffect.addr"]);
-                    if (!addr) {
-                        showToast('Address not found', 'error');
-                        router.push('/customer/address');
-                        return;
+                    setAllAddresses(addresses);
+                    if (id) {
+                        const addr = addresses.find({
+                            "EditAddressPage.useEffect.addr": (a)=>a._id === id
+                        }["EditAddressPage.useEffect.addr"]);
+                        if (!addr) {
+                            showToast('Address not found', 'error');
+                            router.push('/customer/address');
+                            return;
+                        }
+                        const loadedForm = {
+                            community: addr.community,
+                            block: addr.block,
+                            floor: addr.floor,
+                            flat_number: addr.flat_number,
+                            is_primary: addr.is_primary
+                        };
+                        setForm(loadedForm);
+                        setOriginalForm(loadedForm);
                     }
-                    setForm({
-                        community: addr.community,
-                        block: addr.block,
-                        floor: addr.floor,
-                        flat_number: addr.flat_number
-                    });
                 }
             }["EditAddressPage.useEffect"]).catch({
-                "EditAddressPage.useEffect": ()=>showToast('Failed to load address', 'error')
+                "EditAddressPage.useEffect": ()=>showToast('Failed to load addresses', 'error')
             }["EditAddressPage.useEffect"]).finally({
                 "EditAddressPage.useEffect": ()=>setPageLoading(false)
             }["EditAddressPage.useEffect"]);
@@ -1183,8 +1197,10 @@ function EditAddressPage() {
                 [field]: value
             }));
     };
+    // Detect if any changes have been made
+    const has_changes = form.flat_number !== originalForm.flat_number || form.floor !== originalForm.floor || form.block !== originalForm.block || form.community !== originalForm.community || form.is_primary !== originalForm.is_primary;
     /* ===== SUBMIT ===== */ const handleSubmit = async ()=>{
-        const { community, block, floor, flat_number } = form;
+        const { community, block, floor, flat_number, is_primary } = form;
         if (!community || !block || !floor || !flat_number) {
             showToast('Please fill all address fields', 'error');
             return;
@@ -1193,13 +1209,17 @@ function EditAddressPage() {
         try {
             const url = id ? `http://localhost:5000/api/customers/addresses/${id}` : 'http://localhost:5000/api/customers/addresses';
             const method = id ? 'PUT' : 'POST';
-            // Strict payload - only send allowed fields
+            // Build payload - include is_primary only if editing
             const payload = {
                 community,
                 block,
                 floor,
                 flat_number
             };
+            // Include is_primary only when editing and user can toggle it
+            if (id && allAddresses.length === 2) {
+                payload.is_primary = is_primary;
+            }
             const token = localStorage.getItem('auth_token');
             const res = await fetch(url, {
                 method,
@@ -1213,7 +1233,7 @@ function EditAddressPage() {
             if (!res.ok) {
                 throw new Error(data.message || 'Operation failed');
             }
-            showToast(id ? 'Address updated' : 'Address added', 'success');
+            showToast(id ? 'Address updated successfully' : 'Address added successfully', 'success');
             router.push('/customer/address');
         } catch (err) {
             showToast(err.message || 'Server error', 'error');
@@ -1229,7 +1249,7 @@ function EditAddressPage() {
             children: "Loading..."
         }, void 0, false, {
             fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/edit-address.tsx",
-            lineNumber: 120,
+            lineNumber: 154,
             columnNumber: 16
         }, this);
     }
@@ -1251,12 +1271,12 @@ function EditAddressPage() {
                                 height: 24
                             }, void 0, false, {
                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/edit-address.tsx",
-                                lineNumber: 132,
+                                lineNumber: 166,
                                 columnNumber: 25
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/edit-address.tsx",
-                            lineNumber: 128,
+                            lineNumber: 162,
                             columnNumber: 21
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
@@ -1264,13 +1284,13 @@ function EditAddressPage() {
                             children: id ? 'Edit Address' : 'Add Address'
                         }, void 0, false, {
                             fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/edit-address.tsx",
-                            lineNumber: 139,
+                            lineNumber: 173,
                             columnNumber: 21
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/edit-address.tsx",
-                    lineNumber: 127,
+                    lineNumber: 161,
                     columnNumber: 17
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1279,7 +1299,7 @@ function EditAddressPage() {
                     }
                 }, void 0, false, {
                     fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/edit-address.tsx",
-                    lineNumber: 144,
+                    lineNumber: 178,
                     columnNumber: 17
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1290,28 +1310,35 @@ function EditAddressPage() {
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
                                     className: "address-label",
-                                    children: "Community *"
+                                    children: "Flat no."
                                 }, void 0, false, {
                                     fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/edit-address.tsx",
-                                    lineNumber: 149,
+                                    lineNumber: 184,
                                     columnNumber: 25
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
                                     className: "address-input",
-                                    value: form.community,
-                                    readOnly: true,
-                                    style: {
-                                        backgroundColor: '#f5f5f5'
-                                    }
+                                    value: form.flat_number,
+                                    onChange: (e)=>handleChange('flat_number', e.target.value),
+                                    placeholder: "e.g. 401"
                                 }, void 0, false, {
                                     fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/edit-address.tsx",
-                                    lineNumber: 150,
+                                    lineNumber: 185,
                                     columnNumber: 25
+                                }, this),
+                                form.flat_number && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
+                                    src: "/customer/assets/icons/check.svg",
+                                    alt: "Valid",
+                                    className: `address-valid-icon ${form.flat_number !== originalForm.flat_number ? 'editing' : 'saved'}`
+                                }, void 0, false, {
+                                    fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/edit-address.tsx",
+                                    lineNumber: 192,
+                                    columnNumber: 29
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/edit-address.tsx",
-                            lineNumber: 148,
+                            lineNumber: 183,
                             columnNumber: 21
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1319,131 +1346,182 @@ function EditAddressPage() {
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
                                     className: "address-label",
-                                    children: "Block *"
+                                    children: "Floor"
                                 }, void 0, false, {
                                     fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/edit-address.tsx",
-                                    lineNumber: 159,
+                                    lineNumber: 202,
+                                    columnNumber: 25
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
+                                    className: "address-input",
+                                    value: form.floor,
+                                    onChange: (e)=>handleChange('floor', e.target.value),
+                                    placeholder: "e.g. 4"
+                                }, void 0, false, {
+                                    fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/edit-address.tsx",
+                                    lineNumber: 203,
+                                    columnNumber: 25
+                                }, this),
+                                form.floor && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
+                                    src: "/customer/assets/icons/check.svg",
+                                    alt: "Valid",
+                                    className: `address-valid-icon ${form.floor !== originalForm.floor ? 'editing' : 'saved'}`
+                                }, void 0, false, {
+                                    fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/edit-address.tsx",
+                                    lineNumber: 210,
+                                    columnNumber: 29
+                                }, this)
+                            ]
+                        }, void 0, true, {
+                            fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/edit-address.tsx",
+                            lineNumber: 201,
+                            columnNumber: 21
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            className: "address-input-group",
+                            children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
+                                    className: "address-label",
+                                    children: "Block"
+                                }, void 0, false, {
+                                    fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/edit-address.tsx",
+                                    lineNumber: 220,
                                     columnNumber: 25
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
                                     className: "address-input",
                                     value: form.block,
                                     onChange: (e)=>handleChange('block', e.target.value),
-                                    placeholder: "e.g. Block A"
+                                    placeholder: "e.g. Saraswathi"
                                 }, void 0, false, {
                                     fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/edit-address.tsx",
-                                    lineNumber: 160,
+                                    lineNumber: 221,
                                     columnNumber: 25
+                                }, this),
+                                form.block && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
+                                    src: "/customer/assets/icons/check.svg",
+                                    alt: "Valid",
+                                    className: `address-valid-icon ${form.block !== originalForm.block ? 'editing' : 'saved'}`
+                                }, void 0, false, {
+                                    fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/edit-address.tsx",
+                                    lineNumber: 228,
+                                    columnNumber: 29
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/edit-address.tsx",
-                            lineNumber: 158,
+                            lineNumber: 219,
                             columnNumber: 21
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            style: {
-                                display: 'grid',
-                                gridTemplateColumns: '1fr 1fr',
-                                gap: 16
-                            },
+                            className: "address-input-group",
                             children: [
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    className: "address-input-group",
-                                    children: [
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
-                                            className: "address-label",
-                                            children: "Floor *"
-                                        }, void 0, false, {
-                                            fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/edit-address.tsx",
-                                            lineNumber: 170,
-                                            columnNumber: 29
-                                        }, this),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
-                                            className: "address-input",
-                                            value: form.floor,
-                                            onChange: (e)=>handleChange('floor', e.target.value),
-                                            placeholder: "e.g. 5"
-                                        }, void 0, false, {
-                                            fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/edit-address.tsx",
-                                            lineNumber: 171,
-                                            columnNumber: 29
-                                        }, this)
-                                    ]
-                                }, void 0, true, {
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
+                                    className: "address-label",
+                                    children: "Community"
+                                }, void 0, false, {
                                     fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/edit-address.tsx",
-                                    lineNumber: 169,
+                                    lineNumber: 238,
                                     columnNumber: 25
                                 }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    className: "address-input-group",
-                                    children: [
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
-                                            className: "address-label",
-                                            children: "Flat Number *"
-                                        }, void 0, false, {
-                                            fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/edit-address.tsx",
-                                            lineNumber: 180,
-                                            columnNumber: 29
-                                        }, this),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
-                                            className: "address-input",
-                                            value: form.flat_number,
-                                            onChange: (e)=>handleChange('flat_number', e.target.value),
-                                            placeholder: "e.g. 504"
-                                        }, void 0, false, {
-                                            fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/edit-address.tsx",
-                                            lineNumber: 181,
-                                            columnNumber: 29
-                                        }, this)
-                                    ]
-                                }, void 0, true, {
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
+                                    className: "address-input",
+                                    value: form.community,
+                                    readOnly: true,
+                                    style: {
+                                        cursor: 'default'
+                                    }
+                                }, void 0, false, {
                                     fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/edit-address.tsx",
-                                    lineNumber: 179,
+                                    lineNumber: 239,
+                                    columnNumber: 25
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
+                                    src: "/customer/assets/icons/downward.svg",
+                                    alt: "Dropdown",
+                                    className: "address-dropdown-icon"
+                                }, void 0, false, {
+                                    fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/edit-address.tsx",
+                                    lineNumber: 245,
                                     columnNumber: 25
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/edit-address.tsx",
-                            lineNumber: 168,
+                            lineNumber: 237,
                             columnNumber: 21
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/edit-address.tsx",
-                    lineNumber: 147,
+                    lineNumber: 181,
                     columnNumber: 17
+                }, this),
+                id && allAddresses.length === 2 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    className: "primary-toggle-container",
+                    children: [
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                            className: "primary-toggle-label",
+                            children: "Set as Primary Address"
+                        }, void 0, false, {
+                            fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/edit-address.tsx",
+                            lineNumber: 252,
+                            columnNumber: 25
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            className: `primary-toggle-switch ${form.is_primary ? 'active' : ''}`,
+                            onClick: ()=>setForm((prev)=>({
+                                        ...prev,
+                                        is_primary: !prev.is_primary
+                                    })),
+                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "primary-toggle-slider"
+                            }, void 0, false, {
+                                fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/edit-address.tsx",
+                                lineNumber: 257,
+                                columnNumber: 29
+                            }, this)
+                        }, void 0, false, {
+                            fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/edit-address.tsx",
+                            lineNumber: 253,
+                            columnNumber: 25
+                        }, this)
+                    ]
+                }, void 0, true, {
+                    fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/edit-address.tsx",
+                    lineNumber: 251,
+                    columnNumber: 21
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                     className: "address-cta-container",
                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                         className: "address-cta-btn touchable",
                         onClick: handleSubmit,
-                        disabled: loading,
+                        disabled: loading || !has_changes,
                         children: loading ? 'Saving...' : id ? 'Update Address' : 'Save Address'
                     }, void 0, false, {
                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/edit-address.tsx",
-                        lineNumber: 193,
+                        lineNumber: 264,
                         columnNumber: 21
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/edit-address.tsx",
-                    lineNumber: 192,
+                    lineNumber: 263,
                     columnNumber: 17
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/edit-address.tsx",
-            lineNumber: 125,
+            lineNumber: 159,
             columnNumber: 13
         }, this)
     }, void 0, false, {
         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/edit-address.tsx",
-        lineNumber: 124,
+        lineNumber: 158,
         columnNumber: 9
     }, this);
 }
-_s(EditAddressPage, "5VgTCj5SoeRXdpHiYE6IpYUbAIQ=", false, function() {
+_s(EditAddressPage, "MCgH8ANLQx1jMkfKqbYcuvfTfm8=", false, function() {
     return [
         __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$next$2f$router$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useRouter"],
         __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$src$2f$components$2f$ui$2f$ToastProvider$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__["useToast"]

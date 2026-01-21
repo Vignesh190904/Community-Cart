@@ -5,20 +5,29 @@ self.__BUILD_MANIFEST = {
   "/_error": [
     "static/chunks/pages/_error.js"
   ],
-  "/customer/address": [
-    "static/chunks/pages/customer/address.js"
+  "/admin/dashboard": [
+    "static/chunks/pages/admin/dashboard.js"
   ],
   "/customer/browse-products": [
     "static/chunks/pages/customer/browse-products.js"
   ],
-  "/customer/edit-address": [
-    "static/chunks/pages/customer/edit-address.js"
+  "/customer/cart": [
+    "static/chunks/pages/customer/cart.js"
   ],
-  "/customer/edit-profile": [
-    "static/chunks/pages/customer/edit-profile.js"
+  "/customer/category": [
+    "static/chunks/pages/customer/category.js"
+  ],
+  "/customer/favorites": [
+    "static/chunks/pages/customer/favorites.js"
   ],
   "/customer/home": [
     "static/chunks/pages/customer/home.js"
+  ],
+  "/customer/orders": [
+    "static/chunks/pages/customer/orders.js"
+  ],
+  "/customer/product/[id]": [
+    "static/chunks/pages/customer/product/[id].js"
   ],
   "/customer/profile": [
     "static/chunks/pages/customer/profile.js"
@@ -26,14 +35,26 @@ self.__BUILD_MANIFEST = {
   "/customer/signin": [
     "static/chunks/pages/customer/signin.js"
   ],
-  "/customer/signup": [
-    "static/chunks/pages/customer/signup.js"
+  "/login": [
+    "static/chunks/pages/login.js"
   ],
-  "/customer/verify-mobile": [
-    "static/chunks/pages/customer/verify-mobile.js"
+  "/vendor/dashboard": [
+    "static/chunks/pages/vendor/dashboard.js"
   ],
-  "/customer/verify-otp": [
-    "static/chunks/pages/customer/verify-otp.js"
+  "/vendor/orders": [
+    "static/chunks/pages/vendor/orders.js"
+  ],
+  "/vendor/ordershistory": [
+    "static/chunks/pages/vendor/ordershistory.js"
+  ],
+  "/vendor/product-sales": [
+    "static/chunks/pages/vendor/product-sales.js"
+  ],
+  "/vendor/products": [
+    "static/chunks/pages/vendor/products.js"
+  ],
+  "/vendor/profile": [
+    "static/chunks/pages/vendor/profile.js"
   ],
   "__rewrites": {
     "afterFiles": [],

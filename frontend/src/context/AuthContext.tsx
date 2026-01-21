@@ -9,6 +9,7 @@ export interface User {
     name: string;
     email: string;
     phone?: string;
+    profile_pic?: string;
     addresses?: any[];
     ui_preferences?: {
         theme?: 'light' | 'dark';

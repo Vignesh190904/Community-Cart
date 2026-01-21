@@ -573,7 +573,7 @@ function AuthProvider({ children }) {
         children: children
     }, void 0, false, {
         fileName: "[project]/Desktop/Community-Cart/frontend/src/context/AuthContext.tsx",
-        lineNumber: 117,
+        lineNumber: 118,
         columnNumber: 9
     }, this);
 }

@@ -55,7 +55,7 @@ export default function AddressPage() {
 
         try {
             const token = localStorage.getItem('auth_token');
-            
+
             const res = await fetch(
                 `http://localhost:5000/api/customers/addresses/${addressId}`,
                 {
@@ -72,9 +72,9 @@ export default function AddressPage() {
                 throw new Error(err.message || 'Delete failed');
             }
 
-            showToast('Address deleted', 'success');
-            fetchAddresses();
-            setActiveTab('main');
+            showToast('Address deleted successfully', 'success');
+            await fetchAddresses(); // Refetch to get updated primary status
+            setActiveTab('main'); // Always switch to main tab after delete
         } catch (err: any) {
             showToast(err.message || 'Server error', 'error');
         }
@@ -181,14 +181,12 @@ export default function AddressPage() {
                                 Edit Address
                             </button>
 
-                            {!currentAddress.is_primary && addresses.length > 1 && (
-                                <button
-                                    className="address-cta-btn delete-btn touchable"
-                                    onClick={() => handleDelete(currentAddress._id)}
-                                >
-                                    Delete Address
-                                </button>
-                            )}
+                            <button
+                                className="address-cta-btn delete-btn touchable"
+                                onClick={() => handleDelete(currentAddress._id)}
+                            >
+                                Delete Address
+                            </button>
                         </>
                     ) : addresses.length < 2 ? (
                         <button

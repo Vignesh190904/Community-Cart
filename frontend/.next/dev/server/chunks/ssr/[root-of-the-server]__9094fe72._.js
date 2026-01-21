@@ -91,7 +91,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart
 ;
 function CustomerLayout({ children, disablePadding = false, fullWidth = false }) {
     const router = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$next$2f$router$2e$js__$5b$ssr$5d$__$28$ecmascript$29$__["useRouter"])();
-    const { is_authenticated, loading, onboarding_step, get_route_for_step } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$src$2f$context$2f$AuthContext$2e$tsx__$5b$ssr$5d$__$28$ecmascript$29$__["useAuth"])();
+    const { is_authenticated, loading } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$src$2f$context$2f$AuthContext$2e$tsx__$5b$ssr$5d$__$28$ecmascript$29$__["useAuth"])();
     const [isDark, setIsDark] = (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react__$5b$external$5d$__$28$react$2c$__cjs$29$__["useState"])(false);
     // 1. THEME LOGIC
     (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react__$5b$external$5d$__$28$react$2c$__cjs$29$__["useEffect"])(()=>{
@@ -112,21 +112,13 @@ function CustomerLayout({ children, disablePadding = false, fullWidth = false })
             if (!is_authenticated) {
                 // No valid session found after revalidation
                 router.replace('/customer/signin');
-            } else if (onboarding_step && onboarding_step !== 'PHONE_VERIFIED') {
-                // Session valid but onboarding incomplete
-                const correct_route = get_route_for_step(onboarding_step);
-                // Prevent infinite redirect if we are already on that route
-                if (router.pathname !== correct_route) {
-                    router.replace(correct_route);
-                }
             }
+        // Onboarding redirect logic removed - users navigate directly to Home after signup
         }
     }, [
         is_authenticated,
         loading,
-        onboarding_step,
-        router,
-        get_route_for_step
+        router
     ]);
     // 4. LOADING STATE
     // Show a clean loading screen while AuthContext verifies the token/cookie
@@ -154,17 +146,17 @@ function CustomerLayout({ children, disablePadding = false, fullWidth = false })
                     children: "Securely loading session..."
                 }, void 0, false, {
                     fileName: "[project]/Desktop/Community-Cart/frontend/src/components/customer/CustomerLayout.tsx",
-                    lineNumber: 84,
+                    lineNumber: 78,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/Desktop/Community-Cart/frontend/src/components/customer/CustomerLayout.tsx",
-                lineNumber: 83,
+                lineNumber: 77,
                 columnNumber: 9
             }, this)
         }, void 0, false, {
             fileName: "[project]/Desktop/Community-Cart/frontend/src/components/customer/CustomerLayout.tsx",
-            lineNumber: 73,
+            lineNumber: 67,
             columnNumber: 7
         }, this);
     }
@@ -181,18 +173,18 @@ function CustomerLayout({ children, disablePadding = false, fullWidth = false })
                 children: children
             }, void 0, false, {
                 fileName: "[project]/Desktop/Community-Cart/frontend/src/components/customer/CustomerLayout.tsx",
-                lineNumber: 98,
+                lineNumber: 92,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$src$2f$pages$2f$customer$2f$BottomNavbar$2e$tsx__$5b$ssr$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                 fileName: "[project]/Desktop/Community-Cart/frontend/src/components/customer/CustomerLayout.tsx",
-                lineNumber: 101,
+                lineNumber: 95,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/Desktop/Community-Cart/frontend/src/components/customer/CustomerLayout.tsx",
-        lineNumber: 97,
+        lineNumber: 91,
         columnNumber: 5
     }, this);
 }

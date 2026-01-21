@@ -659,7 +659,7 @@ function AuthProvider({ children }) {
         children: children
     }, void 0, false, {
         fileName: "[project]/Desktop/Community-Cart/frontend/src/context/AuthContext.tsx",
-        lineNumber: 117,
+        lineNumber: 118,
         columnNumber: 9
     }, this);
 }
@@ -1131,32 +1131,38 @@ function EditProfilePage() {
     _s();
     const router = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$next$2f$router$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useRouter"])();
     const { pushToast } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$src$2f$components$2f$ui$2f$ToastProvider$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__["useToast"])();
-    const { user, token, loading, is_authenticated } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$src$2f$context$2f$AuthContext$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__["useAuth"])();
+    const { user, token, loading, is_authenticated, sign_in } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$src$2f$context$2f$AuthContext$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__["useAuth"])();
     // Local state for form fields - initialize with safe defaults
     const [name, set_name] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useState"])('');
     const [email, set_email] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useState"])('');
     const [phone, set_phone] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useState"])('');
+    // Profile picture state model
+    const [original_profile_pic, set_original_profile_pic] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useState"])(null);
+    const [preview_profile_pic, set_preview_profile_pic] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useState"])(null);
+    const [selected_file, set_selected_file] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useState"])(null);
+    const [is_saving, set_is_saving] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useState"])(false);
     // Initialize state when user data is available
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useEffect"])({
         "EditProfilePage.useEffect": ()=>{
             if (user) {
                 set_name(user.name ?? '');
                 set_email(user.email ?? '');
-                // Use optional chaining for phone (may not exist on user object)
                 set_phone(user.phone ?? '');
+                const profile_pic_url = user.profile_pic ?? null;
+                set_original_profile_pic(profile_pic_url);
+                set_preview_profile_pic(profile_pic_url);
             }
         }
     }["EditProfilePage.useEffect"], [
         user
     ]);
-    // Derived states for changes (email is read-only, so exclude it)
-    // Use optional chaining to safely access user properties
+    // Derived states for changes
     const is_name_changed = user ? name !== (user.name ?? '') : false;
     const is_phone_changed = user ? phone !== (user.phone ?? '') : false;
-    const has_changes = is_name_changed || is_phone_changed;
+    const is_profile_pic_changed = selected_file !== null;
+    const has_changes = is_name_changed || is_phone_changed || is_profile_pic_changed;
     const handle_save = async ()=>{
         if (!has_changes) return;
-        // Ensure we have a valid token
         if (!token) {
             pushToast({
                 type: 'error',
@@ -1164,12 +1170,32 @@ function EditProfilePage() {
             });
             return;
         }
+        set_is_saving(true);
         try {
-            // Build update payload
+            let new_profile_pic_url = original_profile_pic;
+            // Step 1: Upload profile picture if changed
+            if (selected_file) {
+                const formData = new FormData();
+                formData.append('profile_pic', selected_file);
+                const upload_res = await fetch('http://localhost:5000/api/customers/profile-pic', {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    },
+                    credentials: 'include',
+                    body: formData
+                });
+                if (!upload_res.ok) {
+                    const errorData = await upload_res.json().catch(()=>({}));
+                    throw new Error(errorData.message || 'Failed to upload profile picture');
+                }
+                const upload_data = await upload_res.json();
+                new_profile_pic_url = upload_data.profile_pic;
+            }
+            // Step 2: Update profile with all changes
             const updates = {};
             if (is_name_changed) updates.name = name;
             if (is_phone_changed) updates.phone = phone;
-            // Call profile update API - using correct endpoint /api/customers/profile
             const res = await fetch('http://localhost:5000/api/customers/profile', {
                 method: 'PATCH',
                 headers: {
@@ -1179,26 +1205,108 @@ function EditProfilePage() {
                 credentials: 'include',
                 body: JSON.stringify(updates)
             });
-            if (res.ok) {
-                pushToast({
-                    type: 'success',
-                    message: 'Profile updated successfully'
-                });
-            // Stay on the same page - do NOT navigate
-            } else {
+            if (!res.ok) {
                 const errorData = await res.json().catch(()=>({}));
                 throw new Error(errorData.message || 'Failed to update profile');
             }
+            // Step 3: Update local state and AuthContext
+            set_original_profile_pic(new_profile_pic_url);
+            set_preview_profile_pic(new_profile_pic_url);
+            set_selected_file(null);
+            // Update AuthContext with new user data
+            const updated_user = {
+                ...user,
+                name,
+                phone,
+                profile_pic: new_profile_pic_url
+            };
+            sign_in(updated_user, token);
+            pushToast({
+                type: 'success',
+                message: 'Profile updated successfully'
+            });
         } catch (err) {
             pushToast({
                 type: 'error',
                 message: err.message || 'Update failed'
             });
+        } finally{
+            set_is_saving(false);
         }
     };
-    // Avatar edit is not implemented yet - no-op placeholder
-    const handle_avatar_edit = ()=>{
-    // No action - feature not implemented
+    // Handle profile picture selection (preview only, no upload)
+    const handle_avatar_edit = (e)=>{
+        const file = e.target.files?.[0];
+        if (!file) return;
+        // Validate file type
+        if (!file.type.startsWith('image/')) {
+            pushToast({
+                type: 'error',
+                message: 'Please select a valid image file'
+            });
+            return;
+        }
+        // Validate file size (5MB)
+        if (file.size > 5 * 1024 * 1024) {
+            pushToast({
+                type: 'error',
+                message: 'Image size must be less than 5MB'
+            });
+            return;
+        }
+        // Store file for later upload and create preview URL
+        set_selected_file(file);
+        const preview_url = URL.createObjectURL(file);
+        set_preview_profile_pic(preview_url);
+    };
+    // Handle profile picture deletion
+    const handle_delete_profile_pic = async ()=>{
+        if (!token) {
+            pushToast({
+                type: 'error',
+                message: 'Authentication required. Please log in again.'
+            });
+            return;
+        }
+        // Only allow deletion if there's an existing profile picture
+        if (!original_profile_pic) {
+            return;
+        }
+        set_is_saving(true);
+        try {
+            const res = await fetch('http://localhost:5000/api/customers/profile-pic', {
+                method: 'DELETE',
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                },
+                credentials: 'include'
+            });
+            if (!res.ok) {
+                const errorData = await res.json().catch(()=>({}));
+                throw new Error(errorData.message || 'Failed to delete profile picture');
+            }
+            // Update local state
+            set_original_profile_pic(null);
+            set_preview_profile_pic(null);
+            set_selected_file(null);
+            // Update AuthContext
+            const updated_user = {
+                ...user,
+                profile_pic: null
+            };
+            sign_in(updated_user, token);
+            pushToast({
+                type: 'success',
+                message: 'Profile picture deleted successfully'
+            });
+        } catch (err) {
+            pushToast({
+                type: 'error',
+                message: err.message || 'Delete failed'
+            });
+        } finally{
+            set_is_saving(false);
+        }
     };
     // Safety checks - wait for auth to complete and user data to load
     if (loading) return null;
@@ -1227,12 +1335,12 @@ function EditProfilePage() {
                                 height: 24
                             }, void 0, false, {
                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/edit-profile.tsx",
-                                lineNumber: 89,
+                                lineNumber: 206,
                                 columnNumber: 25
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/edit-profile.tsx",
-                            lineNumber: 88,
+                            lineNumber: 205,
                             columnNumber: 21
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
@@ -1240,13 +1348,13 @@ function EditProfilePage() {
                             children: "Edit Profile"
                         }, void 0, false, {
                             fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/edit-profile.tsx",
-                            lineNumber: 91,
+                            lineNumber: 208,
                             columnNumber: 21
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/edit-profile.tsx",
-                    lineNumber: 87,
+                    lineNumber: 204,
                     columnNumber: 17
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1256,17 +1364,58 @@ function EditProfilePage() {
                             className: "edit-avatar-section",
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
-                                    src: "/customer/assets/images/profile_3.jpg",
+                                    src: preview_profile_pic ? preview_profile_pic.startsWith('blob:') ? preview_profile_pic : `http://localhost:5000${preview_profile_pic}` : '/customer/assets/images/default_profile.jpg',
                                     alt: "Profile",
-                                    className: "edit-avatar-img"
+                                    className: "edit-avatar-img",
+                                    style: {
+                                        opacity: is_saving ? 0.5 : 1
+                                    }
                                 }, void 0, false, {
                                     fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/edit-profile.tsx",
-                                    lineNumber: 98,
+                                    lineNumber: 215,
                                     columnNumber: 25
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
+                                    type: "file",
+                                    id: "profile-pic-input",
+                                    accept: "image/*",
+                                    style: {
+                                        display: 'none'
+                                    },
+                                    onChange: handle_avatar_edit,
+                                    disabled: is_saving
+                                }, void 0, false, {
+                                    fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/edit-profile.tsx",
+                                    lineNumber: 227,
+                                    columnNumber: 25
+                                }, this),
+                                original_profile_pic && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                    className: "delete-avatar-btn",
+                                    onClick: handle_delete_profile_pic,
+                                    disabled: is_saving,
+                                    title: "Delete profile picture",
+                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
+                                        src: "/customer/assets/icons/delete.svg",
+                                        alt: "Delete",
+                                        style: {
+                                            filter: 'brightness(0) invert(1)',
+                                            width: '16px',
+                                            height: '16px'
+                                        }
+                                    }, void 0, false, {
+                                        fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/edit-profile.tsx",
+                                        lineNumber: 243,
+                                        columnNumber: 33
+                                    }, this)
+                                }, void 0, false, {
+                                    fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/edit-profile.tsx",
+                                    lineNumber: 237,
+                                    columnNumber: 29
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                     className: "edit-avatar-btn",
-                                    onClick: handle_avatar_edit,
+                                    onClick: ()=>document.getElementById('profile-pic-input')?.click(),
+                                    disabled: is_saving,
                                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
                                         src: "/customer/assets/icons/edit.svg",
                                         alt: "Edit",
@@ -1277,18 +1426,18 @@ function EditProfilePage() {
                                         }
                                     }, void 0, false, {
                                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/edit-profile.tsx",
-                                        lineNumber: 100,
+                                        lineNumber: 252,
                                         columnNumber: 29
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/edit-profile.tsx",
-                                    lineNumber: 99,
+                                    lineNumber: 247,
                                     columnNumber: 25
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/edit-profile.tsx",
-                            lineNumber: 97,
+                            lineNumber: 214,
                             columnNumber: 21
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1302,7 +1451,7 @@ function EditProfilePage() {
                                             children: "Name"
                                         }, void 0, false, {
                                             fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/edit-profile.tsx",
-                                            lineNumber: 108,
+                                            lineNumber: 260,
                                             columnNumber: 29
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1315,28 +1464,28 @@ function EditProfilePage() {
                                                     onChange: (e)=>set_name(e.target.value)
                                                 }, void 0, false, {
                                                     fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/edit-profile.tsx",
-                                                    lineNumber: 110,
+                                                    lineNumber: 262,
                                                     columnNumber: 33
                                                 }, this),
                                                 name.length > 2 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
                                                     src: "/customer/assets/icons/check.svg",
-                                                    className: "valid-check-icon",
+                                                    className: `valid-check-icon ${is_name_changed ? 'editing' : 'saved'}`,
                                                     alt: "Valid"
                                                 }, void 0, false, {
                                                     fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/edit-profile.tsx",
-                                                    lineNumber: 116,
-                                                    columnNumber: 53
+                                                    lineNumber: 269,
+                                                    columnNumber: 37
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/edit-profile.tsx",
-                                            lineNumber: 109,
+                                            lineNumber: 261,
                                             columnNumber: 29
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/edit-profile.tsx",
-                                    lineNumber: 107,
+                                    lineNumber: 259,
                                     columnNumber: 25
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1347,7 +1496,7 @@ function EditProfilePage() {
                                             children: "Email"
                                         }, void 0, false, {
                                             fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/edit-profile.tsx",
-                                            lineNumber: 122,
+                                            lineNumber: 280,
                                             columnNumber: 29
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1365,28 +1514,28 @@ function EditProfilePage() {
                                                     }
                                                 }, void 0, false, {
                                                     fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/edit-profile.tsx",
-                                                    lineNumber: 124,
+                                                    lineNumber: 282,
                                                     columnNumber: 33
                                                 }, this),
                                                 email.includes('@') && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
                                                     src: "/customer/assets/icons/check.svg",
-                                                    className: "valid-check-icon",
+                                                    className: "valid-check-icon saved",
                                                     alt: "Valid"
                                                 }, void 0, false, {
                                                     fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/edit-profile.tsx",
-                                                    lineNumber: 132,
-                                                    columnNumber: 57
+                                                    lineNumber: 291,
+                                                    columnNumber: 37
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/edit-profile.tsx",
-                                            lineNumber: 123,
+                                            lineNumber: 281,
                                             columnNumber: 29
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/edit-profile.tsx",
-                                    lineNumber: 121,
+                                    lineNumber: 279,
                                     columnNumber: 25
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1397,7 +1546,7 @@ function EditProfilePage() {
                                             children: "Phone no."
                                         }, void 0, false, {
                                             fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/edit-profile.tsx",
-                                            lineNumber: 138,
+                                            lineNumber: 302,
                                             columnNumber: 29
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1408,7 +1557,7 @@ function EditProfilePage() {
                                                     children: "+91"
                                                 }, void 0, false, {
                                                     fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/edit-profile.tsx",
-                                                    lineNumber: 140,
+                                                    lineNumber: 304,
                                                     columnNumber: 33
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -1421,65 +1570,65 @@ function EditProfilePage() {
                                                     }
                                                 }, void 0, false, {
                                                     fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/edit-profile.tsx",
-                                                    lineNumber: 141,
+                                                    lineNumber: 305,
                                                     columnNumber: 33
                                                 }, this),
                                                 phone.length === 10 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
                                                     src: "/customer/assets/icons/check.svg",
-                                                    className: "valid-check-icon",
+                                                    className: `valid-check-icon ${is_phone_changed ? 'editing' : 'saved'}`,
                                                     alt: "Valid"
                                                 }, void 0, false, {
                                                     fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/edit-profile.tsx",
-                                                    lineNumber: 150,
-                                                    columnNumber: 57
+                                                    lineNumber: 315,
+                                                    columnNumber: 37
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/edit-profile.tsx",
-                                            lineNumber: 139,
+                                            lineNumber: 303,
                                             columnNumber: 29
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/edit-profile.tsx",
-                                    lineNumber: 137,
+                                    lineNumber: 301,
                                     columnNumber: 25
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/edit-profile.tsx",
-                            lineNumber: 105,
+                            lineNumber: 257,
                             columnNumber: 21
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                             className: "save-profile-btn",
-                            disabled: !has_changes,
+                            disabled: !has_changes || is_saving,
                             onClick: handle_save,
-                            children: "Save"
+                            children: is_saving ? 'Saving...' : 'Save'
                         }, void 0, false, {
                             fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/edit-profile.tsx",
-                            lineNumber: 156,
+                            lineNumber: 326,
                             columnNumber: 21
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/edit-profile.tsx",
-                    lineNumber: 95,
+                    lineNumber: 212,
                     columnNumber: 17
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/edit-profile.tsx",
-            lineNumber: 85,
+            lineNumber: 202,
             columnNumber: 13
         }, this)
     }, void 0, false, {
         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/edit-profile.tsx",
-        lineNumber: 84,
+        lineNumber: 201,
         columnNumber: 9
     }, this);
 }
-_s(EditProfilePage, "fa5OnPwJEzaeu9D2OPwXXzGTU/s=", false, function() {
+_s(EditProfilePage, "RbPBdYQZoLzOsP6ykL/hV1WMpVo=", false, function() {
     return [
         __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$next$2f$router$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useRouter"],
         __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$src$2f$components$2f$ui$2f$ToastProvider$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__["useToast"],

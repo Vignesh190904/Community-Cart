@@ -1,0 +1,53 @@
+/* Login Page Styles */
+
+.login-container {
+  max-width: 420px;
+  margin-top: 60px;
+}
+
+.password-field-wrapper {
+  position: relative;
+  /* Essential: keeps the button contained here */
+  display: flex;
+  align-items: center;
+  width: 100%;
+  /* Or whatever width your form uses */
+}
+
+.password-field-wrapper input {
+  width: 100%;
+  padding-right: 40px;
+  /* Important: prevents text from going under the icon */
+  box-sizing: border-box;
+  /* Ensures padding doesn't break the width */
+}
+
+.password-toggle-btn {
+  position: absolute;
+  right: 10px;
+  /* Adjust based on your design */
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  height: 100%;
+  /* Centers the button vertically */
+}
+
+.password-toggle-btn:hover {
+  opacity: 1;
+}
+
+.password-toggle-btn:focus {
+  outline-offset: 2px;
+}
+
+.password-toggle-icon {
+  width: 18px;
+  height: 18px;
+  display: block;
+  pointer-events: none;
+}

@@ -1,5 +1,11 @@
 import Customer from '../models/Customer.model.js';
+import Product from '../models/Product.model.js';
 import bcrypt from 'bcryptjs';
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export const getAddresses = async (req, res) => {
   try {
@@ -110,17 +116,89 @@ export const deleteAddress = async (req, res) => {
     const address = customer.addresses.id(addrId);
     if (!address) return res.status(404).json({ message: 'Address not found' });
 
-    if (address.is_primary) {
-      return res.status(400).json({ message: 'Cannot delete primary address' });
+    const wasPrimary = address.is_primary;
+
+    // Delete the address
+    address.deleteOne();
+
+    // If deleted address was primary and another address exists, promote it
+    if (wasPrimary && customer.addresses.length > 0) {
+      customer.addresses[0].is_primary = true;
     }
 
-    address.deleteOne();
     await customer.save();
 
     res.status(200).json({ message: 'Address deleted', addresses: customer.addresses });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Server error deleting address' });
+  }
+};
+
+export const uploadProfilePic = async (req, res) => {
+  try {
+    if (!req.file) {
+      return res.status(400).json({ message: 'No file uploaded' });
+    }
+
+    const customer = await Customer.findById(req.user.id);
+    if (!customer) {
+      return res.status(404).json({ message: 'Customer not found' });
+    }
+
+    // Delete old profile picture if exists
+    if (customer.profile_pic) {
+      const oldFilePath = path.join(__dirname, '../../', customer.profile_pic);
+      if (fs.existsSync(oldFilePath)) {
+        fs.unlinkSync(oldFilePath);
+      }
+    }
+
+    // Generate URL path for the uploaded file
+    const profilePicUrl = `/uploads/profile-pics/${req.file.filename}`;
+
+    // Update customer profile_pic field
+    customer.profile_pic = profilePicUrl;
+    await customer.save();
+
+    res.status(200).json({
+      message: 'Profile picture uploaded successfully',
+      profile_pic: profilePicUrl
+    });
+
+  } catch (error) {
+    console.error('Upload Profile Pic Error:', error);
+    res.status(500).json({ message: 'Server error uploading profile picture' });
+  }
+};
+
+export const deleteProfilePic = async (req, res) => {
+  try {
+    const customer = await Customer.findById(req.user.id);
+    if (!customer) {
+      return res.status(404).json({ message: 'Customer not found' });
+    }
+
+    // Delete profile picture file if exists
+    if (customer.profile_pic) {
+      const filePath = path.join(__dirname, '../../', customer.profile_pic);
+      if (fs.existsSync(filePath)) {
+        fs.unlinkSync(filePath);
+      }
+    }
+
+    // Set profile_pic to null
+    customer.profile_pic = null;
+    await customer.save();
+
+    res.status(200).json({
+      message: 'Profile picture deleted successfully',
+      profile_pic: null
+    });
+
+  } catch (error) {
+    console.error('Delete Profile Pic Error:', error);
+    res.status(500).json({ message: 'Server error deleting profile picture' });
   }
 };
 
@@ -248,3 +326,123 @@ export const deleteCustomer = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
+
+/* ---------- Wishlist Functions ---------- */
+
+export const addToWishlist = async (req, res) => {
+  try {
+    const { productId } = req.body;
+
+    if (!productId) {
+      return res.status(400).json({ message: 'Product ID is required' });
+    }
+
+    // Validate product exists
+    const product = await Product.findById(productId);
+    if (!product) {
+      return res.status(404).json({ message: 'Product not found' });
+    }
+
+    const customer = await Customer.findById(req.user.id);
+    if (!customer) {
+      return res.status(404).json({ message: 'Customer not found' });
+    }
+
+    // Check for duplicates
+    const alreadyInWishlist = customer.wishlist.some(
+      (item) => item.product_id.toString() === productId
+    );
+
+    if (alreadyInWishlist) {
+      return res.status(400).json({ message: 'Product already in wishlist' });
+    }
+
+    // Add to wishlist with vendor_id from product
+    customer.wishlist.push({
+      product_id: productId,
+      vendor_id: product.vendor,
+      added_at: new Date(),
+    });
+
+    await customer.save();
+
+    res.status(201).json({
+      message: 'Product added to wishlist',
+      wishlist: customer.wishlist,
+    });
+  } catch (error) {
+    console.error('Add to Wishlist Error:', error);
+    res.status(500).json({ message: 'Server error adding to wishlist' });
+  }
+};
+
+export const removeFromWishlist = async (req, res) => {
+  try {
+    const { productId } = req.params;
+
+    const customer = await Customer.findById(req.user.id);
+    if (!customer) {
+      return res.status(404).json({ message: 'Customer not found' });
+    }
+
+    // Remove product from wishlist
+    customer.wishlist = customer.wishlist.filter(
+      (item) => item.product_id.toString() !== productId
+    );
+
+    await customer.save();
+
+    res.status(200).json({
+      message: 'Product removed from wishlist',
+      wishlist: customer.wishlist,
+    });
+  } catch (error) {
+    console.error('Remove from Wishlist Error:', error);
+    res.status(500).json({ message: 'Server error removing from wishlist' });
+  }
+};
+
+export const getWishlist = async (req, res) => {
+  try {
+    const customer = await Customer.findById(req.user.id)
+      .populate({
+        path: 'wishlist.product_id',
+        select: 'name price image stock isAvailable category',
+      })
+      .populate({
+        path: 'wishlist.vendor_id',
+        select: 'name',
+      });
+
+    if (!customer) {
+      return res.status(404).json({ message: 'Customer not found' });
+    }
+
+    // Filter out deleted products and format response
+    const wishlistItems = customer.wishlist
+      .filter((item) => item.product_id != null) // Skip if product was deleted
+      .map((item) => ({
+        _id: item._id,
+        product: {
+          _id: item.product_id._id,
+          name: item.product_id.name,
+          price: item.product_id.price,
+          image: item.product_id.image,
+          stock: item.product_id.stock,
+          isAvailable: item.product_id.isAvailable,
+          category: item.product_id.category,
+        },
+        vendor: {
+          _id: item.vendor_id?._id,
+          name: item.vendor_id?.name || 'Unknown Vendor',
+        },
+        added_at: item.added_at,
+      }));
+
+    res.status(200).json(wishlistItems);
+  } catch (error) {
+    console.error('Get Wishlist Error:', error);
+    res.status(500).json({ message: 'Server error fetching wishlist' });
+  }
+};
+

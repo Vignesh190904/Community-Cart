@@ -311,8 +311,8 @@ function HomePage() {
         if (!user.phone) {
             enqueueToast('Please add your mobile number', 'warning');
         }
-        // Check for missing addresses
-        if (!user.addresses || user.addresses.length === 0) {
+        // Check for missing addresses - only show if addresses array exists and is empty
+        if (user.addresses && user.addresses.length === 0) {
             enqueueToast('Please add your address', 'warning');
         }
     }, [
@@ -589,7 +589,7 @@ function HomePage() {
                                                     className: "product-wishlist-btn",
                                                     onClick: ()=>toggleWishlist(product.id),
                                                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("img", {
-                                                        src: "/customer/assets/icons/favorite.svg",
+                                                        src: isWishlisted ? "/customer/assets/icons/favorite-filled.svg" : "/customer/assets/icons/favorite.svg",
                                                         alt: "Wishlist",
                                                         className: `favorite-heart-icon ${isWishlisted ? 'active' : ''}`,
                                                         style: {

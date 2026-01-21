@@ -8,6 +8,7 @@ import { fileURLToPath } from 'url';
 
 // Route Imports
 console.log('🔄 Importing routes...');
+import authRoutes from './src/routes/auth.routes.js';
 import authCustomerRoutes from './src/routes/authCustomer.routes.js';
 import vendorRoutes from './src/routes/vendor.routes.js';
 import customerRoutes from './src/routes/customer.routes.js';
@@ -36,6 +37,9 @@ app.use(express.json({ limit: '5mb' }));
 app.use(express.urlencoded({ limit: '5mb', extended: true }));
 app.use(cookieParser());
 
+// 2.5. Static File Serving for Uploads
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+
 // 3. Session Configuration (REMOVED - Using JWT)
 // app.use(session({...}));
 
@@ -46,6 +50,7 @@ app.use((req, res, next) => {
 });
 
 // 5. Route Mounting (Unified prefix)
+app.use('/api/auth', authRoutes);
 app.use('/api/auth/customer', authCustomerRoutes);
 app.use('/api/vendors', vendorRoutes);
 app.use('/api/customers', customerRoutes);

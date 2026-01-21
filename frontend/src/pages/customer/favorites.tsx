@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import CustomerLayout from '../../components/customer/CustomerLayout';
 import { useCustomerStore } from '../../context/CustomerStore';
 import { useToast } from '../../components/ui/ToastProvider';
+import { fetchWishlist, removeFromWishlist, WishlistItem } from '../../services/wishlistApi';
 
 interface Product {
     _id: string;
@@ -20,8 +21,7 @@ export default function FavoritesPage() {
     const router = useRouter();
     const { addToCart, updateQuantity, ensureCustomerId, cart } = useCustomerStore();
     const { pushToast } = useToast();
-    const [products, setProducts] = useState<Product[]>([]);
-    const [favorites, setFavorites] = useState<Set<string>>(new Set());
+    const [wishlistItems, setWishlistItems] = useState<WishlistItem[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
     const [searchTerm, setSearchTerm] = useState('');
@@ -30,18 +30,10 @@ export default function FavoritesPage() {
         const load = async () => {
             await ensureCustomerId();
             try {
-                const res = await fetch(`${API_BASE}/products`);
-                if (!res.ok) throw new Error('Failed to fetch products');
-                const data = await res.json();
-                const available = data.filter((p: Product) => p.isAvailable !== false && (p.stock ?? 0) > 0);
-                setProducts(available);
-
-                const savedFavorites = localStorage.getItem('cc_favorites');
-                if (savedFavorites) {
-                    setFavorites(new Set(JSON.parse(savedFavorites)));
-                }
+                const data = await fetchWishlist();
+                setWishlistItems(data);
             } catch (err: any) {
-                setError(err.message || 'Failed to load products');
+                setError(err.message || 'Failed to load favorites');
             } finally {
                 setLoading(false);
             }
@@ -49,15 +41,19 @@ export default function FavoritesPage() {
         load();
     }, [ensureCustomerId]);
 
-    const toggleFavorite = (productId: string) => {
-        const newFavorites = new Set(favorites);
-        if (newFavorites.has(productId)) {
-            newFavorites.delete(productId);
-        } else {
-            newFavorites.add(productId);
+    const handleRemoveFromWishlist = async (productId: string) => {
+        // Optimistic UI update
+        setWishlistItems(prev => prev.filter(item => item.product._id !== productId));
+
+        try {
+            await removeFromWishlist(productId);
+            pushToast({ type: 'success', message: 'Removed from favorites' });
+        } catch (err: any) {
+            // Revert on error
+            const data = await fetchWishlist();
+            setWishlistItems(data);
+            pushToast({ type: 'error', message: err.message || 'Failed to remove from favorites' });
         }
-        setFavorites(newFavorites);
-        localStorage.setItem('cc_favorites', JSON.stringify(Array.from(newFavorites)));
     };
 
     const cartMap = useMemo(() => {
@@ -71,7 +67,7 @@ export default function FavoritesPage() {
         const currentQty = cartMap.get(product._id) || 0;
         if (stock <= 0) return;
         if (currentQty >= stock) {
-            pushToast({ type: 'warning', title: 'Stock limit', message: `Only ${stock} left for ${product.name}` });
+            pushToast({ type: 'warning', message: `Only ${stock} left for ${product.name}` });
             return;
         }
 
@@ -95,8 +91,13 @@ export default function FavoritesPage() {
         }
     };
 
-    const favoriteProducts = products.filter(p => favorites.has(p._id));
-    const filteredProducts = favoriteProducts.filter(p => p.name.toLowerCase().includes(searchTerm.toLowerCase()));
+    // Filter wishlist items by search term
+    const filteredProducts = wishlistItems
+        .map(item => ({
+            ...item.product,
+            vendor: item.vendor
+        }))
+        .filter(p => p.name.toLowerCase().includes(searchTerm.toLowerCase()));
 
     return (
         <CustomerLayout disablePadding={true}>
@@ -144,10 +145,10 @@ export default function FavoritesPage() {
                                             {isNew && <span className="product-badge new">NEW</span>}
                                             <button
                                                 className="product-wishlist-btn"
-                                                onClick={() => toggleFavorite(product._id)}
+                                                onClick={() => handleRemoveFromWishlist(product._id)}
                                             >
                                                 <img
-                                                    src="/customer/assets/icons/favorite.svg"
+                                                    src="/customer/assets/icons/favorite-filled.svg"
                                                     alt="Favorite"
                                                     className="favorite-heart-icon active"
                                                     style={{ width: '24px', height: '24px' }}

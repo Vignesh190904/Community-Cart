@@ -1,8 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { useCustomerStore } from '../../context/CustomerStore';
 import CustomerLayout from '../../components/customer/CustomerLayout';
 import { useToast } from '../../components/ui/ToastProvider';
+
+interface Address {
+    _id: string;
+    community: string;
+    block: string;
+    floor: string;
+    flat_number: string;
+    is_primary: boolean;
+}
 
 export default function CheckoutPage() {
     const router = useRouter();
@@ -11,17 +20,52 @@ export default function CheckoutPage() {
 
     // Address State
     const [addressType, setAddressType] = useState<'Main' | 'Second'>('Main');
+    const [addresses, setAddresses] = useState<Address[]>([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        fetchAddresses();
+    }, []);
+
+    const fetchAddresses = async () => {
+        try {
+            const token = localStorage.getItem('auth_token');
+
+            const res = await fetch('http://localhost:5000/api/customers/addresses', {
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${token}`,
+                },
+            });
+
+            if (!res.ok) {
+                throw new Error('Failed to fetch addresses');
+            }
+
+            const data = await res.json();
+            setAddresses(data);
+        } catch (err) {
+            console.error(err);
+        } finally {
+            setLoading(false);
+        }
+    };
 
     const handlePlaceOrder = () => {
         // 1. Validate Cart
         if (cart.length === 0) {
-            pushToast({ type: 'error', title: 'Empty Cart', message: 'Add items before checking out' });
+            pushToast({ type: 'error', message: 'Add items before checking out' });
             return;
         }
 
-        // 2. Validate Address (Implicitly always selected by toggle default, but good to check)
+        // 2. Validate Address
+        if (addresses.length === 0) {
+            pushToast({ type: 'error', message: 'Please add an address first' });
+            return;
+        }
+
         if (!addressType) {
-            pushToast({ type: 'error', title: 'Address Required', message: 'Please select an address' });
+            pushToast({ type: 'error', message: 'Please select an address' });
             return;
         }
 
@@ -39,7 +83,7 @@ export default function CheckoutPage() {
         };
 
         console.log('Place Order Payload:', payload);
-        pushToast({ type: 'success', title: 'Order Placed', message: 'Order logged to console!' });
+        pushToast({ type: 'success', message: 'Order placed successfully!' });
 
         // Optional: clear cart or navigate away? 
         // User requirement: "Log payload structure in console". 
@@ -128,23 +172,42 @@ export default function CheckoutPage() {
                     </div>
 
                     {/* Address Selector */}
-                    <div className="address-selector">
+                    {loading ? (
+                        <p style={{ textAlign: 'center', padding: '12px', color: 'var(--text-muted)' }}>Loading addresses...</p>
+                    ) : addresses.length === 0 ? (
+                        /* CASE 1: No addresses - Show Add Address button */
                         <button
-                            className={`address-pill ${addressType === 'Main' ? 'active' : ''}`}
-                            onClick={() => setAddressType('Main')}
+                            className="add-address-btn"
+                            onClick={() => router.push('/customer/edit-address')}
                         >
-                            Main
+                            Add Address
                         </button>
-                        <button
-                            className={`address-pill ${addressType === 'Second' ? 'active' : ''}`}
-                            onClick={() => setAddressType('Second')}
-                        >
-                            Second
-                        </button>
-                    </div>
+                    ) : (
+                        /* CASE 2 & 3: 1 or 2 addresses - Show toggles */
+                        <div className="address-selector">
+                            <button
+                                className={`address-pill ${addressType === 'Main' ? 'active' : ''}`}
+                                onClick={() => setAddressType('Main')}
+                            >
+                                Main
+                            </button>
+                            <button
+                                className={`address-pill ${addressType === 'Second' ? 'active' : ''} ${addresses.length === 1 ? 'disabled' : ''}`}
+                                onClick={() => addresses.length > 1 && setAddressType('Second')}
+                                disabled={addresses.length === 1}
+                            >
+                                Second
+                            </button>
+                        </div>
+                    )}
 
                     {/* Place Order Button */}
-                    <button className="place-order-btn" onClick={handlePlaceOrder}>
+                    <button
+                        className="place-order-btn"
+                        onClick={handlePlaceOrder}
+                        disabled={addresses.length === 0}
+                        style={addresses.length === 0 ? { opacity: 0.5, cursor: 'not-allowed' } : {}}
+                    >
                         Place Order
                     </button>
                 </footer>

@@ -9,6 +9,7 @@ export default function Login() {
   const [message, setMessage] = useState('');
   const [messageType, setMessageType] = useState<'success' | 'error' | ''>('');
   const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   useEffect(() => {
     const storedToken = typeof window !== 'undefined' ? localStorage.getItem('auth_token') : null;
@@ -62,7 +63,7 @@ export default function Login() {
   };
 
   return (
-    <div className="container" style={{ maxWidth: 420, marginTop: '60px' }}>
+    <div className="container login-container">
       <h1>Community Cart</h1>
       <p className="subtitle">Sign in to continue</p>
 
@@ -78,15 +79,29 @@ export default function Login() {
           onChange={(e) => setEmail(e.target.value)}
           required
         />
-        <input
-          type="password"
-          name="password"
-          autoComplete="current-password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
+        <div className="password-field-wrapper">
+          <input
+            type={showPassword ? 'text' : 'password'}
+            name="password"
+            autoComplete="current-password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+          <button
+            type="button"
+            className="password-toggle-btn"
+            onClick={() => setShowPassword(!showPassword)}
+            aria-label={showPassword ? 'Hide password' : 'Show password'}
+          >
+            <img
+              src={showPassword ? '/customer/assets/icons/hide.svg' : '/customer/assets/icons/view.svg'}
+              alt=""
+              className="password-toggle-icon"
+            />
+          </button>
+        </div>
         <button type="submit" disabled={loading}>
           {loading ? 'Signing in...' : 'Login'}
         </button>

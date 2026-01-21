@@ -50,6 +50,26 @@ const customerSchema = new mongoose.Schema(
       },
     ],
 
+    /* ---------- Wishlist ---------- */
+    wishlist: [
+      {
+        product_id: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: 'Product',
+          required: true,
+        },
+        vendor_id: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: 'Vendor',
+          required: true,
+        },
+        added_at: {
+          type: Date,
+          default: Date.now,
+        },
+      },
+    ],
+
     /* ---------- Preferences ---------- */
     preferences: {
       preferredPaymentMethod: String,
@@ -63,6 +83,12 @@ const customerSchema = new mongoose.Schema(
         enum: ['light', 'dark'],
         default: 'light',
       },
+    },
+
+    /* ---------- Profile Picture ---------- */
+    profile_pic: {
+      type: String,
+      default: null,
     },
 
     /* ---------- Verification ---------- */

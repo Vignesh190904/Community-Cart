@@ -8,7 +8,7 @@ __turbopack_load_page_chunks__("/customer/browse-products", [
   "static/chunks/48ebd_react-dom_cjs_react-dom_development_b944df1a.js",
   "static/chunks/48ebd_react-dom_43235666._.js",
   "static/chunks/48ebd_c0e1799f._.js",
-  "static/chunks/[root-of-the-server]__987e0b86._.js",
+  "static/chunks/[root-of-the-server]__14b8c35b._.js",
   "static/chunks/Desktop_Community-Cart_frontend_src_pages_customer_browse-products_tsx_2da965e7._.js",
-  "static/chunks/88e7d_Community-Cart_frontend_src_pages_customer_browse-products_tsx_4aed3772._.js"
+  "static/chunks/88e7d_Community-Cart_frontend_src_pages_customer_browse-products_tsx_bb18745e._.js"
 ])

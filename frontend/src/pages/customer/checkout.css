@@ -171,6 +171,37 @@
     box-shadow: 0 4px 12px rgba(46, 125, 50, 0.2);
 }
 
+.address-pill.disabled {
+    background-color: #E0E0E0;
+    color: #9E9E9E;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.address-pill:disabled {
+    cursor: not-allowed;
+}
+
+/* Add Address Button (for 0 address case) */
+.add-address-btn {
+    width: 100%;
+    padding: 14px;
+    border-radius: 20px;
+    border: none;
+    background-color: var(--primary);
+    color: white;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(46, 125, 50, 0.2);
+}
+
+.add-address-btn:active {
+    transform: scale(0.98);
+}
+
 
 
 /* Place Order Button */

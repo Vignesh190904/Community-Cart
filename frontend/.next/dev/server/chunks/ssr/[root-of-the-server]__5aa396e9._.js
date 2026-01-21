@@ -251,9 +251,9 @@ function AddressPage() {
                 const err = await res.json();
                 throw new Error(err.message || 'Delete failed');
             }
-            showToast('Address deleted', 'success');
-            fetchAddresses();
-            setActiveTab('main');
+            showToast('Address deleted successfully', 'success');
+            await fetchAddresses(); // Refetch to get updated primary status
+            setActiveTab('main'); // Always switch to main tab after delete
         } catch (err) {
             showToast(err.message || 'Server error', 'error');
         }
@@ -478,14 +478,14 @@ function AddressPage() {
                                 lineNumber: 175,
                                 columnNumber: 29
                             }, this),
-                            !currentAddress.is_primary && addresses.length > 1 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("button", {
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("button", {
                                 className: "address-cta-btn delete-btn touchable",
                                 onClick: ()=>handleDelete(currentAddress._id),
                                 children: "Delete Address"
                             }, void 0, false, {
                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/address.tsx",
-                                lineNumber: 185,
-                                columnNumber: 33
+                                lineNumber: 184,
+                                columnNumber: 29
                             }, this)
                         ]
                     }, void 0, true) : addresses.length < 2 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("button", {
@@ -494,7 +494,7 @@ function AddressPage() {
                         children: "Add New Address"
                     }, void 0, false, {
                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/address.tsx",
-                        lineNumber: 194,
+                        lineNumber: 192,
                         columnNumber: 25
                     }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("p", {
                         style: {
@@ -503,7 +503,7 @@ function AddressPage() {
                         children: "Maximum 2 addresses allowed"
                     }, void 0, false, {
                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/address.tsx",
-                        lineNumber: 201,
+                        lineNumber: 199,
                         columnNumber: 25
                     }, this)
                 }, void 0, false, {

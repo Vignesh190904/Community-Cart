@@ -97,7 +97,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart
 ;
 function CustomerLayout({ children, disablePadding = false, fullWidth = false }) {
     const router = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$next$2f$router$2e$js__$5b$ssr$5d$__$28$ecmascript$29$__["useRouter"])();
-    const { is_authenticated, loading, onboarding_step, get_route_for_step } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$src$2f$context$2f$AuthContext$2e$tsx__$5b$ssr$5d$__$28$ecmascript$29$__["useAuth"])();
+    const { is_authenticated, loading } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$src$2f$context$2f$AuthContext$2e$tsx__$5b$ssr$5d$__$28$ecmascript$29$__["useAuth"])();
     const [isDark, setIsDark] = (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react__$5b$external$5d$__$28$react$2c$__cjs$29$__["useState"])(false);
     // 1. THEME LOGIC
     (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react__$5b$external$5d$__$28$react$2c$__cjs$29$__["useEffect"])(()=>{
@@ -118,21 +118,13 @@ function CustomerLayout({ children, disablePadding = false, fullWidth = false })
             if (!is_authenticated) {
                 // No valid session found after revalidation
                 router.replace('/customer/signin');
-            } else if (onboarding_step && onboarding_step !== 'PHONE_VERIFIED') {
-                // Session valid but onboarding incomplete
-                const correct_route = get_route_for_step(onboarding_step);
-                // Prevent infinite redirect if we are already on that route
-                if (router.pathname !== correct_route) {
-                    router.replace(correct_route);
-                }
             }
+        // Onboarding redirect logic removed - users navigate directly to Home after signup
         }
     }, [
         is_authenticated,
         loading,
-        onboarding_step,
-        router,
-        get_route_for_step
+        router
     ]);
     // 4. LOADING STATE
     // Show a clean loading screen while AuthContext verifies the token/cookie
@@ -160,17 +152,17 @@ function CustomerLayout({ children, disablePadding = false, fullWidth = false })
                     children: "Securely loading session..."
                 }, void 0, false, {
                     fileName: "[project]/Desktop/Community-Cart/frontend/src/components/customer/CustomerLayout.tsx",
-                    lineNumber: 84,
+                    lineNumber: 78,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/Desktop/Community-Cart/frontend/src/components/customer/CustomerLayout.tsx",
-                lineNumber: 83,
+                lineNumber: 77,
                 columnNumber: 9
             }, this)
         }, void 0, false, {
             fileName: "[project]/Desktop/Community-Cart/frontend/src/components/customer/CustomerLayout.tsx",
-            lineNumber: 73,
+            lineNumber: 67,
             columnNumber: 7
         }, this);
     }
@@ -187,18 +179,18 @@ function CustomerLayout({ children, disablePadding = false, fullWidth = false })
                 children: children
             }, void 0, false, {
                 fileName: "[project]/Desktop/Community-Cart/frontend/src/components/customer/CustomerLayout.tsx",
-                lineNumber: 98,
+                lineNumber: 92,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$src$2f$pages$2f$customer$2f$BottomNavbar$2e$tsx__$5b$ssr$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                 fileName: "[project]/Desktop/Community-Cart/frontend/src/components/customer/CustomerLayout.tsx",
-                lineNumber: 101,
+                lineNumber: 95,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/Desktop/Community-Cart/frontend/src/components/customer/CustomerLayout.tsx",
-        lineNumber: 97,
+        lineNumber: 91,
         columnNumber: 5
     }, this);
 }
@@ -230,21 +222,51 @@ function CheckoutPage() {
     const { pushToast } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$src$2f$components$2f$ui$2f$ToastProvider$2e$tsx__$5b$ssr$5d$__$28$ecmascript$29$__["useToast"])();
     // Address State
     const [addressType, setAddressType] = (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react__$5b$external$5d$__$28$react$2c$__cjs$29$__["useState"])('Main');
+    const [addresses, setAddresses] = (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react__$5b$external$5d$__$28$react$2c$__cjs$29$__["useState"])([]);
+    const [loading, setLoading] = (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react__$5b$external$5d$__$28$react$2c$__cjs$29$__["useState"])(true);
+    (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react__$5b$external$5d$__$28$react$2c$__cjs$29$__["useEffect"])(()=>{
+        fetchAddresses();
+    }, []);
+    const fetchAddresses = async ()=>{
+        try {
+            const token = localStorage.getItem('auth_token');
+            const res = await fetch('http://localhost:5000/api/customers/addresses', {
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${token}`
+                }
+            });
+            if (!res.ok) {
+                throw new Error('Failed to fetch addresses');
+            }
+            const data = await res.json();
+            setAddresses(data);
+        } catch (err) {
+            console.error(err);
+        } finally{
+            setLoading(false);
+        }
+    };
     const handlePlaceOrder = ()=>{
         // 1. Validate Cart
         if (cart.length === 0) {
             pushToast({
                 type: 'error',
-                title: 'Empty Cart',
                 message: 'Add items before checking out'
             });
             return;
         }
-        // 2. Validate Address (Implicitly always selected by toggle default, but good to check)
+        // 2. Validate Address
+        if (addresses.length === 0) {
+            pushToast({
+                type: 'error',
+                message: 'Please add an address first'
+            });
+            return;
+        }
         if (!addressType) {
             pushToast({
                 type: 'error',
-                title: 'Address Required',
                 message: 'Please select an address'
             });
             return;
@@ -264,8 +286,7 @@ function CheckoutPage() {
         console.log('Place Order Payload:', payload);
         pushToast({
             type: 'success',
-            title: 'Order Placed',
-            message: 'Order logged to console!'
+            message: 'Order placed successfully!'
         });
     // Optional: clear cart or navigate away? 
     // User requirement: "Log payload structure in console". 
@@ -295,12 +316,12 @@ function CheckoutPage() {
                                     className: "jsx-36f51b59bf4f7c06"
                                 }, void 0, false, {
                                     fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/checkout.tsx",
-                                    lineNumber: 78,
+                                    lineNumber: 122,
                                     columnNumber: 25
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/checkout.tsx",
-                                lineNumber: 76,
+                                lineNumber: 120,
                                 columnNumber: 21
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("h1", {
@@ -308,13 +329,13 @@ function CheckoutPage() {
                                 children: "Checkout"
                             }, void 0, false, {
                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/checkout.tsx",
-                                lineNumber: 80,
+                                lineNumber: 124,
                                 columnNumber: 21
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/checkout.tsx",
-                        lineNumber: 75,
+                        lineNumber: 119,
                         columnNumber: 17
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("section", {
@@ -325,7 +346,7 @@ function CheckoutPage() {
                                 children: "Order Summary"
                             }, void 0, false, {
                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/checkout.tsx",
-                                lineNumber: 85,
+                                lineNumber: 129,
                                 columnNumber: 21
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
@@ -342,7 +363,7 @@ function CheckoutPage() {
                                                             children: item.product.name
                                                         }, void 0, false, {
                                                             fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/checkout.tsx",
-                                                            lineNumber: 91,
+                                                            lineNumber: 135,
                                                             columnNumber: 37
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("span", {
@@ -353,13 +374,13 @@ function CheckoutPage() {
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/checkout.tsx",
-                                                            lineNumber: 92,
+                                                            lineNumber: 136,
                                                             columnNumber: 37
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/checkout.tsx",
-                                                    lineNumber: 90,
+                                                    lineNumber: 134,
                                                     columnNumber: 33
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("span", {
@@ -370,13 +391,13 @@ function CheckoutPage() {
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/checkout.tsx",
-                                                    lineNumber: 94,
+                                                    lineNumber: 138,
                                                     columnNumber: 33
                                                 }, this)
                                             ]
                                         }, item.product._id, true, {
                                             fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/checkout.tsx",
-                                            lineNumber: 89,
+                                            lineNumber: 133,
                                             columnNumber: 29
                                         }, this)),
                                     cart.length === 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("p", {
@@ -388,19 +409,19 @@ function CheckoutPage() {
                                         children: "No items in cart"
                                     }, void 0, false, {
                                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/checkout.tsx",
-                                        lineNumber: 98,
+                                        lineNumber: 142,
                                         columnNumber: 29
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/checkout.tsx",
-                                lineNumber: 87,
+                                lineNumber: 131,
                                 columnNumber: 21
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/checkout.tsx",
-                        lineNumber: 84,
+                        lineNumber: 128,
                         columnNumber: 17
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("footer", {
@@ -414,7 +435,7 @@ function CheckoutPage() {
                                         children: "Items"
                                     }, void 0, false, {
                                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/checkout.tsx",
-                                        lineNumber: 121,
+                                        lineNumber: 165,
                                         columnNumber: 25
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("span", {
@@ -422,13 +443,13 @@ function CheckoutPage() {
                                         children: totalItems
                                     }, void 0, false, {
                                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/checkout.tsx",
-                                        lineNumber: 122,
+                                        lineNumber: 166,
                                         columnNumber: 25
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/checkout.tsx",
-                                lineNumber: 120,
+                                lineNumber: 164,
                                 columnNumber: 21
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
@@ -439,7 +460,7 @@ function CheckoutPage() {
                                         children: "Total"
                                     }, void 0, false, {
                                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/checkout.tsx",
-                                        lineNumber: 126,
+                                        lineNumber: 170,
                                         columnNumber: 25
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("span", {
@@ -450,16 +471,36 @@ function CheckoutPage() {
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/checkout.tsx",
-                                        lineNumber: 127,
+                                        lineNumber: 171,
                                         columnNumber: 25
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/checkout.tsx",
-                                lineNumber: 125,
+                                lineNumber: 169,
                                 columnNumber: 21
                             }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
+                            loading ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("p", {
+                                style: {
+                                    textAlign: 'center',
+                                    padding: '12px',
+                                    color: 'var(--text-muted)'
+                                },
+                                className: "jsx-36f51b59bf4f7c06",
+                                children: "Loading addresses..."
+                            }, void 0, false, {
+                                fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/checkout.tsx",
+                                lineNumber: 176,
+                                columnNumber: 25
+                            }, this) : addresses.length === 0 ? /* CASE 1: No addresses - Show Add Address button */ /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("button", {
+                                onClick: ()=>router.push('/customer/edit-address'),
+                                className: "jsx-36f51b59bf4f7c06" + " " + "add-address-btn",
+                                children: "Add Address"
+                            }, void 0, false, {
+                                fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/checkout.tsx",
+                                lineNumber: 179,
+                                columnNumber: 25
+                            }, this) : /* CASE 2 & 3: 1 or 2 addresses - Show toggles */ /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
                                 className: "jsx-36f51b59bf4f7c06" + " " + "address-selector",
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("button", {
@@ -468,49 +509,55 @@ function CheckoutPage() {
                                         children: "Main"
                                     }, void 0, false, {
                                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/checkout.tsx",
-                                        lineNumber: 132,
-                                        columnNumber: 25
+                                        lineNumber: 188,
+                                        columnNumber: 29
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("button", {
-                                        onClick: ()=>setAddressType('Second'),
-                                        className: "jsx-36f51b59bf4f7c06" + " " + `address-pill ${addressType === 'Second' ? 'active' : ''}`,
+                                        onClick: ()=>addresses.length > 1 && setAddressType('Second'),
+                                        disabled: addresses.length === 1,
+                                        className: "jsx-36f51b59bf4f7c06" + " " + `address-pill ${addressType === 'Second' ? 'active' : ''} ${addresses.length === 1 ? 'disabled' : ''}`,
                                         children: "Second"
                                     }, void 0, false, {
                                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/checkout.tsx",
-                                        lineNumber: 138,
-                                        columnNumber: 25
+                                        lineNumber: 194,
+                                        columnNumber: 29
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/checkout.tsx",
-                                lineNumber: 131,
-                                columnNumber: 21
+                                lineNumber: 187,
+                                columnNumber: 25
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("button", {
                                 onClick: handlePlaceOrder,
+                                disabled: addresses.length === 0,
+                                style: addresses.length === 0 ? {
+                                    opacity: 0.5,
+                                    cursor: 'not-allowed'
+                                } : {},
                                 className: "jsx-36f51b59bf4f7c06" + " " + "place-order-btn",
                                 children: "Place Order"
                             }, void 0, false, {
                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/checkout.tsx",
-                                lineNumber: 147,
+                                lineNumber: 205,
                                 columnNumber: 21
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/checkout.tsx",
-                        lineNumber: 104,
+                        lineNumber: 148,
                         columnNumber: 17
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/checkout.tsx",
-                lineNumber: 72,
+                lineNumber: 116,
                 columnNumber: 13
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/checkout.tsx",
-        lineNumber: 50,
+        lineNumber: 94,
         columnNumber: 9
     }, this);
 }

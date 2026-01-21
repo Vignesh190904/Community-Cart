@@ -84,8 +84,8 @@ export default function HomePage() {
             enqueueToast('Please add your mobile number', 'warning');
         }
 
-        // Check for missing addresses
-        if (!user.addresses || user.addresses.length === 0) {
+        // Check for missing addresses - only show if addresses array exists and is empty
+        if (user.addresses && user.addresses.length === 0) {
             enqueueToast('Please add your address', 'warning');
         }
     }, [user, loading, enqueueToast]);
@@ -214,7 +214,7 @@ export default function HomePage() {
                                             onClick={() => toggleWishlist(product.id)}
                                         >
                                             <img
-                                                src="/customer/assets/icons/favorite.svg"
+                                                src={isWishlisted ? "/customer/assets/icons/favorite-filled.svg" : "/customer/assets/icons/favorite.svg"}
                                                 alt="Wishlist"
                                                 className={`favorite-heart-icon ${isWishlisted ? 'active' : ''}`}
                                                 style={{ width: '24px', height: '24px' }}

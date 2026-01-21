@@ -10,12 +10,13 @@ export default function ProfilePage() {
     const { sign_out, update_theme, user, is_authenticated, loading } = useAuth();
 
     const [is_dark, set_is_dark] = useState(false);
-    const [profile_image, set_profile_image] = useState('/customer/assets/images/profile_3.jpg');
-    const [image_error, set_image_error] = useState(false);
 
-    const handle_image_error = () => {
-        set_image_error(true);
-        set_profile_image('/customer/assets/icons/profile.svg');
+    // Determine profile image source
+    const get_profile_image_src = () => {
+        if (user?.profile_pic) {
+            return `http://localhost:5000${user.profile_pic}`;
+        }
+        return '/customer/assets/images/default_profile.jpg';
     };
 
     useEffect(() => {
@@ -72,10 +73,9 @@ export default function ProfilePage() {
                     <div className="profile-info-row">
                         <div className="profile-avatar-container">
                             <img
-                                src={profile_image}
+                                src={get_profile_image_src()}
                                 alt="Profile"
                                 className="profile-avatar-img"
-                                onError={handle_image_error}
                             />
                         </div>
                         <div className="profile-text-content">

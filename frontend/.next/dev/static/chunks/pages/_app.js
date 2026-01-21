@@ -9,7 +9,7 @@ __turbopack_load_page_chunks__("/_app", [
   "static/chunks/48ebd_react-dom_43235666._.js",
   "static/chunks/48ebd_c0e1799f._.js",
   "static/chunks/[root-of-the-server]__b91b3d3b._.js",
-  "static/chunks/Desktop_Community-Cart_frontend_src_416b1e2c._.css",
+  "static/chunks/Desktop_Community-Cart_frontend_src_4efc4ef9._.css",
   "static/chunks/Desktop_Community-Cart_frontend_src_pages__app_2da965e7._.js",
-  "static/chunks/turbopack-Desktop_Community-Cart_frontend_src_pages__app_7831a1de._.js"
+  "static/chunks/turbopack-Desktop_Community-Cart_frontend_src_pages__app_8a17c750._.js"
 ])

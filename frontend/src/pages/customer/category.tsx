@@ -192,7 +192,7 @@ export default function CategoryPage() {
                                             onClick={() => toggleWishlist(product.id)}
                                         >
                                             <img
-                                                src="/customer/assets/icons/favorite.svg"
+                                                src={isWishlisted ? "/customer/assets/icons/favorite-filled.svg" : "/customer/assets/icons/favorite.svg"}
                                                 alt="Wishlist"
                                                 className={`favorite-heart-icon ${isWishlisted ? 'active' : ''}`}
                                                 style={{ width: '24px', height: '24px' }}

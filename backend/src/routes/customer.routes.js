@@ -10,12 +10,21 @@ import {
   getAddresses,
   addAddress,
   updateAddress,
-  deleteAddress
+  deleteAddress,
+  uploadProfilePic,
+  deleteProfilePic,
+  addToWishlist,
+  removeFromWishlist,
+  getWishlist
 } from '../controllers/customer.controller.js';
 import { getMe as get_me } from '../controllers/authCustomer.controller.js';
 import { protect } from '../middlewares/auth.middleware.js';
+import { uploadProfilePic as uploadMiddleware } from '../config/uploadConfig.js';
 
 const router = express.Router();
+
+router.post('/profile-pic', protect, uploadMiddleware.single('profile_pic'), uploadProfilePic);
+router.delete('/profile-pic', protect, deleteProfilePic);
 
 router.patch('/ui-preferences', protect, updateUiPreferences);
 router.patch('/profile', protect, updateProfile);
@@ -25,6 +34,12 @@ router.get('/addresses', protect, getAddresses);
 router.post('/addresses', protect, addAddress);
 router.put('/addresses/:addrId', protect, updateAddress);
 router.delete('/addresses/:addrId', protect, deleteAddress);
+
+// Wishlist Routes
+router.post('/wishlist', protect, addToWishlist);
+router.delete('/wishlist/:productId', protect, removeFromWishlist);
+router.get('/wishlist', protect, getWishlist);
+
 router.get('/me', protect, get_me);
 router.post('/', createCustomer);
 router.get('/', getAllCustomers);

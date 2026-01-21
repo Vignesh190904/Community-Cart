@@ -593,7 +593,8 @@ export const getMe = async (req, res) => {
                 method: customer.auth.method,
                 emailVerified: customer.verification.email_verified,
                 phoneVerified: customer.verification.phone_verified,
-                ui_preferences: customer.ui_preferences
+                ui_preferences: customer.ui_preferences,
+                profile_pic: customer.profile_pic
             }
         });
     } catch (error) {

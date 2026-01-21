@@ -623,7 +623,7 @@ function AuthProvider({ children }) {
             // 3. Sync with Backend
             if (token) {
                 try {
-                    await fetch('http://localhost:5000/api/customer/ui-preferences', {
+                    await fetch('http://localhost:5000/api/customers/ui-preferences', {
                         method: 'PATCH',
                         headers: {
                             'Content-Type': 'application/json',
@@ -659,7 +659,7 @@ function AuthProvider({ children }) {
         children: children
     }, void 0, false, {
         fileName: "[project]/Desktop/Community-Cart/frontend/src/context/AuthContext.tsx",
-        lineNumber: 117,
+        lineNumber: 118,
         columnNumber: 9
     }, this);
 }
