@@ -10,7 +10,7 @@
   "static/chunks/48ebd_react-dom_cjs_react-dom_development_b944df1a.js",
   "static/chunks/48ebd_react-dom_43235666._.js",
   "static/chunks/48ebd_c0e1799f._.js",
-  "static/chunks/[root-of-the-server]__908fd655._.js"
+  "static/chunks/[root-of-the-server]__b276f3da._.js"
 ],
     source: "entry"
 });

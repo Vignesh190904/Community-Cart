@@ -25,6 +25,14 @@ const orderSchema = new mongoose.Schema(
       email: String,
     },
 
+    /* ---------- Delivery Address Snapshot (NEW) ---------- */
+    delivery_address_snapshot: {
+      community: String,
+      block: String,
+      floor: String,
+      flat_number: String,
+    },
+
     items: [
       {
         productId: {
@@ -34,6 +42,7 @@ const orderSchema = new mongoose.Schema(
         name: String,
         quantity: Number,
         price: Number,
+        // Optional: Keeping total if useful, but can be calculated
         total: Number,
       },
     ],

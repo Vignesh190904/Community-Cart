@@ -1,45 +1,24 @@
 self.__BUILD_MANIFEST = {
-  "/": [
-    "static/chunks/pages/index.js"
-  ],
-  "/_error": [
-    "static/chunks/pages/_error.js"
-  ],
   "/admin/dashboard": [
     "static/chunks/pages/admin/dashboard.js"
   ],
-  "/customer/browse-products": [
-    "static/chunks/pages/customer/browse-products.js"
+  "/admin/products": [
+    "static/chunks/pages/admin/products.js"
   ],
-  "/customer/cart": [
-    "static/chunks/pages/customer/cart.js"
-  ],
-  "/customer/category": [
-    "static/chunks/pages/customer/category.js"
-  ],
-  "/customer/favorites": [
-    "static/chunks/pages/customer/favorites.js"
-  ],
-  "/customer/home": [
-    "static/chunks/pages/customer/home.js"
-  ],
-  "/customer/orders": [
-    "static/chunks/pages/customer/orders.js"
-  ],
-  "/customer/product/[id]": [
-    "static/chunks/pages/customer/product/[id].js"
-  ],
-  "/customer/profile": [
-    "static/chunks/pages/customer/profile.js"
-  ],
-  "/customer/signin": [
-    "static/chunks/pages/customer/signin.js"
+  "/admin/vendors": [
+    "static/chunks/pages/admin/vendors.js"
   ],
   "/login": [
     "static/chunks/pages/login.js"
   ],
   "/vendor/dashboard": [
     "static/chunks/pages/vendor/dashboard.js"
+  ],
+  "/vendor/earnings": [
+    "static/chunks/pages/vendor/earnings.js"
+  ],
+  "/vendor/inventory": [
+    "static/chunks/pages/vendor/inventory.js"
   ],
   "/vendor/orders": [
     "static/chunks/pages/vendor/orders.js"

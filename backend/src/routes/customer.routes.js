@@ -17,6 +17,7 @@ import {
   removeFromWishlist,
   getWishlist
 } from '../controllers/customer.controller.js';
+import { getCustomerOrders } from '../controllers/order.controller.js';
 import { getMe as get_me } from '../controllers/authCustomer.controller.js';
 import { protect } from '../middlewares/auth.middleware.js';
 import { uploadProfilePic as uploadMiddleware } from '../config/uploadConfig.js';
@@ -39,6 +40,8 @@ router.delete('/addresses/:addrId', protect, deleteAddress);
 router.post('/wishlist', protect, addToWishlist);
 router.delete('/wishlist/:productId', protect, removeFromWishlist);
 router.get('/wishlist', protect, getWishlist);
+
+router.get('/orders', protect, getCustomerOrders);
 
 router.get('/me', protect, get_me);
 router.post('/', createCustomer);

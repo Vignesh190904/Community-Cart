@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import styles from './earnings.module.css';
+import { useAuth } from '../../context/AuthContext';
 
 interface MetricsResponse {
   filters: {
@@ -72,14 +73,13 @@ export default function VendorEarnings() {
 
   const [vendorId, setVendorId] = useState('');
 
+  const { user } = useAuth();
+
   useEffect(() => {
-    if (typeof window === 'undefined') return;
-    const storedVendorId =
-      localStorage.getItem('cc_vendorId') ||
-      localStorage.getItem('vendorId') ||
-      '';
-    setVendorId(storedVendorId);
-  }, []);
+    if (user?.id) {
+      setVendorId(user.id);
+    }
+  }, [user]);
 
   const statusQuery = useMemo(() => {
     if (status === 'both') return 'completed,cancelled';

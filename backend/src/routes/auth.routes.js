@@ -8,24 +8,24 @@ import { logout } from '../controllers/authCustomer.controller.js';
 
 const router = express.Router();
 
+import { signToken } from '../utils/jwt.utils.js';
+
 const JWT_SECRET = process.env.JWT_SECRET || 'change-this-secret';
 const JWT_EXPIRES_IN = process.env.JWT_EXPIRES_IN || '30d';
 
-const signToken = (user) => {
-  const payload = { id: user._id, role: user.role };
-  if (user.tokenVersion !== undefined) payload.tokenVersion = user.tokenVersion;
-  return jwt.sign(payload, JWT_SECRET, { expiresIn: JWT_EXPIRES_IN });
-};
+import { verifyToken } from '../utils/jwt.utils.js';
+
+// ...
 
 const authGuard = async (req, res, next) => {
   try {
-    const auth_token = req.cookies?.auth_token || (req.headers.authorization?.startsWith('Bearer ') ? req.headers.authorization.split(' ')[1] : null);
+    const auth_token = req.headers.authorization?.startsWith('Bearer ') ? req.headers.authorization.split(' ')[1] : null;
 
     if (!auth_token) {
       return res.status(401).json({ success: false, message: 'Authorization token missing' });
     }
 
-    const decoded = jwt.verify(auth_token, JWT_SECRET);
+    const decoded = verifyToken(auth_token);
 
     let principal = null;
     if (decoded.role === 'vendor') {
@@ -126,15 +126,7 @@ router.post('/login', async (req, res) => {
 
     const auth_token = signToken({ _id: userData.id, role: userData.role });
 
-    res.cookie('auth_token', auth_token, {
-      httpOnly: true,
-      secure: true,
-      maxAge: 7 * 24 * 60 * 60 * 1000,
-      sameSite: 'lax',
-      path: '/'
-    });
-
-    // CRITICAL: Return token in body as well
+    // Return token in body for client-side storage
     return res.json({ success: true, data: { user: userData, auth_token } });
   } catch (error) {
     return res.status(500).json({ success: false, message: 'Login failed' });

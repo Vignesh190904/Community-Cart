@@ -2,6 +2,7 @@ import { useEffect, useState, useMemo } from 'react';
 import { useRouter } from 'next/router';
 import { useToast } from '../../components/ui/ToastProvider';
 import { aggregateOrderItems, AggregatedOrderItem } from '../../utils/orderAggregation';
+import { getVendorToken, getVendorId, getVendorAuthHeaders } from '../../utils/vendorAuth';
 
 interface OrderItem {
   productId?: { _id?: string; name: string };
@@ -19,11 +20,11 @@ interface AggregatedItem extends AggregatedOrderItem {
 interface Order {
   _id: string;
   orderNumber: string;
-  customerId: {
+  customer_snapshot: {
     name: string;
-    email: string;
     phone: string;
-  } | null;
+    email: string;
+  };
   vendorId: {
     _id: string;
     storeName: string;
@@ -35,9 +36,16 @@ interface Order {
     tax?: number;
     totalAmount: number;
   };
-  delivery?: {
-    address?: string;
-    instructions?: string;
+  delivery_address_snapshot?: {
+    community?: string;
+    block?: string;
+    floor?: string;
+    flat_number?: string;
+  };
+  payment: {
+    method: string;
+    status: string;
+    transactionId?: string;
   };
   status: 'pending' | 'processing' | 'completed' | 'cancelled';
   notes?: string;
@@ -52,9 +60,7 @@ export default function VendorOrderDetails() {
   const [loading, setLoading] = useState(true);
   const { pushToast } = useToast();
 
-  const vendorId = typeof window !== 'undefined'
-    ? (localStorage.getItem('cc_vendorId') || localStorage.getItem('vendorId'))
-    : null;
+  const vendorId = getVendorId();
 
   useEffect(() => {
     if (orderId && vendorId) {
@@ -65,31 +71,49 @@ export default function VendorOrderDetails() {
   const fetchOrderDetails = async () => {
     try {
       setLoading(true);
-      const res = await fetch(`http://localhost:5000/api/orders/${orderId}`);
-      
+
+      // Get vendor JWT token using utility
+      const token = getVendorToken();
+
+      if (!token) {
+        pushToast({ type: 'error', message: 'No authentication token found. Please login again.' });
+        router.push('/login');
+        setLoading(false);
+        return;
+      }
+
+      const res = await fetch(`http://localhost:5000/api/orders/${orderId}`, {
+        headers: getVendorAuthHeaders(),
+      });
+
+      if (res.status === 401) {
+        pushToast({ type: 'error', message: 'Session expired. Please login again.' });
+        router.push('/login');
+        setLoading(false);
+        return;
+      }
+
       if (!res.ok) {
         throw new Error('Failed to fetch order details');
       }
-      
+
       const data = await res.json();
-      
+
       // Verify order belongs to this vendor
       if (data.vendorId?._id !== vendorId) {
-        pushToast({ 
-          type: 'error', 
-          title: 'Access Denied', 
-          message: 'This order does not belong to your store' 
+        pushToast({
+          type: 'error',
+          message: 'This order does not belong to your store'
         });
         router.push('/vendor/ordershistory');
         return;
       }
-      
+
       setOrder(data);
     } catch (error: any) {
-      pushToast({ 
-        type: 'error', 
-        title: 'Error', 
-        message: error.message || 'Failed to load order details' 
+      pushToast({
+        type: 'error',
+        message: error.message || 'Failed to load order details'
       });
       router.push('/vendor/ordershistory');
     } finally {
@@ -105,7 +129,7 @@ export default function VendorOrderDetails() {
 
     // Use utility function to aggregate items
     const aggregated = aggregateOrderItems(order.items);
-    
+
     // Map to AggregatedItem format with lineTotal
     return aggregated.map(item => ({
       ...item,
@@ -216,18 +240,31 @@ export default function VendorOrderDetails() {
           <div className="bill-info-grid">
             <div className="bill-info-item">
               <span className="bill-info-label">Name:</span>
-              <span className="bill-info-value">{order.customerId?.name || '—'}</span>
+              <span className="bill-info-value">{order.customer_snapshot?.name || '—'}</span>
             </div>
-            {order.customerId?.phone && (
+            {order.customer_snapshot?.phone && (
               <div className="bill-info-item">
                 <span className="bill-info-label">Phone:</span>
-                <span className="bill-info-value">{order.customerId.phone}</span>
+                <span className="bill-info-value">{order.customer_snapshot.phone}</span>
               </div>
             )}
-            {order.delivery?.address && (
+            {order.customer_snapshot?.email && (
+              <div className="bill-info-item">
+                <span className="bill-info-label">Email:</span>
+                <span className="bill-info-value">{order.customer_snapshot.email}</span>
+              </div>
+            )}
+            {order.delivery_address_snapshot && (
               <div className="bill-info-item full-width">
                 <span className="bill-info-label">Delivery Address:</span>
-                <span className="bill-info-value">{order.delivery.address}</span>
+                <span className="bill-info-value">
+                  {[
+                    order.delivery_address_snapshot.flat_number && `Flat ${order.delivery_address_snapshot.flat_number}`,
+                    order.delivery_address_snapshot.floor && `Floor ${order.delivery_address_snapshot.floor}`,
+                    order.delivery_address_snapshot.block && `Block ${order.delivery_address_snapshot.block}`,
+                    order.delivery_address_snapshot.community
+                  ].filter(Boolean).join(', ') || 'N/A'}
+                </span>
               </div>
             )}
           </div>
@@ -267,6 +304,10 @@ export default function VendorOrderDetails() {
               <span className="bill-summary-label">Subtotal:</span>
               <span className="bill-summary-value">₹{calculatedSubtotal.toFixed(2)}</span>
             </div>
+            <div className="bill-summary-row">
+              <span className="bill-summary-label">Payment Method:</span>
+              <span className="bill-summary-value">{order.payment?.method || 'COD'}</span>
+            </div>
             <div className="bill-summary-row bill-total">
               <span className="bill-summary-label">Total:</span>
               <span className="bill-summary-value">₹{order.pricing.totalAmount.toFixed(2)}</span>
@@ -275,20 +316,13 @@ export default function VendorOrderDetails() {
         </div>
 
         {/* NOTES */}
-        {(order.delivery?.instructions || order.notes) && (
+        {order.notes && (
           <div className="bill-section">
             <h2 className="bill-section-title">Notes</h2>
             <div className="bill-notes">
-              {order.delivery?.instructions && (
-                <div className="bill-note-item">
-                  <strong>Delivery Instructions:</strong> {order.delivery.instructions}
-                </div>
-              )}
-              {order.notes && (
-                <div className="bill-note-item">
-                  <strong>Order Notes:</strong> {order.notes}
-                </div>
-              )}
+              <div className="bill-note-item">
+                <strong>Order Notes:</strong> {order.notes}
+              </div>
             </div>
           </div>
         )}

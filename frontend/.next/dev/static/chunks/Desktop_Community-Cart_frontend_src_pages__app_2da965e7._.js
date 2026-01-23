@@ -10,7 +10,7 @@
   "static/chunks/48ebd_react-dom_cjs_react-dom_development_b944df1a.js",
   "static/chunks/48ebd_react-dom_43235666._.js",
   "static/chunks/48ebd_c0e1799f._.js",
-  "static/chunks/[root-of-the-server]__b91b3d3b._.js",
+  "static/chunks/[root-of-the-server]__270bdb93._.js",
   "static/chunks/Desktop_Community-Cart_frontend_src_4efc4ef9._.css"
 ],
     source: "entry"

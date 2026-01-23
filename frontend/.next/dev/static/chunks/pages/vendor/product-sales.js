@@ -1,5 +1,5 @@
 __turbopack_load_page_chunks__("/vendor/product-sales", [
-  "static/chunks/[root-of-the-server]__3e62ce76._.js",
+  "static/chunks/[root-of-the-server]__7a89e9cb._.js",
   "static/chunks/48ebd_next_dist_compiled_f7b2f49b._.js",
   "static/chunks/48ebd_next_dist_shared_lib_34884197._.js",
   "static/chunks/48ebd_next_dist_client_3b8c5f9d._.js",
@@ -10,5 +10,5 @@ __turbopack_load_page_chunks__("/vendor/product-sales", [
   "static/chunks/48ebd_react-dom_43235666._.js",
   "static/chunks/48ebd_c0e1799f._.js",
   "static/chunks/Desktop_Community-Cart_frontend_src_pages_vendor_product-sales_tsx_2da965e7._.js",
-  "static/chunks/88e7d_Community-Cart_frontend_src_pages_vendor_product-sales_tsx_71d50207._.js"
+  "static/chunks/88e7d_Community-Cart_frontend_src_pages_vendor_product-sales_tsx_b7ae69f3._.js"
 ])

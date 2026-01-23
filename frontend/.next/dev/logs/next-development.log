@@ -1,92 +1,11 @@
-[00:00:23.205] Server  LOG      ✓ Ready in 14.8s
-[00:00:35.998] Server  LOG      ○ Compiling / ...
-[00:00:48.599] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[00:01:59.805] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[00:06:12.095] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[00:06:27.881] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[00:06:36.044] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[00:10:29.747] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[00:10:41.663] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[00:13:45.853] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[00:14:39.500] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[00:14:55.089] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[00:15:03.541] Server  LOG      ✓ Compiled in 107ms
-[00:15:04.048] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[00:15:08.380] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[00:15:17.766] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[00:15:31.777] Server  LOG      ✓ Compiled in 91ms
-[00:15:47.927] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[00:15:57.532] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[00:18:48.543] Server  LOG      ✓ Compiled in 55ms
-[00:20:21.429] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[00:20:38.554] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[00:21:12.010] Browser LOG     [vendor:loadOrders] vendorId= 69440dabd39acfb6ef8909e5
-[00:21:12.010] Browser LOG     [vendor:loadOrders] vendorId= 69440dabd39acfb6ef8909e5
-[00:21:12.010] Browser LOG     [vendor:loadOrders] fetched orders count= 1
-[00:21:12.010] Browser LOG     [vendor:loadOrders] fetched orders count= 1
-[00:21:46.058] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[00:22:51.470] Server  LOG      ✓ Compiled in 33ms
-[00:23:24.103] Server  LOG      ✓ Compiled in 21ms
-[00:24:06.664] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[00:24:40.578] Server  LOG      ✓ Compiled in 14ms
-[00:25:49.459] Server  LOG      ✓ Compiled in 171ms
-[00:25:49.692] Browser LOG     Refreshing page data due to server-side change
-[00:25:49.693] Browser LOG     Refreshing page data due to server-side change
-[00:26:06.991] Server  LOG      ✓ Compiled in 26ms
-[00:28:18.432] Server  LOG      ✓ Compiled in 25ms
-[00:28:20.034] Server  LOG      ✓ Compiled in 25ms
-[00:28:25.772] Server  LOG      ✓ Compiled in 124ms
-[00:28:26.685] Browser LOG     Refreshing page data due to server-side change
-[00:28:26.685] Browser ERROR   ./Desktop/Community-Cart/frontend/src/pages/login.tsx:91:13
-Parsing ecmascript source code failed
-  89 |             onChange={(e) => setPassword(e.target.value)}
-  90 |             required
-> 91 |             <button
-     |             ^
-  92 |             type="button"
-  93 |             className="password-toggle-btn"
-  94 |             onClick={() => setShowPassword(!showPassword)}
-
-Expression expected
-[00:28:36.699] Server  LOG      ✓ Compiled in 13ms
-[00:28:37.682] Browser LOG     Refreshing page data due to server-side change
-[00:28:40.282] Server  LOG      ✓ Compiled in 12ms
-[00:29:25.413] Server  LOG      ✓ Compiled in 38ms
-[00:29:35.729] Server  LOG      ✓ Compiled in 45ms
-[00:34:38.650] Server  LOG      ✓ Compiled in 148ms
-[00:34:50.278] Server  LOG      ✓ Compiled in 52ms
-[00:35:24.624] Server  LOG      ✓ Compiled in 39ms
-[00:35:28.375] Server  LOG      ✓ Compiled in 24ms
-[00:36:10.589] Server  LOG      ✓ Compiled in 30ms
-[00:44:26.746] Server  LOG      ✓ Compiled in 913ms
-[00:44:54.578] Server  LOG      ✓ Compiled in 46ms
-[00:45:16.474] Server  LOG      ✓ Compiled in 107ms
-[00:45:39.872] Server  LOG      ✓ Compiled in 61ms
-[00:45:52.681] Server  LOG      ✓ Compiled in 53ms
-[00:49:55.705] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[00:49:55.912] Browser ERROR   Failed to load wishlist: {}
-[00:49:55.913] Browser ERROR   Failed to load wishlist: {}
-[00:50:34.922] Browser ERROR   Failed to load wishlist: {}
-[00:50:34.922] Browser ERROR   Failed to load wishlist: {}
-[00:51:25.288] Server  LOG      ✓ Compiled in 157ms
-[00:51:25.680] Browser ERROR   Failed to load wishlist: {}
-[00:52:44.887] Browser ERROR   Failed to load wishlist: {}
-[00:52:44.887] Browser ERROR   Failed to load wishlist: {}
-[00:53:31.293] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[00:56:07.186] Browser ERROR   Failed to load wishlist: {}
-[00:56:07.186] Browser ERROR   Failed to load wishlist: {}
-[00:56:11.381] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[00:56:14.580] Browser ERROR   Failed to load wishlist: {}
-[00:56:14.580] Browser ERROR   Failed to load wishlist: {}
-[00:56:22.741] Browser ERROR   Failed to load wishlist: {}
-[00:56:22.741] Browser ERROR   Failed to load wishlist: {}
-[00:56:24.609] Browser ERROR   Failed to load wishlist: {}
-[00:56:24.609] Browser ERROR   Failed to load wishlist: {}
-[00:59:44.852] Server  LOG      ✓ Compiled in 61ms
-[01:01:07.282] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[01:01:17.082] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[01:02:25.635] Server  LOG      ✓ Compiled in 180ms
-[01:05:48.291] Server  LOG      ✓ Compiled in 172ms
-[01:06:27.636] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[01:10:07.321] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[01:10:11.133] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:00:04.743] Server  LOG      ✓ Ready in 1783ms
+[00:00:17.276] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:00:23.649] Browser LOG     [vendor:loadOrders] Fetching orders
+[00:00:23.649] Browser LOG     [vendor:loadOrders] Fetching orders
+[00:00:23.649] Browser LOG     [vendor:loadOrders] fetched orders count= 0
+[00:00:23.649] Browser LOG     [vendor:loadOrders] fetched orders count= 0
+[00:01:14.931] Server  LOG      ✓ Compiled in 99ms
+[00:02:09.410] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:02:15.874] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:02:19.759] Browser WARN    Role mismatch: expected vendor, got admin
+[00:02:28.289] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior

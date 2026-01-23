@@ -129,15 +129,6 @@ export const manualSignupVerifyEmail = async (req, res) => {
         // Create token
         const auth_token = signToken(customer._id);
 
-        // Set Auth Cookie
-        res.cookie('auth_token', auth_token, {
-            httpOnly: true,
-            secure: true,
-            sameSite: 'lax',
-            path: '/',
-            maxAge: 7 * 24 * 60 * 60 * 1000 // 7 days
-        });
-
         console.log("✅ EMAIL OTP VERIFIED — USER CREATED AND AUTHENTICATED");
 
         return res.status(201).json({
@@ -268,15 +259,6 @@ export const manualSignin = async (req, res) => {
 
         // Create token
         const auth_token = signToken(customer._id);
-
-        // Set Auth Cookie
-        res.cookie('auth_token', auth_token, {
-            httpOnly: true,
-            secure: true,
-            sameSite: 'lax',
-            path: '/',
-            maxAge: 7 * 24 * 60 * 60 * 1000 // 7 days
-        });
 
         return res.status(200).json({
             success: true,
@@ -422,15 +404,6 @@ export const googleSignupVerifyEmail = async (req, res) => {
         // Create token
         const auth_token = signToken(customer._id);
 
-        // Set Auth Cookie
-        res.cookie('auth_token', auth_token, {
-            httpOnly: true,
-            secure: true,
-            sameSite: 'lax',
-            path: '/',
-            maxAge: 7 * 24 * 60 * 60 * 1000 // 7 days
-        });
-
         console.log("✅ EMAIL OTP VERIFIED — USER CREATED AND AUTHENTICATED");
 
         return res.status(201).json({
@@ -507,15 +480,6 @@ export const googleSignin = async (req, res) => {
         // Create token
         const auth_token = signToken(customer._id);
 
-        // Set Auth Cookie
-        res.cookie('auth_token', auth_token, {
-            httpOnly: true,
-            secure: true,
-            sameSite: 'lax',
-            path: '/',
-            maxAge: 7 * 24 * 60 * 60 * 1000 // 7 days
-        });
-
         return res.status(200).json({
             success: true,
             message: 'Login successful',
@@ -545,16 +509,7 @@ export const googleSignin = async (req, res) => {
 
 export const logout = async (req, res) => {
     try {
-        // Clear Auth Cookie
-        res.cookie('auth_token', '', {
-            httpOnly: true,
-            expires: new Date(0),
-            path: '/',
-            sameSite: 'lax',
-            secure: true
-        });
-
-        // Stateless logout - client discards token
+        // Stateless logout - client discards token from localStorage
         return res.status(200).json({
             success: true,
             message: 'Logged out successfully'

@@ -2,6 +2,7 @@ import { useState, useEffect, useMemo } from 'react';
 import { useRouter } from 'next/router';
 import { api } from '../../services/api';
 import { useToast } from '../../components/ui/ToastProvider';
+import { useAuth } from '../../context/AuthContext';
 // Styles provided by global import in _app.tsx: ./vendor/product-sales.css
 
 interface ProductSale {
@@ -28,7 +29,7 @@ export default function ProductSalesPage() {
   const router = useRouter();
   const { productId: productIdQuery } = router.query as { productId?: string };
   const { pushToast } = useToast();
-  const [vendorId, setVendorId] = useState('');
+  const { user } = useAuth();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   
@@ -82,16 +83,15 @@ export default function ProductSalesPage() {
   };
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      try {
-        const stored = localStorage.getItem('cc_user');
-        if (stored) {
-          const parsed = JSON.parse(stored);
-          setVendorId(parsed.id);
-        }
-      } catch {}
+    if (user?.id) {
+      setError(null);
+      setLoading(false);
+      loadData(user.id);
+    } else {
+      setLoading(false);
     }
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user]);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -101,12 +101,13 @@ export default function ProductSalesPage() {
   }, [search]);
 
   useEffect(() => {
-    if (vendorId) {
-      loadData();
+    if (user?.id) {
+      loadData(user.id);
     }
-  }, [vendorId, startDate, endDate, searchDebounced, category, stockStatus, minUnitsSold, minRevenue, zeroSalesOnly, sortBy, sortOrder, productIdQuery]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [startDate, endDate, searchDebounced, category, stockStatus, minUnitsSold, minRevenue, zeroSalesOnly, sortBy, sortOrder, productIdQuery]);
 
-  const loadData = async () => {
+  const loadData = async (vendorId: string) => {
     try {
       setLoading(true);
       setError(null);
@@ -168,7 +169,18 @@ export default function ProductSalesPage() {
         <div className="ps-error-state">
           <h3>Error Loading Data</h3>
           <p>{error}</p>
-          <button className="ps-retry-button" onClick={loadData}>Retry</button>
+          <button className="ps-retry-button" onClick={() => user?.id && loadData(user.id)}>Retry</button>
+        </div>
+      </div>
+    );
+  }
+
+  if (!user?.id) {
+    return (
+      <div className="ps-page">
+        <div className="ps-error-state">
+          <h3>Please login</h3>
+          <p>Login to view product sales analytics.</p>
         </div>
       </div>
     );

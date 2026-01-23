@@ -3,14 +3,41 @@ import { useRouter } from 'next/router';
 import { DragDropContext, Droppable, Draggable, DropResult } from '@hello-pangea/dnd';
 import { useToast } from '../../components/ui/ToastProvider';
 import { aggregateOrderItems } from '../../utils/orderAggregation';
+import { useAuth } from '../../context/AuthContext';
 
 type OrderStatus = 'pending' | 'processing' | 'completed' | 'cancelled';
+
+interface OrderResponse {
+  order_id: string;
+  order_number: string;
+  status: OrderStatus;
+  created_at: string;
+  customer: {
+    name: string;
+    phone: string;
+  };
+  delivery_address_snapshot: {
+    community?: string;
+    block?: string;
+    floor?: string;
+    flat_number?: string;
+  };
+  items: Array<{
+    product_id: string;
+    name: string;
+    quantity: number;
+    price: number;
+  }>;
+  total_amount: number;
+  payment_method: string;
+}
 
 interface Order {
   _id: string;
   orderNumber: string;
-  customerId: { name: string; email: string; phone: string } | null;
-  vendorId: { _id: string; name: string } | null;
+  customerName: string;
+  customerPhone: string;
+  deliveryAddress: string;
   items: Array<{
     productId: string;
     name: string;
@@ -30,29 +57,71 @@ export default function VendorOrders() {
   const [orders, setOrders] = useState<Order[]>([]);
   const [loading, setLoading] = useState(true);
   const { pushToast } = useToast();
-
-  // Get vendorId from localStorage (set during login)
-  const vendorId = typeof window !== 'undefined' ? (localStorage.getItem('cc_vendorId') || localStorage.getItem('vendorId')) : null;
+  const { user } = useAuth();
 
   useEffect(() => {
-    if (vendorId) {
+    if (user?.id) {
       loadOrders();
     } else {
-      pushToast({ type: 'error', title: 'Error', message: 'Vendor not logged in' });
       setLoading(false);
     }
-  }, [vendorId]);
+  }, [user]);
 
   const loadOrders = async () => {
     try {
-      console.log('[vendor:loadOrders] vendorId=', vendorId);
-      const res = await fetch(`http://localhost:5000/api/orders?vendorId=${vendorId}&status=pending,processing,completed,cancelled`);
-      if (!res.ok) throw new Error('Failed to fetch orders');
-      const data = await res.json();
+      console.log('[vendor:loadOrders] Fetching orders');
+
+      const res = await fetch('http://localhost:5000/api/vendors/orders');
+
+      if (!res.ok) {
+        throw new Error('Failed to fetch orders');
+      }
+
+      const data: OrderResponse[] = await res.json();
       console.log('[vendor:loadOrders] fetched orders count=', data.length);
-      setOrders(data);
+
+      // Map snapshot-based response to UI format
+      const mappedOrders: Order[] = data.map((orderResponse) => {
+        // Format delivery address from snapshot
+        const addressParts = [];
+        if (orderResponse.delivery_address_snapshot?.flat_number) {
+          addressParts.push(`Flat ${orderResponse.delivery_address_snapshot.flat_number}`);
+        }
+        if (orderResponse.delivery_address_snapshot?.floor) {
+          addressParts.push(`Floor ${orderResponse.delivery_address_snapshot.floor}`);
+        }
+        if (orderResponse.delivery_address_snapshot?.block) {
+          addressParts.push(`Block ${orderResponse.delivery_address_snapshot.block}`);
+        }
+        if (orderResponse.delivery_address_snapshot?.community) {
+          addressParts.push(orderResponse.delivery_address_snapshot.community);
+        }
+        const deliveryAddress = addressParts.length > 0 ? addressParts.join(', ') : 'N/A';
+
+        return {
+          _id: orderResponse.order_id,
+          orderNumber: orderResponse.order_number,
+          customerName: orderResponse.customer.name || 'Unknown Customer',
+          customerPhone: orderResponse.customer.phone || 'N/A',
+          deliveryAddress,
+          items: orderResponse.items.map((item) => ({
+            productId: item.product_id,
+            name: item.name,
+            quantity: item.quantity,
+            price: item.price,
+            total: item.price * item.quantity,
+          })),
+          pricing: {
+            totalAmount: orderResponse.total_amount,
+          },
+          status: orderResponse.status,
+          createdAt: orderResponse.created_at,
+        };
+      });
+
+      setOrders(mappedOrders);
     } catch (error: any) {
-      pushToast({ type: 'error', title: 'Error', message: error.message || 'Failed to load orders' });
+      pushToast({ type: 'error', message: error.message || 'Failed to load orders' });
     } finally {
       setLoading(false);
     }
@@ -100,13 +169,13 @@ export default function VendorOrders() {
       if (!res.ok) throw new Error('Failed to update order');
       const updated = await res.json();
       console.log('[vendor:updateStatus] orderId=', orderId, 'status=', newStatus);
-      pushToast({ type: 'success', title: 'Order Updated', message: `Order moved to ${newStatus}` });
+      pushToast({ type: 'success', message: `Order moved to ${newStatus}` });
     } catch (error: any) {
       // Rollback on failure
       setOrders((prev) =>
         prev.map((o) => (o._id === orderId ? originalOrder : o))
       );
-      pushToast({ type: 'error', title: 'Update Failed', message: error.message || 'Could not update order' });
+      pushToast({ type: 'error', message: error.message || 'Could not update order' });
     }
   };
 
@@ -202,7 +271,13 @@ export default function VendorOrders() {
                       <div className="order-total">₹{o.pricing.totalAmount.toFixed(2)}</div>
                     </div>
                     <div className="order-customer">
-                      {o.customerId?.name || 'Unknown Customer'}
+                      {o.customerName}
+                    </div>
+                    <div className="order-customer" style={{ fontSize: '0.9em', color: 'var(--text-secondary)' }}>
+                      📞 {o.customerPhone}
+                    </div>
+                    <div className="order-customer" style={{ fontSize: '0.85em', color: 'var(--text-secondary)', marginTop: '4px' }}>
+                      📍 {o.deliveryAddress}
                     </div>
                     <div className="order-items">
                       {aggregateOrderItems(o.items).map((item) => (
@@ -233,9 +308,8 @@ export default function VendorOrders() {
                           </svg>
                         </button>
                         <span
-                          className={`status-badge ${
-                            o.status === 'cancelled' ? 'cancelled' : 'done'
-                          }`}
+                          className={`status-badge ${o.status === 'cancelled' ? 'cancelled' : 'done'
+                            }`}
                         >
                           {o.status === 'cancelled' ? 'Cancelled' : 'Completed'}
                         </span>
@@ -303,6 +377,16 @@ export default function VendorOrders() {
       <div className="orders-board">
         <div style={{ padding: '24px', textAlign: 'center', color: 'var(--text-secondary)' }}>
           Loading orders...
+        </div>
+      </div>
+    );
+  }
+
+  if (!user?.id) {
+    return (
+      <div className="orders-board">
+        <div style={{ padding: '24px', textAlign: 'center', color: 'var(--text-secondary)' }}>
+          Please login to view vendor orders.
         </div>
       </div>
     );

@@ -1,15 +1,18 @@
 import jwt from 'jsonwebtoken';
 
-const JWT_SECRET = process.env.JWT_SECRET || 'your_super_secret_jwt_key_should_be_in_env';
-const JWT_EXPIRES_IN = '7d';
+const JWT_SECRET = process.env.JWT_SECRET || 'change-this-secret';
+const JWT_EXPIRES_IN = process.env.JWT_EXPIRES_IN || '30d';
 
 /**
  * Sign a JWT token for a user
- * @param {string} userId - The user's ID
+ * @param {object} user - The user object containing _id, role, etc.
  * @returns {string} The signed token
  */
-export const signToken = (userId) => {
-    return jwt.sign({ id: userId }, JWT_SECRET, {
+export const signToken = (user) => {
+    const payload = { id: user._id || user.id, role: user.role };
+    if (user.tokenVersion !== undefined) payload.tokenVersion = user.tokenVersion;
+
+    return jwt.sign(payload, JWT_SECRET, {
         expiresIn: JWT_EXPIRES_IN
     });
 };

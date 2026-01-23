@@ -1,4 +1,5 @@
 import { useState, useEffect, useMemo } from 'react';
+import { useAuth } from '../../context/AuthContext';
 
 interface Product {
   _id: string;
@@ -48,27 +49,17 @@ export default function VendorDashboard() {
   const [products, setProducts] = useState<Product[]>([]);
   const [orders, setOrders] = useState<Order[]>([]);
   const [loading, setLoading] = useState(true);
-  const [vendorId, setVendorId] = useState('');
+  const { user } = useAuth();
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      try {
-        const stored = localStorage.getItem('cc_user');
-        if (stored) {
-          const parsed = JSON.parse(stored);
-          setVendorId(parsed.id);
-        }
-      } catch {}
+    if (user?.id) {
+      fetchData(user.id);
+    } else {
+      setLoading(false);
     }
-  }, []);
+  }, [user]);
 
-  useEffect(() => {
-    if (vendorId) {
-      fetchData();
-    }
-  }, [vendorId]);
-
-  const fetchData = async () => {
+  const fetchData = async (vendorId: string) => {
     try {
       setLoading(true);
       const [productsRes, ordersRes] = await Promise.all([
@@ -140,6 +131,10 @@ export default function VendorDashboard() {
 
   if (loading) {
     return <div className="page-state">Loading dashboard…</div>;
+  }
+
+  if (!user?.id) {
+    return <div className="page-state">Please login to view your vendor dashboard.</div>;
   }
 
   return (

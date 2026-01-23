@@ -468,10 +468,16 @@ function triggerUpdate(msg) {
 __turbopack_context__.s([
     "apiCall",
     ()=>apiCall,
+    "apiDelete",
+    ()=>apiDelete,
     "apiGet",
     ()=>apiGet,
+    "apiPatch",
+    ()=>apiPatch,
     "apiPost",
-    ()=>apiPost
+    ()=>apiPost,
+    "apiPut",
+    ()=>apiPut
 ]);
 var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$build$2f$polyfills$2f$process$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = /*#__PURE__*/ __turbopack_context__.i("[project]/Desktop/Community-Cart/frontend/node_modules/next/dist/build/polyfills/process.js [client] (ecmascript)");
 const API_BASE_URL = __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$build$2f$polyfills$2f$process$2e$js__$5b$client$5d$__$28$ecmascript$29$__["default"].env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
@@ -484,13 +490,46 @@ async function apiCall(endpoint, options = {}) {
         } : {};
         const response = await fetch(`${API_BASE_URL}${endpoint}`, {
             ...options,
-            // credentials: 'include', // REMOVED: Using JWT
             headers: {
                 'Content-Type': 'application/json',
                 ...authHeader,
                 ...options.headers
             }
         });
+        // GLOBAL 401 HANDLER: Force logout on authentication failure
+        if (response.status === 401) {
+            if ("TURBOPACK compile-time truthy", 1) {
+                // Read role from stored user data
+                let userRole = null;
+                try {
+                    const storedUser = localStorage.getItem('auth_user');
+                    if (storedUser) {
+                        const user = JSON.parse(storedUser);
+                        userRole = user.role;
+                    }
+                } catch  {
+                // Ignore parse errors
+                }
+                // Clear all auth data BEFORE redirect
+                localStorage.removeItem('auth_token');
+                localStorage.removeItem('auth_user');
+                // ONLY redirect if auth is ready (prevents redirect during initial load)
+                const authReady = window.__AUTH_READY__ === true;
+                if (authReady) {
+                    // Import redirect resolver dynamically to avoid circular deps
+                    const { getLoginRedirectPath } = await __turbopack_context__.A("[project]/Desktop/Community-Cart/frontend/src/utils/authRedirect.utils.ts [client] (ecmascript, async loader)");
+                    const redirectPath = getLoginRedirectPath(userRole);
+                    // Redirect exactly once (prevent infinite loops)
+                    if (!window.location.pathname.includes('/signin') && !window.location.pathname.includes('/signup') && !window.location.pathname.includes('/login')) {
+                        window.location.href = redirectPath;
+                    }
+                }
+            }
+            return {
+                error: 'Session expired. Please login again.',
+                errorCode: 'UNAUTHORIZED'
+            };
+        }
         const data = await response.json();
         if (!response.ok) {
             return {
@@ -517,6 +556,23 @@ async function apiPost(endpoint, body) {
 async function apiGet(endpoint) {
     return apiCall(endpoint, {
         method: 'GET'
+    });
+}
+async function apiPatch(endpoint, body) {
+    return apiCall(endpoint, {
+        method: 'PATCH',
+        body: JSON.stringify(body)
+    });
+}
+async function apiPut(endpoint, body) {
+    return apiCall(endpoint, {
+        method: 'PUT',
+        body: JSON.stringify(body)
+    });
+}
+async function apiDelete(endpoint) {
+    return apiCall(endpoint, {
+        method: 'DELETE'
     });
 }
 if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {

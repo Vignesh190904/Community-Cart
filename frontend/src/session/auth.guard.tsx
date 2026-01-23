@@ -1,58 +1,62 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useRouter } from 'next/router';
-import { checkSession } from './session.manager';
+import { useAuth } from '../context/AuthContext';
 
 /**
- * Auth guard hook for protected pages
- * Redirects to signin if user is not authenticated
+ * Auth guard hook for protected pages with role enforcement
+ * Redirects to signin if user is not authenticated or has wrong role
  * 
+ * @param allowedRoles - Array of roles allowed to access this page
  * @param redirectTo - Path to redirect to if not authenticated (default: '/customer/signin')
  * @returns Object with loading state and authentication status
  */
-export function useAuthGuard(redirectTo: string = '/customer/signin') {
+export function useAuthGuard(
+    allowedRoles: Array<'customer' | 'vendor' | 'admin'> = ['customer'],
+    redirectTo: string = '/customer/signin'
+) {
     const router = useRouter();
-    const [isLoading, setIsLoading] = useState(true);
-    const [isAuthenticated, setIsAuthenticated] = useState(false);
+    const { is_authenticated, loading, role, sign_out } = useAuth();
 
     useEffect(() => {
-        const verifySession = async () => {
-            try {
-                const { isAuthenticated } = await checkSession();
+        // Wait for auth to finish loading
+        if (loading) return;
 
-                if (!isAuthenticated) {
-                    // Not authenticated - redirect to signin
-                    router.replace(redirectTo);
-                } else {
-                    setIsAuthenticated(true);
-                }
-            } catch (error) {
-                console.error('Auth guard error:', error);
-                router.replace(redirectTo);
-            } finally {
-                setIsLoading(false);
-            }
-        };
+        // Not authenticated - redirect to login
+        if (!is_authenticated) {
+            router.replace(redirectTo);
+            return;
+        }
 
-        verifySession();
-    }, [router, redirectTo]);
+        // Role mismatch - force logout and redirect
+        if (role && !allowedRoles.includes(role)) {
+            console.warn(`Role mismatch: ${role} not in [${allowedRoles.join(', ')}]`);
+            sign_out();
+            return;
+        }
+    }, [is_authenticated, loading, role, router, redirectTo, allowedRoles, sign_out]);
 
-    return { isLoading, isAuthenticated };
+    return {
+        isLoading: loading,
+        isAuthenticated: is_authenticated && role && allowedRoles.includes(role)
+    };
 }
 
 /**
- * Higher-order component to protect pages
- * Wraps a page component with authentication check
+ * Higher-order component to protect pages with role enforcement
+ * Wraps a page component with authentication and role check
  * 
  * @param Component - Page component to protect
+ * @param allowedRoles - Array of roles allowed to access this page
  * @param redirectTo - Path to redirect to if not authenticated
  * @returns Protected component
  */
 export function withAuthGuard<P extends object>(
     Component: React.ComponentType<P>,
+    allowedRoles: Array<'customer' | 'vendor' | 'admin'> = ['customer'],
     redirectTo: string = '/customer/signin'
 ) {
     return function ProtectedPage(props: P) {
-        const { isLoading, isAuthenticated } = useAuthGuard(redirectTo);
+        const { isLoading, isAuthenticated } = useAuthGuard(allowedRoles, redirectTo);
 
         // Show loading state while checking session
         if (isLoading) {
@@ -61,14 +65,15 @@ export function withAuthGuard<P extends object>(
                     display: 'flex',
                     justifyContent: 'center',
                     alignItems: 'center',
-                    height: '100vh'
+                    height: '100vh',
+                    fontFamily: 'sans-serif'
                 }}>
-                    <p>Loading...</p>
+                    <p>Verifying session...</p>
                 </div>
             );
         }
 
-        // Only render component if authenticated
+        // Only render component if authenticated with correct role
         if (!isAuthenticated) {
             return null;
         }

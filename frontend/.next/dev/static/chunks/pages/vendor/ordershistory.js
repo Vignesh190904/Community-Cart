@@ -8,7 +8,7 @@ __turbopack_load_page_chunks__("/vendor/ordershistory", [
   "static/chunks/48ebd_react-dom_cjs_react-dom_development_b944df1a.js",
   "static/chunks/48ebd_react-dom_43235666._.js",
   "static/chunks/48ebd_c0e1799f._.js",
-  "static/chunks/[root-of-the-server]__908fd655._.js",
+  "static/chunks/[root-of-the-server]__b276f3da._.js",
   "static/chunks/Desktop_Community-Cart_frontend_src_pages_vendor_ordershistory_tsx_2da965e7._.js",
-  "static/chunks/88e7d_Community-Cart_frontend_src_pages_vendor_ordershistory_tsx_e3059f4c._.js"
+  "static/chunks/88e7d_Community-Cart_frontend_src_pages_vendor_ordershistory_tsx_3dfba92e._.js"
 ])

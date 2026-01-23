@@ -21,7 +21,7 @@ const getNextOrderNumber = async () => {
 
 export const createOrder = async (req, res) => {
   try {
-    const { customerId, productIds, items: bodyItems } = req.body;
+    const { customerId, productIds, items: bodyItems, addressId } = req.body;
 
     // Normalize incoming items: support legacy productIds[] or new items[{productId, quantity}]
     const normalizedItems = Array.isArray(bodyItems) && bodyItems.length > 0
@@ -41,9 +41,22 @@ export const createOrder = async (req, res) => {
       return res.status(403).json({ error: 'Customer is disabled' });
     }
 
+    // Find the delivery address (snapshot)
+    let selectedAddress;
+    if (addressId) {
+      selectedAddress = customer.addresses.id(addressId);
+    } else {
+      // Fallback: use primary address or first available
+      selectedAddress = customer.addresses.find(a => a.is_primary) || customer.addresses[0];
+    }
+
+    if (!selectedAddress) {
+      return res.status(400).json({ error: 'No delivery address available for this customer' });
+    }
+
     // Fetch products to calculate total and get vendor (do not trust vendorId from client)
     const products = await Product.find({ _id: { $in: normalizedItems.map((i) => i.productId) } }).populate('vendor');
-    
+
     if (products.length === 0) {
       return res.status(404).json({ error: 'No valid products found' });
     }
@@ -99,6 +112,17 @@ export const createOrder = async (req, res) => {
       items,
       pricing: { subtotal, deliveryFee, tax, totalAmount },
       status: 'pending',
+      customer_snapshot: {
+        name: customer.name,
+        phone: customer.phone,
+        email: customer.email,
+      },
+      delivery_address_snapshot: {
+        community: selectedAddress.community,
+        block: selectedAddress.block,
+        floor: selectedAddress.floor,
+        flat_number: selectedAddress.flat_number,
+      },
     });
 
     const savedOrder = await order.save();
@@ -169,7 +193,7 @@ export const getOrderById = async (req, res) => {
     const order = await Order.findById(req.params.id)
       .populate('customerId', 'name email phone')
       .populate('vendorId', 'storeName ownerName email');
-    
+
     if (!order) return res.status(404).json({ error: 'Order not found' });
     res.status(200).json(order);
   } catch (error) {
@@ -198,8 +222,8 @@ export const updateOrderStatus = async (req, res) => {
     }
 
     if (!validTransitions[order.status].includes(status)) {
-      return res.status(400).json({ 
-        error: `Invalid transition from ${order.status} to ${status}` 
+      return res.status(400).json({
+        error: `Invalid transition from ${order.status} to ${status}`
       });
     }
 
@@ -263,5 +287,80 @@ export const updateOrderStatus = async (req, res) => {
     }
   } catch (error) {
     res.status(400).json({ error: error.message });
+  }
+};
+
+export const getCustomerOrders = async (req, res) => {
+  try {
+    const customerId = req.user?._id || req.query.customerId;
+
+    if (!customerId) {
+      return res.status(200).json([]);
+    }
+
+    const orders = await Order.find({ customerId })
+      .populate('vendorId', 'storeName ownerName email') // valid fields from Vendor model (basic info)
+      .sort({ createdAt: -1 });
+
+    const formattedOrders = orders.map(order => ({
+      order_id: order._id,
+      order_number: order.orderNumber,
+      status: order.status,
+      created_at: order.createdAt,
+      vendor: {
+        id: order.vendorId?._id,
+        name: order.vendorId?.storeName || 'Unknown Vendor',
+      },
+      items: order.items.map(item => ({
+        product_id: item.productId,
+        name: item.name,
+        quantity: item.quantity,
+        price: item.price,
+      })),
+      delivery_address_snapshot: order.delivery_address_snapshot,
+      payment_method: order.payment.method,
+      total_amount: order.pricing.totalAmount,
+    }));
+
+    res.status(200).json(formattedOrders);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+export const getVendorOrders = async (req, res) => {
+  try {
+    const vendorId = req.user?._id || req.vendor?._id || req.query.vendorId;
+
+    if (!vendorId) {
+      return res.status(200).json([]);
+    }
+
+    const orders = await Order.find({ vendorId })
+      .sort({ createdAt: -1 });
+
+    const formattedOrders = orders.map(order => ({
+      order_id: order._id,
+      order_number: order.orderNumber,
+      status: order.status,
+      created_at: order.createdAt,
+      customer: {
+        name: order.customer_snapshot?.name || 'Unknown',
+        phone: order.customer_snapshot?.phone || 'N/A',
+      },
+      delivery_address_snapshot: order.delivery_address_snapshot || {},
+      items: order.items.map(item => ({
+        product_id: item.productId,
+        name: item.name,
+        quantity: item.quantity,
+        price: item.price,
+      })),
+      total_amount: order.pricing.totalAmount,
+      payment_method: order.payment.method,
+    }));
+
+    res.status(200).json(formattedOrders);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
   }
 };

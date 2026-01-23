@@ -2,8 +2,8 @@ import app from './app.js';
 import { connectDB, getDbStatus } from './src/config/db.js';
 import Customer from './src/models/Customer.model.js'; // Ensure correct path
 import bcrypt from 'bcryptjs';
-import dotenv from 'dotenv';
-dotenv.config();
+
+// dotenv is now configured in app.js BEFORE any imports
 const PORT = process.env.PORT || 5000;
 
 const start_server = async () => {

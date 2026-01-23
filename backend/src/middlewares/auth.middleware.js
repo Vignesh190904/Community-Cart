@@ -1,4 +1,5 @@
 import Customer from '../models/Customer.model.js';
+import Vendor from '../models/Vendor.model.js';
 import { verifyToken } from '../utils/jwt.utils.js';
 
 // JWT-based authentication middleware
@@ -6,22 +7,18 @@ export const protect = async (req, res, next) => {
     try {
         let auth_token;
 
-        // Check for Authorization header
+        // Extract token from Authorization header only
         if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
             auth_token = req.headers.authorization.split(' ')[1];
         }
-        // Check for cookie
-        else if (req.cookies && req.cookies.auth_token) {
-            auth_token = req.cookies.auth_token;
+
+        // DEV-ONLY: Log auth header presence (not token value)
+        if (process.env.NODE_ENV !== 'production') {
+            console.log('[AUTH] Authorization header present:', !!req.headers.authorization);
         }
 
-        console.log('[AUTH] Raw Cookie Header:', req.headers.cookie);
-        console.log('[AUTH] Parsed Cookies:', req.cookies);
-        console.log('[AUTH] Token Found:', !!auth_token);
-        if (auth_token) console.log('[AUTH] Token String (partial):', auth_token.substring(0, 10) + '...');
-
         if (!auth_token) {
-            console.log('[AUTH] Unauthorized: No token found in header or cookies');
+            console.log('[AUTH] Unauthorized: No token found in header');
             return res.status(401).json({
                 success: false,
                 message: 'Not authenticated. No token provided.',
@@ -40,8 +37,8 @@ export const protect = async (req, res, next) => {
             console.log('[AUTH] Unauthorized: User not found in database for ID:', decoded.id);
             return res.status(401).json({
                 success: false,
-                message: 'User not found or invalid token',
-                error_code: 'USER_NOT_FOUND'
+                message: 'Not authorized, token failed',
+                error_code: 'AUTH_ERROR'
             });
         }
 
@@ -50,7 +47,7 @@ export const protect = async (req, res, next) => {
             return res.status(403).json({
                 success: false,
                 message: 'Account is inactive',
-                error_code: 'ACCOUNT_INACTIVE'
+                error_code: 'FORBIDDEN'
             });
         }
 
@@ -59,7 +56,6 @@ export const protect = async (req, res, next) => {
         next();
     } catch (error) {
         console.error('[AUTH] Auth Middleware Error:', error.message);
-        console.error('[AUTH] Full Error:', error);
         return res.status(401).json({
             success: false,
             message: 'Not authorized, token failed',
@@ -68,16 +64,43 @@ export const protect = async (req, res, next) => {
     }
 };
 
-// Optional: Middleware to check if user is NOT authenticated
-export const guest = (req, res, next) => {
-    // With JWT, checking guest state on backend is tricky without the token.
-    // Usually purely frontend handled. But if token is passed, we can reject.
-    if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
-        return res.status(400).json({
-            success: false,
-            message: 'Already authenticated',
-            error_code: 'ALREADY_AUTHENTICATED'
-        });
+// Vendor protection middleware (demo mode - never blocks)
+export const protectVendor = async (req, res, next) => {
+    try {
+        let auth_token;
+        if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
+            auth_token = req.headers.authorization.split(' ')[1];
+        }
+
+        let decoded = null;
+        if (auth_token) {
+            try {
+                decoded = verifyToken(auth_token);
+            } catch (err) {
+                decoded = null;
+            }
+        }
+
+        if (decoded?.id) {
+            try {
+                const vendor = await Vendor.findById(decoded.id).select('-password');
+                req.user = vendor || null;
+                req.vendor = vendor || null;
+            } catch {
+                req.user = null;
+                req.vendor = null;
+            }
+        } else {
+            req.user = null;
+            req.vendor = null;
+        }
+
+        req.userRole = decoded?.role || null;
+        next();
+    } catch (error) {
+        req.user = null;
+        req.vendor = null;
+        req.userRole = null;
+        next();
     }
-    next();
 };

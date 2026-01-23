@@ -1,30 +1,29 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { api, setAuthToken } from '../services/api';
+import { useAuth } from '../context/AuthContext';
 
 export default function Login() {
+  const { sign_in, is_authenticated, role } = useAuth();
   const router = useRouter();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
   const [messageType, setMessageType] = useState<'success' | 'error' | ''>('');
-  const [loading, setLoading] = useState(false);
+  const [loadingLocal, setLoadingLocal] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
 
+  // AUTH GUARD: Redirect if already authenticated
   useEffect(() => {
-    const storedToken = typeof window !== 'undefined' ? localStorage.getItem('auth_token') : null;
-    const storedUser = typeof window !== 'undefined' ? localStorage.getItem('auth_user') : null;
-    if (storedToken && storedUser) {
-      const user = JSON.parse(storedUser);
-      setAuthToken(storedToken);
-      redirectByRole(user.role);
+    if (is_authenticated && role) {
+      redirectByRole(role);
     }
-  }, []);
+  }, [is_authenticated, role]);
 
-  const redirectByRole = (role: string) => {
-    if (role === 'admin') {
+  const redirectByRole = (userRole: string) => {
+    if (userRole === 'admin') {
       router.replace('/admin/dashboard');
-    } else if (role === 'vendor') {
+    } else if (userRole === 'vendor') {
       router.replace('/vendor/dashboard');
     } else {
       router.replace('/customer/browse-products');
@@ -33,32 +32,27 @@ export default function Login() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setLoading(true);
+    setLoadingLocal(true);
     setMessage('');
     setMessageType('');
 
     try {
       const res = await api.auth.login({ email, password });
       const { auth_token, user } = res.data;
-      if (typeof window !== 'undefined') {
-        localStorage.setItem('auth_token', auth_token);
-        localStorage.setItem('auth_user', JSON.stringify(user));
-        if (user.role === 'vendor') {
-          localStorage.setItem('cc_vendorId', user.id);
-        }
-        if (user.role === 'user') {
-          localStorage.setItem('cc_customerId', user.id);
-        }
-      }
-      setAuthToken(auth_token);
+
+      // Update global auth state - this will trigger the useEffect above
+      sign_in(user, auth_token);
+
       setMessage('✅ Login successful');
       setMessageType('success');
+
+      // Manual redirect as backup in case useEffect is slow
       redirectByRole(user.role);
     } catch (err: any) {
       setMessage(err.message || 'Login failed');
       setMessageType('error');
     } finally {
-      setLoading(false);
+      setLoadingLocal(false);
     }
   };
 
@@ -102,8 +96,8 @@ export default function Login() {
             />
           </button>
         </div>
-        <button type="submit" disabled={loading}>
-          {loading ? 'Signing in...' : 'Login'}
+        <button type="submit" disabled={loadingLocal}>
+          {loadingLocal ? 'Signing in...' : 'Login'}
         </button>
       </form>
     </div>

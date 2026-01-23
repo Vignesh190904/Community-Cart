@@ -8,7 +8,7 @@ __turbopack_load_page_chunks__("/login", [
   "static/chunks/48ebd_react-dom_cjs_react-dom_development_b944df1a.js",
   "static/chunks/48ebd_react-dom_43235666._.js",
   "static/chunks/48ebd_c0e1799f._.js",
-  "static/chunks/[root-of-the-server]__773a056e._.js",
+  "static/chunks/[root-of-the-server]__05bba013._.js",
   "static/chunks/Desktop_Community-Cart_frontend_src_pages_login_2da965e7._.js",
-  "static/chunks/turbopack-Desktop_Community-Cart_frontend_src_pages_login_974c9ee7._.js"
+  "static/chunks/turbopack-Desktop_Community-Cart_frontend_src_pages_login_d096c8ff._.js"
 ])

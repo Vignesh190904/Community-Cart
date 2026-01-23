@@ -11,7 +11,7 @@
   "static/chunks/48ebd_react-dom_43235666._.js",
   "static/chunks/48ebd_@hello-pangea_dnd_dist_dnd_esm_ab2ad8cc.js",
   "static/chunks/48ebd_88a179e1._.js",
-  "static/chunks/[root-of-the-server]__483b8abb._.js"
+  "static/chunks/[root-of-the-server]__7682ec4e._.js"
 ],
     source: "entry"
 });

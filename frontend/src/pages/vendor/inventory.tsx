@@ -2,6 +2,7 @@ import { useState, useEffect, useMemo } from 'react';
 import { useRouter } from 'next/router';
 import { api } from '../../services/api';
 import { useToast } from '../../components/ui/ToastProvider';
+import { useAuth } from '../../context/AuthContext';
 import styles from './inventory.module.css';
 
 interface Product {
@@ -29,30 +30,20 @@ export default function VendorInventory() {
   const { pushToast } = useToast();
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
-  const [vendorId, setVendorId] = useState('');
+  const { user } = useAuth();
   const [editState, setEditState] = useState<EditState>({});
   const [search, setSearch] = useState('');
   const [filters, setFilters] = useState<'all' | 'out' | 'low' | 'high'>('all');
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      try {
-        const stored = localStorage.getItem('cc_user');
-        if (stored) {
-          const parsed = JSON.parse(stored);
-          setVendorId(parsed.id);
-        }
-      } catch {}
+    if (user?.id) {
+      loadProducts(user.id);
+    } else {
+      setLoading(false);
     }
-  }, []);
+  }, [user]);
 
-  useEffect(() => {
-    if (vendorId) {
-      loadProducts();
-    }
-  }, [vendorId]);
-
-  const loadProducts = async () => {
+  const loadProducts = async (vendorId: string) => {
     try {
       setLoading(true);
       const data = await api.products.getAll();
@@ -63,7 +54,7 @@ export default function VendorInventory() {
       });
       setProducts(vendorProducts);
     } catch (error) {
-      pushToast({ type: 'error', title: 'Load Failed', message: 'Failed to load products' });
+      pushToast({ type: 'error', message: 'Load failed: could not fetch products' });
     } finally {
       setLoading(false);
     }
@@ -167,13 +158,13 @@ export default function VendorInventory() {
         return newState;
       });
 
-      pushToast({ type: 'success', title: 'Updated', message: `${product.name} inventory updated` });
+      pushToast({ type: 'success', message: `${product.name} inventory updated` });
     } catch (error) {
       setEditState((prev) => ({
         ...prev,
         [productId]: { ...prev[productId], loading: false },
       }));
-      pushToast({ type: 'error', title: 'Update Failed', message: 'Failed to update product' });
+      pushToast({ type: 'error', message: 'Update failed: could not save product' });
     }
   };
 
@@ -184,6 +175,10 @@ export default function VendorInventory() {
 
   if (loading) {
     return <div className={styles.inventoryPage}><div className="page-state">Loading inventory…</div></div>;
+  }
+
+  if (!user?.id) {
+    return <div className={styles.inventoryPage}><div className="page-state">Please login to view your inventory.</div></div>;
   }
 
   return (

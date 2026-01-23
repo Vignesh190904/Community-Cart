@@ -1,10 +1,14 @@
-import express from 'express';
-import cors from 'cors';
-import cookieParser from 'cookie-parser';
-
+// CRITICAL: Load environment variables FIRST before any imports
 import dotenv from 'dotenv';
 import path from 'path';
 import { fileURLToPath } from 'url';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+dotenv.config({ path: path.join(__dirname, '.env') });
+
+// Now import everything else AFTER dotenv is configured
+import express from 'express';
+import cors from 'cors';
 
 // Route Imports
 console.log('🔄 Importing routes...');
@@ -16,9 +20,6 @@ import productRoutes from './src/routes/product.routes.js';
 import orderRoutes from './src/routes/order.routes.js';
 import productSalesRoutes from './src/routes/productSales.routes.js';
 console.log('✅ Routes imported');
-
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-dotenv.config({ path: path.join(__dirname, '.env') });
 
 console.log('🔄 Creating Express app...');
 const app = express();
@@ -35,7 +36,6 @@ app.use(cors({
 // 2. Standard Middlewares
 app.use(express.json({ limit: '5mb' }));
 app.use(express.urlencoded({ limit: '5mb', extended: true }));
-app.use(cookieParser());
 
 // 2.5. Static File Serving for Uploads
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));

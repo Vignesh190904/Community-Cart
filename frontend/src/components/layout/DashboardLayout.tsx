@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { api, setAuthToken } from '../../services/api';
+import { useAuth } from '../../context/AuthContext';
 
 type Role = 'admin' | 'vendor';
 
@@ -33,11 +34,27 @@ const itemsByRole: Record<Role, Array<{ label: string; href: string }>> = {
 
 export default function DashboardLayout({ role, children }: DashboardLayoutProps) {
   const router = useRouter();
+  const { is_authenticated, loading, role: userRole, sign_out, user } = useAuth();
   const items = itemsByRole[role];
   const [userName, setUserName] = useState<string>('');
   const [userEmail, setUserEmail] = useState<string>('');
   const [isDark, setIsDark] = useState<boolean>(false);
   const [avatarUrl, setAvatarUrl] = useState<string>('');
+
+  // AUTH GUARD: Enforce authentication and role matching
+  useEffect(() => {
+    if (!loading) {
+      if (!is_authenticated) {
+        router.replace('/login');
+        return;
+      }
+      if (userRole && userRole !== role) {
+        console.warn(`Role mismatch: expected ${role}, got ${userRole}`);
+        sign_out();
+        return;
+      }
+    }
+  }, [is_authenticated, loading, userRole, role, router, sign_out]);
 
   useEffect(() => {
     // Read from localStorage if available (set during login)
@@ -63,16 +80,11 @@ export default function DashboardLayout({ role, children }: DashboardLayoutProps
       }
       // Load vendor avatar if role is vendor
       try {
-        if (role === 'vendor') {
-          const token = localStorage.getItem('auth_token');
-          const vendorId = localStorage.getItem('cc_vendorId');
-          if (token && vendorId) {
-            setAuthToken(token);
-            api.vendors.getById(vendorId).then((data: any) => {
-              const url = data?.media?.logoUrl || '';
-              if (url) setAvatarUrl(url);
-            }).catch(() => { });
-          }
+        if (role === 'vendor' && userRole === 'vendor' && user?.id) {
+          api.vendors.getById(user.id).then((data: any) => {
+            const url = data?.media?.logoUrl || '';
+            if (url) setAvatarUrl(url);
+          }).catch(() => { });
         }
       } catch { }
     }
@@ -89,6 +101,26 @@ export default function DashboardLayout({ role, children }: DashboardLayoutProps
       localStorage.setItem('cc_theme', 'light');
     }
   };
+
+  // LOADING STATE: Block render until auth is verified
+  if (loading) {
+    return (
+      <div style={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: '100vh',
+        fontFamily: 'sans-serif'
+      }}>
+        <p>Verifying session...</p>
+      </div>
+    );
+  }
+
+  // RENDER PROTECTION: Don't render if not authenticated
+  if (!is_authenticated) {
+    return null;
+  }
 
   return (
     <div className="dash-layout">
@@ -137,17 +169,7 @@ export default function DashboardLayout({ role, children }: DashboardLayoutProps
           <button
             className="dash-logout-btn"
             onClick={() => {
-              if (typeof window !== 'undefined') {
-                // Clear all authentication tokens
-                localStorage.removeItem('auth_token');
-                localStorage.removeItem('auth_user');
-                localStorage.removeItem('cc_token');
-                localStorage.removeItem('cc_user');
-                localStorage.removeItem('cc_vendorId');
-                localStorage.removeItem('cc_customerId');
-              }
-              setAuthToken(''); // Clear API token
-              router.replace('/login');
+              sign_out();
             }}
           >
             Logout

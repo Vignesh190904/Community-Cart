@@ -8,6 +8,8 @@ __turbopack_context__.s([
 ]);
 var __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__ = __turbopack_context__.i("[externals]/react/jsx-dev-runtime [external] (react/jsx-dev-runtime, cjs)");
 var __TURBOPACK__imported__module__$5b$externals$5d2f$react__$5b$external$5d$__$28$react$2c$__cjs$29$__ = __turbopack_context__.i("[externals]/react [external] (react, cjs)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$src$2f$context$2f$AuthContext$2e$tsx__$5b$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/Community-Cart/frontend/src/context/AuthContext.tsx [ssr] (ecmascript)");
+;
 ;
 ;
 const API_BASE = 'http://localhost:5000/api';
@@ -23,19 +25,17 @@ function VendorDashboard() {
     const [products, setProducts] = (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react__$5b$external$5d$__$28$react$2c$__cjs$29$__["useState"])([]);
     const [orders, setOrders] = (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react__$5b$external$5d$__$28$react$2c$__cjs$29$__["useState"])([]);
     const [loading, setLoading] = (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react__$5b$external$5d$__$28$react$2c$__cjs$29$__["useState"])(true);
-    const [vendorId, setVendorId] = (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react__$5b$external$5d$__$28$react$2c$__cjs$29$__["useState"])('');
+    const { user } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$src$2f$context$2f$AuthContext$2e$tsx__$5b$ssr$5d$__$28$ecmascript$29$__["useAuth"])();
     (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react__$5b$external$5d$__$28$react$2c$__cjs$29$__["useEffect"])(()=>{
-        if ("TURBOPACK compile-time falsy", 0) //TURBOPACK unreachable
-        ;
-    }, []);
-    (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react__$5b$external$5d$__$28$react$2c$__cjs$29$__["useEffect"])(()=>{
-        if (vendorId) {
-            fetchData();
+        if (user?.id) {
+            fetchData(user.id);
+        } else {
+            setLoading(false);
         }
     }, [
-        vendorId
+        user
     ]);
-    const fetchData = async ()=>{
+    const fetchData = async (vendorId)=>{
         try {
             setLoading(true);
             const [productsRes, ordersRes] = await Promise.all([
@@ -113,7 +113,17 @@ function VendorDashboard() {
             children: "Loading dashboard…"
         }, void 0, false, {
             fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/vendor/dashboard.tsx",
-            lineNumber: 142,
+            lineNumber: 133,
+            columnNumber: 12
+        }, this);
+    }
+    if (!user?.id) {
+        return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
+            className: "page-state",
+            children: "Please login to view your vendor dashboard."
+        }, void 0, false, {
+            fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/vendor/dashboard.tsx",
+            lineNumber: 137,
             columnNumber: 12
         }, this);
     }
@@ -124,7 +134,7 @@ function VendorDashboard() {
                 children: "Vendor Dashboard"
             }, void 0, false, {
                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/vendor/dashboard.tsx",
-                lineNumber: 147,
+                lineNumber: 142,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
@@ -137,7 +147,7 @@ function VendorDashboard() {
                                 children: s.title
                             }, void 0, false, {
                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/vendor/dashboard.tsx",
-                                lineNumber: 151,
+                                lineNumber: 146,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
@@ -145,18 +155,18 @@ function VendorDashboard() {
                                 children: s.value
                             }, void 0, false, {
                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/vendor/dashboard.tsx",
-                                lineNumber: 152,
+                                lineNumber: 147,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, s.title, true, {
                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/vendor/dashboard.tsx",
-                        lineNumber: 150,
+                        lineNumber: 145,
                         columnNumber: 11
                     }, this))
             }, void 0, false, {
                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/vendor/dashboard.tsx",
-                lineNumber: 148,
+                lineNumber: 143,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("section", {
@@ -167,7 +177,7 @@ function VendorDashboard() {
                         children: "Recent Orders"
                     }, void 0, false, {
                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/vendor/dashboard.tsx",
-                        lineNumber: 158,
+                        lineNumber: 153,
                         columnNumber: 9
                     }, this),
                     recentOrders.length === 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
@@ -175,7 +185,7 @@ function VendorDashboard() {
                         children: "No orders yet."
                     }, void 0, false, {
                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/vendor/dashboard.tsx",
-                        lineNumber: 160,
+                        lineNumber: 155,
                         columnNumber: 11
                     }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
                         className: "list",
@@ -192,7 +202,7 @@ function VendorDashboard() {
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/vendor/dashboard.tsx",
-                                                lineNumber: 166,
+                                                lineNumber: 161,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
@@ -203,13 +213,13 @@ function VendorDashboard() {
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/vendor/dashboard.tsx",
-                                                lineNumber: 167,
+                                                lineNumber: 162,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/vendor/dashboard.tsx",
-                                        lineNumber: 165,
+                                        lineNumber: 160,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("span", {
@@ -217,24 +227,24 @@ function VendorDashboard() {
                                         children: o.status
                                     }, void 0, false, {
                                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/vendor/dashboard.tsx",
-                                        lineNumber: 169,
+                                        lineNumber: 164,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, o.id, true, {
                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/vendor/dashboard.tsx",
-                                lineNumber: 164,
+                                lineNumber: 159,
                                 columnNumber: 15
                             }, this))
                     }, void 0, false, {
                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/vendor/dashboard.tsx",
-                        lineNumber: 162,
+                        lineNumber: 157,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/vendor/dashboard.tsx",
-                lineNumber: 157,
+                lineNumber: 152,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("section", {
@@ -245,7 +255,7 @@ function VendorDashboard() {
                         children: "Low Stock Alerts"
                     }, void 0, false, {
                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/vendor/dashboard.tsx",
-                        lineNumber: 177,
+                        lineNumber: 172,
                         columnNumber: 9
                     }, this),
                     lowStock.length === 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
@@ -253,7 +263,7 @@ function VendorDashboard() {
                         children: "All products have adequate stock."
                     }, void 0, false, {
                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/vendor/dashboard.tsx",
-                        lineNumber: 179,
+                        lineNumber: 174,
                         columnNumber: 11
                     }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
                         className: "list",
@@ -266,7 +276,7 @@ function VendorDashboard() {
                                                 children: i.name
                                             }, void 0, false, {
                                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/vendor/dashboard.tsx",
-                                                lineNumber: 185,
+                                                lineNumber: 180,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
@@ -277,13 +287,13 @@ function VendorDashboard() {
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/vendor/dashboard.tsx",
-                                                lineNumber: 186,
+                                                lineNumber: 181,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/vendor/dashboard.tsx",
-                                        lineNumber: 184,
+                                        lineNumber: 179,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("span", {
@@ -294,24 +304,24 @@ function VendorDashboard() {
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/vendor/dashboard.tsx",
-                                        lineNumber: 188,
+                                        lineNumber: 183,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, i.sku, true, {
                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/vendor/dashboard.tsx",
-                                lineNumber: 183,
+                                lineNumber: 178,
                                 columnNumber: 15
                             }, this))
                     }, void 0, false, {
                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/vendor/dashboard.tsx",
-                        lineNumber: 181,
+                        lineNumber: 176,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/vendor/dashboard.tsx",
-                lineNumber: 176,
+                lineNumber: 171,
                 columnNumber: 7
             }, this)
         ]

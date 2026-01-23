@@ -78,6 +78,8 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart
 var __TURBOPACK__imported__module__$5b$externals$5d2f40$hello$2d$pangea$2f$dnd__$5b$external$5d$__$2840$hello$2d$pangea$2f$dnd$2c$__cjs$29$__ = __turbopack_context__.i("[externals]/@hello-pangea/dnd [external] (@hello-pangea/dnd, cjs)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$src$2f$components$2f$ui$2f$ToastProvider$2e$tsx__$5b$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/Community-Cart/frontend/src/components/ui/ToastProvider.tsx [ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$src$2f$utils$2f$orderAggregation$2e$ts__$5b$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/Community-Cart/frontend/src/utils/orderAggregation.ts [ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$src$2f$context$2f$AuthContext$2e$tsx__$5b$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/Community-Cart/frontend/src/context/AuthContext.tsx [ssr] (ecmascript)");
+;
 ;
 ;
 ;
@@ -89,34 +91,66 @@ function VendorOrders() {
     const [orders, setOrders] = (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react__$5b$external$5d$__$28$react$2c$__cjs$29$__["useState"])([]);
     const [loading, setLoading] = (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react__$5b$external$5d$__$28$react$2c$__cjs$29$__["useState"])(true);
     const { pushToast } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$src$2f$components$2f$ui$2f$ToastProvider$2e$tsx__$5b$ssr$5d$__$28$ecmascript$29$__["useToast"])();
-    // Get vendorId from localStorage (set during login)
-    const vendorId = ("TURBOPACK compile-time falsy", 0) ? "TURBOPACK unreachable" : null;
+    const { user } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$src$2f$context$2f$AuthContext$2e$tsx__$5b$ssr$5d$__$28$ecmascript$29$__["useAuth"])();
     (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react__$5b$external$5d$__$28$react$2c$__cjs$29$__["useEffect"])(()=>{
-        if ("TURBOPACK compile-time falsy", 0) //TURBOPACK unreachable
-        ;
-        else {
-            pushToast({
-                type: 'error',
-                title: 'Error',
-                message: 'Vendor not logged in'
-            });
+        if (user?.id) {
+            loadOrders();
+        } else {
             setLoading(false);
         }
     }, [
-        vendorId
+        user
     ]);
     const loadOrders = async ()=>{
         try {
-            console.log('[vendor:loadOrders] vendorId=', vendorId);
-            const res = await fetch(`http://localhost:5000/api/orders?vendorId=${vendorId}&status=pending,processing,completed,cancelled`);
-            if (!res.ok) throw new Error('Failed to fetch orders');
+            console.log('[vendor:loadOrders] Fetching orders');
+            const res = await fetch('http://localhost:5000/api/vendors/orders');
+            if (!res.ok) {
+                throw new Error('Failed to fetch orders');
+            }
             const data = await res.json();
             console.log('[vendor:loadOrders] fetched orders count=', data.length);
-            setOrders(data);
+            // Map snapshot-based response to UI format
+            const mappedOrders = data.map((orderResponse)=>{
+                // Format delivery address from snapshot
+                const addressParts = [];
+                if (orderResponse.delivery_address_snapshot?.flat_number) {
+                    addressParts.push(`Flat ${orderResponse.delivery_address_snapshot.flat_number}`);
+                }
+                if (orderResponse.delivery_address_snapshot?.floor) {
+                    addressParts.push(`Floor ${orderResponse.delivery_address_snapshot.floor}`);
+                }
+                if (orderResponse.delivery_address_snapshot?.block) {
+                    addressParts.push(`Block ${orderResponse.delivery_address_snapshot.block}`);
+                }
+                if (orderResponse.delivery_address_snapshot?.community) {
+                    addressParts.push(orderResponse.delivery_address_snapshot.community);
+                }
+                const deliveryAddress = addressParts.length > 0 ? addressParts.join(', ') : 'N/A';
+                return {
+                    _id: orderResponse.order_id,
+                    orderNumber: orderResponse.order_number,
+                    customerName: orderResponse.customer.name || 'Unknown Customer',
+                    customerPhone: orderResponse.customer.phone || 'N/A',
+                    deliveryAddress,
+                    items: orderResponse.items.map((item)=>({
+                            productId: item.product_id,
+                            name: item.name,
+                            quantity: item.quantity,
+                            price: item.price,
+                            total: item.price * item.quantity
+                        })),
+                    pricing: {
+                        totalAmount: orderResponse.total_amount
+                    },
+                    status: orderResponse.status,
+                    createdAt: orderResponse.created_at
+                };
+            });
+            setOrders(mappedOrders);
         } catch (error) {
             pushToast({
                 type: 'error',
-                title: 'Error',
                 message: error.message || 'Failed to load orders'
             });
         } finally{
@@ -168,7 +202,6 @@ function VendorOrders() {
             console.log('[vendor:updateStatus] orderId=', orderId, 'status=', newStatus);
             pushToast({
                 type: 'success',
-                title: 'Order Updated',
                 message: `Order moved to ${newStatus}`
             });
         } catch (error) {
@@ -176,7 +209,6 @@ function VendorOrders() {
             setOrders((prev)=>prev.map((o)=>o._id === orderId ? originalOrder : o));
             pushToast({
                 type: 'error',
-                title: 'Update Failed',
                 message: error.message || 'Could not update order'
             });
         }
@@ -235,7 +267,7 @@ function VendorOrders() {
                                     children: title
                                 }, void 0, false, {
                                     fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/vendor/orders.tsx",
-                                    lineNumber: 182,
+                                    lineNumber: 251,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("span", {
@@ -243,13 +275,13 @@ function VendorOrders() {
                                     children: items.length
                                 }, void 0, false, {
                                     fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/vendor/orders.tsx",
-                                    lineNumber: 183,
+                                    lineNumber: 252,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/vendor/orders.tsx",
-                            lineNumber: 181,
+                            lineNumber: 250,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
@@ -273,7 +305,7 @@ function VendorOrders() {
                                                                 children: o.orderNumber || o._id
                                                             }, void 0, false, {
                                                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/vendor/orders.tsx",
-                                                                lineNumber: 201,
+                                                                lineNumber: 270,
                                                                 columnNumber: 23
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
@@ -284,21 +316,52 @@ function VendorOrders() {
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/vendor/orders.tsx",
-                                                                lineNumber: 202,
+                                                                lineNumber: 271,
                                                                 columnNumber: 23
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/vendor/orders.tsx",
-                                                        lineNumber: 200,
+                                                        lineNumber: 269,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
                                                         className: "order-customer",
-                                                        children: o.customerId?.name || 'Unknown Customer'
+                                                        children: o.customerName
                                                     }, void 0, false, {
                                                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/vendor/orders.tsx",
-                                                        lineNumber: 204,
+                                                        lineNumber: 273,
+                                                        columnNumber: 21
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
+                                                        className: "order-customer",
+                                                        style: {
+                                                            fontSize: '0.9em',
+                                                            color: 'var(--text-secondary)'
+                                                        },
+                                                        children: [
+                                                            "📞 ",
+                                                            o.customerPhone
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/vendor/orders.tsx",
+                                                        lineNumber: 276,
+                                                        columnNumber: 21
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
+                                                        className: "order-customer",
+                                                        style: {
+                                                            fontSize: '0.85em',
+                                                            color: 'var(--text-secondary)',
+                                                            marginTop: '4px'
+                                                        },
+                                                        children: [
+                                                            "📍 ",
+                                                            o.deliveryAddress
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/vendor/orders.tsx",
+                                                        lineNumber: 279,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
@@ -314,12 +377,12 @@ function VendorOrders() {
                                                                 ]
                                                             }, item.productId, true, {
                                                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/vendor/orders.tsx",
-                                                                lineNumber: 209,
+                                                                lineNumber: 284,
                                                                 columnNumber: 25
                                                             }, this))
                                                     }, void 0, false, {
                                                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/vendor/orders.tsx",
-                                                        lineNumber: 207,
+                                                        lineNumber: 282,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
@@ -327,7 +390,7 @@ function VendorOrders() {
                                                         children: new Date(o.createdAt).toLocaleString()
                                                     }, void 0, false, {
                                                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/vendor/orders.tsx",
-                                                        lineNumber: 219,
+                                                        lineNumber: 294,
                                                         columnNumber: 21
                                                     }, this),
                                                     o.status === 'completed' || o.status === 'cancelled' ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
@@ -352,7 +415,7 @@ function VendorOrders() {
                                                                             d: "M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/vendor/orders.tsx",
-                                                                            lineNumber: 231,
+                                                                            lineNumber: 306,
                                                                             columnNumber: 29
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("circle", {
@@ -361,18 +424,18 @@ function VendorOrders() {
                                                                             r: "3"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/vendor/orders.tsx",
-                                                                            lineNumber: 232,
+                                                                            lineNumber: 307,
                                                                             columnNumber: 29
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/vendor/orders.tsx",
-                                                                    lineNumber: 230,
+                                                                    lineNumber: 305,
                                                                     columnNumber: 27
                                                                 }, this)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/vendor/orders.tsx",
-                                                                lineNumber: 224,
+                                                                lineNumber: 299,
                                                                 columnNumber: 25
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("span", {
@@ -380,13 +443,13 @@ function VendorOrders() {
                                                                 children: o.status === 'cancelled' ? 'Cancelled' : 'Completed'
                                                             }, void 0, false, {
                                                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/vendor/orders.tsx",
-                                                                lineNumber: 235,
+                                                                lineNumber: 310,
                                                                 columnNumber: 25
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/vendor/orders.tsx",
-                                                        lineNumber: 223,
+                                                        lineNumber: 298,
                                                         columnNumber: 23
                                                     }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
                                                         className: "order-footer",
@@ -410,7 +473,7 @@ function VendorOrders() {
                                                                             d: "M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/vendor/orders.tsx",
-                                                                            lineNumber: 252,
+                                                                            lineNumber: 326,
                                                                             columnNumber: 29
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("circle", {
@@ -419,18 +482,18 @@ function VendorOrders() {
                                                                             r: "3"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/vendor/orders.tsx",
-                                                                            lineNumber: 253,
+                                                                            lineNumber: 327,
                                                                             columnNumber: 29
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/vendor/orders.tsx",
-                                                                    lineNumber: 251,
+                                                                    lineNumber: 325,
                                                                     columnNumber: 27
                                                                 }, this)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/vendor/orders.tsx",
-                                                                lineNumber: 245,
+                                                                lineNumber: 319,
                                                                 columnNumber: 25
                                                             }, this),
                                                             type === 'pending' && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
@@ -442,7 +505,7 @@ function VendorOrders() {
                                                                         children: "Accept"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/vendor/orders.tsx",
-                                                                        lineNumber: 258,
+                                                                        lineNumber: 332,
                                                                         columnNumber: 29
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("button", {
@@ -451,13 +514,13 @@ function VendorOrders() {
                                                                         children: "Reject"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/vendor/orders.tsx",
-                                                                        lineNumber: 264,
+                                                                        lineNumber: 338,
                                                                         columnNumber: 29
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/vendor/orders.tsx",
-                                                                lineNumber: 257,
+                                                                lineNumber: 331,
                                                                 columnNumber: 27
                                                             }, this),
                                                             type === 'processing' && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
@@ -469,7 +532,7 @@ function VendorOrders() {
                                                                         children: "Done"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/vendor/orders.tsx",
-                                                                        lineNumber: 274,
+                                                                        lineNumber: 348,
                                                                         columnNumber: 29
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("button", {
@@ -478,48 +541,48 @@ function VendorOrders() {
                                                                         children: "Cancel"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/vendor/orders.tsx",
-                                                                        lineNumber: 280,
+                                                                        lineNumber: 354,
                                                                         columnNumber: 29
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/vendor/orders.tsx",
-                                                                lineNumber: 273,
+                                                                lineNumber: 347,
                                                                 columnNumber: 27
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/vendor/orders.tsx",
-                                                        lineNumber: 244,
+                                                        lineNumber: 318,
                                                         columnNumber: 23
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/vendor/orders.tsx",
-                                                lineNumber: 194,
+                                                lineNumber: 263,
                                                 columnNumber: 19
                                             }, this)
                                     }, o._id, false, {
                                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/vendor/orders.tsx",
-                                        lineNumber: 187,
+                                        lineNumber: 256,
                                         columnNumber: 15
                                     }, this)),
                                 provided.placeholder
                             ]
                         }, void 0, true, {
                             fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/vendor/orders.tsx",
-                            lineNumber: 185,
+                            lineNumber: 254,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/vendor/orders.tsx",
-                    lineNumber: 175,
+                    lineNumber: 244,
                     columnNumber: 9
                 }, this)
         }, void 0, false, {
             fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/vendor/orders.tsx",
-            lineNumber: 173,
+            lineNumber: 242,
             columnNumber: 5
         }, this);
     if (loading) {
@@ -534,12 +597,33 @@ function VendorOrders() {
                 children: "Loading orders..."
             }, void 0, false, {
                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/vendor/orders.tsx",
-                lineNumber: 304,
+                lineNumber: 378,
                 columnNumber: 9
             }, this)
         }, void 0, false, {
             fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/vendor/orders.tsx",
-            lineNumber: 303,
+            lineNumber: 377,
+            columnNumber: 7
+        }, this);
+    }
+    if (!user?.id) {
+        return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
+            className: "orders-board",
+            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
+                style: {
+                    padding: '24px',
+                    textAlign: 'center',
+                    color: 'var(--text-secondary)'
+                },
+                children: "Please login to view vendor orders."
+            }, void 0, false, {
+                fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/vendor/orders.tsx",
+                lineNumber: 388,
+                columnNumber: 9
+            }, this)
+        }, void 0, false, {
+            fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/vendor/orders.tsx",
+            lineNumber: 387,
             columnNumber: 7
         }, this);
     }
@@ -556,7 +640,7 @@ function VendorOrders() {
                     items: columns.pending
                 }, void 0, false, {
                     fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/vendor/orders.tsx",
-                    lineNumber: 314,
+                    lineNumber: 398,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])(Column, {
@@ -565,7 +649,7 @@ function VendorOrders() {
                     items: columns.processing
                 }, void 0, false, {
                     fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/vendor/orders.tsx",
-                    lineNumber: 315,
+                    lineNumber: 399,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])(Column, {
@@ -574,18 +658,18 @@ function VendorOrders() {
                     items: columns.completed
                 }, void 0, false, {
                     fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/vendor/orders.tsx",
-                    lineNumber: 316,
+                    lineNumber: 400,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/vendor/orders.tsx",
-            lineNumber: 313,
+            lineNumber: 397,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/vendor/orders.tsx",
-        lineNumber: 312,
+        lineNumber: 396,
         columnNumber: 5
     }, this);
 }

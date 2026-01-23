@@ -1,14 +1,42 @@
-import { useEffect, useState, useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useRouter } from 'next/router';
 import { useToast } from '../../components/ui/ToastProvider';
+import { aggregateOrderItems } from '../../utils/orderAggregation';
+import { getVendorToken, getVendorId, getVendorAuthHeaders } from '../../utils/vendorAuth';
 
 type OrderStatus = 'completed' | 'cancelled' | 'processing' | 'pending' | 'all';
+
+interface OrderResponse {
+  order_id: string;
+  order_number: string;
+  status: 'completed' | 'cancelled' | 'processing' | 'pending';
+  created_at: string;
+  customer: {
+    name: string;
+    phone: string;
+  };
+  delivery_address_snapshot: {
+    community?: string;
+    block?: string;
+    floor?: string;
+    flat_number?: string;
+  };
+  items: Array<{
+    product_id: string;
+    name: string;
+    quantity: number;
+    price: number;
+  }>;
+  total_amount: number;
+  payment_method: string;
+}
 
 interface Order {
   _id: string;
   orderNumber: string;
-  customerId: { name: string; email: string; phone: string } | null;
-  items?: Array<{ quantity: number }>; // used for units filter
+  customerName: string;
+  customerPhone: string;
+  items?: Array<{ quantity: number }>;
   pricing: {
     totalAmount: number;
   };
@@ -25,7 +53,7 @@ export default function VendorOrderHistory() {
   const [orders, setOrders] = useState<Order[]>([]);
   const [allOrders, setAllOrders] = useState<Order[]>([]);
   const [loading, setLoading] = useState(true);
-  
+
   // Filters
   const [statusFilter, setStatusFilter] = useState<Set<Exclude<OrderStatus, 'all'>>>(
     new Set(ALLOWED_STATUSES)
@@ -37,19 +65,17 @@ export default function VendorOrderHistory() {
   const [minUnits, setMinUnits] = useState<string>('');
   const [searchTerm, setSearchTerm] = useState<string>('');
   const [debouncedSearch, setDebouncedSearch] = useState<string>('');
-  
+
   const { pushToast } = useToast();
 
   // Get vendorId from localStorage
-  const vendorId = typeof window !== 'undefined' 
-    ? (localStorage.getItem('cc_vendorId') || localStorage.getItem('vendorId')) 
-    : null;
+  const vendorId = getVendorId();
 
   useEffect(() => {
     if (vendorId) {
       loadOrders();
     } else {
-      pushToast({ type: 'error', title: 'Error', message: 'Vendor not logged in' });
+      pushToast({ type: 'error', message: 'Vendor not logged in' });
       setLoading(false);
     }
   }, [vendorId]);
@@ -62,20 +88,57 @@ export default function VendorOrderHistory() {
   const loadOrders = async () => {
     try {
       setLoading(true);
-      // Fetch all orders for this vendor (no implicit status or date filters)
-      const res = await fetch(
-        `http://localhost:5000/api/orders?vendorId=${vendorId}`
-      );
-      if (!res.ok) throw new Error('Failed to fetch orders');
-      const data = await res.json();
-      const validOrders = Array.isArray(data) 
-        ? data.filter(order => 
-            order && order.status && ['completed', 'cancelled', 'processing', 'pending'].includes(order.status)
-          ) 
-        : [];
+
+      // Get vendor JWT token using utility
+      const token = getVendorToken();
+
+      if (!token) {
+        pushToast({ type: 'error', message: 'No authentication token found. Please login again.' });
+        router.push('/login');
+        setLoading(false);
+        return;
+      }
+
+      const res = await fetch('http://localhost:5000/api/vendors/orders', {
+        headers: getVendorAuthHeaders(),
+      });
+
+      if (res.status === 401) {
+        pushToast({ type: 'error', message: 'Session expired. Please login again.' });
+        router.push('/login');
+        setLoading(false);
+        return;
+      }
+
+      if (!res.ok) {
+        throw new Error('Failed to fetch orders');
+      }
+
+      const data: OrderResponse[] = await res.json();
+
+      // Map snapshot-based response to UI format
+      const validOrders = data
+        .filter(orderResponse =>
+          orderResponse && orderResponse.status &&
+          ['completed', 'cancelled', 'processing', 'pending'].includes(orderResponse.status)
+        )
+        .map((orderResponse): Order => ({
+          _id: orderResponse.order_id,
+          orderNumber: orderResponse.order_number,
+          customerName: orderResponse.customer.name || 'Unknown',
+          customerPhone: orderResponse.customer.phone || 'N/A',
+          items: orderResponse.items.map(item => ({ quantity: item.quantity })),
+          pricing: {
+            totalAmount: orderResponse.total_amount,
+          },
+          paymentMethod: orderResponse.payment_method || 'COD',
+          status: orderResponse.status,
+          createdAt: orderResponse.created_at,
+        }));
+
       setAllOrders(validOrders);
     } catch (error: any) {
-      pushToast({ type: 'error', title: 'Error', message: error.message || 'Failed to load orders' });
+      pushToast({ type: 'error', message: error.message || 'Failed to load orders' });
       setAllOrders([]);
     } finally {
       setLoading(false);
@@ -91,7 +154,7 @@ export default function VendorOrderHistory() {
       const search = debouncedSearch.trim().toLowerCase();
       filtered = filtered.filter(order => {
         const orderId = (order.orderNumber || '').toLowerCase();
-        const customerName = (order.customerId?.name || '').toLowerCase();
+        const customerName = (order.customerName || '').toLowerCase();
         return orderId.includes(search) || customerName.includes(search);
       });
     }
@@ -116,7 +179,7 @@ export default function VendorOrderHistory() {
       filtered = filtered.filter(order => {
         if (!order.createdAt) return false;
         const orderDate = new Date(order.createdAt);
-        
+
         if (datePreset === 'today') {
           return orderDate >= startOfToday && orderDate <= endOfToday;
         } else if (datePreset === 'month') {
@@ -202,9 +265,9 @@ export default function VendorOrderHistory() {
   const formatDate = (dateStr?: string) => {
     if (!dateStr) return '—';
     const date = new Date(dateStr);
-    return date.toLocaleDateString('en-IN', { 
-      day: '2-digit', 
-      month: 'short', 
+    return date.toLocaleDateString('en-IN', {
+      day: '2-digit',
+      month: 'short',
       year: 'numeric',
       hour: '2-digit',
       minute: '2-digit'
@@ -372,7 +435,7 @@ export default function VendorOrderHistory() {
           </thead>
           <tbody>
             {filteredOrders.map((order) => (
-              <tr 
+              <tr
                 key={order.orderNumber || order._id}
                 onClick={() => handleOrderClick(order._id)}
                 style={{ cursor: 'pointer' }}
@@ -380,15 +443,20 @@ export default function VendorOrderHistory() {
                 onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
               >
                 <td className="order-id-cell">{order.orderNumber || '—'}</td>
-                <td className="customer-name-cell">{order.customerId?.name || '—'}</td>
+                <td className="customer-name-cell">
+                  <div>{order.customerName || '—'}</div>
+                  <div style={{ fontSize: '0.85em', color: 'var(--text-secondary)' }}>
+                    📞 {order.customerPhone}
+                  </div>
+                </td>
                 <td className="date-cell">{formatDate(order.createdAt)}</td>
                 <td className="amount-cell">₹{order.pricing.totalAmount.toFixed(2)}</td>
                 <td className="payment-cell">{order.paymentMethod || 'Cash'}</td>
                 <td className="status-cell">
                   <span className={`order-status-badge ${order.status}`}>
-                    {order.status === 'completed' ? 'Completed' : 
-                     order.status === 'cancelled' ? 'Cancelled' : 
-                     order.status === 'processing' ? 'Processing' : 'Pending'}
+                    {order.status === 'completed' ? 'Completed' :
+                      order.status === 'cancelled' ? 'Cancelled' :
+                        order.status === 'processing' ? 'Processing' : 'Pending'}
                   </span>
                 </td>
               </tr>
