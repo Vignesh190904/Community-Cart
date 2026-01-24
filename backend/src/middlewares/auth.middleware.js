@@ -83,14 +83,19 @@ export const protectVendor = async (req, res, next) => {
 
         if (decoded?.id) {
             try {
+                // Debug log
+                console.log('[protectVendor] Decoded ID:', decoded.id);
                 const vendor = await Vendor.findById(decoded.id).select('-password');
+                console.log('[protectVendor] Review Vendor found:', !!vendor);
                 req.user = vendor || null;
                 req.vendor = vendor || null;
-            } catch {
+            } catch (e) {
+                console.error('[protectVendor] DB Error:', e.message);
                 req.user = null;
                 req.vendor = null;
             }
         } else {
+            console.log('[protectVendor] No decoded ID');
             req.user = null;
             req.vendor = null;
         }

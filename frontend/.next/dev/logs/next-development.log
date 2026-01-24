@@ -1,11 +1,930 @@
-[00:00:04.743] Server  LOG      ✓ Ready in 1783ms
-[00:00:17.276] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[00:00:23.649] Browser LOG     [vendor:loadOrders] Fetching orders
-[00:00:23.649] Browser LOG     [vendor:loadOrders] Fetching orders
-[00:00:23.649] Browser LOG     [vendor:loadOrders] fetched orders count= 0
-[00:00:23.649] Browser LOG     [vendor:loadOrders] fetched orders count= 0
-[00:01:14.931] Server  LOG      ✓ Compiled in 99ms
-[00:02:09.410] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[00:02:15.874] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[00:02:19.759] Browser WARN    Role mismatch: expected vendor, got admin
-[00:02:28.289] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:00:04.586] Server  LOG      ✓ Ready in 4s
+[00:00:08.342] Server  LOG      ○ Compiling /customer/home ...
+[00:00:58.166] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:01:25.370] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:01:31.533] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:01:41.171] Browser LOG     [vendor:loadOrders] Fetching orders
+[00:01:41.171] Browser LOG     [vendor:loadOrders] Fetching orders
+[00:01:41.171] Browser LOG     [vendor:loadOrders] fetched orders count= 0
+[00:01:41.171] Browser LOG     [vendor:loadOrders] fetched orders count= 0
+[00:01:46.404] Browser LOG     [vendor:loadOrders] Fetching orders
+[00:01:46.404] Browser LOG     [vendor:loadOrders] Fetching orders
+[00:01:46.404] Browser LOG     [vendor:loadOrders] fetched orders count= 0
+[00:01:46.404] Browser LOG     [vendor:loadOrders] fetched orders count= 0
+[00:03:05.955] Browser LOG     Place Order Payload: {"cartItems":[{"id":"6944fd4a996f658cf8f631b9","name":"Eggs","price":270,"quantity":3,"total":810}],"selectedAddress":"Main","totalAmount":810}
+[00:03:09.361] Browser LOG     [vendor:loadOrders] Fetching orders
+[00:03:09.361] Browser LOG     [vendor:loadOrders] Fetching orders
+[00:03:09.361] Browser LOG     [vendor:loadOrders] fetched orders count= 0
+[00:03:09.361] Browser LOG     [vendor:loadOrders] fetched orders count= 0
+[00:03:12.818] Browser LOG     [vendor:loadOrders] Fetching orders
+[00:03:12.818] Browser LOG     [vendor:loadOrders] Fetching orders
+[00:03:12.818] Browser LOG     [vendor:loadOrders] fetched orders count= 0
+[00:03:12.818] Browser LOG     [vendor:loadOrders] fetched orders count= 0
+[00:03:24.111] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:04:11.471] Server  LOG      ✓ Compiled in 166ms
+[00:04:25.301] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:04:54.305] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:05:16.122] Browser LOG     [vendor:loadOrders] Fetching orders
+[00:05:16.122] Browser LOG     [vendor:loadOrders] Fetching orders
+[00:05:16.122] Browser LOG     [vendor:loadOrders] fetched orders count= 0
+[00:05:16.122] Browser LOG     [vendor:loadOrders] fetched orders count= 0
+[00:06:24.855] Server  LOG      ✓ Compiled in 81ms
+[00:07:11.240] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:07:11.241] Browser LOG     [vendor:loadOrders] Fetching orders
+[00:07:11.241] Browser LOG     [vendor:loadOrders] Fetching orders
+[00:07:11.241] Browser LOG     [vendor:loadOrders] fetched orders count= 0
+[00:07:11.241] Browser LOG     [vendor:loadOrders] fetched orders count= 0
+[00:08:19.752] Server  LOG      ✓ Compiled in 107ms
+[00:08:27.102] Server  LOG      ✓ Compiled in 103ms
+[00:08:29.086] Server  LOG      ✓ Compiled in 89ms
+[00:08:31.117] Server  LOG      ✓ Compiled in 38ms
+[00:08:40.417] Server  LOG      ✓ Compiled in 185ms
+[00:08:41.870] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:08:41.870] Browser LOG     [vendor:loadOrders] Fetching orders
+[00:08:41.870] Browser LOG     [vendor:loadOrders] Fetching orders
+[00:08:41.870] Browser LOG     [vendor:loadOrders] fetched orders count= 0
+[00:08:41.870] Browser LOG     [vendor:loadOrders] fetched orders count= 0
+[00:09:27.786] Browser LOG     [vendor:loadOrders] Fetching orders
+[00:09:27.786] Browser LOG     [vendor:loadOrders] Fetching orders
+[00:09:27.786] Browser LOG     [vendor:loadOrders] fetched orders count= 0
+[00:09:27.786] Browser LOG     [vendor:loadOrders] fetched orders count= 0
+[00:09:29.631] Browser LOG     [vendor:loadOrders] Fetching orders
+[00:09:29.631] Browser LOG     [vendor:loadOrders] Fetching orders
+[00:09:29.631] Browser LOG     [vendor:loadOrders] fetched orders count= 0
+[00:09:29.631] Browser LOG     [vendor:loadOrders] fetched orders count= 0
+[00:10:34.551] Server  LOG      ✓ Compiled in 360ms
+[00:12:34.694] Browser LOG     Vendor Products Debug: {"filtered":3,"myVendorId":"69440dabd39acfb6ef8909e5","totalFetched":4}
+[00:12:40.270] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:12:40.270] Browser LOG     [vendor:loadOrders] Fetching orders
+[00:12:40.270] Browser LOG     [vendor:loadOrders] Fetching orders
+[00:12:40.270] Browser LOG     [vendor:loadOrders] fetched orders count= 0
+[00:12:40.270] Browser LOG     [vendor:loadOrders] fetched orders count= 0
+[00:14:12.923] Server  LOG      ✓ Compiled in 76ms
+[00:14:14.052] Browser LOG     Vendor Products Debug: {"filtered":3,"myVendorId":"69440dabd39acfb6ef8909e5","totalFetched":4}
+[00:14:14.052] Browser LOG     Vendor Products Debug: {"filtered":3,"myVendorId":"69440dabd39acfb6ef8909e5","totalFetched":4}
+[00:14:14.980] Server  LOG      ✓ Compiled in 74ms
+[00:14:16.051] Browser LOG     Vendor Products Debug: {"filtered":3,"myVendorId":"69440dabd39acfb6ef8909e5","totalFetched":4}
+[00:14:25.902] Browser LOG     Vendor Products Debug: {"filtered":3,"myVendorId":"69440dabd39acfb6ef8909e5","totalFetched":4}
+[00:14:25.902] Browser LOG     Vendor Products Debug: {"filtered":3,"myVendorId":"69440dabd39acfb6ef8909e5","totalFetched":4}
+[00:14:32.463] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:14:33.705] Browser LOG     [vendor:loadOrders] Fetching orders
+[00:14:33.705] Browser LOG     [vendor:loadOrders] Fetching orders
+[00:14:33.705] Browser LOG     [vendor:loadOrders] fetched orders count= 0
+[00:14:33.705] Browser LOG     [vendor:loadOrders] fetched orders count= 0
+[00:14:35.217] Browser LOG     [vendor:loadOrders] Fetching orders
+[00:14:35.218] Browser LOG     [vendor:loadOrders] Fetching orders
+[00:14:35.218] Browser LOG     [vendor:loadOrders] fetched orders count= 0
+[00:14:35.218] Browser LOG     [vendor:loadOrders] fetched orders count= 0
+[00:15:43.249] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:15:58.663] Browser LOG     Vendor Products Debug: {"filtered":3,"myVendorId":"69440dabd39acfb6ef8909e5","totalFetched":4}
+[00:15:58.785] Browser LOG     Vendor Products Debug: {"filtered":3,"myVendorId":"69440dabd39acfb6ef8909e5","totalFetched":4}
+[00:16:02.846] Browser LOG     Vendor Products Debug: {"filtered":3,"myVendorId":"69440dabd39acfb6ef8909e5","totalFetched":4}
+[00:16:07.307] Browser LOG     Vendor Products Debug: {"filtered":3,"myVendorId":"69440dabd39acfb6ef8909e5","totalFetched":4}
+[00:16:13.635] Browser LOG     Vendor Products Debug: {"filtered":3,"myVendorId":"69440dabd39acfb6ef8909e5","totalFetched":4}
+[00:30:16.090] Server  LOG      ✓ Compiled in 698ms
+[00:30:17.066] Browser LOG     Vendor Products Debug: {"filtered":3,"myVendorId":"69440dabd39acfb6ef8909e5","totalFetched":4}
+[00:30:17.066] Browser LOG     Vendor Products Debug: {"filtered":3,"myVendorId":"69440dabd39acfb6ef8909e5","totalFetched":4}
+[00:30:17.395] Server  LOG      ✓ Compiled in 95ms
+[00:30:20.107] Browser LOG     Vendor Products Debug: {"filtered":3,"myVendorId":"69440dabd39acfb6ef8909e5","totalFetched":4}
+[00:30:20.107] Browser LOG     Vendor Products Debug: {"filtered":3,"myVendorId":"69440dabd39acfb6ef8909e5","totalFetched":4}
+[00:30:20.310] Server  LOG      ✓ Compiled in 76ms
+[00:30:21.052] Browser LOG     Vendor Products Debug: {"filtered":3,"myVendorId":"69440dabd39acfb6ef8909e5","totalFetched":4}
+[00:30:21.052] Browser LOG     Vendor Products Debug: {"filtered":3,"myVendorId":"69440dabd39acfb6ef8909e5","totalFetched":4}
+[00:30:21.052] Browser LOG     Vendor Products Debug: {"filtered":3,"myVendorId":"69440dabd39acfb6ef8909e5","totalFetched":4}
+[00:30:21.052] Browser LOG     Vendor Products Debug: {"filtered":3,"myVendorId":"69440dabd39acfb6ef8909e5","totalFetched":4}
+[00:31:27.022] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:31:54.935] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:32:02.586] Browser LOG     Vendor Products Debug: {"filtered":3,"myVendorId":"69440dabd39acfb6ef8909e5","totalFetched":4}
+[00:32:07.064] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:32:41.873] Server  LOG      ✓ Compiled in 598ms
+[00:32:41.970] Browser ERROR   ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx:85:2
+Parsing ecmascript source code failed
+  83 |     setCustomerId(savedCustomer);
+  84 |   }
+> 85 | }, []);
+     |  ^
+  86 |
+  87 | const validateCart = async (currentCart: CartItem[]) => {
+  88 |   if (currentCart.length === 0) return;
+
+Expression expected
+
+Import trace:
+  SSR:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/_app.tsx
+[00:32:43.045] Browser ERROR   ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx:85:2
+Parsing ecmascript source code failed
+  83 |     setCustomerId(savedCustomer);
+  84 |   }
+> 85 | }, []);
+     |  ^
+  86 |
+  87 | const validateCart = async (currentCart: CartItem[]) => {
+  88 |   if (currentCart.length === 0) return;
+
+Expression expected
+
+Import traces:
+  Browser:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/_app.tsx
+
+  SSR:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/_app.tsx
+[00:33:05.328] Server  LOG      ✓ Compiled in 183ms
+[00:33:06.109] Browser ERROR   uncaughtError: ReferenceError: cart is not defined
+[00:33:06.109] Browser ERROR   uncaughtError: ReferenceError: cart is not defined
+[00:33:06.109] Browser ERROR   The above error occurred in the <CustomerStoreProvider> component:
+
+    at CustomerStoreProvider (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__31fc6f50._.js?id=%255Bproject%255D%252FDesktop%252FCommunity-Cart%252Ffrontend%252Fsrc%252Fcontext%252FCustomerStore.tsx+%255Bclient%255D+%2528ecmascript%2529:20:34)
+    at AuthProvider (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js?ts=1769266726776:728:25)
+    at ToastProvider (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js?ts=1769266726776:1389:26)
+    at MyApp (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js?ts=1769266726776:1813:18)
+    at PathnameContextProviderAdapter (http://localhost:4646/_next/static/chunks/48ebd_next_dist_shared_lib_2dd775c2._.js?ts=1769266726776:5052:43)
+    at PagesDevOverlayErrorBoundary (http://localhost:4646/_next/static/chunks/48ebd_next_dist_6f9203da._.js?ts=1769266726776:1142:9)
+    at PagesDevOverlayBridge (http://localhost:4646/_next/static/chunks/48ebd_next_dist_6f9203da._.js?ts=1769266726776:1919:34)
+    at Container (http://localhost:4646/_next/static/chunks/48ebd_next_dist_client_990bb439._.js?ts=1769266726776:3041:1)
+    at AppContainer (http://localhost:4646/_next/static/chunks/48ebd_next_dist_client_990bb439._.js?ts=1769266726776:3140:25)
+    at Root (http://localhost:4646/_next/static/chunks/48ebd_next_dist_client_990bb439._.js?ts=1769266726776:3348:17)
+
+React will try to recreate this component tree from scratch using the error boundary you provided, PagesDevOverlayErrorBoundary.
+[00:33:06.123] Browser ERROR   uncaughtError: ReferenceError: cart is not defined
+[00:33:06.123] Browser ERROR   uncaughtError: ReferenceError: cart is not defined
+[00:33:06.123] Browser ERROR   The above error occurred in the <CustomerStoreProvider> component:
+
+    at CustomerStoreProvider (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js?id=%255Bproject%255D%252FDesktop%252FCommunity-Cart%252Ffrontend%252Fsrc%252Fcontext%252FCustomerStore.tsx+%255Bclient%255D+%2528ecmascript%2529:20:34)
+    at AuthProvider (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js:728:25)
+    at ToastProvider (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js:1389:26)
+    at MyApp (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js:1749:18)
+    at PathnameContextProviderAdapter (http://localhost:4646/_next/static/chunks/48ebd_next_dist_shared_lib_2dd775c2._.js:5052:43)
+    at PagesDevOverlayErrorBoundary (http://localhost:4646/_next/static/chunks/48ebd_next_dist_6f9203da._.js:1142:9)
+    at PagesDevOverlayBridge (http://localhost:4646/_next/static/chunks/48ebd_next_dist_6f9203da._.js:1919:34)
+    at Container (http://localhost:4646/_next/static/chunks/48ebd_next_dist_client_990bb439._.js:3041:1)
+    at AppContainer (http://localhost:4646/_next/static/chunks/48ebd_next_dist_client_990bb439._.js:3140:25)
+    at Root (http://localhost:4646/_next/static/chunks/48ebd_next_dist_client_990bb439._.js:3348:17)
+
+React will try to recreate this component tree from scratch using the error boundary you provided, PagesDevOverlayErrorBoundary.
+[00:33:39.160] Server  LOG      ✓ Compiled in 96ms
+[00:33:41.053] Browser LOG     Vendor Products Debug: {"filtered":3,"myVendorId":"69440dabd39acfb6ef8909e5","totalFetched":4}
+[00:33:41.053] Browser LOG     Vendor Products Debug: {"filtered":3,"myVendorId":"69440dabd39acfb6ef8909e5","totalFetched":4}
+[00:35:03.169] Browser LOG     Vendor Products Debug: {"filtered":3,"myVendorId":"69440dabd39acfb6ef8909e5","totalFetched":4}
+[00:38:03.610] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:39:30.857] Server  LOG      ✓ Compiled in 180ms
+[00:44:16.071] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:44:38.940] Browser LOG     Place Order Payload: {"cartItems":[{"id":"6944fe8dec9df1cb32c5f16a","name":"Oil","price":150,"quantity":2,"total":300},{"id":"6944fd4a996f658cf8f631b9","name":"Eggs","price":270,"quantity":2,"total":540},{"id":"6945174aec9df1cb32c5f23c","name":"Sugar","price":50,"quantity":3,"total":150}],"selectedAddress":"Main","totalAmount":990}
+[00:46:37.855] Server  LOG      ✓ Compiled in 238ms
+[00:46:39.047] Browser LOG     Vendor Products Debug: {"filtered":3,"myVendorId":"69440dabd39acfb6ef8909e5","totalFetched":4}
+[00:46:39.047] Browser LOG     Vendor Products Debug: {"filtered":3,"myVendorId":"69440dabd39acfb6ef8909e5","totalFetched":4}
+[00:49:36.588] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:49:51.899] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:50:49.592] Server  LOG      ✓ Compiled in 66ms
+[00:50:51.641] Server  LOG      ✓ Compiled in 47ms
+[00:50:53.577] Server  LOG      ✓ Compiled in 59ms
+[01:16:24.076] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[01:16:32.973] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[01:16:38.390] Browser LOG     Place Order Payload: {"cartItems":[{"id":"6944fd4a996f658cf8f631b9","name":"Eggs","price":270,"quantity":2,"total":540}],"selectedAddress":"Main","totalAmount":540}
+[01:16:42.616] Browser LOG     [vendor:loadOrders] Fetching orders
+[01:16:42.616] Browser LOG     [vendor:loadOrders] Fetching orders
+[01:16:42.616] Browser LOG     [vendor:loadOrders] fetched orders count= 0
+[01:16:42.616] Browser LOG     [vendor:loadOrders] fetched orders count= 0
+[01:16:44.271] Browser LOG     [vendor:loadOrders] Fetching orders
+[01:16:44.272] Browser LOG     [vendor:loadOrders] Fetching orders
+[01:16:44.272] Browser LOG     [vendor:loadOrders] fetched orders count= 0
+[01:16:44.272] Browser LOG     [vendor:loadOrders] fetched orders count= 0
+[01:16:51.956] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[01:18:23.931] Server  LOG      ✓ Compiled in 312ms
+[01:18:45.047] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[01:18:49.163] Browser LOG     Place Order Payload: {"cartItems":[{"id":"6944fd4a996f658cf8f631b9","name":"Eggs","price":270,"quantity":2,"total":540}],"selectedAddress":"Main","totalAmount":540}
+[01:19:13.548] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[01:19:24.291] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[01:19:45.995] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[01:19:57.955] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[01:21:12.107] Server  LOG      ✓ Compiled in 89ms
+[01:21:13.056] Browser ERROR   uncaughtError: ReferenceError: getToken is not defined
+[01:21:13.056] Browser ERROR   uncaughtError: ReferenceError: getToken is not defined
+[01:21:13.056] Browser ERROR   The above error occurred in the <CustomerStoreProvider> component:
+
+    at CustomerStoreProvider (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js?id=%255Bproject%255D%252FDesktop%252FCommunity-Cart%252Ffrontend%252Fsrc%252Fcontext%252FCustomerStore.tsx+%255Bclient%255D+%2528ecmascript%2529:21:34)
+    at AuthProvider (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js?ts=1769269608707:728:25)
+    at ToastProvider (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js?ts=1769269608707:1389:26)
+    at MyApp (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js?ts=1769269608707:1830:18)
+    at PathnameContextProviderAdapter (http://localhost:4646/_next/static/chunks/48ebd_next_dist_shared_lib_2dd775c2._.js?ts=1769269608707:5052:43)
+    at PagesDevOverlayErrorBoundary (http://localhost:4646/_next/static/chunks/48ebd_next_dist_6f9203da._.js?ts=1769269608707:1142:9)
+    at PagesDevOverlayBridge (http://localhost:4646/_next/static/chunks/48ebd_next_dist_6f9203da._.js?ts=1769269608707:1919:34)
+    at Container (http://localhost:4646/_next/static/chunks/48ebd_next_dist_client_990bb439._.js?ts=1769269608707:3041:1)
+    at AppContainer (http://localhost:4646/_next/static/chunks/48ebd_next_dist_client_990bb439._.js?ts=1769269608707:3140:25)
+    at Root (http://localhost:4646/_next/static/chunks/48ebd_next_dist_client_990bb439._.js?ts=1769269608707:3348:17)
+
+React will try to recreate this component tree from scratch using the error boundary you provided, PagesDevOverlayErrorBoundary.
+[01:21:13.056] Browser ERROR   The above error occurred in the <CustomerStoreProvider> component:
+
+    at CustomerStoreProvider (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js?id=%255Bproject%255D%252FDesktop%252FCommunity-Cart%252Ffrontend%252Fsrc%252Fcontext%252FCustomerStore.tsx+%255Bclient%255D+%2528ecmascript%2529:21:34)
+    at AuthProvider (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js?ts=1769269608707:728:25)
+    at ToastProvider (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js?ts=1769269608707:1389:26)
+    at MyApp (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js?ts=1769269608707:1830:18)
+    at PathnameContextProviderAdapter (http://localhost:4646/_next/static/chunks/48ebd_next_dist_shared_lib_2dd775c2._.js?ts=1769269608707:5052:43)
+    at PagesDevOverlayErrorBoundary (http://localhost:4646/_next/static/chunks/48ebd_next_dist_6f9203da._.js?ts=1769269608707:1142:9)
+    at PagesDevOverlayBridge (http://localhost:4646/_next/static/chunks/48ebd_next_dist_6f9203da._.js?ts=1769269608707:1919:34)
+    at Container (http://localhost:4646/_next/static/chunks/48ebd_next_dist_client_990bb439._.js?ts=1769269608707:3041:1)
+    at AppContainer (http://localhost:4646/_next/static/chunks/48ebd_next_dist_client_990bb439._.js?ts=1769269608707:3140:25)
+    at Root (http://localhost:4646/_next/static/chunks/48ebd_next_dist_client_990bb439._.js?ts=1769269608707:3348:17)
+
+React will try to recreate this component tree from scratch using the error boundary you provided, PagesDevOverlayErrorBoundary.
+[01:21:13.056] Browser ERROR   uncaughtError: ReferenceError: getToken is not defined
+[01:21:13.056] Browser ERROR   uncaughtError: ReferenceError: getToken is not defined
+[01:21:13.056] Browser ERROR   The above error occurred in the <CustomerStoreProvider> component:
+
+    at CustomerStoreProvider (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js?id=%255Bproject%255D%252FDesktop%252FCommunity-Cart%252Ffrontend%252Fsrc%252Fcontext%252FCustomerStore.tsx+%255Bclient%255D+%2528ecmascript%2529:21:34)
+    at AuthProvider (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js?ts=1769269608707:728:25)
+    at ToastProvider (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js?ts=1769269608707:1389:26)
+    at MyApp (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js?ts=1769269608707:1830:18)
+    at PathnameContextProviderAdapter (http://localhost:4646/_next/static/chunks/48ebd_next_dist_shared_lib_2dd775c2._.js?ts=1769269608707:5052:43)
+    at PagesDevOverlayErrorBoundary (http://localhost:4646/_next/static/chunks/48ebd_next_dist_6f9203da._.js?ts=1769269608707:1142:9)
+    at PagesDevOverlayBridge (http://localhost:4646/_next/static/chunks/48ebd_next_dist_6f9203da._.js?ts=1769269608707:1919:34)
+    at Container (http://localhost:4646/_next/static/chunks/48ebd_next_dist_client_990bb439._.js?ts=1769269608707:3041:1)
+    at AppContainer (http://localhost:4646/_next/static/chunks/48ebd_next_dist_client_990bb439._.js?ts=1769269608707:3140:25)
+    at Root (http://localhost:4646/_next/static/chunks/48ebd_next_dist_client_990bb439._.js?ts=1769269608707:3348:17)
+
+React will try to recreate this component tree from scratch using the error boundary you provided, PagesDevOverlayErrorBoundary.
+[01:21:13.056] Browser ERROR   The above error occurred in the <CustomerStoreProvider> component:
+
+    at CustomerStoreProvider (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js?id=%255Bproject%255D%252FDesktop%252FCommunity-Cart%252Ffrontend%252Fsrc%252Fcontext%252FCustomerStore.tsx+%255Bclient%255D+%2528ecmascript%2529:21:34)
+    at AuthProvider (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js?ts=1769269608707:728:25)
+    at ToastProvider (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js?ts=1769269608707:1389:26)
+    at MyApp (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js?ts=1769269608707:1830:18)
+    at PathnameContextProviderAdapter (http://localhost:4646/_next/static/chunks/48ebd_next_dist_shared_lib_2dd775c2._.js?ts=1769269608707:5052:43)
+    at PagesDevOverlayErrorBoundary (http://localhost:4646/_next/static/chunks/48ebd_next_dist_6f9203da._.js?ts=1769269608707:1142:9)
+    at PagesDevOverlayBridge (http://localhost:4646/_next/static/chunks/48ebd_next_dist_6f9203da._.js?ts=1769269608707:1919:34)
+    at Container (http://localhost:4646/_next/static/chunks/48ebd_next_dist_client_990bb439._.js?ts=1769269608707:3041:1)
+    at AppContainer (http://localhost:4646/_next/static/chunks/48ebd_next_dist_client_990bb439._.js?ts=1769269608707:3140:25)
+    at Root (http://localhost:4646/_next/static/chunks/48ebd_next_dist_client_990bb439._.js?ts=1769269608707:3348:17)
+
+React will try to recreate this component tree from scratch using the error boundary you provided, PagesDevOverlayErrorBoundary.
+[01:21:13.056] Browser ERROR   uncaughtError: ReferenceError: getToken is not defined
+[01:21:13.056] Browser ERROR   uncaughtError: ReferenceError: getToken is not defined
+[01:21:13.056] Browser ERROR   The above error occurred in the <CustomerStoreProvider> component:
+
+    at CustomerStoreProvider (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__da694434._.js?id=%255Bproject%255D%252FDesktop%252FCommunity-Cart%252Ffrontend%252Fsrc%252Fcontext%252FCustomerStore.tsx+%255Bclient%255D+%2528ecmascript%2529:21:34)
+    at AuthProvider (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js?ts=1769269608707:728:25)
+    at ToastProvider (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js?ts=1769269608707:1389:26)
+    at MyApp (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js?ts=1769269608707:1830:18)
+    at PathnameContextProviderAdapter (http://localhost:4646/_next/static/chunks/48ebd_next_dist_shared_lib_2dd775c2._.js?ts=1769269608707:5052:43)
+    at PagesDevOverlayErrorBoundary (http://localhost:4646/_next/static/chunks/48ebd_next_dist_6f9203da._.js?ts=1769269608707:1142:9)
+    at PagesDevOverlayBridge (http://localhost:4646/_next/static/chunks/48ebd_next_dist_6f9203da._.js?ts=1769269608707:1919:34)
+    at Container (http://localhost:4646/_next/static/chunks/48ebd_next_dist_client_990bb439._.js?ts=1769269608707:3041:1)
+    at AppContainer (http://localhost:4646/_next/static/chunks/48ebd_next_dist_client_990bb439._.js?ts=1769269608707:3140:25)
+    at Root (http://localhost:4646/_next/static/chunks/48ebd_next_dist_client_990bb439._.js?ts=1769269608707:3348:17)
+
+React will try to recreate this component tree from scratch using the error boundary you provided, PagesDevOverlayErrorBoundary.
+[01:21:13.056] Browser ERROR   The above error occurred in the <CustomerStoreProvider> component:
+
+    at CustomerStoreProvider (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__da694434._.js?id=%255Bproject%255D%252FDesktop%252FCommunity-Cart%252Ffrontend%252Fsrc%252Fcontext%252FCustomerStore.tsx+%255Bclient%255D+%2528ecmascript%2529:21:34)
+    at AuthProvider (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js?ts=1769269608707:728:25)
+    at ToastProvider (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js?ts=1769269608707:1389:26)
+    at MyApp (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js?ts=1769269608707:1830:18)
+    at PathnameContextProviderAdapter (http://localhost:4646/_next/static/chunks/48ebd_next_dist_shared_lib_2dd775c2._.js?ts=1769269608707:5052:43)
+    at PagesDevOverlayErrorBoundary (http://localhost:4646/_next/static/chunks/48ebd_next_dist_6f9203da._.js?ts=1769269608707:1142:9)
+    at PagesDevOverlayBridge (http://localhost:4646/_next/static/chunks/48ebd_next_dist_6f9203da._.js?ts=1769269608707:1919:34)
+    at Container (http://localhost:4646/_next/static/chunks/48ebd_next_dist_client_990bb439._.js?ts=1769269608707:3041:1)
+    at AppContainer (http://localhost:4646/_next/static/chunks/48ebd_next_dist_client_990bb439._.js?ts=1769269608707:3140:25)
+    at Root (http://localhost:4646/_next/static/chunks/48ebd_next_dist_client_990bb439._.js?ts=1769269608707:3348:17)
+
+React will try to recreate this component tree from scratch using the error boundary you provided, PagesDevOverlayErrorBoundary.
+[01:21:13.056] Browser LOG     [vendor:loadOrders] Fetching orders
+[01:21:13.056] Browser ERROR   uncaughtError: ReferenceError: getToken is not defined
+[01:21:13.056] Browser LOG     [vendor:loadOrders] Fetching orders
+[01:21:13.056] Browser ERROR   uncaughtError: ReferenceError: getToken is not defined
+[01:21:13.056] Browser ERROR   The above error occurred in the <CustomerStoreProvider> component:
+
+    at CustomerStoreProvider (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js?id=%255Bproject%255D%252FDesktop%252FCommunity-Cart%252Ffrontend%252Fsrc%252Fcontext%252FCustomerStore.tsx+%255Bclient%255D+%2528ecmascript%2529:21:34)
+    at AuthProvider (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js:728:25)
+    at ToastProvider (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js:1389:26)
+    at MyApp (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js:1830:18)
+    at PathnameContextProviderAdapter (http://localhost:4646/_next/static/chunks/48ebd_next_dist_shared_lib_2dd775c2._.js:5052:43)
+    at PagesDevOverlayErrorBoundary (http://localhost:4646/_next/static/chunks/48ebd_next_dist_6f9203da._.js:1142:9)
+    at PagesDevOverlayBridge (http://localhost:4646/_next/static/chunks/48ebd_next_dist_6f9203da._.js:1919:34)
+    at Container (http://localhost:4646/_next/static/chunks/48ebd_next_dist_client_990bb439._.js:3041:1)
+    at AppContainer (http://localhost:4646/_next/static/chunks/48ebd_next_dist_client_990bb439._.js:3140:25)
+    at Root (http://localhost:4646/_next/static/chunks/48ebd_next_dist_client_990bb439._.js:3348:17)
+
+React will try to recreate this component tree from scratch using the error boundary you provided, PagesDevOverlayErrorBoundary.
+[01:21:13.056] Browser ERROR   The above error occurred in the <CustomerStoreProvider> component:
+
+    at CustomerStoreProvider (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js?id=%255Bproject%255D%252FDesktop%252FCommunity-Cart%252Ffrontend%252Fsrc%252Fcontext%252FCustomerStore.tsx+%255Bclient%255D+%2528ecmascript%2529:21:34)
+    at AuthProvider (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js:728:25)
+    at ToastProvider (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js:1389:26)
+    at MyApp (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js:1830:18)
+    at PathnameContextProviderAdapter (http://localhost:4646/_next/static/chunks/48ebd_next_dist_shared_lib_2dd775c2._.js:5052:43)
+    at PagesDevOverlayErrorBoundary (http://localhost:4646/_next/static/chunks/48ebd_next_dist_6f9203da._.js:1142:9)
+    at PagesDevOverlayBridge (http://localhost:4646/_next/static/chunks/48ebd_next_dist_6f9203da._.js:1919:34)
+    at Container (http://localhost:4646/_next/static/chunks/48ebd_next_dist_client_990bb439._.js:3041:1)
+    at AppContainer (http://localhost:4646/_next/static/chunks/48ebd_next_dist_client_990bb439._.js:3140:25)
+    at Root (http://localhost:4646/_next/static/chunks/48ebd_next_dist_client_990bb439._.js:3348:17)
+
+React will try to recreate this component tree from scratch using the error boundary you provided, PagesDevOverlayErrorBoundary.
+[01:21:13.056] Browser ERROR   uncaughtError: ReferenceError: getToken is not defined
+[01:21:13.056] Browser ERROR   uncaughtError: ReferenceError: getToken is not defined
+[01:21:13.056] Browser ERROR   The above error occurred in the <CustomerStoreProvider> component:
+
+    at CustomerStoreProvider (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js?id=%255Bproject%255D%252FDesktop%252FCommunity-Cart%252Ffrontend%252Fsrc%252Fcontext%252FCustomerStore.tsx+%255Bclient%255D+%2528ecmascript%2529:21:34)
+    at AuthProvider (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js:728:25)
+    at ToastProvider (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js:1389:26)
+    at MyApp (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js:1830:18)
+    at PathnameContextProviderAdapter (http://localhost:4646/_next/static/chunks/48ebd_next_dist_shared_lib_2dd775c2._.js:5052:43)
+    at PagesDevOverlayErrorBoundary (http://localhost:4646/_next/static/chunks/48ebd_next_dist_6f9203da._.js:1142:9)
+    at PagesDevOverlayBridge (http://localhost:4646/_next/static/chunks/48ebd_next_dist_6f9203da._.js:1919:34)
+    at Container (http://localhost:4646/_next/static/chunks/48ebd_next_dist_client_990bb439._.js:3041:1)
+    at AppContainer (http://localhost:4646/_next/static/chunks/48ebd_next_dist_client_990bb439._.js:3140:25)
+    at Root (http://localhost:4646/_next/static/chunks/48ebd_next_dist_client_990bb439._.js:3348:17)
+
+React will try to recreate this component tree from scratch using the error boundary you provided, PagesDevOverlayErrorBoundary.
+[01:21:13.056] Browser ERROR   The above error occurred in the <CustomerStoreProvider> component:
+
+    at CustomerStoreProvider (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js?id=%255Bproject%255D%252FDesktop%252FCommunity-Cart%252Ffrontend%252Fsrc%252Fcontext%252FCustomerStore.tsx+%255Bclient%255D+%2528ecmascript%2529:21:34)
+    at AuthProvider (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js:728:25)
+    at ToastProvider (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js:1389:26)
+    at MyApp (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js:1830:18)
+    at PathnameContextProviderAdapter (http://localhost:4646/_next/static/chunks/48ebd_next_dist_shared_lib_2dd775c2._.js:5052:43)
+    at PagesDevOverlayErrorBoundary (http://localhost:4646/_next/static/chunks/48ebd_next_dist_6f9203da._.js:1142:9)
+    at PagesDevOverlayBridge (http://localhost:4646/_next/static/chunks/48ebd_next_dist_6f9203da._.js:1919:34)
+    at Container (http://localhost:4646/_next/static/chunks/48ebd_next_dist_client_990bb439._.js:3041:1)
+    at AppContainer (http://localhost:4646/_next/static/chunks/48ebd_next_dist_client_990bb439._.js:3140:25)
+    at Root (http://localhost:4646/_next/static/chunks/48ebd_next_dist_client_990bb439._.js:3348:17)
+
+React will try to recreate this component tree from scratch using the error boundary you provided, PagesDevOverlayErrorBoundary.
+[01:21:13.056] Browser LOG     [vendor:loadOrders] fetched orders count= 0
+[01:21:13.056] Browser LOG     [vendor:loadOrders] fetched orders count= 0
+[01:21:25.402] Server  LOG      ✓ Compiled in 29ms
+[01:21:26.053] Browser LOG     [vendor:loadOrders] Fetching orders
+[01:21:26.054] Browser LOG     [vendor:loadOrders] Fetching orders
+[01:21:26.054] Browser LOG     [vendor:loadOrders] fetched orders count= 0
+[01:21:26.054] Browser LOG     [vendor:loadOrders] fetched orders count= 0
+[01:22:08.700] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[01:22:32.023] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[01:42:42.930] Server  LOG      ✓ Compiled in 140ms
+[01:45:29.019] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[01:49:04.190] Browser LOG     [vendor:loadOrders] Fetching orders
+[01:49:04.190] Browser LOG     [vendor:loadOrders] Fetching orders
+[01:49:04.190] Browser LOG     [vendor:loadOrders] fetched orders count= 0
+[01:49:04.190] Browser LOG     [vendor:loadOrders] fetched orders count= 0
+[01:52:30.944] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[01:52:56.023] Browser LOG     [vendor:loadOrders] Fetching orders
+[01:52:56.023] Browser LOG     [vendor:loadOrders] Fetching orders
+[01:52:56.023] Browser LOG     [vendor:loadOrders] fetched orders count= 0
+[01:52:56.023] Browser LOG     [vendor:loadOrders] fetched orders count= 0
+[01:53:22.087] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[02:18:58.326] Server  LOG      ✓ Compiled in 660ms
+[02:21:20.621] Browser LOG     [vendor:loadOrders] Fetching orders
+[02:21:20.621] Browser LOG     [vendor:loadOrders] Fetching orders
+[02:21:20.817] Browser LOG     [vendor:loadOrders] fetched orders count= 19
+[02:21:20.817] Browser LOG     [vendor:loadOrders] fetched orders count= 19
+[02:21:26.106] Browser LOG     [vendor:updateStatus] orderId= 6974efb79534b6047706e46a status= cancelled
+[02:21:27.179] Browser LOG     [vendor:updateStatus] orderId= 6974f0909534b6047706e47d status= cancelled
+[02:21:28.054] Browser LOG     [vendor:updateStatus] orderId= 6974f0b19534b6047706e485 status= cancelled
+[02:21:28.939] Browser WARN    %c@hello-pangea/dnd
+
+%cDroppable: unsupported nested scroll container detected.
+A Droppable can only have one scroll parent (which can be itself)
+Nested scroll containers are currently not supported.
+
+We hope to support nested scroll containers soon: https://github.com/atlassian/react-beautiful-dnd/issues/131
+
+%c👷‍ This is a development only message. It will be removed in production builds. color: #00C584; font-size: 1.2em; font-weight: bold; line-height: 1.5 color: #723874;
+[02:21:28.939] Browser WARN    %c@hello-pangea/dnd
+
+%cDroppable: unsupported nested scroll container detected.
+A Droppable can only have one scroll parent (which can be itself)
+Nested scroll containers are currently not supported.
+
+We hope to support nested scroll containers soon: https://github.com/atlassian/react-beautiful-dnd/issues/131
+
+%c👷‍ This is a development only message. It will be removed in production builds. color: #00C584; font-size: 1.2em; font-weight: bold; line-height: 1.5 color: #723874;
+[02:21:28.939] Browser WARN    %c@hello-pangea/dnd
+
+%cDroppable: unsupported nested scroll container detected.
+A Droppable can only have one scroll parent (which can be itself)
+Nested scroll containers are currently not supported.
+
+We hope to support nested scroll containers soon: https://github.com/atlassian/react-beautiful-dnd/issues/131
+
+%c👷‍ This is a development only message. It will be removed in production builds. color: #00C584; font-size: 1.2em; font-weight: bold; line-height: 1.5 color: #723874;
+[02:21:29.823] Browser WARN    [vendor:drag] Invalid transition from pending to completed
+[02:21:31.154] Browser WARN    %c@hello-pangea/dnd
+
+%cDroppable: unsupported nested scroll container detected.
+A Droppable can only have one scroll parent (which can be itself)
+Nested scroll containers are currently not supported.
+
+We hope to support nested scroll containers soon: https://github.com/atlassian/react-beautiful-dnd/issues/131
+
+%c👷‍ This is a development only message. It will be removed in production builds. color: #00C584; font-size: 1.2em; font-weight: bold; line-height: 1.5 color: #723874;
+[02:21:31.154] Browser WARN    %c@hello-pangea/dnd
+
+%cDroppable: unsupported nested scroll container detected.
+A Droppable can only have one scroll parent (which can be itself)
+Nested scroll containers are currently not supported.
+
+We hope to support nested scroll containers soon: https://github.com/atlassian/react-beautiful-dnd/issues/131
+
+%c👷‍ This is a development only message. It will be removed in production builds. color: #00C584; font-size: 1.2em; font-weight: bold; line-height: 1.5 color: #723874;
+[02:21:31.154] Browser WARN    %c@hello-pangea/dnd
+
+%cDroppable: unsupported nested scroll container detected.
+A Droppable can only have one scroll parent (which can be itself)
+Nested scroll containers are currently not supported.
+
+We hope to support nested scroll containers soon: https://github.com/atlassian/react-beautiful-dnd/issues/131
+
+%c👷‍ This is a development only message. It will be removed in production builds. color: #00C584; font-size: 1.2em; font-weight: bold; line-height: 1.5 color: #723874;
+[02:21:31.154] Browser WARN    %c@hello-pangea/dnd
+
+%cUnsupported: changing the droppableId or type of a Droppable during a drag
+
+%c👷‍ This is a development only message. It will be removed in production builds. color: #00C584; font-size: 1.2em; font-weight: bold; line-height: 1.5 color: #723874;
+[02:21:31.154] Browser WARN    %c@hello-pangea/dnd
+
+%cUnsupported: changing the droppableId or type of a Droppable during a drag
+
+%c👷‍ This is a development only message. It will be removed in production builds. color: #00C584; font-size: 1.2em; font-weight: bold; line-height: 1.5 color: #723874;
+[02:21:31.154] Browser WARN    %c@hello-pangea/dnd
+
+%cUnsupported: changing the droppableId or type of a Droppable during a drag
+
+%c👷‍ This is a development only message. It will be removed in production builds. color: #00C584; font-size: 1.2em; font-weight: bold; line-height: 1.5 color: #723874;
+[02:21:31.154] Browser ERROR   uncaughtError: Error: Invariant failed: Cannot find droppable entry with id [completed]
+[02:21:31.154] Browser ERROR   uncaughtError: Error: Invariant failed: Cannot find droppable entry with id [completed]
+[02:21:31.154] Browser ERROR   uncaughtError: Error: Invariant failed: Cannot find droppable entry with id [completed]
+[02:21:31.154] Browser ERROR   uncaughtError: Error: Invariant failed: Cannot find droppable entry with id [completed]
+[02:21:31.154] Browser ERROR   uncaughtError: Error: Invariant failed: Cannot find droppable entry with id [completed]
+[02:21:31.154] Browser ERROR   uncaughtError: Error: Invariant failed: Cannot find droppable entry with id [completed]
+[02:21:31.154] Browser ERROR   The above error occurred in the <Draggable> component:
+
+    at Draggable (http://localhost:4646/_next/static/chunks/48ebd_%40hello-pangea_dnd_dist_dnd_esm_ab2ad8cc.js:6097:198)
+    at ConnectFunction (http://localhost:4646/_next/static/chunks/48ebd_88a179e1._.js:2376:251)
+    at PrivateDraggable (http://localhost:4646/_next/static/chunks/48ebd_%40hello-pangea_dnd_dist_dnd_esm_ab2ad8cc.js:6412:30)
+    at PublicDraggable (http://localhost:4646/_next/static/chunks/48ebd_%40hello-pangea_dnd_dist_dnd_esm_ab2ad8cc.js:6420:36)
+    at div
+    at section
+    at Droppable (http://localhost:4646/_next/static/chunks/48ebd_%40hello-pangea_dnd_dist_dnd_esm_ab2ad8cc.js:7084:209)
+    at ConnectFunction (http://localhost:4646/_next/static/chunks/48ebd_88a179e1._.js:2376:251)
+    at Column (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__7682ec4e._.js?id=%255Bproject%255D%252FDesktop%252FCommunity-Cart%252Ffrontend%252Fsrc%252Fpages%252Fvendor%252Forders.tsx+%255Bclient%255D+%2528ecmascript%2529:200:23)
+    at div
+    at Provider (http://localhost:4646/_next/static/chunks/48ebd_88a179e1._.js:2619:21)
+    at App (http://localhost:4646/_next/static/chunks/48ebd_%40hello-pangea_dnd_dist_dnd_esm_ab2ad8cc.js:5697:13)
+    at ErrorBoundary (http://localhost:4646/_next/static/chunks/48ebd_%40hello-pangea_dnd_dist_dnd_esm_ab2ad8cc.js:109:9)
+    at DragDropContext (http://localhost:4646/_next/static/chunks/48ebd_%40hello-pangea_dnd_dist_dnd_esm_ab2ad8cc.js:5883:23)
+    at VendorOrders (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__7682ec4e._.js?id=%255Bproject%255D%252FDesktop%252FCommunity-Cart%252Ffrontend%252Fsrc%252Fpages%252Fvendor%252Forders.tsx+%255Bclient%255D+%2528ecmascript%2529:25:204)
+    at main
+    at div
+    at DashboardLayout (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js:923:28)
+    at CustomerStoreProvider (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js:1507:34)
+    at AuthProvider (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js:728:25)
+    at ToastProvider (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js:1389:26)
+    at MyApp (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js:1837:18)
+    at PathnameContextProviderAdapter (http://localhost:4646/_next/static/chunks/48ebd_next_dist_shared_lib_2dd775c2._.js:5052:43)
+    at PagesDevOverlayErrorBoundary (http://localhost:4646/_next/static/chunks/48ebd_next_dist_6f9203da._.js:1142:9)
+    at PagesDevOverlayBridge (http://localhost:4646/_next/static/chunks/48ebd_next_dist_6f9203da._.js:1919:34)
+    at Container (http://localhost:4646/_next/static/chunks/48ebd_next_dist_client_990bb439._.js:3041:1)
+    at AppContainer (http://localhost:4646/_next/static/chunks/48ebd_next_dist_client_990bb439._.js:3140:25)
+    at Root (http://localhost:4646/_next/static/chunks/48ebd_next_dist_client_990bb439._.js:3348:17)
+
+React will try to recreate this component tree from scratch using the error boundary you provided, ErrorBoundary.
+[02:21:31.154] Browser ERROR   %c@hello-pangea/dnd
+
+%cInvariant failed: Cannot find droppable entry with id [completed]
+
+%c👷‍ This is a development only message. It will be removed in production builds. color: #00C584; font-size: 1.2em; font-weight: bold; line-height: 1.5 color: #723874;
+[02:21:31.154] Browser ERROR   The above error occurred in the <Draggable> component:
+
+    at Draggable (http://localhost:4646/_next/static/chunks/48ebd_%40hello-pangea_dnd_dist_dnd_esm_ab2ad8cc.js:6097:198)
+    at ConnectFunction (http://localhost:4646/_next/static/chunks/48ebd_88a179e1._.js:2376:251)
+    at PrivateDraggable (http://localhost:4646/_next/static/chunks/48ebd_%40hello-pangea_dnd_dist_dnd_esm_ab2ad8cc.js:6412:30)
+    at PublicDraggable (http://localhost:4646/_next/static/chunks/48ebd_%40hello-pangea_dnd_dist_dnd_esm_ab2ad8cc.js:6420:36)
+    at div
+    at section
+    at Droppable (http://localhost:4646/_next/static/chunks/48ebd_%40hello-pangea_dnd_dist_dnd_esm_ab2ad8cc.js:7084:209)
+    at ConnectFunction (http://localhost:4646/_next/static/chunks/48ebd_88a179e1._.js:2376:251)
+    at Column (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__7682ec4e._.js?id=%255Bproject%255D%252FDesktop%252FCommunity-Cart%252Ffrontend%252Fsrc%252Fpages%252Fvendor%252Forders.tsx+%255Bclient%255D+%2528ecmascript%2529:200:23)
+    at div
+    at Provider (http://localhost:4646/_next/static/chunks/48ebd_88a179e1._.js:2619:21)
+    at App (http://localhost:4646/_next/static/chunks/48ebd_%40hello-pangea_dnd_dist_dnd_esm_ab2ad8cc.js:5697:13)
+    at ErrorBoundary (http://localhost:4646/_next/static/chunks/48ebd_%40hello-pangea_dnd_dist_dnd_esm_ab2ad8cc.js:109:9)
+    at DragDropContext (http://localhost:4646/_next/static/chunks/48ebd_%40hello-pangea_dnd_dist_dnd_esm_ab2ad8cc.js:5883:23)
+    at VendorOrders (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__7682ec4e._.js?id=%255Bproject%255D%252FDesktop%252FCommunity-Cart%252Ffrontend%252Fsrc%252Fpages%252Fvendor%252Forders.tsx+%255Bclient%255D+%2528ecmascript%2529:25:204)
+    at main
+    at div
+    at DashboardLayout (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js:923:28)
+    at CustomerStoreProvider (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js:1507:34)
+    at AuthProvider (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js:728:25)
+    at ToastProvider (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js:1389:26)
+    at MyApp (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js:1837:18)
+    at PathnameContextProviderAdapter (http://localhost:4646/_next/static/chunks/48ebd_next_dist_shared_lib_2dd775c2._.js:5052:43)
+    at PagesDevOverlayErrorBoundary (http://localhost:4646/_next/static/chunks/48ebd_next_dist_6f9203da._.js:1142:9)
+    at PagesDevOverlayBridge (http://localhost:4646/_next/static/chunks/48ebd_next_dist_6f9203da._.js:1919:34)
+    at Container (http://localhost:4646/_next/static/chunks/48ebd_next_dist_client_990bb439._.js:3041:1)
+    at AppContainer (http://localhost:4646/_next/static/chunks/48ebd_next_dist_client_990bb439._.js:3140:25)
+    at Root (http://localhost:4646/_next/static/chunks/48ebd_next_dist_client_990bb439._.js:3348:17)
+
+React will try to recreate this component tree from scratch using the error boundary you provided, ErrorBoundary.
+[02:21:31.154] Browser ERROR   %c@hello-pangea/dnd
+
+%cInvariant failed: Cannot find droppable entry with id [completed]
+
+%c👷‍ This is a development only message. It will be removed in production builds. color: #00C584; font-size: 1.2em; font-weight: bold; line-height: 1.5 color: #723874;
+[02:21:31.154] Browser ERROR   The above error occurred in the <Draggable> component:
+
+    at Draggable (http://localhost:4646/_next/static/chunks/48ebd_%40hello-pangea_dnd_dist_dnd_esm_ab2ad8cc.js:6097:198)
+    at ConnectFunction (http://localhost:4646/_next/static/chunks/48ebd_88a179e1._.js:2376:251)
+    at PrivateDraggable (http://localhost:4646/_next/static/chunks/48ebd_%40hello-pangea_dnd_dist_dnd_esm_ab2ad8cc.js:6412:30)
+    at PublicDraggable (http://localhost:4646/_next/static/chunks/48ebd_%40hello-pangea_dnd_dist_dnd_esm_ab2ad8cc.js:6420:36)
+    at div
+    at section
+    at Droppable (http://localhost:4646/_next/static/chunks/48ebd_%40hello-pangea_dnd_dist_dnd_esm_ab2ad8cc.js:7084:209)
+    at ConnectFunction (http://localhost:4646/_next/static/chunks/48ebd_88a179e1._.js:2376:251)
+    at Column (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__7682ec4e._.js?id=%255Bproject%255D%252FDesktop%252FCommunity-Cart%252Ffrontend%252Fsrc%252Fpages%252Fvendor%252Forders.tsx+%255Bclient%255D+%2528ecmascript%2529:200:23)
+    at div
+    at Provider (http://localhost:4646/_next/static/chunks/48ebd_88a179e1._.js:2619:21)
+    at App (http://localhost:4646/_next/static/chunks/48ebd_%40hello-pangea_dnd_dist_dnd_esm_ab2ad8cc.js:5697:13)
+    at ErrorBoundary (http://localhost:4646/_next/static/chunks/48ebd_%40hello-pangea_dnd_dist_dnd_esm_ab2ad8cc.js:109:9)
+    at DragDropContext (http://localhost:4646/_next/static/chunks/48ebd_%40hello-pangea_dnd_dist_dnd_esm_ab2ad8cc.js:5883:23)
+    at VendorOrders (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__7682ec4e._.js?id=%255Bproject%255D%252FDesktop%252FCommunity-Cart%252Ffrontend%252Fsrc%252Fpages%252Fvendor%252Forders.tsx+%255Bclient%255D+%2528ecmascript%2529:25:204)
+    at main
+    at div
+    at DashboardLayout (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js:923:28)
+    at CustomerStoreProvider (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js:1507:34)
+    at AuthProvider (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js:728:25)
+    at ToastProvider (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js:1389:26)
+    at MyApp (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js:1837:18)
+    at PathnameContextProviderAdapter (http://localhost:4646/_next/static/chunks/48ebd_next_dist_shared_lib_2dd775c2._.js:5052:43)
+    at PagesDevOverlayErrorBoundary (http://localhost:4646/_next/static/chunks/48ebd_next_dist_6f9203da._.js:1142:9)
+    at PagesDevOverlayBridge (http://localhost:4646/_next/static/chunks/48ebd_next_dist_6f9203da._.js:1919:34)
+    at Container (http://localhost:4646/_next/static/chunks/48ebd_next_dist_client_990bb439._.js:3041:1)
+    at AppContainer (http://localhost:4646/_next/static/chunks/48ebd_next_dist_client_990bb439._.js:3140:25)
+    at Root (http://localhost:4646/_next/static/chunks/48ebd_next_dist_client_990bb439._.js:3348:17)
+
+React will try to recreate this component tree from scratch using the error boundary you provided, ErrorBoundary.
+[02:21:31.154] Browser ERROR   %c@hello-pangea/dnd
+
+%cInvariant failed: Cannot find droppable entry with id [completed]
+
+%c👷‍ This is a development only message. It will be removed in production builds. color: #00C584; font-size: 1.2em; font-weight: bold; line-height: 1.5 color: #723874;
+[02:21:31.154] Browser ERROR   The above error occurred in the <Draggable> component:
+
+    at Draggable (http://localhost:4646/_next/static/chunks/48ebd_%40hello-pangea_dnd_dist_dnd_esm_ab2ad8cc.js:6097:198)
+    at ConnectFunction (http://localhost:4646/_next/static/chunks/48ebd_88a179e1._.js:2376:251)
+    at PrivateDraggable (http://localhost:4646/_next/static/chunks/48ebd_%40hello-pangea_dnd_dist_dnd_esm_ab2ad8cc.js:6412:30)
+    at PublicDraggable (http://localhost:4646/_next/static/chunks/48ebd_%40hello-pangea_dnd_dist_dnd_esm_ab2ad8cc.js:6420:36)
+    at div
+    at section
+    at Droppable (http://localhost:4646/_next/static/chunks/48ebd_%40hello-pangea_dnd_dist_dnd_esm_ab2ad8cc.js:7084:209)
+    at ConnectFunction (http://localhost:4646/_next/static/chunks/48ebd_88a179e1._.js:2376:251)
+    at Column (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__7682ec4e._.js?id=%255Bproject%255D%252FDesktop%252FCommunity-Cart%252Ffrontend%252Fsrc%252Fpages%252Fvendor%252Forders.tsx+%255Bclient%255D+%2528ecmascript%2529:200:23)
+    at div
+    at Provider (http://localhost:4646/_next/static/chunks/48ebd_88a179e1._.js:2619:21)
+    at App (http://localhost:4646/_next/static/chunks/48ebd_%40hello-pangea_dnd_dist_dnd_esm_ab2ad8cc.js:5697:13)
+    at ErrorBoundary (http://localhost:4646/_next/static/chunks/48ebd_%40hello-pangea_dnd_dist_dnd_esm_ab2ad8cc.js:109:9)
+    at DragDropContext (http://localhost:4646/_next/static/chunks/48ebd_%40hello-pangea_dnd_dist_dnd_esm_ab2ad8cc.js:5883:23)
+    at VendorOrders (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__7682ec4e._.js?id=%255Bproject%255D%252FDesktop%252FCommunity-Cart%252Ffrontend%252Fsrc%252Fpages%252Fvendor%252Forders.tsx+%255Bclient%255D+%2528ecmascript%2529:25:204)
+    at main
+    at div
+    at DashboardLayout (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js:923:28)
+    at CustomerStoreProvider (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js:1507:34)
+    at AuthProvider (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js:728:25)
+    at ToastProvider (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js:1389:26)
+    at MyApp (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js:1837:18)
+    at PathnameContextProviderAdapter (http://localhost:4646/_next/static/chunks/48ebd_next_dist_shared_lib_2dd775c2._.js:5052:43)
+    at PagesDevOverlayErrorBoundary (http://localhost:4646/_next/static/chunks/48ebd_next_dist_6f9203da._.js:1142:9)
+    at PagesDevOverlayBridge (http://localhost:4646/_next/static/chunks/48ebd_next_dist_6f9203da._.js:1919:34)
+    at Container (http://localhost:4646/_next/static/chunks/48ebd_next_dist_client_990bb439._.js:3041:1)
+    at AppContainer (http://localhost:4646/_next/static/chunks/48ebd_next_dist_client_990bb439._.js:3140:25)
+    at Root (http://localhost:4646/_next/static/chunks/48ebd_next_dist_client_990bb439._.js:3348:17)
+
+React will try to recreate this component tree from scratch using the error boundary you provided, ErrorBoundary.
+[02:21:31.154] Browser ERROR   %c@hello-pangea/dnd
+
+%cInvariant failed: Cannot find droppable entry with id [completed]
+
+%c👷‍ This is a development only message. It will be removed in production builds. color: #00C584; font-size: 1.2em; font-weight: bold; line-height: 1.5 color: #723874;
+[02:21:31.154] Browser ERROR   The above error occurred in the <Draggable> component:
+
+    at Draggable (http://localhost:4646/_next/static/chunks/48ebd_%40hello-pangea_dnd_dist_dnd_esm_ab2ad8cc.js:6097:198)
+    at ConnectFunction (http://localhost:4646/_next/static/chunks/48ebd_88a179e1._.js:2376:251)
+    at PrivateDraggable (http://localhost:4646/_next/static/chunks/48ebd_%40hello-pangea_dnd_dist_dnd_esm_ab2ad8cc.js:6412:30)
+    at PublicDraggable (http://localhost:4646/_next/static/chunks/48ebd_%40hello-pangea_dnd_dist_dnd_esm_ab2ad8cc.js:6420:36)
+    at div
+    at section
+    at Droppable (http://localhost:4646/_next/static/chunks/48ebd_%40hello-pangea_dnd_dist_dnd_esm_ab2ad8cc.js:7084:209)
+    at ConnectFunction (http://localhost:4646/_next/static/chunks/48ebd_88a179e1._.js:2376:251)
+    at Column (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__7682ec4e._.js?id=%255Bproject%255D%252FDesktop%252FCommunity-Cart%252Ffrontend%252Fsrc%252Fpages%252Fvendor%252Forders.tsx+%255Bclient%255D+%2528ecmascript%2529:200:23)
+    at div
+    at Provider (http://localhost:4646/_next/static/chunks/48ebd_88a179e1._.js:2619:21)
+    at App (http://localhost:4646/_next/static/chunks/48ebd_%40hello-pangea_dnd_dist_dnd_esm_ab2ad8cc.js:5697:13)
+    at ErrorBoundary (http://localhost:4646/_next/static/chunks/48ebd_%40hello-pangea_dnd_dist_dnd_esm_ab2ad8cc.js:109:9)
+    at DragDropContext (http://localhost:4646/_next/static/chunks/48ebd_%40hello-pangea_dnd_dist_dnd_esm_ab2ad8cc.js:5883:23)
+    at VendorOrders (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__7682ec4e._.js?id=%255Bproject%255D%252FDesktop%252FCommunity-Cart%252Ffrontend%252Fsrc%252Fpages%252Fvendor%252Forders.tsx+%255Bclient%255D+%2528ecmascript%2529:25:204)
+    at main
+    at div
+    at DashboardLayout (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js:923:28)
+    at CustomerStoreProvider (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js:1507:34)
+    at AuthProvider (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js:728:25)
+    at ToastProvider (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js:1389:26)
+    at MyApp (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js:1837:18)
+    at PathnameContextProviderAdapter (http://localhost:4646/_next/static/chunks/48ebd_next_dist_shared_lib_2dd775c2._.js:5052:43)
+    at PagesDevOverlayErrorBoundary (http://localhost:4646/_next/static/chunks/48ebd_next_dist_6f9203da._.js:1142:9)
+    at PagesDevOverlayBridge (http://localhost:4646/_next/static/chunks/48ebd_next_dist_6f9203da._.js:1919:34)
+    at Container (http://localhost:4646/_next/static/chunks/48ebd_next_dist_client_990bb439._.js:3041:1)
+    at AppContainer (http://localhost:4646/_next/static/chunks/48ebd_next_dist_client_990bb439._.js:3140:25)
+    at Root (http://localhost:4646/_next/static/chunks/48ebd_next_dist_client_990bb439._.js:3348:17)
+
+React will try to recreate this component tree from scratch using the error boundary you provided, ErrorBoundary.
+[02:21:31.154] Browser ERROR   %c@hello-pangea/dnd
+
+%cInvariant failed: Cannot find droppable entry with id [completed]
+
+%c👷‍ This is a development only message. It will be removed in production builds. color: #00C584; font-size: 1.2em; font-weight: bold; line-height: 1.5 color: #723874;
+[02:21:31.154] Browser ERROR   The above error occurred in the <Draggable> component:
+
+    at Draggable (http://localhost:4646/_next/static/chunks/48ebd_%40hello-pangea_dnd_dist_dnd_esm_ab2ad8cc.js:6097:198)
+    at ConnectFunction (http://localhost:4646/_next/static/chunks/48ebd_88a179e1._.js:2376:251)
+    at PrivateDraggable (http://localhost:4646/_next/static/chunks/48ebd_%40hello-pangea_dnd_dist_dnd_esm_ab2ad8cc.js:6412:30)
+    at PublicDraggable (http://localhost:4646/_next/static/chunks/48ebd_%40hello-pangea_dnd_dist_dnd_esm_ab2ad8cc.js:6420:36)
+    at div
+    at section
+    at Droppable (http://localhost:4646/_next/static/chunks/48ebd_%40hello-pangea_dnd_dist_dnd_esm_ab2ad8cc.js:7084:209)
+    at ConnectFunction (http://localhost:4646/_next/static/chunks/48ebd_88a179e1._.js:2376:251)
+    at Column (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__7682ec4e._.js?id=%255Bproject%255D%252FDesktop%252FCommunity-Cart%252Ffrontend%252Fsrc%252Fpages%252Fvendor%252Forders.tsx+%255Bclient%255D+%2528ecmascript%2529:200:23)
+    at div
+    at Provider (http://localhost:4646/_next/static/chunks/48ebd_88a179e1._.js:2619:21)
+    at App (http://localhost:4646/_next/static/chunks/48ebd_%40hello-pangea_dnd_dist_dnd_esm_ab2ad8cc.js:5697:13)
+    at ErrorBoundary (http://localhost:4646/_next/static/chunks/48ebd_%40hello-pangea_dnd_dist_dnd_esm_ab2ad8cc.js:109:9)
+    at DragDropContext (http://localhost:4646/_next/static/chunks/48ebd_%40hello-pangea_dnd_dist_dnd_esm_ab2ad8cc.js:5883:23)
+    at VendorOrders (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__7682ec4e._.js?id=%255Bproject%255D%252FDesktop%252FCommunity-Cart%252Ffrontend%252Fsrc%252Fpages%252Fvendor%252Forders.tsx+%255Bclient%255D+%2528ecmascript%2529:25:204)
+    at main
+    at div
+    at DashboardLayout (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js:923:28)
+    at CustomerStoreProvider (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js:1507:34)
+    at AuthProvider (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js:728:25)
+    at ToastProvider (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js:1389:26)
+    at MyApp (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js:1837:18)
+    at PathnameContextProviderAdapter (http://localhost:4646/_next/static/chunks/48ebd_next_dist_shared_lib_2dd775c2._.js:5052:43)
+    at PagesDevOverlayErrorBoundary (http://localhost:4646/_next/static/chunks/48ebd_next_dist_6f9203da._.js:1142:9)
+    at PagesDevOverlayBridge (http://localhost:4646/_next/static/chunks/48ebd_next_dist_6f9203da._.js:1919:34)
+    at Container (http://localhost:4646/_next/static/chunks/48ebd_next_dist_client_990bb439._.js:3041:1)
+    at AppContainer (http://localhost:4646/_next/static/chunks/48ebd_next_dist_client_990bb439._.js:3140:25)
+    at Root (http://localhost:4646/_next/static/chunks/48ebd_next_dist_client_990bb439._.js:3348:17)
+
+React will try to recreate this component tree from scratch using the error boundary you provided, ErrorBoundary.
+[02:21:31.154] Browser ERROR   %c@hello-pangea/dnd
+
+%cInvariant failed: Cannot find droppable entry with id [completed]
+
+%c👷‍ This is a development only message. It will be removed in production builds. color: #00C584; font-size: 1.2em; font-weight: bold; line-height: 1.5 color: #723874;
+[02:21:35.003] Browser LOG     [vendor:loadOrders] Fetching orders
+[02:21:35.003] Browser LOG     [vendor:loadOrders] Fetching orders
+[02:21:35.003] Browser LOG     [vendor:loadOrders] fetched orders count= 19
+[02:21:35.003] Browser LOG     [vendor:loadOrders] fetched orders count= 19
+[02:21:38.352] Browser LOG     [vendor:updateStatus] orderId= 6974efe19534b6047706e472 status= cancelled
+[02:21:43.200] Browser LOG     [vendor:loadOrders] Fetching orders
+[02:21:43.200] Browser LOG     [vendor:loadOrders] Fetching orders
+[02:21:43.200] Browser LOG     [vendor:loadOrders] fetched orders count= 19
+[02:21:43.200] Browser LOG     [vendor:loadOrders] fetched orders count= 19
+[02:21:47.063] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[02:21:48.811] Browser LOG     Place Order clicked
+[02:21:48.811] Browser LOG     Place Order Payload: {"addressId":"696f3c59486fe3439ce60e2a","customerId":"696b4faab0b57d4edc3e4ea8","items":[{"productId":"6944fd4a996f658cf8f631b9","quantity":2}]}
+[02:21:48.811] Browser ERROR   Order creation failed: {"error":"Customer not found"}
+[02:21:54.639] Browser LOG     Place Order clicked
+[02:21:54.639] Browser LOG     Place Order Payload: {"addressId":"696f3c59486fe3439ce60e2a","customerId":"696b4faab0b57d4edc3e4ea8","items":[{"productId":"6944fd4a996f658cf8f631b9","quantity":2}]}
+[02:21:54.640] Browser ERROR   Order creation failed: {"error":"Customer not found"}
+[02:22:43.809] Server  LOG      ✓ Compiled in 172ms
+[02:22:50.221] Browser LOG     [vendor:loadOrders] Fetching orders
+[02:22:50.221] Browser LOG     [vendor:loadOrders] Fetching orders
+[02:22:50.221] Browser LOG     [vendor:loadOrders] fetched orders count= 17
+[02:22:50.221] Browser LOG     [vendor:loadOrders] fetched orders count= 17
+[02:23:01.682] Browser LOG     [vendor:loadOrders] Fetching orders
+[02:23:01.682] Browser LOG     [vendor:loadOrders] Fetching orders
+[02:23:01.682] Browser LOG     [vendor:loadOrders] fetched orders count= 16
+[02:23:01.682] Browser LOG     [vendor:loadOrders] fetched orders count= 16
+[02:23:11.132] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[02:23:15.080] Browser LOG     Place Order clicked
+[02:23:15.080] Browser LOG     Place Order Payload: {"addressId":"696f3c59486fe3439ce60e2a","customerId":"696f14422caaa0cef046a353","items":[{"productId":"6944fd4a996f658cf8f631b9","quantity":2}]}
+[02:23:15.574] Server  ERROR   C:\Users\vigne\Desktop\Community-Cart\frontend\node_modules\next\dist\server\dev\on-demand-entry-handler.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[02:23:15.590] Server  ERROR   C:\Users\vigne\Desktop\Community-Cart\frontend\node_modules\next\dist\server\dev\hot-reloader-turbopack.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[02:23:15.594] Server  ERROR   C:\Users\vigne\Desktop\Community-Cart\frontend\node_modules\next\dist\trace\trace.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[02:23:15.602] Server  ERROR   C:\Users\vigne\Desktop\Community-Cart\frontend\node_modules\next\dist\server\lib\router-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[02:23:15.607] Server  ERROR   C:\Users\vigne\Desktop\Community-Cart\frontend\node_modules\next\dist\server\lib\start-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[02:23:15.620] Server  ERROR   PageNotFoundError: Cannot find module for page: /customer/orders-live
+[02:23:20.538] Browser LOG     [vendor:loadOrders] Fetching orders
+[02:23:20.538] Browser LOG     [vendor:loadOrders] Fetching orders
+[02:23:20.538] Browser LOG     [vendor:loadOrders] fetched orders count= 17
+[02:23:20.538] Browser LOG     [vendor:loadOrders] fetched orders count= 17
+[02:23:27.614] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[02:24:56.708] Server  LOG      ✓ Compiled in 65ms
+[02:25:08.530] Browser LOG     [vendor:updateStatus] orderId= 6974f8349534b6047706e73c status= processing
+[02:25:19.694] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[02:25:21.794] Browser LOG     [vendor:loadOrders] Fetching orders
+[02:25:21.794] Browser LOG     [vendor:loadOrders] Fetching orders
+[02:25:21.794] Browser LOG     [vendor:loadOrders] fetched orders count= 17
+[02:25:21.794] Browser LOG     [vendor:loadOrders] fetched orders count= 17
+[02:25:23.337] Browser LOG     [vendor:updateStatus] orderId= 6974f8349534b6047706e73c status= completed
+[02:27:59.627] Server  LOG      ✓ Compiled in 61ms
+[02:29:06.030] Server  LOG      ✓ Compiled in 49ms
+[02:29:36.118] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[02:29:45.656] Browser LOG     Place Order clicked
+[02:29:45.657] Browser LOG     Place Order Payload: {"addressId":"696f3c59486fe3439ce60e2a","customerId":"696f14422caaa0cef046a353","items":[{"productId":"6944fd4a996f658cf8f631b9","quantity":2},{"productId":"6944fe8dec9df1cb32c5f16a","quantity":2}]}
+[02:29:46.073] Server  ERROR   C:\Users\vigne\Desktop\Community-Cart\frontend\node_modules\next\dist\server\dev\on-demand-entry-handler.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[02:29:46.076] Server  ERROR   C:\Users\vigne\Desktop\Community-Cart\frontend\node_modules\next\dist\server\dev\hot-reloader-turbopack.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[02:29:46.077] Server  ERROR   C:\Users\vigne\Desktop\Community-Cart\frontend\node_modules\next\dist\trace\trace.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[02:29:46.081] Server  ERROR   C:\Users\vigne\Desktop\Community-Cart\frontend\node_modules\next\dist\server\lib\router-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[02:29:46.083] Server  ERROR   C:\Users\vigne\Desktop\Community-Cart\frontend\node_modules\next\dist\server\lib\start-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[02:29:46.090] Server  ERROR   PageNotFoundError: Cannot find module for page: /customer/orders-live
+[02:30:40.737] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[02:30:46.902] Server  LOG      ✓ Compiled in 95ms
+[02:30:55.999] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[02:31:05.763] Browser LOG     [vendor:loadOrders] Fetching orders
+[02:31:05.763] Browser LOG     [vendor:loadOrders] Fetching orders
+[02:31:05.763] Browser LOG     [vendor:loadOrders] fetched orders count= 18
+[02:31:05.763] Browser LOG     [vendor:loadOrders] fetched orders count= 18
+[02:31:07.502] Browser LOG     [vendor:updateStatus] orderId= 6974f9bb9534b6047706e97d status= processing
+[02:31:23.703] Browser WARN    %c@hello-pangea/dnd
+
+%cDroppable: unsupported nested scroll container detected.
+A Droppable can only have one scroll parent (which can be itself)
+Nested scroll containers are currently not supported.
+
+We hope to support nested scroll containers soon: https://github.com/atlassian/react-beautiful-dnd/issues/131
+
+%c👷‍ This is a development only message. It will be removed in production builds. color: #00C584; font-size: 1.2em; font-weight: bold; line-height: 1.5 color: #723874;
+[02:31:23.703] Browser WARN    %c@hello-pangea/dnd
+
+%cDroppable: unsupported nested scroll container detected.
+A Droppable can only have one scroll parent (which can be itself)
+Nested scroll containers are currently not supported.
+
+We hope to support nested scroll containers soon: https://github.com/atlassian/react-beautiful-dnd/issues/131
+
+%c👷‍ This is a development only message. It will be removed in production builds. color: #00C584; font-size: 1.2em; font-weight: bold; line-height: 1.5 color: #723874;
+[02:31:23.703] Browser WARN    %c@hello-pangea/dnd
+
+%cDroppable: unsupported nested scroll container detected.
+A Droppable can only have one scroll parent (which can be itself)
+Nested scroll containers are currently not supported.
+
+We hope to support nested scroll containers soon: https://github.com/atlassian/react-beautiful-dnd/issues/131
+
+%c👷‍ This is a development only message. It will be removed in production builds. color: #00C584; font-size: 1.2em; font-weight: bold; line-height: 1.5 color: #723874;
+[02:31:24.687] Browser WARN    [vendor:drag] Invalid transition from processing to pending
+[02:31:34.472] Browser WARN    %c@hello-pangea/dnd
+
+%cDroppable: unsupported nested scroll container detected.
+A Droppable can only have one scroll parent (which can be itself)
+Nested scroll containers are currently not supported.
+
+We hope to support nested scroll containers soon: https://github.com/atlassian/react-beautiful-dnd/issues/131
+
+%c👷‍ This is a development only message. It will be removed in production builds. color: #00C584; font-size: 1.2em; font-weight: bold; line-height: 1.5 color: #723874;
+[02:31:34.473] Browser WARN    %c@hello-pangea/dnd
+
+%cDroppable: unsupported nested scroll container detected.
+A Droppable can only have one scroll parent (which can be itself)
+Nested scroll containers are currently not supported.
+
+We hope to support nested scroll containers soon: https://github.com/atlassian/react-beautiful-dnd/issues/131
+
+%c👷‍ This is a development only message. It will be removed in production builds. color: #00C584; font-size: 1.2em; font-weight: bold; line-height: 1.5 color: #723874;
+[02:31:34.473] Browser WARN    %c@hello-pangea/dnd
+
+%cDroppable: unsupported nested scroll container detected.
+A Droppable can only have one scroll parent (which can be itself)
+Nested scroll containers are currently not supported.
+
+We hope to support nested scroll containers soon: https://github.com/atlassian/react-beautiful-dnd/issues/131
+
+%c👷‍ This is a development only message. It will be removed in production builds. color: #00C584; font-size: 1.2em; font-weight: bold; line-height: 1.5 color: #723874;
+[02:31:35.300] Browser LOG     [vendor:updateStatus] orderId= 6974f9bb9534b6047706e97d status= completed
+[02:32:36.914] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[02:32:45.161] Browser LOG     Place Order clicked
+[02:32:45.161] Browser LOG     Place Order Payload: {"addressId":"696f3c59486fe3439ce60e2a","customerId":"696f14422caaa0cef046a353","items":[{"productId":"6944fd4a996f658cf8f631b9","quantity":2}]}
+[02:33:04.127] Server  LOG      ✓ Compiled in 52ms
+[02:34:20.136] Server  LOG      ✓ Compiled in 33ms
+[02:35:36.299] Server  LOG      ✓ Compiled in 33ms
+[02:35:38.467] Server  LOG      ✓ Compiled in 145ms
+[02:40:08.186] Server  LOG      ✓ Compiled in 34ms
+[02:41:29.097] Browser LOG     [vendor:loadOrders] Fetching orders
+[02:41:29.098] Browser LOG     [vendor:loadOrders] Fetching orders
+[02:41:29.098] Browser LOG     [vendor:loadOrders] fetched orders count= 19
+[02:41:29.098] Browser LOG     [vendor:loadOrders] fetched orders count= 19
+[02:41:31.706] Browser WARN    %c@hello-pangea/dnd
+
+%cDroppable: unsupported nested scroll container detected.
+A Droppable can only have one scroll parent (which can be itself)
+Nested scroll containers are currently not supported.
+
+We hope to support nested scroll containers soon: https://github.com/atlassian/react-beautiful-dnd/issues/131
+
+%c👷‍ This is a development only message. It will be removed in production builds. color: #00C584; font-size: 1.2em; font-weight: bold; line-height: 1.5 color: #723874;
+[02:41:31.706] Browser WARN    %c@hello-pangea/dnd
+
+%cDroppable: unsupported nested scroll container detected.
+A Droppable can only have one scroll parent (which can be itself)
+Nested scroll containers are currently not supported.
+
+We hope to support nested scroll containers soon: https://github.com/atlassian/react-beautiful-dnd/issues/131
+
+%c👷‍ This is a development only message. It will be removed in production builds. color: #00C584; font-size: 1.2em; font-weight: bold; line-height: 1.5 color: #723874;
+[02:41:31.706] Browser WARN    %c@hello-pangea/dnd
+
+%cDroppable: unsupported nested scroll container detected.
+A Droppable can only have one scroll parent (which can be itself)
+Nested scroll containers are currently not supported.
+
+We hope to support nested scroll containers soon: https://github.com/atlassian/react-beautiful-dnd/issues/131
+
+%c👷‍ This is a development only message. It will be removed in production builds. color: #00C584; font-size: 1.2em; font-weight: bold; line-height: 1.5 color: #723874;
+[02:41:32.883] Browser WARN    [vendor:drag] Invalid transition from pending to completed
+[02:41:34.012] Browser WARN    %c@hello-pangea/dnd
+
+%cDroppable: unsupported nested scroll container detected.
+A Droppable can only have one scroll parent (which can be itself)
+Nested scroll containers are currently not supported.
+
+We hope to support nested scroll containers soon: https://github.com/atlassian/react-beautiful-dnd/issues/131
+
+%c👷‍ This is a development only message. It will be removed in production builds. color: #00C584; font-size: 1.2em; font-weight: bold; line-height: 1.5 color: #723874;
+[02:41:34.012] Browser WARN    %c@hello-pangea/dnd
+
+%cDroppable: unsupported nested scroll container detected.
+A Droppable can only have one scroll parent (which can be itself)
+Nested scroll containers are currently not supported.
+
+We hope to support nested scroll containers soon: https://github.com/atlassian/react-beautiful-dnd/issues/131
+
+%c👷‍ This is a development only message. It will be removed in production builds. color: #00C584; font-size: 1.2em; font-weight: bold; line-height: 1.5 color: #723874;
+[02:41:34.012] Browser WARN    %c@hello-pangea/dnd
+
+%cDroppable: unsupported nested scroll container detected.
+A Droppable can only have one scroll parent (which can be itself)
+Nested scroll containers are currently not supported.
+
+We hope to support nested scroll containers soon: https://github.com/atlassian/react-beautiful-dnd/issues/131
+
+%c👷‍ This is a development only message. It will be removed in production builds. color: #00C584; font-size: 1.2em; font-weight: bold; line-height: 1.5 color: #723874;
+[02:41:35.512] Browser LOG     [vendor:updateStatus] orderId= 6974fa6e9534b6047706eb68 status= processing
+[02:42:32.061] Server  LOG      ✓ Compiled in 31ms
+[02:43:10.684] Server  LOG      ✓ Compiled in 27ms
+[02:43:12.137] Server  LOG      ✓ Compiled in 22ms
+[02:43:14.889] Server  LOG      ✓ Compiled in 49ms
+[02:43:21.640] Server  LOG      ✓ Compiled in 21ms
+[02:43:34.076] Server  LOG      ✓ Compiled in 53ms
+[02:43:40.804] Server  LOG      ✓ Compiled in 39ms
+[02:43:48.184] Server  LOG      ✓ Compiled in 24ms
+[02:43:55.321] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[02:44:03.322] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[02:44:05.272] Browser LOG     [vendor:loadOrders] Fetching orders
+[02:44:05.272] Browser LOG     [vendor:loadOrders] Fetching orders
+[02:44:05.272] Browser LOG     [vendor:loadOrders] fetched orders count= 19
+[02:44:05.272] Browser LOG     [vendor:loadOrders] fetched orders count= 19
+[02:44:16.868] Browser LOG     Place Order clicked
+[02:44:16.868] Browser LOG     Place Order Payload: {"addressId":"696f3c59486fe3439ce60e2a","customerId":"696f14422caaa0cef046a353","items":[{"productId":"6944fd4a996f658cf8f631b9","quantity":5}]}
+[02:44:33.170] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[02:44:45.536] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[02:44:49.786] Browser LOG     [vendor:loadOrders] Fetching orders
+[02:44:49.786] Browser LOG     [vendor:loadOrders] Fetching orders
+[02:44:49.786] Browser LOG     [vendor:loadOrders] fetched orders count= 20
+[02:44:49.786] Browser LOG     [vendor:loadOrders] fetched orders count= 20
+[02:44:50.521] Browser WARN    %c@hello-pangea/dnd
+
+%cDroppable: unsupported nested scroll container detected.
+A Droppable can only have one scroll parent (which can be itself)
+Nested scroll containers are currently not supported.
+
+We hope to support nested scroll containers soon: https://github.com/atlassian/react-beautiful-dnd/issues/131
+
+%c👷‍ This is a development only message. It will be removed in production builds. color: #00C584; font-size: 1.2em; font-weight: bold; line-height: 1.5 color: #723874;
+[02:44:50.521] Browser WARN    %c@hello-pangea/dnd
+
+%cDroppable: unsupported nested scroll container detected.
+A Droppable can only have one scroll parent (which can be itself)
+Nested scroll containers are currently not supported.
+
+We hope to support nested scroll containers soon: https://github.com/atlassian/react-beautiful-dnd/issues/131
+
+%c👷‍ This is a development only message. It will be removed in production builds. color: #00C584; font-size: 1.2em; font-weight: bold; line-height: 1.5 color: #723874;
+[02:44:50.521] Browser WARN    %c@hello-pangea/dnd
+
+%cDroppable: unsupported nested scroll container detected.
+A Droppable can only have one scroll parent (which can be itself)
+Nested scroll containers are currently not supported.
+
+We hope to support nested scroll containers soon: https://github.com/atlassian/react-beautiful-dnd/issues/131
+
+%c👷‍ This is a development only message. It will be removed in production builds. color: #00C584; font-size: 1.2em; font-weight: bold; line-height: 1.5 color: #723874;
+[02:44:51.417] Browser LOG     [vendor:updateStatus] orderId= 6974fd229534b6047706edab status= processing
+[02:44:53.982] Browser WARN    Items removed by server: ["Eggs is currently unavailable"]
+[02:44:54.935] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[02:45:00.733] Browser LOG     [vendor:updateStatus] orderId= 6974fa6e9534b6047706eb68 status= cancelled
+[02:45:04.910] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[02:45:08.273] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[02:45:11.634] Browser LOG     [vendor:updateStatus] orderId= 6974fd229534b6047706edab status= completed
+[02:45:16.546] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior

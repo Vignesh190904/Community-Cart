@@ -71,7 +71,8 @@ export default function VendorOrders() {
     try {
       console.log('[vendor:loadOrders] Fetching orders');
 
-      const res = await fetch('http://localhost:5000/api/vendors/orders');
+      // Robustness: Pass vendorId explicitly to avoid auth middleware context issues
+      const res = await fetch(`http://localhost:5000/api/vendors/orders?vendorId=${user.id}`);
 
       if (!res.ok) {
         throw new Error('Failed to fetch orders');

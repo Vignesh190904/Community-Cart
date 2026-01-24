@@ -6,7 +6,7 @@ import { useCustomerStore } from '../../context/CustomerStore';
 
 export default function CartPage() {
   const router = useRouter();
-  const { cart, updateQuantity, removeFromCart, totalPrice } = useCustomerStore();
+  const { cart, updateQuantity, removeFromCart, totalPrice, isLoading } = useCustomerStore();
 
   // Swipe State
   const [swipedItemId, setSwipedItemId] = useState<string | null>(null);
@@ -96,6 +96,22 @@ export default function CartPage() {
   return (
     <CustomerLayout disablePadding={true}>
       <div className="cart-page has-fixed-header">
+        {isLoading && (
+          <div style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            background: 'rgba(255,255,255,0.5)',
+            zIndex: 9999,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center'
+          }}>
+            <div className="spinner"></div>
+          </div>
+        )}
         {/* Header */}
         <div className="cart-header fixed-header">
           <button className="back-button touchable" onClick={() => router.back()}>
@@ -177,8 +193,10 @@ export default function CartPage() {
               <button
                 className="checkout-btn touchable"
                 onClick={() => router.push('/customer/checkout')}
+                disabled={isLoading}
+                style={{ opacity: isLoading ? 0.7 : 1 }}
               >
-                Checkout
+                {isLoading ? 'Updating...' : 'Checkout'}
               </button>
             </div>
           </>

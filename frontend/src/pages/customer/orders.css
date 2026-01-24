@@ -132,6 +132,35 @@
     display: block;
 }
 
+.status-icon.processing {
+    /* Yellow/Orange warning color filter (approx #FFC107) */
+    filter: invert(78%) sepia(63%) saturate(769%) hue-rotate(357deg) brightness(102%) contrast(106%);
+}
+
+.status-icon.completed {
+    /* Primary Green (#4CAF50) */
+    filter: invert(58%) sepia(44%) saturate(468%) hue-rotate(66deg) brightness(96%) contrast(94%);
+}
+
+.status-icon.cancelled {
+    /* Error Red (#F44336) */
+    filter: invert(34%) sepia(59%) saturate(4228%) hue-rotate(339deg) brightness(100%) contrast(94%);
+}
+
+.status-icon.pending {
+    width: 18px;
+    height: 18px;
+    /* Force Black in Light Mode */
+    filter: brightness(0);
+}
+
+.theme-dark .status-icon.pending {
+    width: 18px;
+    height: 18px;
+    /* Force White in Dark Mode */
+    filter: brightness(0) invert(1);
+}
+
 /* Order Details (Expanded) */
 .order-details {
     padding: 0 16px 16px 16px;

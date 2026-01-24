@@ -1495,141 +1495,223 @@ __turbopack_context__.s([
 ]);
 var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/Community-Cart/frontend/node_modules/react/jsx-dev-runtime.js [client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/Community-Cart/frontend/node_modules/react/index.js [client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$src$2f$context$2f$AuthContext$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/Community-Cart/frontend/src/context/AuthContext.tsx [client] (ecmascript)");
 ;
 var _s = __turbopack_context__.k.signature(), _s1 = __turbopack_context__.k.signature();
 ;
 const CustomerStoreContext = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["createContext"])(undefined);
 const API_BASE = 'http://localhost:5000/api';
-const STORAGE_CART_KEY = 'cc_customer_cart';
+const STORAGE_CART_KEY = 'cc_customer_cart_v2'; // New key to avoid conflicts
 const STORAGE_CUSTOMER_KEY = 'cc_customer_id';
-const TEST_CUSTOMER_EMAIL = 'test.customer@demo.com';
+;
 function CustomerStoreProvider({ children }) {
     _s();
-    const [customerId, setCustomerId] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useState"])(null);
+    const { token, is_authenticated } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$src$2f$context$2f$AuthContext$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__["useAuth"])();
     const [cart, setCart] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useState"])([]);
-    (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useEffect"])({
-        "CustomerStoreProvider.useEffect": ()=>{
-            if ("TURBOPACK compile-time falsy", 0) //TURBOPACK unreachable
-            ;
-            const savedCart = localStorage.getItem(STORAGE_CART_KEY);
-            const savedCustomer = localStorage.getItem(STORAGE_CUSTOMER_KEY);
-            if (savedCart) {
+    const [customerId, setCustomerId] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useState"])(null);
+    const [isLoading, setIsLoading] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useState"])(false);
+    // Helper to get token safely (prefer context, fallback to local)
+    const getToken = ()=>{
+        return token || (("TURBOPACK compile-time truthy", 1) ? localStorage.getItem('auth_token') : "TURBOPACK unreachable");
+    };
+    // --- FETCH CART (Server or Local) ---
+    const fetchCart = async ()=>{
+        const activeToken = getToken();
+        if (activeToken) {
+            // LOGGED IN: Server Source of Truth
+            try {
+                setIsLoading(true);
+                const res = await fetch(`${API_BASE}/cart`, {
+                    headers: {
+                        'Authorization': `Bearer ${activeToken}`
+                    }
+                });
+                if (res.ok) {
+                    const data = await res.json();
+                    setCart(data.cart || []);
+                    // ... rest of logic
+                    if (data.removedItems?.length > 0) {
+                        console.warn('Items removed by server:', data.removedItems);
+                    }
+                }
+            } catch (err) {
+                console.error('Failed to fetch server cart', err);
+            } finally{
+                setIsLoading(false);
+            }
+        } else {
+            // GUEST: Local Storage
+            const local = localStorage.getItem(STORAGE_CART_KEY);
+            if (local) {
                 try {
-                    setCart(JSON.parse(savedCart));
-                } catch (_) {
+                    setCart(JSON.parse(local));
+                } catch  {
                     setCart([]);
                 }
-            }
-            if (savedCustomer) {
-                setCustomerId(savedCustomer);
+            } else {
+                setCart([]); // Clear cart if no local data
             }
         }
-    }["CustomerStoreProvider.useEffect"], []);
+    };
+    // Refetch when auth state changes
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useEffect"])({
+        "CustomerStoreProvider.useEffect": ()=>{
+            fetchCart();
+            // Also load customer ID if needed for legacy logic
+            const savedCid = ("TURBOPACK compile-time truthy", 1) ? localStorage.getItem(STORAGE_CUSTOMER_KEY) : "TURBOPACK unreachable";
+            if (savedCid) setCustomerId(savedCid);
+        }
+    }["CustomerStoreProvider.useEffect"], [
+        token,
+        is_authenticated
+    ]); // Re-run on login/logout
+    // Save to LocalStorage ONLY if Guest (backup)
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useEffect"])({
         "CustomerStoreProvider.useEffect": ()=>{
             if ("TURBOPACK compile-time falsy", 0) //TURBOPACK unreachable
             ;
-            localStorage.setItem(STORAGE_CART_KEY, JSON.stringify(cart));
+            const token = getToken();
+            if (!token) {
+                localStorage.setItem(STORAGE_CART_KEY, JSON.stringify(cart));
+            }
         }
     }["CustomerStoreProvider.useEffect"], [
         cart
     ]);
-    const ensureCustomerId = async ()=>{
-        if (customerId) return customerId;
-        if ("TURBOPACK compile-time falsy", 0) //TURBOPACK unreachable
-        ;
-        const stored = localStorage.getItem(STORAGE_CUSTOMER_KEY);
-        if (stored) {
-            setCustomerId(stored);
-            return stored;
-        }
-        try {
-            const listRes = await fetch(`${API_BASE}/customers`);
-            if (listRes.ok) {
-                const customers = await listRes.json();
-                const existing = customers.find((c)=>c.email === TEST_CUSTOMER_EMAIL) || customers[0];
-                if (existing) {
-                    localStorage.setItem(STORAGE_CUSTOMER_KEY, existing._id);
-                    setCustomerId(existing._id);
-                    return existing._id;
-                }
-            }
-        } catch (_) {
-        // ignore and attempt creation
-        }
-        try {
-            const createRes = await fetch(`${API_BASE}/customers`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    name: 'Test Customer',
-                    email: TEST_CUSTOMER_EMAIL,
-                    phone: '9999999999',
-                    isActive: true
-                })
-            });
-            if (!createRes.ok) throw new Error('Failed to create test customer');
-            const customer = await createRes.json();
-            localStorage.setItem(STORAGE_CUSTOMER_KEY, customer._id);
-            setCustomerId(customer._id);
-            return customer._id;
-        } catch (error) {
-            return null;
-        }
-    };
-    const addToCart = (product, maxStock)=>{
-        setCart((prev)=>{
-            const existing = prev.find((item)=>item.product._id === product._id);
-            const limit = typeof maxStock === 'number' ? Math.max(0, maxStock) : typeof product.stock === 'number' ? Math.max(0, product.stock) : Infinity;
-            const productWithStock = limit !== Infinity ? {
-                ...product,
-                stock: limit
-            } : product;
-            if (existing) {
-                const nextQty = Math.min(existing.quantity + 1, limit);
-                return prev.map((item)=>{
-                    if (item.product._id !== product._id) return item;
-                    return {
-                        ...item,
-                        product: limit === Infinity ? item.product : {
-                            ...item.product,
-                            stock: limit
-                        },
-                        quantity: nextQty
-                    };
+    // --- ACTIONS ---
+    const addToCart = async (product, maxStock)=>{
+        const token = getToken();
+        // 1. Optimistic Update (for speed)
+        const prevCart = [
+            ...cart
+        ];
+        // ... insert optimistic logic here if desired, OR just wait for server for stability.
+        // User requested "Stability", so let's Wait for Server. simpler.
+        setIsLoading(true);
+        if (token) {
+            // SERVER ADD
+            try {
+                const res = await fetch(`${API_BASE}/cart/add`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    },
+                    body: JSON.stringify({
+                        productId: product._id,
+                        quantity: 1
+                    })
                 });
-            }
-            if (limit <= 0) return prev;
-            return [
-                ...prev,
-                {
-                    product: productWithStock,
-                    quantity: 1
+                if (res.ok) {
+                    await fetchCart(); // Re-sync truth
+                } else {
+                    const err = await res.json();
+                    alert(err.message || 'Could not add to cart');
                 }
-            ];
-        });
+            } catch (err) {
+                alert('ErrorMessage: Network error adding to cart');
+            }
+        } else {
+            // LOCAL ADD
+            // Simple local logic
+            setCart((prev)=>{
+                const existing = prev.find((i)=>i.product._id === product._id);
+                // Simplified stock check for guest
+                if (existing) {
+                    return prev.map((i)=>i.product._id === product._id ? {
+                            ...i,
+                            quantity: i.quantity + 1
+                        } : i);
+                }
+                return [
+                    ...prev,
+                    {
+                        product,
+                        quantity: 1
+                    }
+                ];
+            });
+        }
+        setIsLoading(false);
     };
-    const updateQuantity = (productId, quantity)=>{
-        setCart((prev)=>{
-            return prev.map((item)=>{
-                if (item.product._id !== productId) return item;
-                const limit = typeof item.product.stock === 'number' ? Math.max(0, item.product.stock) : Infinity;
-                if (limit <= 0) return null;
-                const nextQty = Math.min(quantity, limit);
-                if (nextQty <= 0) return null;
-                return {
-                    ...item,
-                    quantity: nextQty
-                };
-            }).filter((item)=>Boolean(item));
-        });
+    const updateQuantity = async (productId, quantity)=>{
+        if (quantity < 1) return; // Use remove instead
+        const token = getToken();
+        setIsLoading(true);
+        if (token) {
+            // SERVER UPDATE
+            try {
+                const res = await fetch(`${API_BASE}/cart/${productId}`, {
+                    method: 'PATCH',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    },
+                    body: JSON.stringify({
+                        quantity
+                    })
+                });
+                if (res.ok) {
+                    await fetchCart();
+                } else {
+                    const err = await res.json();
+                    alert(err.message);
+                }
+            } catch (err) {
+                console.error(err);
+            }
+        } else {
+            // LOCAL UPDATE
+            setCart((prev)=>prev.map((i)=>i.product._id === productId ? {
+                        ...i,
+                        quantity
+                    } : i));
+        }
+        setIsLoading(false);
     };
-    const removeFromCart = (productId)=>{
-        setCart((prev)=>prev.filter((item)=>item.product._id !== productId));
+    const removeFromCart = async (productId)=>{
+        const token = getToken();
+        setIsLoading(true);
+        if (token) {
+            // SERVER REMOVE
+            try {
+                await fetch(`${API_BASE}/cart/${productId}`, {
+                    method: 'DELETE',
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+                await fetchCart();
+            } catch (err) {
+                console.error(err);
+            }
+        } else {
+            // LOCAL REMOVE
+            setCart((prev)=>prev.filter((i)=>i.product._id !== productId));
+        }
+        setIsLoading(false);
     };
-    const clearCart = ()=>setCart([]);
+    const clearCart = async ()=>{
+        const token = getToken();
+        if (token) {
+            await fetch(`${API_BASE}/cart`, {
+                method: 'DELETE',
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            });
+            setCart([]);
+        } else {
+            setCart([]);
+        }
+    };
+    const validateCart = async ()=>{
+        await fetchCart(); // Re-fetching essentially validates
+    };
+    const ensureCustomerId = async ()=>{
+        return customerId;
+    };
+    // --- DERIVED STATE ---
     const totalPrice = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useMemo"])({
         "CustomerStoreProvider.useMemo[totalPrice]": ()=>cart.reduce({
                 "CustomerStoreProvider.useMemo[totalPrice]": (sum, item)=>sum + item.product.price * item.quantity
@@ -1653,18 +1735,24 @@ function CustomerStoreProvider({ children }) {
         removeFromCart,
         clearCart,
         totalPrice,
-        totalItems
+        totalItems,
+        validateCart,
+        isLoading
     };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(CustomerStoreContext.Provider, {
         value: value,
         children: children
     }, void 0, false, {
         fileName: "[project]/Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx",
-        lineNumber: 175,
+        lineNumber: 265,
         columnNumber: 10
     }, this);
 }
-_s(CustomerStoreProvider, "ThUoydQnVoVO6SmS8WzjbkhTMK8=");
+_s(CustomerStoreProvider, "rpPbaPjcMFzT1AZfaZtsEa/7DEY=", false, function() {
+    return [
+        __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$src$2f$context$2f$AuthContext$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__["useAuth"]
+    ];
+});
 _c = CustomerStoreProvider;
 const useCustomerStore = ()=>{
     _s1();

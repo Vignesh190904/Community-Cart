@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useMemo, useState } from 'react';
 
+// --- Interfaces ---
 export interface ProductLite {
   _id: string;
   name: string;
@@ -7,6 +8,7 @@ export interface ProductLite {
   vendorName?: string;
   image?: string;
   stock?: number;
+  category?: string; // Important for consistency
 }
 
 export interface CartItem {
@@ -24,132 +26,218 @@ interface CustomerStoreState {
   clearCart: () => void;
   totalPrice: number;
   totalItems: number;
+  validateCart: () => Promise<void>;
+  isLoading: boolean;
 }
 
 const CustomerStoreContext = createContext<CustomerStoreState | undefined>(undefined);
 
 const API_BASE = 'http://localhost:5000/api';
-const STORAGE_CART_KEY = 'cc_customer_cart';
+const STORAGE_CART_KEY = 'cc_customer_cart_v2'; // New key to avoid conflicts
 const STORAGE_CUSTOMER_KEY = 'cc_customer_id';
-const TEST_CUSTOMER_EMAIL = 'test.customer@demo.com';
+
+import { useAuth } from './AuthContext';
+
+// ... imports
 
 export function CustomerStoreProvider({ children }: { children: React.ReactNode }) {
-  const [customerId, setCustomerId] = useState<string | null>(null);
+  const { token, is_authenticated } = useAuth();
   const [cart, setCart] = useState<CartItem[]>([]);
+  const [customerId, setCustomerId] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
 
-  useEffect(() => {
-    if (typeof window === 'undefined') return;
-    const savedCart = localStorage.getItem(STORAGE_CART_KEY);
-    const savedCustomer = localStorage.getItem(STORAGE_CUSTOMER_KEY);
-    if (savedCart) {
+  // Helper to get token safely (prefer context, fallback to local)
+  const getToken = () => {
+    return token || (typeof window !== 'undefined' ? localStorage.getItem('auth_token') : null);
+  };
+
+  // --- FETCH CART (Server or Local) ---
+  const fetchCart = async () => {
+    const activeToken = getToken();
+
+    if (activeToken) {
+      // LOGGED IN: Server Source of Truth
       try {
-        setCart(JSON.parse(savedCart));
-      } catch (_) {
-        setCart([]);
+        setIsLoading(true);
+        const res = await fetch(`${API_BASE}/cart`, {
+          headers: { 'Authorization': `Bearer ${activeToken}` }
+        });
+
+        if (res.ok) {
+          const data = await res.json();
+          setCart(data.cart || []);
+          // ... rest of logic
+          if (data.removedItems?.length > 0) {
+            console.warn('Items removed by server:', data.removedItems);
+          }
+        }
+      } catch (err) {
+        console.error('Failed to fetch server cart', err);
+      } finally {
+        setIsLoading(false);
+      }
+    } else {
+      // GUEST: Local Storage
+      const local = localStorage.getItem(STORAGE_CART_KEY);
+      if (local) {
+        try {
+          setCart(JSON.parse(local));
+        } catch {
+          setCart([]);
+        }
+      } else {
+        setCart([]); // Clear cart if no local data
       }
     }
-    if (savedCustomer) {
-      setCustomerId(savedCustomer);
-    }
-  }, []);
+  };
 
+  // Refetch when auth state changes
+  useEffect(() => {
+    fetchCart();
+
+    // Also load customer ID if needed for legacy logic
+    const savedCid = typeof window !== 'undefined' ? localStorage.getItem(STORAGE_CUSTOMER_KEY) : null;
+    if (savedCid) setCustomerId(savedCid);
+  }, [token, is_authenticated]); // Re-run on login/logout
+
+  // Save to LocalStorage ONLY if Guest (backup)
   useEffect(() => {
     if (typeof window === 'undefined') return;
-    localStorage.setItem(STORAGE_CART_KEY, JSON.stringify(cart));
+    const token = getToken();
+    if (!token) {
+      localStorage.setItem(STORAGE_CART_KEY, JSON.stringify(cart));
+    }
   }, [cart]);
 
-  const ensureCustomerId = async (): Promise<string | null> => {
-    if (customerId) return customerId;
-    if (typeof window === 'undefined') return null;
 
-    const stored = localStorage.getItem(STORAGE_CUSTOMER_KEY);
-    if (stored) {
-      setCustomerId(stored);
-      return stored;
-    }
+  // --- ACTIONS ---
 
-    try {
-      const listRes = await fetch(`${API_BASE}/customers`);
-      if (listRes.ok) {
-        const customers = await listRes.json();
-        const existing = customers.find((c: any) => c.email === TEST_CUSTOMER_EMAIL) || customers[0];
-        if (existing) {
-          localStorage.setItem(STORAGE_CUSTOMER_KEY, existing._id);
-          setCustomerId(existing._id);
-          return existing._id;
-        }
-      }
-    } catch (_) {
-      // ignore and attempt creation
-    }
+  const addToCart = async (product: ProductLite, maxStock?: number) => {
+    const token = getToken();
 
-    try {
-      const createRes = await fetch(`${API_BASE}/customers`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name: 'Test Customer',
-          email: TEST_CUSTOMER_EMAIL,
-          phone: '9999999999',
-          isActive: true,
-        }),
-      });
-      if (!createRes.ok) throw new Error('Failed to create test customer');
-      const customer = await createRes.json();
-      localStorage.setItem(STORAGE_CUSTOMER_KEY, customer._id);
-      setCustomerId(customer._id);
-      return customer._id;
-    } catch (error) {
-      return null;
-    }
-  };
+    // 1. Optimistic Update (for speed)
+    const prevCart = [...cart];
+    // ... insert optimistic logic here if desired, OR just wait for server for stability.
+    // User requested "Stability", so let's Wait for Server. simpler.
 
-  const addToCart = (product: ProductLite, maxStock?: number) => {
-    setCart((prev) => {
-      const existing = prev.find((item) => item.product._id === product._id);
-      const limit = typeof maxStock === 'number'
-        ? Math.max(0, maxStock)
-        : typeof product.stock === 'number'
-          ? Math.max(0, product.stock)
-          : Infinity;
-      const productWithStock = limit !== Infinity ? { ...product, stock: limit } : product;
-      if (existing) {
-        const nextQty = Math.min(existing.quantity + 1, limit);
-        return prev.map((item) => {
-          if (item.product._id !== product._id) return item;
-          return {
-            ...item,
-            product: limit === Infinity ? item.product : { ...item.product, stock: limit },
-            quantity: nextQty,
-          };
+    setIsLoading(true);
+
+    if (token) {
+      // SERVER ADD
+      try {
+        const res = await fetch(`${API_BASE}/cart/add`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+          },
+          body: JSON.stringify({
+            productId: product._id,
+            quantity: 1
+          })
         });
+
+        if (res.ok) {
+          await fetchCart(); // Re-sync truth
+        } else {
+          const err = await res.json();
+          alert(err.message || 'Could not add to cart');
+        }
+      } catch (err) {
+        alert('ErrorMessage: Network error adding to cart');
       }
-      if (limit <= 0) return prev;
-      return [...prev, { product: productWithStock, quantity: 1 }];
-    });
+    } else {
+      // LOCAL ADD
+      // Simple local logic
+      setCart(prev => {
+        const existing = prev.find(i => i.product._id === product._id);
+        // Simplified stock check for guest
+        if (existing) {
+          return prev.map(i => i.product._id === product._id ? { ...i, quantity: i.quantity + 1 } : i);
+        }
+        return [...prev, { product, quantity: 1 }];
+      });
+    }
+    setIsLoading(false);
   };
 
-  const updateQuantity = (productId: string, quantity: number) => {
-    setCart((prev) => {
-      return prev
-        .map((item) => {
-          if (item.product._id !== productId) return item;
-          const limit = typeof item.product.stock === 'number' ? Math.max(0, item.product.stock) : Infinity;
-          if (limit <= 0) return null;
-          const nextQty = Math.min(quantity, limit);
-          if (nextQty <= 0) return null;
-          return { ...item, quantity: nextQty };
-        })
-        .filter((item): item is CartItem => Boolean(item));
-    });
+  const updateQuantity = async (productId: string, quantity: number) => {
+    if (quantity < 1) return; // Use remove instead
+    const token = getToken();
+    setIsLoading(true);
+
+    if (token) {
+      // SERVER UPDATE
+      try {
+        const res = await fetch(`${API_BASE}/cart/${productId}`, {
+          method: 'PATCH',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+          },
+          body: JSON.stringify({ quantity })
+        });
+
+        if (res.ok) {
+          await fetchCart();
+        } else {
+          const err = await res.json();
+          alert(err.message);
+        }
+      } catch (err) {
+        console.error(err);
+      }
+    } else {
+      // LOCAL UPDATE
+      setCart(prev => prev.map(i => i.product._id === productId ? { ...i, quantity } : i));
+    }
+    setIsLoading(false);
   };
 
-  const removeFromCart = (productId: string) => {
-    setCart((prev) => prev.filter((item) => item.product._id !== productId));
+  const removeFromCart = async (productId: string) => {
+    const token = getToken();
+    setIsLoading(true);
+
+    if (token) {
+      // SERVER REMOVE
+      try {
+        await fetch(`${API_BASE}/cart/${productId}`, {
+          method: 'DELETE',
+          headers: { 'Authorization': `Bearer ${token}` }
+        });
+        await fetchCart();
+      } catch (err) {
+        console.error(err);
+      }
+    } else {
+      // LOCAL REMOVE
+      setCart(prev => prev.filter(i => i.product._id !== productId));
+    }
+    setIsLoading(false);
   };
 
-  const clearCart = () => setCart([]);
+  const clearCart = async () => {
+    const token = getToken();
+    if (token) {
+      await fetch(`${API_BASE}/cart`, {
+        method: 'DELETE',
+        headers: { 'Authorization': `Bearer ${token}` }
+      });
+      setCart([]);
+    } else {
+      setCart([]);
+    }
+  };
 
+  const validateCart = async () => {
+    await fetchCart(); // Re-fetching essentially validates
+  };
+
+  const ensureCustomerId = async (): Promise<string | null> => {
+    return customerId;
+  };
+
+  // --- DERIVED STATE ---
   const totalPrice = useMemo(
     () => cart.reduce((sum, item) => sum + item.product.price * item.quantity, 0),
     [cart]
@@ -170,6 +258,8 @@ export function CustomerStoreProvider({ children }: { children: React.ReactNode 
     clearCart,
     totalPrice,
     totalItems,
+    validateCart,
+    isLoading
   };
 
   return <CustomerStoreContext.Provider value={value}>{children}</CustomerStoreContext.Provider>;

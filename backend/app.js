@@ -20,6 +20,7 @@ import productRoutes from './src/routes/product.routes.js';
 import orderRoutes from './src/routes/order.routes.js';
 import productSalesRoutes from './src/routes/productSales.routes.js';
 console.log('✅ Routes imported');
+import cartRoutes from './src/routes/cart.routes.js';
 
 console.log('🔄 Creating Express app...');
 const app = express();
@@ -57,6 +58,7 @@ app.use('/api/customers', customerRoutes);
 app.use('/api/products', productRoutes);
 app.use('/api/orders', orderRoutes);
 app.use('/api/product-sales', productSalesRoutes);
+app.use('/api/cart', cartRoutes);
 
 // 6. Global Error Handler (Prevents ugly 500 crashes)
 app.use((err, req, res, next) => {

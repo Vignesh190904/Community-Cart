@@ -22,6 +22,7 @@ const getNextOrderNumber = async () => {
 export const createOrder = async (req, res) => {
   try {
     const { customerId, productIds, items: bodyItems, addressId } = req.body;
+    console.log('[order:create] Order creation started', { customerId, addressId });
 
     // Normalize incoming items: support legacy productIds[] or new items[{productId, quantity}]
     const normalizedItems = Array.isArray(bodyItems) && bodyItems.length > 0
@@ -126,6 +127,7 @@ export const createOrder = async (req, res) => {
     });
 
     const savedOrder = await order.save();
+    console.log('[order:create] Order saved successfully', savedOrder._id);
     console.log(
       '[order:create] orderNumber=',
       orderNumber,
@@ -330,15 +332,26 @@ export const getCustomerOrders = async (req, res) => {
 
 export const getVendorOrders = async (req, res) => {
   try {
-    const vendorId = req.user?._id || req.vendor?._id || req.query.vendorId;
+    // 1. Strict Vendor Resolution
+    // protectVendor middleware sets req.vendor and req.user.
+    // authGuard sets req.user.
+    // We prefer the authenticated user's ID.
+    const vendorId = req.vendor?._id || req.user?._id || req.query.vendorId;
+
+    console.log('[vendor:orders] Fetching for vendorId=', vendorId);
 
     if (!vendorId) {
+      console.warn('[vendor:orders] No vendorId found in request');
       return res.status(200).json([]);
     }
 
+    // 2. Query
     const orders = await Order.find({ vendorId })
       .sort({ createdAt: -1 });
 
+    console.log(`[vendor:orders] Found ${orders.length} orders for vendor ${vendorId}`);
+
+    // 3. Normalize Response (Strict Contract)
     const formattedOrders = orders.map(order => ({
       order_id: order._id,
       order_number: order.orderNumber,
@@ -355,12 +368,13 @@ export const getVendorOrders = async (req, res) => {
         quantity: item.quantity,
         price: item.price,
       })),
-      total_amount: order.pricing.totalAmount,
-      payment_method: order.payment.method,
+      total_amount: order.pricing?.totalAmount || 0,
+      payment_method: order.payment?.method || 'cod', // Default to cod if missing
     }));
 
     res.status(200).json(formattedOrders);
   } catch (error) {
+    console.error('[vendor:orders] Error:', error);
     res.status(500).json({ error: error.message });
   }
 };

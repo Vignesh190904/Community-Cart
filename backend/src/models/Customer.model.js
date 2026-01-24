@@ -107,6 +107,39 @@ const customerSchema = new mongoose.Schema(
     isActive: { type: Boolean, default: true },
     isBlocked: { type: Boolean, default: false },
 
+    /* ---------- Cart (Server-Side Persistence) ---------- */
+    cart: [
+      {
+        product_id: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: 'Product',
+          required: true,
+        },
+        vendor_id: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: 'Vendor',
+          required: true,
+        },
+        category_id: {
+          type: String,
+          // required: true // Optional: enforce strictly or lazily
+        },
+        quantity: {
+          type: Number,
+          required: true,
+          min: 1,
+        },
+        price_snapshot: {
+          type: Number,
+          required: true,
+        },
+        updated_at: {
+          type: Date,
+          default: Date.now,
+        },
+      },
+    ],
+
     /* ---------- Notes / Extensibility ---------- */
     notes: String,
     extra: mongoose.Schema.Types.Mixed,

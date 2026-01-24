@@ -8028,6 +8028,30 @@ body.splash-active {
   display: block;
 }
 
+.status-icon.processing {
+  filter: invert(78%) sepia(63%) saturate(769%) hue-rotate(357deg) brightness(102%) contrast(106%);
+}
+
+.status-icon.completed {
+  filter: invert(58%) sepia(44%) saturate(468%) hue-rotate(66deg) brightness(96%) contrast(94%);
+}
+
+.status-icon.cancelled {
+  filter: invert(34%) sepia(59%) saturate(4228%) hue-rotate(339deg) brightness() contrast(94%);
+}
+
+.status-icon.pending {
+  filter: brightness(0);
+  width: 18px;
+  height: 18px;
+}
+
+.theme-dark .status-icon.pending {
+  filter: brightness(0) invert();
+  width: 18px;
+  height: 18px;
+}
+
 .order-details {
   border-top: 1px solid #f0f0f0;
   padding: 0 16px 16px;

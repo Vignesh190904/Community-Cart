@@ -1,6 +1,7 @@
 import { useState, useEffect, useMemo } from 'react';
 import { api } from '../../services/api';
 import { useToast } from '../../components/ui/ToastProvider';
+import { useAuth } from '../../context/AuthContext';
 
 interface Product {
   _id: string;
@@ -33,14 +34,14 @@ type StockStatus = 'all' | 'in-stock' | 'low-stock' | 'out-of-stock';
 
 export default function VendorProducts() {
   const { pushToast } = useToast();
+  const { user, loading: authLoading } = useAuth();
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(false);
   const [mode, setMode] = useState<'list' | 'create' | 'edit'>('list');
   const [editingId, setEditingId] = useState<string | null>(null);
   const [formData, setFormData] = useState<Partial<Product>>(emptyProduct);
-  const [vendorId, setVendorId] = useState<string>('');
   const [vendorCategory, setVendorCategory] = useState<string>('');
-  
+
   // Filter states
   const [productSearch, setProductSearch] = useState<string>('');
   const [debouncedProductSearch, setDebouncedProductSearch] = useState<string>('');
@@ -49,18 +50,6 @@ export default function VendorProducts() {
   const [maxPrice, setMaxPrice] = useState<string>('');
   const [availabilityFilter, setAvailabilityFilter] = useState<string>('all');
 
-  useEffect(() => {
-    // Get vendor ID from stored user data
-    if (typeof window !== 'undefined') {
-      try {
-        const stored = localStorage.getItem('cc_user');
-        if (stored) {
-          const parsed = JSON.parse(stored);
-          setVendorId(parsed.id);
-        }
-      } catch {}
-    }
-  }, []);
 
   // Debounce product search
   useEffect(() => {
@@ -70,17 +59,20 @@ export default function VendorProducts() {
     return () => clearTimeout(timer);
   }, [productSearch]);
 
-  // Load products and vendor meta when vendorId is set
   useEffect(() => {
-    if (vendorId) {
+    // Wait for auth to finish loading before fetching data
+    if (!authLoading && user?.id) {
       loadVendorMeta();
       loadProducts();
     }
-  }, [vendorId]);
+  }, [user, authLoading]);
+
+
 
   const loadVendorMeta = async () => {
+    if (!user?.id) return;
     try {
-      const vendor = await api.vendors.getById(vendorId);
+      const vendor = await api.vendors.getById(user.id);
       setVendorCategory(vendor?.vendorType || vendor?.storeName || '');
     } catch (error) {
       console.error('Error loading vendor details:', error);
@@ -88,6 +80,7 @@ export default function VendorProducts() {
   };
 
   const loadProducts = async () => {
+    if (!user?.id) return;
     try {
       setLoading(true);
       const data = await api.products.getAll();
@@ -96,12 +89,17 @@ export default function VendorProducts() {
         if (!p.vendor) return false;
         // p.vendor can be either a string (ID) or an object (populated)
         const pVendorId = typeof p.vendor === 'object' ? (p.vendor as any)._id : p.vendor;
-        return pVendorId === vendorId;
+        return String(pVendorId) === String(user.id);
+      });
+      console.log('Vendor Products Debug:', {
+        totalFetched: data.length,
+        filtered: vendorProducts.length,
+        myVendorId: user.id
       });
       setProducts(vendorProducts);
     } catch (error) {
       console.error('Error loading products:', error);
-      pushToast({ type: 'error', title: 'Load Failed', message: 'Failed to load products' });
+      pushToast({ type: 'error', message: 'Load Failed: Failed to load products' });
     } finally {
       setLoading(false);
     }
@@ -150,7 +148,7 @@ export default function VendorProducts() {
 
   const handleCreate = () => {
     setMode('create');
-    setFormData({ ...emptyProduct, vendor: vendorId, category: vendorCategory });
+    setFormData({ ...emptyProduct, vendor: user?.id, category: vendorCategory });
     setEditingId(null);
   };
 
@@ -162,7 +160,7 @@ export default function VendorProducts() {
       setMode('edit');
     } catch (error) {
       console.error('Error loading product:', error);
-      pushToast({ type: 'error', title: 'Load Failed', message: 'Failed to load product details' });
+      pushToast({ type: 'error', message: 'Load Failed: Failed to load product details' });
     }
   };
 
@@ -170,11 +168,11 @@ export default function VendorProducts() {
     if (!confirm('Are you sure you want to delete this product?')) return;
     try {
       await api.products.delete(id);
-      pushToast({ type: 'success', title: 'Deleted', message: 'Product deleted successfully' });
+      pushToast({ type: 'success', message: 'Product deleted successfully' });
       loadProducts();
     } catch (error) {
       console.error('Error deleting product:', error);
-      pushToast({ type: 'error', title: 'Delete Failed', message: 'Failed to delete product' });
+      pushToast({ type: 'error', message: 'Delete Failed: Failed to delete product' });
     }
   };
 
@@ -187,7 +185,7 @@ export default function VendorProducts() {
       loadProducts();
     } catch (error) {
       console.error('Error updating product:', error);
-      pushToast({ type: 'error', title: 'Update Failed', message: 'Failed to update product availability' });
+      pushToast({ type: 'error', message: 'Update Failed: Failed to update product availability' });
     }
   };
 
@@ -197,21 +195,21 @@ export default function VendorProducts() {
       setLoading(true);
       const payload = {
         ...formData,
-        vendor: vendorId,
+        vendor: user?.id,
         category: vendorCategory || formData.category,
       };
       if (mode === 'create') {
         await api.products.create(payload);
-        pushToast({ type: 'success', title: 'Saved', message: 'Product created successfully' });
+        pushToast({ type: 'success', message: 'Product created successfully' });
       } else {
         await api.products.update(editingId!, payload);
-        pushToast({ type: 'success', title: 'Saved', message: 'Product updated successfully' });
+        pushToast({ type: 'success', message: 'Product updated successfully' });
       }
       setMode('list');
       loadProducts();
     } catch (error) {
       console.error('Error saving product:', error);
-      pushToast({ type: 'error', title: 'Save Failed', message: 'Failed to save product' });
+      pushToast({ type: 'error', message: 'Save Failed: Failed to save product' });
     } finally {
       setLoading(false);
     }
@@ -238,6 +236,10 @@ export default function VendorProducts() {
   const updateField = (field: string, value: any) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
   };
+
+  if (authLoading) {
+    return <div className="products-loading">Loading authentication...</div>;
+  }
 
   if (mode === 'list') {
     return (
@@ -407,9 +409,8 @@ export default function VendorProducts() {
                         <td>₹{product.price.toFixed(2)}</td>
                         <td>
                           <span
-                            className={`stock-badge ${
-                              product.stock === 0 ? 'out' : product.stock < 10 ? 'low' : 'good'
-                            }`}
+                            className={`stock-badge ${product.stock === 0 ? 'out' : product.stock < 10 ? 'low' : 'good'
+                              }`}
                           >
                             {product.stock}
                           </span>
