@@ -217,12 +217,16 @@ export default function EditProfilePage() {
                                 preview_profile_pic
                                     ? (preview_profile_pic.startsWith('blob:')
                                         ? preview_profile_pic
-                                        : `http://localhost:5000${preview_profile_pic}`)
+                                        : (preview_profile_pic.startsWith('http') ? preview_profile_pic : `http://localhost:5000${preview_profile_pic}`))
                                     : '/customer/assets/images/default_profile.jpg'
                             }
                             alt="Profile"
                             className="edit-avatar-img"
                             style={{ opacity: is_saving ? 0.5 : 1 }}
+                            onError={(e) => {
+                                const target = e.target as HTMLImageElement;
+                                target.src = '/customer/assets/images/default_profile.jpg';
+                            }}
                         />
                         <input
                             type="file"

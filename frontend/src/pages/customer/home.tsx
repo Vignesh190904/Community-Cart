@@ -50,6 +50,24 @@ export default function HomePage() {
     // Removed local cart state
     const [products, setProducts] = useState<Product[]>([]);
     const [productsLoading, setProductsLoading] = useState(true);
+    const [searchTerm, setSearchTerm] = useState('');
+
+    const handleSearch = () => {
+        if (searchTerm.trim()) {
+            router.push(`/customer/browse-products?q=${encodeURIComponent(searchTerm)}`);
+        }
+    };
+
+    const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+        if (e.key === 'Enter') {
+            handleSearch();
+        }
+    };
+
+    // Filter products based on search term
+    const filteredProducts = products.filter(p =>
+        p.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
 
     // HARD GUARD: Prevents auto-signout by waiting for 'loading' to finish
     useEffect(() => {
@@ -241,25 +259,6 @@ export default function HomePage() {
     if (!is_authenticated) {
         return null;
     }
-
-    const [searchTerm, setSearchTerm] = useState('');
-
-    const handleSearch = () => {
-        if (searchTerm.trim()) {
-            router.push(`/customer/browse-products?q=${encodeURIComponent(searchTerm)}`);
-        }
-    };
-
-    const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-        if (e.key === 'Enter') {
-            handleSearch();
-        }
-    };
-
-    // Filter products based on search term
-    const filteredProducts = products.filter(p =>
-        p.name.toLowerCase().includes(searchTerm.toLowerCase())
-    );
 
     return (
         <CustomerLayout disablePadding={true}>

@@ -5,6 +5,9 @@ self.__BUILD_MANIFEST = {
   "/_error": [
     "static/chunks/pages/_error.js"
   ],
+  "/admin/dashboard": [
+    "static/chunks/pages/admin/dashboard.js"
+  ],
   "/customer/browse-products": [
     "static/chunks/pages/customer/browse-products.js"
   ],
@@ -13,6 +16,9 @@ self.__BUILD_MANIFEST = {
   ],
   "/customer/category": [
     "static/chunks/pages/customer/category.js"
+  ],
+  "/customer/edit-profile": [
+    "static/chunks/pages/customer/edit-profile.js"
   ],
   "/customer/favorites": [
     "static/chunks/pages/customer/favorites.js"

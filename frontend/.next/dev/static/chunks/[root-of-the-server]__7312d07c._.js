@@ -1007,28 +1007,62 @@ function AuthProvider({ children }) {
         document.body.classList.add(`theme-${theme}`);
         localStorage.setItem('cc_theme', theme);
     };
-    // Identity-only rehydration from localStorage
+    // Identity rehydration from localStorage + Fresh fetch
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useEffect"])({
         "AuthProvider.useEffect": ()=>{
-            try {
-                const storedUser = localStorage.getItem('auth_user');
-                const storedToken = localStorage.getItem('auth_token');
-                if (storedUser) {
-                    const parsed = JSON.parse(storedUser);
-                    set_user(parsed);
-                    set_role(parsed.role || null);
+            const initAuth = {
+                "AuthProvider.useEffect.initAuth": async ()=>{
+                    try {
+                        const storedToken = localStorage.getItem('auth_token');
+                        if (storedToken) {
+                            set_token(storedToken);
+                            // Optimistic load for speed
+                            const storedUser = localStorage.getItem('auth_user');
+                            if (storedUser) {
+                                try {
+                                    const parsed = JSON.parse(storedUser);
+                                    set_user(parsed);
+                                    set_role(parsed.role || null);
+                                } catch  {}
+                            }
+                            // Fresh fetch for persistence check
+                            try {
+                                const res = await fetch('http://localhost:5000/api/auth/customer/me', {
+                                    headers: {
+                                        'Authorization': `Bearer ${storedToken}`
+                                    }
+                                });
+                                if (res.ok) {
+                                    const data = await res.json();
+                                    if (data.success && data.user) {
+                                        // Update state and storage with fresh data
+                                        const freshUser = {
+                                            ...data.user,
+                                            role: 'customer'
+                                        }; // /me returns customer data
+                                        set_user(freshUser);
+                                        set_role('customer');
+                                        localStorage.setItem('auth_user', JSON.stringify(freshUser));
+                                    }
+                                } else if (res.status === 401) {
+                                    // Token invalid?
+                                    sign_out();
+                                }
+                            } catch (err) {
+                                console.error('Auth hydration failed:', err);
+                            }
+                        }
+                    } catch  {
+                    // Ignore storage errors
+                    } finally{
+                        set_loading(false);
+                        if ("TURBOPACK compile-time truthy", 1) {
+                            window.__AUTH_READY__ = true;
+                        }
+                    }
                 }
-                if (storedToken) {
-                    set_token(storedToken);
-                }
-            } catch  {
-            // Ignore corrupt storage
-            } finally{
-                set_loading(false);
-                if ("TURBOPACK compile-time truthy", 1) {
-                    window.__AUTH_READY__ = true;
-                }
-            }
+            }["AuthProvider.useEffect.initAuth"];
+            initAuth();
         }
     }["AuthProvider.useEffect"], []);
     const sign_in = (user_data, token)=>{
@@ -1089,7 +1123,7 @@ function AuthProvider({ children }) {
         children: children
     }, void 0, false, {
         fileName: "[project]/Desktop/Community-Cart/frontend/src/context/AuthContext.tsx",
-        lineNumber: 140,
+        lineNumber: 173,
         columnNumber: 9
     }, this);
 }

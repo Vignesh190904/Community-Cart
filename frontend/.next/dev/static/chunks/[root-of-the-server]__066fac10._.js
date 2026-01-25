@@ -559,11 +559,11 @@ if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelper
     ()=>getLoginRedirectPath
 ]);
 function getLoginRedirectPath(role) {
-    if (role === 'customer') {
-        return '/customer/signin';
+    if (role === 'admin' || role === 'vendor') {
+        return '/login';
     }
     // vendor, admin, or unknown → /login
-    return '/login';
+    return '/customer/signin';
 }
 if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
     __turbopack_context__.k.registerExports(__turbopack_context__.m, globalThis.$RefreshHelpers$);
@@ -883,6 +883,10 @@ function ProfilePage() {
     // Determine profile image source
     const get_profile_image_src = ()=>{
         if (user?.profile_pic) {
+            // Check if it's already a full URL (e.g. Google profile pic)
+            if (user.profile_pic.startsWith('http')) {
+                return user.profile_pic;
+            }
             return `http://localhost:5000${user.profile_pic}`;
         }
         return '/customer/assets/images/default_profile.jpg';
@@ -947,7 +951,7 @@ function ProfilePage() {
                             children: "My Profile"
                         }, void 0, false, {
                             fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/profile.tsx",
-                            lineNumber: 61,
+                            lineNumber: 65,
                             columnNumber: 21
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -960,18 +964,18 @@ function ProfilePage() {
                                 className: "theme-icon"
                             }, void 0, false, {
                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/profile.tsx",
-                                lineNumber: 63,
+                                lineNumber: 67,
                                 columnNumber: 25
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/profile.tsx",
-                            lineNumber: 62,
+                            lineNumber: 66,
                             columnNumber: 21
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/profile.tsx",
-                    lineNumber: 60,
+                    lineNumber: 64,
                     columnNumber: 17
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -984,15 +988,20 @@ function ProfilePage() {
                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
                                     src: get_profile_image_src(),
                                     alt: "Profile",
-                                    className: "profile-avatar-img"
+                                    className: "profile-avatar-img",
+                                    onError: (e)=>{
+                                        const target = e.target;
+                                        target.onerror = null; // Prevent infinite loop
+                                        target.src = '/customer/assets/images/default_profile.jpg';
+                                    }
                                 }, void 0, false, {
                                     fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/profile.tsx",
-                                    lineNumber: 75,
+                                    lineNumber: 79,
                                     columnNumber: 29
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/profile.tsx",
-                                lineNumber: 74,
+                                lineNumber: 78,
                                 columnNumber: 25
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1003,7 +1012,7 @@ function ProfilePage() {
                                         children: user?.name || 'User'
                                     }, void 0, false, {
                                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/profile.tsx",
-                                        lineNumber: 82,
+                                        lineNumber: 91,
                                         columnNumber: 29
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1011,13 +1020,13 @@ function ProfilePage() {
                                         children: user?.email || 'email@example.com'
                                     }, void 0, false, {
                                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/profile.tsx",
-                                        lineNumber: 83,
+                                        lineNumber: 92,
                                         columnNumber: 29
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/profile.tsx",
-                                lineNumber: 81,
+                                lineNumber: 90,
                                 columnNumber: 25
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1030,23 +1039,23 @@ function ProfilePage() {
                                     height: 20
                                 }, void 0, false, {
                                     fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/profile.tsx",
-                                    lineNumber: 86,
+                                    lineNumber: 95,
                                     columnNumber: 29
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/profile.tsx",
-                                lineNumber: 85,
+                                lineNumber: 94,
                                 columnNumber: 25
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/profile.tsx",
-                        lineNumber: 73,
+                        lineNumber: 77,
                         columnNumber: 21
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/profile.tsx",
-                    lineNumber: 72,
+                    lineNumber: 76,
                     columnNumber: 17
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1064,7 +1073,7 @@ function ProfilePage() {
                                             className: "menu-icon"
                                         }, void 0, false, {
                                             fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/profile.tsx",
-                                            lineNumber: 96,
+                                            lineNumber: 105,
                                             columnNumber: 33
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1072,13 +1081,13 @@ function ProfilePage() {
                                             children: item.label
                                         }, void 0, false, {
                                             fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/profile.tsx",
-                                            lineNumber: 97,
+                                            lineNumber: 106,
                                             columnNumber: 33
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/profile.tsx",
-                                    lineNumber: 95,
+                                    lineNumber: 104,
                                     columnNumber: 29
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1086,29 +1095,29 @@ function ProfilePage() {
                                     children: "›"
                                 }, void 0, false, {
                                     fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/profile.tsx",
-                                    lineNumber: 99,
+                                    lineNumber: 108,
                                     columnNumber: 29
                                 }, this)
                             ]
                         }, index, true, {
                             fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/profile.tsx",
-                            lineNumber: 94,
+                            lineNumber: 103,
                             columnNumber: 25
                         }, this))
                 }, void 0, false, {
                     fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/profile.tsx",
-                    lineNumber: 92,
+                    lineNumber: 101,
                     columnNumber: 17
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/profile.tsx",
-            lineNumber: 58,
+            lineNumber: 62,
             columnNumber: 13
         }, this)
     }, void 0, false, {
         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/profile.tsx",
-        lineNumber: 57,
+        lineNumber: 61,
         columnNumber: 9
     }, this);
 }

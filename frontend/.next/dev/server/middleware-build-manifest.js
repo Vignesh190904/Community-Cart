@@ -44,6 +44,19 @@ globalThis.__BUILD_MANIFEST = {
       "static/chunks/Desktop_Community-Cart_frontend_src_pages__error_2da965e7._.js",
       "static/chunks/turbopack-Desktop_Community-Cart_frontend_src_pages__error_c03b7786._.js"
     ],
+    "/admin/dashboard": [
+      "static/chunks/48ebd_next_dist_compiled_f7b2f49b._.js",
+      "static/chunks/48ebd_next_dist_shared_lib_34884197._.js",
+      "static/chunks/48ebd_next_dist_client_3b8c5f9d._.js",
+      "static/chunks/48ebd_next_dist_6f9203da._.js",
+      "static/chunks/48ebd_react_680f19ad._.js",
+      "static/chunks/48ebd_react-dom_cjs_react-dom_development_b944df1a.js",
+      "static/chunks/48ebd_react-dom_43235666._.js",
+      "static/chunks/48ebd_c0e1799f._.js",
+      "static/chunks/[root-of-the-server]__5d9a456e._.js",
+      "static/chunks/Desktop_Community-Cart_frontend_src_pages_admin_dashboard_tsx_2da965e7._.js",
+      "static/chunks/turbopack-Desktop_Community-Cart_frontend_src_pages_admin_dashboard_tsx_feca6d56._.js"
+    ],
     "/customer/browse-products": [
       "static/chunks/48ebd_next_dist_compiled_f7b2f49b._.js",
       "static/chunks/48ebd_next_dist_shared_lib_2dd775c2._.js",
@@ -85,6 +98,20 @@ globalThis.__BUILD_MANIFEST = {
       "static/chunks/[root-of-the-server]__ab5f67f9._.js",
       "static/chunks/Desktop_Community-Cart_frontend_src_pages_customer_category_tsx_2da965e7._.js",
       "static/chunks/88e7d_Community-Cart_frontend_src_pages_customer_category_tsx_29023691._.js"
+    ],
+    "/customer/edit-profile": [
+      "static/chunks/48ebd_next_dist_compiled_f7b2f49b._.js",
+      "static/chunks/48ebd_next_dist_shared_lib_2dd775c2._.js",
+      "static/chunks/48ebd_next_dist_client_990bb439._.js",
+      "static/chunks/48ebd_next_dist_6f9203da._.js",
+      "static/chunks/48ebd_next_0db3c6c4._.js",
+      "static/chunks/48ebd_react_680f19ad._.js",
+      "static/chunks/48ebd_react-dom_cjs_react-dom_development_b944df1a.js",
+      "static/chunks/48ebd_react-dom_43235666._.js",
+      "static/chunks/48ebd_c0e1799f._.js",
+      "static/chunks/[root-of-the-server]__f2e245ba._.js",
+      "static/chunks/Desktop_Community-Cart_frontend_src_pages_customer_edit-profile_tsx_2da965e7._.js",
+      "static/chunks/88e7d_Community-Cart_frontend_src_pages_customer_edit-profile_tsx_110ad490._.js"
     ],
     "/customer/favorites": [
       "static/chunks/48ebd_next_dist_compiled_f7b2f49b._.js",

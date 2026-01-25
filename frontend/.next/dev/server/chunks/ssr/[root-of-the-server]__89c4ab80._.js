@@ -263,11 +263,11 @@ const api = {
     ()=>getLoginRedirectPath
 ]);
 function getLoginRedirectPath(role) {
-    if (role === 'customer') {
-        return '/customer/signin';
+    if (role === 'admin' || role === 'vendor') {
+        return '/login';
     }
     // vendor, admin, or unknown → /login
-    return '/login';
+    return '/customer/signin';
 }
 }),
 "[project]/Desktop/Community-Cart/frontend/src/context/AuthContext.tsx [ssr] (ecmascript)", ((__turbopack_context__) => {

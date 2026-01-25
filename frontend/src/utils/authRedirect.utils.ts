@@ -11,9 +11,9 @@ export type UserRole = 'customer' | 'vendor' | 'admin';
  * @returns Redirect path
  */
 export function getLoginRedirectPath(role?: UserRole | string | null): string {
-    if (role === 'customer') {
-        return '/customer/signin';
+    if (role === 'admin' || role === 'vendor') {
+        return '/login';
     }
     // vendor, admin, or unknown → /login
-    return '/login';
+    return '/customer/signin';
 }

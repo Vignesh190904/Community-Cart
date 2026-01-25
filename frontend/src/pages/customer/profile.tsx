@@ -14,6 +14,10 @@ export default function ProfilePage() {
     // Determine profile image source
     const get_profile_image_src = () => {
         if (user?.profile_pic) {
+            // Check if it's already a full URL (e.g. Google profile pic)
+            if (user.profile_pic.startsWith('http')) {
+                return user.profile_pic;
+            }
             return `http://localhost:5000${user.profile_pic}`;
         }
         return '/customer/assets/images/default_profile.jpg';
@@ -76,6 +80,11 @@ export default function ProfilePage() {
                                 src={get_profile_image_src()}
                                 alt="Profile"
                                 className="profile-avatar-img"
+                                onError={(e) => {
+                                    const target = e.target as HTMLImageElement;
+                                    target.onerror = null; // Prevent infinite loop
+                                    target.src = '/customer/assets/images/default_profile.jpg';
+                                }}
                             />
                         </div>
                         <div className="profile-text-content">

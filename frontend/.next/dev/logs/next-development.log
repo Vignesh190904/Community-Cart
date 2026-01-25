@@ -195,3 +195,491 @@ Expression expected
 [03:42:01.134] Server  LOG      ✓ Compiled in 33ms
 [03:42:10.018] Server  LOG      ✓ Compiled in 21ms
 [03:42:37.499] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[03:46:01.416] Browser ERROR   Warning: React has detected a change in the order of Hooks called by %s. This will lead to bugs and errors if not fixed. For more information, read the Rules of Hooks: https://reactjs.org/link/rules-of-hooks
+
+   Previous render            Next render
+   ------------------------------------------------------
+%s   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+%s HomePage 1. useContext                 useContext
+2. useContext                 useContext
+3. useContext                 useContext
+4. useContext                 useContext
+5. useState                   useState
+6. useState                   useState
+7. useState                   useState
+8. useEffect                  useEffect
+9. useEffect                  useEffect
+10. useEffect                 useEffect
+11. useEffect                 useEffect
+12. undefined                 useState
+ 
+    at HomePage (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__d72a2ba9._.js?ts=1769340174209:1476:204)
+    at CustomerStoreProvider (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js?ts=1769340174209:1507:34)
+    at AuthProvider (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js?ts=1769340174209:728:25)
+    at ToastProvider (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js?ts=1769340174209:1389:26)
+    at MyApp (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js?ts=1769340174209:1837:18)
+    at PathnameContextProviderAdapter (http://localhost:4646/_next/static/chunks/48ebd_next_dist_shared_lib_2dd775c2._.js?ts=1769340174209:5052:43)
+    at PagesDevOverlayErrorBoundary (http://localhost:4646/_next/static/chunks/48ebd_next_dist_6f9203da._.js?ts=1769340174209:1142:9)
+    at PagesDevOverlayBridge (http://localhost:4646/_next/static/chunks/48ebd_next_dist_6f9203da._.js?ts=1769340174209:1919:34)
+    at Container (http://localhost:4646/_next/static/chunks/48ebd_next_dist_client_990bb439._.js?ts=1769340174209:3041:1)
+    at AppContainer (http://localhost:4646/_next/static/chunks/48ebd_next_dist_client_990bb439._.js?ts=1769340174209:3140:25)
+    at Root (http://localhost:4646/_next/static/chunks/48ebd_next_dist_client_990bb439._.js?ts=1769340174209:3348:17)
+[03:46:01.416] Browser ERROR   uncaughtError: Error: Rendered more hooks than during the previous render.
+[03:46:01.417] Browser ERROR   uncaughtError: Error: Rendered more hooks than during the previous render.
+[03:46:01.417] Browser ERROR   The above error occurred in the <HomePage> component:
+
+    at HomePage (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__d72a2ba9._.js?ts=1769340174209:1476:204)
+    at CustomerStoreProvider (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js?ts=1769340174209:1507:34)
+    at AuthProvider (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js?ts=1769340174209:728:25)
+    at ToastProvider (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js?ts=1769340174209:1389:26)
+    at MyApp (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js?ts=1769340174209:1837:18)
+    at PathnameContextProviderAdapter (http://localhost:4646/_next/static/chunks/48ebd_next_dist_shared_lib_2dd775c2._.js?ts=1769340174209:5052:43)
+    at PagesDevOverlayErrorBoundary (http://localhost:4646/_next/static/chunks/48ebd_next_dist_6f9203da._.js?ts=1769340174209:1142:9)
+    at PagesDevOverlayBridge (http://localhost:4646/_next/static/chunks/48ebd_next_dist_6f9203da._.js?ts=1769340174209:1919:34)
+    at Container (http://localhost:4646/_next/static/chunks/48ebd_next_dist_client_990bb439._.js?ts=1769340174209:3041:1)
+    at AppContainer (http://localhost:4646/_next/static/chunks/48ebd_next_dist_client_990bb439._.js?ts=1769340174209:3140:25)
+    at Root (http://localhost:4646/_next/static/chunks/48ebd_next_dist_client_990bb439._.js?ts=1769340174209:3348:17)
+
+React will try to recreate this component tree from scratch using the error boundary you provided, PagesDevOverlayErrorBoundary.
+[03:46:29.336] Browser ERROR   Warning: React has detected a change in the order of Hooks called by %s. This will lead to bugs and errors if not fixed. For more information, read the Rules of Hooks: https://reactjs.org/link/rules-of-hooks
+
+   Previous render            Next render
+   ------------------------------------------------------
+%s   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+%s HomePage 1. useContext                 useContext
+2. useContext                 useContext
+3. useContext                 useContext
+4. useContext                 useContext
+5. useState                   useState
+6. useState                   useState
+7. useState                   useState
+8. useEffect                  useEffect
+9. useEffect                  useEffect
+10. useEffect                 useEffect
+11. useEffect                 useEffect
+12. undefined                 useState
+ 
+    at HomePage (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__d72a2ba9._.js?ts=1769340202459:1476:204)
+    at CustomerStoreProvider (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js?ts=1769340202459:1507:34)
+    at AuthProvider (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js?ts=1769340202459:728:25)
+    at ToastProvider (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js?ts=1769340202459:1389:26)
+    at MyApp (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js?ts=1769340202459:1837:18)
+    at PathnameContextProviderAdapter (http://localhost:4646/_next/static/chunks/48ebd_next_dist_shared_lib_2dd775c2._.js?ts=1769340202459:5052:43)
+    at PagesDevOverlayErrorBoundary (http://localhost:4646/_next/static/chunks/48ebd_next_dist_6f9203da._.js?ts=1769340202459:1142:9)
+    at PagesDevOverlayBridge (http://localhost:4646/_next/static/chunks/48ebd_next_dist_6f9203da._.js?ts=1769340202459:1919:34)
+    at Container (http://localhost:4646/_next/static/chunks/48ebd_next_dist_client_990bb439._.js?ts=1769340202459:3041:1)
+    at AppContainer (http://localhost:4646/_next/static/chunks/48ebd_next_dist_client_990bb439._.js?ts=1769340202459:3140:25)
+    at Root (http://localhost:4646/_next/static/chunks/48ebd_next_dist_client_990bb439._.js?ts=1769340202459:3348:17)
+[03:46:29.336] Browser ERROR   uncaughtError: Error: Rendered more hooks than during the previous render.
+[03:46:29.336] Browser ERROR   uncaughtError: Error: Rendered more hooks than during the previous render.
+[03:46:29.336] Browser ERROR   The above error occurred in the <HomePage> component:
+
+    at HomePage (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__d72a2ba9._.js?ts=1769340202459:1476:204)
+    at CustomerStoreProvider (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js?ts=1769340202459:1507:34)
+    at AuthProvider (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js?ts=1769340202459:728:25)
+    at ToastProvider (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js?ts=1769340202459:1389:26)
+    at MyApp (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js?ts=1769340202459:1837:18)
+    at PathnameContextProviderAdapter (http://localhost:4646/_next/static/chunks/48ebd_next_dist_shared_lib_2dd775c2._.js?ts=1769340202459:5052:43)
+    at PagesDevOverlayErrorBoundary (http://localhost:4646/_next/static/chunks/48ebd_next_dist_6f9203da._.js?ts=1769340202459:1142:9)
+    at PagesDevOverlayBridge (http://localhost:4646/_next/static/chunks/48ebd_next_dist_6f9203da._.js?ts=1769340202459:1919:34)
+    at Container (http://localhost:4646/_next/static/chunks/48ebd_next_dist_client_990bb439._.js?ts=1769340202459:3041:1)
+    at AppContainer (http://localhost:4646/_next/static/chunks/48ebd_next_dist_client_990bb439._.js?ts=1769340202459:3140:25)
+    at Root (http://localhost:4646/_next/static/chunks/48ebd_next_dist_client_990bb439._.js?ts=1769340202459:3348:17)
+
+React will try to recreate this component tree from scratch using the error boundary you provided, PagesDevOverlayErrorBoundary.
+[03:46:45.406] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[03:46:52.971] Browser ERROR   Warning: React has detected a change in the order of Hooks called by %s. This will lead to bugs and errors if not fixed. For more information, read the Rules of Hooks: https://reactjs.org/link/rules-of-hooks
+
+   Previous render            Next render
+   ------------------------------------------------------
+%s   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+%s HomePage 1. useContext                 useContext
+2. useContext                 useContext
+3. useContext                 useContext
+4. useContext                 useContext
+5. useState                   useState
+6. useState                   useState
+7. useState                   useState
+8. useEffect                  useEffect
+9. useEffect                  useEffect
+10. useEffect                 useEffect
+11. useEffect                 useEffect
+12. undefined                 useState
+ 
+    at HomePage (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__d72a2ba9._.js?ts=1769340226117:1476:204)
+    at CustomerStoreProvider (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js?ts=1769340226117:1507:34)
+    at AuthProvider (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js?ts=1769340226117:728:25)
+    at ToastProvider (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js?ts=1769340226117:1389:26)
+    at MyApp (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js?ts=1769340226117:1837:18)
+    at PathnameContextProviderAdapter (http://localhost:4646/_next/static/chunks/48ebd_next_dist_shared_lib_2dd775c2._.js?ts=1769340226117:5052:43)
+    at PagesDevOverlayErrorBoundary (http://localhost:4646/_next/static/chunks/48ebd_next_dist_6f9203da._.js?ts=1769340226117:1142:9)
+    at PagesDevOverlayBridge (http://localhost:4646/_next/static/chunks/48ebd_next_dist_6f9203da._.js?ts=1769340226117:1919:34)
+    at Container (http://localhost:4646/_next/static/chunks/48ebd_next_dist_client_990bb439._.js?ts=1769340226117:3041:1)
+    at AppContainer (http://localhost:4646/_next/static/chunks/48ebd_next_dist_client_990bb439._.js?ts=1769340226117:3140:25)
+    at Root (http://localhost:4646/_next/static/chunks/48ebd_next_dist_client_990bb439._.js?ts=1769340226117:3348:17)
+[03:46:52.971] Browser ERROR   uncaughtError: Error: Rendered more hooks than during the previous render.
+[03:46:52.971] Browser ERROR   uncaughtError: Error: Rendered more hooks than during the previous render.
+[03:46:52.971] Browser ERROR   The above error occurred in the <HomePage> component:
+
+    at HomePage (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__d72a2ba9._.js?ts=1769340226117:1476:204)
+    at CustomerStoreProvider (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js?ts=1769340226117:1507:34)
+    at AuthProvider (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js?ts=1769340226117:728:25)
+    at ToastProvider (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js?ts=1769340226117:1389:26)
+    at MyApp (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js?ts=1769340226117:1837:18)
+    at PathnameContextProviderAdapter (http://localhost:4646/_next/static/chunks/48ebd_next_dist_shared_lib_2dd775c2._.js?ts=1769340226117:5052:43)
+    at PagesDevOverlayErrorBoundary (http://localhost:4646/_next/static/chunks/48ebd_next_dist_6f9203da._.js?ts=1769340226117:1142:9)
+    at PagesDevOverlayBridge (http://localhost:4646/_next/static/chunks/48ebd_next_dist_6f9203da._.js?ts=1769340226117:1919:34)
+    at Container (http://localhost:4646/_next/static/chunks/48ebd_next_dist_client_990bb439._.js?ts=1769340226117:3041:1)
+    at AppContainer (http://localhost:4646/_next/static/chunks/48ebd_next_dist_client_990bb439._.js?ts=1769340226117:3140:25)
+    at Root (http://localhost:4646/_next/static/chunks/48ebd_next_dist_client_990bb439._.js?ts=1769340226117:3348:17)
+
+React will try to recreate this component tree from scratch using the error boundary you provided, PagesDevOverlayErrorBoundary.
+[03:46:58.344] Browser ERROR   Warning: React has detected a change in the order of Hooks called by %s. This will lead to bugs and errors if not fixed. For more information, read the Rules of Hooks: https://reactjs.org/link/rules-of-hooks
+
+   Previous render            Next render
+   ------------------------------------------------------
+%s   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+%s HomePage 1. useContext                 useContext
+2. useContext                 useContext
+3. useContext                 useContext
+4. useContext                 useContext
+5. useState                   useState
+6. useState                   useState
+7. useState                   useState
+8. useEffect                  useEffect
+9. useEffect                  useEffect
+10. useEffect                 useEffect
+11. useEffect                 useEffect
+12. undefined                 useState
+ 
+    at HomePage (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__d72a2ba9._.js?ts=1769340231540:1476:204)
+    at CustomerStoreProvider (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js?ts=1769340231540:1507:34)
+    at AuthProvider (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js?ts=1769340231540:728:25)
+    at ToastProvider (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js?ts=1769340231540:1389:26)
+    at MyApp (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js?ts=1769340231540:1837:18)
+    at PathnameContextProviderAdapter (http://localhost:4646/_next/static/chunks/48ebd_next_dist_shared_lib_2dd775c2._.js?ts=1769340231540:5052:43)
+    at PagesDevOverlayErrorBoundary (http://localhost:4646/_next/static/chunks/48ebd_next_dist_6f9203da._.js?ts=1769340231540:1142:9)
+    at PagesDevOverlayBridge (http://localhost:4646/_next/static/chunks/48ebd_next_dist_6f9203da._.js?ts=1769340231540:1919:34)
+    at Container (http://localhost:4646/_next/static/chunks/48ebd_next_dist_client_990bb439._.js?ts=1769340231540:3041:1)
+    at AppContainer (http://localhost:4646/_next/static/chunks/48ebd_next_dist_client_990bb439._.js?ts=1769340231540:3140:25)
+    at Root (http://localhost:4646/_next/static/chunks/48ebd_next_dist_client_990bb439._.js?ts=1769340231540:3348:17)
+[03:46:58.345] Browser ERROR   uncaughtError: Error: Rendered more hooks than during the previous render.
+[03:46:58.345] Browser ERROR   uncaughtError: Error: Rendered more hooks than during the previous render.
+[03:46:58.345] Browser ERROR   The above error occurred in the <HomePage> component:
+
+    at HomePage (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__d72a2ba9._.js?ts=1769340231540:1476:204)
+    at CustomerStoreProvider (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js?ts=1769340231540:1507:34)
+    at AuthProvider (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js?ts=1769340231540:728:25)
+    at ToastProvider (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js?ts=1769340231540:1389:26)
+    at MyApp (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js?ts=1769340231540:1837:18)
+    at PathnameContextProviderAdapter (http://localhost:4646/_next/static/chunks/48ebd_next_dist_shared_lib_2dd775c2._.js?ts=1769340231540:5052:43)
+    at PagesDevOverlayErrorBoundary (http://localhost:4646/_next/static/chunks/48ebd_next_dist_6f9203da._.js?ts=1769340231540:1142:9)
+    at PagesDevOverlayBridge (http://localhost:4646/_next/static/chunks/48ebd_next_dist_6f9203da._.js?ts=1769340231540:1919:34)
+    at Container (http://localhost:4646/_next/static/chunks/48ebd_next_dist_client_990bb439._.js?ts=1769340231540:3041:1)
+    at AppContainer (http://localhost:4646/_next/static/chunks/48ebd_next_dist_client_990bb439._.js?ts=1769340231540:3140:25)
+    at Root (http://localhost:4646/_next/static/chunks/48ebd_next_dist_client_990bb439._.js?ts=1769340231540:3348:17)
+
+React will try to recreate this component tree from scratch using the error boundary you provided, PagesDevOverlayErrorBoundary.
+[03:48:10.501] Browser LOG     Vendor Products Debug: {"filtered":2,"myVendorId":"69440dabd39acfb6ef8909e5","totalFetched":4}
+[03:48:10.501] Browser LOG     Vendor Products Debug: {"filtered":2,"myVendorId":"69440dabd39acfb6ef8909e5","totalFetched":4}
+[03:48:11.487] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[03:48:12.522] Browser LOG     Vendor Products Debug: {"filtered":2,"myVendorId":"69440dabd39acfb6ef8909e5","totalFetched":4}
+[03:48:12.634] Browser LOG     Vendor Products Debug: {"filtered":2,"myVendorId":"69440dabd39acfb6ef8909e5","totalFetched":4}
+[03:48:13.196] Browser LOG     [vendor:loadOrders] Fetching orders
+[03:48:13.196] Browser LOG     [vendor:loadOrders] Fetching orders
+[03:48:13.196] Browser LOG     [vendor:loadOrders] fetched orders count= 20
+[03:48:13.196] Browser LOG     [vendor:loadOrders] fetched orders count= 20
+[03:48:32.898] Browser ERROR   Warning: React has detected a change in the order of Hooks called by %s. This will lead to bugs and errors if not fixed. For more information, read the Rules of Hooks: https://reactjs.org/link/rules-of-hooks
+
+   Previous render            Next render
+   ------------------------------------------------------
+%s   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+%s HomePage 1. useContext                 useContext
+2. useContext                 useContext
+3. useContext                 useContext
+4. useContext                 useContext
+5. useState                   useState
+6. useState                   useState
+7. useState                   useState
+8. useEffect                  useEffect
+9. useEffect                  useEffect
+10. useEffect                 useEffect
+11. useEffect                 useEffect
+12. undefined                 useState
+ 
+    at HomePage (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__d72a2ba9._.js?ts=1769340325973:1476:204)
+    at CustomerStoreProvider (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js?ts=1769340325973:1507:34)
+    at AuthProvider (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js?ts=1769340325973:728:25)
+    at ToastProvider (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js?ts=1769340325973:1389:26)
+    at MyApp (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js?ts=1769340325973:1837:18)
+    at PathnameContextProviderAdapter (http://localhost:4646/_next/static/chunks/48ebd_next_dist_shared_lib_2dd775c2._.js?ts=1769340325973:5052:43)
+    at PagesDevOverlayErrorBoundary (http://localhost:4646/_next/static/chunks/48ebd_next_dist_6f9203da._.js?ts=1769340325973:1142:9)
+    at PagesDevOverlayBridge (http://localhost:4646/_next/static/chunks/48ebd_next_dist_6f9203da._.js?ts=1769340325973:1919:34)
+    at Container (http://localhost:4646/_next/static/chunks/48ebd_next_dist_client_990bb439._.js?ts=1769340325973:3041:1)
+    at AppContainer (http://localhost:4646/_next/static/chunks/48ebd_next_dist_client_990bb439._.js?ts=1769340325973:3140:25)
+    at Root (http://localhost:4646/_next/static/chunks/48ebd_next_dist_client_990bb439._.js?ts=1769340325973:3348:17)
+[03:48:32.898] Browser ERROR   uncaughtError: Error: Rendered more hooks than during the previous render.
+[03:48:32.898] Browser ERROR   uncaughtError: Error: Rendered more hooks than during the previous render.
+[03:48:32.898] Browser ERROR   The above error occurred in the <HomePage> component:
+
+    at HomePage (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__d72a2ba9._.js?ts=1769340325973:1476:204)
+    at CustomerStoreProvider (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js?ts=1769340325973:1507:34)
+    at AuthProvider (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js?ts=1769340325973:728:25)
+    at ToastProvider (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js?ts=1769340325973:1389:26)
+    at MyApp (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js?ts=1769340325973:1837:18)
+    at PathnameContextProviderAdapter (http://localhost:4646/_next/static/chunks/48ebd_next_dist_shared_lib_2dd775c2._.js?ts=1769340325973:5052:43)
+    at PagesDevOverlayErrorBoundary (http://localhost:4646/_next/static/chunks/48ebd_next_dist_6f9203da._.js?ts=1769340325973:1142:9)
+    at PagesDevOverlayBridge (http://localhost:4646/_next/static/chunks/48ebd_next_dist_6f9203da._.js?ts=1769340325973:1919:34)
+    at Container (http://localhost:4646/_next/static/chunks/48ebd_next_dist_client_990bb439._.js?ts=1769340325973:3041:1)
+    at AppContainer (http://localhost:4646/_next/static/chunks/48ebd_next_dist_client_990bb439._.js?ts=1769340325973:3140:25)
+    at Root (http://localhost:4646/_next/static/chunks/48ebd_next_dist_client_990bb439._.js?ts=1769340325973:3348:17)
+
+React will try to recreate this component tree from scratch using the error boundary you provided, PagesDevOverlayErrorBoundary.
+[03:48:46.091] Browser ERROR   Warning: React has detected a change in the order of Hooks called by %s. This will lead to bugs and errors if not fixed. For more information, read the Rules of Hooks: https://reactjs.org/link/rules-of-hooks
+
+   Previous render            Next render
+   ------------------------------------------------------
+%s   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+%s HomePage 1. useContext                 useContext
+2. useContext                 useContext
+3. useContext                 useContext
+4. useContext                 useContext
+5. useState                   useState
+6. useState                   useState
+7. useState                   useState
+8. useEffect                  useEffect
+9. useEffect                  useEffect
+10. useEffect                 useEffect
+11. useEffect                 useEffect
+12. undefined                 useState
+ 
+    at HomePage (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__d72a2ba9._.js?ts=1769340339224:1476:204)
+    at CustomerStoreProvider (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js?ts=1769340339224:1507:34)
+    at AuthProvider (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js?ts=1769340339224:728:25)
+    at ToastProvider (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js?ts=1769340339224:1389:26)
+    at MyApp (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js?ts=1769340339224:1837:18)
+    at PathnameContextProviderAdapter (http://localhost:4646/_next/static/chunks/48ebd_next_dist_shared_lib_2dd775c2._.js?ts=1769340339224:5052:43)
+    at PagesDevOverlayErrorBoundary (http://localhost:4646/_next/static/chunks/48ebd_next_dist_6f9203da._.js?ts=1769340339224:1142:9)
+    at PagesDevOverlayBridge (http://localhost:4646/_next/static/chunks/48ebd_next_dist_6f9203da._.js?ts=1769340339224:1919:34)
+    at Container (http://localhost:4646/_next/static/chunks/48ebd_next_dist_client_990bb439._.js?ts=1769340339224:3041:1)
+    at AppContainer (http://localhost:4646/_next/static/chunks/48ebd_next_dist_client_990bb439._.js?ts=1769340339224:3140:25)
+    at Root (http://localhost:4646/_next/static/chunks/48ebd_next_dist_client_990bb439._.js?ts=1769340339224:3348:17)
+[03:48:46.091] Browser ERROR   uncaughtError: Error: Rendered more hooks than during the previous render.
+[03:48:46.091] Browser ERROR   uncaughtError: Error: Rendered more hooks than during the previous render.
+[03:48:46.091] Browser ERROR   The above error occurred in the <HomePage> component:
+
+    at HomePage (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__d72a2ba9._.js?ts=1769340339224:1476:204)
+    at CustomerStoreProvider (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js?ts=1769340339224:1507:34)
+    at AuthProvider (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js?ts=1769340339224:728:25)
+    at ToastProvider (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js?ts=1769340339224:1389:26)
+    at MyApp (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js?ts=1769340339224:1837:18)
+    at PathnameContextProviderAdapter (http://localhost:4646/_next/static/chunks/48ebd_next_dist_shared_lib_2dd775c2._.js?ts=1769340339224:5052:43)
+    at PagesDevOverlayErrorBoundary (http://localhost:4646/_next/static/chunks/48ebd_next_dist_6f9203da._.js?ts=1769340339224:1142:9)
+    at PagesDevOverlayBridge (http://localhost:4646/_next/static/chunks/48ebd_next_dist_6f9203da._.js?ts=1769340339224:1919:34)
+    at Container (http://localhost:4646/_next/static/chunks/48ebd_next_dist_client_990bb439._.js?ts=1769340339224:3041:1)
+    at AppContainer (http://localhost:4646/_next/static/chunks/48ebd_next_dist_client_990bb439._.js?ts=1769340339224:3140:25)
+    at Root (http://localhost:4646/_next/static/chunks/48ebd_next_dist_client_990bb439._.js?ts=1769340339224:3348:17)
+
+React will try to recreate this component tree from scratch using the error boundary you provided, PagesDevOverlayErrorBoundary.
+[03:49:02.544] Browser ERROR   Warning: React has detected a change in the order of Hooks called by %s. This will lead to bugs and errors if not fixed. For more information, read the Rules of Hooks: https://reactjs.org/link/rules-of-hooks
+
+   Previous render            Next render
+   ------------------------------------------------------
+%s   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+%s HomePage 1. useContext                 useContext
+2. useContext                 useContext
+3. useContext                 useContext
+4. useContext                 useContext
+5. useState                   useState
+6. useState                   useState
+7. useState                   useState
+8. useEffect                  useEffect
+9. useEffect                  useEffect
+10. useEffect                 useEffect
+11. useEffect                 useEffect
+12. undefined                 useState
+ 
+    at HomePage (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__d72a2ba9._.js?ts=1769340355701:1476:204)
+    at CustomerStoreProvider (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js?ts=1769340355701:1507:34)
+    at AuthProvider (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js?ts=1769340355701:728:25)
+    at ToastProvider (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js?ts=1769340355701:1389:26)
+    at MyApp (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js?ts=1769340355701:1837:18)
+    at PathnameContextProviderAdapter (http://localhost:4646/_next/static/chunks/48ebd_next_dist_shared_lib_2dd775c2._.js?ts=1769340355701:5052:43)
+    at PagesDevOverlayErrorBoundary (http://localhost:4646/_next/static/chunks/48ebd_next_dist_6f9203da._.js?ts=1769340355701:1142:9)
+    at PagesDevOverlayBridge (http://localhost:4646/_next/static/chunks/48ebd_next_dist_6f9203da._.js?ts=1769340355701:1919:34)
+    at Container (http://localhost:4646/_next/static/chunks/48ebd_next_dist_client_990bb439._.js?ts=1769340355701:3041:1)
+    at AppContainer (http://localhost:4646/_next/static/chunks/48ebd_next_dist_client_990bb439._.js?ts=1769340355701:3140:25)
+    at Root (http://localhost:4646/_next/static/chunks/48ebd_next_dist_client_990bb439._.js?ts=1769340355701:3348:17)
+[03:49:02.544] Browser ERROR   uncaughtError: Error: Rendered more hooks than during the previous render.
+[03:49:02.544] Browser ERROR   uncaughtError: Error: Rendered more hooks than during the previous render.
+[03:49:02.544] Browser ERROR   The above error occurred in the <HomePage> component:
+
+    at HomePage (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__d72a2ba9._.js?ts=1769340355701:1476:204)
+    at CustomerStoreProvider (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js?ts=1769340355701:1507:34)
+    at AuthProvider (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js?ts=1769340355701:728:25)
+    at ToastProvider (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js?ts=1769340355701:1389:26)
+    at MyApp (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js?ts=1769340355701:1837:18)
+    at PathnameContextProviderAdapter (http://localhost:4646/_next/static/chunks/48ebd_next_dist_shared_lib_2dd775c2._.js?ts=1769340355701:5052:43)
+    at PagesDevOverlayErrorBoundary (http://localhost:4646/_next/static/chunks/48ebd_next_dist_6f9203da._.js?ts=1769340355701:1142:9)
+    at PagesDevOverlayBridge (http://localhost:4646/_next/static/chunks/48ebd_next_dist_6f9203da._.js?ts=1769340355701:1919:34)
+    at Container (http://localhost:4646/_next/static/chunks/48ebd_next_dist_client_990bb439._.js?ts=1769340355701:3041:1)
+    at AppContainer (http://localhost:4646/_next/static/chunks/48ebd_next_dist_client_990bb439._.js?ts=1769340355701:3140:25)
+    at Root (http://localhost:4646/_next/static/chunks/48ebd_next_dist_client_990bb439._.js?ts=1769340355701:3348:17)
+
+React will try to recreate this component tree from scratch using the error boundary you provided, PagesDevOverlayErrorBoundary.
+[03:49:05.920] Browser ERROR   Warning: React has detected a change in the order of Hooks called by %s. This will lead to bugs and errors if not fixed. For more information, read the Rules of Hooks: https://reactjs.org/link/rules-of-hooks
+
+   Previous render            Next render
+   ------------------------------------------------------
+%s   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+%s HomePage 1. useContext                 useContext
+2. useContext                 useContext
+3. useContext                 useContext
+4. useContext                 useContext
+5. useState                   useState
+6. useState                   useState
+7. useState                   useState
+8. useEffect                  useEffect
+9. useEffect                  useEffect
+10. useEffect                 useEffect
+11. useEffect                 useEffect
+12. undefined                 useState
+ 
+    at HomePage (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__d72a2ba9._.js?ts=1769340359036:1476:204)
+    at CustomerStoreProvider (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js?ts=1769340359036:1507:34)
+    at AuthProvider (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js?ts=1769340359036:728:25)
+    at ToastProvider (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js?ts=1769340359036:1389:26)
+    at MyApp (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js?ts=1769340359036:1837:18)
+    at PathnameContextProviderAdapter (http://localhost:4646/_next/static/chunks/48ebd_next_dist_shared_lib_2dd775c2._.js?ts=1769340359036:5052:43)
+    at PagesDevOverlayErrorBoundary (http://localhost:4646/_next/static/chunks/48ebd_next_dist_6f9203da._.js?ts=1769340359036:1142:9)
+    at PagesDevOverlayBridge (http://localhost:4646/_next/static/chunks/48ebd_next_dist_6f9203da._.js?ts=1769340359036:1919:34)
+    at Container (http://localhost:4646/_next/static/chunks/48ebd_next_dist_client_990bb439._.js?ts=1769340359036:3041:1)
+    at AppContainer (http://localhost:4646/_next/static/chunks/48ebd_next_dist_client_990bb439._.js?ts=1769340359036:3140:25)
+    at Root (http://localhost:4646/_next/static/chunks/48ebd_next_dist_client_990bb439._.js?ts=1769340359036:3348:17)
+[03:49:05.920] Browser ERROR   uncaughtError: Error: Rendered more hooks than during the previous render.
+[03:49:05.920] Browser ERROR   uncaughtError: Error: Rendered more hooks than during the previous render.
+[03:49:05.920] Browser ERROR   The above error occurred in the <HomePage> component:
+
+    at HomePage (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__d72a2ba9._.js?ts=1769340359036:1476:204)
+    at CustomerStoreProvider (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js?ts=1769340359036:1507:34)
+    at AuthProvider (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js?ts=1769340359036:728:25)
+    at ToastProvider (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js?ts=1769340359036:1389:26)
+    at MyApp (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js?ts=1769340359036:1837:18)
+    at PathnameContextProviderAdapter (http://localhost:4646/_next/static/chunks/48ebd_next_dist_shared_lib_2dd775c2._.js?ts=1769340359036:5052:43)
+    at PagesDevOverlayErrorBoundary (http://localhost:4646/_next/static/chunks/48ebd_next_dist_6f9203da._.js?ts=1769340359036:1142:9)
+    at PagesDevOverlayBridge (http://localhost:4646/_next/static/chunks/48ebd_next_dist_6f9203da._.js?ts=1769340359036:1919:34)
+    at Container (http://localhost:4646/_next/static/chunks/48ebd_next_dist_client_990bb439._.js?ts=1769340359036:3041:1)
+    at AppContainer (http://localhost:4646/_next/static/chunks/48ebd_next_dist_client_990bb439._.js?ts=1769340359036:3140:25)
+    at Root (http://localhost:4646/_next/static/chunks/48ebd_next_dist_client_990bb439._.js?ts=1769340359036:3348:17)
+
+React will try to recreate this component tree from scratch using the error boundary you provided, PagesDevOverlayErrorBoundary.
+[03:49:56.487] Server  LOG      ✓ Compiled in 539ms
+[03:50:20.001] Server  LOG      ✓ Compiled in 38ms
+[03:50:24.304] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[03:54:56.361] Server  LOG      ✓ Compiled in 515ms
+[04:01:18.330] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[04:01:46.140] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[04:24:10.520] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[04:24:33.248] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[04:25:06.908] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[04:25:10.899] Server  LOG      ✓ Compiled in 1259ms
+[04:25:37.241] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[04:26:03.822] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[04:26:13.874] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[04:26:26.498] Server  LOG      ✓ Compiled in 503ms
+[04:26:40.900] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[04:30:25.781] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[04:31:29.267] Server  LOG      ✓ Compiled in 605ms
+[04:39:28.508] Server  LOG      ✓ Compiled in 531ms
+[04:39:32.398] Server  LOG      ✓ Compiled in 37ms
+[04:39:34.957] Server  LOG      ✓ Compiled in 97ms
+[04:47:04.685] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[04:47:08.124] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[04:47:23.439] Server  LOG      ✓ Compiled in 93ms
+[04:47:23.982] Server  LOG      ✓ Compiled in 431ms
+[04:49:29.456] Server  LOG      ✓ Compiled in 170ms
+[04:49:29.532] Browser WARN    Unexpected import of module [project]/Desktop/Community-Cart/frontend/src/utils/authRedirect.utils.ts [client] (ecmascript) from module [project]/Desktop/Community-Cart/frontend/src/context/AuthContext.tsx [client] (ecmascript), which was deleted by an HMR update
+[04:49:29.539] Browser WARN    Unexpected import of module [project]/Desktop/Community-Cart/frontend/src/utils/authRedirect.utils.ts [client] (ecmascript) from module [project]/Desktop/Community-Cart/frontend/src/context/AuthContext.tsx [client] (ecmascript), which was deleted by an HMR update
+[04:49:29.605] Browser WARN    Unexpected import of module [project]/Desktop/Community-Cart/frontend/src/utils/authRedirect.utils.ts [client] (ecmascript) from module [project]/Desktop/Community-Cart/frontend/src/context/AuthContext.tsx [client] (ecmascript), which was deleted by an HMR update
+[04:49:40.770] Server  LOG      ✓ Compiled in 67ms
+[04:49:59.484] Server  LOG      ✓ Compiled in 91ms
+[04:50:01.656] Server  LOG      ✓ Compiled in 133ms
+[04:50:37.075] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[04:51:01.976] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[04:51:34.495] Server  LOG      ✓ Compiled in 570ms
+[04:51:41.331] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[04:51:49.764] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[04:52:36.766] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[04:52:57.090] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[04:53:36.620] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[04:57:14.406] Server  LOG      ✓ Compiled in 430ms
+[04:57:15.893] Server  LOG      ✓ Compiled in 415ms
+[04:57:42.188] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[04:58:05.409] Server  LOG      ✓ Compiled in 75ms
+[04:58:35.729] Browser LOG     [Auth] Signing out, detected role: vendor
+[04:58:35.729] Browser LOG     [Auth] Redirecting to: /login
+[04:58:37.371] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[04:58:42.675] Browser LOG     [Auth] Signing out, detected role: undefined
+[04:58:42.676] Browser LOG     [Auth] Redirecting to: /login
+[04:59:12.758] Server  LOG      ✓ Compiled in 528ms
+[04:59:13.912] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[04:59:28.750] Server  LOG      ✓ Compiled in 62ms
+[04:59:34.037] Server  LOG      ✓ Compiled in 452ms
+[04:59:34.919] Browser ERROR   ./Desktop/Community-Cart/frontend/src/utils/authRedirect.utils.ts:14:34
+Parsing ecmascript source code failed
+  12 |  */
+  13 | export function getLoginRedirectPath(role?: UserRole | string | null): string {
+> 14 |     if (role === 'admin' || role =) {
+     |                                  ^
+  15 |         return '/customer/signin';
+  16 |     }
+  17 |     // vendor, admin, or unknown → /login
+
+Expected ')', got '='
+
+Import traces:
+  Browser:
+    ./Desktop/Community-Cart/frontend/src/utils/authRedirect.utils.ts
+    ./Desktop/Community-Cart/frontend/src/context/AuthContext.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/_app.tsx
+
+  SSR:
+    ./Desktop/Community-Cart/frontend/src/utils/authRedirect.utils.ts
+    ./Desktop/Community-Cart/frontend/src/context/AuthContext.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/_app.tsx
+[04:59:34.919] Browser ERROR   ./Desktop/Community-Cart/frontend/src/utils/authRedirect.utils.ts:14:34
+Parsing ecmascript source code failed
+  12 |  */
+  13 | export function getLoginRedirectPath(role?: UserRole | string | null): string {
+> 14 |     if (role === 'admin' || role =) {
+     |                                  ^
+  15 |         return '/customer/signin';
+  16 |     }
+  17 |     // vendor, admin, or unknown → /login
+
+Expected ')', got '='
+
+Import traces:
+  Browser:
+    ./Desktop/Community-Cart/frontend/src/utils/authRedirect.utils.ts
+    ./Desktop/Community-Cart/frontend/src/context/AuthContext.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/_app.tsx
+
+  SSR:
+    ./Desktop/Community-Cart/frontend/src/utils/authRedirect.utils.ts
+    ./Desktop/Community-Cart/frontend/src/context/AuthContext.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/_app.tsx
+[04:59:36.068] Server  LOG      ✓ Compiled in 77ms
+[04:59:38.234] Server  LOG      ✓ Compiled in 39ms
+[04:59:41.132] Server  LOG      ✓ Compiled in 21ms
+[04:59:45.619] Server  LOG      ✓ Compiled in 35ms
+[04:59:48.517] Server  LOG      ✓ Compiled in 24ms
+[04:59:50.319] Server  LOG      ✓ Compiled in 19ms
+[04:59:57.334] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[05:00:07.161] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[05:00:13.116] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[05:00:16.025] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[05:00:19.748] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[05:01:20.892] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[05:01:31.936] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[05:01:37.925] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
