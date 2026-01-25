@@ -1,6 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 4, "column": 0}, "map": {"version":3,"sources":["file:///C:/Users/vigne/Desktop/Community-Cart/frontend/src/utils/authRedirect.utils.ts"],"sourcesContent":["/**\r\n * Role-aware redirect resolver\r\n * Pure function with no side effects\r\n */\r\n\r\nexport type UserRole = 'customer' | 'vendor' | 'admin';\r\n\r\n/**\r\n * Get the correct login/signin page based on user role\r\n * @param role - User role (optional)\r\n * @returns Redirect path\r\n */\r\nexport function getLoginRedirectPath(role?: UserRole | string | null): string {\r\n    if (role === 'customer') {\r\n        return '/customer/signin';\r\n    }\r\n    // vendor, admin, or unknown → /login\r\n    return '/login';\r\n}\r\n"],"names":[],"mappings":"AAAA;;;CAGC;;;;AASM,SAAS,qBAAqB,IAA+B;IAChE,IAAI,SAAS,YAAY;QACrB,OAAO;IACX;IACA,qCAAqC;IACrC,OAAO;AACX"}}]
-}

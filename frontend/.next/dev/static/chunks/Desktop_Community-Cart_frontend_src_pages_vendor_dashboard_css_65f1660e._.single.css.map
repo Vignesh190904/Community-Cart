@@ -1,6 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 1, "column": 0}, "map": {"version":3,"sources":["turbopack:///[project]/Desktop/Community-Cart/frontend/src/pages/vendor/dashboard.css"],"sourcesContent":[".ven-title {\r\n  font-size: 24px;\r\n  font-weight: 700;\r\n  margin-bottom: 18px;\r\n}\r\n\r\n.ven-section { margin-top: 24px; }\r\n"],"names":[],"mappings":"AAAA;;;;;;AAMA"}}]
-}
