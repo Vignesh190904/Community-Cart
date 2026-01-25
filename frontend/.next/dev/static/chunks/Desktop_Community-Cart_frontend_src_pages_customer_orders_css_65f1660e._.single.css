@@ -9,14 +9,17 @@
 .orders-header {
   background: #fff;
   border-bottom: 1px solid #e5e5e5;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
+  min-height: 60px;
   padding: 16px 20px;
   display: flex;
+  position: relative;
 }
 
-.orders-back-button, .orders-filter-button {
+.orders-back-button {
   cursor: pointer;
+  z-index: 10;
   background: none;
   border: none;
   justify-content: center;
@@ -25,14 +28,17 @@
   height: 40px;
   padding: 0;
   display: flex;
+  position: absolute;
+  left: 16px;
 }
 
-.orders-back-button:active, .orders-filter-button:active {
+.orders-back-button:active {
   opacity: .6;
 }
 
 .orders-title {
   color: #000;
+  text-align: center;
   margin: 0;
   font-size: 20px;
   font-weight: 600;

@@ -20,7 +20,7 @@ interface CustomerStoreState {
   customerId: string | null;
   cart: CartItem[];
   ensureCustomerId: () => Promise<string | null>;
-  addToCart: (product: ProductLite, maxStock?: number) => void;
+  addToCart: (product: ProductLite, maxStock?: number, quantity?: number) => void;
   updateQuantity: (productId: string, quantity: number) => void;
   removeFromCart: (productId: string) => void;
   clearCart: () => void;
@@ -112,7 +112,7 @@ export function CustomerStoreProvider({ children }: { children: React.ReactNode 
 
   // --- ACTIONS ---
 
-  const addToCart = async (product: ProductLite, maxStock?: number) => {
+  const addToCart = async (product: ProductLite, maxStock?: number, quantity: number = 1) => {
     const token = getToken();
 
     // 1. Optimistic Update (for speed)
@@ -133,7 +133,7 @@ export function CustomerStoreProvider({ children }: { children: React.ReactNode 
           },
           body: JSON.stringify({
             productId: product._id,
-            quantity: 1
+            quantity: quantity
           })
         });
 
@@ -153,9 +153,9 @@ export function CustomerStoreProvider({ children }: { children: React.ReactNode 
         const existing = prev.find(i => i.product._id === product._id);
         // Simplified stock check for guest
         if (existing) {
-          return prev.map(i => i.product._id === product._id ? { ...i, quantity: i.quantity + 1 } : i);
+          return prev.map(i => i.product._id === product._id ? { ...i, quantity: i.quantity + quantity } : i);
         }
-        return [...prev, { product, quantity: 1 }];
+        return [...prev, { product, quantity: quantity }];
       });
     }
     setIsLoading(false);

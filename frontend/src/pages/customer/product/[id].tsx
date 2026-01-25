@@ -101,9 +101,7 @@ export default function ProductDetailPage() {
 
     return (
         <CustomerLayout disablePadding={true}>
-            <style jsx global>{`
-        @import url('/customer/assets/css/product-detail.css'); 
-      `}</style>
+
 
             <div className="product-detail-page">
                 {/* Header (Fixed) */}

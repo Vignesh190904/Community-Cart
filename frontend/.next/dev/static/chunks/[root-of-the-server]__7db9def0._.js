@@ -496,40 +496,6 @@ async function apiCall(endpoint, options = {}) {
                 ...options.headers
             }
         });
-        // GLOBAL 401 HANDLER: Force logout on authentication failure
-        if (response.status === 401) {
-            if ("TURBOPACK compile-time truthy", 1) {
-                // Read role from stored user data
-                let userRole = null;
-                try {
-                    const storedUser = localStorage.getItem('auth_user');
-                    if (storedUser) {
-                        const user = JSON.parse(storedUser);
-                        userRole = user.role;
-                    }
-                } catch  {
-                // Ignore parse errors
-                }
-                // Clear all auth data BEFORE redirect
-                localStorage.removeItem('auth_token');
-                localStorage.removeItem('auth_user');
-                // ONLY redirect if auth is ready (prevents redirect during initial load)
-                const authReady = window.__AUTH_READY__ === true;
-                if (authReady) {
-                    // Import redirect resolver dynamically to avoid circular deps
-                    const { getLoginRedirectPath } = await __turbopack_context__.A("[project]/Desktop/Community-Cart/frontend/src/utils/authRedirect.utils.ts [client] (ecmascript, async loader)");
-                    const redirectPath = getLoginRedirectPath(userRole);
-                    // Redirect exactly once (prevent infinite loops)
-                    if (!window.location.pathname.includes('/signin') && !window.location.pathname.includes('/signup') && !window.location.pathname.includes('/login')) {
-                        window.location.href = redirectPath;
-                    }
-                }
-            }
-            return {
-                error: 'Session expired. Please login again.',
-                errorCode: 'UNAUTHORIZED'
-            };
-        }
         const data = await response.json();
         if (!response.ok) {
             return {

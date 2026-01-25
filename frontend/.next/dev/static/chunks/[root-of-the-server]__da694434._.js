@@ -951,7 +951,7 @@ function CustomerStoreProvider({ children }) {
         cart
     ]);
     // --- ACTIONS ---
-    const addToCart = async (product, maxStock)=>{
+    const addToCart = async (product, maxStock, quantity = 1)=>{
         const token = getToken();
         // 1. Optimistic Update (for speed)
         const prevCart = [
@@ -971,7 +971,7 @@ function CustomerStoreProvider({ children }) {
                     },
                     body: JSON.stringify({
                         productId: product._id,
-                        quantity: 1
+                        quantity: quantity
                     })
                 });
                 if (res.ok) {
@@ -992,14 +992,14 @@ function CustomerStoreProvider({ children }) {
                 if (existing) {
                     return prev.map((i)=>i.product._id === product._id ? {
                             ...i,
-                            quantity: i.quantity + 1
+                            quantity: i.quantity + quantity
                         } : i);
                 }
                 return [
                     ...prev,
                     {
                         product,
-                        quantity: 1
+                        quantity: quantity
                     }
                 ];
             });

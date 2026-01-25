@@ -12,6 +12,8 @@ interface Product {
     description?: string;
     price: number;
     mrp?: number;
+    quantity?: number;
+    unit?: string;
     category?: string;
     image?: string;
     isAvailable: boolean;
@@ -313,7 +315,7 @@ export default function CategoryPage() {
                                                 </button>
                                             </div>
 
-                                            <div className="product-image-wrapper">
+                                            <div className="product-image-wrapper" onClick={() => router.push(`/customer/product-detail?id=${product._id}`)}>
                                                 <img
                                                     src={product.image || '/customer/assets/icons/missing.svg'}
                                                     alt={product.name}
@@ -321,11 +323,23 @@ export default function CategoryPage() {
                                                 />
                                             </div>
 
-                                            <div className="product-card-body">
+                                            <div className="product-card-body" onClick={() => router.push(`/customer/product-detail?id=${product._id}`)}>
                                                 <h4 className="product-name">{product.name}</h4>
-                                                <p className="product-qty-label">{product.category || 'Product'}</p>
+                                                <p className="product-qty-label">
+                                                    {product.quantity ? `${product.quantity} ${product.unit || ''}` : (product.category || 'Product')}
+                                                </p>
                                                 <div className="product-price-wrapper">
                                                     <span className="product-final-price">₹{product.price.toFixed(2)}</span>
+                                                    {hasDiscount && (
+                                                        <span className="product-original-price" style={{
+                                                            textDecoration: 'line-through',
+                                                            color: '#999',
+                                                            fontSize: '0.85em',
+                                                            marginLeft: '0.5rem'
+                                                        }}>
+                                                            ₹{product.mrp!.toFixed(2)}
+                                                        </span>
+                                                    )}
                                                 </div>
                                             </div>
 

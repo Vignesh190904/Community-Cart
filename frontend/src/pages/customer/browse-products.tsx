@@ -9,6 +9,10 @@ interface Product {
     _id: string;
     name: string;
     price: number;
+    mrp?: number;
+    quantity?: number;
+    unit?: string;
+    category?: string;
     image?: string;
     vendor?: { name?: string };
     isAvailable?: boolean;
@@ -186,15 +190,19 @@ export default function BrowseProducts() {
                     <div className="products-grid">
                         {filteredProducts.map((product, index) => {
                             const qtyInCart = cartMap.get(product._id) || 0;
-                            const isEven = index % 2 === 0;
 
-                            const discount = isEven ? '-16%' : null;
-                            const isNew = !isEven;
+                            // Calculate discount if MRP exists and is higher than price
+                            const hasDiscount = product.mrp && product.mrp > product.price;
+                            const discountPercent = hasDiscount
+                                ? Math.round(((product.mrp! - product.price) / product.mrp!) * 100)
+                                : 0;
+
+                            const isNew = false; // logic for NEW tag can be added later
 
                             return (
                                 <div key={product._id} className="product-card">
                                     <div className="product-card-header">
-                                        {discount && <span className="product-badge discount">{discount}</span>}
+                                        {hasDiscount && <span className="product-badge discount">-{discountPercent}%</span>}
                                         {isNew && <span className="product-badge new">NEW</span>}
                                         <button className="product-wishlist-btn" onClick={(e) => { e.stopPropagation(); toggleWishlist(product._id); }}>
                                             <img
@@ -205,7 +213,7 @@ export default function BrowseProducts() {
                                         </button>
                                     </div>
 
-                                    <div className="product-image-wrapper" onClick={() => router.push(`/customer/product/${product._id}`)}>
+                                    <div className="product-image-wrapper" onClick={() => router.push(`/customer/product-detail?id=${product._id}`)}>
                                         <img
                                             src={product.image || '/customer/assets/icons/missing.svg'}
                                             alt={product.name}
@@ -213,11 +221,23 @@ export default function BrowseProducts() {
                                         />
                                     </div>
 
-                                    <div className="product-card-body" onClick={() => router.push(`/customer/product/${product._id}`)}>
+                                    <div className="product-card-body" onClick={() => router.push(`/customer/product-detail?id=${product._id}`)}>
                                         <h4 className="product-name">{product.name}</h4>
-                                        <p className="product-qty-label">Quantity</p>
+                                        <p className="product-qty-label">
+                                            {product.quantity ? `${product.quantity} ${product.unit || ''}` : (product.category || 'Product')}
+                                        </p>
                                         <div className="product-price-wrapper">
                                             <span className="product-final-price">₹{product.price.toFixed(2)}</span>
+                                            {hasDiscount && (
+                                                <span className="product-original-price" style={{
+                                                    textDecoration: 'line-through',
+                                                    color: '#999',
+                                                    fontSize: '0.85em',
+                                                    marginLeft: '0.5rem'
+                                                }}>
+                                                    ₹{product.mrp!.toFixed(2)}
+                                                </span>
+                                            )}
                                         </div>
                                     </div>
 

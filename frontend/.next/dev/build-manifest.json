@@ -57,6 +57,20 @@
       "static/chunks/Desktop_Community-Cart_frontend_src_pages_admin_dashboard_tsx_2da965e7._.js",
       "static/chunks/turbopack-Desktop_Community-Cart_frontend_src_pages_admin_dashboard_tsx_feca6d56._.js"
     ],
+    "/customer/address": [
+      "static/chunks/48ebd_next_dist_compiled_f7b2f49b._.js",
+      "static/chunks/48ebd_next_dist_shared_lib_2dd775c2._.js",
+      "static/chunks/48ebd_next_dist_client_990bb439._.js",
+      "static/chunks/48ebd_next_dist_6f9203da._.js",
+      "static/chunks/48ebd_next_0db3c6c4._.js",
+      "static/chunks/48ebd_react_680f19ad._.js",
+      "static/chunks/48ebd_react-dom_cjs_react-dom_development_b944df1a.js",
+      "static/chunks/48ebd_react-dom_43235666._.js",
+      "static/chunks/48ebd_c0e1799f._.js",
+      "static/chunks/[root-of-the-server]__746db3af._.js",
+      "static/chunks/Desktop_Community-Cart_frontend_src_pages_customer_address_tsx_2da965e7._.js",
+      "static/chunks/88e7d_Community-Cart_frontend_src_pages_customer_address_tsx_ede4e70d._.js"
+    ],
     "/customer/browse-products": [
       "static/chunks/48ebd_next_dist_compiled_f7b2f49b._.js",
       "static/chunks/48ebd_next_dist_shared_lib_2dd775c2._.js",
@@ -98,6 +112,34 @@
       "static/chunks/[root-of-the-server]__ab5f67f9._.js",
       "static/chunks/Desktop_Community-Cart_frontend_src_pages_customer_category_tsx_2da965e7._.js",
       "static/chunks/88e7d_Community-Cart_frontend_src_pages_customer_category_tsx_29023691._.js"
+    ],
+    "/customer/checkout": [
+      "static/chunks/48ebd_next_dist_compiled_f7b2f49b._.js",
+      "static/chunks/48ebd_next_dist_shared_lib_2dd775c2._.js",
+      "static/chunks/48ebd_next_dist_client_990bb439._.js",
+      "static/chunks/48ebd_next_dist_6f9203da._.js",
+      "static/chunks/48ebd_next_0db3c6c4._.js",
+      "static/chunks/48ebd_react_680f19ad._.js",
+      "static/chunks/48ebd_react-dom_cjs_react-dom_development_b944df1a.js",
+      "static/chunks/48ebd_react-dom_43235666._.js",
+      "static/chunks/48ebd_c0e1799f._.js",
+      "static/chunks/[root-of-the-server]__4613dafe._.js",
+      "static/chunks/Desktop_Community-Cart_frontend_src_pages_customer_checkout_tsx_2da965e7._.js",
+      "static/chunks/88e7d_Community-Cart_frontend_src_pages_customer_checkout_tsx_20730b1c._.js"
+    ],
+    "/customer/edit-address": [
+      "static/chunks/48ebd_next_dist_compiled_f7b2f49b._.js",
+      "static/chunks/48ebd_next_dist_shared_lib_2dd775c2._.js",
+      "static/chunks/48ebd_next_dist_client_990bb439._.js",
+      "static/chunks/48ebd_next_dist_6f9203da._.js",
+      "static/chunks/48ebd_next_0db3c6c4._.js",
+      "static/chunks/48ebd_react_680f19ad._.js",
+      "static/chunks/48ebd_react-dom_cjs_react-dom_development_b944df1a.js",
+      "static/chunks/48ebd_react-dom_43235666._.js",
+      "static/chunks/48ebd_c0e1799f._.js",
+      "static/chunks/[root-of-the-server]__53b4004b._.js",
+      "static/chunks/Desktop_Community-Cart_frontend_src_pages_customer_edit-address_tsx_2da965e7._.js",
+      "static/chunks/88e7d_Community-Cart_frontend_src_pages_customer_edit-address_tsx_1a0ec158._.js"
     ],
     "/customer/edit-profile": [
       "static/chunks/48ebd_next_dist_compiled_f7b2f49b._.js",
@@ -151,9 +193,23 @@
       "static/chunks/48ebd_react-dom_cjs_react-dom_development_b944df1a.js",
       "static/chunks/48ebd_react-dom_43235666._.js",
       "static/chunks/48ebd_c0e1799f._.js",
-      "static/chunks/[root-of-the-server]__3e9dcec0._.js",
+      "static/chunks/[root-of-the-server]__8a68cbe5._.js",
       "static/chunks/Desktop_Community-Cart_frontend_src_pages_customer_orders_tsx_2da965e7._.js",
-      "static/chunks/turbopack-Desktop_Community-Cart_frontend_src_pages_customer_orders_tsx_19ec18a7._.js"
+      "static/chunks/turbopack-Desktop_Community-Cart_frontend_src_pages_customer_orders_tsx_49802b34._.js"
+    ],
+    "/customer/product-detail": [
+      "static/chunks/48ebd_next_dist_compiled_f7b2f49b._.js",
+      "static/chunks/48ebd_next_dist_shared_lib_2dd775c2._.js",
+      "static/chunks/48ebd_next_dist_client_990bb439._.js",
+      "static/chunks/48ebd_next_dist_6f9203da._.js",
+      "static/chunks/48ebd_next_0db3c6c4._.js",
+      "static/chunks/48ebd_react_680f19ad._.js",
+      "static/chunks/48ebd_react-dom_cjs_react-dom_development_b944df1a.js",
+      "static/chunks/48ebd_react-dom_43235666._.js",
+      "static/chunks/48ebd_c0e1799f._.js",
+      "static/chunks/[root-of-the-server]__7447062f._.js",
+      "static/chunks/Desktop_Community-Cart_frontend_src_pages_customer_product-detail_tsx_2da965e7._.js",
+      "static/chunks/88e7d_Community-Cart_frontend_src_pages_customer_product-detail_tsx_083bcd92._.js"
     ],
     "/customer/product/[id]": [
       "static/chunks/48ebd_next_dist_compiled_a1885392._.js",
@@ -196,6 +252,34 @@
       "static/chunks/[root-of-the-server]__aa99ac44._.js",
       "static/chunks/Desktop_Community-Cart_frontend_src_pages_customer_signin_tsx_2da965e7._.js",
       "static/chunks/turbopack-Desktop_Community-Cart_frontend_src_pages_customer_signin_tsx_2529390b._.js"
+    ],
+    "/customer/signup": [
+      "static/chunks/48ebd_next_dist_compiled_f7b2f49b._.js",
+      "static/chunks/48ebd_next_dist_shared_lib_34884197._.js",
+      "static/chunks/48ebd_next_dist_client_3b8c5f9d._.js",
+      "static/chunks/48ebd_next_dist_6f9203da._.js",
+      "static/chunks/48ebd_next_router_08090168.js",
+      "static/chunks/48ebd_react_680f19ad._.js",
+      "static/chunks/48ebd_react-dom_cjs_react-dom_development_b944df1a.js",
+      "static/chunks/48ebd_react-dom_43235666._.js",
+      "static/chunks/48ebd_c0e1799f._.js",
+      "static/chunks/[root-of-the-server]__7db9def0._.js",
+      "static/chunks/Desktop_Community-Cart_frontend_src_pages_customer_signup_tsx_2da965e7._.js",
+      "static/chunks/turbopack-Desktop_Community-Cart_frontend_src_pages_customer_signup_tsx_5b4b6068._.js"
+    ],
+    "/customer/verify-otp": [
+      "static/chunks/48ebd_next_dist_compiled_f7b2f49b._.js",
+      "static/chunks/48ebd_next_dist_shared_lib_34884197._.js",
+      "static/chunks/48ebd_next_dist_client_3b8c5f9d._.js",
+      "static/chunks/48ebd_next_dist_6f9203da._.js",
+      "static/chunks/48ebd_next_router_08090168.js",
+      "static/chunks/48ebd_react_680f19ad._.js",
+      "static/chunks/48ebd_react-dom_cjs_react-dom_development_b944df1a.js",
+      "static/chunks/48ebd_react-dom_43235666._.js",
+      "static/chunks/48ebd_c0e1799f._.js",
+      "static/chunks/[root-of-the-server]__b17bb284._.js",
+      "static/chunks/Desktop_Community-Cart_frontend_src_pages_customer_verify-otp_tsx_2da965e7._.js",
+      "static/chunks/88e7d_Community-Cart_frontend_src_pages_customer_verify-otp_tsx_bad27986._.js"
     ],
     "/login": [
       "static/chunks/48ebd_next_dist_compiled_f7b2f49b._.js",

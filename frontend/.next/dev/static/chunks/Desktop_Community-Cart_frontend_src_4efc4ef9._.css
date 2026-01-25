@@ -7949,14 +7949,17 @@ body.splash-active {
 .orders-header {
   background: #fff;
   border-bottom: 1px solid #e5e5e5;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
+  min-height: 60px;
   padding: 16px 20px;
   display: flex;
+  position: relative;
 }
 
-.orders-back-button, .orders-filter-button {
+.orders-back-button {
   cursor: pointer;
+  z-index: 10;
   background: none;
   border: none;
   justify-content: center;
@@ -7965,14 +7968,17 @@ body.splash-active {
   height: 40px;
   padding: 0;
   display: flex;
+  position: absolute;
+  left: 16px;
 }
 
-.orders-back-button:active, .orders-filter-button:active {
+.orders-back-button:active {
   opacity: .6;
 }
 
 .orders-title {
   color: #000;
+  text-align: center;
   margin: 0;
   font-size: 20px;
   font-weight: 600;
@@ -9024,6 +9030,20 @@ body.theme-dark .nav-icon-img {
   width: 100%;
   padding: 20px 40px;
   display: flex;
+  position: relative;
+}
+
+.detail-discount-badge {
+  color: #fff;
+  background-color: #ff5252;
+  border-radius: 4px;
+  padding: 4px 8px;
+  font-size: 14px;
+  font-weight: 600;
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  box-shadow: 0 2px 4px #0000001a;
 }
 
 .detail-image {
@@ -9048,6 +9068,7 @@ body.theme-dark .nav-icon-img {
 
 .detail-name {
   color: var(--text-primary);
+  text-align: left;
   flex: 1;
   margin: 0;
   font-size: 24px;
@@ -9068,11 +9089,25 @@ body.theme-dark .nav-icon-img {
   font-size: 16px;
 }
 
+.detail-price-box {
+  color: var(--text-disabled);
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 8px;
+  display: flex;
+}
+
 .detail-price {
   color: var(--primary);
-  margin-top: 8px;
-  font-size: 20px;
-  font-weight: 600;
+  margin: 0;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.detail-original-price {
+  color: var(--text-disabled);
+  font-size: 16px;
+  font-weight: 400;
 }
 
 .detail-description {

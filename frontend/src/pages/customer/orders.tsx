@@ -2,11 +2,14 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import CustomerLayout from '../../components/customer/CustomerLayout';
 import { useAuth } from '../../context/AuthContext';
+import { useCustomerStore } from '../../context/CustomerStore';
+import { useToast } from '../../components/ui/ToastProvider';
 
 interface OrderItem {
     name: string;
     quantity: number;
     price: number;
+    productId: string;
 }
 
 interface Order {
@@ -24,6 +27,8 @@ const API_BASE = 'http://localhost:5000/api';
 export default function OrdersPage() {
     const router = useRouter();
     const { token, is_authenticated } = useAuth();
+    const { addToCart, clearCart } = useCustomerStore();
+    const { pushToast } = useToast();
     const [orders, setOrders] = useState<Order[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
@@ -59,7 +64,8 @@ export default function OrdersPage() {
                     items: order.items.map((item: any) => ({
                         name: item.name,
                         quantity: item.quantity,
-                        price: item.price
+                        price: item.price,
+                        productId: item.product_id
                     })),
                     totalItems: order.items.reduce((acc: number, item: any) => acc + item.quantity, 0),
                     totalPrice: order.total_amount,
@@ -90,6 +96,78 @@ export default function OrdersPage() {
         setExpandedOrderIndex(expandedOrderIndex === index ? null : index);
     };
 
+    const truncate = (str: string, max: number) => {
+        return str.length > max ? str.substring(0, max) + '...' : str;
+    };
+
+    const handleRepeatOrder = async (order: Order) => {
+        try {
+            // 1. Fetch current products to validate stock
+            const res = await fetch(`${API_BASE}/products`);
+            if (!res.ok) throw new Error('Failed to fetch product data');
+            const allProducts = await res.json();
+
+            // 2. Clear current cart
+            await clearCart();
+
+            // 3. Process items
+            let itemsAdded = 0;
+
+            for (const item of order.items) {
+                const product = allProducts.find((p: any) => p._id === item.productId);
+
+                // Case 1: Product Unavailable
+                if (!product || product.isAvailable === false || (product.stock || 0) <= 0) {
+                    pushToast({
+                        type: 'error',
+                        message: `${truncate(item.name, 15)} not available`
+                    });
+                    continue;
+                }
+
+                // Case 2: Low Stock
+                const stock = product.stock || 0;
+                let quantityToAdd = item.quantity;
+
+                if (item.quantity > stock) {
+                    quantityToAdd = stock;
+                    pushToast({
+                        type: 'warning',
+                        message: `Please check ${truncate(item.name, 15)}`
+                    });
+                }
+
+                // Add to cart
+                await addToCart({
+                    _id: product._id,
+                    name: product.name,
+                    price: product.price,
+                    image: product.image,
+                    vendorName: product.vendor?.name,
+                    stock: product.stock,
+                    category: product.category
+                }, stock, quantityToAdd); // Passing maxStock checks constraints in store if any
+
+                itemsAdded++;
+            }
+
+            // 4. Navigate if items were added
+            if (itemsAdded > 0) {
+                router.push('/customer/checkout');
+            } else {
+                if (order.items.length > 0) {
+                    // All items failed
+                    // Toast handled per item, but maybe a generic one?
+                    // Requirement implies specific toasts, so we are good.
+                }
+            }
+
+        } catch (error) {
+            console.error('Repeat order failed', error);
+            pushToast({ type: 'error', message: 'Failed to repeat order' });
+        }
+    };
+
     if (loading) {
         return (
             <CustomerLayout disablePadding={true}>
@@ -108,9 +186,6 @@ export default function OrdersPage() {
                         <img src="/customer/assets/icons/backward.svg" alt="Back" width={24} height={24} />
                     </button>
                     <h1 className="orders-title">My Order</h1>
-                    <button className="orders-filter-button">
-                        <img src="/customer/assets/icons/filter.svg" alt="Filter" width={24} height={24} />
-                    </button>
                 </div>
 
                 <div className="orders-list">
@@ -163,14 +238,14 @@ export default function OrdersPage() {
                                         {order.items.map((item, itemIndex) => (
                                             <div key={itemIndex} className="order-item">
                                                 <span className="item-name">{item.name} x {item.quantity}</span>
-                                                <span className="item-price">₹{item.price.toFixed(2)}</span>
+                                                <span className="item-price">₹{(item.price * item.quantity).toFixed(2)}</span>
                                             </div>
                                         ))}
                                     </div>
-                                    <div className="order-status-text" style={{ padding: '12px 0 0', fontWeight: 500, textTransform: 'capitalize', color: order.status === 'completed' ? 'green' : order.status === 'cancelled' ? 'red' : 'orange' }}>
-                                        Status: {order.status}
-                                    </div>
-                                    <button className="repeat-order-btn">
+                                    <button
+                                        className="repeat-order-btn"
+                                        onClick={() => handleRepeatOrder(order)}
+                                    >
                                         Repeat Order
                                     </button>
                                 </div>
@@ -179,6 +254,6 @@ export default function OrdersPage() {
                     ))}
                 </div>
             </div>
-        </CustomerLayout>
+        </CustomerLayout >
     );
 }

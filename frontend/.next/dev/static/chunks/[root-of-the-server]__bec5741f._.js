@@ -473,11 +473,11 @@ function triggerUpdate(msg) {
     ()=>getLoginRedirectPath
 ]);
 function getLoginRedirectPath(role) {
-    if (role === 'customer') {
-        return '/customer/signin';
+    if (role === 'admin' || role === 'vendor') {
+        return '/login';
     }
     // vendor, admin, or unknown → /login
-    return '/login';
+    return '/customer/signin';
 }
 if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
     __turbopack_context__.k.registerExports(__turbopack_context__.m, globalThis.$RefreshHelpers$);
@@ -1417,7 +1417,6 @@ __turbopack_context__.s([
     ()=>ProductDetailPage
 ]);
 var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/Community-Cart/frontend/node_modules/react/jsx-dev-runtime.js [client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$styled$2d$jsx$2f$style$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/Community-Cart/frontend/node_modules/styled-jsx/style.js [client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/Community-Cart/frontend/node_modules/react/index.js [client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$next$2f$router$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/Community-Cart/frontend/node_modules/next/router.js [client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$src$2f$context$2f$CustomerStore$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx [client] (ecmascript)");
@@ -1425,7 +1424,6 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart
 var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$src$2f$components$2f$ui$2f$ToastProvider$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/Community-Cart/frontend/src/components/ui/ToastProvider.tsx [client] (ecmascript)");
 ;
 var _s = __turbopack_context__.k.signature();
-;
 ;
 ;
 ;
@@ -1541,239 +1539,228 @@ function ProductDetailPage() {
     if (!product) return null;
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$src$2f$components$2f$customer$2f$CustomerLayout$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__["default"], {
         disablePadding: true,
-        children: [
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$styled$2d$jsx$2f$style$2e$js__$5b$client$5d$__$28$ecmascript$29$__["default"], {
-                id: "e63f28f4cf929ffc",
-                children: '@import "/customer/assets/css/product-detail.css";'
-            }, void 0, false, void 0, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "jsx-e63f28f4cf929ffc" + " " + "product-detail-page",
-                children: [
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("header", {
-                        className: "jsx-e63f28f4cf929ffc" + " " + "product-detail-header",
-                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                            onClick: ()=>router.back(),
-                            className: "jsx-e63f28f4cf929ffc" + " " + "back-btn",
+        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+            className: "product-detail-page",
+            children: [
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("header", {
+                    className: "product-detail-header",
+                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                        className: "back-btn",
+                        onClick: ()=>router.back(),
+                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
+                            src: "/customer/assets/icons/backward.svg",
+                            alt: "Back",
+                            width: 24,
+                            height: 24
+                        }, void 0, false, {
+                            fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/product/[id].tsx",
+                            lineNumber: 110,
+                            columnNumber: 25
+                        }, this)
+                    }, void 0, false, {
+                        fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/product/[id].tsx",
+                        lineNumber: 109,
+                        columnNumber: 21
+                    }, this)
+                }, void 0, false, {
+                    fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/product/[id].tsx",
+                    lineNumber: 108,
+                    columnNumber: 17
+                }, this),
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    className: "product-content-scroll",
+                    children: [
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            className: "detail-image-section",
                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
-                                src: "/customer/assets/icons/backward.svg",
-                                alt: "Back",
-                                width: 24,
-                                height: 24,
-                                className: "jsx-e63f28f4cf929ffc"
+                                src: product.image || '/customer/assets/icons/missing.svg',
+                                alt: product.name,
+                                className: product.image ? 'detail-image' : 'detail-image product-image-missing'
                             }, void 0, false, {
                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/product/[id].tsx",
-                                lineNumber: 112,
+                                lineNumber: 118,
                                 columnNumber: 25
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/product/[id].tsx",
-                            lineNumber: 111,
+                            lineNumber: 117,
                             columnNumber: 21
-                        }, this)
-                    }, void 0, false, {
-                        fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/product/[id].tsx",
-                        lineNumber: 110,
-                        columnNumber: 17
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "jsx-e63f28f4cf929ffc" + " " + "product-content-scroll",
-                        children: [
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "jsx-e63f28f4cf929ffc" + " " + "detail-image-section",
-                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
-                                    src: product.image || '/customer/assets/icons/missing.svg',
-                                    alt: product.name,
-                                    className: "jsx-e63f28f4cf929ffc" + " " + ((product.image ? 'detail-image' : 'detail-image product-image-missing') || "")
-                                }, void 0, false, {
-                                    fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/product/[id].tsx",
-                                    lineNumber: 120,
-                                    columnNumber: 25
-                                }, this)
-                            }, void 0, false, {
-                                fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/product/[id].tsx",
-                                lineNumber: 119,
-                                columnNumber: 21
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "jsx-e63f28f4cf929ffc" + " " + "detail-info-section",
-                                children: [
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "jsx-e63f28f4cf929ffc" + " " + "detail-header-row",
-                                        children: [
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
-                                                className: "jsx-e63f28f4cf929ffc" + " " + "detail-name",
-                                                children: product.name
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            className: "detail-info-section",
+                            children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    className: "detail-header-row",
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
+                                            className: "detail-name",
+                                            children: product.name
+                                        }, void 0, false, {
+                                            fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/product/[id].tsx",
+                                            lineNumber: 128,
+                                            columnNumber: 29
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                            className: "wishlist-toggle-btn",
+                                            onClick: ()=>setIsWishlisted(!isWishlisted),
+                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
+                                                src: isWishlisted ? "/customer/assets/icons/favorite.svg" : "/customer/assets/icons/favorite.svg",
+                                                alt: "Wishlist",
+                                                style: {
+                                                    opacity: isWishlisted ? 1 : 0.5,
+                                                    filter: isWishlisted ? 'none' : 'grayscale(100%)'
+                                                },
+                                                width: 24,
+                                                height: 24
                                             }, void 0, false, {
                                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/product/[id].tsx",
                                                 lineNumber: 130,
-                                                columnNumber: 29
-                                            }, this),
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                                onClick: ()=>setIsWishlisted(!isWishlisted),
-                                                className: "jsx-e63f28f4cf929ffc" + " " + "wishlist-toggle-btn",
-                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
-                                                    src: isWishlisted ? "/customer/assets/icons/favorite.svg" : "/customer/assets/icons/favorite.svg",
-                                                    alt: "Wishlist",
-                                                    style: {
-                                                        opacity: isWishlisted ? 1 : 0.5,
-                                                        filter: isWishlisted ? 'none' : 'grayscale(100%)'
-                                                    },
-                                                    width: 24,
-                                                    height: 24,
-                                                    className: "jsx-e63f28f4cf929ffc"
-                                                }, void 0, false, {
-                                                    fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/product/[id].tsx",
-                                                    lineNumber: 132,
-                                                    columnNumber: 33
-                                                }, this)
-                                            }, void 0, false, {
-                                                fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/product/[id].tsx",
-                                                lineNumber: 131,
-                                                columnNumber: 29
+                                                columnNumber: 33
                                             }, this)
-                                        ]
-                                    }, void 0, true, {
-                                        fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/product/[id].tsx",
-                                        lineNumber: 129,
-                                        columnNumber: 25
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                        className: "jsx-e63f28f4cf929ffc" + " " + "detail-unit",
-                                        children: product.unit || '500 gms'
-                                    }, void 0, false, {
-                                        fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/product/[id].tsx",
-                                        lineNumber: 141,
-                                        columnNumber: 25
-                                    }, this),
-                                    " ",
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                        className: "jsx-e63f28f4cf929ffc" + " " + "detail-price",
-                                        children: [
-                                            "₹",
-                                            product.price.toFixed(2)
-                                        ]
-                                    }, void 0, true, {
-                                        fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/product/[id].tsx",
-                                        lineNumber: 142,
-                                        columnNumber: 25
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "jsx-e63f28f4cf929ffc" + " " + "detail-description",
-                                        children: product.description || `Organic Mountain works as a seller for many organic growers of organic lemons. Organic lemons are easy to spot in your produce aisle. They are just like regular lemons, but they will usually have a few more scars on the outside of the lemon skin. Organic lemons are considered to be the world's finest lemon for juicing`
-                                    }, void 0, false, {
-                                        fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/product/[id].tsx",
-                                        lineNumber: 144,
-                                        columnNumber: 25
-                                    }, this)
-                                ]
-                            }, void 0, true, {
-                                fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/product/[id].tsx",
-                                lineNumber: 128,
-                                columnNumber: 21
-                            }, this)
-                        ]
-                    }, void 0, true, {
-                        fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/product/[id].tsx",
-                        lineNumber: 117,
-                        columnNumber: 17
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("footer", {
-                        className: "jsx-e63f28f4cf929ffc" + " " + "detail-action-bar",
-                        children: [
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "jsx-e63f28f4cf929ffc" + " " + "qty-selector-container",
-                                children: [
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                        onClick: ()=>handleQtyChange(-1),
-                                        className: "jsx-e63f28f4cf929ffc" + " " + "qty-btn-action",
-                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
-                                            src: "/customer/assets/icons/minus.svg",
-                                            alt: "-",
-                                            width: 16,
-                                            height: 16,
-                                            className: "jsx-e63f28f4cf929ffc"
                                         }, void 0, false, {
                                             fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/product/[id].tsx",
-                                            lineNumber: 155,
+                                            lineNumber: 129,
                                             columnNumber: 29
                                         }, this)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/product/[id].tsx",
+                                    lineNumber: 127,
+                                    columnNumber: 25
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                    className: "detail-unit",
+                                    children: product.unit || '500 gms'
+                                }, void 0, false, {
+                                    fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/product/[id].tsx",
+                                    lineNumber: 139,
+                                    columnNumber: 25
+                                }, this),
+                                " ",
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                    className: "detail-price",
+                                    children: [
+                                        "₹",
+                                        product.price.toFixed(2)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/product/[id].tsx",
+                                    lineNumber: 140,
+                                    columnNumber: 25
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    className: "detail-description",
+                                    children: product.description || `Organic Mountain works as a seller for many organic growers of organic lemons. Organic lemons are easy to spot in your produce aisle. They are just like regular lemons, but they will usually have a few more scars on the outside of the lemon skin. Organic lemons are considered to be the world's finest lemon for juicing`
+                                }, void 0, false, {
+                                    fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/product/[id].tsx",
+                                    lineNumber: 142,
+                                    columnNumber: 25
+                                }, this)
+                            ]
+                        }, void 0, true, {
+                            fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/product/[id].tsx",
+                            lineNumber: 126,
+                            columnNumber: 21
+                        }, this)
+                    ]
+                }, void 0, true, {
+                    fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/product/[id].tsx",
+                    lineNumber: 115,
+                    columnNumber: 17
+                }, this),
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("footer", {
+                    className: "detail-action-bar",
+                    children: [
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            className: "qty-selector-container",
+                            children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                    className: "qty-btn-action",
+                                    onClick: ()=>handleQtyChange(-1),
+                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
+                                        src: "/customer/assets/icons/minus.svg",
+                                        alt: "-",
+                                        width: 16,
+                                        height: 16
                                     }, void 0, false, {
                                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/product/[id].tsx",
-                                        lineNumber: 154,
-                                        columnNumber: 25
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                        className: "jsx-e63f28f4cf929ffc" + " " + "qty-value-display",
-                                        children: qty
+                                        lineNumber: 153,
+                                        columnNumber: 29
+                                    }, this)
+                                }, void 0, false, {
+                                    fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/product/[id].tsx",
+                                    lineNumber: 152,
+                                    columnNumber: 25
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                    className: "qty-value-display",
+                                    children: qty
+                                }, void 0, false, {
+                                    fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/product/[id].tsx",
+                                    lineNumber: 155,
+                                    columnNumber: 25
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                    className: "qty-btn-action",
+                                    onClick: ()=>handleQtyChange(1),
+                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
+                                        src: "/customer/assets/icons/plus.svg",
+                                        alt: "+",
+                                        width: 16,
+                                        height: 16
                                     }, void 0, false, {
                                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/product/[id].tsx",
                                         lineNumber: 157,
-                                        columnNumber: 25
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                        onClick: ()=>handleQtyChange(1),
-                                        className: "jsx-e63f28f4cf929ffc" + " " + "qty-btn-action",
-                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
-                                            src: "/customer/assets/icons/plus.svg",
-                                            alt: "+",
-                                            width: 16,
-                                            height: 16,
-                                            className: "jsx-e63f28f4cf929ffc"
-                                        }, void 0, false, {
-                                            fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/product/[id].tsx",
-                                            lineNumber: 159,
-                                            columnNumber: 29
-                                        }, this)
-                                    }, void 0, false, {
-                                        fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/product/[id].tsx",
-                                        lineNumber: 158,
-                                        columnNumber: 25
+                                        columnNumber: 29
                                     }, this)
-                                ]
-                            }, void 0, true, {
-                                fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/product/[id].tsx",
-                                lineNumber: 153,
-                                columnNumber: 21
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                onClick: handleAddToCart,
-                                className: "jsx-e63f28f4cf929ffc" + " " + "add-to-cart-submit-btn",
-                                children: [
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
-                                        src: "/customer/assets/icons/bag.svg",
-                                        alt: "",
-                                        style: {
-                                            filter: 'brightness(0) invert(1)'
-                                        },
-                                        width: 20,
-                                        height: 20,
-                                        className: "jsx-e63f28f4cf929ffc"
-                                    }, void 0, false, {
-                                        fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/product/[id].tsx",
-                                        lineNumber: 165,
-                                        columnNumber: 25
-                                    }, this),
-                                    "Add to cart"
-                                ]
-                            }, void 0, true, {
-                                fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/product/[id].tsx",
-                                lineNumber: 164,
-                                columnNumber: 21
-                            }, this)
-                        ]
-                    }, void 0, true, {
-                        fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/product/[id].tsx",
-                        lineNumber: 151,
-                        columnNumber: 17
-                    }, this)
-                ]
-            }, void 0, true, {
-                fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/product/[id].tsx",
-                lineNumber: 108,
-                columnNumber: 13
-            }, this)
-        ]
-    }, void 0, true, {
+                                }, void 0, false, {
+                                    fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/product/[id].tsx",
+                                    lineNumber: 156,
+                                    columnNumber: 25
+                                }, this)
+                            ]
+                        }, void 0, true, {
+                            fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/product/[id].tsx",
+                            lineNumber: 151,
+                            columnNumber: 21
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                            className: "add-to-cart-submit-btn",
+                            onClick: handleAddToCart,
+                            children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
+                                    src: "/customer/assets/icons/bag.svg",
+                                    alt: "",
+                                    style: {
+                                        filter: 'brightness(0) invert(1)'
+                                    },
+                                    width: 20,
+                                    height: 20
+                                }, void 0, false, {
+                                    fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/product/[id].tsx",
+                                    lineNumber: 163,
+                                    columnNumber: 25
+                                }, this),
+                                "Add to cart"
+                            ]
+                        }, void 0, true, {
+                            fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/product/[id].tsx",
+                            lineNumber: 162,
+                            columnNumber: 21
+                        }, this)
+                    ]
+                }, void 0, true, {
+                    fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/product/[id].tsx",
+                    lineNumber: 149,
+                    columnNumber: 17
+                }, this)
+            ]
+        }, void 0, true, {
+            fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/product/[id].tsx",
+            lineNumber: 106,
+            columnNumber: 13
+        }, this)
+    }, void 0, false, {
         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/product/[id].tsx",
         lineNumber: 103,
         columnNumber: 9

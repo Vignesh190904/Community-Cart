@@ -228,7 +228,7 @@ function EditProfilePage() {
             set_name(user.name ?? '');
             set_email(user.email ?? '');
             set_phone(user.phone ?? '');
-            const profile_pic_url = user.profile_image_url ?? null;
+            const profile_pic_url = user.profile_pic ?? null;
             set_original_profile_pic(profile_pic_url);
             set_preview_profile_pic(profile_pic_url);
         }
@@ -269,7 +269,7 @@ function EditProfilePage() {
                     throw new Error(errorData.message || 'Failed to upload profile picture');
                 }
                 const upload_data = await upload_res.json();
-                new_profile_pic_url = upload_data.profile_image_url;
+                new_profile_pic_url = upload_data.profile_pic;
             }
             // Step 2: Update profile with all changes
             const updates = {};
@@ -297,7 +297,7 @@ function EditProfilePage() {
                 ...user,
                 name,
                 phone,
-                profile_image_url: new_profile_pic_url
+                profile_pic: new_profile_pic_url
             };
             sign_in(updated_user, token);
             pushToast({
@@ -371,7 +371,7 @@ function EditProfilePage() {
             // Update AuthContext
             const updated_user = {
                 ...user,
-                profile_image_url: null
+                profile_pic: null
             };
             sign_in(updated_user, token);
             pushToast({

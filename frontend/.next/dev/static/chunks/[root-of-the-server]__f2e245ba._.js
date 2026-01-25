@@ -559,11 +559,11 @@ if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelper
     ()=>getLoginRedirectPath
 ]);
 function getLoginRedirectPath(role) {
-    if (role === 'customer') {
-        return '/customer/signin';
+    if (role === 'admin' || role === 'vendor') {
+        return '/login';
     }
     // vendor, admin, or unknown → /login
-    return '/login';
+    return '/customer/signin';
 }
 if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
     __turbopack_context__.k.registerExports(__turbopack_context__.m, globalThis.$RefreshHelpers$);
@@ -597,63 +597,30 @@ function AuthProvider({ children }) {
         document.body.classList.add(`theme-${theme}`);
         localStorage.setItem('cc_theme', theme);
     };
-    // Identity-only rehydration from localStorage + Fresh Flush from /me
+    // Identity-only rehydration from localStorage
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useEffect"])({
         "AuthProvider.useEffect": ()=>{
-            const init_auth = {
-                "AuthProvider.useEffect.init_auth": async ()=>{
-                    try {
-                        const storedUser = localStorage.getItem('auth_user');
-                        const storedToken = localStorage.getItem('auth_token');
-                        if (storedUser) {
-                            const parsed = JSON.parse(storedUser);
-                            set_user(parsed);
-                            set_role(parsed.role || null);
-                        }
-                        if (storedToken) {
-                            set_token(storedToken);
-                            // Hydrate fresh data from server
-                            await fetch_me(storedToken);
-                        }
-                    } catch  {
-                    // Ignore corrupt storage
-                    } finally{
-                        set_loading(false);
-                        if ("TURBOPACK compile-time truthy", 1) {
-                            window.__AUTH_READY__ = true;
-                        }
-                    }
+            try {
+                const storedUser = localStorage.getItem('auth_user');
+                const storedToken = localStorage.getItem('auth_token');
+                if (storedUser) {
+                    const parsed = JSON.parse(storedUser);
+                    set_user(parsed);
+                    set_role(parsed.role || null);
                 }
-            }["AuthProvider.useEffect.init_auth"];
-            init_auth();
-        }
-    }["AuthProvider.useEffect"], []);
-    const fetch_me = async (current_token)=>{
-        try {
-            const res = await fetch('http://localhost:5000/api/auth/customer/me', {
-                headers: {
-                    'Authorization': `Bearer ${current_token}`
+                if (storedToken) {
+                    set_token(storedToken);
                 }
-            });
-            if (res.ok) {
-                const data = await res.json();
-                if (data.user) {
-                    const freshUser = {
-                        ...data.user,
-                        role: 'customer'
-                    }; // Ensure role is set
-                    set_user(freshUser);
-                    localStorage.setItem('auth_user', JSON.stringify(freshUser));
-                    // Update theme if needed
-                    if (freshUser.ui_preferences?.theme) {
-                        apply_theme(freshUser.ui_preferences.theme);
-                    }
+            } catch  {
+            // Ignore corrupt storage
+            } finally{
+                set_loading(false);
+                if ("TURBOPACK compile-time truthy", 1) {
+                    window.__AUTH_READY__ = true;
                 }
             }
-        } catch (error) {
-            console.error('Failed to hydrate user:', error);
         }
-    };
+    }["AuthProvider.useEffect"], []);
     const sign_in = (user_data, token)=>{
         localStorage.setItem('auth_token', token);
         localStorage.setItem('auth_user', JSON.stringify(user_data));
@@ -712,7 +679,7 @@ function AuthProvider({ children }) {
         children: children
     }, void 0, false, {
         fileName: "[project]/Desktop/Community-Cart/frontend/src/context/AuthContext.tsx",
-        lineNumber: 173,
+        lineNumber: 140,
         columnNumber: 9
     }, this);
 }
@@ -1201,7 +1168,7 @@ function EditProfilePage() {
                 set_name(user.name ?? '');
                 set_email(user.email ?? '');
                 set_phone(user.phone ?? '');
-                const profile_pic_url = user.profile_image_url ?? null;
+                const profile_pic_url = user.profile_pic ?? null;
                 set_original_profile_pic(profile_pic_url);
                 set_preview_profile_pic(profile_pic_url);
             }
@@ -1243,7 +1210,7 @@ function EditProfilePage() {
                     throw new Error(errorData.message || 'Failed to upload profile picture');
                 }
                 const upload_data = await upload_res.json();
-                new_profile_pic_url = upload_data.profile_image_url;
+                new_profile_pic_url = upload_data.profile_pic;
             }
             // Step 2: Update profile with all changes
             const updates = {};
@@ -1271,7 +1238,7 @@ function EditProfilePage() {
                 ...user,
                 name,
                 phone,
-                profile_image_url: new_profile_pic_url
+                profile_pic: new_profile_pic_url
             };
             sign_in(updated_user, token);
             pushToast({
@@ -1345,7 +1312,7 @@ function EditProfilePage() {
             // Update AuthContext
             const updated_user = {
                 ...user,
-                profile_image_url: null
+                profile_pic: null
             };
             sign_in(updated_user, token);
             pushToast({

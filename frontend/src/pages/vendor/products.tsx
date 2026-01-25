@@ -11,6 +11,8 @@ interface Product {
   price: number;
   mrp?: number;
   category?: string;
+  quantity: number;
+  unit: 'g' | 'kg' | 'ml' | 'l' | 'pcs' | '';
   threshold?: number;
   image?: string;
   isAvailable: boolean;
@@ -24,6 +26,8 @@ const emptyProduct: Partial<Product> = {
   price: 0,
   mrp: 0,
   category: '',
+  quantity: 0,
+  unit: '',
   threshold: 0,
   image: '',
   isAvailable: true,
@@ -49,6 +53,16 @@ export default function VendorProducts() {
   const [minPrice, setMinPrice] = useState<string>('');
   const [maxPrice, setMaxPrice] = useState<string>('');
   const [availabilityFilter, setAvailabilityFilter] = useState<string>('all');
+  const [isUnitDropdownOpen, setIsUnitDropdownOpen] = useState(false);
+  const [errors, setErrors] = useState<Partial<Record<keyof Product, string>>>({});
+
+  const unitOptions = [
+    { value: 'pcs', label: 'Piece' },
+    { value: 'g', label: 'Gram' },
+    { value: 'kg', label: 'Kilogram' },
+    { value: 'ml', label: 'Millilitre' },
+    { value: 'l', label: 'Litre' }
+  ];
 
 
   // Debounce product search
@@ -189,8 +203,39 @@ export default function VendorProducts() {
     }
   };
 
+  const validateForm = () => {
+    const newErrors: Partial<Record<keyof Product, string>> = {};
+    let isValid = true;
+
+    if (!formData.name?.trim()) {
+      newErrors.name = 'Product name is required';
+      isValid = false;
+    }
+    if (!formData.quantity || formData.quantity <= 0) {
+      newErrors.quantity = 'Quantity is required';
+      isValid = false;
+    }
+    if (!formData.unit) {
+      newErrors.unit = 'Unit is required';
+      isValid = false;
+    }
+    if (!formData.price || formData.price < 0) {
+      newErrors.price = 'Valid price is required';
+      isValid = false;
+    }
+
+    setErrors(newErrors);
+    return isValid;
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (!validateForm()) {
+      pushToast({ type: 'error', message: 'Please fill in all required fields' });
+      return;
+    }
+
     try {
       setLoading(true);
       const payload = {
@@ -219,6 +264,15 @@ export default function VendorProducts() {
     setMode('list');
     setFormData(emptyProduct);
     setEditingId(null);
+    setErrors({});
+  };
+
+  const updateField = (field: string, value: any) => {
+    setFormData((prev) => ({ ...prev, [field]: value }));
+    // Clear error when field is updated
+    if (errors[field as keyof Product]) {
+      setErrors(prev => ({ ...prev, [field]: undefined }));
+    }
   };
 
   const handleImageFile = (file: File | null) => {
@@ -231,10 +285,6 @@ export default function VendorProducts() {
       updateField('image', reader.result as string);
     };
     reader.readAsDataURL(file);
-  };
-
-  const updateField = (field: string, value: any) => {
-    setFormData((prev) => ({ ...prev, [field]: value }));
   };
 
   if (authLoading) {
@@ -406,7 +456,12 @@ export default function VendorProducts() {
                           </div>
                         </td>
                         <td>{vendorCategory || product.category || '—'}</td>
-                        <td>₹{product.price.toFixed(2)}</td>
+                        <td>
+                          ₹{product.price.toFixed(2)}
+                          <span style={{ fontSize: '0.8em', color: '#666', marginLeft: '4px' }}>
+                            / {product.quantity} {product.unit}
+                          </span>
+                        </td>
                         <td>
                           <span
                             className={`stock-badge ${product.stock === 0 ? 'out' : product.stock < 10 ? 'low' : 'good'
@@ -455,6 +510,7 @@ export default function VendorProducts() {
     );
   }
 
+
   return (
     <>
       <div className="products-header">
@@ -475,7 +531,114 @@ export default function VendorProducts() {
                 required
                 value={formData.name || ''}
                 onChange={(e) => updateField('name', e.target.value)}
+                className={errors.name ? 'error-input' : ''}
               />
+              {errors.name && <span className="error-text" style={{ color: 'red', fontSize: '12px', marginTop: '4px' }}>{errors.name}</span>}
+            </div>
+            <div className="form-field">
+              <label>Quantity *</label>
+              <div style={{ display: 'flex', gap: '10px', alignItems: 'flex-start' }}>
+                <div style={{ flex: 2, display: 'flex', flexDirection: 'column' }}>
+                  <input
+                    type="number"
+                    required
+                    min="0"
+                    style={{ width: '100%' }}
+                    placeholder="Value (e.g. 500)"
+                    value={formData.quantity || ''}
+                    onChange={(e) => updateField('quantity', Number(e.target.value))}
+                    className={errors.quantity ? 'error-input' : ''}
+                  />
+                  {errors.quantity && <span className="error-text" style={{ color: 'red', fontSize: '12px', marginTop: '4px' }}>{errors.quantity}</span>}
+                </div>
+                <div style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
+                  <div
+                    className="custom-dropdown-container"
+                    style={{ position: 'relative' }}
+                    ref={(node) => {
+                      // Simple click outside handler logic could be added here or via useEffect if needed
+                      // For now, relies on explicit toggling 
+                    }}
+                  >
+                    <div
+                      className={`custom-dropdown-trigger ${isUnitDropdownOpen ? 'open' : ''} ${errors.unit ? 'error-border' : ''}`}
+                      onClick={() => setIsUnitDropdownOpen(!isUnitDropdownOpen)}
+                      style={{
+                        padding: '12px',
+                        border: errors.unit ? '1px solid red' : '1px solid var(--border)',
+                        borderRadius: '6px',
+                        cursor: 'pointer',
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        alignItems: 'center',
+                        backgroundColor: '#fff'
+                      }}
+                    >
+                      <span style={{ color: formData.unit ? 'inherit' : '#999' }}>
+                        {formData.unit ? unitOptions.find(o => o.value === formData.unit)?.label : 'Select Unit'}
+                      </span>
+                      <svg
+                        width="12"
+                        height="12"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        style={{
+                          transform: isUnitDropdownOpen ? 'rotate(180deg)' : 'rotate(0deg)',
+                          transition: 'transform 0.3s ease'
+                        }}
+                      >
+                        <path d="M6 9l6 6 6-6" />
+                      </svg>
+                    </div>
+
+                    {isUnitDropdownOpen && (
+                      <div
+                        className="custom-dropdown-options"
+                        style={{
+                          position: 'absolute',
+                          top: '100%',
+                          left: 0,
+                          right: 0,
+                          marginTop: '4px',
+                          backgroundColor: '#fff',
+                          border: '1px solid var(--border)',
+                          borderRadius: '6px',
+                          zIndex: 10,
+                          boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+                          maxHeight: '200px',
+                          overflowY: 'auto'
+                        }}
+                      >
+                        {unitOptions.map((option) => (
+                          <div
+                            key={option.value}
+                            onClick={() => {
+                              updateField('unit', option.value);
+                              setIsUnitDropdownOpen(false);
+                            }}
+                            style={{
+                              padding: '10px 12px',
+                              cursor: 'pointer',
+                              backgroundColor: formData.unit === option.value ? '#f5f5f5' : 'transparent',
+                              color: formData.unit === option.value ? 'var(--primary-color)' : 'inherit',
+                              transition: 'background-color 0.2s'
+                            }}
+                            onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#f9f9f9'}
+                            onMouseLeave={(e) => e.currentTarget.style.backgroundColor = formData.unit === option.value ? '#f5f5f5' : 'transparent'}
+                          >
+                            {option.label}
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                  {errors.unit && <span className="error-text" style={{ color: 'red', fontSize: '12px', marginTop: '4px' }}>{errors.unit}</span>}
+                </div>
+              </div>
             </div>
             <div className="form-field">
               <label>Price (₹) *</label>
@@ -486,7 +649,9 @@ export default function VendorProducts() {
                 step="0.01"
                 value={formData.price || ''}
                 onChange={(e) => updateField('price', Number(e.target.value))}
+                className={errors.price ? 'error-input' : ''}
               />
+              {errors.price && <span className="error-text" style={{ color: 'red', fontSize: '12px', marginTop: '4px' }}>{errors.price}</span>}
             </div>
             <div className="form-field">
               <label>MRP (₹)</label>

@@ -201,6 +201,10 @@ var __TURBOPACK__imported__module__$5b$externals$5d2f$react__$5b$external$5d$__$
 var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$next$2f$router$2e$js__$5b$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/Community-Cart/frontend/node_modules/next/router.js [ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$src$2f$components$2f$customer$2f$CustomerLayout$2e$tsx__$5b$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/Community-Cart/frontend/src/components/customer/CustomerLayout.tsx [ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$src$2f$context$2f$AuthContext$2e$tsx__$5b$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/Community-Cart/frontend/src/context/AuthContext.tsx [ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$src$2f$context$2f$CustomerStore$2e$tsx__$5b$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx [ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$src$2f$components$2f$ui$2f$ToastProvider$2e$tsx__$5b$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/Community-Cart/frontend/src/components/ui/ToastProvider.tsx [ssr] (ecmascript)");
+;
+;
 ;
 ;
 ;
@@ -210,6 +214,8 @@ const API_BASE = 'http://localhost:5000/api';
 function OrdersPage() {
     const router = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$next$2f$router$2e$js__$5b$ssr$5d$__$28$ecmascript$29$__["useRouter"])();
     const { token, is_authenticated } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$src$2f$context$2f$AuthContext$2e$tsx__$5b$ssr$5d$__$28$ecmascript$29$__["useAuth"])();
+    const { addToCart, clearCart } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$src$2f$context$2f$CustomerStore$2e$tsx__$5b$ssr$5d$__$28$ecmascript$29$__["useCustomerStore"])();
+    const { pushToast } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$src$2f$components$2f$ui$2f$ToastProvider$2e$tsx__$5b$ssr$5d$__$28$ecmascript$29$__["useToast"])();
     const [orders, setOrders] = (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react__$5b$external$5d$__$28$react$2c$__cjs$29$__["useState"])([]);
     const [loading, setLoading] = (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react__$5b$external$5d$__$28$react$2c$__cjs$29$__["useState"])(true);
     const [error, setError] = (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react__$5b$external$5d$__$28$react$2c$__cjs$29$__["useState"])('');
@@ -239,7 +245,8 @@ function OrdersPage() {
                         items: order.items.map((item)=>({
                                 name: item.name,
                                 quantity: item.quantity,
-                                price: item.price
+                                price: item.price,
+                                productId: item.product_id
                             })),
                         totalItems: order.items.reduce((acc, item)=>acc + item.quantity, 0),
                         totalPrice: order.total_amount,
@@ -270,6 +277,69 @@ function OrdersPage() {
     const toggleOrder = (index)=>{
         setExpandedOrderIndex(expandedOrderIndex === index ? null : index);
     };
+    const truncate = (str, max)=>{
+        return str.length > max ? str.substring(0, max) + '...' : str;
+    };
+    const handleRepeatOrder = async (order)=>{
+        try {
+            // 1. Fetch current products to validate stock
+            const res = await fetch(`${API_BASE}/products`);
+            if (!res.ok) throw new Error('Failed to fetch product data');
+            const allProducts = await res.json();
+            // 2. Clear current cart
+            await clearCart();
+            // 3. Process items
+            let itemsAdded = 0;
+            for (const item of order.items){
+                const product = allProducts.find((p)=>p._id === item.productId);
+                // Case 1: Product Unavailable
+                if (!product || product.isAvailable === false || (product.stock || 0) <= 0) {
+                    pushToast({
+                        type: 'error',
+                        message: `${truncate(item.name, 15)} not available`
+                    });
+                    continue;
+                }
+                // Case 2: Low Stock
+                const stock = product.stock || 0;
+                let quantityToAdd = item.quantity;
+                if (item.quantity > stock) {
+                    quantityToAdd = stock;
+                    pushToast({
+                        type: 'warning',
+                        message: `Please check ${truncate(item.name, 15)}`
+                    });
+                }
+                // Add to cart
+                await addToCart({
+                    _id: product._id,
+                    name: product.name,
+                    price: product.price,
+                    image: product.image,
+                    vendorName: product.vendor?.name,
+                    stock: product.stock,
+                    category: product.category
+                }, stock, quantityToAdd); // Passing maxStock checks constraints in store if any
+                itemsAdded++;
+            }
+            // 4. Navigate if items were added
+            if (itemsAdded > 0) {
+                router.push('/customer/checkout');
+            } else {
+                if (order.items.length > 0) {
+                // All items failed
+                // Toast handled per item, but maybe a generic one?
+                // Requirement implies specific toasts, so we are good.
+                }
+            }
+        } catch (error) {
+            console.error('Repeat order failed', error);
+            pushToast({
+                type: 'error',
+                message: 'Failed to repeat order'
+            });
+        }
+    };
     if (loading) {
         return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$src$2f$components$2f$customer$2f$CustomerLayout$2e$tsx__$5b$ssr$5d$__$28$ecmascript$29$__["default"], {
             disablePadding: true,
@@ -283,17 +353,17 @@ function OrdersPage() {
                     children: "Loading your orders..."
                 }, void 0, false, {
                     fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/orders.tsx",
-                    lineNumber: 97,
+                    lineNumber: 175,
                     columnNumber: 21
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/orders.tsx",
-                lineNumber: 96,
+                lineNumber: 174,
                 columnNumber: 17
             }, this)
         }, void 0, false, {
             fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/orders.tsx",
-            lineNumber: 95,
+            lineNumber: 173,
             columnNumber: 13
         }, this);
     }
@@ -315,12 +385,12 @@ function OrdersPage() {
                                 height: 24
                             }, void 0, false, {
                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/orders.tsx",
-                                lineNumber: 108,
+                                lineNumber: 186,
                                 columnNumber: 25
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/orders.tsx",
-                            lineNumber: 107,
+                            lineNumber: 185,
                             columnNumber: 21
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("h1", {
@@ -328,30 +398,13 @@ function OrdersPage() {
                             children: "My Order"
                         }, void 0, false, {
                             fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/orders.tsx",
-                            lineNumber: 110,
-                            columnNumber: 21
-                        }, this),
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("button", {
-                            className: "orders-filter-button",
-                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("img", {
-                                src: "/customer/assets/icons/filter.svg",
-                                alt: "Filter",
-                                width: 24,
-                                height: 24
-                            }, void 0, false, {
-                                fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/orders.tsx",
-                                lineNumber: 112,
-                                columnNumber: 25
-                            }, this)
-                        }, void 0, false, {
-                            fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/orders.tsx",
-                            lineNumber: 111,
+                            lineNumber: 188,
                             columnNumber: 21
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/orders.tsx",
-                    lineNumber: 106,
+                    lineNumber: 184,
                     columnNumber: 17
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
@@ -366,7 +419,7 @@ function OrdersPage() {
                             children: error
                         }, void 0, false, {
                             fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/orders.tsx",
-                            lineNumber: 117,
+                            lineNumber: 192,
                             columnNumber: 31
                         }, this),
                         !error && orders.length === 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
@@ -386,27 +439,27 @@ function OrdersPage() {
                                     }
                                 }, void 0, false, {
                                     fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/orders.tsx",
-                                    lineNumber: 121,
+                                    lineNumber: 196,
                                     columnNumber: 29
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("h3", {
                                     children: "No orders yet"
                                 }, void 0, false, {
                                     fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/orders.tsx",
-                                    lineNumber: 122,
+                                    lineNumber: 197,
                                     columnNumber: 29
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("p", {
                                     children: "Start shopping to see your orders here."
                                 }, void 0, false, {
                                     fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/orders.tsx",
-                                    lineNumber: 123,
+                                    lineNumber: 198,
                                     columnNumber: 29
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/orders.tsx",
-                            lineNumber: 120,
+                            lineNumber: 195,
                             columnNumber: 25
                         }, this),
                         orders.map((order, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
@@ -424,12 +477,12 @@ function OrdersPage() {
                                                     className: "order-icon"
                                                 }, void 0, false, {
                                                     fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/orders.tsx",
-                                                    lineNumber: 134,
+                                                    lineNumber: 209,
                                                     columnNumber: 37
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/orders.tsx",
-                                                lineNumber: 133,
+                                                lineNumber: 208,
                                                 columnNumber: 33
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
@@ -443,7 +496,7 @@ function OrdersPage() {
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/orders.tsx",
-                                                        lineNumber: 137,
+                                                        lineNumber: 212,
                                                         columnNumber: 37
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("p", {
@@ -454,7 +507,7 @@ function OrdersPage() {
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/orders.tsx",
-                                                        lineNumber: 138,
+                                                        lineNumber: 213,
                                                         columnNumber: 37
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
@@ -468,7 +521,7 @@ function OrdersPage() {
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/orders.tsx",
-                                                                lineNumber: 140,
+                                                                lineNumber: 215,
                                                                 columnNumber: 41
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("span", {
@@ -479,13 +532,13 @@ function OrdersPage() {
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/orders.tsx",
-                                                                lineNumber: 141,
+                                                                lineNumber: 216,
                                                                 columnNumber: 41
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/orders.tsx",
-                                                        lineNumber: 139,
+                                                        lineNumber: 214,
                                                         columnNumber: 37
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
@@ -498,13 +551,13 @@ function OrdersPage() {
                                                         children: order.vendorName
                                                     }, void 0, false, {
                                                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/orders.tsx",
-                                                        lineNumber: 143,
+                                                        lineNumber: 218,
                                                         columnNumber: 37
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/orders.tsx",
-                                                lineNumber: 136,
+                                                lineNumber: 211,
                                                 columnNumber: 33
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
@@ -520,18 +573,18 @@ function OrdersPage() {
                                                     ].includes(order.status) ? order.status : 'pending'}`
                                                 }, void 0, false, {
                                                     fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/orders.tsx",
-                                                    lineNumber: 148,
+                                                    lineNumber: 223,
                                                     columnNumber: 37
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/orders.tsx",
-                                                lineNumber: 147,
+                                                lineNumber: 222,
                                                 columnNumber: 33
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/orders.tsx",
-                                        lineNumber: 129,
+                                        lineNumber: 204,
                                         columnNumber: 29
                                     }, this),
                                     expandedOrderIndex === index && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
@@ -551,83 +604,67 @@ function OrdersPage() {
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/orders.tsx",
-                                                                lineNumber: 165,
+                                                                lineNumber: 240,
                                                                 columnNumber: 49
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("span", {
                                                                 className: "item-price",
                                                                 children: [
                                                                     "₹",
-                                                                    item.price.toFixed(2)
+                                                                    (item.price * item.quantity).toFixed(2)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/orders.tsx",
-                                                                lineNumber: 166,
+                                                                lineNumber: 241,
                                                                 columnNumber: 49
                                                             }, this)
                                                         ]
                                                     }, itemIndex, true, {
                                                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/orders.tsx",
-                                                        lineNumber: 164,
+                                                        lineNumber: 239,
                                                         columnNumber: 45
                                                     }, this))
                                             }, void 0, false, {
                                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/orders.tsx",
-                                                lineNumber: 162,
-                                                columnNumber: 37
-                                            }, this),
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
-                                                className: "order-status-text",
-                                                style: {
-                                                    padding: '12px 0 0',
-                                                    fontWeight: 500,
-                                                    textTransform: 'capitalize',
-                                                    color: order.status === 'completed' ? 'green' : order.status === 'cancelled' ? 'red' : 'orange'
-                                                },
-                                                children: [
-                                                    "Status: ",
-                                                    order.status
-                                                ]
-                                            }, void 0, true, {
-                                                fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/orders.tsx",
-                                                lineNumber: 170,
+                                                lineNumber: 237,
                                                 columnNumber: 37
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("button", {
                                                 className: "repeat-order-btn",
+                                                onClick: ()=>handleRepeatOrder(order),
                                                 children: "Repeat Order"
                                             }, void 0, false, {
                                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/orders.tsx",
-                                                lineNumber: 173,
+                                                lineNumber: 245,
                                                 columnNumber: 37
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/orders.tsx",
-                                        lineNumber: 161,
+                                        lineNumber: 236,
                                         columnNumber: 33
                                     }, this)
                                 ]
                             }, index, true, {
                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/orders.tsx",
-                                lineNumber: 128,
+                                lineNumber: 203,
                                 columnNumber: 25
                             }, this))
                     ]
                 }, void 0, true, {
                     fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/orders.tsx",
-                    lineNumber: 116,
+                    lineNumber: 191,
                     columnNumber: 17
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/orders.tsx",
-            lineNumber: 105,
+            lineNumber: 183,
             columnNumber: 13
         }, this)
     }, void 0, false, {
         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/orders.tsx",
-        lineNumber: 104,
+        lineNumber: 182,
         columnNumber: 9
     }, this);
 }

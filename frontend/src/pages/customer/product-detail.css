@@ -56,6 +56,21 @@
     justify-content: center;
     align-items: center;
     background-color: var(--bg-surface);
+    position: relative;
+    /* For absolute badge */
+}
+
+.detail-discount-badge {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background-color: #FF5252;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 600;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .detail-image {
@@ -86,6 +101,7 @@
     color: var(--text-primary);
     margin: 0;
     flex: 1;
+    text-align: left;
 }
 
 .wishlist-toggle-btn {
@@ -103,12 +119,25 @@
     margin: 0;
 }
 
-.detail-price {
-    font-size: 20px;
-    font-weight: 600;
-    color: var(--primary);
-    /* Green usually */
+.detail-price-box {
     margin-top: 8px;
+    display: flex;
+    flex-direction: column;
+    color: var(--text-disabled);
+    gap: 4px;
+}
+
+.detail-price {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--primary);
+    margin: 0;
+}
+
+.detail-original-price {
+    font-size: 16px;
+    color: var(--text-disabled);
+    font-weight: 400;
 }
 
 .detail-description {

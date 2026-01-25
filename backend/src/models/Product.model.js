@@ -19,6 +19,12 @@ const productSchema = new mongoose.Schema(
       trim: true,
     },
 
+    category: {
+      type: String,
+      trim: true,
+    },
+
+    // Price per sellable unit (e.g. per 500g, 1L, 1 pack)
     price: {
       type: Number,
       required: true,
@@ -32,12 +38,28 @@ const productSchema = new mongoose.Schema(
       min: 0,
     },
 
-    category: {
-      type: String,
-      trim: true,
+    // Quantity of a single sellable unit
+    quantity: {
+      type: Number,
+      required: true,
+      min: 0,
     },
 
-    // Stock level at which alerts should be raised
+    // Unit of measurement for quantity
+    unit: {
+      type: String,
+      enum: ["g", "kg", "ml", "l", "pcs"],
+      required: true,
+    },
+
+    // Available stock count (number of such units)
+    stock: {
+      type: Number,
+      default: 0,
+      min: 0,
+    },
+
+    // Stock alert threshold
     threshold: {
       type: Number,
       default: 0,
@@ -46,18 +68,11 @@ const productSchema = new mongoose.Schema(
 
     image: {
       type: String, // URL or relative path
-      required: false,
     },
 
     isAvailable: {
       type: Boolean,
       default: true,
-    },
-
-    stock: {
-      type: Number,
-      default: 0,
-      min: 0,
     },
   },
   {

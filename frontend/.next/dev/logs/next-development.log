@@ -683,3 +683,351 @@ Import traces:
 [05:01:20.892] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
 [05:01:31.936] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
 [05:01:37.925] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[05:02:34.790] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[05:02:45.008] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[05:02:45.008] Browser LOG     [vendor:loadOrders] Fetching orders
+[05:02:45.008] Browser LOG     [vendor:loadOrders] Fetching orders
+[05:02:45.008] Browser LOG     [vendor:loadOrders] fetched orders count= 20
+[05:02:45.008] Browser LOG     [vendor:loadOrders] fetched orders count= 20
+[05:02:45.507] Browser LOG     Vendor Products Debug: {"filtered":2,"myVendorId":"69440dabd39acfb6ef8909e5","totalFetched":4}
+[05:02:45.658] Browser LOG     Vendor Products Debug: {"filtered":2,"myVendorId":"69440dabd39acfb6ef8909e5","totalFetched":4}
+[05:03:00.053] Browser LOG     Vendor Products Debug: {"filtered":2,"myVendorId":"69440dabd39acfb6ef8909e5","totalFetched":4}
+[05:03:03.540] Browser LOG     [vendor:loadOrders] Fetching orders
+[05:03:03.540] Browser LOG     [vendor:loadOrders] Fetching orders
+[05:03:03.540] Browser LOG     [vendor:loadOrders] fetched orders count= 20
+[05:03:03.540] Browser LOG     [vendor:loadOrders] fetched orders count= 20
+[05:03:17.387] Browser LOG     Vendor Products Debug: {"filtered":2,"myVendorId":"69440dabd39acfb6ef8909e5","totalFetched":4}
+[05:03:17.516] Browser LOG     Vendor Products Debug: {"filtered":2,"myVendorId":"69440dabd39acfb6ef8909e5","totalFetched":4}
+[05:03:24.055] Browser LOG     Vendor Products Debug: {"filtered":2,"myVendorId":"69440dabd39acfb6ef8909e5","totalFetched":4}
+[05:03:42.645] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[05:08:01.931] Server  LOG      ✓ Compiled in 966ms
+[05:08:02.653] Server  LOG      ✓ Compiled in 50ms
+[05:08:14.952] Server  LOG      ✓ Compiled in 143ms
+[05:09:22.286] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[05:11:10.565] Server  LOG      ✓ Compiled in 554ms
+[05:16:55.355] Server  LOG      ✓ Compiled in 54ms
+[05:16:58.330] Server  LOG      ✓ Compiled in 85ms
+[05:17:00.298] Server  LOG      ✓ Compiled in 52ms
+[05:18:29.316] Server  LOG      ✓ Compiled in 69ms
+[05:18:30.568] Server  LOG      ✓ Compiled in 32ms
+[05:18:57.028] Server  LOG      ✓ Compiled in 82ms
+[05:19:00.450] Server  LOG      ✓ Compiled in 42ms
+[05:19:00.512] Server  LOG      ✓ Compiled in 36ms
+[05:20:15.839] Server  LOG      ✓ Compiled in 27ms
+[05:20:17.357] Server  LOG      ✓ Compiled in 38ms
+[05:20:18.659] Server  LOG      ✓ Compiled in 27ms
+[05:20:42.385] Server  LOG      ✓ Compiled in 179ms
+[05:21:52.735] Server  LOG      ✓ Compiled in 27ms
+[05:21:58.603] Server  LOG      ✓ Compiled in 23ms
+[05:21:59.905] Server  LOG      ✓ Compiled in 57ms
+[05:23:51.545] Server  LOG      ✓ Compiled in 162ms
+[05:23:54.991] Server  LOG      ✓ Compiled in 39ms
+[05:24:34.550] Server  LOG      ✓ Compiled in 222ms
+[05:24:34.917] Browser ERROR   ./Desktop/Community-Cart/frontend/src/pages/customer/orders.css:21:2
+Parsing CSS source code failed
+  19 |
+  20 | .orders-back-buttonorders-filter-button,
+> 21 | . {
+     |  ^
+  22 |     width: 40px;
+  23 |     height: 40px;
+  24 |     display: flex;
+
+Expected identifier in class selector, got WhiteSpace(" ")
+
+Import trace:
+  Browser:
+    ./Desktop/Community-Cart/frontend/src/pages/customer/orders.css
+    ./Desktop/Community-Cart/frontend/src/pages/_app.tsx
+[05:24:35.857] Server  LOG      ✓ Compiled in 35ms
+[05:24:35.912] Browser ERROR   ./Desktop/Community-Cart/frontend/src/pages/customer/orders.css:21:2
+Parsing CSS source code failed
+  19 |
+  20 | .orders-back-buttonorders-filter-button,
+> 21 | . {
+     |  ^
+  22 |     width: 40px;
+  23 |     height: 40px;
+  24 |     display: flex;
+
+Expected identifier in class selector, got WhiteSpace(" ")
+
+Import trace:
+  Browser:
+    ./Desktop/Community-Cart/frontend/src/pages/customer/orders.css
+    ./Desktop/Community-Cart/frontend/src/pages/_app.tsx
+[05:24:39.859] Server  LOG      ✓ Compiled in 36ms
+[05:24:43.018] Server  LOG      ✓ Compiled in 32ms
+[05:24:54.594] Server  LOG      ✓ Compiled in 25ms
+[05:24:54.910] Browser ERROR   ./Desktop/Community-Cart/frontend/src/pages/customer/orders.css:40:7
+Parsing CSS source code failed
+  38 |     font-weight: 600;
+  39 |     color: #000000;
+> 40 |     ce
+     |       ^
+  41 |     margin: 0;
+  42 | }
+  43 |
+
+Unexpected token Ident("margin")
+
+Import trace:
+  Browser:
+    ./Desktop/Community-Cart/frontend/src/pages/customer/orders.css
+    ./Desktop/Community-Cart/frontend/src/pages/_app.tsx
+[05:24:54.911] Browser ERROR   ./Desktop/Community-Cart/frontend/src/pages/customer/orders.css:40:7
+Parsing CSS source code failed
+  38 |     font-weight: 600;
+  39 |     color: #000000;
+> 40 |     ce
+     |       ^
+  41 |     margin: 0;
+  42 | }
+  43 |
+
+Unexpected token Ident("margin")
+
+Import trace:
+  Browser:
+    ./Desktop/Community-Cart/frontend/src/pages/customer/orders.css
+    ./Desktop/Community-Cart/frontend/src/pages/_app.tsx
+[05:24:58.457] Server  LOG      ✓ Compiled in 30ms
+[05:25:00.058] Server  LOG      ✓ Compiled in 29ms
+[05:25:07.343] Server  LOG      ✓ Compiled in 25ms
+[05:26:06.020] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[05:26:30.956] Server  LOG      ✓ Compiled in 36ms
+[05:28:23.137] Browser LOG     Vendor Products Debug: {"filtered":2,"myVendorId":"69440dabd39acfb6ef8909e5","totalFetched":4}
+[05:28:23.293] Browser LOG     Vendor Products Debug: {"filtered":2,"myVendorId":"69440dabd39acfb6ef8909e5","totalFetched":4}
+[05:28:40.263] Server  LOG      ✓ Compiled in 457ms
+[05:28:45.923] Server  LOG      ✓ Compiled in 64ms
+[05:33:26.543] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[05:33:33.045] Browser LOG     Vendor Products Debug: {"filtered":2,"myVendorId":"69440dabd39acfb6ef8909e5","totalFetched":4}
+[05:33:33.159] Browser LOG     Vendor Products Debug: {"filtered":2,"myVendorId":"69440dabd39acfb6ef8909e5","totalFetched":4}
+[05:33:37.303] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[05:33:39.976] Browser LOG     Vendor Products Debug: {"filtered":2,"myVendorId":"69440dabd39acfb6ef8909e5","totalFetched":4}
+[05:33:40.081] Browser LOG     Vendor Products Debug: {"filtered":2,"myVendorId":"69440dabd39acfb6ef8909e5","totalFetched":4}
+[05:35:57.535] Server  LOG      ✓ Compiled in 458ms
+[05:36:01.213] Server  LOG      ✓ Compiled in 109ms
+[05:36:03.151] Server  LOG      ✓ Compiled in 97ms
+[05:36:38.028] Browser LOG     Vendor Products Debug: {"filtered":2,"myVendorId":"69440dabd39acfb6ef8909e5","totalFetched":4}
+[05:36:38.135] Browser LOG     Vendor Products Debug: {"filtered":2,"myVendorId":"69440dabd39acfb6ef8909e5","totalFetched":4}
+[05:37:09.050] Browser LOG     Vendor Products Debug: {"filtered":2,"myVendorId":"69440dabd39acfb6ef8909e5","totalFetched":4}
+[05:37:16.321] Browser LOG     Vendor Products Debug: {"filtered":2,"myVendorId":"69440dabd39acfb6ef8909e5","totalFetched":4}
+[05:37:16.425] Browser LOG     Vendor Products Debug: {"filtered":2,"myVendorId":"69440dabd39acfb6ef8909e5","totalFetched":4}
+[05:37:21.863] Browser LOG     Vendor Products Debug: {"filtered":2,"myVendorId":"69440dabd39acfb6ef8909e5","totalFetched":4}
+[05:37:36.414] Browser LOG     Vendor Products Debug: {"filtered":2,"myVendorId":"69440dabd39acfb6ef8909e5","totalFetched":4}
+[05:37:36.519] Browser LOG     Vendor Products Debug: {"filtered":2,"myVendorId":"69440dabd39acfb6ef8909e5","totalFetched":4}
+[05:37:45.826] Browser LOG     [vendor:loadOrders] Fetching orders
+[05:37:45.826] Browser LOG     [vendor:loadOrders] Fetching orders
+[05:37:45.826] Browser LOG     [vendor:loadOrders] fetched orders count= 20
+[05:37:45.826] Browser LOG     [vendor:loadOrders] fetched orders count= 20
+[05:37:46.546] Browser LOG     Vendor Products Debug: {"filtered":2,"myVendorId":"69440dabd39acfb6ef8909e5","totalFetched":4}
+[05:37:46.662] Browser LOG     Vendor Products Debug: {"filtered":2,"myVendorId":"69440dabd39acfb6ef8909e5","totalFetched":4}
+[05:37:51.844] Browser LOG     Vendor Products Debug: {"filtered":2,"myVendorId":"69440dabd39acfb6ef8909e5","totalFetched":4}
+[05:40:20.792] Server  LOG      ✓ Compiled in 386ms
+[05:40:21.921] Browser LOG     Vendor Products Debug: {"filtered":2,"myVendorId":"69440dabd39acfb6ef8909e5","totalFetched":4}
+[05:40:33.490] Server  LOG      ✓ Compiled in 190ms
+[05:40:35.384] Server  LOG      ✓ Compiled in 33ms
+[05:40:37.432] Server  LOG      ✓ Compiled in 116ms
+[05:40:39.386] Server  LOG      ✓ Compiled in 22ms
+[05:40:58.251] Server  LOG      ✓ Compiled in 124ms
+[05:41:00.452] Server  LOG      ✓ Compiled in 51ms
+[05:41:28.967] Browser LOG     Vendor Products Debug: {"filtered":2,"myVendorId":"69440dabd39acfb6ef8909e5","totalFetched":4}
+[05:41:45.870] Browser LOG     Vendor Products Debug: {"filtered":2,"myVendorId":"69440dabd39acfb6ef8909e5","totalFetched":4}
+[05:41:45.870] Browser LOG     Vendor Products Debug: {"filtered":2,"myVendorId":"69440dabd39acfb6ef8909e5","totalFetched":4}
+[05:41:51.382] Browser LOG     Vendor Products Debug: {"filtered":2,"myVendorId":"69440dabd39acfb6ef8909e5","totalFetched":4}
+[05:43:47.085] Server  LOG      ✓ Compiled in 401ms
+[05:44:00.560] Server  LOG      ✓ Compiled in 49ms
+[05:44:06.034] Server  LOG      ✓ Compiled in 78ms
+[05:44:18.787] Server  LOG      ✓ Compiled in 42ms
+[05:46:32.754] Browser LOG     Vendor Products Debug: {"filtered":2,"myVendorId":"69440dabd39acfb6ef8909e5","totalFetched":4}
+[05:46:38.048] Browser LOG     Vendor Products Debug: {"filtered":2,"myVendorId":"69440dabd39acfb6ef8909e5","totalFetched":4}
+[05:47:13.911] Server  LOG      ✓ Compiled in 138ms
+[05:47:14.924] Browser LOG     Vendor Products Debug: {"filtered":2,"myVendorId":"69440dabd39acfb6ef8909e5","totalFetched":4}
+[05:47:16.176] Server  LOG      ✓ Compiled in 80ms
+[05:47:16.908] Browser LOG     Vendor Products Debug: {"filtered":2,"myVendorId":"69440dabd39acfb6ef8909e5","totalFetched":4}
+[05:47:21.392] Browser LOG     Vendor Products Debug: {"filtered":2,"myVendorId":"69440dabd39acfb6ef8909e5","totalFetched":4}
+[05:47:21.392] Browser LOG     Vendor Products Debug: {"filtered":2,"myVendorId":"69440dabd39acfb6ef8909e5","totalFetched":4}
+[05:47:34.144] Server  LOG      ✓ Compiled in 41ms
+[05:47:34.910] Browser LOG     Vendor Products Debug: {"filtered":2,"myVendorId":"69440dabd39acfb6ef8909e5","totalFetched":4}
+[05:47:46.143] Server  LOG      ✓ Compiled in 49ms
+[05:47:46.913] Browser LOG     Vendor Products Debug: {"filtered":2,"myVendorId":"69440dabd39acfb6ef8909e5","totalFetched":4}
+[05:48:04.520] Server  LOG      ✓ Compiled in 37ms
+[05:48:04.924] Browser LOG     Vendor Products Debug: {"filtered":2,"myVendorId":"69440dabd39acfb6ef8909e5","totalFetched":4}
+[05:49:26.535] Server  LOG      ✓ Compiled in 56ms
+[05:49:26.916] Browser LOG     Vendor Products Debug: {"filtered":2,"myVendorId":"69440dabd39acfb6ef8909e5","totalFetched":4}
+[05:49:28.507] Server  LOG      ✓ Compiled in 64ms
+[05:49:28.923] Browser LOG     Vendor Products Debug: {"filtered":2,"myVendorId":"69440dabd39acfb6ef8909e5","totalFetched":4}
+[05:49:51.619] Browser LOG     Vendor Products Debug: {"filtered":2,"myVendorId":"69440dabd39acfb6ef8909e5","totalFetched":4}
+[05:49:51.750] Browser LOG     Vendor Products Debug: {"filtered":2,"myVendorId":"69440dabd39acfb6ef8909e5","totalFetched":4}
+[05:51:58.286] Server  LOG      ✓ Compiled in 126ms
+[05:51:58.912] Browser ERROR   uncaughtError: ReferenceError: isUnitDropdownOpen is not defined
+[05:51:58.912] Browser ERROR   uncaughtError: ReferenceError: isUnitDropdownOpen is not defined
+[05:51:58.913] Browser ERROR   The above error occurred in the <VendorProducts> component:
+
+    at VendorProducts (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__7312d07c._.js?id=%255Bproject%255D%252FDesktop%252FCommunity-Cart%252Ffrontend%252Fsrc%252Fpages%252Fvendor%252Fproducts.tsx+%255Bclient%255D+%2528ecmascript%2529:34:221)
+    at main
+    at div
+    at DashboardLayout (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js:923:28)
+    at CustomerStoreProvider (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js:1507:34)
+    at AuthProvider (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js:728:25)
+    at ToastProvider (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js:1389:26)
+    at MyApp (http://localhost:4646/_next/static/chunks/%5Broot-of-the-server%5D__270bdb93._.js:1837:18)
+    at PathnameContextProviderAdapter (http://localhost:4646/_next/static/chunks/48ebd_next_dist_shared_lib_2dd775c2._.js:5052:43)
+    at PagesDevOverlayErrorBoundary (http://localhost:4646/_next/static/chunks/48ebd_next_dist_6f9203da._.js:1142:9)
+    at PagesDevOverlayBridge (http://localhost:4646/_next/static/chunks/48ebd_next_dist_6f9203da._.js:1919:34)
+    at Container (http://localhost:4646/_next/static/chunks/48ebd_next_dist_client_990bb439._.js:3041:1)
+    at AppContainer (http://localhost:4646/_next/static/chunks/48ebd_next_dist_client_990bb439._.js:3140:25)
+    at Root (http://localhost:4646/_next/static/chunks/48ebd_next_dist_client_990bb439._.js:3348:17)
+
+React will try to recreate this component tree from scratch using the error boundary you provided, PagesDevOverlayErrorBoundary.
+[05:52:00.443] Server  LOG      ✓ Compiled in 253ms
+[05:52:00.911] Browser LOG     Vendor Products Debug: {"filtered":2,"myVendorId":"69440dabd39acfb6ef8909e5","totalFetched":4}
+[05:52:00.911] Browser LOG     Vendor Products Debug: {"filtered":2,"myVendorId":"69440dabd39acfb6ef8909e5","totalFetched":4}
+[05:54:03.991] Browser LOG     Vendor Products Debug: {"filtered":2,"myVendorId":"69440dabd39acfb6ef8909e5","totalFetched":4}
+[05:54:12.438] Browser LOG     Vendor Products Debug: {"filtered":2,"myVendorId":"69440dabd39acfb6ef8909e5","totalFetched":4}
+[05:54:43.715] Browser ERROR   Error saving product: {}
+[05:54:49.381] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[05:54:49.381] Browser LOG     [vendor:loadOrders] Fetching orders
+[05:54:49.381] Browser LOG     [vendor:loadOrders] Fetching orders
+[05:54:49.381] Browser LOG     [vendor:loadOrders] fetched orders count= 20
+[05:54:49.381] Browser LOG     [vendor:loadOrders] fetched orders count= 20
+[05:54:50.497] Browser LOG     Vendor Products Debug: {"filtered":2,"myVendorId":"69440dabd39acfb6ef8909e5","totalFetched":4}
+[05:54:50.498] Browser LOG     Vendor Products Debug: {"filtered":2,"myVendorId":"69440dabd39acfb6ef8909e5","totalFetched":4}
+[05:57:15.222] Server  LOG      ✓ Compiled in 289ms
+[05:57:15.910] Browser ERROR   ./Desktop/Community-Cart/frontend/src/pages/vendor/products.tsx:545:9
+Ecmascript file had an error
+  543 |   };
+  544 |
+> 545 |   const handleCancel = () => {
+      |         ^^^^^^^^^^^^
+  546 |     setMode('list');
+  547 |     setFormData(emptyProduct);
+  548 |     setEditingId(null);
+
+the name `handleCancel` is defined multiple times
+[05:57:15.910] Browser ERROR   ./Desktop/Community-Cart/frontend/src/pages/vendor/products.tsx:504:9
+Ecmascript file had an error
+  502 |   };
+  503 |
+> 504 |   const handleSubmit = async (e: React.FormEvent) => {
+      |         ^^^^^^^^^^^^
+  505 |     e.preventDefault();
+  506 |
+  507 |     if (!validateForm()) {
+
+the name `handleSubmit` is defined multiple times
+[05:57:15.910] Browser ERROR   ./Desktop/Community-Cart/frontend/src/pages/vendor/products.tsx:537:9
+Ecmascript file had an error
+  535 |   };
+  536 |
+> 537 |   const updateField = (field: string, value: any) => {
+      |         ^^^^^^^^^^^
+  538 |     setFormData((prev) => ({ ...prev, [field]: value }));
+  539 |     // Clear error when field is updated
+  540 |     if (errors[field as keyof Product]) {
+
+the name `updateField` is defined multiple times
+[06:00:56.466] Server  LOG      ✓ Compiled in 134ms
+[06:00:56.912] Browser ERROR   ./Desktop/Community-Cart/frontend/src/pages/vendor/products.tsx:512:10
+Ecmascript file had an error
+  510 |     );
+  511 |   }
+> 512 |   const [errors, setErrors] = useState<Partial<Record<keyof Product, string>>>({});
+      |          ^^^^^^
+  513 |
+  514 |   // ... (existing helper functions)
+  515 |
+
+the name `errors` is defined multiple times
+[06:00:56.912] Browser ERROR   ./Desktop/Community-Cart/frontend/src/pages/vendor/products.tsx:582:9
+Ecmascript file had an error
+  580 |   };
+  581 |
+> 582 |   const handleCancel = () => {
+      |         ^^^^^^^^^^^^
+  583 |     setMode('list');
+  584 |     setFormData(emptyProduct);
+  585 |     setEditingId(null);
+
+the name `handleCancel` is defined multiple times
+[06:00:56.912] Browser ERROR   ./Desktop/Community-Cart/frontend/src/pages/vendor/products.tsx:541:9
+Ecmascript file had an error
+  539 |   };
+  540 |
+> 541 |   const handleSubmit = async (e: React.FormEvent) => {
+      |         ^^^^^^^^^^^^
+  542 |     e.preventDefault();
+  543 |
+  544 |     if (!validateForm()) {
+
+the name `handleSubmit` is defined multiple times
+[06:00:56.912] Browser ERROR   ./Desktop/Community-Cart/frontend/src/pages/vendor/products.tsx:512:18
+Ecmascript file had an error
+  510 |     );
+  511 |   }
+> 512 |   const [errors, setErrors] = useState<Partial<Record<keyof Product, string>>>({});
+      |                  ^^^^^^^^^
+  513 |
+  514 |   // ... (existing helper functions)
+  515 |
+
+the name `setErrors` is defined multiple times
+[06:00:56.912] Browser ERROR   ./Desktop/Community-Cart/frontend/src/pages/vendor/products.tsx:574:9
+Ecmascript file had an error
+  572 |   };
+  573 |
+> 574 |   const updateField = (field: string, value: any) => {
+      |         ^^^^^^^^^^^
+  575 |     setFormData((prev) => ({ ...prev, [field]: value }));
+  576 |     // Clear error when field is updated
+  577 |     if (errors[field as keyof Product]) {
+
+the name `updateField` is defined multiple times
+[06:00:56.912] Browser ERROR   ./Desktop/Community-Cart/frontend/src/pages/vendor/products.tsx:516:9
+Ecmascript file had an error
+  514 |   // ... (existing helper functions)
+  515 |
+> 516 |   const validateForm = () => {
+      |         ^^^^^^^^^^^^
+  517 |     const newErrors: Partial<Record<keyof Product, string>> = {};
+  518 |     let isValid = true;
+  519 |
+
+the name `validateForm` is defined multiple times
+[06:01:35.756] Server  LOG      ✓ Compiled in 105ms
+[06:01:36.921] Browser LOG     Vendor Products Debug: {"filtered":2,"myVendorId":"69440dabd39acfb6ef8909e5","totalFetched":4}
+[06:01:36.921] Browser LOG     Vendor Products Debug: {"filtered":2,"myVendorId":"69440dabd39acfb6ef8909e5","totalFetched":4}
+[07:09:28.476] Browser LOG     Vendor Products Debug: {"filtered":2,"myVendorId":"69440dabd39acfb6ef8909e5","totalFetched":4}
+[07:09:28.476] Browser LOG     Vendor Products Debug: {"filtered":2,"myVendorId":"69440dabd39acfb6ef8909e5","totalFetched":4}
+[07:10:23.974] Browser LOG     Vendor Products Debug: {"filtered":2,"myVendorId":"69440dabd39acfb6ef8909e5","totalFetched":4}
+[07:10:41.587] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[07:11:44.888] Server  LOG      ✓ Compiled in 121ms
+[07:18:31.444] Server  LOG      ✓ Compiled in 608ms
+[07:18:31.919] Browser LOG     Refreshing page data due to server-side change
+[07:18:31.919] Browser ERROR   ./Desktop/Community-Cart/frontend/src/pages/customer/orders.tsx:247:41
+Parsing ecmascript source code failed
+  245 |                                     </div>
+  246 |                                     <button 
+> 247 |                                         className="repeat-order-btn"
+      |                                         ^^^^^^^^^
+  248 |                                         onClick={() => handleRepeatOrder(order)}
+  249 |                                     >
+  250 |                                         Repeat Order
+
+Expected '</', got 'className'
+[07:19:37.725] Server  LOG      ✓ Compiled in 327ms
+[07:19:37.917] Browser LOG     Refreshing page data due to server-side change
+[07:22:28.011] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[07:22:36.053] Browser LOG     Vendor Products Debug: {"filtered":2,"myVendorId":"69440dabd39acfb6ef8909e5","totalFetched":4}
+[07:22:36.180] Browser LOG     Vendor Products Debug: {"filtered":2,"myVendorId":"69440dabd39acfb6ef8909e5","totalFetched":4}
+[07:24:43.615] Server  LOG      ✓ Compiled in 239ms
+[07:28:02.844] Server  LOG      ✓ Compiled in 497ms
+[07:28:06.412] Server  LOG      ✓ Compiled in 72ms
+[07:30:22.960] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[07:30:32.016] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[07:30:55.405] Server  LOG      ○ Compiling /customer/signup ...
+[07:31:16.994] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[07:31:42.516] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[07:32:07.595] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[07:32:31.159] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior

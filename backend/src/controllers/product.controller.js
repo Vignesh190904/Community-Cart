@@ -2,10 +2,12 @@ import Product from '../models/Product.model.js';
 
 export const createProduct = async (req, res) => {
   try {
+    console.log('[createProduct] body:', req.body);
     const product = new Product(req.body);
     const savedProduct = await product.save();
     res.status(201).json(savedProduct);
   } catch (error) {
+    console.error('[createProduct] error:', error);
     res.status(400).json({ error: error.message });
   }
 };
@@ -34,6 +36,7 @@ export const getProductById = async (req, res) => {
 
 export const updateProduct = async (req, res) => {
   try {
+    console.log('[updateProduct] id:', req.params.id, 'body:', req.body);
     const product = await Product.findByIdAndUpdate(
       req.params.id,
       req.body,
