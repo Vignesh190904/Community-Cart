@@ -54,7 +54,7 @@ export default function CustomerProducts() {
       // Filter only available products
       setProducts(data.filter((p: Product) => p.isAvailable));
     } catch (error: any) {
-      pushToast({ type: 'error', title: 'Error', message: error.message || 'Failed to load products' });
+      pushToast({ type: 'error', message: error.message || 'Failed to load products' });
     } finally {
       setLoading(false);
     }
@@ -86,14 +86,14 @@ export default function CustomerProducts() {
         return newCustomer;
       }
     } catch (error: any) {
-      pushToast({ type: 'error', title: 'Error', message: 'Failed to load customer' });
+      pushToast({ type: 'error', message: 'Failed to load customer' });
       return null;
     }
   };
 
   const placeOrder = async (productId: string, productName: string) => {
     if (!customer) {
-      pushToast({ type: 'error', title: 'Error', message: 'Customer not loaded' });
+      pushToast({ type: 'error', message: 'Customer not loaded' });
       return;
     }
 
@@ -114,12 +114,10 @@ export default function CustomerProducts() {
 
       pushToast({
         type: 'success',
-        title: 'Order Placed',
         message: `Order placed successfully (Order ID: ${order._id}) for ${productName}`,
-        duration: 4000,
       });
     } catch (error: any) {
-      pushToast({ type: 'error', title: 'Order Failed', message: error.message || 'Could not place order' });
+      pushToast({ type: 'error', message: error.message || 'Could not place order' });
     } finally {
       setPlacingId((current) => (current === productId ? null : current));
     }
@@ -152,11 +150,13 @@ export default function CustomerProducts() {
       <div className="products-grid">
         {products.map((product) => (
           <article key={product._id} className="product-card">
-            {product.image && (
-              <div className="product-image-wrapper">
-                <img src={product.image} alt={product.name} className="product-image" />
-              </div>
-            )}
+            <div className="product-image-wrapper">
+              <img
+                src={product.image || '/customer/assets/icons/missing.svg'}
+                alt={product.name}
+                className={product.image ? 'product-image' : 'product-image-missing'}
+              />
+            </div>
             <div className="product-info">
               <h3 className="product-name">{product.name}</h3>
               <p className="product-vendor">{product.vendor?.name || 'Unknown Vendor'}</p>

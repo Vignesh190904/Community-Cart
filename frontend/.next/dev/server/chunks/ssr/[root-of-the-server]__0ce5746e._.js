@@ -650,30 +650,14 @@ function VendorOrderHistory() {
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("td", {
                                             className: "customer-name-cell",
-                                            children: [
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
-                                                    children: order.customerName || '—'
-                                                }, void 0, false, {
-                                                    fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/vendor/ordershistory.tsx",
-                                                    lineNumber: 447,
-                                                    columnNumber: 19
-                                                }, this),
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
-                                                    style: {
-                                                        fontSize: '0.85em',
-                                                        color: 'var(--text-secondary)'
-                                                    },
-                                                    children: [
-                                                        "📞 ",
-                                                        order.customerPhone
-                                                    ]
-                                                }, void 0, true, {
-                                                    fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/vendor/ordershistory.tsx",
-                                                    lineNumber: 448,
-                                                    columnNumber: 19
-                                                }, this)
-                                            ]
-                                        }, void 0, true, {
+                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
+                                                children: order.customerName || '—'
+                                            }, void 0, false, {
+                                                fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/vendor/ordershistory.tsx",
+                                                lineNumber: 447,
+                                                columnNumber: 19
+                                            }, this)
+                                        }, void 0, false, {
                                             fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/vendor/ordershistory.tsx",
                                             lineNumber: 446,
                                             columnNumber: 17
@@ -683,7 +667,7 @@ function VendorOrderHistory() {
                                             children: formatDate(order.createdAt)
                                         }, void 0, false, {
                                             fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/vendor/ordershistory.tsx",
-                                            lineNumber: 452,
+                                            lineNumber: 449,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("td", {
@@ -694,7 +678,7 @@ function VendorOrderHistory() {
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/vendor/ordershistory.tsx",
-                                            lineNumber: 453,
+                                            lineNumber: 450,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("td", {
@@ -702,7 +686,7 @@ function VendorOrderHistory() {
                                             children: order.paymentMethod || 'Cash'
                                         }, void 0, false, {
                                             fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/vendor/ordershistory.tsx",
-                                            lineNumber: 454,
+                                            lineNumber: 451,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("td", {
@@ -712,12 +696,12 @@ function VendorOrderHistory() {
                                                 children: order.status === 'completed' ? 'Completed' : order.status === 'cancelled' ? 'Cancelled' : order.status === 'processing' ? 'Processing' : 'Pending'
                                             }, void 0, false, {
                                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/vendor/ordershistory.tsx",
-                                                lineNumber: 456,
+                                                lineNumber: 453,
                                                 columnNumber: 19
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/vendor/ordershistory.tsx",
-                                            lineNumber: 455,
+                                            lineNumber: 452,
                                             columnNumber: 17
                                         }, this)
                                     ]
@@ -751,7 +735,7 @@ function VendorOrderHistory() {
                 children: "No orders match the selected filters"
             }, void 0, false, {
                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/vendor/ordershistory.tsx",
-                lineNumber: 469,
+                lineNumber: 466,
                 columnNumber: 9
             }, this)
         ]

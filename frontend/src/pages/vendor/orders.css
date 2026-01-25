@@ -104,6 +104,29 @@
   margin-bottom: 2px;
 }
 
+.order-customer-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-secondary);
+  font-size: 13px;
+}
+
+.detail-icon {
+  width: 14px;
+  height: 14px;
+  /* Light Mode: Force Black */
+  filter: brightness(0);
+  opacity: 0.7;
+}
+
+/* Dark Mode Support for Detail Icons */
+[data-theme='dark'] .detail-icon,
+.theme-dark .detail-icon {
+  /* Dark Mode: Force White */
+  filter: brightness(0) invert(1);
+}
+
 .order-items {
   color: var(--text-secondary);
   font-size: 13px;
@@ -210,4 +233,3 @@
   width: 18px;
   height: 18px;
 }
-

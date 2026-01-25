@@ -445,9 +445,6 @@ export default function VendorOrderHistory() {
                 <td className="order-id-cell">{order.orderNumber || '—'}</td>
                 <td className="customer-name-cell">
                   <div>{order.customerName || '—'}</div>
-                  <div style={{ fontSize: '0.85em', color: 'var(--text-secondary)' }}>
-                    📞 {order.customerPhone}
-                  </div>
                 </td>
                 <td className="date-cell">{formatDate(order.createdAt)}</td>
                 <td className="amount-cell">₹{order.pricing.totalAmount.toFixed(2)}</td>

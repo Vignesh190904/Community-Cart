@@ -1,145 +1,235 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import CustomerLayout from '../../components/customer/CustomerLayout';
+import { useToast } from '../../components/ui/ToastProvider';
+import { useCustomerStore } from '../../context/CustomerStore';
 
-// --- Mock Data ---
+// --- Product Interface ---
 
 interface Product {
-    id: string;
+    _id: string;
     name: string;
-    quantityLabel: string;
+    description?: string;
     price: number;
-    image: string;
-    badge?: { type: 'new' | 'discount'; label: string };
-    category: string; // Added category field
+    mrp?: number;
+    category?: string;
+    image?: string;
+    isAvailable: boolean;
+    stock: number;
+    vendor?: {
+        _id: string;
+        storeName: string;
+        ownerName: string;
+        email: string;
+        isActive: boolean;
+    };
+    createdAt?: string;
+    updatedAt?: string;
 }
 
-// Extended mock data to ensure we have items for each category
-const ALL_PRODUCTS: Product[] = [
-    {
-        id: '1',
-        name: 'Fresh Spinach',
-        quantityLabel: '1 Bunch',
-        price: 40.00,
-        image: '/customer/assets/images/Vector.png',
-        badge: { type: 'discount', label: '-16%' },
-        category: 'vegies'
-    },
-    {
-        id: '2',
-        name: 'Organic Apple',
-        quantityLabel: '1 kg',
-        price: 180.00,
-        image: '/customer/assets/images/Vector.png',
-        badge: { type: 'new', label: 'NEW' },
-        category: 'fruits'
-    },
-    {
-        id: '3',
-        name: 'Wheat Bread',
-        quantityLabel: '1 Packet',
-        price: 35.00,
-        image: '/customer/assets/images/Vector.png',
-        category: 'bakery'
-    },
-    {
-        id: '4',
-        name: 'Detergent Pods',
-        quantityLabel: '12 Pack',
-        price: 220.00,
-        image: '/customer/assets/images/Vector.png',
-        badge: { type: 'discount', label: '-10%' },
-        category: 'laundry'
-    },
-    {
-        id: '5',
-        name: 'Rice Bag',
-        quantityLabel: '5 kg',
-        price: 450.00,
-        image: '/customer/assets/images/Vector.png',
-        category: 'grocery'
-    },
-    {
-        id: '6',
-        name: 'Tomato',
-        quantityLabel: '1 kg',
-        price: 30.00,
-        image: '/customer/assets/images/Vector.png',
-        category: 'vegies'
-    },
-    {
-        id: '7',
-        name: 'Banana',
-        quantityLabel: '1 Dozen',
-        price: 60.00,
-        image: '/customer/assets/images/Vector.png',
-        category: 'fruits'
-    },
-    {
-        id: '8',
-        name: 'Milk',
-        quantityLabel: '1 L',
-        price: 50.00,
-        image: '/customer/assets/images/Vector.png',
-        badge: { type: 'new', label: 'NEW' },
-        category: 'grocery'
-    }
-];
-
-
+const API_BASE = 'http://localhost:5000/api';
 
 export default function CategoryPage() {
     const router = useRouter();
     const { type } = router.query;
+    const { enqueueToast } = useToast();
+
+    // Global Cart Store
+    const { cart, addToCart, updateQuantity, removeFromCart } = useCustomerStore();
 
     // State
     const [wishlist, setWishlist] = useState<Set<string>>(new Set());
-    const [cart, setCart] = useState<Map<string, number>>(new Map());
+    // Removed local cart state
+    const [products, setProducts] = useState<Product[]>([]);
     const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
+    const [loading, setLoading] = useState(true);
+    const [searchTerm, setSearchTerm] = useState('');
 
-    // Filter products when type changes
+    // Fetch products from API
     useEffect(() => {
-        if (!type) {
-            setFilteredProducts(ALL_PRODUCTS);
+        const fetchProducts = async () => {
+            try {
+                setLoading(true);
+                const response = await fetch(`${API_BASE}/products`);
+
+                if (!response.ok) {
+                    throw new Error('Failed to fetch products');
+                }
+
+                const data = await response.json();
+                // Filter only available products from active vendors
+                const availableProducts = data.filter((p: Product) =>
+                    p.isAvailable && p.stock > 0 && p.vendor?.isActive !== false
+                );
+                setProducts(availableProducts);
+            } catch (error) {
+                console.error('Error fetching products:', error);
+                enqueueToast('Failed to load products', 'error');
+                setProducts([]);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchProducts();
+    }, [enqueueToast]);
+
+    // Filter products by category AND search term
+    useEffect(() => {
+        if (products.length === 0) {
+            setFilteredProducts([]);
             return;
         }
 
-        const categoryType = Array.isArray(type) ? type[0].toLowerCase() : type.toLowerCase();
+        let filtered = products;
 
-        // Simple filter based on exact match or partial if needed. 
-        // Using exact match on the 'category' field defined below.
-        const filtered = ALL_PRODUCTS.filter(p => p.category === categoryType);
+        // 1. Filter by Category
+        if (type) {
+            const categoryType = Array.isArray(type) ? type[0].toLowerCase() : type.toLowerCase();
+            filtered = filtered.filter(p =>
+                p.category?.trim().toLowerCase() === categoryType
+            );
+        }
 
-        // If no products found (e.g. Bakery implies 'bakery' but maybe I only have mock data for others), 
-        // effectively show empty or maybe fallback to all for demo if stricter compliance isn't needed. 
-        // But user asked for "Internally apply a simple mock filter category === selectedCategory".
+        // 2. Filter by Search Term
+        if (searchTerm.trim()) {
+            const lowerTerm = searchTerm.toLowerCase();
+            filtered = filtered.filter(p =>
+                p.name.toLowerCase().includes(lowerTerm)
+            );
+        }
+
         setFilteredProducts(filtered);
-    }, [type]);
+    }, [type, products, searchTerm]);
 
     const title = type ? (Array.isArray(type) ? type[0] : type) : 'Category';
 
+    // Fetch wishlist from API
+    useEffect(() => {
+        const fetchWishlist = async () => {
+            try {
+                const token = localStorage.getItem('auth_token');
+                if (!token) return;
+
+                const response = await fetch(`${API_BASE}/customers/wishlist`, {
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+
+                if (!response.ok) {
+                    if (response.status === 401) {
+                        console.error('Unauthorized: Invalid or expired token');
+                        return;
+                    }
+                    throw new Error('Failed to fetch wishlist');
+                }
+
+                const data = await response.json();
+                // Extract product IDs from wishlist items
+                const wishlistedProductIds = new Set<string>(
+                    data.map((item: { product: { _id: string } }) => item.product._id)
+                );
+                setWishlist(wishlistedProductIds);
+            } catch (error) {
+                console.error('Error fetching wishlist:', error);
+                // Don't show error toast for wishlist fetch failure - it's not critical
+            }
+        };
+
+        fetchWishlist();
+    }, []);
+
     // Interactions
-    const toggleWishlist = (id: string) => {
+    const toggleWishlist = async (id: string) => {
+        const isCurrentlyWishlisted = wishlist.has(id);
+
+        // Optimistic UI update
         const newWishlist = new Set(wishlist);
-        if (newWishlist.has(id)) {
+        if (isCurrentlyWishlisted) {
             newWishlist.delete(id);
         } else {
             newWishlist.add(id);
         }
         setWishlist(newWishlist);
+
+        try {
+            const token = localStorage.getItem('auth_token');
+            if (!token) {
+                enqueueToast('Please login to manage wishlist', 'error');
+                // Revert optimistic update
+                setWishlist(wishlist);
+                return;
+            }
+
+            if (isCurrentlyWishlisted) {
+                // Remove from wishlist
+                const response = await fetch(`${API_BASE}/customers/wishlist/${id}`, {
+                    method: 'DELETE',
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+
+                if (!response.ok) {
+                    throw new Error('Failed to remove from wishlist');
+                }
+                enqueueToast('Removed from wishlist', 'success');
+            } else {
+                // Add to wishlist
+                const response = await fetch(`${API_BASE}/customers/wishlist`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    },
+                    body: JSON.stringify({ productId: id })
+                });
+
+                if (!response.ok) {
+                    throw new Error('Failed to add to wishlist');
+                }
+                enqueueToast('Added to wishlist', 'success');
+            }
+        } catch (error) {
+            console.error('Error toggling wishlist:', error);
+            enqueueToast('Failed to update wishlist', 'error');
+            // Revert optimistic update on error
+            setWishlist(wishlist);
+        }
     };
 
-    const updateCart = (id: string, delta: number) => {
-        const newCart = new Map(cart);
-        const currentQty = newCart.get(id) || 0;
-        const newQty = Math.max(0, currentQty + delta);
+    // Helper to get logic from global cart
+    const getCartQty = (productId: string) => {
+        const item = cart.find(i => i.product._id === productId);
+        return item ? item.quantity : 0;
+    };
 
-        if (newQty === 0) {
-            newCart.delete(id);
-        } else {
-            newCart.set(id, newQty);
+    const handleAddToCart = (product: Product) => {
+        const productLite = {
+            _id: product._id,
+            name: product.name,
+            price: product.price,
+            vendorName: product.vendor?.storeName,
+            image: product.image,
+            stock: product.stock,
+            category: product.category
+        };
+        addToCart(productLite);
+    };
+
+
+
+    const handleSearch = () => {
+        if (searchTerm.trim()) {
+            router.push(`/customer/browse-products?q=${encodeURIComponent(searchTerm)}`);
         }
-        setCart(newCart);
+    };
+
+    const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+        if (e.key === 'Enter') {
+            handleSearch();
+        }
     };
 
     return (
@@ -156,12 +246,20 @@ export default function CategoryPage() {
                 {/* Search */}
                 <section className="category-search-section">
                     <div className="category-search-container">
-                        <img src="/customer/assets/icons/search.svg" alt="Search" className="category-search-icon" />
+                        <img
+                            src="/customer/assets/icons/search.svg"
+                            alt="Search"
+                            className="category-search-icon"
+                            onClick={handleSearch}
+                            style={{ cursor: 'pointer' }}
+                        />
                         <input
                             type="text"
                             placeholder="Search keywords.."
                             className="category-search-input"
-                            readOnly
+                            value={searchTerm}
+                            onChange={(e) => setSearchTerm(e.target.value)}
+                            onKeyDown={handleKeyDown}
                         />
                     </div>
                 </section>
@@ -173,84 +271,107 @@ export default function CategoryPage() {
                         <span className="category-section-action"><img src="/customer/assets/icons/forward.svg" alt="View all" width={24} height={24} /></span>
                     </div>
 
-                    {/* Product Grid */}
-                    <div className="products-grid">
-                        {filteredProducts.map((product) => {
-                            const qty = cart.get(product.id) || 0;
-                            const isWishlisted = wishlist.has(product.id);
+                    {loading && (
+                        <div style={{ padding: '20px', textAlign: 'center', color: '#888' }}>
+                            Loading products...
+                        </div>
+                    )}
 
-                            return (
-                                <div key={product.id} className="product-card">
-                                    <div className="product-card-header">
-                                        {product.badge ? (
-                                            <span className={`product-badge ${product.badge.type}`}>
-                                                {product.badge.label}
-                                            </span>
-                                        ) : <span></span>}
-                                        <button
-                                            className="product-wishlist-btn"
-                                            onClick={() => toggleWishlist(product.id)}
-                                        >
-                                            <img
-                                                src={isWishlisted ? "/customer/assets/icons/favorite-filled.svg" : "/customer/assets/icons/favorite.svg"}
-                                                alt="Wishlist"
-                                                className={`favorite-heart-icon ${isWishlisted ? 'active' : ''}`}
-                                                style={{ width: '24px', height: '24px' }}
-                                            />
-                                        </button>
-                                    </div>
+                    {!loading && (
+                        <>
+                            {/* Product Grid */}
+                            <div className="products-grid">
+                                {filteredProducts.map((product) => {
+                                    const qty = getCartQty(product._id);
+                                    const isWishlisted = wishlist.has(product._id);
 
-                                    <div className="product-image-wrapper">
-                                        <img
-                                            src={product.image}
-                                            alt={product.name}
-                                            className="product-image"
-                                        />
-                                    </div>
+                                    // Calculate discount if MRP exists and is higher than price
+                                    const hasDiscount = product.mrp && product.mrp > product.price;
+                                    const discountPercent = hasDiscount
+                                        ? Math.round(((product.mrp! - product.price) / product.mrp!) * 100)
+                                        : 0;
 
-                                    <div className="product-card-body">
-                                        <h4 className="product-name">{product.name}</h4>
-                                        <p className="product-qty-label">{product.quantityLabel}</p>
-                                        <div className="product-price-wrapper">
-                                            <span className="product-final-price">₹{product.price.toFixed(2)}</span>
-                                        </div>
-                                    </div>
-
-                                    <div className="product-card-footer">
-                                        {qty === 0 ? (
-                                            <button
-                                                className="product-add-btn"
-                                                onClick={() => updateCart(product.id, 1)}
-                                            >
-                                                <img src="/customer/assets/icons/bag.svg" alt="Cart" className="product-cart-icon" />
-                                                Add to cart
-                                            </button>
-                                        ) : (
-                                            <div className="product-qty-controls">
+                                    return (
+                                        <div key={product._id} className="product-card">
+                                            <div className="product-card-header">
+                                                {hasDiscount && (
+                                                    <span className="product-badge discount">
+                                                        -{discountPercent}%
+                                                    </span>
+                                                )}
+                                                {!hasDiscount && <span></span>}
                                                 <button
-                                                    className="product-qty-btn"
-                                                    onClick={() => updateCart(product.id, -1)}
+                                                    className="product-wishlist-btn"
+                                                    onClick={() => toggleWishlist(product._id)}
                                                 >
-                                                    −
-                                                </button>
-                                                <span className="product-qty-value">{qty}</span>
-                                                <button
-                                                    className="product-qty-btn"
-                                                    onClick={() => updateCart(product.id, 1)}
-                                                >
-                                                    +
+                                                    <img
+                                                        src={isWishlisted ? "/customer/assets/icons/favorite-filled.svg" : "/customer/assets/icons/favorite.svg"}
+                                                        alt="Wishlist"
+                                                        className={`favorite-heart-icon ${isWishlisted ? 'active' : ''}`}
+                                                        style={{ width: '24px', height: '24px' }}
+                                                    />
                                                 </button>
                                             </div>
-                                        )}
-                                    </div>
+
+                                            <div className="product-image-wrapper">
+                                                <img
+                                                    src={product.image || '/customer/assets/icons/missing.svg'}
+                                                    alt={product.name}
+                                                    className={product.image ? 'product-image' : 'product-image-missing'}
+                                                />
+                                            </div>
+
+                                            <div className="product-card-body">
+                                                <h4 className="product-name">{product.name}</h4>
+                                                <p className="product-qty-label">{product.category || 'Product'}</p>
+                                                <div className="product-price-wrapper">
+                                                    <span className="product-final-price">₹{product.price.toFixed(2)}</span>
+                                                </div>
+                                            </div>
+
+                                            <div className="product-card-footer">
+                                                {qty === 0 ? (
+                                                    <button
+                                                        className="product-add-btn"
+                                                        onClick={() => handleAddToCart(product)}
+                                                    >
+                                                        <img src="/customer/assets/icons/bag.svg" alt="Cart" className="product-cart-icon" />
+                                                        Add to cart
+                                                    </button>
+                                                ) : (
+                                                    <div className="product-qty-controls">
+                                                        <button
+                                                            className="product-qty-btn"
+                                                            onClick={() => {
+                                                                if (qty === 1) {
+                                                                    removeFromCart(product._id);
+                                                                } else {
+                                                                    updateQuantity(product._id, qty - 1);
+                                                                }
+                                                            }}
+                                                        >
+                                                            −
+                                                        </button>
+                                                        <span className="product-qty-value">{qty}</span>
+                                                        <button
+                                                            className="product-qty-btn"
+                                                            onClick={() => updateQuantity(product._id, qty + 1)}
+                                                        >
+                                                            +
+                                                        </button>
+                                                    </div>
+                                                )}
+                                            </div>
+                                        </div>
+                                    );
+                                })}
+                            </div>
+                            {filteredProducts.length === 0 && (
+                                <div style={{ padding: '20px', textAlign: 'center', color: '#888' }}>
+                                    No products found in this category.
                                 </div>
-                            );
-                        })}
-                    </div>
-                    {filteredProducts.length === 0 && (
-                        <div style={{ padding: '20px', textAlign: 'center', color: '#888' }}>
-                            No products found in this category.
-                        </div>
+                            )}
+                        </>
                     )}
                 </section>
             </div>

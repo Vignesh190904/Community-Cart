@@ -22,6 +22,7 @@ const CATEGORIES = [
     { name: 'Vegies', icon: '/customer/assets/icons/vegies.svg', color: '#E8F5E9', iconColor: '#4CAF50' },
     { name: 'Fruits', icon: '/customer/assets/icons/fruits.svg', color: '#FFEBEE', iconColor: '#EF5350' },
     { name: 'Bakery', icon: '/customer/assets/icons/bakery.svg', color: '#FCE4EC', iconColor: '#EC407A' },
+    { name: 'Pharmacy', icon: '/customer/assets/icons/pharmacy.svg', color: '#E0F7FA', iconColor: '#00ACC1' },
     { name: 'Laundry', icon: '/customer/assets/icons/laundry.svg', color: '#EDE7F6', iconColor: '#5E35B1' },
 ];
 
@@ -35,6 +36,13 @@ export default function BrowseProducts() {
     const [searchTerm, setSearchTerm] = useState('');
     const [wishlist, setWishlist] = useState<WishlistItem[]>([]);
     const [wishlistLoading, setWishlistLoading] = useState(false);
+
+    // Sync search term from URL query
+    useEffect(() => {
+        if (router.isReady && router.query.q) {
+            setSearchTerm(router.query.q as string);
+        }
+    }, [router.isReady, router.query.q]);
 
     // Fetch wishlist from backend
     useEffect(() => {
@@ -198,11 +206,11 @@ export default function BrowseProducts() {
                                     </div>
 
                                     <div className="product-image-wrapper" onClick={() => router.push(`/customer/product/${product._id}`)}>
-                                        {product.image ? (
-                                            <img src={product.image} alt={product.name} className="product-image" />
-                                        ) : (
-                                            <div className="image-placeholder" style={{ width: '100%', height: '100%', background: '#eee' }} />
-                                        )}
+                                        <img
+                                            src={product.image || '/customer/assets/icons/missing.svg'}
+                                            alt={product.name}
+                                            className={product.image ? 'product-image' : 'product-image-missing'}
+                                        />
                                     </div>
 
                                     <div className="product-card-body" onClick={() => router.push(`/customer/product/${product._id}`)}>

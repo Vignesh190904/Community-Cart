@@ -240,7 +240,6 @@ function ProductDetailPage() {
                 console.error(error);
                 pushToast({
                     type: 'error',
-                    title: 'Error',
                     message: 'Failed to load product'
                 });
                 router.back();
@@ -264,7 +263,6 @@ function ProductDetailPage() {
         if (stock <= 0) {
             pushToast({
                 type: 'error',
-                title: 'Out of Stock',
                 message: 'This item is out of stock'
             });
             return;
@@ -272,7 +270,6 @@ function ProductDetailPage() {
         if (qty > stock) {
             pushToast({
                 type: 'warning',
-                title: 'Stock Limit',
                 message: `Only ${stock} available`
             });
             return;
@@ -297,7 +294,6 @@ function ProductDetailPage() {
         }
         pushToast({
             type: 'success',
-            title: 'Added to Cart',
             message: `${product.name} x ${qty} added`
         });
         router.back(); // Or stay? Usually stay or go to cart? User didn't specify post-action nav. 
@@ -365,10 +361,9 @@ function ProductDetailPage() {
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
                                 className: "jsx-e63f28f4cf929ffc" + " " + "detail-image-section",
                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("img", {
-                                    src: product.image || '/customer/assets/images/Vector.png',
+                                    src: product.image || '/customer/assets/icons/missing.svg',
                                     alt: product.name,
-                                    onError: (e)=>e.target.src = '/customer/assets/images/Vector.png',
-                                    className: "jsx-e63f28f4cf929ffc" + " " + "detail-image"
+                                    className: "jsx-e63f28f4cf929ffc" + " " + ((product.image ? 'detail-image' : 'detail-image product-image-missing') || "")
                                 }, void 0, false, {
                                     fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/product/[id].tsx",
                                     lineNumber: 120,
@@ -390,7 +385,7 @@ function ProductDetailPage() {
                                                 children: product.name
                                             }, void 0, false, {
                                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/product/[id].tsx",
-                                                lineNumber: 131,
+                                                lineNumber: 130,
                                                 columnNumber: 29
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("button", {
@@ -408,18 +403,18 @@ function ProductDetailPage() {
                                                     className: "jsx-e63f28f4cf929ffc"
                                                 }, void 0, false, {
                                                     fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/product/[id].tsx",
-                                                    lineNumber: 133,
+                                                    lineNumber: 132,
                                                     columnNumber: 33
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/product/[id].tsx",
-                                                lineNumber: 132,
+                                                lineNumber: 131,
                                                 columnNumber: 29
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/product/[id].tsx",
-                                        lineNumber: 130,
+                                        lineNumber: 129,
                                         columnNumber: 25
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("p", {
@@ -427,7 +422,7 @@ function ProductDetailPage() {
                                         children: product.unit || '500 gms'
                                     }, void 0, false, {
                                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/product/[id].tsx",
-                                        lineNumber: 142,
+                                        lineNumber: 141,
                                         columnNumber: 25
                                     }, this),
                                     " ",
@@ -439,7 +434,7 @@ function ProductDetailPage() {
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/product/[id].tsx",
-                                        lineNumber: 143,
+                                        lineNumber: 142,
                                         columnNumber: 25
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
@@ -447,13 +442,13 @@ function ProductDetailPage() {
                                         children: product.description || `Organic Mountain works as a seller for many organic growers of organic lemons. Organic lemons are easy to spot in your produce aisle. They are just like regular lemons, but they will usually have a few more scars on the outside of the lemon skin. Organic lemons are considered to be the world's finest lemon for juicing`
                                     }, void 0, false, {
                                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/product/[id].tsx",
-                                        lineNumber: 145,
+                                        lineNumber: 144,
                                         columnNumber: 25
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/product/[id].tsx",
-                                lineNumber: 129,
+                                lineNumber: 128,
                                 columnNumber: 21
                             }, this)
                         ]
@@ -479,12 +474,12 @@ function ProductDetailPage() {
                                             className: "jsx-e63f28f4cf929ffc"
                                         }, void 0, false, {
                                             fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/product/[id].tsx",
-                                            lineNumber: 156,
+                                            lineNumber: 155,
                                             columnNumber: 29
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/product/[id].tsx",
-                                        lineNumber: 155,
+                                        lineNumber: 154,
                                         columnNumber: 25
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("span", {
@@ -492,7 +487,7 @@ function ProductDetailPage() {
                                         children: qty
                                     }, void 0, false, {
                                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/product/[id].tsx",
-                                        lineNumber: 158,
+                                        lineNumber: 157,
                                         columnNumber: 25
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("button", {
@@ -506,18 +501,18 @@ function ProductDetailPage() {
                                             className: "jsx-e63f28f4cf929ffc"
                                         }, void 0, false, {
                                             fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/product/[id].tsx",
-                                            lineNumber: 160,
+                                            lineNumber: 159,
                                             columnNumber: 29
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/product/[id].tsx",
-                                        lineNumber: 159,
+                                        lineNumber: 158,
                                         columnNumber: 25
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/product/[id].tsx",
-                                lineNumber: 154,
+                                lineNumber: 153,
                                 columnNumber: 21
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("button", {
@@ -535,20 +530,20 @@ function ProductDetailPage() {
                                         className: "jsx-e63f28f4cf929ffc"
                                     }, void 0, false, {
                                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/product/[id].tsx",
-                                        lineNumber: 166,
+                                        lineNumber: 165,
                                         columnNumber: 25
                                     }, this),
                                     "Add to cart"
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/product/[id].tsx",
-                                lineNumber: 165,
+                                lineNumber: 164,
                                 columnNumber: 21
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/product/[id].tsx",
-                        lineNumber: 152,
+                        lineNumber: 151,
                         columnNumber: 17
                     }, this)
                 ]

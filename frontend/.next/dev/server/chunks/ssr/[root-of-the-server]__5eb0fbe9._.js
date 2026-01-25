@@ -527,25 +527,14 @@ function FavoritesPage() {
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
                                             className: "product-image-wrapper",
-                                            children: product.image ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("img", {
-                                                src: product.image,
+                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("img", {
+                                                src: product.image || '/customer/assets/icons/missing.svg',
                                                 alt: product.name,
-                                                className: "product-image"
+                                                className: product.image ? 'product-image' : 'product-image-missing'
                                             }, void 0, false, {
                                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/favorites.tsx",
-                                                lineNumber: 161,
-                                                columnNumber: 49
-                                            }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
-                                                className: "product-image-placeholder",
-                                                style: {
-                                                    width: '100%',
-                                                    height: '100%',
-                                                    background: '#eee'
-                                                }
-                                            }, void 0, false, {
-                                                fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/favorites.tsx",
-                                                lineNumber: 163,
-                                                columnNumber: 49
+                                                lineNumber: 160,
+                                                columnNumber: 45
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/favorites.tsx",

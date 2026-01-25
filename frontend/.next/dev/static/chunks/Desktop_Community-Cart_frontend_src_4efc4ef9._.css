@@ -3926,6 +3926,25 @@ body.theme-dark .product-thumb {
   margin-bottom: 2px;
 }
 
+.order-customer-row {
+  color: var(--text-secondary);
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  display: flex;
+}
+
+.detail-icon {
+  filter: brightness(0);
+  opacity: .7;
+  width: 14px;
+  height: 14px;
+}
+
+[data-theme="dark"] .detail-icon, .theme-dark .detail-icon {
+  filter: brightness(0) invert();
+}
+
 .order-items {
   color: var(--text-secondary);
   font-size: 13px;
@@ -5470,7 +5489,23 @@ body.theme-dark .order-status-badge.cancelled {
   display: flex;
 }
 
-.product-image, .image-placeholder {
+.product-image {
+  object-fit: contain;
+  mix-blend-mode: multiply;
+  border-radius: 12px;
+  width: 100%;
+  height: 100%;
+}
+
+.product-image-missing {
+  object-fit: contain;
+  opacity: .5;
+  border-radius: 12px;
+  width: 60%;
+  height: 60%;
+}
+
+.image-placeholder {
   object-fit: contain;
   mix-blend-mode: multiply;
   border-radius: 12px;

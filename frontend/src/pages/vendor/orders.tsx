@@ -274,11 +274,13 @@ export default function VendorOrders() {
                     <div className="order-customer">
                       {o.customerName}
                     </div>
-                    <div className="order-customer" style={{ fontSize: '0.9em', color: 'var(--text-secondary)' }}>
-                      📞 {o.customerPhone}
+                    <div className="order-customer-row">
+                      <img src="/customer/assets/icons/phone.svg" alt="Phone" className="detail-icon" />
+                      <span>{o.customerPhone}</span>
                     </div>
-                    <div className="order-customer" style={{ fontSize: '0.85em', color: 'var(--text-secondary)', marginTop: '4px' }}>
-                      📍 {o.deliveryAddress}
+                    <div className="order-customer-row" style={{ marginTop: '4px' }}>
+                      <img src="/customer/assets/icons/address.svg" alt="Address" className="detail-icon" />
+                      <span>{o.deliveryAddress}</span>
                     </div>
                     <div className="order-items">
                       {aggregateOrderItems(o.items).map((item) => (

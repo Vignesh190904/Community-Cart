@@ -42,7 +42,7 @@ export default function ProductDetailPage() {
                 setQty(1);
             } catch (error) {
                 console.error(error);
-                pushToast({ type: 'error', title: 'Error', message: 'Failed to load product' });
+                pushToast({ type: 'error', message: 'Failed to load product' });
                 router.back();
             } finally {
                 setLoading(false);
@@ -61,12 +61,12 @@ export default function ProductDetailPage() {
 
         // Check stock
         if (stock <= 0) {
-            pushToast({ type: 'error', title: 'Out of Stock', message: 'This item is out of stock' });
+            pushToast({ type: 'error', message: 'This item is out of stock' });
             return;
         }
 
         if (qty > stock) {
-            pushToast({ type: 'warning', title: 'Stock Limit', message: `Only ${stock} available` });
+            pushToast({ type: 'warning', message: `Only ${stock} available` });
             return;
         }
 
@@ -89,7 +89,7 @@ export default function ProductDetailPage() {
             // Check vendor consistency if needed. For now, assuming standard flow.
         }
 
-        pushToast({ type: 'success', title: 'Added to Cart', message: `${product.name} x ${qty} added` });
+        pushToast({ type: 'success', message: `${product.name} x ${qty} added` });
         router.back(); // Or stay? Usually stay or go to cart? User didn't specify post-action nav. 
         // Let's stay and maybe reset qty? Or just show toast.
         // "On click: Add product... Respect rules... Log reason". 
@@ -118,10 +118,9 @@ export default function ProductDetailPage() {
                     {/* Image */}
                     <div className="detail-image-section">
                         <img
-                            src={product.image || '/customer/assets/images/Vector.png'}
+                            src={product.image || '/customer/assets/icons/missing.svg'}
                             alt={product.name}
-                            className="detail-image"
-                            onError={(e) => (e.target as HTMLImageElement).src = '/customer/assets/images/Vector.png'}
+                            className={product.image ? 'detail-image' : 'detail-image product-image-missing'}
                         />
                     </div>
 

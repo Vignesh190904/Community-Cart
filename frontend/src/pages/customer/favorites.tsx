@@ -157,11 +157,11 @@ export default function FavoritesPage() {
                                         </div>
 
                                         <div className="product-image-wrapper">
-                                            {product.image ? (
-                                                <img src={product.image} alt={product.name} className="product-image" />
-                                            ) : (
-                                                <div className="product-image-placeholder" style={{ width: '100%', height: '100%', background: '#eee' }} />
-                                            )}
+                                            <img
+                                                src={product.image || '/customer/assets/icons/missing.svg'}
+                                                alt={product.name}
+                                                className={product.image ? 'product-image' : 'product-image-missing'}
+                                            />
                                         </div>
 
                                         <div className="product-card-body">

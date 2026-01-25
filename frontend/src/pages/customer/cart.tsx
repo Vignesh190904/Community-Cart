@@ -146,11 +146,10 @@ export default function CartPage() {
                       onTouchEnd={onTouchEnd}
                     >
                       <div className="cart-item-image">
-                        {/* Handle missing image */}
                         <img
-                          src={item.product.image || '/customer/assets/images/Vector.png'}
+                          src={item.product.image || '/customer/assets/icons/missing.svg'}
                           alt={item.product.name}
-                          onError={(e) => { (e.target as HTMLImageElement).src = '/customer/assets/images/Vector.png'; }}
+                          className={item.product.image ? 'product-image' : 'product-image-missing'}
                         />
                       </div>
                       <div className="cart-item-details">

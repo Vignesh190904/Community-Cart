@@ -11,11 +11,8 @@ self.__BUILD_MANIFEST = {
   "/customer/cart": [
     "static/chunks/pages/customer/cart.js"
   ],
-  "/customer/checkout": [
-    "static/chunks/pages/customer/checkout.js"
-  ],
-  "/customer/edit-profile": [
-    "static/chunks/pages/customer/edit-profile.js"
+  "/customer/category": [
+    "static/chunks/pages/customer/category.js"
   ],
   "/customer/favorites": [
     "static/chunks/pages/customer/favorites.js"
@@ -46,9 +43,6 @@ self.__BUILD_MANIFEST = {
   ],
   "/vendor/inventory": [
     "static/chunks/pages/vendor/inventory.js"
-  ],
-  "/vendor/orderdetails": [
-    "static/chunks/pages/vendor/orderdetails.js"
   ],
   "/vendor/orders": [
     "static/chunks/pages/vendor/orders.js"
