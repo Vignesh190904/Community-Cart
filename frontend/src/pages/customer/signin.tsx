@@ -6,6 +6,8 @@ import { useAuth } from '../../context/AuthContext';
 import { signin } from '../../flows/signin.flow';
 import { googleSignin } from '../../flows/google-signin.flow';
 
+import AppLoading from './apploading';
+
 export default function SignIn() {
     const router = useRouter();
     const { sign_in, is_authenticated, loading: auth_loading } = useAuth();
@@ -89,6 +91,10 @@ export default function SignIn() {
         return () => window.removeEventListener('google-gis-loaded', listener);
     }, [initGoogle]);
 
+    if (loading) {
+        return <AppLoading />;
+    }
+
     return (
         <div className="signin-page">
             <div className="signin-container">
@@ -139,7 +145,7 @@ export default function SignIn() {
                     onClick={handleManualSignin}
                     disabled={loading}
                 >
-                    {loading ? 'Signing In...' : 'Sign In'}
+                    Sign In
                 </button>
 
                 <div className="signup-row">

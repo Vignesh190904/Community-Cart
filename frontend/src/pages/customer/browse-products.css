@@ -12,12 +12,12 @@
 }
 
 .search-bar {
+  position: relative;
   display: flex;
   align-items: center;
-  gap: 12px;
-  background: #F5F7FA;
-  padding: 12px 20px;
-  border-radius: 30px;
+  border: 1px solid black;
+  border-radius: 24px;
+  padding: 0 12px;
 }
 
 .search-icon {
@@ -32,7 +32,7 @@
   font-size: 16px;
   color: #333;
   outline: none;
-  padding: 0;
+  padding: 0 16px;
 }
 
 .search-bar input::placeholder {

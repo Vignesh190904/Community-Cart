@@ -4,9 +4,7 @@
   flex-direction: column;
   gap: 16px;
   /* Reduced padding to 12px horizontal */
-  padding: 0 12px;
-  /* Ensure space for fixed summary + bottom nav */
-  padding-bottom: 240px;
+  padding: 0px;
   overflow-x: hidden;
   width: 100%;
 }
@@ -17,9 +15,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 44px;
-  margin-top: 12px;
-  margin-bottom: 8px;
+  height: 60px;
+  width: 100% !important;
+}
+
+.cart-header-main {
+  padding: 0 12px;
 }
 
 .cart-title {
@@ -49,6 +50,25 @@
   /* Negative margin to align icon visually with edge if needed, or keeping it clean */
   cursor: pointer;
   color: var(--text-primary);
+}
+
+.clear-cart-btn {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #FEE2E2;
+  /* Light red background */
+  color: #EF4444;
+  /* Red text */
+  border: none;
+  border-radius: 28px;
+  padding: 4px 12px;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  z-index: 10;
+  height: 28px;
 }
 
 /* Empty State */
@@ -88,6 +108,7 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
+  padding: 0 12px;
 }
 
 /* Swipe Container */
@@ -97,6 +118,7 @@
   width: 100%;
   border-radius: 12px;
   overflow: hidden;
+  border: 1px solid var(--border);
 }
 
 .cart-delete-action {
@@ -221,16 +243,24 @@
   height: 24px;
   border: none;
   background: transparent;
-  color: var(--primary);
-  /* Green color */
-  font-size: 20px;
-  font-weight: 600;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 0;
   cursor: pointer;
-  line-height: 1;
+}
+
+.qty-btn img {
+  width: 16px;
+  height: 16px;
+}
+
+.qty-btn img[src*="plus.svg"] {
+  filter: invert(32%) sepia(51%) saturate(2644%) hue-rotate(90deg) brightness(93%) contrast(86%);
+}
+
+.qty-btn img[src*="minus.svg"] {
+  filter: invert(24%) sepia(54%) saturate(4093%) hue-rotate(345deg) brightness(88%) contrast(93%);
 }
 
 .qty-display {

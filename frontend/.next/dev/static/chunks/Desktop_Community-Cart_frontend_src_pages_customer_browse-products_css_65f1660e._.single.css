@@ -11,12 +11,12 @@
 }
 
 .search-bar {
-  background: #f5f7fa;
-  border-radius: 30px;
+  border: 1px solid #000;
+  border-radius: 24px;
   align-items: center;
-  gap: 12px;
-  padding: 12px 20px;
+  padding: 0 12px;
   display: flex;
+  position: relative;
 }
 
 .search-icon {
@@ -30,7 +30,7 @@
   border: none;
   outline: none;
   width: 100%;
-  padding: 0;
+  padding: 0 16px;
   font-size: 16px;
 }
 

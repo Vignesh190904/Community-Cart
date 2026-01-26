@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { useAuth } from '../context/AuthContext';
+import AppLoading from '../pages/customer/apploading';
 
 /**
  * Auth guard hook for protected pages with role enforcement
@@ -60,17 +61,7 @@ export function withAuthGuard<P extends object>(
 
         // Show loading state while checking session
         if (isLoading) {
-            return (
-                <div style={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    height: '100vh',
-                    fontFamily: 'sans-serif'
-                }}>
-                    <p>Verifying session...</p>
-                </div>
-            );
+            return <AppLoading />;
         }
 
         // Only render component if authenticated with correct role

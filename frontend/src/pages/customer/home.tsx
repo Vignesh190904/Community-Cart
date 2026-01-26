@@ -6,6 +6,7 @@ import { useAuth } from '../../context/AuthContext';
 import { useToast } from '../../components/ui/ToastProvider';
 import { useCustomerStore } from '../../context/CustomerStore';
 import { customerFetch } from '../../utils/customerFetch';
+import AppLoading from './apploading';
 import { SkeletonProductCard } from '../../components/customer/SkeletonProductCard';
 
 // --- Product Interface ---
@@ -250,21 +251,7 @@ export default function HomePage() {
 
     // Show neutral loading state while AuthContext verifies the token/cookie
     if (loading) {
-        return (
-            <div style={{
-                height: '100vh',
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-                backgroundColor: '#fff',
-                fontFamily: 'sans-serif',
-                color: '#222'
-            }}>
-                <div style={{ textAlign: 'center' }}>
-                    <p style={{ fontWeight: '500' }}>Verifying Session...</p>
-                </div>
-            </div>
-        );
+        return <AppLoading />;
     }
 
     // Prevents UI flicker while useEffect handles the redirect
@@ -299,7 +286,7 @@ export default function HomePage() {
                 {/* Section 2: Hero Banner */}
                 <section className="home-hero-section">
                     <img
-                        src="/customer/assets/images/Vector.png"
+                        src="/customer/assets/images/home_bg.png"
                         alt="Trusted Products Banner"
                         className="home-hero-image"
                     />
@@ -434,14 +421,14 @@ export default function HomePage() {
                                                             }
                                                         }}
                                                     >
-                                                        −
+                                                        <img src="/customer/assets/icons/minus.svg" alt="Decrease" />
                                                     </button>
                                                     <span className="product-qty-value">{qty}</span>
                                                     <button
                                                         className="product-qty-btn"
                                                         onClick={() => updateQuantity(product._id, qty + 1)}
                                                     >
-                                                        +
+                                                        <img src="/customer/assets/icons/plus.svg" alt="Increase" />
                                                     </button>
                                                 </div>
                                             )}

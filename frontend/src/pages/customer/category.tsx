@@ -366,14 +366,14 @@ export default function CategoryPage() {
                                                                 }
                                                             }}
                                                         >
-                                                            −
+                                                            <img src="/customer/assets/icons/minus.svg" alt="Decrease" />
                                                         </button>
                                                         <span className="product-qty-value">{qty}</span>
                                                         <button
                                                             className="product-qty-btn"
                                                             onClick={() => updateQuantity(product._id, qty + 1)}
                                                         >
-                                                            +
+                                                            <img src="/customer/assets/icons/plus.svg" alt="Increase" />
                                                         </button>
                                                     </div>
                                                 )}

@@ -29,6 +29,21 @@ globalThis.__BUILD_MANIFEST = {
       "static/chunks/Desktop_Community-Cart_frontend_src_pages__app_2da965e7._.js",
       "static/chunks/turbopack-Desktop_Community-Cart_frontend_src_pages__app_c7cf993a._.js"
     ],
+    "/_error": [
+      "static/chunks/48ebd_next_dist_compiled_f7b2f49b._.js",
+      "static/chunks/48ebd_next_dist_shared_lib_65dcaa05._.js",
+      "static/chunks/48ebd_next_dist_client_3b8c5f9d._.js",
+      "static/chunks/48ebd_next_dist_6d0803ca._.js",
+      "static/chunks/48ebd_next_error_fee46427.js",
+      "static/chunks/[next]_entry_page-loader_ts_8592444b._.js",
+      "static/chunks/48ebd_react_17b3ff77._.js",
+      "static/chunks/48ebd_react-dom_cjs_react-dom_development_b944df1a.js",
+      "static/chunks/48ebd_react-dom_43235666._.js",
+      "static/chunks/48ebd_c0e1799f._.js",
+      "static/chunks/[root-of-the-server]__e0a53bda._.js",
+      "static/chunks/Desktop_Community-Cart_frontend_src_pages__error_2da965e7._.js",
+      "static/chunks/turbopack-Desktop_Community-Cart_frontend_src_pages__error_c03b7786._.js"
+    ],
     "/customer/address": [
       "static/chunks/48ebd_next_dist_compiled_f7b2f49b._.js",
       "static/chunks/48ebd_next_dist_shared_lib_2dd775c2._.js",
@@ -128,7 +143,7 @@ globalThis.__BUILD_MANIFEST = {
       "static/chunks/88e7d_Community-Cart_frontend_src_pages_customer_favorites_tsx_d69f23bc._.js"
     ],
     "/customer/home": [
-      "static/chunks/[root-of-the-server]__09ed401a._.js",
+      "static/chunks/[root-of-the-server]__d37048c6._.js",
       "static/chunks/48ebd_next_dist_compiled_f7b2f49b._.js",
       "static/chunks/48ebd_next_dist_shared_lib_2dd775c2._.js",
       "static/chunks/48ebd_next_dist_client_990bb439._.js",
@@ -139,7 +154,7 @@ globalThis.__BUILD_MANIFEST = {
       "static/chunks/48ebd_react-dom_43235666._.js",
       "static/chunks/48ebd_c0e1799f._.js",
       "static/chunks/Desktop_Community-Cart_frontend_src_pages_customer_home_tsx_2da965e7._.js",
-      "static/chunks/turbopack-Desktop_Community-Cart_frontend_src_pages_customer_home_tsx_8738a2c0._.js"
+      "static/chunks/turbopack-Desktop_Community-Cart_frontend_src_pages_customer_home_tsx_298b6861._.js"
     ],
     "/customer/orders": [
       "static/chunks/[root-of-the-server]__97f2b9ff._.js",
@@ -193,9 +208,9 @@ globalThis.__BUILD_MANIFEST = {
       "static/chunks/48ebd_react-dom_cjs_react-dom_development_b944df1a.js",
       "static/chunks/48ebd_react-dom_43235666._.js",
       "static/chunks/48ebd_c0e1799f._.js",
-      "static/chunks/[root-of-the-server]__aa99ac44._.js",
+      "static/chunks/[root-of-the-server]__d345a59e._.js",
       "static/chunks/Desktop_Community-Cart_frontend_src_pages_customer_signin_tsx_2da965e7._.js",
-      "static/chunks/turbopack-Desktop_Community-Cart_frontend_src_pages_customer_signin_tsx_2529390b._.js"
+      "static/chunks/turbopack-Desktop_Community-Cart_frontend_src_pages_customer_signin_tsx_28f73c9d._.js"
     ]
   },
   "devFiles": [],

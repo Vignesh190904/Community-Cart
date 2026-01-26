@@ -180,11 +180,11 @@ export default function FavoritesPage() {
                                             {qtyInCart > 0 ? (
                                                 <div className="product-qty-controls">
                                                     <button className="product-qty-btn" onClick={() => updateItemQty(product, -1)}>
-                                                        −
+                                                        <img src="/customer/assets/icons/minus.svg" alt="Decrease" />
                                                     </button>
                                                     <span className="product-qty-value">{qtyInCart}</span>
                                                     <button className="product-qty-btn" onClick={() => updateItemQty(product, 1)}>
-                                                        +
+                                                        <img src="/customer/assets/icons/plus.svg" alt="Increase" />
                                                     </button>
                                                 </div>
                                             ) : (

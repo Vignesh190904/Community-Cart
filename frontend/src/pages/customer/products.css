@@ -192,15 +192,26 @@
   height: 24px;
   border: none;
   background: none;
-  color: #4CAF50;
-  /* var(--primary) */
-  font-weight: bold;
-  font-size: 18px;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 0;
+}
+
+.product-qty-btn img {
+  width: 16px;
+  height: 16px;
+}
+
+.product-qty-btn img[src*="plus.svg"] {
+  filter: invert(32%) sepia(51%) saturate(2644%) hue-rotate(90deg) brightness(93%) contrast(86%);
+  /* #2E7D32 Green */
+}
+
+.product-qty-btn img[src*="minus.svg"] {
+  filter: invert(24%) sepia(54%) saturate(4093%) hue-rotate(345deg) brightness(88%) contrast(93%);
+  /* #D32F2F Red */
 }
 
 .product-qty-value {

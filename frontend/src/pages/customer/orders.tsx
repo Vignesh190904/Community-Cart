@@ -242,26 +242,38 @@ export default function OrdersPage() {
                                     <img src="/customer/assets/icons/order.svg" alt="Order" className="order-icon" />
                                 </div>
                                 <div className="order-info">
-                                    <h3 className="order-id">Order {order.id}</h3>
-                                    <p className="order-date">Placed on {order.placedDate}</p>
+                                    <div className="order-id">{order.id}</div>
+                                    <div className="order-date">{order.placedDate}</div>
+
                                     <div className="order-meta">
-                                        <span className="order-items">Items: {order.totalItems}</span>
-                                        <span className="order-total">Total: ${typeof order.totalPrice === 'number' ? order.totalPrice.toFixed(2) : order.totalPrice}</span>
-                                    </div>
-                                    <div className="order-vendor" style={{ fontSize: '12px', color: '#666', marginTop: '4px' }}>
-                                        {order.vendorName}
+                                        <span className="order-items">{order.totalItems} items</span>
+                                        <span className="order-vendor">{order.vendorName}</span>
                                     </div>
                                 </div>
+
                                 <div className="order-status">
                                     <img
-                                        src={order.status === 'completed' ? '/customer/assets/icons/check.svg' :
-                                            order.status === 'cancelled' ? '/customer/assets/icons/cancel.svg' :
-                                                order.status === 'processing' ? '/customer/assets/icons/processing.svg' :
-                                                    '/customer/assets/icons/waiting.svg' // Pending icon
+                                        src={
+                                            order.status === 'completed'
+                                                ? '/customer/assets/icons/check.svg'
+                                                : order.status === 'cancelled'
+                                                    ? '/customer/assets/icons/cancel.svg'
+                                                    : order.status === 'processing'
+                                                        ? '/customer/assets/icons/processing.svg'
+                                                        : '/customer/assets/icons/waiting.svg'
                                         }
                                         alt={order.status}
-                                        className={`status-icon ${['completed', 'cancelled', 'processing'].includes(order.status) ? order.status : 'pending'}`}
+                                        className={`status-icon ${['completed', 'cancelled', 'processing'].includes(order.status)
+                                            ? order.status
+                                            : 'pending'
+                                            }`}
                                     />
+
+                                    <div className="order-total">
+                                        ${typeof order.totalPrice === 'number'
+                                            ? order.totalPrice.toFixed(2)
+                                            : order.totalPrice}
+                                    </div>
                                 </div>
                             </div>
 

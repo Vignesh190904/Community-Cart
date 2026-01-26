@@ -28,7 +28,7 @@ const SkeletonCartItem = () => (
 
 export default function CartPage() {
   const router = useRouter();
-  const { cart, updateQuantity, removeFromCart, totalPrice, isLoading } = useCustomerStore();
+  const { cart, updateQuantity, removeFromCart, clearCart, totalPrice, isLoading } = useCustomerStore();
 
   // Swipe State
   const [swipedItemId, setSwipedItemId] = useState<string | null>(null);
@@ -56,6 +56,12 @@ export default function CartPage() {
   const handleDelete = (id: string) => {
     removeFromCart(id);
     setSwipedItemId(null);
+  };
+
+  const handleClearCart = () => {
+    if (window.confirm("Are you sure you want to clear your cart?")) {
+      clearCart();
+    }
   };
 
   // --- Swipe Logic (Preserved) ---
@@ -121,10 +127,18 @@ export default function CartPage() {
 
         {/* Header */}
         <div className="cart-header fixed-header">
-          <button className="back-button touchable" onClick={() => router.back()}>
-            <img src="/customer/assets/icons/backward.svg" alt="Back" width={24} height={24} />
-          </button>
-          <h1 className="cart-title">Cart</h1>
+          <div className="cart-header-main">
+            <button className="back-button touchable" onClick={() => router.back()}>
+              <img src="/customer/assets/icons/backward.svg" alt="Back" width={24} height={24} />
+            </button>
+            <h1 className="cart-title">Cart</h1>
+
+            {cart.length > 0 && (
+              <button className="clear-cart-btn" onClick={handleClearCart}>
+                Clear
+              </button>
+            )}
+          </div>
         </div>
 
         {isLoading && cart.length === 0 ? (
@@ -177,16 +191,15 @@ export default function CartPage() {
                             <button
                               className="qty-btn"
                               onClick={(e) => { e.stopPropagation(); handleQuantity(productId, item.quantity, -1); }}
-                              style={{ fontSize: '24px', fontWeight: 400 }}
                             >
-                              −
+                              <img src="/customer/assets/icons/minus.svg" alt="Decrease" />
                             </button>
                             <span className="qty-display">{item.quantity}</span>
                             <button
                               className="qty-btn"
                               onClick={(e) => { e.stopPropagation(); handleQuantity(productId, item.quantity, 1); }}
                             >
-                              +
+                              <img src="/customer/assets/icons/plus.svg" alt="Increase" />
                             </button>
                           </div>
                         </div>

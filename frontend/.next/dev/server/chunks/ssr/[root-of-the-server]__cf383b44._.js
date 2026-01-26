@@ -818,7 +818,14 @@ function CategoryPage() {
                                                                         updateQuantity(product._id, qty - 1);
                                                                     }
                                                                 },
-                                                                children: "−"
+                                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("img", {
+                                                                    src: "/customer/assets/icons/minus.svg",
+                                                                    alt: "Decrease"
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/category.tsx",
+                                                                    lineNumber: 369,
+                                                                    columnNumber: 61
+                                                                }, this)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/category.tsx",
                                                                 lineNumber: 359,
@@ -835,7 +842,14 @@ function CategoryPage() {
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("button", {
                                                                 className: "product-qty-btn",
                                                                 onClick: ()=>updateQuantity(product._id, qty + 1),
-                                                                children: "+"
+                                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("img", {
+                                                                    src: "/customer/assets/icons/plus.svg",
+                                                                    alt: "Increase"
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/category.tsx",
+                                                                    lineNumber: 376,
+                                                                    columnNumber: 61
+                                                                }, this)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/category.tsx",
                                                                 lineNumber: 372,

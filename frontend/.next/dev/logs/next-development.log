@@ -425,3 +425,1544 @@ All exports of the module are statically known (It doesn't have dynamic exports)
 [01:58:02.232] Server  LOG      ✓ Compiled in 114ms
 [02:02:49.084] Server  LOG      ✓ Compiled in 470ms
 [02:18:36.625] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[02:20:57.350] Server  LOG      ✓ Compiled in 212ms
+[02:22:26.907] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[02:22:37.675] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[02:32:00.739] Server  LOG      ✓ Compiled in 1146ms
+[02:32:22.777] Server  LOG      ✓ Compiled in 175ms
+[02:32:48.610] Server  LOG      ✓ Compiled in 84ms
+[02:33:07.219] Server  LOG      ✓ Compiled in 69ms
+[02:51:51.734] Server  LOG      ✓ Compiled in 292ms
+[02:52:04.990] Server  LOG      ✓ Compiled in 194ms
+[02:52:25.103] Server  LOG      ✓ Compiled in 80ms
+[02:52:41.254] Server  LOG      ✓ Compiled in 49ms
+[02:52:52.843] Server  LOG      ✓ Compiled in 34ms
+[02:54:24.731] Server  LOG      ✓ Compiled in 62ms
+[02:55:06.375] Server  LOG      ✓ Compiled in 25ms
+[02:55:14.555] Server  LOG      ✓ Compiled in 26ms
+[02:55:19.358] Server  LOG      ✓ Compiled in 41ms
+[02:55:25.707] Server  LOG      ✓ Compiled in 21ms
+[02:55:27.339] Server  LOG      ✓ Compiled in 56ms
+[02:57:19.154] Server  LOG      ✓ Compiled in 233ms
+[02:59:06.779] Server  LOG      ✓ Compiled in 62ms
+[03:02:20.638] Server  LOG      ✓ Compiled in 127ms
+[03:02:34.611] Server  LOG      ✓ Compiled in 161ms
+[03:06:22.619] Server  LOG      ✓ Compiled in 40ms
+[03:06:24.699] Server  LOG      ✓ Compiled in 39ms
+[03:06:30.387] Server  LOG      ✓ Compiled in 45ms
+[03:06:50.026] Server  LOG      ✓ Compiled in 68ms
+[03:06:56.666] Server  LOG      ✓ Compiled in 39ms
+[03:07:03.419] Server  LOG      ✓ Compiled in 36ms
+[03:07:10.500] Server  LOG      ✓ Compiled in 255ms
+[03:07:10.741] Browser ERROR   ./Desktop/Community-Cart/frontend/src/pages/customer/cart.css:22:1
+Parsing CSS source code failed
+  20 |   height: 50px;
+  21 |   wid
+> 22 | }
+     | ^
+  23 |
+  24 | .cart-title {
+  25 |   font-size: 18px;
+
+Unexpected end of input
+
+Import trace:
+  Browser:
+    ./Desktop/Community-Cart/frontend/src/pages/customer/cart.css
+    ./Desktop/Community-Cart/frontend/src/pages/_app.tsx
+[03:07:11.884] Server  LOG      ✓ Compiled in 29ms
+[03:07:13.900] Server  LOG      ✓ Compiled in 47ms
+[03:07:21.837] Server  LOG      ✓ Compiled in 43ms
+[03:07:22.752] Browser ERROR   ./Desktop/Community-Cart/frontend/src/pages/customer/cart.css:21:15
+Parsing CSS source code failed
+  19 |   justify-content: center;
+  20 |   height: 50px;
+> 21 |   width: 100% !;
+     |               ^
+  22 | }
+  23 |
+  24 | .cart-title {
+
+Unexpected token Delim('!')
+
+Import trace:
+  Browser:
+    ./Desktop/Community-Cart/frontend/src/pages/customer/cart.css
+    ./Desktop/Community-Cart/frontend/src/pages/_app.tsx
+[03:07:23.200] Server  LOG      ✓ Compiled in 44ms
+[03:07:25.070] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[03:07:38.150] Server  LOG      ✓ Compiled in 23ms
+[03:07:38.739] Browser ERROR   ./Desktop/Community-Cart/frontend/src/pages/customer/cart.css:23:1
+Parsing CSS source code failed
+  21 |   width: 100% !important;
+  22 |   pa
+> 23 | }
+     | ^
+  24 |
+  25 | .cart-title {
+  26 |   font-size: 18px;
+
+Unexpected end of input
+
+Import trace:
+  Browser:
+    ./Desktop/Community-Cart/frontend/src/pages/customer/cart.css
+    ./Desktop/Community-Cart/frontend/src/pages/_app.tsx
+[03:07:40.429] Server  LOG      ✓ Compiled in 40ms
+[03:07:49.364] Server  LOG      ✓ Compiled in 30ms
+[03:07:56.314] Server  LOG      ✓ Compiled in 19ms
+[03:07:59.998] Server  LOG      ✓ Compiled in 17ms
+[03:08:38.913] Server  LOG      ✓ Compiled in 34ms
+[03:08:44.282] Server  LOG      ✓ Compiled in 42ms
+[03:08:51.743] Server  LOG      ✓ Compiled in 21ms
+[03:08:54.212] Server  LOG      ✓ Compiled in 29ms
+[03:09:24.309] Server  LOG      ✓ Compiled in 31ms
+[03:09:49.073] Server  LOG      ✓ Compiled in 16ms
+[03:10:04.555] Server  LOG      ✓ Compiled in 21ms
+[03:10:23.074] Server  LOG      ✓ Compiled in 22ms
+[03:10:23.740] Browser ERROR   ./Desktop/Community-Cart/frontend/src/pages/customer/cart.css:109:1
+Parsing CSS source code failed
+  107 |   gap: 12px;
+  108 |   pa
+> 109 | }
+      | ^
+  110 |
+  111 | /* Swipe Container */
+  112 | .cart-item-wrapper {
+
+Unexpected end of input
+
+Import trace:
+  Browser:
+    ./Desktop/Community-Cart/frontend/src/pages/customer/cart.css
+    ./Desktop/Community-Cart/frontend/src/pages/_app.tsx
+[03:10:26.541] Server  LOG      ✓ Compiled in 33ms
+[03:10:30.056] Server  LOG      ✓ Compiled in 23ms
+[03:11:05.517] Server  LOG      ✓ Compiled in 25ms
+[03:11:05.740] Browser ERROR   ./Desktop/Community-Cart/frontend/src/pages/customer/cart.css:119:1
+Parsing CSS source code failed
+  117 |   overflow: hidden;
+  118 |   bor
+> 119 | }
+      | ^
+  120 |
+  121 | .cart-delete-action {
+  122 |   position: absolute;
+
+Unexpected end of input
+
+Import trace:
+  Browser:
+    ./Desktop/Community-Cart/frontend/src/pages/customer/cart.css
+    ./Desktop/Community-Cart/frontend/src/pages/_app.tsx
+[03:11:07.736] Server  LOG      ✓ Compiled in 48ms
+[03:11:38.623] Server  LOG      ✓ Compiled in 198ms
+[03:11:56.600] Server  LOG      ✓ Compiled in 25ms
+[03:12:26.167] Server  LOG      ✓ Compiled in 28ms
+[03:13:58.223] Server  LOG      ✓ Compiled in 25ms
+[03:18:22.286] Server  LOG      ✓ Compiled in 129ms
+[03:18:53.494] Server  LOG      ✓ Compiled in 113ms
+[03:18:55.811] Server  LOG      ✓ Compiled in 31ms
+[03:19:18.880] Server  LOG      ✓ Compiled in 60ms
+[03:19:37.172] Server  LOG      ✓ Compiled in 43ms
+[03:19:40.421] Server  LOG      ✓ Compiled in 38ms
+[03:21:09.335] Server  LOG      ✓ Compiled in 146ms
+[03:22:21.689] Server  LOG      ✓ Compiled in 66ms
+[03:22:54.376] Server  LOG      ✓ Compiled in 176ms
+[03:22:54.744] Browser ERROR   ./Desktop/Community-Cart/frontend/src/pages/customer/orders.css:124:8
+Parsing CSS source code failed
+  122 | .order-items,
+  123 | .order-total {
+> 124 |     mar
+      |        ^
+  125 |     display: inline-block;
+  126 | }
+  127 |
+
+Unexpected token Ident("display")
+
+Import trace:
+  Browser:
+    ./Desktop/Community-Cart/frontend/src/pages/customer/orders.css
+    ./Desktop/Community-Cart/frontend/src/pages/_app.tsx
+[03:22:56.881] Server  LOG      ✓ Compiled in 66ms
+[03:22:59.050] Server  LOG      ✓ Compiled in 31ms
+[03:25:31.436] Server  LOG      ✓ Compiled in 171ms
+[03:25:36.849] Server  LOG      ✓ Compiled in 42ms
+[03:26:00.860] Server  LOG      ✓ Compiled in 39ms
+[03:26:02.488] Server  LOG      ✓ Compiled in 70ms
+[03:26:11.594] Server  LOG      ✓ Compiled in 77ms
+[03:26:30.225] Server  LOG      ✓ Compiled in 173ms
+[03:26:30.748] Browser LOG     Refreshing page data due to server-side change
+[03:26:30.748] Browser ERROR   ./Desktop/Community-Cart/frontend/src/pages/customer/orders.tsx:293:23
+Parsing ecmascript source code failed
+  291 |                             )}
+  292 |                         </div>
+> 293 |                     ))}
+      |                       ^
+  294 |                 </div>
+  295 |             </div>
+  296 |         </CustomerLayout >
+
+Unexpected token. Did you mean `{'}'}` or `&rbrace;`?
+[03:26:30.748] Browser ERROR   ./Desktop/Community-Cart/frontend/src/pages/customer/orders.tsx:295:14
+Parsing ecmascript source code failed
+  293 |                     ))}
+  294 |                 </div>
+> 295 |             </div>
+      |              ^^^^^
+  296 |         </CustomerLayout >
+  297 |     );
+  298 | }
+
+Unterminated regexp literal
+[03:26:31.383] Server  LOG      ✓ Compiled in 94ms
+[03:26:31.460] Browser LOG     Refreshing page data due to server-side change
+[03:26:37.231] Server  LOG      ✓ Compiled in 41ms
+[03:26:40.312] Server  LOG      ✓ Compiled in 40ms
+[03:28:56.236] Server  LOG      ✓ Compiled in 75ms
+[03:28:58.423] Server  LOG      ✓ Compiled in 39ms
+[03:29:06.094] Server  LOG      ✓ Compiled in 18ms
+[03:29:20.868] Server  LOG      ✓ Compiled in 34ms
+[03:29:57.474] Server  LOG      ✓ Compiled in 87ms
+[03:29:57.741] Browser ERROR   ./Desktop/Community-Cart/frontend/src/pages/customer/orders.css:99:1
+Parsing CSS source code failed
+   97 |     min-width: 0;
+   98 |     margin
+>  99 | }
+      | ^
+  100 |
+  101 | .order-id {
+  102 |     font-size: 16px;
+
+Unexpected end of input
+
+Import trace:
+  Browser:
+    ./Desktop/Community-Cart/frontend/src/pages/customer/orders.css
+    ./Desktop/Community-Cart/frontend/src/pages/_app.tsx
+[03:30:00.153] Server  LOG      ✓ Compiled in 30ms
+[03:30:04.100] Server  LOG      ✓ Compiled in 31ms
+[03:30:32.779] Server  LOG      ✓ Compiled in 24ms
+[03:32:14.753] Server  LOG      ✓ Compiled in 87ms
+[03:33:23.603] Server  LOG      ✓ Compiled in 44ms
+[03:33:33.540] Server  LOG      ✓ Compiled in 34ms
+[03:33:41.851] Server  LOG      ✓ Compiled in 40ms
+[03:34:42.367] Server  LOG      ✓ Compiled in 37ms
+[03:36:08.375] Server  LOG      ✓ Compiled in 69ms
+[03:36:09.621] Server  LOG      ✓ Compiled in 34ms
+[03:36:13.433] Server  LOG      ✓ Compiled in 122ms
+[03:36:13.741] Browser LOG     Refreshing page data due to server-side change
+[03:36:13.741] Browser ERROR   ./Desktop/Community-Cart/frontend/src/pages/customer/cart.tsx:131:11
+Parsing ecmascript source code failed
+  129 |         <div className="cart-header fixed-header">
+  130 |           <div
+> 131 |           <button className="back-button touchable" onClick={() => router.back()}>
+      |           ^
+  132 |             <img src="/customer/assets/icons/backward.svg" alt="Back" width={24} height={24} />
+  133 |           </button>
+  134 |           <h1 className="cart-title">Cart</h1>
+
+Expression expected
+[03:36:15.743] Browser ERROR   ./Desktop/Community-Cart/frontend/src/pages/customer/cart.tsx:131:11
+Parsing ecmascript source code failed
+  129 |         <div className="cart-header fixed-header">
+  130 |           <div 
+> 131 |           <button className="back-button touchable" onClick={() => router.back()}>
+      |           ^
+  132 |             <img src="/customer/assets/icons/backward.svg" alt="Back" width={24} height={24} />
+  133 |           </button>
+  134 |           <h1 className="cart-title">Cart</h1>
+
+Expression expected
+[03:36:20.262] Server  LOG      ✓ Compiled in 42ms
+[03:36:20.742] Browser LOG     Refreshing page data due to server-side change
+[03:36:25.003] Server  LOG      ✓ Compiled in 38ms
+[03:36:31.727] Server  LOG      ✓ Compiled in 32ms
+[03:36:32.746] Browser LOG     Refreshing page data due to server-side change
+[03:36:32.746] Browser ERROR   ./Desktop/Community-Cart/frontend/src/pages/customer/cart.tsx:232:1
+Parsing ecmascript source code failed
+  230 |     </CustomerLayout>
+  231 |   );
+> 232 | }
+      | ^
+  233 |
+
+Unexpected token. Did you mean `{'}'}` or `&rbrace;`?
+[03:36:33.634] Server  LOG      ✓ Compiled in 31ms
+[03:36:33.743] Browser LOG     Refreshing page data due to server-side change
+[03:36:36.085] Server  LOG      ✓ Compiled in 29ms
+[03:36:51.840] Server  LOG      ✓ Compiled in 49ms
+[03:36:53.808] Server  LOG      ✓ Compiled in 40ms
+[03:36:56.728] Server  LOG      ✓ Compiled in 28ms
+[03:37:01.580] Server  LOG      ✓ Compiled in 36ms
+[03:37:01.739] Browser ERROR   ./Desktop/Community-Cart/frontend/src/pages/customer/cart.css:24:5
+Parsing CSS source code failed
+  22 |
+  23 | .cart-header-main{
+> 24 |   pa
+     |     ^
+  25 |   display: flex;
+  26 |   align-items: center;
+  27 |   justify-content: center;
+
+Unexpected token Ident("display")
+
+Import trace:
+  Browser:
+    ./Desktop/Community-Cart/frontend/src/pages/customer/cart.css
+    ./Desktop/Community-Cart/frontend/src/pages/_app.tsx
+[03:37:04.094] Server  LOG      ✓ Compiled in 21ms
+[03:37:38.675] Server  LOG      ✓ Compiled in 33ms
+[03:38:19.959] Server  LOG      ✓ Compiled in 32ms
+[03:42:07.247] Server  LOG      ✓ Compiled in 298ms
+[03:42:42.123] Server  LOG      ✓ Compiled in 107ms
+[03:42:57.437] Server  LOG      ✓ Compiled in 169ms
+[03:42:57.739] Browser ERROR   ./Desktop/Community-Cart/frontend/src/pages/customer/home.css:17:1
+Parsing CSS source code failed
+  15 |     background-color: #fff;
+  16 |     bor
+> 17 | }
+     | ^
+  18 |
+  19 | .home-search-container {
+  20 |     position: relative;
+
+Unexpected end of input
+
+Import trace:
+  Browser:
+    ./Desktop/Community-Cart/frontend/src/pages/customer/home.css
+    ./Desktop/Community-Cart/frontend/src/pages/_app.tsx
+[03:42:59.539] Server  LOG      ✓ Compiled in 27ms
+[03:43:06.772] Server  LOG      ✓ Compiled in 31ms
+[03:43:14.151] Server  LOG      ✓ Compiled in 23ms
+[03:43:24.204] Server  LOG      ✓ Compiled in 42ms
+[03:43:24.740] Browser ERROR   ./Desktop/Community-Cart/frontend/src/pages/customer/home.css:23:1
+Parsing CSS source code failed
+  21 |     align-items: center;
+  22 |     bnr
+> 23 | }
+     | ^
+  24 |
+  25 | .home-search-icon {
+  26 |     position: absolute;
+
+Unexpected end of input
+
+Import trace:
+  Browser:
+    ./Desktop/Community-Cart/frontend/src/pages/customer/home.css
+    ./Desktop/Community-Cart/frontend/src/pages/_app.tsx
+[03:43:26.751] Browser ERROR   ./Desktop/Community-Cart/frontend/src/pages/customer/home.css:23:1
+Parsing CSS source code failed
+  21 |     align-items: center;
+  22 |     bor
+> 23 | }
+     | ^
+  24 |
+  25 | .home-search-icon {
+  26 |     position: absolute;
+
+Unexpected end of input
+
+Import trace:
+  Browser:
+    ./Desktop/Community-Cart/frontend/src/pages/customer/home.css
+    ./Desktop/Community-Cart/frontend/src/pages/_app.tsx
+[03:43:28.051] Server  LOG      ✓ Compiled in 51ms
+[03:43:36.449] Server  LOG      ✓ Compiled in 22ms
+[03:43:58.052] Server  LOG      ✓ Compiled in 33ms
+[03:44:06.351] Server  LOG      ✓ Compiled in 38ms
+[03:44:06.750] Browser ERROR   ./Desktop/Community-Cart/frontend/src/pages/customer/home.css:24:1
+Parsing CSS source code failed
+  22 |     border: 1px solid black;
+  23 |     border
+> 24 | }
+     | ^
+  25 |
+  26 | .home-search-icon {
+  27 |     position: absolute;
+
+Unexpected end of input
+
+Import trace:
+  Browser:
+    ./Desktop/Community-Cart/frontend/src/pages/customer/home.css
+    ./Desktop/Community-Cart/frontend/src/pages/_app.tsx
+[03:44:07.679] Server  LOG      ✓ Compiled in 32ms
+[03:44:09.537] Server  LOG      ✓ Compiled in 58ms
+[03:44:50.967] Server  LOG      ✓ Compiled in 99ms
+[03:44:51.748] Browser ERROR   ./Desktop/Community-Cart/frontend/src/pages/customer/browse-products.css:20:5
+Parsing CSS source code failed
+  18 |   background: #F5F7FA;
+  19 |   padding: 12px 20px;
+> 20 |   bo
+     |     ^
+  21 |   border-radius: 30px;
+  22 | }
+  23 |
+
+Unexpected token Ident("border-radius")
+
+Import trace:
+  Browser:
+    ./Desktop/Community-Cart/frontend/src/pages/customer/browse-products.css
+    ./Desktop/Community-Cart/frontend/src/pages/_app.tsx
+[03:44:52.732] Server  LOG      ✓ Compiled in 33ms
+[03:44:55.064] Server  LOG      ✓ Compiled in 31ms
+[03:45:23.299] Server  LOG      ✓ Compiled in 26ms
+[03:45:25.661] Server  LOG      ✓ Compiled in 22ms
+[03:45:39.075] Server  LOG      ✓ Compiled in 22ms
+[03:45:53.472] Server  LOG      ✓ Compiled in 34ms
+[03:46:11.642] Server  LOG      ✓ Compiled in 23ms
+[03:46:54.785] Server  LOG      ✓ Compiled in 337ms
+[03:47:08.788] Server  LOG      ✓ Compiled in 35ms
+[03:47:35.604] Server  LOG      ✓ Compiled in 32ms
+[03:47:59.250] Server  LOG      ✓ Compiled in 94ms
+[03:48:02.302] Server  LOG      ✓ Compiled in 58ms
+[03:48:05.115] Server  LOG      ✓ Compiled in 37ms
+[03:48:06.967] Server  LOG      ✓ Compiled in 47ms
+[03:48:19.068] Server  LOG      ✓ Compiled in 33ms
+[03:48:21.650] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[03:48:33.718] Server  LOG      ✓ Compiled in 36ms
+[03:48:40.549] Server  LOG      ✓ Compiled in 28ms
+[03:48:46.917] Server  LOG      ✓ Compiled in 28ms
+[03:48:58.051] Server  LOG      ✓ Compiled in 96ms
+[03:50:45.665] Server  LOG      ✓ Compiled in 107ms
+[03:51:01.476] Server  LOG      ✓ Compiled in 109ms
+[03:55:31.431] Browser ERROR   Error fetching wishlist: {}
+[03:55:31.431] Browser ERROR   Error fetching wishlist: {}
+[03:55:56.438] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[03:56:30.533] Server  LOG      ✓ Compiled in 500ms
+[03:56:36.573] Server  LOG      ✓ Compiled in 48ms
+[03:56:55.139] Server  LOG      ✓ Compiled in 124ms
+[03:57:00.336] Server  LOG      ✓ Compiled in 40ms
+[03:59:57.628] Server  LOG      ✓ Compiled in 621ms
+[04:00:20.060] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx:9:1
+Module not found: Can't resolve '../pages/customer/apploading'
+   7 | import { useCustomerStore } from '../../context/CustomerStore';
+   8 | import { customerFetch } from '../../utils/customerFetch';
+>  9 | import AppLoading from '../pages/customer/apploading';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  10 | import { SkeletonProductCard } from '../../components/customer/SkeletonProductCard';
+  11 |
+  12 | // --- Product Interface ---
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[04:00:20.063] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx:9:1
+Module not found: Can't resolve '../pages/customer/apploading'
+   7 | import { useCustomerStore } from '../../context/CustomerStore';
+   8 | import { customerFetch } from '../../utils/customerFetch';
+>  9 | import AppLoading from '../pages/customer/apploading';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  10 | import { SkeletonProductCard } from '../../components/customer/SkeletonProductCard';
+  11 |
+  12 | // --- Product Interface ---
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[04:00:20.067] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx:9:1
+Module not found: Can't resolve '../pages/customer/apploading'
+   7 | import { useCustomerStore } from '../../context/CustomerStore';
+   8 | import { customerFetch } from '../../utils/customerFetch';
+>  9 | import AppLoading from '../pages/customer/apploading';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  10 | import { SkeletonProductCard } from '../../components/customer/SkeletonProductCard';
+  11 |
+  12 | // --- Product Interface ---
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[04:00:20.071] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx:9:1
+Module not found: Can't resolve '../pages/customer/apploading'
+   7 | import { useCustomerStore } from '../../context/CustomerStore';
+   8 | import { customerFetch } from '../../utils/customerFetch';
+>  9 | import AppLoading from '../pages/customer/apploading';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  10 | import { SkeletonProductCard } from '../../components/customer/SkeletonProductCard';
+  11 |
+  12 | // --- Product Interface ---
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[04:00:20.080] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx:9:1
+Module not found: Can't resolve '../pages/customer/apploading'
+   7 | import { useCustomerStore } from '../../context/CustomerStore';
+   8 | import { customerFetch } from '../../utils/customerFetch';
+>  9 | import AppLoading from '../pages/customer/apploading';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  10 | import { SkeletonProductCard } from '../../components/customer/SkeletonProductCard';
+  11 |
+  12 | // --- Product Interface ---
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[04:00:20.082] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx:9:1
+Module not found: Can't resolve '../pages/customer/apploading'
+   7 | import { useCustomerStore } from '../../context/CustomerStore';
+   8 | import { customerFetch } from '../../utils/customerFetch';
+>  9 | import AppLoading from '../pages/customer/apploading';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  10 | import { SkeletonProductCard } from '../../components/customer/SkeletonProductCard';
+  11 |
+  12 | // --- Product Interface ---
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[04:00:20.085] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx:9:1
+Module not found: Can't resolve '../pages/customer/apploading'
+   7 | import { useCustomerStore } from '../../context/CustomerStore';
+   8 | import { customerFetch } from '../../utils/customerFetch';
+>  9 | import AppLoading from '../pages/customer/apploading';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  10 | import { SkeletonProductCard } from '../../components/customer/SkeletonProductCard';
+  11 |
+  12 | // --- Product Interface ---
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[04:00:20.087] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx:9:1
+Module not found: Can't resolve '../pages/customer/apploading'
+   7 | import { useCustomerStore } from '../../context/CustomerStore';
+   8 | import { customerFetch } from '../../utils/customerFetch';
+>  9 | import AppLoading from '../pages/customer/apploading';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  10 | import { SkeletonProductCard } from '../../components/customer/SkeletonProductCard';
+  11 |
+  12 | // --- Product Interface ---
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[04:00:20.095] Server  LOG      ✓ Compiled in 630ms
+[04:00:20.745] Browser ERROR   ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx:9:1
+Module not found: Can't resolve '../pages/customer/apploading'
+   7 | import { useCustomerStore } from '../../context/CustomerStore';
+   8 | import { customerFetch } from '../../utils/customerFetch';
+>  9 | import AppLoading from '../pages/customer/apploading';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  10 | import { SkeletonProductCard } from '../../components/customer/SkeletonProductCard';
+  11 |
+  12 | // --- Product Interface ---
+
+https://nextjs.org/docs/messages/module-not-found
+[04:00:31.250] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx:9:1
+Module not found: Can't resolve '..apploading'
+   7 | import { useCustomerStore } from '../../context/CustomerStore';
+   8 | import { customerFetch } from '../../utils/customerFetch';
+>  9 | import AppLoading from '..apploading';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  10 | import { SkeletonProductCard } from '../../components/customer/SkeletonProductCard';
+  11 |
+  12 | // --- Product Interface ---
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[04:00:31.259] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx:9:1
+Module not found: Can't resolve '..apploading'
+   7 | import { useCustomerStore } from '../../context/CustomerStore';
+   8 | import { customerFetch } from '../../utils/customerFetch';
+>  9 | import AppLoading from '..apploading';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  10 | import { SkeletonProductCard } from '../../components/customer/SkeletonProductCard';
+  11 |
+  12 | // --- Product Interface ---
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[04:00:31.262] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx:9:1
+Module not found: Can't resolve '..apploading'
+   7 | import { useCustomerStore } from '../../context/CustomerStore';
+   8 | import { customerFetch } from '../../utils/customerFetch';
+>  9 | import AppLoading from '..apploading';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  10 | import { SkeletonProductCard } from '../../components/customer/SkeletonProductCard';
+  11 |
+  12 | // --- Product Interface ---
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[04:00:31.265] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx:9:1
+Module not found: Can't resolve '..apploading'
+   7 | import { useCustomerStore } from '../../context/CustomerStore';
+   8 | import { customerFetch } from '../../utils/customerFetch';
+>  9 | import AppLoading from '..apploading';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  10 | import { SkeletonProductCard } from '../../components/customer/SkeletonProductCard';
+  11 |
+  12 | // --- Product Interface ---
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[04:00:31.270] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx:9:1
+Module not found: Can't resolve '..apploading'
+   7 | import { useCustomerStore } from '../../context/CustomerStore';
+   8 | import { customerFetch } from '../../utils/customerFetch';
+>  9 | import AppLoading from '..apploading';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  10 | import { SkeletonProductCard } from '../../components/customer/SkeletonProductCard';
+  11 |
+  12 | // --- Product Interface ---
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[04:00:31.272] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx:9:1
+Module not found: Can't resolve '..apploading'
+   7 | import { useCustomerStore } from '../../context/CustomerStore';
+   8 | import { customerFetch } from '../../utils/customerFetch';
+>  9 | import AppLoading from '..apploading';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  10 | import { SkeletonProductCard } from '../../components/customer/SkeletonProductCard';
+  11 |
+  12 | // --- Product Interface ---
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[04:00:31.274] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx:9:1
+Module not found: Can't resolve '..apploading'
+   7 | import { useCustomerStore } from '../../context/CustomerStore';
+   8 | import { customerFetch } from '../../utils/customerFetch';
+>  9 | import AppLoading from '..apploading';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  10 | import { SkeletonProductCard } from '../../components/customer/SkeletonProductCard';
+  11 |
+  12 | // --- Product Interface ---
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[04:00:31.276] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx:9:1
+Module not found: Can't resolve '..apploading'
+   7 | import { useCustomerStore } from '../../context/CustomerStore';
+   8 | import { customerFetch } from '../../utils/customerFetch';
+>  9 | import AppLoading from '..apploading';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  10 | import { SkeletonProductCard } from '../../components/customer/SkeletonProductCard';
+  11 |
+  12 | // --- Product Interface ---
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[04:00:31.300] Server  LOG      ✓ Compiled in 76ms
+[04:00:31.742] Browser ERROR   ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx:9:1
+Module not found: Can't resolve '..apploading'
+   7 | import { useCustomerStore } from '../../context/CustomerStore';
+   8 | import { customerFetch } from '../../utils/customerFetch';
+>  9 | import AppLoading from '..apploading';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  10 | import { SkeletonProductCard } from '../../components/customer/SkeletonProductCard';
+  11 |
+  12 | // --- Product Interface ---
+
+https://nextjs.org/docs/messages/module-not-found
+[04:00:46.206] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx:9:1
+Module not found: Can't resolve '..apploading'
+   7 | import { useCustomerStore } from '../../context/CustomerStore';
+   8 | import { customerFetch } from '../../utils/customerFetch';
+>  9 | import AppLoading from ''..apploading'';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  10 | import { SkeletonProductCard } from '../../components/customer/SkeletonProductCard';
+  11 |
+  12 | // --- Product Interface ---
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[04:00:46.210] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx:9:1
+Module not found: Can't resolve '..apploading'
+   7 | import { useCustomerStore } from '../../context/CustomerStore';
+   8 | import { customerFetch } from '../../utils/customerFetch';
+>  9 | import AppLoading from ''..apploading'';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  10 | import { SkeletonProductCard } from '../../components/customer/SkeletonProductCard';
+  11 |
+  12 | // --- Product Interface ---
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[04:00:46.213] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx:9:1
+Module not found: Can't resolve '..apploading'
+   7 | import { useCustomerStore } from '../../context/CustomerStore';
+   8 | import { customerFetch } from '../../utils/customerFetch';
+>  9 | import AppLoading from ''..apploading'';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  10 | import { SkeletonProductCard } from '../../components/customer/SkeletonProductCard';
+  11 |
+  12 | // --- Product Interface ---
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[04:00:46.216] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx:9:1
+Module not found: Can't resolve '..apploading'
+   7 | import { useCustomerStore } from '../../context/CustomerStore';
+   8 | import { customerFetch } from '../../utils/customerFetch';
+>  9 | import AppLoading from ''..apploading'';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  10 | import { SkeletonProductCard } from '../../components/customer/SkeletonProductCard';
+  11 |
+  12 | // --- Product Interface ---
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[04:00:46.221] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx:9:1
+Module not found: Can't resolve '..apploading'
+   7 | import { useCustomerStore } from '../../context/CustomerStore';
+   8 | import { customerFetch } from '../../utils/customerFetch';
+>  9 | import AppLoading from ''..apploading'';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  10 | import { SkeletonProductCard } from '../../components/customer/SkeletonProductCard';
+  11 |
+  12 | // --- Product Interface ---
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[04:00:46.224] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx:9:1
+Module not found: Can't resolve '..apploading'
+   7 | import { useCustomerStore } from '../../context/CustomerStore';
+   8 | import { customerFetch } from '../../utils/customerFetch';
+>  9 | import AppLoading from ''..apploading'';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  10 | import { SkeletonProductCard } from '../../components/customer/SkeletonProductCard';
+  11 |
+  12 | // --- Product Interface ---
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[04:00:46.226] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx:9:1
+Module not found: Can't resolve '..apploading'
+   7 | import { useCustomerStore } from '../../context/CustomerStore';
+   8 | import { customerFetch } from '../../utils/customerFetch';
+>  9 | import AppLoading from ''..apploading'';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  10 | import { SkeletonProductCard } from '../../components/customer/SkeletonProductCard';
+  11 |
+  12 | // --- Product Interface ---
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[04:00:46.228] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx:9:1
+Module not found: Can't resolve '..apploading'
+   7 | import { useCustomerStore } from '../../context/CustomerStore';
+   8 | import { customerFetch } from '../../utils/customerFetch';
+>  9 | import AppLoading from ''..apploading'';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  10 | import { SkeletonProductCard } from '../../components/customer/SkeletonProductCard';
+  11 |
+  12 | // --- Product Interface ---
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[04:00:46.243] Server  LOG      ✓ Compiled in 94ms
+[04:00:46.743] Browser ERROR   ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx:9:26
+Parsing ecmascript source code failed
+   7 | import { useCustomerStore } from '../../context/CustomerStore';
+   8 | import { customerFetch } from '../../utils/customerFetch';
+>  9 | import AppLoading from ''..apploading'';
+     |                          ^
+  10 | import { SkeletonProductCard } from '../../components/customer/SkeletonProductCard';
+  11 |
+  12 | // --- Product Interface ---
+
+Expected ';', got '.'
+[04:00:46.743] Browser ERROR   ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx:9:1
+Module not found: Can't resolve '..apploading'
+   7 | import { useCustomerStore } from '../../context/CustomerStore';
+   8 | import { customerFetch } from '../../utils/customerFetch';
+>  9 | import AppLoading from ''..apploading'';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  10 | import { SkeletonProductCard } from '../../components/customer/SkeletonProductCard';
+  11 |
+  12 | // --- Product Interface ---
+
+https://nextjs.org/docs/messages/module-not-found
+[04:00:48.129] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx:9:1
+Module not found: Can't resolve '..apploading'
+   7 | import { useCustomerStore } from '../../context/CustomerStore';
+   8 | import { customerFetch } from '../../utils/customerFetch';
+>  9 | import AppLoading from '    '';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 10 | import { SkeletonProductCard } from '../../components/customer/SkeletonProductCard';
+     | ^^^^^^
+  11 |
+  12 | // --- Product Interface ---
+  13 |
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[04:00:48.132] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx:9:1
+Module not found: Can't resolve '..apploading'
+   7 | import { useCustomerStore } from '../../context/CustomerStore';
+   8 | import { customerFetch } from '../../utils/customerFetch';
+>  9 | import AppLoading from '    '';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 10 | import { SkeletonProductCard } from '../../components/customer/SkeletonProductCard';
+     | ^^^^^^
+  11 |
+  12 | // --- Product Interface ---
+  13 |
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[04:00:48.134] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx:9:1
+Module not found: Can't resolve '..apploading'
+   7 | import { useCustomerStore } from '../../context/CustomerStore';
+   8 | import { customerFetch } from '../../utils/customerFetch';
+>  9 | import AppLoading from '    '';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 10 | import { SkeletonProductCard } from '../../components/customer/SkeletonProductCard';
+     | ^^^^^^
+  11 |
+  12 | // --- Product Interface ---
+  13 |
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[04:00:48.137] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx:9:1
+Module not found: Can't resolve '..apploading'
+   7 | import { useCustomerStore } from '../../context/CustomerStore';
+   8 | import { customerFetch } from '../../utils/customerFetch';
+>  9 | import AppLoading from '    '';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 10 | import { SkeletonProductCard } from '../../components/customer/SkeletonProductCard';
+     | ^^^^^^
+  11 |
+  12 | // --- Product Interface ---
+  13 |
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[04:00:48.140] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx:9:1
+Module not found: Can't resolve '..apploading'
+   7 | import { useCustomerStore } from '../../context/CustomerStore';
+   8 | import { customerFetch } from '../../utils/customerFetch';
+>  9 | import AppLoading from '    '';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 10 | import { SkeletonProductCard } from '../../components/customer/SkeletonProductCard';
+     | ^^^^^^
+  11 |
+  12 | // --- Product Interface ---
+  13 |
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[04:00:48.143] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx:9:1
+Module not found: Can't resolve '..apploading'
+   7 | import { useCustomerStore } from '../../context/CustomerStore';
+   8 | import { customerFetch } from '../../utils/customerFetch';
+>  9 | import AppLoading from '    '';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 10 | import { SkeletonProductCard } from '../../components/customer/SkeletonProductCard';
+     | ^^^^^^
+  11 |
+  12 | // --- Product Interface ---
+  13 |
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[04:00:48.145] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx:9:1
+Module not found: Can't resolve '..apploading'
+   7 | import { useCustomerStore } from '../../context/CustomerStore';
+   8 | import { customerFetch } from '../../utils/customerFetch';
+>  9 | import AppLoading from '    '';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 10 | import { SkeletonProductCard } from '../../components/customer/SkeletonProductCard';
+     | ^^^^^^
+  11 |
+  12 | // --- Product Interface ---
+  13 |
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[04:00:48.148] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx:9:1
+Module not found: Can't resolve '..apploading'
+   7 | import { useCustomerStore } from '../../context/CustomerStore';
+   8 | import { customerFetch } from '../../utils/customerFetch';
+>  9 | import AppLoading from '    '';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 10 | import { SkeletonProductCard } from '../../components/customer/SkeletonProductCard';
+     | ^^^^^^
+  11 |
+  12 | // --- Product Interface ---
+  13 |
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[04:00:48.163] Server  LOG      ✓ Compiled in 32ms
+[04:00:48.754] Browser ERROR   ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx:9:30
+Parsing ecmascript source code failed
+   7 | import { useCustomerStore } from '../../context/CustomerStore';
+   8 | import { customerFetch } from '../../utils/customerFetch';
+>  9 | import AppLoading from '    '';
+     |                              ^^
+  10 | import { SkeletonProductCard } from '../../components/customer/SkeletonProductCard';
+  11 |
+  12 | // --- Product Interface ---
+
+Unterminated string constant
+[04:00:48.754] Browser ERROR   ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx:9:1
+Module not found: Can't resolve '..apploading'
+   7 | import { useCustomerStore } from '../../context/CustomerStore';
+   8 | import { customerFetch } from '../../utils/customerFetch';
+>  9 | import AppLoading from '    '';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 10 | import { SkeletonProductCard } from '../../components/customer/SkeletonProductCard';
+     | ^^^^^^
+  11 |
+  12 | // --- Product Interface ---
+  13 |
+
+https://nextjs.org/docs/messages/module-not-found
+[04:00:50.675] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx:9:1
+Module not found: Can't resolve '../../session/apploading'
+   7 | import { useCustomerStore } from '../../context/CustomerStore';
+   8 | import { customerFetch } from '../../utils/customerFetch';
+>  9 | import AppLoading from '../../session/apploading';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  10 | import { SkeletonProductCard } from '../../components/customer/SkeletonProductCard';
+  11 |
+  12 | // --- Product Interface ---
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[04:00:50.678] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx:9:1
+Module not found: Can't resolve '../../session/apploading'
+   7 | import { useCustomerStore } from '../../context/CustomerStore';
+   8 | import { customerFetch } from '../../utils/customerFetch';
+>  9 | import AppLoading from '../../session/apploading';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  10 | import { SkeletonProductCard } from '../../components/customer/SkeletonProductCard';
+  11 |
+  12 | // --- Product Interface ---
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[04:00:50.680] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx:9:1
+Module not found: Can't resolve '../../session/apploading'
+   7 | import { useCustomerStore } from '../../context/CustomerStore';
+   8 | import { customerFetch } from '../../utils/customerFetch';
+>  9 | import AppLoading from '../../session/apploading';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  10 | import { SkeletonProductCard } from '../../components/customer/SkeletonProductCard';
+  11 |
+  12 | // --- Product Interface ---
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[04:00:50.684] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx:9:1
+Module not found: Can't resolve '../../session/apploading'
+   7 | import { useCustomerStore } from '../../context/CustomerStore';
+   8 | import { customerFetch } from '../../utils/customerFetch';
+>  9 | import AppLoading from '../../session/apploading';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  10 | import { SkeletonProductCard } from '../../components/customer/SkeletonProductCard';
+  11 |
+  12 | // --- Product Interface ---
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[04:00:50.686] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx:9:1
+Module not found: Can't resolve '../../session/apploading'
+   7 | import { useCustomerStore } from '../../context/CustomerStore';
+   8 | import { customerFetch } from '../../utils/customerFetch';
+>  9 | import AppLoading from '../../session/apploading';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  10 | import { SkeletonProductCard } from '../../components/customer/SkeletonProductCard';
+  11 |
+  12 | // --- Product Interface ---
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[04:00:50.689] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx:9:1
+Module not found: Can't resolve '../../session/apploading'
+   7 | import { useCustomerStore } from '../../context/CustomerStore';
+   8 | import { customerFetch } from '../../utils/customerFetch';
+>  9 | import AppLoading from '../../session/apploading';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  10 | import { SkeletonProductCard } from '../../components/customer/SkeletonProductCard';
+  11 |
+  12 | // --- Product Interface ---
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[04:00:50.691] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx:9:1
+Module not found: Can't resolve '../../session/apploading'
+   7 | import { useCustomerStore } from '../../context/CustomerStore';
+   8 | import { customerFetch } from '../../utils/customerFetch';
+>  9 | import AppLoading from '../../session/apploading';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  10 | import { SkeletonProductCard } from '../../components/customer/SkeletonProductCard';
+  11 |
+  12 | // --- Product Interface ---
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[04:00:50.694] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx:9:1
+Module not found: Can't resolve '../../session/apploading'
+   7 | import { useCustomerStore } from '../../context/CustomerStore';
+   8 | import { customerFetch } from '../../utils/customerFetch';
+>  9 | import AppLoading from '../../session/apploading';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  10 | import { SkeletonProductCard } from '../../components/customer/SkeletonProductCard';
+  11 |
+  12 | // --- Product Interface ---
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[04:00:50.709] Server  LOG      ✓ Compiled in 42ms
+[04:00:51.755] Browser ERROR   ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx:9:1
+Module not found: Can't resolve '../../session/apploading'
+   7 | import { useCustomerStore } from '../../context/CustomerStore';
+   8 | import { customerFetch } from '../../utils/customerFetch';
+>  9 | import AppLoading from '../../session/apploading';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  10 | import { SkeletonProductCard } from '../../components/customer/SkeletonProductCard';
+  11 |
+  12 | // --- Product Interface ---
+
+https://nextjs.org/docs/messages/module-not-found
+[04:00:53.805] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx:9:1
+Module not found: Can't resolve '../../session/apploading'
+   7 | import { useCustomerStore } from '../../context/CustomerStore';
+   8 | import { customerFetch } from '../../utils/customerFetch';
+>  9 | import AppLoading from '    '';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 10 | import { SkeletonProductCard } from '../../components/customer/SkeletonProductCard';
+     | ^^^^^^^^^^^^^^^^^^
+  11 |
+  12 | // --- Product Interface ---
+  13 |
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[04:00:53.808] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx:9:1
+Module not found: Can't resolve '../../session/apploading'
+   7 | import { useCustomerStore } from '../../context/CustomerStore';
+   8 | import { customerFetch } from '../../utils/customerFetch';
+>  9 | import AppLoading from '    '';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 10 | import { SkeletonProductCard } from '../../components/customer/SkeletonProductCard';
+     | ^^^^^^^^^^^^^^^^^^
+  11 |
+  12 | // --- Product Interface ---
+  13 |
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[04:00:53.810] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx:9:1
+Module not found: Can't resolve '../../session/apploading'
+   7 | import { useCustomerStore } from '../../context/CustomerStore';
+   8 | import { customerFetch } from '../../utils/customerFetch';
+>  9 | import AppLoading from '    '';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 10 | import { SkeletonProductCard } from '../../components/customer/SkeletonProductCard';
+     | ^^^^^^^^^^^^^^^^^^
+  11 |
+  12 | // --- Product Interface ---
+  13 |
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[04:00:53.815] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx:9:1
+Module not found: Can't resolve '../../session/apploading'
+   7 | import { useCustomerStore } from '../../context/CustomerStore';
+   8 | import { customerFetch } from '../../utils/customerFetch';
+>  9 | import AppLoading from '    '';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 10 | import { SkeletonProductCard } from '../../components/customer/SkeletonProductCard';
+     | ^^^^^^^^^^^^^^^^^^
+  11 |
+  12 | // --- Product Interface ---
+  13 |
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[04:00:53.818] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx:9:1
+Module not found: Can't resolve '../../session/apploading'
+   7 | import { useCustomerStore } from '../../context/CustomerStore';
+   8 | import { customerFetch } from '../../utils/customerFetch';
+>  9 | import AppLoading from '    '';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 10 | import { SkeletonProductCard } from '../../components/customer/SkeletonProductCard';
+     | ^^^^^^^^^^^^^^^^^^
+  11 |
+  12 | // --- Product Interface ---
+  13 |
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[04:00:53.820] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx:9:1
+Module not found: Can't resolve '../../session/apploading'
+   7 | import { useCustomerStore } from '../../context/CustomerStore';
+   8 | import { customerFetch } from '../../utils/customerFetch';
+>  9 | import AppLoading from '    '';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 10 | import { SkeletonProductCard } from '../../components/customer/SkeletonProductCard';
+     | ^^^^^^^^^^^^^^^^^^
+  11 |
+  12 | // --- Product Interface ---
+  13 |
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[04:00:53.823] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx:9:1
+Module not found: Can't resolve '../../session/apploading'
+   7 | import { useCustomerStore } from '../../context/CustomerStore';
+   8 | import { customerFetch } from '../../utils/customerFetch';
+>  9 | import AppLoading from '    '';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 10 | import { SkeletonProductCard } from '../../components/customer/SkeletonProductCard';
+     | ^^^^^^^^^^^^^^^^^^
+  11 |
+  12 | // --- Product Interface ---
+  13 |
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[04:00:53.825] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx:9:1
+Module not found: Can't resolve '../../session/apploading'
+   7 | import { useCustomerStore } from '../../context/CustomerStore';
+   8 | import { customerFetch } from '../../utils/customerFetch';
+>  9 | import AppLoading from '    '';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 10 | import { SkeletonProductCard } from '../../components/customer/SkeletonProductCard';
+     | ^^^^^^^^^^^^^^^^^^
+  11 |
+  12 | // --- Product Interface ---
+  13 |
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[04:00:53.843] Server  LOG      ✓ Compiled in 28ms
+[04:00:54.753] Browser ERROR   ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx:9:30
+Parsing ecmascript source code failed
+   7 | import { useCustomerStore } from '../../context/CustomerStore';
+   8 | import { customerFetch } from '../../utils/customerFetch';
+>  9 | import AppLoading from '    '';
+     |                              ^^
+  10 | import { SkeletonProductCard } from '../../components/customer/SkeletonProductCard';
+  11 |
+  12 | // --- Product Interface ---
+
+Unterminated string constant
+[04:00:54.753] Browser ERROR   ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx:9:1
+Module not found: Can't resolve '../../session/apploading'
+   7 | import { useCustomerStore } from '../../context/CustomerStore';
+   8 | import { customerFetch } from '../../utils/customerFetch';
+>  9 | import AppLoading from '    '';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 10 | import { SkeletonProductCard } from '../../components/customer/SkeletonProductCard';
+     | ^^^^^^^^^^^^^^^^^^
+  11 |
+  12 | // --- Product Interface ---
+  13 |
+
+https://nextjs.org/docs/messages/module-not-found
+[04:01:00.060] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx:9:1
+Module not found: Can't resolve 'frontendsrcpagescustomerapploading.tsx'
+   7 | import { useCustomerStore } from '../../context/CustomerStore';
+   8 | import { customerFetch } from '../../utils/customerFetch';
+>  9 | import AppLoading from 'frontend\src\pages\customer\apploading.tsx';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  10 | import { SkeletonProductCard } from '../../components/customer/SkeletonProductCard';
+  11 |
+  12 | // --- Product Interface ---
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[04:01:00.062] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx:9:1
+Module not found: Can't resolve 'frontendsrcpagescustomerapploading.tsx'
+   7 | import { useCustomerStore } from '../../context/CustomerStore';
+   8 | import { customerFetch } from '../../utils/customerFetch';
+>  9 | import AppLoading from 'frontend\src\pages\customer\apploading.tsx';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  10 | import { SkeletonProductCard } from '../../components/customer/SkeletonProductCard';
+  11 |
+  12 | // --- Product Interface ---
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[04:01:00.064] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx:9:1
+Module not found: Can't resolve 'frontendsrcpagescustomerapploading.tsx'
+   7 | import { useCustomerStore } from '../../context/CustomerStore';
+   8 | import { customerFetch } from '../../utils/customerFetch';
+>  9 | import AppLoading from 'frontend\src\pages\customer\apploading.tsx';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  10 | import { SkeletonProductCard } from '../../components/customer/SkeletonProductCard';
+  11 |
+  12 | // --- Product Interface ---
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[04:01:00.066] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx:9:1
+Module not found: Can't resolve 'frontendsrcpagescustomerapploading.tsx'
+   7 | import { useCustomerStore } from '../../context/CustomerStore';
+   8 | import { customerFetch } from '../../utils/customerFetch';
+>  9 | import AppLoading from 'frontend\src\pages\customer\apploading.tsx';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  10 | import { SkeletonProductCard } from '../../components/customer/SkeletonProductCard';
+  11 |
+  12 | // --- Product Interface ---
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[04:01:00.071] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx:9:1
+Module not found: Can't resolve 'frontendsrcpagescustomerapploading.tsx'
+   7 | import { useCustomerStore } from '../../context/CustomerStore';
+   8 | import { customerFetch } from '../../utils/customerFetch';
+>  9 | import AppLoading from 'frontend\src\pages\customer\apploading.tsx';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  10 | import { SkeletonProductCard } from '../../components/customer/SkeletonProductCard';
+  11 |
+  12 | // --- Product Interface ---
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[04:01:00.073] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx:9:1
+Module not found: Can't resolve 'frontendsrcpagescustomerapploading.tsx'
+   7 | import { useCustomerStore } from '../../context/CustomerStore';
+   8 | import { customerFetch } from '../../utils/customerFetch';
+>  9 | import AppLoading from 'frontend\src\pages\customer\apploading.tsx';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  10 | import { SkeletonProductCard } from '../../components/customer/SkeletonProductCard';
+  11 |
+  12 | // --- Product Interface ---
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[04:01:00.075] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx:9:1
+Module not found: Can't resolve 'frontendsrcpagescustomerapploading.tsx'
+   7 | import { useCustomerStore } from '../../context/CustomerStore';
+   8 | import { customerFetch } from '../../utils/customerFetch';
+>  9 | import AppLoading from 'frontend\src\pages\customer\apploading.tsx';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  10 | import { SkeletonProductCard } from '../../components/customer/SkeletonProductCard';
+  11 |
+  12 | // --- Product Interface ---
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[04:01:00.077] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx:9:1
+Module not found: Can't resolve 'frontendsrcpagescustomerapploading.tsx'
+   7 | import { useCustomerStore } from '../../context/CustomerStore';
+   8 | import { customerFetch } from '../../utils/customerFetch';
+>  9 | import AppLoading from 'frontend\src\pages\customer\apploading.tsx';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  10 | import { SkeletonProductCard } from '../../components/customer/SkeletonProductCard';
+  11 |
+  12 | // --- Product Interface ---
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[04:01:00.103] Server  LOG      ✓ Compiled in 47ms
+[04:01:00.754] Browser ERROR   ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx:9:1
+Module not found: Can't resolve 'frontendsrcpagescustomerapploading.tsx'
+   7 | import { useCustomerStore } from '../../context/CustomerStore';
+   8 | import { customerFetch } from '../../utils/customerFetch';
+>  9 | import AppLoading from 'frontend\src\pages\customer\apploading.tsx';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  10 | import { SkeletonProductCard } from '../../components/customer/SkeletonProductCard';
+  11 |
+  12 | // --- Product Interface ---
+
+https://nextjs.org/docs/messages/module-not-found
+[04:01:02.884] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx:9:1
+Module not found: Can't resolve '../../src/pages/customer/apploading.tsx'
+   7 | import { useCustomerStore } from '../../context/CustomerStore';
+   8 | import { customerFetch } from '../../utils/customerFetch';
+>  9 | import AppLoading from '../../src/pages/customer/apploading.tsx';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  10 | import { SkeletonProductCard } from '../../components/customer/SkeletonProductCard';
+  11 |
+  12 | // --- Product Interface ---
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[04:01:02.887] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx:9:1
+Module not found: Can't resolve '../../src/pages/customer/apploading.tsx'
+   7 | import { useCustomerStore } from '../../context/CustomerStore';
+   8 | import { customerFetch } from '../../utils/customerFetch';
+>  9 | import AppLoading from '../../src/pages/customer/apploading.tsx';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  10 | import { SkeletonProductCard } from '../../components/customer/SkeletonProductCard';
+  11 |
+  12 | // --- Product Interface ---
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[04:01:02.890] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx:9:1
+Module not found: Can't resolve '../../src/pages/customer/apploading.tsx'
+   7 | import { useCustomerStore } from '../../context/CustomerStore';
+   8 | import { customerFetch } from '../../utils/customerFetch';
+>  9 | import AppLoading from '../../src/pages/customer/apploading.tsx';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  10 | import { SkeletonProductCard } from '../../components/customer/SkeletonProductCard';
+  11 |
+  12 | // --- Product Interface ---
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[04:01:02.893] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx:9:1
+Module not found: Can't resolve '../../src/pages/customer/apploading.tsx'
+   7 | import { useCustomerStore } from '../../context/CustomerStore';
+   8 | import { customerFetch } from '../../utils/customerFetch';
+>  9 | import AppLoading from '../../src/pages/customer/apploading.tsx';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  10 | import { SkeletonProductCard } from '../../components/customer/SkeletonProductCard';
+  11 |
+  12 | // --- Product Interface ---
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[04:01:02.895] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx:9:1
+Module not found: Can't resolve '../../src/pages/customer/apploading.tsx'
+   7 | import { useCustomerStore } from '../../context/CustomerStore';
+   8 | import { customerFetch } from '../../utils/customerFetch';
+>  9 | import AppLoading from '../../src/pages/customer/apploading.tsx';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  10 | import { SkeletonProductCard } from '../../components/customer/SkeletonProductCard';
+  11 |
+  12 | // --- Product Interface ---
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[04:01:02.898] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx:9:1
+Module not found: Can't resolve '../../src/pages/customer/apploading.tsx'
+   7 | import { useCustomerStore } from '../../context/CustomerStore';
+   8 | import { customerFetch } from '../../utils/customerFetch';
+>  9 | import AppLoading from '../../src/pages/customer/apploading.tsx';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  10 | import { SkeletonProductCard } from '../../components/customer/SkeletonProductCard';
+  11 |
+  12 | // --- Product Interface ---
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[04:01:02.900] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx:9:1
+Module not found: Can't resolve '../../src/pages/customer/apploading.tsx'
+   7 | import { useCustomerStore } from '../../context/CustomerStore';
+   8 | import { customerFetch } from '../../utils/customerFetch';
+>  9 | import AppLoading from '../../src/pages/customer/apploading.tsx';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  10 | import { SkeletonProductCard } from '../../components/customer/SkeletonProductCard';
+  11 |
+  12 | // --- Product Interface ---
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[04:01:02.901] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx:9:1
+Module not found: Can't resolve '../../src/pages/customer/apploading.tsx'
+   7 | import { useCustomerStore } from '../../context/CustomerStore';
+   8 | import { customerFetch } from '../../utils/customerFetch';
+>  9 | import AppLoading from '../../src/pages/customer/apploading.tsx';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  10 | import { SkeletonProductCard } from '../../components/customer/SkeletonProductCard';
+  11 |
+  12 | // --- Product Interface ---
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[04:01:02.926] Server  LOG      ✓ Compiled in 51ms
+[04:01:03.744] Browser ERROR   ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx:9:1
+Module not found: Can't resolve '../../src/pages/customer/apploading.tsx'
+   7 | import { useCustomerStore } from '../../context/CustomerStore';
+   8 | import { customerFetch } from '../../utils/customerFetch';
+>  9 | import AppLoading from '../../src/pages/customer/apploading.tsx';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  10 | import { SkeletonProductCard } from '../../components/customer/SkeletonProductCard';
+  11 |
+  12 | // --- Product Interface ---
+
+https://nextjs.org/docs/messages/module-not-found
+[04:01:39.609] Server  LOG      ✓ Compiled in 147ms
+[04:01:40.739] Browser LOG     Refreshing page data due to server-side change
