@@ -4,6 +4,7 @@ import CustomerLayout from '../../components/customer/CustomerLayout';
 import { useAuth } from '../../context/AuthContext';
 import { useCustomerStore } from '../../context/CustomerStore';
 import { useToast } from '../../components/ui/ToastProvider';
+import { customerFetch } from '../../utils/customerFetch';
 
 interface OrderItem {
     name: string;
@@ -23,6 +24,28 @@ interface Order {
 }
 
 const API_BASE = 'http://localhost:5000/api';
+
+const SkeletonOrderCard = () => (
+    <div className="order-card">
+        <div className="order-summary" style={{ pointerEvents: 'none' }}>
+            <div className="order-icon-container">
+                <div className="skeleton" style={{ width: '40px', height: '40px', borderRadius: '50%' }}></div>
+            </div>
+            <div className="order-info" style={{ flex: 1 }}>
+                <div className="skeleton skeleton-text" style={{ width: '120px', height: '1.2em', marginBottom: '8px' }}></div>
+                <div className="skeleton skeleton-text" style={{ width: '180px', height: '1em', marginBottom: '8px' }}></div>
+                <div className="order-meta" style={{ display: 'flex', gap: '12px' }}>
+                    <div className="skeleton skeleton-text" style={{ width: '60px', height: '1em' }}></div>
+                    <div className="skeleton skeleton-text" style={{ width: '80px', height: '1em' }}></div>
+                </div>
+                <div className="skeleton skeleton-text" style={{ width: '100px', height: '0.8em', marginTop: '4px' }}></div>
+            </div>
+            <div className="order-status">
+                <div className="skeleton" style={{ width: '24px', height: '24px', borderRadius: '50%' }}></div>
+            </div>
+        </div>
+    </div>
+);
 
 export default function OrdersPage() {
     const router = useRouter();
@@ -44,7 +67,7 @@ export default function OrdersPage() {
             if (!token) return;
 
             try {
-                const res = await fetch(`${API_BASE}/customers/orders`, {
+                const res = await customerFetch(`${API_BASE}/customers/orders`, {
                     headers: {
                         'Authorization': `Bearer ${token}`
                     }
@@ -103,7 +126,7 @@ export default function OrdersPage() {
     const handleRepeatOrder = async (order: Order) => {
         try {
             // 1. Fetch current products to validate stock
-            const res = await fetch(`${API_BASE}/products`);
+            const res = await customerFetch(`${API_BASE}/products`);
             if (!res.ok) throw new Error('Failed to fetch product data');
             const allProducts = await res.json();
 
@@ -171,8 +194,18 @@ export default function OrdersPage() {
     if (loading) {
         return (
             <CustomerLayout disablePadding={true}>
-                <div className="orders-page" style={{ padding: '20px', textAlign: 'center' }}>
-                    <p>Loading your orders...</p>
+                <div className="orders-page">
+                    <div className="orders-header">
+                        <button className="orders-back-button" onClick={() => router.back()}>
+                            <img src="/customer/assets/icons/backward.svg" alt="Back" width={24} height={24} />
+                        </button>
+                        <h1 className="orders-title">My Order</h1>
+                    </div>
+                    <div className="orders-list">
+                        {Array.from({ length: 5 }).map((_, idx) => (
+                            <SkeletonOrderCard key={`skeleton-order-${idx}`} />
+                        ))}
+                    </div>
                 </div>
             </CustomerLayout>
         );

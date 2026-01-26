@@ -5,6 +5,7 @@ import { useRouter } from 'next/router';
 import CustomerLayout from '../../components/customer/CustomerLayout';
 import { useToast } from '../../components/ui/ToastProvider';
 import { useAuth } from '../../context/AuthContext';
+import { API_BASE_URL } from '../../utils/api.utils';
 
 export default function EditProfilePage() {
     const router = useRouter();
@@ -41,6 +42,8 @@ export default function EditProfilePage() {
     const is_profile_pic_changed = selected_file !== null;
     const has_changes = is_name_changed || is_phone_changed || is_profile_pic_changed;
 
+
+
     const handle_save = async () => {
         if (!has_changes) return;
 
@@ -59,7 +62,7 @@ export default function EditProfilePage() {
                 const formData = new FormData();
                 formData.append('profile_pic', selected_file);
 
-                const upload_res = await fetch('http://localhost:5000/api/customers/profile-pic', {
+                const upload_res = await fetch(`${API_BASE_URL}/api/customers/profile-pic`, {
                     method: 'POST',
                     headers: {
                         'Authorization': `Bearer ${token}`
@@ -82,7 +85,7 @@ export default function EditProfilePage() {
             if (is_name_changed) updates.name = name;
             if (is_phone_changed) updates.phone = phone;
 
-            const res = await fetch('http://localhost:5000/api/customers/profile', {
+            const res = await fetch(`${API_BASE_URL}/api/customers/profile`, {
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json',
@@ -158,7 +161,7 @@ export default function EditProfilePage() {
         set_is_saving(true);
 
         try {
-            const res = await fetch('http://localhost:5000/api/customers/profile-pic', {
+            const res = await fetch(`${API_BASE_URL}/api/customers/profile-pic`, {
                 method: 'DELETE',
                 headers: {
                     'Authorization': `Bearer ${token}`
@@ -217,7 +220,7 @@ export default function EditProfilePage() {
                                 preview_profile_pic
                                     ? (preview_profile_pic.startsWith('blob:')
                                         ? preview_profile_pic
-                                        : (preview_profile_pic.startsWith('http') ? preview_profile_pic : `http://localhost:5000${preview_profile_pic}`))
+                                        : (preview_profile_pic.startsWith('http') ? preview_profile_pic : `${API_BASE_URL}${preview_profile_pic}`))
                                     : '/customer/assets/images/default_profile.jpg'
                             }
                             alt="Profile"

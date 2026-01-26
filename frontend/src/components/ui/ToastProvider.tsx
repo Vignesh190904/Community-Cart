@@ -41,6 +41,15 @@ export const ToastProvider: React.FC<React.PropsWithChildren<{}>> = ({ children 
     setQueue((prevQueue) => [...prevQueue, newToast]);
   }, []);
 
+  // Listen for 'cc-backend-offline' event from non-React utilities (customerFetch)
+  React.useEffect(() => {
+    const handleOffline = () => {
+      enqueueToast('Backend not connected. Retrying...', 'error');
+    };
+    window.addEventListener('cc-backend-offline', handleOffline);
+    return () => window.removeEventListener('cc-backend-offline', handleOffline);
+  }, [enqueueToast]);
+
   const dismissToast = useCallback((id: string) => {
     setQueue((prevQueue) => prevQueue.filter((toast) => toast.id !== id));
   }, []);

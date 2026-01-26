@@ -1,0 +1,44 @@
+/* [project]/Desktop/Community-Cart/frontend/src/pages/customer/apploading.css [client] (css) */
+.app-loading {
+  z-index: 9999;
+  background: #fff;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+}
+
+.loading-content {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  padding: 20px;
+  display: flex;
+}
+
+.loading-logo {
+  object-fit: contain;
+  width: 120px;
+  height: auto;
+}
+
+.loading-title {
+  color: #1a1a1a;
+  letter-spacing: -.5px;
+  text-align: center;
+  margin: 0;
+  font-size: 28px;
+  font-weight: 600;
+}
+
+body.splash-active {
+  overflow: hidden;
+}
+
+/*# sourceMappingURL=Desktop_Community-Cart_frontend_src_pages_customer_apploading_css_65f1660e._.single.css.map*/

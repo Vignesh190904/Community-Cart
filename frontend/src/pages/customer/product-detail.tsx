@@ -4,6 +4,7 @@ import { useCustomerStore } from '../../context/CustomerStore';
 import CustomerLayout from '../../components/customer/CustomerLayout';
 import { useToast } from '../../components/ui/ToastProvider';
 import { addToWishlist, removeFromWishlist, fetchWishlist } from '../../services/wishlistApi';
+import { customerFetch } from '../../utils/customerFetch';
 
 // Type same as browse
 interface Product {
@@ -39,7 +40,7 @@ export default function ProductDetail() {
         const fetchData = async () => {
             try {
                 // Fetch Product
-                const res = await fetch(`${API_BASE}/products/${id}`);
+                const res = await customerFetch(`${API_BASE}/products/${id}`);
                 if (!res.ok) throw new Error('Product not found');
                 const productData = await res.json();
                 setProduct(productData);

@@ -296,3 +296,41 @@ button[type='submit']:disabled {
 [data-nextjs-dev-indicator] {
   display: none !important;
 }
+
+/* Skeleton Loading Animation */
+:root {
+  --skeleton-base: #e0e0e0;
+  --skeleton-highlight: #f5f5f5;
+}
+
+body.theme-dark {
+  --skeleton-base: #374151;
+  --skeleton-highlight: #1f2937;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-color: var(--skeleton-base);
+  }
+
+  50% {
+    background-color: var(--skeleton-highlight);
+  }
+
+  100% {
+    background-color: var(--skeleton-base);
+  }
+}
+
+.skeleton {
+  animation: skeleton-loading 1.5s infinite ease-in-out;
+  border-radius: 4px;
+  /* Default radius */
+}
+
+/* Optional: add specific shape helpers if needed, but generic is fine for now */
+.skeleton-text {
+  height: 1em;
+  margin-bottom: 0.5em;
+  border-radius: 4px;
+}

@@ -39,6 +39,7 @@ const STORAGE_CUSTOMER_KEY = 'cc_customer_id';
 import { useAuth } from './AuthContext';
 
 // ... imports
+import { customerFetch } from '../utils/customerFetch';
 
 export function CustomerStoreProvider({ children }: { children: React.ReactNode }) {
   const { token, is_authenticated } = useAuth();
@@ -59,7 +60,7 @@ export function CustomerStoreProvider({ children }: { children: React.ReactNode 
       // LOGGED IN: Server Source of Truth
       try {
         setIsLoading(true);
-        const res = await fetch(`${API_BASE}/cart`, {
+        const res = await customerFetch(`${API_BASE}/cart`, {
           headers: { 'Authorization': `Bearer ${activeToken}` }
         });
 
@@ -125,7 +126,7 @@ export function CustomerStoreProvider({ children }: { children: React.ReactNode 
     if (token) {
       // SERVER ADD
       try {
-        const res = await fetch(`${API_BASE}/cart/add`, {
+        const res = await customerFetch(`${API_BASE}/cart/add`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -169,7 +170,7 @@ export function CustomerStoreProvider({ children }: { children: React.ReactNode 
     if (token) {
       // SERVER UPDATE
       try {
-        const res = await fetch(`${API_BASE}/cart/${productId}`, {
+        const res = await customerFetch(`${API_BASE}/cart/${productId}`, {
           method: 'PATCH',
           headers: {
             'Content-Type': 'application/json',
@@ -201,7 +202,7 @@ export function CustomerStoreProvider({ children }: { children: React.ReactNode 
     if (token) {
       // SERVER REMOVE
       try {
-        await fetch(`${API_BASE}/cart/${productId}`, {
+        await customerFetch(`${API_BASE}/cart/${productId}`, {
           method: 'DELETE',
           headers: { 'Authorization': `Bearer ${token}` }
         });
@@ -219,7 +220,7 @@ export function CustomerStoreProvider({ children }: { children: React.ReactNode 
   const clearCart = async () => {
     const token = getToken();
     if (token) {
-      await fetch(`${API_BASE}/cart`, {
+      await customerFetch(`${API_BASE}/cart`, {
         method: 'DELETE',
         headers: { 'Authorization': `Bearer ${token}` }
       });

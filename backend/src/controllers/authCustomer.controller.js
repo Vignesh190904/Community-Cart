@@ -141,7 +141,8 @@ export const manualSignupVerifyEmail = async (req, res) => {
                 email: customer.email,
                 phone: customer.phone,
                 method: customer.auth.method,
-                ui_preferences: customer.ui_preferences
+                ui_preferences: customer.ui_preferences,
+                profile_pic: customer.profile_pic
             }
         });
     } catch (error) {
@@ -270,7 +271,8 @@ export const manualSignin = async (req, res) => {
                 email: customer.email,
                 phone: customer.phone,
                 method: customer.auth.method,
-                ui_preferences: customer.ui_preferences
+                ui_preferences: customer.ui_preferences,
+                profile_pic: customer.profile_pic
             }
         });
     } catch (error) {
@@ -416,7 +418,8 @@ export const googleSignupVerifyEmail = async (req, res) => {
                 email: customer.email,
                 phone: customer.phone,
                 method: customer.auth.method,
-                ui_preferences: customer.ui_preferences
+                ui_preferences: customer.ui_preferences,
+                profile_pic: customer.profile_pic
             }
         });
     } catch (error) {
@@ -490,7 +493,8 @@ export const googleSignin = async (req, res) => {
                 email: customer.email,
                 phone: customer.phone,
                 method: customer.auth.method,
-                ui_preferences: customer.ui_preferences
+                ui_preferences: customer.ui_preferences,
+                profile_pic: customer.profile_pic
             }
         });
     } catch (error) {

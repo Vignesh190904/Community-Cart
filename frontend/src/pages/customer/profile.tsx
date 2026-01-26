@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import CustomerLayout from '../../components/customer/CustomerLayout';
 import { useAuth } from '../../context/AuthContext';
+import { API_BASE_URL } from '../../utils/api.utils';
 
 export default function ProfilePage() {
     const router = useRouter();
@@ -11,6 +12,8 @@ export default function ProfilePage() {
 
     const [is_dark, set_is_dark] = useState(false);
 
+
+
     // Determine profile image source
     const get_profile_image_src = () => {
         if (user?.profile_pic) {
@@ -18,7 +21,7 @@ export default function ProfilePage() {
             if (user.profile_pic.startsWith('http')) {
                 return user.profile_pic;
             }
-            return `http://localhost:5000${user.profile_pic}`;
+            return `${API_BASE_URL}${user.profile_pic}`;
         }
         return '/customer/assets/images/default_profile.jpg';
     };
@@ -63,13 +66,13 @@ export default function ProfilePage() {
                 {/* Green Header Background */}
                 <div className="profile-header-bg">
                     <h1 className="header-title">My Profile</h1>
-                    <button className="theme-toggle-mini" onClick={toggle_theme} aria-label="Toggle Theme">
+                    {/* <button className="theme-toggle-mini" onClick={toggle_theme} aria-label="Toggle Theme">
                         <img
                             src={is_dark ? '/customer/assets/icons/dark.svg' : '/customer/assets/icons/light.svg'}
                             alt={is_dark ? "Dark Mode" : "Light Mode"}
                             className="theme-icon"
                         />
-                    </button>
+                    </button> */}
                 </div>
 
                 {/* Overlapping Profile Card */}

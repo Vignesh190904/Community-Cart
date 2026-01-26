@@ -4,6 +4,8 @@ import CustomerLayout from '../../components/customer/CustomerLayout';
 import { useCustomerStore } from '../../context/CustomerStore';
 import { useToast } from '../../components/ui/ToastProvider';
 import { addToWishlist, removeFromWishlist, fetchWishlist, WishlistItem } from '../../services/wishlistApi';
+import { customerFetch } from '../../utils/customerFetch';
+import { SkeletonProductCard } from '../../components/customer/SkeletonProductCard';
 
 interface Product {
     _id: string;
@@ -102,7 +104,7 @@ export default function BrowseProducts() {
         const load = async () => {
             await ensureCustomerId();
             try {
-                const res = await fetch(`${API_BASE}/products`);
+                const res = await customerFetch(`${API_BASE}/products`);
                 if (!res.ok) throw new Error('Failed to fetch products');
                 const data = await res.json();
                 const available = data.filter((p: Product) => p.isAvailable !== false && (p.stock ?? 0) > 0);
@@ -183,90 +185,98 @@ export default function BrowseProducts() {
 
                 <h2 className="section-title">Featured Products <img src="/customer/assets/icons/forward.svg" alt="View all" style={{ fontSize: '20px', float: 'right', width: '20px', height: '20px' }} /></h2>
 
-                {loading && <div className="page-state">Loading products…</div>}
+                {/* Remove text loading indicator */}
                 {error && !loading && <div className="page-state error">{error}</div>}
 
-                {!loading && !error && (
+                {!error && (
                     <div className="products-grid">
-                        {filteredProducts.map((product, index) => {
-                            const qtyInCart = cartMap.get(product._id) || 0;
+                        {loading ? (
+                            Array.from({ length: 8 }).map((_, idx) => (
+                                <SkeletonProductCard key={`skeleton-${idx}`} />
+                            ))
+                        ) : (
+                            <>
+                                {filteredProducts.map((product, index) => {
+                                    const qtyInCart = cartMap.get(product._id) || 0;
 
-                            // Calculate discount if MRP exists and is higher than price
-                            const hasDiscount = product.mrp && product.mrp > product.price;
-                            const discountPercent = hasDiscount
-                                ? Math.round(((product.mrp! - product.price) / product.mrp!) * 100)
-                                : 0;
+                                    // Calculate discount if MRP exists and is higher than price
+                                    const hasDiscount = product.mrp && product.mrp > product.price;
+                                    const discountPercent = hasDiscount
+                                        ? Math.round(((product.mrp! - product.price) / product.mrp!) * 100)
+                                        : 0;
 
-                            const isNew = false; // logic for NEW tag can be added later
+                                    const isNew = false; // logic for NEW tag can be added later
 
-                            return (
-                                <div key={product._id} className="product-card">
-                                    <div className="product-card-header">
-                                        {hasDiscount && <span className="product-badge discount">-{discountPercent}%</span>}
-                                        {isNew && <span className="product-badge new">NEW</span>}
-                                        <button className="product-wishlist-btn" onClick={(e) => { e.stopPropagation(); toggleWishlist(product._id); }}>
-                                            <img
-                                                src={wishlist.some(item => item.product._id === product._id) ? "/customer/assets/icons/favorite-filled.svg" : "/customer/assets/icons/favorite.svg"}
-                                                alt="Wishlist"
-                                                style={{ width: '24px', height: '24px' }}
-                                            />
-                                        </button>
-                                    </div>
-
-                                    <div className="product-image-wrapper" onClick={() => router.push(`/customer/product-detail?id=${product._id}`)}>
-                                        <img
-                                            src={product.image || '/customer/assets/icons/missing.svg'}
-                                            alt={product.name}
-                                            className={product.image ? 'product-image' : 'product-image-missing'}
-                                        />
-                                    </div>
-
-                                    <div className="product-card-body" onClick={() => router.push(`/customer/product-detail?id=${product._id}`)}>
-                                        <h4 className="product-name">{product.name}</h4>
-                                        <p className="product-qty-label">
-                                            {product.quantity ? `${product.quantity} ${product.unit || ''}` : (product.category || 'Product')}
-                                        </p>
-                                        <div className="product-price-wrapper">
-                                            <span className="product-final-price">₹{product.price.toFixed(2)}</span>
-                                            {hasDiscount && (
-                                                <span className="product-original-price" style={{
-                                                    textDecoration: 'line-through',
-                                                    color: '#999',
-                                                    fontSize: '0.85em',
-                                                    marginLeft: '0.5rem'
-                                                }}>
-                                                    ₹{product.mrp!.toFixed(2)}
-                                                </span>
-                                            )}
-                                        </div>
-                                    </div>
-
-                                    <div className="product-card-footer">
-                                        {qtyInCart > 0 ? (
-                                            <div className="product-qty-controls">
-                                                <button className="product-qty-btn" onClick={() => updateItemQty(product, -1)}>
-                                                    −
-                                                </button>
-                                                <span className="product-qty-value">{qtyInCart}</span>
-                                                <button className="product-qty-btn" onClick={() => updateItemQty(product, 1)}>
-                                                    +
+                                    return (
+                                        <div key={product._id} className="product-card">
+                                            <div className="product-card-header">
+                                                {hasDiscount && <span className="product-badge discount">-{discountPercent}%</span>}
+                                                {isNew && <span className="product-badge new">NEW</span>}
+                                                <button className="product-wishlist-btn" onClick={(e) => { e.stopPropagation(); toggleWishlist(product._id); }}>
+                                                    <img
+                                                        src={wishlist.some(item => item.product._id === product._id) ? "/customer/assets/icons/favorite-filled.svg" : "/customer/assets/icons/favorite.svg"}
+                                                        alt="Wishlist"
+                                                        style={{ width: '24px', height: '24px' }}
+                                                    />
                                                 </button>
                                             </div>
-                                        ) : (
-                                            <button
-                                                className="product-add-btn"
-                                                onClick={() => handleAdd(product)}
-                                                disabled={(product.stock ?? 0) <= 0}
-                                            >
-                                                <img src="/customer/assets/icons/bag.svg" alt="Cart" className="product-cart-icon" />
-                                                Add to cart
-                                            </button>
-                                        )}
-                                    </div>
-                                </div>
-                            );
-                        })}
-                        {filteredProducts.length === 0 && <div className="page-state">No products found.</div>}
+
+                                            <div className="product-image-wrapper" onClick={() => router.push(`/customer/product-detail?id=${product._id}`)}>
+                                                <img
+                                                    src={product.image || '/customer/assets/icons/missing.svg'}
+                                                    alt={product.name}
+                                                    className={product.image ? 'product-image' : 'product-image-missing'}
+                                                />
+                                            </div>
+
+                                            <div className="product-card-body" onClick={() => router.push(`/customer/product-detail?id=${product._id}`)}>
+                                                <h4 className="product-name">{product.name}</h4>
+                                                <p className="product-qty-label">
+                                                    {product.quantity ? `${product.quantity} ${product.unit || ''}` : (product.category || 'Product')}
+                                                </p>
+                                                <div className="product-price-wrapper">
+                                                    <span className="product-final-price">₹{product.price.toFixed(2)}</span>
+                                                    {hasDiscount && (
+                                                        <span className="product-original-price" style={{
+                                                            textDecoration: 'line-through',
+                                                            color: '#999',
+                                                            fontSize: '0.85em',
+                                                            marginLeft: '0.5rem'
+                                                        }}>
+                                                            ₹{product.mrp!.toFixed(2)}
+                                                        </span>
+                                                    )}
+                                                </div>
+                                            </div>
+
+                                            <div className="product-card-footer">
+                                                {qtyInCart > 0 ? (
+                                                    <div className="product-qty-controls">
+                                                        <button className="product-qty-btn" onClick={() => updateItemQty(product, -1)}>
+                                                            −
+                                                        </button>
+                                                        <span className="product-qty-value">{qtyInCart}</span>
+                                                        <button className="product-qty-btn" onClick={() => updateItemQty(product, 1)}>
+                                                            +
+                                                        </button>
+                                                    </div>
+                                                ) : (
+                                                    <button
+                                                        className="product-add-btn"
+                                                        onClick={() => handleAdd(product)}
+                                                        disabled={(product.stock ?? 0) <= 0}
+                                                    >
+                                                        <img src="/customer/assets/icons/bag.svg" alt="Cart" className="product-cart-icon" />
+                                                        Add to cart
+                                                    </button>
+                                                )}
+                                            </div>
+                                        </div>
+                                    );
+                                })}
+                                {filteredProducts.length === 0 && <div className="page-state">No products found.</div>}
+                            </>
+                        )}
                     </div>
                 )}
             </div>

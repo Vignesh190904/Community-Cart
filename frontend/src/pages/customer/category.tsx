@@ -3,6 +3,8 @@ import { useRouter } from 'next/router';
 import CustomerLayout from '../../components/customer/CustomerLayout';
 import { useToast } from '../../components/ui/ToastProvider';
 import { useCustomerStore } from '../../context/CustomerStore';
+import { customerFetch } from '../../utils/customerFetch';
+import { SkeletonProductCard } from '../../components/customer/SkeletonProductCard';
 
 // --- Product Interface ---
 
@@ -52,7 +54,7 @@ export default function CategoryPage() {
         const fetchProducts = async () => {
             try {
                 setLoading(true);
-                const response = await fetch(`${API_BASE}/products`);
+                const response = await customerFetch(`${API_BASE}/products`);
 
                 if (!response.ok) {
                     throw new Error('Failed to fetch products');
@@ -113,7 +115,7 @@ export default function CategoryPage() {
                 const token = localStorage.getItem('auth_token');
                 if (!token) return;
 
-                const response = await fetch(`${API_BASE}/customers/wishlist`, {
+                const response = await customerFetch(`${API_BASE}/customers/wishlist`, {
                     headers: {
                         'Authorization': `Bearer ${token}`
                     }
@@ -166,7 +168,7 @@ export default function CategoryPage() {
 
             if (isCurrentlyWishlisted) {
                 // Remove from wishlist
-                const response = await fetch(`${API_BASE}/customers/wishlist/${id}`, {
+                const response = await customerFetch(`${API_BASE}/customers/wishlist/${id}`, {
                     method: 'DELETE',
                     headers: {
                         'Authorization': `Bearer ${token}`
@@ -179,7 +181,7 @@ export default function CategoryPage() {
                 enqueueToast('Removed from wishlist', 'success');
             } else {
                 // Add to wishlist
-                const response = await fetch(`${API_BASE}/customers/wishlist`, {
+                const response = await customerFetch(`${API_BASE}/customers/wishlist`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -273,13 +275,13 @@ export default function CategoryPage() {
                         <span className="category-section-action"><img src="/customer/assets/icons/forward.svg" alt="View all" width={24} height={24} /></span>
                     </div>
 
-                    {loading && (
-                        <div style={{ padding: '20px', textAlign: 'center', color: '#888' }}>
-                            Loading products...
+                    {loading ? (
+                        <div className="products-grid">
+                            {Array.from({ length: 8 }).map((_, idx) => (
+                                <SkeletonProductCard key={`skeleton-${idx}`} />
+                            ))}
                         </div>
-                    )}
-
-                    {!loading && (
+                    ) : (
                         <>
                             {/* Product Grid */}
                             <div className="products-grid">

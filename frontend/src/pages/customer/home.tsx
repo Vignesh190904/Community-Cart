@@ -5,6 +5,8 @@ import CustomerLayout from '../../components/customer/CustomerLayout';
 import { useAuth } from '../../context/AuthContext';
 import { useToast } from '../../components/ui/ToastProvider';
 import { useCustomerStore } from '../../context/CustomerStore';
+import { customerFetch } from '../../utils/customerFetch';
+import { SkeletonProductCard } from '../../components/customer/SkeletonProductCard';
 
 // --- Product Interface ---
 
@@ -39,6 +41,8 @@ const CATEGORIES = [
     { id: '5', label: 'Pharmacy', icon: '/customer/assets/icons/pharmacy.svg', color: '#E0F7FA' },
     { id: '6', label: 'Laundry', icon: '/customer/assets/icons/laundry.svg', color: '#F3F4F6' },
 ];
+
+
 
 export default function HomePage() {
     const router = useRouter();
@@ -98,7 +102,7 @@ export default function HomePage() {
         const fetchProducts = async () => {
             try {
                 setProductsLoading(true);
-                const response = await fetch('http://localhost:5000/api/products');
+                const response = await customerFetch('http://localhost:5000/api/products');
 
                 if (!response.ok) {
                     throw new Error('Failed to fetch products');
@@ -112,9 +116,15 @@ export default function HomePage() {
                 setProducts(availableProducts);
             } catch (error) {
                 console.error('Error fetching products:', error);
+                // Only show toast if it's NOT a silent network error (which is handled by customerFetch)
+                // But wait, customerFetch returns a hanging promise on network error, so we never reach here!
+                // If we reach here, it's a 4xx/5xx or some logic error.
                 enqueueToast('Failed to load products', 'error');
                 setProducts([]);
             } finally {
+                // If network error, the promise hangs, so we NEVER reach finally.
+                // Loading stays true. Perfect.
+                // If success or other error, we reach here.
                 setProductsLoading(false);
             }
         };
@@ -331,14 +341,9 @@ export default function HomePage() {
 
                     <div className="products-grid">
                         {productsLoading ? (
-                            <div style={{
-                                gridColumn: '1 / -1',
-                                textAlign: 'center',
-                                padding: '2rem',
-                                color: '#666'
-                            }}>
-                                Loading products...
-                            </div>
+                            Array.from({ length: 8 }).map((_, idx) => (
+                                <SkeletonProductCard key={`skeleton-${idx}`} />
+                            ))
                         ) : filteredProducts.length === 0 ? (
                             <div style={{
                                 gridColumn: '1 / -1',

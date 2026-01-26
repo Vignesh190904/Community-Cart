@@ -1,0 +1,136 @@
+/* [project]/Desktop/Community-Cart/frontend/src/pages/customer/verify-otp.css [client] (css) */
+.otp-page {
+  background: #fff;
+  flex-direction: column;
+  width: 100vw;
+  min-height: 100vh;
+  padding: 20px 20px 40px;
+  display: flex;
+  overflow: hidden auto;
+}
+
+.otp-header {
+  align-items: center;
+  width: 100%;
+  height: 48px;
+  margin-bottom: 40px;
+  display: flex;
+}
+
+.otp-back-button {
+  cursor: pointer;
+  background: none;
+  border: none;
+  justify-content: center;
+  align-items: center;
+  margin-left: -8px;
+  padding: 8px;
+  display: flex;
+}
+
+.otp-back-icon {
+  color: #000;
+  width: 24px;
+  height: 24px;
+}
+
+.otp-content {
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  display: flex;
+}
+
+.otp-instruction {
+  color: #1f2937;
+  text-align: center;
+  margin-bottom: 32px;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.otp-inputs-container {
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  max-width: 400px;
+  margin-bottom: 24px;
+  display: flex;
+}
+
+.otp-digit-input {
+  text-align: center;
+  color: #000;
+  background: #f3f4f6;
+  border: none;
+  border-radius: 50%;
+  outline: none;
+  width: 48px;
+  height: 48px;
+  font-size: 20px;
+  font-weight: 600;
+  transition: all .2s;
+}
+
+.otp-digit-input:focus {
+  background: #fff;
+  border: 1.5px solid #2e7d32;
+  transform: scale(1.05);
+}
+
+.otp-digit-input.filled {
+  background: #e5e7eb;
+}
+
+.otp-resend {
+  color: #9ca3af;
+  margin-bottom: 32px;
+  font-size: 14px;
+}
+
+.otp-resend-link {
+  color: #ef4444;
+  cursor: pointer;
+  background: none;
+  border: none;
+  margin: 0;
+  padding: 0 0 0 4px;
+  font-weight: 500;
+}
+
+.otp-resend-link:hover {
+  text-decoration: underline;
+}
+
+.otp-verify-button {
+  color: #fff;
+  cursor: pointer;
+  box-sizing: border-box;
+  background: #2e7d32;
+  border: none;
+  border-radius: 28px;
+  width: 100%;
+  height: 56px;
+  font-size: 18px;
+  font-weight: 600;
+  transition: all .2s;
+}
+
+.otp-verify-button:active {
+  background: #1b5e20;
+  transform: scale(.98);
+}
+
+@media (max-width: 380px) {
+  .otp-inputs-container {
+    gap: 8px;
+  }
+
+  .otp-digit-input {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+  }
+}
+
+/*# sourceMappingURL=Desktop_Community-Cart_frontend_src_pages_customer_verify-otp_css_65f1660e._.single.css.map*/

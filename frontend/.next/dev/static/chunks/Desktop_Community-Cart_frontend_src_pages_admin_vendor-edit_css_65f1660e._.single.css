@@ -1,0 +1,201 @@
+/* [project]/Desktop/Community-Cart/frontend/src/pages/admin/vendor-edit.css [client] (css) */
+.vendor-edit-page {
+  gap: 16px;
+  padding: 8px 0;
+  display: grid;
+}
+
+.vendor-edit-header {
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  display: flex;
+}
+
+.page-title {
+  margin-bottom: 4px;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.page-subtitle {
+  color: var(--text-secondary);
+  font-size: 13px;
+}
+
+.header-actions {
+  gap: 10px;
+  display: flex;
+}
+
+.actions-row {
+  justify-content: flex-end;
+  gap: 10px;
+  display: flex;
+}
+
+.vendor-edit-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  gap: 12px;
+  padding: 16px;
+  display: grid;
+}
+
+.section-title {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.form-grid.two {
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  display: grid;
+}
+
+@media (max-width: 900px) {
+  .form-grid.two {
+    grid-template-columns: 1fr;
+  }
+}
+
+.form-field {
+  flex-direction: column;
+  gap: 6px;
+  display: flex;
+}
+
+.form-field label {
+  color: var(--text-secondary);
+  font-size: 12px;
+}
+
+.form-field input, .form-field textarea, .form-field select {
+  border: 1px solid var(--border);
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.form-field textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.field-error {
+  color: var(--error);
+  font-size: 12px;
+}
+
+.avatar-row {
+  align-items: center;
+  gap: 10px;
+  display: flex;
+}
+
+.avatar-img {
+  object-fit: cover;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  width: 56px;
+  height: 56px;
+}
+
+.avatar-placeholder {
+  border: 1px solid var(--border);
+  width: 56px;
+  height: 56px;
+  color: var(--text-secondary);
+  background: var(--bg-hover);
+  border-radius: 10px;
+  justify-content: center;
+  align-items: center;
+  display: inline-flex;
+}
+
+.avatar-row input[type="file"] {
+  display: none;
+}
+
+.password-input {
+  align-items: center;
+  gap: 8px;
+  display: flex;
+}
+
+.eye-btn {
+  appearance: none;
+  border: 1px solid var(--border);
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  cursor: pointer;
+  border-radius: 8px;
+  justify-content: center;
+  align-items: center;
+  padding: 8px;
+  display: inline-flex;
+}
+
+.eye-icon {
+  width: 20px;
+  height: 20px;
+  fill: var(--text-secondary);
+}
+
+.btn {
+  appearance: none;
+  color: var(--primary);
+  border: 1px solid var(--primary);
+  cursor: pointer;
+  background: none;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-weight: 600;
+}
+
+.btn:disabled {
+  opacity: .6;
+  cursor: not-allowed;
+}
+
+.btn.outline {
+  color: var(--primary);
+  border: 1px solid var(--primary);
+  background: none;
+}
+
+.btn.outline:hover {
+  background: none;
+}
+
+.btn.danger {
+  color: var(--error);
+  border: 1px solid var(--error);
+  background: none;
+}
+
+.btn.danger:hover {
+  background: none;
+}
+
+.force-row {
+  border-top: 1px solid var(--divider);
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding-top: 8px;
+  display: flex;
+}
+
+.force-title {
+  font-weight: 600;
+}
+
+.force-sub {
+  color: var(--text-secondary);
+  font-size: 12px;
+}
+
+/*# sourceMappingURL=Desktop_Community-Cart_frontend_src_pages_admin_vendor-edit_css_65f1660e._.single.css.map*/

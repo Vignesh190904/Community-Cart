@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import { useCustomerStore } from '../../context/CustomerStore';
 import { useAuth } from '../../context/AuthContext';
 import CustomerLayout from '../../components/customer/CustomerLayout';
+import { customerFetch } from '../../utils/customerFetch';
 import { useToast } from '../../components/ui/ToastProvider';
 
 interface Address {
@@ -33,7 +34,7 @@ export default function CheckoutPage() {
         try {
             const token = localStorage.getItem('auth_token');
 
-            const res = await fetch('http://localhost:5000/api/customers/addresses', {
+            const res = await customerFetch('http://localhost:5000/api/customers/addresses', {
                 headers: {
                     'Content-Type': 'application/json',
                     Authorization: `Bearer ${token}`,
@@ -116,7 +117,7 @@ export default function CheckoutPage() {
 
         try {
             const token = localStorage.getItem('auth_token');
-            const res = await fetch('http://localhost:5000/api/orders', {
+            const res = await customerFetch('http://localhost:5000/api/orders', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -166,7 +167,7 @@ export default function CheckoutPage() {
             // "Cart must be cleared frontend-side" -> Store update.
 
             // Let's manually call the clear cart API here to be safe, then redirect.
-            await fetch('http://localhost:5000/api/cart', {
+            await customerFetch('http://localhost:5000/api/cart', {
                 method: 'DELETE',
                 headers: {
                     'Authorization': `Bearer ${token}`
@@ -253,7 +254,10 @@ export default function CheckoutPage() {
 
                     {/* Address Selector */}
                     {loading ? (
-                        <p style={{ textAlign: 'center', padding: '12px', color: 'var(--text-muted)' }}>Loading addresses...</p>
+                        <div className="address-selector" style={{ gap: '10px' }}>
+                            <div className="skeleton" style={{ width: '80px', height: '32px', borderRadius: '16px' }}></div>
+                            <div className="skeleton" style={{ width: '80px', height: '32px', borderRadius: '16px' }}></div>
+                        </div>
                     ) : addresses.length === 0 ? (
                         /* CASE 1: No addresses - Show Add Address button */
                         <button

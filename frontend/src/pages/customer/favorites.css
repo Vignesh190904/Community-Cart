@@ -99,4 +99,8 @@
     color: #EF5350;
 }
 
-/* Grid */
+/* Interactive Elements */
+.favorites-page .product-image-wrapper,
+.favorites-page .product-card-body {
+    cursor: pointer;
+}

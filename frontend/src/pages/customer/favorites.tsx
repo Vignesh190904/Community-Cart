@@ -4,6 +4,7 @@ import CustomerLayout from '../../components/customer/CustomerLayout';
 import { useCustomerStore } from '../../context/CustomerStore';
 import { useToast } from '../../components/ui/ToastProvider';
 import { fetchWishlist, removeFromWishlist, WishlistItem } from '../../services/wishlistApi';
+import { SkeletonProductCard } from '../../components/customer/SkeletonProductCard';
 
 interface Product {
     _id: string;
@@ -123,14 +124,17 @@ export default function FavoritesPage() {
                 </div>
 
                 <div className="favorites-content">
-                    {loading && <div className="favorites-state">Loading favorites…</div>}
-                    {error && !loading && <div className="favorites-state error">{error}</div>}
-
-                    {!loading && !error && filteredProducts.length === 0 && (
+                    {loading ? (
+                        <div className="products-grid">
+                            {Array.from({ length: 8 }).map((_, idx) => (
+                                <SkeletonProductCard key={`skeleton-fav-${idx}`} />
+                            ))}
+                        </div>
+                    ) : error ? (
+                        <div className="favorites-state error">{error}</div>
+                    ) : filteredProducts.length === 0 ? (
                         <div className="favorites-state">No favorites yet</div>
-                    )}
-
-                    {!loading && !error && filteredProducts.length > 0 && (
+                    ) : (
                         <div className="products-grid">
                             {filteredProducts.map((product, index) => {
                                 const qtyInCart = cartMap.get(product._id) || 0;
@@ -156,7 +160,7 @@ export default function FavoritesPage() {
                                             </button>
                                         </div>
 
-                                        <div className="product-image-wrapper">
+                                        <div className="product-image-wrapper" onClick={() => router.push(`/customer/product-detail?id=${product._id}`)}>
                                             <img
                                                 src={product.image || '/customer/assets/icons/missing.svg'}
                                                 alt={product.name}
@@ -164,7 +168,7 @@ export default function FavoritesPage() {
                                             />
                                         </div>
 
-                                        <div className="product-card-body">
+                                        <div className="product-card-body" onClick={() => router.push(`/customer/product-detail?id=${product._id}`)}>
                                             <h4 className="product-name">{product.name}</h4>
                                             <p className="product-qty-label">Quantity</p>
                                             <div className="product-price-wrapper">

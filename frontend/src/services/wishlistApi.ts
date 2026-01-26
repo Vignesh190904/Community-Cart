@@ -1,3 +1,5 @@
+import { customerFetch } from '../utils/customerFetch';
+
 const API_BASE = 'http://localhost:5000/api';
 
 export interface WishlistItem {
@@ -45,7 +47,7 @@ const authHeaders = (): HeadersInit => {
  * @param productId - The ID of the product to add
  */
 export const addToWishlist = async (productId: string): Promise<void> => {
-    const response = await fetch(`${API_BASE}/customers/wishlist`, {
+    const response = await customerFetch(`${API_BASE}/customers/wishlist`, {
         method: 'POST',
         headers: authHeaders(),
         body: JSON.stringify({ productId }),
@@ -62,7 +64,7 @@ export const addToWishlist = async (productId: string): Promise<void> => {
  * @param productId - The ID of the product to remove
  */
 export const removeFromWishlist = async (productId: string): Promise<void> => {
-    const response = await fetch(`${API_BASE}/customers/wishlist/${productId}`, {
+    const response = await customerFetch(`${API_BASE}/customers/wishlist/${productId}`, {
         method: 'DELETE',
         headers: authHeaders(),
     });
@@ -78,7 +80,7 @@ export const removeFromWishlist = async (productId: string): Promise<void> => {
  * @returns Array of wishlist items
  */
 export const fetchWishlist = async (): Promise<WishlistItem[]> => {
-    const response = await fetch(`${API_BASE}/customers/wishlist`, {
+    const response = await customerFetch(`${API_BASE}/customers/wishlist`, {
         method: 'GET',
         headers: authHeaders(),
     });

@@ -4,6 +4,28 @@ import { useState, useRef } from 'react';
 import CustomerLayout from '../../components/customer/CustomerLayout';
 import { useCustomerStore } from '../../context/CustomerStore';
 
+const SkeletonCartItem = () => (
+  <div className="cart-item-wrapper">
+    <div className="cart-item">
+      <div className="cart-item-image">
+        <div className="skeleton" style={{ width: '100%', height: '100%', borderRadius: '12px' }}></div>
+      </div>
+      <div className="cart-item-details" style={{ width: '100%' }}>
+        <div className="cart-item-header">
+          <div className="skeleton skeleton-text" style={{ width: '60%', height: '1.2em' }}></div>
+        </div>
+        <div className="skeleton skeleton-text" style={{ width: '30%', height: '1em', marginTop: '8px' }}></div>
+        <div className="cart-item-footer" style={{ marginTop: 'auto' }}>
+          <div className="skeleton skeleton-text" style={{ width: '25%', height: '1.2em' }}></div>
+          <div className="cart-qty-control" style={{ background: '#f3f4f6', border: 'none' }}>
+            <div className="skeleton" style={{ width: '24px', height: '24px', borderRadius: '50%' }}></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
 export default function CartPage() {
   const router = useRouter();
   const { cart, updateQuantity, removeFromCart, totalPrice, isLoading } = useCustomerStore();
@@ -96,22 +118,7 @@ export default function CartPage() {
   return (
     <CustomerLayout disablePadding={true}>
       <div className="cart-page has-fixed-header">
-        {isLoading && (
-          <div style={{
-            position: 'fixed',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            background: 'rgba(255,255,255,0.5)',
-            zIndex: 9999,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center'
-          }}>
-            <div className="spinner"></div>
-          </div>
-        )}
+
         {/* Header */}
         <div className="cart-header fixed-header">
           <button className="back-button touchable" onClick={() => router.back()}>
@@ -120,7 +127,13 @@ export default function CartPage() {
           <h1 className="cart-title">Cart</h1>
         </div>
 
-        {cart.length === 0 ? (
+        {isLoading && cart.length === 0 ? (
+          <div className="cart-items-list">
+            {Array.from({ length: 4 }).map((_, idx) => (
+              <SkeletonCartItem key={`skeleton-cart-${idx}`} />
+            ))}
+          </div>
+        ) : cart.length === 0 ? (
           <div className="cart-empty">
             <span className="empty-cart-text">Your cart is empty</span>
             <Link href="/customer/home" className="empty-cart-action">Go Shopping</Link>
