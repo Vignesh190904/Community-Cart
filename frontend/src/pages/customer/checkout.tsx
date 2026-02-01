@@ -5,6 +5,7 @@ import { useAuth } from '../../context/AuthContext';
 import CustomerLayout from '../../components/customer/CustomerLayout';
 import { customerFetch } from '../../utils/customerFetch';
 import { useToast } from '../../components/ui/ToastProvider';
+import TopNavbar from './TopNavbar';
 
 interface Address {
     _id: string;
@@ -112,8 +113,8 @@ export default function CheckoutPage() {
         };
 
         // Requirement: Log the FULL payload being sent
-        console.log('Place Order clicked');
-        console.log('Place Order Payload:', payload);
+        // console.log('Place Order clicked');
+        // console.log('Place Order Payload:', payload);
 
         try {
             const token = localStorage.getItem('auth_token');
@@ -185,25 +186,9 @@ export default function CheckoutPage() {
 
     return (
         <CustomerLayout disablePadding={true}>
-            {/* Import CSS here or in _app, but since we are using CSS modules or global, 
-          and Next.js pages usually require global import in _app, 
-          we might need to use a <style> tag or ensure the CSS file is imported. 
-          Given the constraints "Plain CSS", I will assume we can import it directly 
-          if configured, or I will use a scoped approach.
-          To be safe with Next.js standard CSS support:
-      */}
-
+            <TopNavbar title="Checkout" showBack={true} />
 
             <div className="checkout-page">
-
-                {/* 1. Page Header */}
-                <header className="checkout-header">
-                    <button className="checkout-back-btn" onClick={() => router.back()}>
-                        {/* Using existing icon asset if available, else simple arrow */}
-                        <img src="/customer/assets/icons/backward.svg" alt="Back" width={24} height={24} />
-                    </button>
-                    <h1 className="checkout-title">Checkout</h1>
-                </header>
 
                 {/* 2. Order Summary (Scrollable) */}
                 <section className="order-summary-section">

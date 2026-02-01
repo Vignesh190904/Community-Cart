@@ -2,6 +2,7 @@
 .browse-page {
   flex-direction: column;
   gap: 20px;
+  margin: 56px 0;
   padding-bottom: 20px;
   display: flex;
 }

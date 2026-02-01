@@ -8,7 +8,7 @@ __turbopack_load_page_chunks__("/customer/cart", [
   "static/chunks/48ebd_react-dom_cjs_react-dom_development_b944df1a.js",
   "static/chunks/48ebd_react-dom_43235666._.js",
   "static/chunks/48ebd_c0e1799f._.js",
-  "static/chunks/[root-of-the-server]__11662568._.js",
+  "static/chunks/[root-of-the-server]__d1314725._.js",
   "static/chunks/Desktop_Community-Cart_frontend_src_pages_customer_cart_tsx_2da965e7._.js",
-  "static/chunks/turbopack-Desktop_Community-Cart_frontend_src_pages_customer_cart_tsx_4bbc93a3._.js"
+  "static/chunks/turbopack-Desktop_Community-Cart_frontend_src_pages_customer_cart_tsx_d289ef80._.js"
 ])

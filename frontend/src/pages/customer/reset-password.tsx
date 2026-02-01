@@ -4,7 +4,7 @@ export default function ResetPassword() {
     const router = useRouter();
 
     const handleReset = () => {
-        console.log('Password reset successful');
+        // console.log('Password reset successful');
         router.push('/customer/signin');
     };
 

@@ -2,38 +2,8 @@ self.__BUILD_MANIFEST = {
   "/": [
     "static/chunks/pages/index.js"
   ],
-  "/_error": [
-    "static/chunks/pages/_error.js"
-  ],
-  "/customer/address": [
-    "static/chunks/pages/customer/address.js"
-  ],
-  "/customer/browse-products": [
-    "static/chunks/pages/customer/browse-products.js"
-  ],
-  "/customer/cart": [
-    "static/chunks/pages/customer/cart.js"
-  ],
-  "/customer/category": [
-    "static/chunks/pages/customer/category.js"
-  ],
-  "/customer/checkout": [
-    "static/chunks/pages/customer/checkout.js"
-  ],
-  "/customer/edit-profile": [
-    "static/chunks/pages/customer/edit-profile.js"
-  ],
-  "/customer/favorites": [
-    "static/chunks/pages/customer/favorites.js"
-  ],
   "/customer/home": [
     "static/chunks/pages/customer/home.js"
-  ],
-  "/customer/orders": [
-    "static/chunks/pages/customer/orders.js"
-  ],
-  "/customer/product-detail": [
-    "static/chunks/pages/customer/product-detail.js"
   ],
   "/customer/profile": [
     "static/chunks/pages/customer/profile.js"
@@ -57,6 +27,7 @@ self.__BUILD_MANIFEST = {
     "/admin/vendor-edit",
     "/admin/vendors",
     "/customer/BottomNavbar",
+    "/customer/TopNavbar",
     "/customer/address",
     "/customer/apploading",
     "/customer/browse-products",

@@ -22,7 +22,7 @@ const getNextOrderNumber = async () => {
 export const createOrder = async (req, res) => {
   try {
     const { customerId, productIds, items: bodyItems, addressId } = req.body;
-    console.log('[order:create] Order creation started', { customerId, addressId });
+    // console.log('[order:create] Order creation started', { customerId, addressId });
 
     // Normalize incoming items: support legacy productIds[] or new items[{productId, quantity}]
     const normalizedItems = Array.isArray(bodyItems) && bodyItems.length > 0
@@ -127,15 +127,15 @@ export const createOrder = async (req, res) => {
     });
 
     const savedOrder = await order.save();
-    console.log('[order:create] Order saved successfully', savedOrder._id);
-    console.log(
+    //console.log('[order:create] Order saved successfully', savedOrder._id);
+    /* console.log(
       '[order:create] orderNumber=',
       orderNumber,
       'vendorId=',
       vendorId?.toString(),
       'orderId=',
       savedOrder._id.toString()
-    );
+    ); */
     res.status(201).json(savedOrder);
   } catch (error) {
     res.status(400).json({ error: error.message });
@@ -176,7 +176,7 @@ export const getAllOrders = async (req, res) => {
       filter.status = statuses.length > 1 ? { $in: statuses } : statuses[0];
     }
 
-    console.log('[orders:list] vendorId=', vendorId || 'all', 'status=', status || 'all', vendorId ? '(vendor: today for completed/cancelled)' : '');
+    //console.log('[orders:list] vendorId=', vendorId || 'all', 'status=', status || 'all', vendorId ? '(vendor: today for completed/cancelled)' : '');
 
     const orders = await Order.find(filter)
       .populate('customerId', 'name email phone')
@@ -338,7 +338,7 @@ export const getVendorOrders = async (req, res) => {
     // We prefer the authenticated user's ID.
     const vendorId = req.vendor?._id || req.user?._id || req.query.vendorId;
 
-    console.log('[vendor:orders] Fetching for vendorId=', vendorId);
+    // console.log('[vendor:orders] Fetching for vendorId=', vendorId);
 
     if (!vendorId) {
       console.warn('[vendor:orders] No vendorId found in request');
@@ -349,7 +349,7 @@ export const getVendorOrders = async (req, res) => {
     const orders = await Order.find({ vendorId })
       .sort({ createdAt: -1 });
 
-    console.log(`[vendor:orders] Found ${orders.length} orders for vendor ${vendorId}`);
+    //console.log(`[vendor:orders] Found ${orders.length} orders for vendor ${vendorId}`);
 
     // 3. Normalize Response (Strict Contract)
     const formattedOrders = orders.map(order => ({

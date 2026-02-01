@@ -6,6 +6,7 @@ import CustomerLayout from '../../components/customer/CustomerLayout';
 import { useToast } from '../../components/ui/ToastProvider';
 import { useAuth } from '../../context/AuthContext';
 import { API_BASE_URL } from '../../utils/api.utils';
+import TopNavbar from './TopNavbar';
 
 export default function EditProfilePage() {
     const router = useRouter();
@@ -202,14 +203,8 @@ export default function EditProfilePage() {
 
     return (
         <CustomerLayout disablePadding={true}>
+            <TopNavbar title="Edit Profile" showBack={true} />
             <div className="edit-profile-page">
-                {/* Header */}
-                <header className="edit-profile-header">
-                    <button onClick={() => router.back()} style={{ background: 'none', border: 'none', cursor: 'pointer', padding: '4px' }}>
-                        <img src="/customer/assets/icons/backward.svg" alt="Back" width={24} height={24} />
-                    </button>
-                    <h1 className="edit-profile-title">Edit Profile</h1>
-                </header>
 
                 {/* Content */}
                 <div className="edit-profile-content">

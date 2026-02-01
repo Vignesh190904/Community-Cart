@@ -1458,12 +1458,12 @@ function EditProfilePage() {
                                 height: 24
                             }, void 0, false, {
                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/edit-profile.tsx",
-                                lineNumber: 209,
+                                lineNumber: 210,
                                 columnNumber: 25
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/edit-profile.tsx",
-                            lineNumber: 208,
+                            lineNumber: 209,
                             columnNumber: 21
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
@@ -1471,13 +1471,13 @@ function EditProfilePage() {
                             children: "Edit Profile"
                         }, void 0, false, {
                             fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/edit-profile.tsx",
-                            lineNumber: 211,
+                            lineNumber: 212,
                             columnNumber: 21
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/edit-profile.tsx",
-                    lineNumber: 207,
+                    lineNumber: 208,
                     columnNumber: 17
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1499,7 +1499,7 @@ function EditProfilePage() {
                                     }
                                 }, void 0, false, {
                                     fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/edit-profile.tsx",
-                                    lineNumber: 218,
+                                    lineNumber: 219,
                                     columnNumber: 25
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -1513,7 +1513,7 @@ function EditProfilePage() {
                                     disabled: is_saving
                                 }, void 0, false, {
                                     fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/edit-profile.tsx",
-                                    lineNumber: 234,
+                                    lineNumber: 235,
                                     columnNumber: 25
                                 }, this),
                                 original_profile_pic && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1531,12 +1531,12 @@ function EditProfilePage() {
                                         }
                                     }, void 0, false, {
                                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/edit-profile.tsx",
-                                        lineNumber: 250,
+                                        lineNumber: 251,
                                         columnNumber: 33
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/edit-profile.tsx",
-                                    lineNumber: 244,
+                                    lineNumber: 245,
                                     columnNumber: 29
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1553,18 +1553,18 @@ function EditProfilePage() {
                                         }
                                     }, void 0, false, {
                                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/edit-profile.tsx",
-                                        lineNumber: 259,
+                                        lineNumber: 260,
                                         columnNumber: 29
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/edit-profile.tsx",
-                                    lineNumber: 254,
+                                    lineNumber: 255,
                                     columnNumber: 25
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/edit-profile.tsx",
-                            lineNumber: 217,
+                            lineNumber: 218,
                             columnNumber: 21
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1578,7 +1578,7 @@ function EditProfilePage() {
                                             children: "Name"
                                         }, void 0, false, {
                                             fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/edit-profile.tsx",
-                                            lineNumber: 267,
+                                            lineNumber: 268,
                                             columnNumber: 29
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1591,7 +1591,7 @@ function EditProfilePage() {
                                                     onChange: (e)=>set_name(e.target.value)
                                                 }, void 0, false, {
                                                     fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/edit-profile.tsx",
-                                                    lineNumber: 269,
+                                                    lineNumber: 270,
                                                     columnNumber: 33
                                                 }, this),
                                                 name.length > 2 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
@@ -1600,19 +1600,19 @@ function EditProfilePage() {
                                                     alt: "Valid"
                                                 }, void 0, false, {
                                                     fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/edit-profile.tsx",
-                                                    lineNumber: 276,
+                                                    lineNumber: 277,
                                                     columnNumber: 37
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/edit-profile.tsx",
-                                            lineNumber: 268,
+                                            lineNumber: 269,
                                             columnNumber: 29
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/edit-profile.tsx",
-                                    lineNumber: 266,
+                                    lineNumber: 267,
                                     columnNumber: 25
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1623,7 +1623,7 @@ function EditProfilePage() {
                                             children: "Email"
                                         }, void 0, false, {
                                             fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/edit-profile.tsx",
-                                            lineNumber: 287,
+                                            lineNumber: 288,
                                             columnNumber: 29
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1641,7 +1641,7 @@ function EditProfilePage() {
                                                     }
                                                 }, void 0, false, {
                                                     fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/edit-profile.tsx",
-                                                    lineNumber: 289,
+                                                    lineNumber: 290,
                                                     columnNumber: 33
                                                 }, this),
                                                 email.includes('@') && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
@@ -1650,19 +1650,19 @@ function EditProfilePage() {
                                                     alt: "Valid"
                                                 }, void 0, false, {
                                                     fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/edit-profile.tsx",
-                                                    lineNumber: 298,
+                                                    lineNumber: 299,
                                                     columnNumber: 37
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/edit-profile.tsx",
-                                            lineNumber: 288,
+                                            lineNumber: 289,
                                             columnNumber: 29
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/edit-profile.tsx",
-                                    lineNumber: 286,
+                                    lineNumber: 287,
                                     columnNumber: 25
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1673,7 +1673,7 @@ function EditProfilePage() {
                                             children: "Phone no."
                                         }, void 0, false, {
                                             fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/edit-profile.tsx",
-                                            lineNumber: 309,
+                                            lineNumber: 310,
                                             columnNumber: 29
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1684,7 +1684,7 @@ function EditProfilePage() {
                                                     children: "+91"
                                                 }, void 0, false, {
                                                     fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/edit-profile.tsx",
-                                                    lineNumber: 311,
+                                                    lineNumber: 312,
                                                     columnNumber: 33
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -1697,7 +1697,7 @@ function EditProfilePage() {
                                                     }
                                                 }, void 0, false, {
                                                     fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/edit-profile.tsx",
-                                                    lineNumber: 312,
+                                                    lineNumber: 313,
                                                     columnNumber: 33
                                                 }, this),
                                                 phone.length === 10 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
@@ -1706,25 +1706,25 @@ function EditProfilePage() {
                                                     alt: "Valid"
                                                 }, void 0, false, {
                                                     fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/edit-profile.tsx",
-                                                    lineNumber: 322,
+                                                    lineNumber: 323,
                                                     columnNumber: 37
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/edit-profile.tsx",
-                                            lineNumber: 310,
+                                            lineNumber: 311,
                                             columnNumber: 29
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/edit-profile.tsx",
-                                    lineNumber: 308,
+                                    lineNumber: 309,
                                     columnNumber: 25
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/edit-profile.tsx",
-                            lineNumber: 264,
+                            lineNumber: 265,
                             columnNumber: 21
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1734,24 +1734,24 @@ function EditProfilePage() {
                             children: is_saving ? 'Saving...' : 'Save'
                         }, void 0, false, {
                             fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/edit-profile.tsx",
-                            lineNumber: 333,
+                            lineNumber: 334,
                             columnNumber: 21
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/edit-profile.tsx",
-                    lineNumber: 215,
+                    lineNumber: 216,
                     columnNumber: 17
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/edit-profile.tsx",
-            lineNumber: 205,
+            lineNumber: 206,
             columnNumber: 13
         }, this)
     }, void 0, false, {
         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/edit-profile.tsx",
-        lineNumber: 204,
+        lineNumber: 205,
         columnNumber: 9
     }, this);
 }

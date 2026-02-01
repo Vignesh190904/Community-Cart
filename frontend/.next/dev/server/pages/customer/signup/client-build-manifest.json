@@ -1,0 +1,5 @@
+{
+  "/customer/signup": [
+    "static/chunks/pages/customer/signup.js"
+  ]
+}

@@ -105,11 +105,11 @@ export default function VendorProducts() {
         const pVendorId = typeof p.vendor === 'object' ? (p.vendor as any)._id : p.vendor;
         return String(pVendorId) === String(user.id);
       });
-      console.log('Vendor Products Debug:', {
+      /*console.log('Vendor Products Debug:', {
         totalFetched: data.length,
         filtered: vendorProducts.length,
         myVendorId: user.id
-      });
+      });*/
       setProducts(vendorProducts);
     } catch (error) {
       console.error('Error loading products:', error);

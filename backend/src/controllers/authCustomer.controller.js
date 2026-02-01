@@ -129,7 +129,7 @@ export const manualSignupVerifyEmail = async (req, res) => {
         // Create token
         const auth_token = signToken(customer._id);
 
-        console.log("✅ EMAIL OTP VERIFIED — USER CREATED AND AUTHENTICATED");
+        /* console.log("✅ EMAIL OTP VERIFIED — USER CREATED AND AUTHENTICATED");*/
 
         return res.status(201).json({
             success: true,
@@ -406,7 +406,7 @@ export const googleSignupVerifyEmail = async (req, res) => {
         // Create token
         const auth_token = signToken(customer._id);
 
-        console.log("✅ EMAIL OTP VERIFIED — USER CREATED AND AUTHENTICATED");
+        /*console.log("✅ EMAIL OTP VERIFIED — USER CREATED AND AUTHENTICATED");*/
 
         return res.status(201).json({
             success: true,

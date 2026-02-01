@@ -3,7 +3,8 @@
   background-color: #fff;
   flex-direction: column;
   min-height: 100vh;
-  padding-bottom: 24px;
+  margin: 56px 0;
+  padding: 0;
   display: flex;
 }
 
@@ -62,8 +63,8 @@
 
 .address-form {
   flex-direction: column;
-  flex: 1;
   gap: 16px;
+  height: 500px;
   padding: 0 16px;
   display: flex;
 }
@@ -136,9 +137,8 @@
 }
 
 .address-cta-container {
-  margin-top: auto;
-  margin-bottom: 32px;
-  padding: 16px;
+  padding: 0 16px;
+  margin-bottom: 56px !important;
 }
 
 .address-cta-btn {

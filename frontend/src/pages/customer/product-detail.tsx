@@ -5,6 +5,7 @@ import CustomerLayout from '../../components/customer/CustomerLayout';
 import { useToast } from '../../components/ui/ToastProvider';
 import { addToWishlist, removeFromWishlist, fetchWishlist } from '../../services/wishlistApi';
 import { customerFetch } from '../../utils/customerFetch';
+import TopNavbar from './TopNavbar';
 
 // Type same as browse
 interface Product {
@@ -128,7 +129,7 @@ export default function ProductDetail() {
 
         pushToast({ type: 'success', message: `${product.name} x ${qty} added` });
         router.back();
-        console.log('Added to cart', { productId: product._id, qty });
+        // console.log('Added to cart', { productId: product._id, qty });
     };
 
     if (loading) return <CustomerLayout disablePadding={true}><div className="product-detail-page"></div></CustomerLayout>;
@@ -136,14 +137,9 @@ export default function ProductDetail() {
 
     return (
         <CustomerLayout disablePadding={true}>
+            <TopNavbar title={product?.name || "Product"} showBack={true} />
             {/* Styles are loaded globally via _app.tsx importing 'product-detail.css' */}
             <div className="product-detail-page">
-                {/* Header (Fixed) */}
-                <header className="product-detail-header">
-                    <button className="back-btn" onClick={() => router.back()}>
-                        <img src="/customer/assets/icons/backward.svg" alt="Back" width={24} height={24} />
-                    </button>
-                </header>
 
                 {/* Scrollable Content */}
                 <div className="product-content-scroll">

@@ -13,6 +13,7 @@
     color: var(--text-primary);
     overflow: hidden;
     z-index: 500;
+    margin: 56px 0;
     /* Above layout base */
 }
 

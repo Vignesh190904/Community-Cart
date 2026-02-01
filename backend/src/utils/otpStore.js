@@ -9,7 +9,7 @@ export const generateOtp = () => {
 export const storeOtp = (identifier, otp) => {
     const expires = Date.now() + 10 * 60 * 1000; // 10 minutes
     otpStore.set(identifier, { otp, expires });
-    console.log(`[MOCK OTP] Identifier: ${identifier}, OTP: ${otp}`);
+    // console.log(`[MOCK OTP] Identifier: ${identifier}, OTP: ${otp}`);
 };
 
 export const verifyOtp = (identifier, inputOtp) => {

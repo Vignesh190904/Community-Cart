@@ -3,8 +3,8 @@
   background-color: #fff;
   flex-direction: column;
   gap: 12px;
-  padding-bottom: 24px;
   display: flex;
+  margin-bottom: 56px !important;
 }
 
 .home-search-section {

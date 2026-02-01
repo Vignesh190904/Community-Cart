@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import { useState, useRef } from 'react';
 import CustomerLayout from '../../components/customer/CustomerLayout';
 import { useCustomerStore } from '../../context/CustomerStore';
+import TopNavbar from './TopNavbar';
 
 const SkeletonCartItem = () => (
   <div className="cart-item-wrapper">
@@ -123,23 +124,15 @@ export default function CartPage() {
 
   return (
     <CustomerLayout disablePadding={true}>
+      <TopNavbar
+        title="Cart"
+        showBack={true}
+        rightAction={cart.length > 0 ? {
+          label: "Clear",
+          onClick: handleClearCart
+        } : null}
+      />
       <div className="cart-page has-fixed-header">
-
-        {/* Header */}
-        <div className="cart-header fixed-header">
-          <div className="cart-header-main">
-            <button className="back-button touchable" onClick={() => router.back()}>
-              <img src="/customer/assets/icons/backward.svg" alt="Back" width={24} height={24} />
-            </button>
-            <h1 className="cart-title">Cart</h1>
-
-            {cart.length > 0 && (
-              <button className="clear-cart-btn" onClick={handleClearCart}>
-                Clear
-              </button>
-            )}
-          </div>
-        </div>
 
         {isLoading && cart.length === 0 ? (
           <div className="cart-items-list">

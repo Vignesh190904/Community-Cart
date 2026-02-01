@@ -137,7 +137,7 @@ export default function ProductSalesPage() {
       setKPIs(kpisData);
     } catch (err: any) {
       setError(err.message || 'Failed to load data');
-      pushToast({ type: 'error', title: 'Load Failed', message: err.message });
+      pushToast({ type: 'error',message: err.message });
     } finally {
       setLoading(false);
     }

@@ -1,0 +1,169 @@
+/* ==========================================================================
+   TopNavbar Component Styles
+   Mobile-only top navigation bar with back button, title, and optional action
+   ========================================================================== */
+
+.top-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 56px;
+  background-color: var(--bg-surface, #ffffff);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 8px;
+  box-shadow: var(--shadow-xs, 0 1px 2px rgba(0, 0, 0, 0.04));
+  z-index: var(--z-header, 100);
+  box-sizing: border-box;
+
+  /* Initial state for animation */
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: opacity var(--motion-medium, 180ms) ease-out,
+              transform var(--motion-medium, 180ms) ease-out;
+}
+
+/* Mounted/visible state */
+.top-navbar--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Dark mode */
+body.theme-dark .top-navbar {
+  background-color: var(--bg-surface, #161B22);
+  border-bottom: 1px solid var(--border, #2D333B);
+}
+
+/* Left section - fixed width for balance */
+.top-navbar__left {
+  width: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+}
+
+/* Center title */
+.top-navbar__title {
+  flex: 1;
+  text-align: center;
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--text-primary, #1A1A1A);
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0 4px;
+  line-height: 1.2;
+}
+
+body.theme-dark .top-navbar__title {
+  color: var(--text-primary, #FFFFFF);
+}
+
+/* Right section - fixed width for balance */
+.top-navbar__right {
+  width: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-shrink: 0;
+}
+
+/* Back button */
+.top-navbar__back-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: none;
+  background: transparent;
+  border-radius: var(--radius-md, 10px);
+  cursor: pointer;
+  color: var(--text-primary, #1A1A1A);
+  transition: background-color var(--motion-fast, 120ms) ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.top-navbar__back-btn:hover {
+  background-color: var(--bg-hover, #F0F0F0);
+}
+
+.top-navbar__back-btn:active {
+  background-color: var(--bg-hover, #F0F0F0);
+  transform: scale(0.95);
+}
+
+body.theme-dark .top-navbar__back-btn {
+  color: var(--text-primary, #FFFFFF);
+}
+
+body.theme-dark .top-navbar__back-btn:hover,
+body.theme-dark .top-navbar__back-btn:active {
+  background-color: var(--bg-hover, #1F2933);
+}
+
+/* Right action button */
+.top-navbar__action-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px;
+  height: 32px;
+  padding: 0 10px;
+  border: none;
+  background: transparent;
+  border-radius: var(--radius-sm, 6px);
+  cursor: pointer;
+  color: var(--primary, #2E7D32);
+  transition: background-color var(--motion-fast, 120ms) ease,
+              color var(--motion-fast, 120ms) ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.top-navbar__action-btn:hover {
+  background-color: rgba(46, 125, 50, 0.08);
+}
+
+.top-navbar__action-btn:active {
+  background-color: rgba(46, 125, 50, 0.12);
+  transform: scale(0.97);
+}
+
+body.theme-dark .top-navbar__action-btn {
+  color: var(--primary, #66BB6A);
+}
+
+body.theme-dark .top-navbar__action-btn:hover {
+  background-color: rgba(102, 187, 106, 0.12);
+}
+
+body.theme-dark .top-navbar__action-btn:active {
+  background-color: rgba(102, 187, 106, 0.18);
+}
+
+/* Action label text */
+.top-navbar__action-label {
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+/* Ensure icons inside action button are properly sized */
+.top-navbar__action-btn svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* Safe area padding for notched devices */
+@supports (padding-top: env(safe-area-inset-top)) {
+  .top-navbar {
+    padding-top: env(safe-area-inset-top);
+    height: calc(56px + env(safe-area-inset-top));
+  }
+}

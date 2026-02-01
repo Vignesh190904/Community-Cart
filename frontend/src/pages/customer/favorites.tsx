@@ -5,6 +5,7 @@ import { useCustomerStore } from '../../context/CustomerStore';
 import { useToast } from '../../components/ui/ToastProvider';
 import { fetchWishlist, removeFromWishlist, WishlistItem } from '../../services/wishlistApi';
 import { SkeletonProductCard } from '../../components/customer/SkeletonProductCard';
+import TopNavbar from './TopNavbar';
 
 interface Product {
     _id: string;
@@ -102,13 +103,8 @@ export default function FavoritesPage() {
 
     return (
         <CustomerLayout disablePadding={true}>
+            <TopNavbar title="Favorites" showBack={true} />
             <div className="favorites-page">
-                <div className="favorites-header">
-                    <button className="favorites-back-button" onClick={() => router.back()}>
-                        <img src="/customer/assets/icons/backward.svg" alt="Back" width={24} height={24} />
-                    </button>
-                    <h1 className="favorites-title">Favorites</h1>
-                </div>
 
                 <div className="favorites-search-section">
                     <div className="favorites-search-container">

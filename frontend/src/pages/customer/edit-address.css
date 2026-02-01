@@ -40,7 +40,7 @@
     flex-direction: column;
     gap: 16px;
     padding: 0 16px;
-    flex: 1;
+    height: 500px;
 }
 
 .address-input-group {
@@ -173,8 +173,8 @@
 
 /* CTA Button */
 .address-cta-container {
-    padding: 16px;
-    margin-top: auto;
+    padding: 0 16px;
+    margin-bottom: 56px !important;
 }
 
 .address-cta-btn {

@@ -8,7 +8,7 @@ export default function ForgotPassword() {
     };
 
     const handleSend = () => {
-        console.log('Sending OTP...');
+        // console.log('Sending OTP...');
         router.push({
             pathname: '/customer/verify-otp',
             query: { next: '/customer/reset-password' }

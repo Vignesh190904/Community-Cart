@@ -3,6 +3,7 @@
   flex-direction: column;
   gap: 16px;
   width: 100%;
+  margin: 56px 0;
   padding: 0;
   display: flex;
   overflow-x: hidden;
@@ -97,7 +98,7 @@
 .cart-items-list {
   flex-direction: column;
   gap: 12px;
-  padding: 0 12px;
+  padding: 12px;
   display: flex;
 }
 

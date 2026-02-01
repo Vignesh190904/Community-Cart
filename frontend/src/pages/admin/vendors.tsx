@@ -144,7 +144,7 @@ export default function VendorsManagement() {
       setVendors(data);
     } catch (error) {
       console.error('Error loading vendors:', error);
-      pushToast({ type: 'error', title: 'Load Failed', message: 'Failed to load vendors' });
+      pushToast({ type: 'error', message: 'Failed to load vendors' });
     } finally {
       setLoading(false);
     }
@@ -236,11 +236,11 @@ export default function VendorsManagement() {
     if (!confirm('Are you sure you want to delete this vendor?')) return;
     try {
       await api.vendors.delete(id);
-      pushToast({ type: 'success', title: 'Deleted', message: 'Vendor deleted successfully' });
+      pushToast({ type: 'success',message: 'Vendor deleted successfully' });
       loadVendors();
     } catch (error) {
       console.error('Error deleting vendor:', error);
-      pushToast({ type: 'error', title: 'Delete Failed', message: 'Failed to delete vendor' });
+      pushToast({ type: 'error', message: 'Failed to delete vendor' });
     }
   };
 
@@ -249,10 +249,10 @@ export default function VendorsManagement() {
       setTogglingId(id);
       await api.vendors.update(id, { isActive: !current });
       await loadVendors();
-      pushToast({ type: 'success', title: 'Status Updated', message: `Vendor ${!current ? 'enabled' : 'disabled'}` });
+      pushToast({ type: 'success',message: `Vendor ${!current ? 'enabled' : 'disabled'}` });
     } catch (error) {
       console.error('Error updating vendor status:', error);
-      pushToast({ type: 'error', title: 'Update Failed', message: 'Failed to update vendor status' });
+      pushToast({ type: 'error', message: 'Failed to update vendor status' });
     } finally {
       setTogglingId((cur) => (cur === id ? null : cur));
     }
@@ -264,16 +264,16 @@ export default function VendorsManagement() {
       setLoading(true);
       if (mode === 'create') {
         await api.vendors.create(formData);
-        pushToast({ type: 'success', title: 'Saved', message: 'Vendor created successfully' });
+        pushToast({ type: 'success', message: 'Vendor created successfully' });
       } else {
         await api.vendors.update(editingId!, formData);
-        pushToast({ type: 'success', title: 'Saved', message: 'Vendor updated successfully' });
+        pushToast({ type: 'success', message: 'Vendor updated successfully' });
       }
       setMode('list');
       loadVendors();
     } catch (error) {
       console.error('Error saving vendor:', error);
-      pushToast({ type: 'error', title: 'Save Failed', message: 'Failed to save vendor' });
+      pushToast({ type: 'error', message: 'Failed to save vendor' });
     } finally {
       setLoading(false);
     }

@@ -69,7 +69,7 @@ export default function VendorOrders() {
 
   const loadOrders = async () => {
     try {
-      console.log('[vendor:loadOrders] Fetching orders');
+      // console.log('[vendor:loadOrders] Fetching orders');
 
       // Robustness: Pass vendorId explicitly to avoid auth middleware context issues
       const res = await fetch(`http://localhost:5000/api/vendors/orders?vendorId=${user.id}`);
@@ -79,7 +79,7 @@ export default function VendorOrders() {
       }
 
       const data: OrderResponse[] = await res.json();
-      console.log('[vendor:loadOrders] fetched orders count=', data.length);
+      // console.log('[vendor:loadOrders] fetched orders count=', data.length);
 
       // Map snapshot-based response to UI format
       const mappedOrders: Order[] = data.map((orderResponse) => {
@@ -169,7 +169,7 @@ export default function VendorOrders() {
 
       if (!res.ok) throw new Error('Failed to update order');
       const updated = await res.json();
-      console.log('[vendor:updateStatus] orderId=', orderId, 'status=', newStatus);
+      // console.log('[vendor:updateStatus] orderId=', orderId, 'status=', newStatus);
       pushToast({ type: 'success', message: `Order moved to ${newStatus}` });
     } catch (error: any) {
       // Rollback on failure

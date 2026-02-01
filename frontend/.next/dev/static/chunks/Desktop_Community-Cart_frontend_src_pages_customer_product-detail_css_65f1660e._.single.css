@@ -6,6 +6,7 @@
   color: var(--text-primary);
   z-index: 500;
   flex-direction: column;
+  margin: 56px 0;
   display: flex;
   position: fixed;
   top: 0;

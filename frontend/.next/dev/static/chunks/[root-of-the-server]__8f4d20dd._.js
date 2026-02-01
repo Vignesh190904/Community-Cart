@@ -1823,12 +1823,12 @@ function FavoritesPage() {
                                 height: 24
                             }, void 0, false, {
                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/favorites.tsx",
-                                lineNumber: 108,
+                                lineNumber: 109,
                                 columnNumber: 25
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/favorites.tsx",
-                            lineNumber: 107,
+                            lineNumber: 108,
                             columnNumber: 21
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
@@ -1836,13 +1836,13 @@ function FavoritesPage() {
                             children: "Favorites"
                         }, void 0, false, {
                             fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/favorites.tsx",
-                            lineNumber: 110,
+                            lineNumber: 111,
                             columnNumber: 21
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/favorites.tsx",
-                    lineNumber: 106,
+                    lineNumber: 107,
                     columnNumber: 17
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1856,7 +1856,7 @@ function FavoritesPage() {
                                 className: "favorites-search-icon"
                             }, void 0, false, {
                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/favorites.tsx",
-                                lineNumber: 115,
+                                lineNumber: 116,
                                 columnNumber: 25
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -1867,18 +1867,18 @@ function FavoritesPage() {
                                 onChange: (e)=>setSearchTerm(e.target.value)
                             }, void 0, false, {
                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/favorites.tsx",
-                                lineNumber: 116,
+                                lineNumber: 117,
                                 columnNumber: 25
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/favorites.tsx",
-                        lineNumber: 114,
+                        lineNumber: 115,
                         columnNumber: 21
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/favorites.tsx",
-                    lineNumber: 113,
+                    lineNumber: 114,
                     columnNumber: 17
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1889,26 +1889,26 @@ function FavoritesPage() {
                             length: 8
                         }).map((_, idx)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$src$2f$components$2f$customer$2f$SkeletonProductCard$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__["SkeletonProductCard"], {}, `skeleton-fav-${idx}`, false, {
                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/favorites.tsx",
-                                lineNumber: 130,
+                                lineNumber: 131,
                                 columnNumber: 33
                             }, this))
                     }, void 0, false, {
                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/favorites.tsx",
-                        lineNumber: 128,
+                        lineNumber: 129,
                         columnNumber: 25
                     }, this) : error ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "favorites-state error",
                         children: error
                     }, void 0, false, {
                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/favorites.tsx",
-                        lineNumber: 134,
+                        lineNumber: 135,
                         columnNumber: 25
                     }, this) : filteredProducts.length === 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "favorites-state",
                         children: "No favorites yet"
                     }, void 0, false, {
                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/favorites.tsx",
-                        lineNumber: 136,
+                        lineNumber: 137,
                         columnNumber: 25
                     }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "products-grid",
@@ -1928,7 +1928,7 @@ function FavoritesPage() {
                                                 children: discount
                                             }, void 0, false, {
                                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/favorites.tsx",
-                                                lineNumber: 148,
+                                                lineNumber: 149,
                                                 columnNumber: 58
                                             }, this),
                                             isNew && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1936,7 +1936,7 @@ function FavoritesPage() {
                                                 children: "NEW"
                                             }, void 0, false, {
                                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/favorites.tsx",
-                                                lineNumber: 149,
+                                                lineNumber: 150,
                                                 columnNumber: 55
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1952,18 +1952,18 @@ function FavoritesPage() {
                                                     }
                                                 }, void 0, false, {
                                                     fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/favorites.tsx",
-                                                    lineNumber: 154,
+                                                    lineNumber: 155,
                                                     columnNumber: 49
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/favorites.tsx",
-                                                lineNumber: 150,
+                                                lineNumber: 151,
                                                 columnNumber: 45
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/favorites.tsx",
-                                        lineNumber: 147,
+                                        lineNumber: 148,
                                         columnNumber: 41
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1975,12 +1975,12 @@ function FavoritesPage() {
                                             className: product.image ? 'product-image' : 'product-image-missing'
                                         }, void 0, false, {
                                             fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/favorites.tsx",
-                                            lineNumber: 164,
+                                            lineNumber: 165,
                                             columnNumber: 45
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/favorites.tsx",
-                                        lineNumber: 163,
+                                        lineNumber: 164,
                                         columnNumber: 41
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1992,7 +1992,7 @@ function FavoritesPage() {
                                                 children: product.name
                                             }, void 0, false, {
                                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/favorites.tsx",
-                                                lineNumber: 172,
+                                                lineNumber: 173,
                                                 columnNumber: 45
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2000,7 +2000,7 @@ function FavoritesPage() {
                                                 children: "Quantity"
                                             }, void 0, false, {
                                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/favorites.tsx",
-                                                lineNumber: 173,
+                                                lineNumber: 174,
                                                 columnNumber: 45
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2013,18 +2013,18 @@ function FavoritesPage() {
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/favorites.tsx",
-                                                    lineNumber: 175,
+                                                    lineNumber: 176,
                                                     columnNumber: 49
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/favorites.tsx",
-                                                lineNumber: 174,
+                                                lineNumber: 175,
                                                 columnNumber: 45
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/favorites.tsx",
-                                        lineNumber: 171,
+                                        lineNumber: 172,
                                         columnNumber: 41
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2035,10 +2035,17 @@ function FavoritesPage() {
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                                     className: "product-qty-btn",
                                                     onClick: ()=>updateItemQty(product, -1),
-                                                    children: "−"
+                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
+                                                        src: "/customer/assets/icons/minus.svg",
+                                                        alt: "Decrease"
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/favorites.tsx",
+                                                        lineNumber: 184,
+                                                        columnNumber: 57
+                                                    }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/favorites.tsx",
-                                                    lineNumber: 182,
+                                                    lineNumber: 183,
                                                     columnNumber: 53
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2046,22 +2053,29 @@ function FavoritesPage() {
                                                     children: qtyInCart
                                                 }, void 0, false, {
                                                     fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/favorites.tsx",
-                                                    lineNumber: 185,
+                                                    lineNumber: 186,
                                                     columnNumber: 53
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                                     className: "product-qty-btn",
                                                     onClick: ()=>updateItemQty(product, 1),
-                                                    children: "+"
+                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
+                                                        src: "/customer/assets/icons/plus.svg",
+                                                        alt: "Increase"
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/favorites.tsx",
+                                                        lineNumber: 188,
+                                                        columnNumber: 57
+                                                    }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/favorites.tsx",
-                                                    lineNumber: 186,
+                                                    lineNumber: 187,
                                                     columnNumber: 53
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/favorites.tsx",
-                                            lineNumber: 181,
+                                            lineNumber: 182,
                                             columnNumber: 49
                                         }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                             className: "product-add-btn",
@@ -2074,47 +2088,47 @@ function FavoritesPage() {
                                                     className: "product-cart-icon"
                                                 }, void 0, false, {
                                                     fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/favorites.tsx",
-                                                    lineNumber: 196,
+                                                    lineNumber: 197,
                                                     columnNumber: 53
                                                 }, this),
                                                 "Add to cart"
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/favorites.tsx",
-                                            lineNumber: 191,
+                                            lineNumber: 192,
                                             columnNumber: 49
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/favorites.tsx",
-                                        lineNumber: 179,
+                                        lineNumber: 180,
                                         columnNumber: 41
                                     }, this)
                                 ]
                             }, product._id, true, {
                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/favorites.tsx",
-                                lineNumber: 146,
+                                lineNumber: 147,
                                 columnNumber: 37
                             }, this);
                         })
                     }, void 0, false, {
                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/favorites.tsx",
-                        lineNumber: 138,
+                        lineNumber: 139,
                         columnNumber: 25
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/favorites.tsx",
-                    lineNumber: 126,
+                    lineNumber: 127,
                     columnNumber: 17
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/favorites.tsx",
-            lineNumber: 105,
+            lineNumber: 106,
             columnNumber: 13
         }, this)
     }, void 0, false, {
         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/favorites.tsx",
-        lineNumber: 104,
+        lineNumber: 105,
         columnNumber: 9
     }, this);
 }

@@ -93,7 +93,7 @@ export default function ProductDetailPage() {
         router.back(); // Or stay? Usually stay or go to cart? User didn't specify post-action nav. 
         // Let's stay and maybe reset qty? Or just show toast.
         // "On click: Add product... Respect rules... Log reason". 
-        console.log('Added to cart', { productId: product._id, qty });
+        // console.log('Added to cart', { productId: product._id, qty });
     };
 
     if (loading) return <CustomerLayout disablePadding={true}><div className="product-detail-page"></div></CustomerLayout>;

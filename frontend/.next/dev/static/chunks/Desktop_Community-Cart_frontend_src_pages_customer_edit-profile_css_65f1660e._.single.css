@@ -6,6 +6,7 @@
   color: var(--text-primary);
   z-index: 500;
   flex-direction: column;
+  margin: 56px 0;
   display: flex;
   position: fixed;
   top: 0;
@@ -164,8 +165,7 @@
   border: none;
   border-radius: 30px;
   width: 100%;
-  margin-top: auto;
-  margin-bottom: 60px;
+  margin-bottom: 56px;
   padding: 16px;
   font-size: 18px;
   font-weight: 700;

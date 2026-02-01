@@ -40,6 +40,7 @@ import './customer/bottom-navbar.css';
 import './customer/checkout.css';
 import './customer/product-detail.css';
 import './customer/edit-profile.css';
+import './customer/TopNavbar.css';
 import '../components/customer/CustomerLayout.css';
 
 import '../styles/toast.css';

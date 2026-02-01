@@ -2,7 +2,7 @@ import Product from '../models/Product.model.js';
 
 export const createProduct = async (req, res) => {
   try {
-    console.log('[createProduct] body:', req.body);
+    // console.log('[createProduct] body:', req.body);
     const product = new Product(req.body);
     const savedProduct = await product.save();
     res.status(201).json(savedProduct);
@@ -17,7 +17,7 @@ export const getAllProducts = async (req, res) => {
     const includeDisabledVendors = req.query.includeDisabledVendors === 'true';
     const products = await Product.find().populate('vendor', 'storeName ownerName email isActive');
     const filtered = includeDisabledVendors ? products : products.filter((p) => p.vendor?.isActive !== false);
-    console.log('[products:list] count=', filtered.length, 'includeDisabledVendors=', includeDisabledVendors);
+    /*console.log('[products:list] count=', filtered.length, 'includeDisabledVendors=', includeDisabledVendors); */
     res.status(200).json(filtered);
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -36,7 +36,7 @@ export const getProductById = async (req, res) => {
 
 export const updateProduct = async (req, res) => {
   try {
-    console.log('[updateProduct] id:', req.params.id, 'body:', req.body);
+    // console.log('[updateProduct] id:', req.params.id, 'body:', req.body);
     const product = await Product.findByIdAndUpdate(
       req.params.id,
       req.body,

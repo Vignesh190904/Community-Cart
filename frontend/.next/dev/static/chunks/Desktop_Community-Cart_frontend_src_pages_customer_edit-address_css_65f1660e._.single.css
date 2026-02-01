@@ -34,8 +34,8 @@
 
 .address-form {
   flex-direction: column;
-  flex: 1;
   gap: 16px;
+  height: 500px;
   padding: 0 16px;
   display: flex;
 }
@@ -165,8 +165,8 @@
 }
 
 .address-cta-container {
-  margin-top: auto;
-  padding: 16px;
+  padding: 0 16px;
+  margin-bottom: 56px !important;
 }
 
 .address-cta-btn {

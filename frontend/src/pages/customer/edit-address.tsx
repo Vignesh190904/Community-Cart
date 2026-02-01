@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import CustomerLayout from '../../components/customer/CustomerLayout';
 import { useToast } from '../../components/ui/ToastProvider';
+import TopNavbar from './TopNavbar';
 
 /* ===== LOCKED ADDRESS MODEL ===== */
 interface AddressPayload {
@@ -156,26 +157,8 @@ export default function EditAddressPage() {
 
     return (
         <CustomerLayout disablePadding>
+            <TopNavbar title={id ? "Edit Address" : "Add Address"} showBack={true} />
             <div className="address-page-container">
-                {/* Header */}
-                <header className="address-header">
-                    <button
-                        className="address-back-btn"
-                        onClick={() => router.back()}
-                    >
-                        <img
-                            src="/customer/assets/icons/backward.svg"
-                            alt="Back"
-                            width={24}
-                            height={24}
-                        />
-                    </button>
-                    <h1 className="address-title">
-                        {id ? 'Edit Address' : 'Add Address'}
-                    </h1>
-                </header>
-
-                <div style={{ height: 32 }} />
 
                 {/* Form */}
                 <div className="address-form">

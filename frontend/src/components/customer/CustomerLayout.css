@@ -39,8 +39,7 @@ body,
 .customer-main {
     flex: 1;
     overflow-y: auto;
-    padding: 16px;
-    padding-bottom: 80px;
+    margin-bottom: 56px !important;
     /* Space for bottom nav */
     min-height: calc(100vh - 60px);
     width: 100%;
@@ -48,7 +47,7 @@ body,
 
 .customer-main.no-padding {
     padding: 0;
-    padding-bottom: 80px;
+    margin-bottom: 56px;
 }
 
 /* Bottom Navigation */

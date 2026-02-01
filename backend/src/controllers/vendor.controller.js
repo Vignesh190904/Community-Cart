@@ -78,7 +78,7 @@ export const getVendorEarnings = async (req, res) => {
     const statuses = statusParam ? statusParam.split(',').map(s => s.trim()) : ['completed', 'cancelled'];
     matchStage.status = { $in: statuses };
 
-    console.log('[vendor:earnings] vendorId=', vendorId, 'filters=', { from: from || null, to: to || null, status: statuses });
+    // console.log('[vendor:earnings] vendorId=', vendorId, 'filters=', { from: from || null, to: to || null, status: statuses });
 
     // First, calculate average order value if orderAboveAvg filter is enabled
     let averageOrderValueThreshold = 0;

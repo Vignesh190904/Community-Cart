@@ -1,0 +1,5 @@
+{
+  "/customer/verify-otp": [
+    "static/chunks/pages/customer/verify-otp.js"
+  ]
+}

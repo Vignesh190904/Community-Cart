@@ -6,6 +6,7 @@ import { useToast } from '../../components/ui/ToastProvider';
 import { addToWishlist, removeFromWishlist, fetchWishlist, WishlistItem } from '../../services/wishlistApi';
 import { customerFetch } from '../../utils/customerFetch';
 import { SkeletonProductCard } from '../../components/customer/SkeletonProductCard';
+import TopNavbar from './TopNavbar';
 
 interface Product {
     _id: string;
@@ -157,6 +158,7 @@ export default function BrowseProducts() {
 
     return (
         <CustomerLayout>
+            <TopNavbar title="Browse" showBack={true} />
             <div className="browse-page">
                 {/* Search Bar */}
                 <div className="search-container">

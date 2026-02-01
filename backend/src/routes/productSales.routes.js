@@ -5,7 +5,7 @@ const router = express.Router();
 
 // Minimal request logging for visibility
 router.use((req, _res, next) => {
-	console.log(`[product-sales] ${req.method} ${req.path}`);
+	// console.log(`[product-sales] ${req.method} ${req.path}`);
 	next();
 });
 

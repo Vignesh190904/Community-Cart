@@ -410,12 +410,12 @@ function ProductDetail() {
             className: "product-detail-page"
         }, void 0, false, {
             fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/product-detail.tsx",
-            lineNumber: 134,
+            lineNumber: 135,
             columnNumber: 63
         }, this)
     }, void 0, false, {
         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/product-detail.tsx",
-        lineNumber: 134,
+        lineNumber: 135,
         columnNumber: 25
     }, this);
     if (!product) return null;
@@ -436,17 +436,17 @@ function ProductDetail() {
                             height: 24
                         }, void 0, false, {
                             fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/product-detail.tsx",
-                            lineNumber: 144,
+                            lineNumber: 145,
                             columnNumber: 25
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/product-detail.tsx",
-                        lineNumber: 143,
+                        lineNumber: 144,
                         columnNumber: 21
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/product-detail.tsx",
-                    lineNumber: 142,
+                    lineNumber: 143,
                     columnNumber: 17
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
@@ -464,7 +464,7 @@ function ProductDetail() {
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/product-detail.tsx",
-                                    lineNumber: 153,
+                                    lineNumber: 154,
                                     columnNumber: 29
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("img", {
@@ -473,13 +473,13 @@ function ProductDetail() {
                                     className: product.image ? 'detail-image' : 'detail-image product-image-missing'
                                 }, void 0, false, {
                                     fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/product-detail.tsx",
-                                    lineNumber: 157,
+                                    lineNumber: 158,
                                     columnNumber: 25
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/product-detail.tsx",
-                            lineNumber: 151,
+                            lineNumber: 152,
                             columnNumber: 21
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
@@ -493,7 +493,7 @@ function ProductDetail() {
                                             children: product.name
                                         }, void 0, false, {
                                             fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/product-detail.tsx",
-                                            lineNumber: 167,
+                                            lineNumber: 168,
                                             columnNumber: 29
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("button", {
@@ -511,18 +511,18 @@ function ProductDetail() {
                                                 height: 24
                                             }, void 0, false, {
                                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/product-detail.tsx",
-                                                lineNumber: 169,
+                                                lineNumber: 170,
                                                 columnNumber: 33
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/product-detail.tsx",
-                                            lineNumber: 168,
+                                            lineNumber: 169,
                                             columnNumber: 29
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/product-detail.tsx",
-                                    lineNumber: 166,
+                                    lineNumber: 167,
                                     columnNumber: 25
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("p", {
@@ -530,7 +530,7 @@ function ProductDetail() {
                                     children: product.unit || '500 gms'
                                 }, void 0, false, {
                                     fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/product-detail.tsx",
-                                    lineNumber: 181,
+                                    lineNumber: 182,
                                     columnNumber: 25
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
@@ -544,7 +544,7 @@ function ProductDetail() {
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/product-detail.tsx",
-                                            lineNumber: 183,
+                                            lineNumber: 184,
                                             columnNumber: 29
                                         }, this),
                                         product.mrp && product.mrp > product.price && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("span", {
@@ -561,19 +561,19 @@ function ProductDetail() {
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/product-detail.tsx",
-                                                    lineNumber: 186,
+                                                    lineNumber: 187,
                                                     columnNumber: 41
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/product-detail.tsx",
-                                            lineNumber: 185,
+                                            lineNumber: 186,
                                             columnNumber: 33
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/product-detail.tsx",
-                                    lineNumber: 182,
+                                    lineNumber: 183,
                                     columnNumber: 25
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
@@ -581,19 +581,19 @@ function ProductDetail() {
                                     children: product.description || `Organic Mountain works as a seller for many organic growers of organic lemons. Organic lemons are easy to spot in your produce aisle. They are just like regular lemons, but they will usually have a few more scars on the outside of the lemon skin. Organic lemons are considered to be the world's finest lemon for juicing`
                                 }, void 0, false, {
                                     fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/product-detail.tsx",
-                                    lineNumber: 191,
+                                    lineNumber: 192,
                                     columnNumber: 25
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/product-detail.tsx",
-                            lineNumber: 165,
+                            lineNumber: 166,
                             columnNumber: 21
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/product-detail.tsx",
-                    lineNumber: 149,
+                    lineNumber: 150,
                     columnNumber: 17
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("footer", {
@@ -612,12 +612,12 @@ function ProductDetail() {
                                         height: 16
                                     }, void 0, false, {
                                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/product-detail.tsx",
-                                        lineNumber: 202,
+                                        lineNumber: 203,
                                         columnNumber: 29
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/product-detail.tsx",
-                                    lineNumber: 201,
+                                    lineNumber: 202,
                                     columnNumber: 25
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("span", {
@@ -625,7 +625,7 @@ function ProductDetail() {
                                     children: qty
                                 }, void 0, false, {
                                     fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/product-detail.tsx",
-                                    lineNumber: 204,
+                                    lineNumber: 205,
                                     columnNumber: 25
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("button", {
@@ -638,18 +638,18 @@ function ProductDetail() {
                                         height: 16
                                     }, void 0, false, {
                                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/product-detail.tsx",
-                                        lineNumber: 206,
+                                        lineNumber: 207,
                                         columnNumber: 29
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/product-detail.tsx",
-                                    lineNumber: 205,
+                                    lineNumber: 206,
                                     columnNumber: 25
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/product-detail.tsx",
-                            lineNumber: 200,
+                            lineNumber: 201,
                             columnNumber: 21
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("button", {
@@ -666,31 +666,31 @@ function ProductDetail() {
                                     height: 20
                                 }, void 0, false, {
                                     fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/product-detail.tsx",
-                                    lineNumber: 212,
+                                    lineNumber: 213,
                                     columnNumber: 25
                                 }, this),
                                 "Add to cart"
                             ]
                         }, void 0, true, {
                             fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/product-detail.tsx",
-                            lineNumber: 211,
+                            lineNumber: 212,
                             columnNumber: 21
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/product-detail.tsx",
-                    lineNumber: 198,
+                    lineNumber: 199,
                     columnNumber: 17
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/product-detail.tsx",
-            lineNumber: 140,
+            lineNumber: 141,
             columnNumber: 13
         }, this)
     }, void 0, false, {
         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/product-detail.tsx",
-        lineNumber: 138,
+        lineNumber: 139,
         columnNumber: 9
     }, this);
 }

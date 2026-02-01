@@ -3,7 +3,7 @@
   background-color: var(--bg-surface, #fff);
   z-index: 1000;
   width: 100%;
-  height: 60px;
+  height: 56px;
   padding-bottom: env(safe-area-inset-bottom);
   box-sizing: content-box;
   justify-content: space-around;

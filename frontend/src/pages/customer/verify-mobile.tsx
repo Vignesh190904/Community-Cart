@@ -10,14 +10,14 @@ export default function VerifyMobile() {
     const intent = params.get('intent'); // signup_phone | google_signup_phone
     const email = params.get('email') || '';
 
-    console.log('[VerifyMobile] Component Rendered', { intent, email });
+    // console.log('[VerifyMobile] Component Rendered', { intent, email });
 
     const [mobile, setMobile] = useState('');
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
 
     const handleSendOtp = async () => {
-        console.log('[VerifyMobile] handleSendOtp called', { mobile, email, intent });
+        // console.log('[VerifyMobile] handleSendOtp called', { mobile, email, intent });
         if (mobile.length !== 10) {
             setError('Enter a valid 10-digit mobile number');
             return;
@@ -44,7 +44,7 @@ export default function VerifyMobile() {
             const data = await res.json();
             if (!res.ok) throw new Error(data.message || 'Failed to send OTP');
 
-            console.log('[VerifyMobile] API Success', data);
+            // console.log('[VerifyMobile] API Success', data);
 
             router.push(
                 `/customer/verify-otp?intent=${intent}&email=${encodeURIComponent(

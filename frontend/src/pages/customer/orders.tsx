@@ -5,6 +5,7 @@ import { useAuth } from '../../context/AuthContext';
 import { useCustomerStore } from '../../context/CustomerStore';
 import { useToast } from '../../components/ui/ToastProvider';
 import { customerFetch } from '../../utils/customerFetch';
+import TopNavbar from './TopNavbar';
 
 interface OrderItem {
     name: string;
@@ -194,13 +195,8 @@ export default function OrdersPage() {
     if (loading) {
         return (
             <CustomerLayout disablePadding={true}>
+                <TopNavbar title="Orders" showBack={true} />
                 <div className="orders-page">
-                    <div className="orders-header">
-                        <button className="orders-back-button" onClick={() => router.back()}>
-                            <img src="/customer/assets/icons/backward.svg" alt="Back" width={24} height={24} />
-                        </button>
-                        <h1 className="orders-title">My Order</h1>
-                    </div>
                     <div className="orders-list">
                         {Array.from({ length: 5 }).map((_, idx) => (
                             <SkeletonOrderCard key={`skeleton-order-${idx}`} />
@@ -213,13 +209,8 @@ export default function OrdersPage() {
 
     return (
         <CustomerLayout disablePadding={true}>
+            <TopNavbar title="Orders" showBack={true} />
             <div className="orders-page">
-                <div className="orders-header">
-                    <button className="orders-back-button" onClick={() => router.back()}>
-                        <img src="/customer/assets/icons/backward.svg" alt="Back" width={24} height={24} />
-                    </button>
-                    <h1 className="orders-title">My Order</h1>
-                </div>
 
                 <div className="orders-list">
                     {error && <p className="error-message" style={{ color: 'red', textAlign: 'center' }}>{error}</p>}

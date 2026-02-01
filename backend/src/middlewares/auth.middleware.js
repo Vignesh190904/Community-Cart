@@ -14,11 +14,11 @@ export const protect = async (req, res, next) => {
 
         // DEV-ONLY: Log auth header presence (not token value)
         if (process.env.NODE_ENV !== 'production') {
-            console.log('[AUTH] Authorization header present:', !!req.headers.authorization);
+            // console.log('[AUTH] Authorization header present:', !!req.headers.authorization);
         }
 
         if (!auth_token) {
-            console.log('[AUTH] Unauthorized: No token found in header');
+            // console.log('[AUTH] Unauthorized: No token found in header');
             return res.status(401).json({
                 success: false,
                 message: 'Not authenticated. No token provided.',
@@ -34,7 +34,7 @@ export const protect = async (req, res, next) => {
             .select('-auth.manual.password_hash');
 
         if (!customer) {
-            console.log('[AUTH] Unauthorized: User not found in database for ID:', decoded.id);
+            // console.log('[AUTH] Unauthorized: User not found in database for ID:', decoded.id);
             return res.status(401).json({
                 success: false,
                 message: 'Not authorized, token failed',
@@ -55,7 +55,7 @@ export const protect = async (req, res, next) => {
         req.user = customer;
         next();
     } catch (error) {
-        console.error('[AUTH] Auth Middleware Error:', error.message);
+        // console.error('[AUTH] Auth Middleware Error:', error.message);
         return res.status(401).json({
             success: false,
             message: 'Not authorized, token failed',
@@ -84,18 +84,18 @@ export const protectVendor = async (req, res, next) => {
         if (decoded?.id) {
             try {
                 // Debug log
-                console.log('[protectVendor] Decoded ID:', decoded.id);
+                // console.log('[protectVendor] Decoded ID:', decoded.id);
                 const vendor = await Vendor.findById(decoded.id).select('-password');
-                console.log('[protectVendor] Review Vendor found:', !!vendor);
+                // console.log('[protectVendor] Review Vendor found:', !!vendor);
                 req.user = vendor || null;
                 req.vendor = vendor || null;
             } catch (e) {
-                console.error('[protectVendor] DB Error:', e.message);
+                // console.error('[protectVendor] DB Error:', e.message);
                 req.user = null;
                 req.vendor = null;
             }
         } else {
-            console.log('[protectVendor] No decoded ID');
+            // console.log('[protectVendor] No decoded ID');
             req.user = null;
             req.vendor = null;
         }

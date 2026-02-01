@@ -91,6 +91,10 @@ export default function SignIn() {
         return () => window.removeEventListener('google-gis-loaded', listener);
     }, [initGoogle]);
 
+    useEffect(() => {
+        console.log("API BASE:", process.env.NEXT_PUBLIC_API_BASE_URL);
+    }, []);
+
     if (loading) {
         return <AppLoading />;
     }

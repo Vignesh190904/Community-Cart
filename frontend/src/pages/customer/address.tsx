@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import CustomerLayout from '../../components/customer/CustomerLayout';
 import { useToast } from '../../components/ui/ToastProvider';
+import TopNavbar from './TopNavbar';
 
 /* ===== FINAL LOCKED ADDRESS MODEL ===== */
 interface Address {
@@ -86,22 +87,8 @@ export default function AddressPage() {
 
     return (
         <CustomerLayout disablePadding>
+            <TopNavbar title="Address" showBack={true} />
             <div className="address-page-container has-fixed-header">
-                {/* Header */}
-                <header className="address-header fixed-header">
-                    <button
-                        className="address-back-btn touchable"
-                        onClick={() => router.back()}
-                    >
-                        <img
-                            src="/customer/assets/icons/backward.svg"
-                            alt="Back"
-                            width={24}
-                            height={24}
-                        />
-                    </button>
-                    <h1 className="address-title">Address</h1>
-                </header>
 
                 {/* Toggle */}
                 <div className="address-toggle-container">

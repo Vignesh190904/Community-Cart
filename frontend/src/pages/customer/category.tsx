@@ -5,6 +5,7 @@ import { useToast } from '../../components/ui/ToastProvider';
 import { useCustomerStore } from '../../context/CustomerStore';
 import { customerFetch } from '../../utils/customerFetch';
 import { SkeletonProductCard } from '../../components/customer/SkeletonProductCard';
+import TopNavbar from './TopNavbar';
 
 // --- Product Interface ---
 
@@ -238,14 +239,8 @@ export default function CategoryPage() {
 
     return (
         <CustomerLayout disablePadding={true}>
+            <TopNavbar title={title} showBack={true} />
             <div className="category-page-container">
-                {/* Header */}
-                <header className="category-header">
-                    <button onClick={() => router.back()} className="back-button">
-                        <img src="/customer/assets/icons/backward.svg" alt="Back" width={24} height={24} />
-                    </button>
-                    <h1 className="category-title">{title}</h1>
-                </header>
 
                 {/* Search */}
                 <section className="category-search-section">
