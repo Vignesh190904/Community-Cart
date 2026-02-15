@@ -8,14 +8,14 @@
     display: flex;
     align-items: center;
     gap: 10px;
-    margin: 10px 16px;
-    width: calc(100% - 32px);
+    margin: 10px 8px;
+    width: calc(100% - 16px);
     transition: border-color 0.3s ease;
 }
 
 /* Light theme background */
 .customer-search-bar {
-    background: #dddddd;
+    background: #FFFFFF;
 }
 
 /* Dark theme background */

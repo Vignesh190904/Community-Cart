@@ -41,6 +41,7 @@ import './customer/checkout.css';
 import './customer/product-detail.css';
 import './customer/edit-profile.css';
 import './customer/TopNavbar.css';
+import './customer/search_bar.css';
 import '../components/customer/CustomerLayout.css';
 
 import '../styles/toast.css';

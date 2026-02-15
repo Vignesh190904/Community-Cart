@@ -2,6 +2,9 @@ self.__BUILD_MANIFEST = {
   "/": [
     "static/chunks/pages/index.js"
   ],
+  "/_error": [
+    "static/chunks/pages/_error.js"
+  ],
   "/customer/browse-products": [
     "static/chunks/pages/customer/browse-products.js"
   ],
@@ -25,6 +28,9 @@ self.__BUILD_MANIFEST = {
   ],
   "/customer/orders": [
     "static/chunks/pages/customer/orders.js"
+  ],
+  "/customer/product-detail": [
+    "static/chunks/pages/customer/product-detail.js"
   ],
   "/customer/profile": [
     "static/chunks/pages/customer/profile.js"
@@ -69,6 +75,7 @@ self.__BUILD_MANIFEST = {
     "/customer/products",
     "/customer/profile",
     "/customer/reset-password",
+    "/customer/search_bar",
     "/customer/signin",
     "/customer/signup",
     "/customer/track-order",

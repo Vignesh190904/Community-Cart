@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { useRouter } from 'next/router';
 import CustomerLayout from '../../components/customer/CustomerLayout';
 import { useToast } from '../../components/ui/ToastProvider';
@@ -6,6 +6,7 @@ import { useCustomerStore } from '../../context/CustomerStore';
 import { customerFetch } from '../../utils/customerFetch';
 import { SkeletonProductCard } from '../../components/customer/SkeletonProductCard';
 import TopNavbar from './TopNavbar';
+import SearchBar from './search_bar';
 
 // --- Product Interface ---
 
@@ -46,9 +47,8 @@ export default function CategoryPage() {
     const [wishlist, setWishlist] = useState<Set<string>>(new Set());
     // Removed local cart state
     const [products, setProducts] = useState<Product[]>([]);
-    const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
     const [loading, setLoading] = useState(true);
-    const [searchTerm, setSearchTerm] = useState('');
+    const [searchQuery, setSearchQuery] = useState('');
 
     // Fetch products from API
     useEffect(() => {
@@ -79,33 +79,20 @@ export default function CategoryPage() {
         fetchProducts();
     }, [enqueueToast]);
 
-    // Filter products by category AND search term
-    useEffect(() => {
-        if (products.length === 0) {
-            setFilteredProducts([]);
-            return;
-        }
+    // Filter products by category first, then by search query
+    const categoryProducts = useMemo(() => {
+        if (!type) return products;
+        const categoryType = Array.isArray(type) ? type[0].toLowerCase() : type.toLowerCase();
+        return products.filter(p =>
+            p.category?.trim().toLowerCase() === categoryType
+        );
+    }, [type, products]);
 
-        let filtered = products;
-
-        // 1. Filter by Category
-        if (type) {
-            const categoryType = Array.isArray(type) ? type[0].toLowerCase() : type.toLowerCase();
-            filtered = filtered.filter(p =>
-                p.category?.trim().toLowerCase() === categoryType
-            );
-        }
-
-        // 2. Filter by Search Term
-        if (searchTerm.trim()) {
-            const lowerTerm = searchTerm.toLowerCase();
-            filtered = filtered.filter(p =>
-                p.name.toLowerCase().includes(lowerTerm)
-            );
-        }
-
-        setFilteredProducts(filtered);
-    }, [type, products, searchTerm]);
+    const filteredProducts = useMemo(() => {
+        return categoryProducts.filter(product =>
+            product.name.toLowerCase().includes(searchQuery.toLowerCase())
+        );
+    }, [categoryProducts, searchQuery]);
 
     const title = type ? (Array.isArray(type) ? type[0] : type) : 'Category';
 
@@ -223,20 +210,6 @@ export default function CategoryPage() {
         addToCart(productLite);
     };
 
-
-
-    const handleSearch = () => {
-        if (searchTerm.trim()) {
-            router.push(`/customer/browse-products?q=${encodeURIComponent(searchTerm)}`);
-        }
-    };
-
-    const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-        if (e.key === 'Enter') {
-            handleSearch();
-        }
-    };
-
     return (
         <CustomerLayout disablePadding={true}>
             <TopNavbar title={title} showBack={true} />
@@ -244,23 +217,10 @@ export default function CategoryPage() {
 
                 {/* Search */}
                 <section className="category-search-section">
-                    <div className="category-search-container">
-                        <img
-                            src="/customer/assets/icons/search.svg"
-                            alt="Search"
-                            className="category-search-icon"
-                            onClick={handleSearch}
-                            style={{ cursor: 'pointer' }}
-                        />
-                        <input
-                            type="text"
-                            placeholder="Search keywords.."
-                            className="category-search-input"
-                            value={searchTerm}
-                            onChange={(e) => setSearchTerm(e.target.value)}
-                            onKeyDown={handleKeyDown}
-                        />
-                    </div>
+                    <SearchBar
+                        value={searchQuery}
+                        onChange={setSearchQuery}
+                    />
                 </section>
 
                 {/* Featured Products Header */}

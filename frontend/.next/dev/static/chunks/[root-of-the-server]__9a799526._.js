@@ -1903,6 +1903,7 @@ var _s = __turbopack_context__.k.signature();
 ;
 ;
 ;
+;
 function MyApp({ Component, pageProps }) {
     _s();
     const router = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$next$2f$router$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useRouter"])();
@@ -2030,7 +2031,7 @@ function MyApp({ Component, pageProps }) {
         ...pageProps
     }, void 0, false, {
         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/_app.tsx",
-        lineNumber: 167,
+        lineNumber: 168,
         columnNumber: 38
     }, this));
     if (isAdminPage) {
@@ -2040,12 +2041,12 @@ function MyApp({ Component, pageProps }) {
                 ...pageProps
             }, void 0, false, {
                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/_app.tsx",
-                lineNumber: 172,
+                lineNumber: 173,
                 columnNumber: 9
             }, this)
         }, void 0, false, {
             fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/_app.tsx",
-            lineNumber: 171,
+            lineNumber: 172,
             columnNumber: 7
         }, this);
     } else if (isVendorPage) {
@@ -2055,12 +2056,12 @@ function MyApp({ Component, pageProps }) {
                 ...pageProps
             }, void 0, false, {
                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/_app.tsx",
-                lineNumber: 178,
+                lineNumber: 179,
                 columnNumber: 9
             }, this)
         }, void 0, false, {
             fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/_app.tsx",
-            lineNumber: 177,
+            lineNumber: 178,
             columnNumber: 7
         }, this);
     }
@@ -2083,7 +2084,7 @@ function MyApp({ Component, pageProps }) {
                 }
             }, void 0, false, {
                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/_app.tsx",
-                lineNumber: 186,
+                lineNumber: 187,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$src$2f$components$2f$ui$2f$ToastProvider$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__["ToastProvider"], {
@@ -2092,17 +2093,17 @@ function MyApp({ Component, pageProps }) {
                         children: content
                     }, void 0, false, {
                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/_app.tsx",
-                        lineNumber: 206,
+                        lineNumber: 207,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/_app.tsx",
-                    lineNumber: 205,
+                    lineNumber: 206,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/_app.tsx",
-                lineNumber: 203,
+                lineNumber: 204,
                 columnNumber: 7
             }, this)
         ]

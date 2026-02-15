@@ -7,6 +7,7 @@ import { addToWishlist, removeFromWishlist, fetchWishlist, WishlistItem } from '
 import { customerFetch } from '../../utils/customerFetch';
 import { SkeletonProductCard } from '../../components/customer/SkeletonProductCard';
 import TopNavbar from './TopNavbar';
+import SearchBar from './search_bar';
 
 interface Product {
     _id: string;
@@ -40,14 +41,14 @@ export default function BrowseProducts() {
     const [products, setProducts] = useState<Product[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
-    const [searchTerm, setSearchTerm] = useState('');
+    const [searchQuery, setSearchQuery] = useState('');
     const [wishlist, setWishlist] = useState<WishlistItem[]>([]);
     const [wishlistLoading, setWishlistLoading] = useState(false);
 
     // Sync search term from URL query
     useEffect(() => {
         if (router.isReady && router.query.q) {
-            setSearchTerm(router.query.q as string);
+            setSearchQuery(router.query.q as string);
         }
     }, [router.isReady, router.query.q]);
 
@@ -154,7 +155,11 @@ export default function BrowseProducts() {
         }
     };
 
-    const filteredProducts = products.filter(p => p.name.toLowerCase().includes(searchTerm.toLowerCase()));
+    const filteredProducts = useMemo(() => {
+        return products.filter(product =>
+            product.name.toLowerCase().includes(searchQuery.toLowerCase())
+        );
+    }, [products, searchQuery]);
 
     return (
         <CustomerLayout>
@@ -162,16 +167,10 @@ export default function BrowseProducts() {
             <div className="browse-page">
                 {/* Search Bar */}
                 <div className="search-container">
-                    <div className="search-bar">
-                        <img src="/customer/assets/icons/search.svg" alt="Search" className="search-icon" style={{ width: '20px', height: '20px' }} />
-                        <input
-                            type="text"
-                            placeholder="Search keywords.."
-                            className="search-bar-input"
-                            value={searchTerm}
-                            onChange={(e) => setSearchTerm(e.target.value)}
-                        />
-                    </div>
+                    <SearchBar
+                        value={searchQuery}
+                        onChange={setSearchQuery}
+                    />
                 </div>
 
                 {/* Categories */}

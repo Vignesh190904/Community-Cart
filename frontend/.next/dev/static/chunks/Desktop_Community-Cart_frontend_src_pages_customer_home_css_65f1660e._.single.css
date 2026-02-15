@@ -1,8 +1,8 @@
 /* [project]/Desktop/Community-Cart/frontend/src/pages/customer/home.css [client] (css) */
 .home-container {
-  background-color: #fff;
+  background-color: #f0f0f0;
   flex-direction: column;
-  gap: 12px;
+  gap: 6px;
   display: flex;
   margin-bottom: 56px !important;
 }
@@ -10,7 +10,6 @@
 .home-search-section {
   z-index: 10;
   background-color: #fff;
-  padding: 16px 16px 0;
   position: sticky;
   top: 0;
 }
@@ -81,7 +80,11 @@
 }
 
 .home-category-section {
-  padding: 0 16px;
+  scrollbar-width: none;
+  gap: 16px;
+  padding: 10px 16px;
+  display: flex;
+  overflow-x: auto;
 }
 
 .home-category-row {

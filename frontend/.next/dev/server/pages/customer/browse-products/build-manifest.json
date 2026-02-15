@@ -6,7 +6,7 @@
   "rootMainFiles": [],
   "pages": {
     "/customer/browse-products": [
-      "static/chunks/[root-of-the-server]__b2b1ce4d._.js",
+      "static/chunks/[root-of-the-server]__419a517e._.js",
       "static/chunks/48ebd_next_dist_compiled_f7b2f49b._.js",
       "static/chunks/48ebd_next_dist_shared_lib_2dd775c2._.js",
       "static/chunks/48ebd_next_dist_client_990bb439._.js",
@@ -17,7 +17,7 @@
       "static/chunks/48ebd_react-dom_43235666._.js",
       "static/chunks/48ebd_c0e1799f._.js",
       "static/chunks/Desktop_Community-Cart_frontend_src_pages_customer_browse-products_tsx_2da965e7._.js",
-      "static/chunks/88e7d_Community-Cart_frontend_src_pages_customer_browse-products_tsx_462b6a76._.js"
+      "static/chunks/88e7d_Community-Cart_frontend_src_pages_customer_browse-products_tsx_55329e95._.js"
     ]
   },
   "ampFirstPages": []

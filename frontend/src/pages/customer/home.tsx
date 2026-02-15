@@ -8,6 +8,7 @@ import { useCustomerStore } from '../../context/CustomerStore';
 import { customerFetch } from '../../utils/customerFetch';
 import AppLoading from './apploading';
 import { SkeletonProductCard } from '../../components/customer/SkeletonProductCard';
+import SearchBar from './search_bar';
 
 // --- Product Interface ---
 
@@ -264,23 +265,10 @@ export default function HomePage() {
             <div className="home-container">
                 {/* Section 1: Search Bar */}
                 <section className="home-search-section">
-                    <div className="home-search-container">
-                        <img
-                            src="/customer/assets/icons/search.svg"
-                            alt="Search"
-                            className="home-search-icon"
-                            onClick={handleSearch}
-                            style={{ cursor: 'pointer' }}
-                        />
-                        <input
-                            type="text"
-                            placeholder="Search keywords.."
-                            className="home-search-input"
-                            value={searchTerm}
-                            onChange={(e) => setSearchTerm(e.target.value)}
-                            onKeyDown={handleKeyDown}
-                        />
-                    </div>
+                    <SearchBar
+                        value={searchTerm}
+                        onChange={setSearchTerm}
+                    />
                 </section>
 
                 {/* Section 2: Hero Banner */}

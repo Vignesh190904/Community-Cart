@@ -1,0 +1,43 @@
+/* [project]/Desktop/Community-Cart/frontend/src/pages/customer/search_bar.module.css [client] (css) */
+.search_bar-module__zoAMna__searchBar {
+  background: #ddd;
+  border: 1px solid #000;
+  border-radius: 25px;
+  align-items: center;
+  gap: 10px;
+  width: calc(100% - 32px);
+  height: 50px;
+  margin: 10px 16px;
+  padding: 10px 16px;
+  transition: border-color .3s;
+  display: flex;
+}
+
+body.theme-dark .search_bar-module__zoAMna__searchBar {
+  background: #3c3c3c;
+}
+
+.search_bar-module__zoAMna__searchBar:hover, .search_bar-module__zoAMna__searchBar:focus-within {
+  border-color: var(--primary);
+}
+
+.search_bar-module__zoAMna__searchIcon {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+}
+
+.search_bar-module__zoAMna__searchInput {
+  color: var(--text-primary);
+  background: none;
+  border: none;
+  outline: none;
+  flex: 1;
+  font-size: 16px;
+}
+
+.search_bar-module__zoAMna__searchInput::placeholder {
+  color: var(--text-disabled);
+}
+
+/*# sourceMappingURL=Desktop_Community-Cart_frontend_src_pages_customer_search_bar_module_466c84bc.css.map*/

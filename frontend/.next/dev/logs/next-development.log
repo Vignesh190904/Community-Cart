@@ -3,3 +3,620 @@
 [00:00:49.039] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
 [00:00:49.039] Browser LOG     API BASE: http://localhost:5000
 [00:00:49.039] Browser LOG     API BASE: http://localhost:5000
+[00:26:57.730] Server  LOG      ✓ Compiled in 4.2s
+[00:26:59.894] Browser ERROR   ./Desktop/Community-Cart/frontend/src/pages/customer/search_bar.tsx
+Failed to compile
+    Global CSS cannot be imported from files other than your Custom <App>. Due to the Global nature of stylesheets, and to avoid conflicts, Please move all first-party global CSS imports to pages/_app.js. Or convert the import to Component-Level CSS (CSS Modules).
+    Read more: https://nextjs.org/docs/messages/css-global
+Location: Desktop/Community-Cart/frontend/src/pages/customer/search_bar.tsx
+Import path: ./search_bar.css
+
+Import traces:
+  Browser:
+    ./Desktop/Community-Cart/frontend/src/pages/customer/search_bar.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx
+
+  SSR:
+    ./Desktop/Community-Cart/frontend/src/pages/customer/search_bar.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx
+[00:31:40.989] Browser ERROR   ./Desktop/Community-Cart/frontend/src/pages/customer/search_bar.tsx
+Failed to compile
+    Global CSS cannot be imported from files other than your Custom <App>. Due to the Global nature of stylesheets, and to avoid conflicts, Please move all first-party global CSS imports to pages/_app.js. Or convert the import to Component-Level CSS (CSS Modules).
+    Read more: https://nextjs.org/docs/messages/css-global
+Location: Desktop/Community-Cart/frontend/src/pages/customer/search_bar.tsx
+Import path: ./search_bar.css
+
+Import traces:
+  Browser:
+    ./Desktop/Community-Cart/frontend/src/pages/customer/search_bar.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx
+
+  SSR:
+    ./Desktop/Community-Cart/frontend/src/pages/customer/search_bar.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx
+[00:31:40.989] Browser ERROR   ./Desktop/Community-Cart/frontend/src/pages/customer/search_bar.tsx
+Failed to compile
+    Global CSS cannot be imported from files other than your Custom <App>. Due to the Global nature of stylesheets, and to avoid conflicts, Please move all first-party global CSS imports to pages/_app.js. Or convert the import to Component-Level CSS (CSS Modules).
+    Read more: https://nextjs.org/docs/messages/css-global
+Location: Desktop/Community-Cart/frontend/src/pages/customer/search_bar.tsx
+Import path: ./search_bar.css
+
+Import traces:
+  Browser:
+    ./Desktop/Community-Cart/frontend/src/pages/customer/search_bar.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx
+
+  SSR:
+    ./Desktop/Community-Cart/frontend/src/pages/customer/search_bar.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx
+[00:31:43.733] Browser ERROR   ./Desktop/Community-Cart/frontend/src/pages/customer/search_bar.tsx
+Failed to compile
+    Global CSS cannot be imported from files other than your Custom <App>. Due to the Global nature of stylesheets, and to avoid conflicts, Please move all first-party global CSS imports to pages/_app.js. Or convert the import to Component-Level CSS (CSS Modules).
+    Read more: https://nextjs.org/docs/messages/css-global
+Location: Desktop/Community-Cart/frontend/src/pages/customer/search_bar.tsx
+Import path: ./search_bar.css
+
+Import traces:
+  Browser:
+    ./Desktop/Community-Cart/frontend/src/pages/customer/search_bar.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx
+
+  SSR:
+    ./Desktop/Community-Cart/frontend/src/pages/customer/search_bar.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx
+[00:31:44.377] Browser ERROR   uncaughtError: Error: ./Desktop/Community-Cart/frontend/src/pages/customer/search_bar.tsx
+Failed to compile
+    Global CSS cannot be imported from files other than your Custom <App>. Due to the Global nature of stylesheets, and to avoid conflicts, Please move all first-party global CSS imports to pages/_app.js. Or convert the import to Component-Level CSS (CSS Modules).
+    Read more: https://nextjs.org/docs/messages/css-global
+Location: Desktop/Community-Cart/frontend/src/pages/customer/search_bar.tsx
+Import path: ./search_bar.css
+
+Import traces:
+  Browser:
+    ./Desktop/Community-Cart/frontend/src/pages/customer/search_bar.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx
+
+  SSR:
+    ./Desktop/Community-Cart/frontend/src/pages/customer/search_bar.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx
+
+
+[00:31:44.505] Browser ERROR   ./Desktop/Community-Cart/frontend/src/pages/customer/search_bar.tsx
+Failed to compile
+    Global CSS cannot be imported from files other than your Custom <App>. Due to the Global nature of stylesheets, and to avoid conflicts, Please move all first-party global CSS imports to pages/_app.js. Or convert the import to Component-Level CSS (CSS Modules).
+    Read more: https://nextjs.org/docs/messages/css-global
+Location: Desktop/Community-Cart/frontend/src/pages/customer/search_bar.tsx
+Import path: ./search_bar.css
+
+Import traces:
+  Browser:
+    ./Desktop/Community-Cart/frontend/src/pages/customer/search_bar.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx
+
+  SSR:
+    ./Desktop/Community-Cart/frontend/src/pages/customer/search_bar.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx
+[00:31:44.741] Browser ERROR   ./Desktop/Community-Cart/frontend/src/pages/customer/search_bar.tsx
+Failed to compile
+    Global CSS cannot be imported from files other than your Custom <App>. Due to the Global nature of stylesheets, and to avoid conflicts, Please move all first-party global CSS imports to pages/_app.js. Or convert the import to Component-Level CSS (CSS Modules).
+    Read more: https://nextjs.org/docs/messages/css-global
+Location: Desktop/Community-Cart/frontend/src/pages/customer/search_bar.tsx
+Import path: ./search_bar.css
+
+Import traces:
+  Browser:
+    ./Desktop/Community-Cart/frontend/src/pages/customer/search_bar.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx
+
+  SSR:
+    ./Desktop/Community-Cart/frontend/src/pages/customer/search_bar.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx
+[00:32:06.348] Server  LOG      ✓ Compiled in 89ms
+[00:32:06.896] Browser ERROR   ./Desktop/Community-Cart/frontend/src/pages/customer/search_bar.tsx
+Failed to compile
+    Global CSS cannot be imported from files other than your Custom <App>. Due to the Global nature of stylesheets, and to avoid conflicts, Please move all first-party global CSS imports to pages/_app.js. Or convert the import to Component-Level CSS (CSS Modules).
+    Read more: https://nextjs.org/docs/messages/css-global
+Location: Desktop/Community-Cart/frontend/src/pages/customer/search_bar.tsx
+Import path: ./search_bar.css
+
+Import traces:
+  Browser:
+    ./Desktop/Community-Cart/frontend/src/pages/customer/search_bar.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx
+
+  SSR:
+    ./Desktop/Community-Cart/frontend/src/pages/customer/search_bar.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx
+[00:32:29.894] Browser ERROR   ./Desktop/Community-Cart/frontend/src/pages/customer/search_bar.tsx
+Failed to compile
+    Global CSS cannot be imported from files other than your Custom <App>. Due to the Global nature of stylesheets, and to avoid conflicts, Please move all first-party global CSS imports to pages/_app.js. Or convert the import to Component-Level CSS (CSS Modules).
+    Read more: https://nextjs.org/docs/messages/css-global
+Location: Desktop/Community-Cart/frontend/src/pages/customer/search_bar.tsx
+Import path: ./search_bar.css
+
+Import traces:
+  Browser:
+    ./Desktop/Community-Cart/frontend/src/pages/customer/search_bar.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx
+
+  SSR:
+    ./Desktop/Community-Cart/frontend/src/pages/customer/search_bar.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx
+[00:32:31.282] Server  LOG      ✓ Compiled in 91ms
+[00:32:31.903] Browser ERROR   ./Desktop/Community-Cart/frontend/src/pages/customer/search_bar.tsx
+Failed to compile
+    Global CSS cannot be imported from files other than your Custom <App>. Due to the Global nature of stylesheets, and to avoid conflicts, Please move all first-party global CSS imports to pages/_app.js. Or convert the import to Component-Level CSS (CSS Modules).
+    Read more: https://nextjs.org/docs/messages/css-global
+Location: Desktop/Community-Cart/frontend/src/pages/customer/search_bar.tsx
+Import path: ./search_bar.css
+
+Import traces:
+  Browser:
+    ./Desktop/Community-Cart/frontend/src/pages/customer/search_bar.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx
+
+  SSR:
+    ./Desktop/Community-Cart/frontend/src/pages/customer/search_bar.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx
+[00:33:57.889] Browser ERROR   ./Desktop/Community-Cart/frontend/src/pages/customer/search_bar.tsx
+Failed to compile
+    Global CSS cannot be imported from files other than your Custom <App>. Due to the Global nature of stylesheets, and to avoid conflicts, Please move all first-party global CSS imports to pages/_app.js. Or convert the import to Component-Level CSS (CSS Modules).
+    Read more: https://nextjs.org/docs/messages/css-global
+Location: Desktop/Community-Cart/frontend/src/pages/customer/search_bar.tsx
+Import path: ./search_bar.css
+
+Import traces:
+  Browser:
+    ./Desktop/Community-Cart/frontend/src/pages/customer/search_bar.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx
+
+  SSR:
+    ./Desktop/Community-Cart/frontend/src/pages/customer/search_bar.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx
+[00:34:01.871] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:34:02.174] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:34:11.127] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/pages/customer/search_bar.tsx:2:1
+Module not found: Can't resolve './search_bar.module.css'
+  1 | import React from 'react';
+> 2 | import styles from './search_bar.module.css';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | interface SearchBarProps {
+  5 |   value: string;
+
+
+
+Import traces:
+  Browser:
+    ./Desktop/Community-Cart/frontend/src/pages/customer/search_bar.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx
+
+  SSR:
+    ./Desktop/Community-Cart/frontend/src/pages/customer/search_bar.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:34:11.130] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/pages/customer/search_bar.tsx:2:1
+Module not found: Can't resolve './search_bar.module.css'
+  1 | import React from 'react';
+> 2 | import styles from './search_bar.module.css';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | interface SearchBarProps {
+  5 |   value: string;
+
+
+
+Import traces:
+  Browser:
+    ./Desktop/Community-Cart/frontend/src/pages/customer/search_bar.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx
+
+  SSR:
+    ./Desktop/Community-Cart/frontend/src/pages/customer/search_bar.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:34:11.131] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/pages/customer/search_bar.tsx:2:1
+Module not found: Can't resolve './search_bar.module.css'
+  1 | import React from 'react';
+> 2 | import styles from './search_bar.module.css';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | interface SearchBarProps {
+  5 |   value: string;
+
+
+
+Import traces:
+  Browser:
+    ./Desktop/Community-Cart/frontend/src/pages/customer/search_bar.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx
+
+  SSR:
+    ./Desktop/Community-Cart/frontend/src/pages/customer/search_bar.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:34:11.132] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/pages/customer/search_bar.tsx:2:1
+Module not found: Can't resolve './search_bar.module.css'
+  1 | import React from 'react';
+> 2 | import styles from './search_bar.module.css';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | interface SearchBarProps {
+  5 |   value: string;
+
+
+
+Import traces:
+  Browser:
+    ./Desktop/Community-Cart/frontend/src/pages/customer/search_bar.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx
+
+  SSR:
+    ./Desktop/Community-Cart/frontend/src/pages/customer/search_bar.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:34:11.135] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/pages/customer/search_bar.tsx:2:1
+Module not found: Can't resolve './search_bar.module.css'
+  1 | import React from 'react';
+> 2 | import styles from './search_bar.module.css';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | interface SearchBarProps {
+  5 |   value: string;
+
+
+
+Import traces:
+  Browser:
+    ./Desktop/Community-Cart/frontend/src/pages/customer/search_bar.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx
+
+  SSR:
+    ./Desktop/Community-Cart/frontend/src/pages/customer/search_bar.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:34:11.137] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/pages/customer/search_bar.tsx:2:1
+Module not found: Can't resolve './search_bar.module.css'
+  1 | import React from 'react';
+> 2 | import styles from './search_bar.module.css';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | interface SearchBarProps {
+  5 |   value: string;
+
+
+
+Import traces:
+  Browser:
+    ./Desktop/Community-Cart/frontend/src/pages/customer/search_bar.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx
+
+  SSR:
+    ./Desktop/Community-Cart/frontend/src/pages/customer/search_bar.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:34:11.139] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/pages/customer/search_bar.tsx:2:1
+Module not found: Can't resolve './search_bar.module.css'
+  1 | import React from 'react';
+> 2 | import styles from './search_bar.module.css';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | interface SearchBarProps {
+  5 |   value: string;
+
+
+
+Import traces:
+  Browser:
+    ./Desktop/Community-Cart/frontend/src/pages/customer/search_bar.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx
+
+  SSR:
+    ./Desktop/Community-Cart/frontend/src/pages/customer/search_bar.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:34:11.140] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/pages/customer/search_bar.tsx:2:1
+Module not found: Can't resolve './search_bar.module.css'
+  1 | import React from 'react';
+> 2 | import styles from './search_bar.module.css';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | interface SearchBarProps {
+  5 |   value: string;
+
+
+
+Import traces:
+  Browser:
+    ./Desktop/Community-Cart/frontend/src/pages/customer/search_bar.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx
+
+  SSR:
+    ./Desktop/Community-Cart/frontend/src/pages/customer/search_bar.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:34:11.141] Server  LOG      ✓ Compiled in 68ms
+[00:34:11.889] Browser ERROR   ./Desktop/Community-Cart/frontend/src/pages/customer/search_bar.tsx:2:1
+Module not found: Can't resolve './search_bar.module.css'
+  1 | import React from 'react';
+> 2 | import styles from './search_bar.module.css';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | interface SearchBarProps {
+  5 |   value: string;
+
+Import traces:
+  Browser:
+    ./Desktop/Community-Cart/frontend/src/pages/customer/search_bar.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx
+
+  SSR:
+    ./Desktop/Community-Cart/frontend/src/pages/customer/search_bar.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+[00:35:47.152] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/pages/customer/search_bar.tsx:2:1
+Module not found: Can't resolve './search_bar.module.css'
+  1 | import React from 'react';
+> 2 | import styles from './search_bar.module.css';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | interface SearchBarProps {
+  5 |   value: string;
+
+
+
+Import traces:
+  Browser:
+    ./Desktop/Community-Cart/frontend/src/pages/customer/search_bar.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx
+
+  SSR:
+    ./Desktop/Community-Cart/frontend/src/pages/customer/search_bar.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:35:47.156] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/pages/customer/search_bar.tsx:2:1
+Module not found: Can't resolve './search_bar.module.css'
+  1 | import React from 'react';
+> 2 | import styles from './search_bar.module.css';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | interface SearchBarProps {
+  5 |   value: string;
+
+
+
+Import traces:
+  Browser:
+    ./Desktop/Community-Cart/frontend/src/pages/customer/search_bar.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx
+
+  SSR:
+    ./Desktop/Community-Cart/frontend/src/pages/customer/search_bar.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:35:47.157] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/pages/customer/search_bar.tsx:2:1
+Module not found: Can't resolve './search_bar.module.css'
+  1 | import React from 'react';
+> 2 | import styles from './search_bar.module.css';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | interface SearchBarProps {
+  5 |   value: string;
+
+
+
+Import traces:
+  Browser:
+    ./Desktop/Community-Cart/frontend/src/pages/customer/search_bar.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx
+
+  SSR:
+    ./Desktop/Community-Cart/frontend/src/pages/customer/search_bar.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:35:47.158] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/pages/customer/search_bar.tsx:2:1
+Module not found: Can't resolve './search_bar.module.css'
+  1 | import React from 'react';
+> 2 | import styles from './search_bar.module.css';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | interface SearchBarProps {
+  5 |   value: string;
+
+
+
+Import traces:
+  Browser:
+    ./Desktop/Community-Cart/frontend/src/pages/customer/search_bar.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx
+
+  SSR:
+    ./Desktop/Community-Cart/frontend/src/pages/customer/search_bar.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:35:47.162] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/pages/customer/search_bar.tsx:2:1
+Module not found: Can't resolve './search_bar.module.css'
+  1 | import React from 'react';
+> 2 | import styles from './search_bar.module.css';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | interface SearchBarProps {
+  5 |   value: string;
+
+
+
+Import traces:
+  Browser:
+    ./Desktop/Community-Cart/frontend/src/pages/customer/search_bar.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx
+
+  SSR:
+    ./Desktop/Community-Cart/frontend/src/pages/customer/search_bar.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:35:47.497] Browser ERROR   uncaughtError: Error: ./Desktop/Community-Cart/frontend/src/pages/customer/search_bar.tsx:2:1
+Module not found: Can't resolve './search_bar.module.css'
+  1 | import React from 'react';
+> 2 | import styles from './search_bar.module.css';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | interface SearchBarProps {
+  5 |   value: string;
+
+
+
+Import traces:
+  Browser:
+    ./Desktop/Community-Cart/frontend/src/pages/customer/search_bar.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx
+
+  SSR:
+    ./Desktop/Community-Cart/frontend/src/pages/customer/search_bar.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:35:47.688] Browser ERROR   ./Desktop/Community-Cart/frontend/src/pages/customer/search_bar.tsx:2:1
+Module not found: Can't resolve './search_bar.module.css'
+  1 | import React from 'react';
+> 2 | import styles from './search_bar.module.css';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | interface SearchBarProps {
+  5 |   value: string;
+
+Import traces:
+  Browser:
+    ./Desktop/Community-Cart/frontend/src/pages/customer/search_bar.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx
+
+  SSR:
+    ./Desktop/Community-Cart/frontend/src/pages/customer/search_bar.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+[00:35:47.688] Browser ERROR   ./Desktop/Community-Cart/frontend/src/pages/customer/search_bar.tsx:2:1
+Module not found: Can't resolve './search_bar.module.css'
+  1 | import React from 'react';
+> 2 | import styles from './search_bar.module.css';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | interface SearchBarProps {
+  5 |   value: string;
+
+Import traces:
+  Browser:
+    ./Desktop/Community-Cart/frontend/src/pages/customer/search_bar.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx
+
+  SSR:
+    ./Desktop/Community-Cart/frontend/src/pages/customer/search_bar.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+[00:36:04.371] Server  LOG      ✓ Compiled in 70ms
+[00:36:04.894] Browser ERROR   ./Desktop/Community-Cart/frontend/src/pages/customer/search_bar.tsx:2:1
+Module not found: Can't resolve './search_bar.module.css'
+  1 | import React from 'react';
+> 2 | import styles from './search_bar.module.css';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | interface SearchBarProps {
+  5 |   value: string;
+
+Import traces:
+  Browser:
+    ./Desktop/Community-Cart/frontend/src/pages/customer/search_bar.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx
+
+  SSR:
+    ./Desktop/Community-Cart/frontend/src/pages/customer/search_bar.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+[00:36:26.495] Server  LOG      ✓ Compiled in 11ms
+[00:36:26.884] Browser ERROR   ./Desktop/Community-Cart/frontend/src/pages/customer/search_bar.tsx:2:1
+Module not found: Can't resolve './search_bar.module.css'
+  1 | import React from 'react';
+> 2 | import styles from './search_bar.module.css';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | interface SearchBarProps {
+  5 |   value: string;
+
+Import traces:
+  Browser:
+    ./Desktop/Community-Cart/frontend/src/pages/customer/search_bar.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx
+
+  SSR:
+    ./Desktop/Community-Cart/frontend/src/pages/customer/search_bar.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+[00:36:46.429] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:37:37.392] Server  LOG      ✓ Compiled in 132ms
+[00:39:03.371] Server  LOG      ✓ Compiled in 62ms
+[00:39:07.322] Server  LOG      ✓ Compiled in 37ms
+[00:39:23.713] Server  LOG      ✓ Compiled in 52ms
+[00:39:31.799] Server  LOG      ✓ Compiled in 37ms
+[00:40:02.810] Server  LOG      ✓ Compiled in 41ms
+[00:40:11.561] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:40:33.218] Server  LOG      ✓ Compiled in 27ms
+[00:43:54.114] Server  LOG      ✓ Compiled in 1330ms
+[00:43:54.750] Server  LOG      ✓ Compiled in 296ms
+[00:45:47.695] Server  LOG      ✓ Compiled in 294ms
+[00:47:11.979] Server  LOG      ✓ Compiled in 77ms
+[00:47:21.408] Server  LOG      ✓ Compiled in 56ms
+[00:47:28.690] Server  LOG      ✓ Compiled in 708ms
+[00:47:30.758] Server  LOG      ✓ Compiled in 52ms
+[00:47:59.554] Server  LOG      ✓ Compiled in 59ms
+[00:48:00.874] Server  LOG      ✓ Compiled in 54ms
+[00:48:02.424] Server  LOG      ✓ Compiled in 62ms
+[00:48:36.751] Server  LOG      ✓ Compiled in 80ms
+[00:50:13.341] Server  LOG      ✓ Compiled in 128ms
+[00:50:34.740] Server  LOG      ✓ Compiled in 51ms
+[00:50:37.740] Server  LOG      ✓ Compiled in 62ms
+[00:50:53.720] Server  LOG      ✓ Compiled in 41ms
+[00:51:21.829] Server  LOG      ✓ Compiled in 50ms

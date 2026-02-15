@@ -1,7 +1,7 @@
 /* [project]/Desktop/Community-Cart/frontend/src/pages/customer/browse-products.css [client] (css) */
 .browse-page {
   flex-direction: column;
-  gap: 20px;
+  gap: 6px;
   margin: 56px 0;
   padding-bottom: 20px;
   display: flex;
@@ -41,8 +41,8 @@
 
 .categories-list {
   scrollbar-width: none;
-  gap: 20px;
-  padding: 10px 4px;
+  gap: 16px;
+  padding: 10px 16px;
   display: flex;
   overflow-x: auto;
 }

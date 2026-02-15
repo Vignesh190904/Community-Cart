@@ -1,14 +1,13 @@
 .home-container {
     display: flex;
     flex-direction: column;
-    gap: 12px;
-    background-color: #fff;
+    gap: 6px;
+    background-color: #F0F0F0;
     margin-bottom: 56px !important;
 }
 
 /* Section 1: Search Bar */
 .home-search-section {
-    padding: 16px 16px 0 16px;
     position: sticky;
     top: 0;
     z-index: 10;
@@ -83,7 +82,11 @@
 
 /* Section 3: Priority Categories */
 .home-category-section {
-    padding: 0 16px;
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    padding: 10px 16px;
+    scrollbar-width: none;
 }
 
 .home-category-row {

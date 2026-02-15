@@ -1,0 +1,43 @@
+/* [project]/Desktop/Community-Cart/frontend/src/pages/customer/search_bar.css [client] (css) */
+.customer-search-bar {
+  background: #ddd;
+  border: 1px solid #000;
+  border-radius: 25px;
+  align-items: center;
+  gap: 10px;
+  width: calc(100% - 32px);
+  height: 50px;
+  margin: 10px 16px;
+  padding: 10px 16px;
+  transition: border-color .3s;
+  display: flex;
+}
+
+body.theme-dark .customer-search-bar {
+  background: #3c3c3c;
+}
+
+.customer-search-bar:hover, .customer-search-bar:focus-within {
+  border-color: var(--primary);
+}
+
+.customer-search-icon {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+}
+
+.customer-search-input {
+  color: var(--text-primary);
+  background: none;
+  border: none;
+  outline: none;
+  flex: 1;
+  font-size: 16px;
+}
+
+.customer-search-input::placeholder {
+  color: var(--text-disabled);
+}
+
+/*# sourceMappingURL=Desktop_Community-Cart_frontend_src_pages_customer_search_bar_1a68f647.css.map*/
