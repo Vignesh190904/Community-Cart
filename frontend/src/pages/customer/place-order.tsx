@@ -19,12 +19,12 @@ export default function PlaceOrderPage() {
     e.preventDefault();
 
     if (!customerId) {
-      pushToast({ type: 'error', title: 'Error', message: 'Customer ID not found' });
+      pushToast({ type: 'error', message: 'Customer ID not found' });
       return;
     }
 
     if (cart.length === 0) {
-      pushToast({ type: 'warning', title: 'Empty Cart', message: 'Your cart is empty' });
+      pushToast({ type: 'warning', message: 'Cart is empty' });
       return;
     }
 
@@ -54,10 +54,10 @@ export default function PlaceOrderPage() {
 
       const order = await res.json();
       clearCart();
-      pushToast({ type: 'success', title: 'Success', message: 'Order placed successfully!' });
+      pushToast({ type: 'success', message: 'Order created successfully!' });
       router.push('/customer/track-order');
     } catch (error: any) {
-      pushToast({ type: 'error', title: 'Error', message: error.message || 'Failed to place order' });
+      pushToast({ type: 'error', message: error.message || 'Failed to create order' });
     } finally {
       setLoading(false);
     }

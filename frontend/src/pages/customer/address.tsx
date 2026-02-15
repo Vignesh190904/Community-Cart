@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import CustomerLayout from '../../components/customer/CustomerLayout';
 import { useToast } from '../../components/ui/ToastProvider';
 import TopNavbar from './TopNavbar';
+import { API_BASE } from '../../config/env';
 
 /* ===== FINAL LOCKED ADDRESS MODEL ===== */
 interface Address {
@@ -30,7 +31,7 @@ export default function AddressPage() {
         try {
             const token = localStorage.getItem('auth_token');
 
-            const res = await fetch('http://localhost:5000/api/customers/addresses', {
+            const res = await fetch(`${API_BASE}/api/customers/addresses`, {
                 headers: {
                     'Content-Type': 'application/json',
                     Authorization: `Bearer ${token}`,
@@ -58,7 +59,7 @@ export default function AddressPage() {
             const token = localStorage.getItem('auth_token');
 
             const res = await fetch(
-                `http://localhost:5000/api/customers/addresses/${addressId}`,
+                `${API_BASE}/api/customers/addresses/${addressId}`,
                 {
                     method: 'DELETE',
                     headers: {

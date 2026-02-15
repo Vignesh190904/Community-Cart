@@ -33,9 +33,10 @@ interface CustomerStoreState {
 
 const CustomerStoreContext = createContext<CustomerStoreState | undefined>(undefined);
 
-const API_BASE = 'http://localhost:5000/api';
 const STORAGE_CART_KEY = 'cc_customer_cart_v2'; // New key to avoid conflicts
 const STORAGE_CUSTOMER_KEY = 'cc_customer_id';
+
+import { API_BASE } from '../config/env';
 
 import { useAuth } from './AuthContext';
 
@@ -43,7 +44,7 @@ import { useAuth } from './AuthContext';
 import { customerFetch } from '../utils/customerFetch';
 
 export function CustomerStoreProvider({ children }: { children: React.ReactNode }) {
-  const { token, is_authenticated } = useAuth();
+  const { token, is_authenticated, user } = useAuth();
   const [cart, setCart] = useState<CartItem[]>([]);
   const [customerId, setCustomerId] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -56,13 +57,19 @@ export function CustomerStoreProvider({ children }: { children: React.ReactNode 
 
   // --- FETCH CART (Server or Local) ---
   const fetchCart = async () => {
+    // 🛡️ STRICT ROLE GUARD
+    // Prevent Vendors/Admins from triggering customer cart logic
+    if (user && user.role !== 'customer') {
+      return;
+    }
+
     const activeToken = getToken();
 
     if (activeToken) {
       // LOGGED IN: Server Source of Truth
       try {
         setIsLoading(true);
-        const res = await customerFetch(`${API_BASE}/cart`, {
+        const res = await customerFetch(`${API_BASE}/api/cart`, {
           headers: { 'Authorization': `Bearer ${activeToken}` }
         });
 
@@ -96,12 +103,15 @@ export function CustomerStoreProvider({ children }: { children: React.ReactNode 
 
   // Refetch when auth state changes
   useEffect(() => {
-    fetchCart();
+    // Only run if user is potentially a customer (or guest)
+    if (!user || user.role === 'customer') {
+      fetchCart();
+    }
 
     // Also load customer ID if needed for legacy logic
     const savedCid = typeof window !== 'undefined' ? localStorage.getItem(STORAGE_CUSTOMER_KEY) : null;
     if (savedCid) setCustomerId(savedCid);
-  }, [token, is_authenticated]); // Re-run on login/logout
+  }, [token, is_authenticated, user]); // Re-run on login/logout
 
   // Save to LocalStorage ONLY if Guest (backup)
   useEffect(() => {
@@ -128,7 +138,7 @@ export function CustomerStoreProvider({ children }: { children: React.ReactNode 
     if (token) {
       // SERVER ADD
       try {
-        const res = await customerFetch(`${API_BASE}/cart/add`, {
+        const res = await customerFetch(`${API_BASE}/api/cart/add`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -177,7 +187,7 @@ export function CustomerStoreProvider({ children }: { children: React.ReactNode 
     if (token) {
       // SERVER UPDATE
       try {
-        const res = await customerFetch(`${API_BASE}/cart/${productId}`, {
+        const res = await customerFetch(`${API_BASE}/api/cart/${productId}`, {
           method: 'PATCH',
           headers: {
             'Content-Type': 'application/json',
@@ -214,7 +224,7 @@ export function CustomerStoreProvider({ children }: { children: React.ReactNode 
     if (token) {
       // SERVER REMOVE
       try {
-        await customerFetch(`${API_BASE}/cart/${productId}`, {
+        await customerFetch(`${API_BASE}/api/cart/${productId}`, {
           method: 'DELETE',
           headers: { 'Authorization': `Bearer ${token}` }
         });
@@ -232,7 +242,7 @@ export function CustomerStoreProvider({ children }: { children: React.ReactNode 
   const clearCart = async () => {
     const token = getToken();
     if (token) {
-      await customerFetch(`${API_BASE}/cart`, {
+      await customerFetch(`${API_BASE}/api/cart`, {
         method: 'DELETE',
         headers: { 'Authorization': `Bearer ${token}` }
       });

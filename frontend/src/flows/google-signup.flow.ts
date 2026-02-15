@@ -19,7 +19,7 @@ export async function startGoogleSignup(
     }
 
     // Call backend
-    const result = await apiPost('/api/auth/customer/google/signup/start', {
+    const result = await apiPost('/auth/customer/google/signup/start', {
         googleToken,
     });
 
@@ -69,7 +69,7 @@ export async function verifyGoogleEmailOtp(
         return;
     }
 
-    const result = await apiPost('/api/auth/customer/google/signup/verify-email', {
+    const result = await apiPost('/auth/customer/google/signup/verify-email', {
         email,
         otp,
     });
@@ -115,7 +115,7 @@ export async function resendGoogleEmailOtp(
         return;
     }
 
-    const result = await apiPost('/api/auth/customer/signup/resend-otp', {
+    const result = await apiPost('/auth/customer/signup/resend-otp', {
         email,
     });
 

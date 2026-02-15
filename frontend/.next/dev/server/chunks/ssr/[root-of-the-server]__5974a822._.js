@@ -56,7 +56,9 @@ __turbopack_context__.s([
     "setAuthToken",
     ()=>setAuthToken
 ]);
-const API_BASE = 'http://localhost:5000/api';
+const API_BASE = ("TURBOPACK compile-time value", "http://localhost:5000");
+if ("TURBOPACK compile-time falsy", 0) //TURBOPACK unreachable
+;
 let auth_token = null;
 const setAuthToken = (token)=>{
     auth_token = token;

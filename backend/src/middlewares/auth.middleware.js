@@ -3,28 +3,20 @@ import Vendor from '../models/Vendor.model.js';
 import { verifyToken } from '../utils/jwt.utils.js';
 
 // JWT-based authentication middleware
+// JWT-based authentication middleware
 export const protect = async (req, res, next) => {
     try {
-        let auth_token;
+        const authHeader = req.headers.authorization;
 
-        // Extract token from Authorization header only
-        if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
-            auth_token = req.headers.authorization.split(' ')[1];
-        }
-
-        // DEV-ONLY: Log auth header presence (not token value)
-        if (process.env.NODE_ENV !== 'production') {
-            // console.log('[AUTH] Authorization header present:', !!req.headers.authorization);
-        }
-
-        if (!auth_token) {
-            // console.log('[AUTH] Unauthorized: No token found in header');
+        if (!authHeader || !authHeader.startsWith('Bearer ')) {
             return res.status(401).json({
                 success: false,
                 message: 'Not authenticated. No token provided.',
                 error_code: 'NOT_AUTHENTICATED'
             });
         }
+
+        const auth_token = authHeader.split(' ')[1];
 
         // Verify token
         const decoded = verifyToken(auth_token);
@@ -34,10 +26,9 @@ export const protect = async (req, res, next) => {
             .select('-auth.manual.password_hash');
 
         if (!customer) {
-            // console.log('[AUTH] Unauthorized: User not found in database for ID:', decoded.id);
             return res.status(401).json({
                 success: false,
-                message: 'Not authorized, token failed',
+                message: 'Not authorized, user not found',
                 error_code: 'AUTH_ERROR'
             });
         }

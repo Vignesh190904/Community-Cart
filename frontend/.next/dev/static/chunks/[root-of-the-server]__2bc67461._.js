@@ -809,7 +809,6 @@ function AdminCustomers() {
         } catch (error) {
             pushToast({
                 type: 'error',
-                title: 'Error',
                 message: error.message || 'Failed to load customers'
             });
         } finally{
@@ -916,13 +915,11 @@ function AdminCustomers() {
             setCustomers((prev)=>prev.map((c)=>c._id === customerId ? updated : c));
             pushToast({
                 type: 'success',
-                title: 'Customer Updated',
                 message: `Customer ${updated.isActive ? 'enabled' : 'disabled'} successfully`
             });
         } catch (error) {
             pushToast({
                 type: 'error',
-                title: 'Update Failed',
                 message: error.message || 'Could not update customer'
             });
         }
@@ -989,7 +986,6 @@ function AdminCustomers() {
         } catch (error) {
             pushToast({
                 type: 'error',
-                title: 'Load Failed',
                 message: error.message || 'Failed to load customer'
             });
         }
@@ -1027,7 +1023,6 @@ function AdminCustomers() {
         if (!formData.name || !formData.email || !formData.phone) {
             pushToast({
                 type: 'warning',
-                title: 'Missing fields',
                 message: 'Name, Email and Phone are required.'
             });
             return;
@@ -1063,7 +1058,6 @@ function AdminCustomers() {
                 }
                 pushToast({
                     type: 'success',
-                    title: 'Customer Created',
                     message: 'New customer added successfully'
                 });
             } else {
@@ -1080,7 +1074,6 @@ function AdminCustomers() {
                 }
                 pushToast({
                     type: 'success',
-                    title: 'Customer Updated',
                     message: 'Customer updated successfully'
                 });
             }
@@ -1089,7 +1082,6 @@ function AdminCustomers() {
         } catch (error) {
             pushToast({
                 type: 'error',
-                title: mode === 'create' ? 'Create Failed' : 'Update Failed',
                 message: error.message || 'Operation failed'
             });
         } finally{
@@ -1108,13 +1100,11 @@ function AdminCustomers() {
             setCustomers((prev)=>prev.filter((c)=>c._id !== customerId));
             pushToast({
                 type: 'success',
-                title: 'Customer Deleted',
                 message: `${customerName} deleted successfully`
             });
         } catch (error) {
             pushToast({
                 type: 'error',
-                title: 'Delete Failed',
                 message: error.message || 'Could not delete customer'
             });
         }
@@ -1131,12 +1121,12 @@ function AdminCustomers() {
                 children: "Loading customers..."
             }, void 0, false, {
                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                lineNumber: 308,
+                lineNumber: 307,
                 columnNumber: 9
             }, this)
         }, void 0, false, {
             fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-            lineNumber: 307,
+            lineNumber: 306,
             columnNumber: 7
         }, this);
     }
@@ -1154,7 +1144,7 @@ function AdminCustomers() {
                                     children: "Customers"
                                 }, void 0, false, {
                                     fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                                    lineNumber: 320,
+                                    lineNumber: 319,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1162,13 +1152,13 @@ function AdminCustomers() {
                                     children: "Manage customer accounts"
                                 }, void 0, false, {
                                     fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                                    lineNumber: 321,
+                                    lineNumber: 320,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                            lineNumber: 319,
+                            lineNumber: 318,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1178,18 +1168,18 @@ function AdminCustomers() {
                                 children: "Add New Customer"
                             }, void 0, false, {
                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                                lineNumber: 324,
+                                lineNumber: 323,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                            lineNumber: 323,
+                            lineNumber: 322,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                    lineNumber: 318,
+                    lineNumber: 317,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1211,7 +1201,7 @@ function AdminCustomers() {
                                                 onChange: (e)=>setCustomerSearch(e.target.value)
                                             }, void 0, false, {
                                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                                                lineNumber: 332,
+                                                lineNumber: 331,
                                                 columnNumber: 17
                                             }, this),
                                             customerSearch && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1222,18 +1212,18 @@ function AdminCustomers() {
                                                 children: "×"
                                             }, void 0, false, {
                                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                                                lineNumber: 340,
+                                                lineNumber: 339,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                                        lineNumber: 331,
+                                        lineNumber: 330,
                                         columnNumber: 15
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                                    lineNumber: 330,
+                                    lineNumber: 329,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1245,7 +1235,7 @@ function AdminCustomers() {
                                             children: "Active"
                                         }, void 0, false, {
                                             fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                                            lineNumber: 353,
+                                            lineNumber: 352,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1254,19 +1244,19 @@ function AdminCustomers() {
                                             children: "Disabled"
                                         }, void 0, false, {
                                             fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                                            lineNumber: 359,
+                                            lineNumber: 358,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                                    lineNumber: 352,
+                                    lineNumber: 351,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                            lineNumber: 329,
+                            lineNumber: 328,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1281,7 +1271,7 @@ function AdminCustomers() {
                                             children: "All"
                                         }, void 0, false, {
                                             fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                                            lineNumber: 370,
+                                            lineNumber: 369,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1290,7 +1280,7 @@ function AdminCustomers() {
                                             children: "Has placed orders"
                                         }, void 0, false, {
                                             fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                                            lineNumber: 376,
+                                            lineNumber: 375,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1299,13 +1289,13 @@ function AdminCustomers() {
                                             children: "No orders yet"
                                         }, void 0, false, {
                                             fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                                            lineNumber: 382,
+                                            lineNumber: 381,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                                    lineNumber: 369,
+                                    lineNumber: 368,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1319,19 +1309,19 @@ function AdminCustomers() {
                                     children: "Clear"
                                 }, void 0, false, {
                                     fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                                    lineNumber: 390,
+                                    lineNumber: 389,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                            lineNumber: 368,
+                            lineNumber: 367,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                    lineNumber: 328,
+                    lineNumber: 327,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1346,54 +1336,54 @@ function AdminCustomers() {
                                             children: "Name"
                                         }, void 0, false, {
                                             fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                                            lineNumber: 408,
-                                            columnNumber: 15
+                                            lineNumber: 407,
+                                            columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
                                             children: "Email"
                                         }, void 0, false, {
                                             fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                                            lineNumber: 409,
-                                            columnNumber: 15
+                                            lineNumber: 408,
+                                            columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
                                             children: "Phone"
                                         }, void 0, false, {
                                             fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                                            lineNumber: 410,
-                                            columnNumber: 15
+                                            lineNumber: 409,
+                                            columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
                                             children: "Status"
                                         }, void 0, false, {
                                             fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                                            lineNumber: 411,
-                                            columnNumber: 15
+                                            lineNumber: 410,
+                                            columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
                                             children: "Created Date"
                                         }, void 0, false, {
                                             fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                                            lineNumber: 412,
-                                            columnNumber: 15
+                                            lineNumber: 411,
+                                            columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
                                             children: "Actions"
                                         }, void 0, false, {
                                             fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                                            lineNumber: 413,
-                                            columnNumber: 15
+                                            lineNumber: 412,
+                                            columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                                    lineNumber: 407,
-                                    columnNumber: 13
+                                    lineNumber: 406,
+                                    columnNumber: 15
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                                lineNumber: 406,
-                                columnNumber: 11
+                                lineNumber: 405,
+                                columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tbody", {
                                 children: filteredCustomers.map((customer)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
@@ -1403,24 +1393,24 @@ function AdminCustomers() {
                                                 children: customer.name
                                             }, void 0, false, {
                                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                                                lineNumber: 419,
-                                                columnNumber: 17
+                                                lineNumber: 418,
+                                                columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
                                                 className: "customer-email-cell",
                                                 children: customer.email
                                             }, void 0, false, {
                                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                                                lineNumber: 420,
-                                                columnNumber: 17
+                                                lineNumber: 419,
+                                                columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
                                                 className: "customer-phone-cell",
                                                 children: customer.phone
                                             }, void 0, false, {
                                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                                                lineNumber: 421,
-                                                columnNumber: 17
+                                                lineNumber: 420,
+                                                columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
                                                 className: "status-cell",
@@ -1429,21 +1419,21 @@ function AdminCustomers() {
                                                     children: customer.isActive ? 'Active' : 'Disabled'
                                                 }, void 0, false, {
                                                     fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                                                    lineNumber: 423,
-                                                    columnNumber: 19
+                                                    lineNumber: 422,
+                                                    columnNumber: 21
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                                                lineNumber: 422,
-                                                columnNumber: 17
+                                                lineNumber: 421,
+                                                columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
                                                 className: "date-cell",
                                                 children: new Date(customer.createdAt).toLocaleDateString()
                                             }, void 0, false, {
                                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                                                lineNumber: 427,
-                                                columnNumber: 17
+                                                lineNumber: 426,
+                                                columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
                                                 className: "actions-cell",
@@ -1454,8 +1444,8 @@ function AdminCustomers() {
                                                         children: "Edit"
                                                     }, void 0, false, {
                                                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                                                        lineNumber: 429,
-                                                        columnNumber: 19
+                                                        lineNumber: 428,
+                                                        columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                                         className: `btn-action ${customer.isActive ? 'warning' : 'primary'}`,
@@ -1463,8 +1453,8 @@ function AdminCustomers() {
                                                         children: customer.isActive ? 'Disable' : 'Enable'
                                                     }, void 0, false, {
                                                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                                                        lineNumber: 432,
-                                                        columnNumber: 19
+                                                        lineNumber: 431,
+                                                        columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                                         className: "btn-action danger",
@@ -1472,36 +1462,36 @@ function AdminCustomers() {
                                                         children: "Delete"
                                                     }, void 0, false, {
                                                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                                                        lineNumber: 438,
-                                                        columnNumber: 19
+                                                        lineNumber: 437,
+                                                        columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                                                lineNumber: 428,
-                                                columnNumber: 17
+                                                lineNumber: 427,
+                                                columnNumber: 19
                                             }, this)
                                         ]
                                     }, customer._id, true, {
                                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                                        lineNumber: 418,
-                                        columnNumber: 15
+                                        lineNumber: 417,
+                                        columnNumber: 17
                                     }, this))
                             }, void 0, false, {
                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                                lineNumber: 416,
-                                columnNumber: 11
+                                lineNumber: 415,
+                                columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                        lineNumber: 405,
-                        columnNumber: 9
+                        lineNumber: 404,
+                        columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                    lineNumber: 404,
-                    columnNumber: 7
+                    lineNumber: 403,
+                    columnNumber: 9
                 }, this),
                 filteredCustomers.length === 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                     style: {
@@ -1512,13 +1502,13 @@ function AdminCustomers() {
                     children: "No customers registered yet"
                 }, void 0, false, {
                     fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                    lineNumber: 449,
-                    columnNumber: 9
+                    lineNumber: 448,
+                    columnNumber: 11
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-            lineNumber: 317,
+            lineNumber: 316,
             columnNumber: 7
         }, this);
     }
@@ -1534,7 +1524,7 @@ function AdminCustomers() {
                         children: mode === 'create' ? 'Create Customer' : 'Edit Customer'
                     }, void 0, false, {
                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                        lineNumber: 461,
+                        lineNumber: 460,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1543,13 +1533,13 @@ function AdminCustomers() {
                         children: "Back to List"
                     }, void 0, false, {
                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                        lineNumber: 462,
+                        lineNumber: 461,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                lineNumber: 460,
+                lineNumber: 459,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("form", {
@@ -1564,7 +1554,7 @@ function AdminCustomers() {
                                 children: "Basic Information"
                             }, void 0, false, {
                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                                lineNumber: 469,
+                                lineNumber: 468,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1577,7 +1567,7 @@ function AdminCustomers() {
                                                 children: "Name *"
                                             }, void 0, false, {
                                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                                                lineNumber: 472,
+                                                lineNumber: 471,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -1590,13 +1580,13 @@ function AdminCustomers() {
                                                     })
                                             }, void 0, false, {
                                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                                                lineNumber: 473,
+                                                lineNumber: 472,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                                        lineNumber: 471,
+                                        lineNumber: 470,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1606,7 +1596,7 @@ function AdminCustomers() {
                                                 children: "Email *"
                                             }, void 0, false, {
                                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                                                lineNumber: 481,
+                                                lineNumber: 480,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -1619,13 +1609,13 @@ function AdminCustomers() {
                                                     })
                                             }, void 0, false, {
                                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                                                lineNumber: 482,
+                                                lineNumber: 481,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                                        lineNumber: 480,
+                                        lineNumber: 479,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1635,7 +1625,7 @@ function AdminCustomers() {
                                                 children: "Phone *"
                                             }, void 0, false, {
                                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                                                lineNumber: 490,
+                                                lineNumber: 489,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -1648,13 +1638,13 @@ function AdminCustomers() {
                                                     })
                                             }, void 0, false, {
                                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                                                lineNumber: 491,
+                                                lineNumber: 490,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                                        lineNumber: 489,
+                                        lineNumber: 488,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1664,7 +1654,7 @@ function AdminCustomers() {
                                                 children: mode === 'create' ? 'Password (optional)' : 'Password (leave empty to keep current)'
                                             }, void 0, false, {
                                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                                                lineNumber: 499,
+                                                lineNumber: 498,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -1680,25 +1670,25 @@ function AdminCustomers() {
                                                 placeholder: mode === 'create' ? 'Set initial password' : 'Enter new password to change'
                                             }, void 0, false, {
                                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                                                lineNumber: 500,
+                                                lineNumber: 499,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                                        lineNumber: 498,
+                                        lineNumber: 497,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                                lineNumber: 470,
+                                lineNumber: 469,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                        lineNumber: 468,
+                        lineNumber: 467,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1709,7 +1699,7 @@ function AdminCustomers() {
                                 children: "Personal Details"
                             }, void 0, false, {
                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                                lineNumber: 514,
+                                lineNumber: 513,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1722,7 +1712,7 @@ function AdminCustomers() {
                                                 children: "Gender"
                                             }, void 0, false, {
                                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                                                lineNumber: 517,
+                                                lineNumber: 516,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
@@ -1740,7 +1730,7 @@ function AdminCustomers() {
                                                         children: "Select Gender"
                                                     }, void 0, false, {
                                                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                                                        lineNumber: 522,
+                                                        lineNumber: 521,
                                                         columnNumber: 17
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -1748,7 +1738,7 @@ function AdminCustomers() {
                                                         children: "Male"
                                                     }, void 0, false, {
                                                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                                                        lineNumber: 523,
+                                                        lineNumber: 522,
                                                         columnNumber: 17
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -1756,7 +1746,7 @@ function AdminCustomers() {
                                                         children: "Female"
                                                     }, void 0, false, {
                                                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                                                        lineNumber: 524,
+                                                        lineNumber: 523,
                                                         columnNumber: 17
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -1764,19 +1754,19 @@ function AdminCustomers() {
                                                         children: "Other"
                                                     }, void 0, false, {
                                                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                                                        lineNumber: 525,
+                                                        lineNumber: 524,
                                                         columnNumber: 17
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                                                lineNumber: 518,
+                                                lineNumber: 517,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                                        lineNumber: 516,
+                                        lineNumber: 515,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1786,7 +1776,7 @@ function AdminCustomers() {
                                                 children: "Age"
                                             }, void 0, false, {
                                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                                                lineNumber: 529,
+                                                lineNumber: 528,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -1802,25 +1792,25 @@ function AdminCustomers() {
                                                 placeholder: "Age"
                                             }, void 0, false, {
                                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                                                lineNumber: 530,
+                                                lineNumber: 529,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                                        lineNumber: 528,
+                                        lineNumber: 527,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                                lineNumber: 515,
+                                lineNumber: 514,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                        lineNumber: 513,
+                        lineNumber: 512,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1831,7 +1821,7 @@ function AdminCustomers() {
                                 children: "Address"
                             }, void 0, false, {
                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                                lineNumber: 541,
+                                lineNumber: 540,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1844,7 +1834,7 @@ function AdminCustomers() {
                                                 children: "Address Line 1"
                                             }, void 0, false, {
                                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                                                lineNumber: 544,
+                                                lineNumber: 543,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -1860,13 +1850,13 @@ function AdminCustomers() {
                                                 placeholder: "Street address"
                                             }, void 0, false, {
                                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                                                lineNumber: 545,
+                                                lineNumber: 544,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                                        lineNumber: 543,
+                                        lineNumber: 542,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1876,7 +1866,7 @@ function AdminCustomers() {
                                                 children: "Address Line 2"
                                             }, void 0, false, {
                                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                                                lineNumber: 553,
+                                                lineNumber: 552,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -1892,13 +1882,13 @@ function AdminCustomers() {
                                                 placeholder: "Apartment, suite, etc."
                                             }, void 0, false, {
                                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                                                lineNumber: 554,
+                                                lineNumber: 553,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                                        lineNumber: 552,
+                                        lineNumber: 551,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1908,7 +1898,7 @@ function AdminCustomers() {
                                                 children: "Area"
                                             }, void 0, false, {
                                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                                                lineNumber: 562,
+                                                lineNumber: 561,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -1923,13 +1913,13 @@ function AdminCustomers() {
                                                     })
                                             }, void 0, false, {
                                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                                                lineNumber: 563,
+                                                lineNumber: 562,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                                        lineNumber: 561,
+                                        lineNumber: 560,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1939,7 +1929,7 @@ function AdminCustomers() {
                                                 children: "City"
                                             }, void 0, false, {
                                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                                                lineNumber: 570,
+                                                lineNumber: 569,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -1954,13 +1944,13 @@ function AdminCustomers() {
                                                     })
                                             }, void 0, false, {
                                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                                                lineNumber: 571,
+                                                lineNumber: 570,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                                        lineNumber: 569,
+                                        lineNumber: 568,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1970,7 +1960,7 @@ function AdminCustomers() {
                                                 children: "State"
                                             }, void 0, false, {
                                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                                                lineNumber: 578,
+                                                lineNumber: 577,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -1985,13 +1975,13 @@ function AdminCustomers() {
                                                     })
                                             }, void 0, false, {
                                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                                                lineNumber: 579,
+                                                lineNumber: 578,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                                        lineNumber: 577,
+                                        lineNumber: 576,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2001,7 +1991,7 @@ function AdminCustomers() {
                                                 children: "Pincode"
                                             }, void 0, false, {
                                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                                                lineNumber: 586,
+                                                lineNumber: 585,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -2016,13 +2006,13 @@ function AdminCustomers() {
                                                     })
                                             }, void 0, false, {
                                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                                                lineNumber: 587,
+                                                lineNumber: 586,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                                        lineNumber: 585,
+                                        lineNumber: 584,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2032,7 +2022,7 @@ function AdminCustomers() {
                                                 children: "Landmark"
                                             }, void 0, false, {
                                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                                                lineNumber: 594,
+                                                lineNumber: 593,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -2048,25 +2038,25 @@ function AdminCustomers() {
                                                 placeholder: "Nearby landmark"
                                             }, void 0, false, {
                                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                                                lineNumber: 595,
+                                                lineNumber: 594,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                                        lineNumber: 593,
+                                        lineNumber: 592,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                                lineNumber: 542,
+                                lineNumber: 541,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                        lineNumber: 540,
+                        lineNumber: 539,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2077,7 +2067,7 @@ function AdminCustomers() {
                                 children: "Preferences"
                             }, void 0, false, {
                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                                lineNumber: 606,
+                                lineNumber: 605,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2090,7 +2080,7 @@ function AdminCustomers() {
                                                 children: "Preferred Payment Method"
                                             }, void 0, false, {
                                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                                                lineNumber: 609,
+                                                lineNumber: 608,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
@@ -2108,7 +2098,7 @@ function AdminCustomers() {
                                                         children: "Select Payment Method"
                                                     }, void 0, false, {
                                                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                                                        lineNumber: 614,
+                                                        lineNumber: 613,
                                                         columnNumber: 17
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -2116,7 +2106,7 @@ function AdminCustomers() {
                                                         children: "Cash"
                                                     }, void 0, false, {
                                                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                                                        lineNumber: 615,
+                                                        lineNumber: 614,
                                                         columnNumber: 17
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -2124,7 +2114,7 @@ function AdminCustomers() {
                                                         children: "Card"
                                                     }, void 0, false, {
                                                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                                                        lineNumber: 616,
+                                                        lineNumber: 615,
                                                         columnNumber: 17
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -2132,19 +2122,19 @@ function AdminCustomers() {
                                                         children: "UPI"
                                                     }, void 0, false, {
                                                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                                                        lineNumber: 617,
+                                                        lineNumber: 616,
                                                         columnNumber: 17
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                                                lineNumber: 610,
+                                                lineNumber: 609,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                                        lineNumber: 608,
+                                        lineNumber: 607,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2154,7 +2144,7 @@ function AdminCustomers() {
                                                 children: "Language"
                                             }, void 0, false, {
                                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                                                lineNumber: 621,
+                                                lineNumber: 620,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
@@ -2172,7 +2162,7 @@ function AdminCustomers() {
                                                         children: "Select Language"
                                                     }, void 0, false, {
                                                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                                                        lineNumber: 626,
+                                                        lineNumber: 625,
                                                         columnNumber: 17
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -2180,7 +2170,7 @@ function AdminCustomers() {
                                                         children: "English"
                                                     }, void 0, false, {
                                                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                                                        lineNumber: 627,
+                                                        lineNumber: 626,
                                                         columnNumber: 17
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -2188,7 +2178,7 @@ function AdminCustomers() {
                                                         children: "Hindi"
                                                     }, void 0, false, {
                                                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                                                        lineNumber: 628,
+                                                        lineNumber: 627,
                                                         columnNumber: 17
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -2196,7 +2186,7 @@ function AdminCustomers() {
                                                         children: "Tamil"
                                                     }, void 0, false, {
                                                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                                                        lineNumber: 629,
+                                                        lineNumber: 628,
                                                         columnNumber: 17
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -2204,7 +2194,7 @@ function AdminCustomers() {
                                                         children: "Telugu"
                                                     }, void 0, false, {
                                                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                                                        lineNumber: 630,
+                                                        lineNumber: 629,
                                                         columnNumber: 17
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -2212,7 +2202,7 @@ function AdminCustomers() {
                                                         children: "Kannada"
                                                     }, void 0, false, {
                                                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                                                        lineNumber: 631,
+                                                        lineNumber: 630,
                                                         columnNumber: 17
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -2220,31 +2210,31 @@ function AdminCustomers() {
                                                         children: "Malayalam"
                                                     }, void 0, false, {
                                                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                                                        lineNumber: 632,
+                                                        lineNumber: 631,
                                                         columnNumber: 17
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                                                lineNumber: 622,
+                                                lineNumber: 621,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                                        lineNumber: 620,
+                                        lineNumber: 619,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                                lineNumber: 607,
+                                lineNumber: 606,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                        lineNumber: 605,
+                        lineNumber: 604,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2255,7 +2245,7 @@ function AdminCustomers() {
                                 children: "Additional Notes"
                             }, void 0, false, {
                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                                lineNumber: 639,
+                                lineNumber: 638,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2265,7 +2255,7 @@ function AdminCustomers() {
                                         children: "Notes"
                                     }, void 0, false, {
                                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                                        lineNumber: 641,
+                                        lineNumber: 640,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("textarea", {
@@ -2278,19 +2268,19 @@ function AdminCustomers() {
                                         rows: 4
                                     }, void 0, false, {
                                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                                        lineNumber: 642,
+                                        lineNumber: 641,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                                lineNumber: 640,
+                                lineNumber: 639,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                        lineNumber: 638,
+                        lineNumber: 637,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2303,7 +2293,7 @@ function AdminCustomers() {
                                 children: "Cancel"
                             }, void 0, false, {
                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                                lineNumber: 652,
+                                lineNumber: 651,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2313,25 +2303,25 @@ function AdminCustomers() {
                                 children: loading ? 'Saving...' : mode === 'create' ? 'Create Customer' : 'Save Changes'
                             }, void 0, false, {
                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                                lineNumber: 655,
+                                lineNumber: 654,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                        lineNumber: 651,
+                        lineNumber: 650,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-                lineNumber: 467,
+                lineNumber: 466,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/admin/customers.tsx",
-        lineNumber: 459,
+        lineNumber: 458,
         columnNumber: 5
     }, this);
 }

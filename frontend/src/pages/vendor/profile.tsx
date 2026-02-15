@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { useRouter } from 'next/router';
 import { api, setAuthToken } from '../../services/api';
 import { useToast } from '../../components/ui/ToastProvider';
+import { API_BASE } from '../../config/env';
 
 interface Vendor {
   _id: string;
@@ -209,7 +210,7 @@ export default function VendorProfilePage() {
       if (!token || !vendor) throw new Error('Not authenticated');
       setAuthToken(token);
       // Implemented in backend: POST /api/auth/change-password
-      const res = await fetch('http://localhost:5000/api/auth/change-password', {
+      const res = await fetch(`${API_BASE}/api/auth/change-password`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

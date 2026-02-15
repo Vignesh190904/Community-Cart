@@ -6,7 +6,7 @@ import { UserData } from '../types/auth.types';
  * @returns Promise<boolean> - true if session is valid, false otherwise
  */
 export async function checkSession(): Promise<{ isAuthenticated: boolean; user?: UserData }> {
-    const result = await apiGet('/api/auth/customer/me');
+    const result = await apiGet('/auth/customer/me');
 
     if (result.error || !result.data?.success) {
         return { isAuthenticated: false };
@@ -23,7 +23,7 @@ export async function checkSession(): Promise<{ isAuthenticated: boolean; user?:
  * @returns Promise<void>
  */
 export async function logout(): Promise<{ success: boolean; error?: string }> {
-    const result = await apiPost('/api/auth/customer/logout', {});
+    const result = await apiPost('/auth/customer/logout', {});
 
     if (result.error) {
         return {

@@ -62,7 +62,6 @@ function AdminOrders() {
         } catch (error) {
             pushToast({
                 type: 'error',
-                title: 'Error',
                 message: error.message || 'Failed to load orders'
             });
             setAllOrders([]);

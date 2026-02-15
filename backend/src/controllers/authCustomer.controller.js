@@ -127,7 +127,7 @@ export const manualSignupVerifyEmail = async (req, res) => {
         deleteSignupRecord(email);
 
         // Create token
-        const auth_token = signToken(customer._id);
+        const auth_token = signToken(customer);
 
         /* console.log("✅ EMAIL OTP VERIFIED — USER CREATED AND AUTHENTICATED");*/
 
@@ -259,7 +259,7 @@ export const manualSignin = async (req, res) => {
         await customer.save();
 
         // Create token
-        const auth_token = signToken(customer._id);
+        const auth_token = signToken(customer);
 
         return res.status(200).json({
             success: true,
@@ -404,7 +404,7 @@ export const googleSignupVerifyEmail = async (req, res) => {
         deleteSignupRecord(email);
 
         // Create token
-        const auth_token = signToken(customer._id);
+        const auth_token = signToken(customer);
 
         /*console.log("✅ EMAIL OTP VERIFIED — USER CREATED AND AUTHENTICATED");*/
 
@@ -481,7 +481,7 @@ export const googleSignin = async (req, res) => {
         await customer.save();
 
         // Create token
-        const auth_token = signToken(customer._id);
+        const auth_token = signToken(customer);
 
         return res.status(200).json({
             success: true,

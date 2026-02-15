@@ -10,6 +10,8 @@ dotenv.config({ path: path.join(__dirname, '.env') });
 import express from 'express';
 import cors from 'cors';
 
+import helmet from 'helmet';
+
 // Route Imports
 console.log('🔄 Importing routes...');
 import authRoutes from './src/routes/auth.routes.js';
@@ -26,9 +28,18 @@ console.log('🔄 Creating Express app...');
 const app = express();
 console.log('✅ Express app created');
 
-// 1. CORS - Specific for Port 4646
+// Security Headers
+app.use(
+  helmet({
+    crossOriginResourcePolicy: { policy: "cross-origin" },
+    contentSecurityPolicy: false
+  })
+);
+
+// 1. CORS - Production Aware
+const isProd = process.env.NODE_ENV === 'production';
 app.use(cors({
-  origin: 'http://localhost:4646',
+  origin: isProd ? process.env.FRONTEND_URL : "http://localhost:4646",
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
@@ -39,7 +50,7 @@ app.use(express.json({ limit: '5mb' }));
 app.use(express.urlencoded({ limit: '5mb', extended: true }));
 
 // 2.5. Static File Serving for Uploads
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+app.use('/api/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // 3. Session Configuration (REMOVED - Using JWT)
 // app.use(session({...}));

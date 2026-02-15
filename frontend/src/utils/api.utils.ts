@@ -1,6 +1,8 @@
 import { ApiResponse } from '../types/auth.types';
+import { API_BASE } from '../config/env';
 
-export const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
+const API_PREFIX = '/api';
+export const API_BASE_URL = `${API_BASE}${API_PREFIX}`;
 
 /**
  * ═══════════════════════════════════════════════════════════════════════
@@ -24,6 +26,11 @@ export async function apiCall<T = any>(
     endpoint: string,
     options: RequestInit = {}
 ): Promise<{ data?: ApiResponse<T>; error?: string; errorCode?: string }> {
+    // Safety check for duplicate prefix
+    if (endpoint.startsWith('/api/')) {
+        throw new Error(`[API] Invalid endpoint '${endpoint}'. Do not include '/api' prefix, it is added automatically.`);
+    }
+
     try {
         // JWT Authentication: Attached from localStorage
         const token = typeof window !== 'undefined' ? localStorage.getItem('auth_token') : null;

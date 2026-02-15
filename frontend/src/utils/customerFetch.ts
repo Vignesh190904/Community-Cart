@@ -27,6 +27,15 @@ export class SilentNetworkError extends Error {
 export async function customerFetch(input: RequestInfo | URL, init?: RequestInit): Promise<Response> {
     try {
         const response = await fetch(input, init);
+
+        // Handle 401 Unauthorized globally
+        if (response.status === 401) {
+            if (typeof window !== 'undefined') {
+                // Dispatch logout event for AuthContext to handle
+                window.dispatchEvent(new CustomEvent('cc-logout'));
+            }
+        }
+
         return response;
     } catch (error: any) {
         // Detect Network Error (Chrome often says "Failed to fetch")

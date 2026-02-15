@@ -1162,6 +1162,13 @@ class SilentNetworkError extends Error {
 async function customerFetch(input, init) {
     try {
         const response = await fetch(input, init);
+        // Handle 401 Unauthorized globally
+        if (response.status === 401) {
+            if ("TURBOPACK compile-time truthy", 1) {
+                // Dispatch logout event for AuthContext to handle
+                window.dispatchEvent(new CustomEvent('cc-logout'));
+            }
+        }
         return response;
     } catch (error) {
         // Detect Network Error (Chrome often says "Failed to fetch")

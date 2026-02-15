@@ -16,7 +16,7 @@ export async function googleSignin(
     }
 
     // Call backend Google signin endpoint
-    const result = await apiPost('/api/auth/customer/google/signin', {
+    const result = await apiPost('/auth/customer/google/signin', {
         googleToken,
     });
 

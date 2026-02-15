@@ -17,7 +17,7 @@ export async function signin(
     }
 
     // Call backend signin endpoint
-    const result = await apiPost('/api/auth/customer/signin', {
+    const result = await apiPost('/auth/customer/signin', {
         email,
         password,
     });

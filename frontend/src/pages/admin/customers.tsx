@@ -62,7 +62,7 @@ export default function AdminCustomers() {
       const data = await res.json();
       setCustomers(data);
     } catch (error: any) {
-      pushToast({ type: 'error', title: 'Error', message: error.message || 'Failed to load customers' });
+      pushToast({ type: 'error', message: error.message || 'Failed to load customers' });
     } finally {
       setLoading(false);
     }
@@ -145,11 +145,10 @@ export default function AdminCustomers() {
       setCustomers((prev) => prev.map((c) => (c._id === customerId ? updated : c)));
       pushToast({
         type: 'success',
-        title: 'Customer Updated',
         message: `Customer ${updated.isActive ? 'enabled' : 'disabled'} successfully`,
       });
     } catch (error: any) {
-      pushToast({ type: 'error', title: 'Update Failed', message: error.message || 'Could not update customer' });
+      pushToast({ type: 'error', message: error.message || 'Could not update customer' });
     }
   };
 
@@ -200,7 +199,7 @@ export default function AdminCustomers() {
       setEditingId(id);
       setMode('edit');
     } catch (error: any) {
-      pushToast({ type: 'error', title: 'Load Failed', message: error.message || 'Failed to load customer' });
+      pushToast({ type: 'error', message: error.message || 'Failed to load customer' });
     }
   };
 
@@ -223,7 +222,7 @@ export default function AdminCustomers() {
     e.preventDefault();
 
     if (!formData.name || !formData.email || !formData.phone) {
-      pushToast({ type: 'warning', title: 'Missing fields', message: 'Name, Email and Phone are required.' });
+      pushToast({ type: 'warning', message: 'Name, Email and Phone are required.' });
       return;
     }
 
@@ -258,7 +257,7 @@ export default function AdminCustomers() {
           throw new Error(err.error || 'Failed to create customer');
         }
 
-        pushToast({ type: 'success', title: 'Customer Created', message: 'New customer added successfully' });
+        pushToast({ type: 'success', message: 'New customer added successfully' });
       } else {
         const res = await fetch(`http://localhost:5000/api/customers/${editingId}`, {
           method: 'PATCH',
@@ -271,13 +270,13 @@ export default function AdminCustomers() {
           throw new Error(err.error || 'Failed to update customer');
         }
 
-        pushToast({ type: 'success', title: 'Customer Updated', message: 'Customer updated successfully' });
+        pushToast({ type: 'success', message: 'Customer updated successfully' });
       }
 
       setMode('list');
       loadCustomers();
     } catch (error: any) {
-      pushToast({ type: 'error', title: mode === 'create' ? 'Create Failed' : 'Update Failed', message: error.message || 'Operation failed' });
+      pushToast({ type: 'error', message: error.message || 'Operation failed' });
     } finally {
       setLoading(false);
     }
@@ -296,9 +295,9 @@ export default function AdminCustomers() {
       if (!res.ok) throw new Error('Failed to delete customer');
 
       setCustomers((prev) => prev.filter((c) => c._id !== customerId));
-      pushToast({ type: 'success', title: 'Customer Deleted', message: `${customerName} deleted successfully` });
+      pushToast({ type: 'success', message: `${customerName} deleted successfully` });
     } catch (error: any) {
-      pushToast({ type: 'error', title: 'Delete Failed', message: error.message || 'Could not delete customer' });
+      pushToast({ type: 'error', message: error.message || 'Could not delete customer' });
     }
   };
 
@@ -401,56 +400,56 @@ export default function AdminCustomers() {
           </div>
         </div>
 
-      <div className="customers-table-wrapper">
-        <table className="customers-table">
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Phone</th>
-              <th>Status</th>
-              <th>Created Date</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {filteredCustomers.map((customer) => (
-              <tr key={customer._id}>
-                <td className="customer-name-cell">{customer.name}</td>
-                <td className="customer-email-cell">{customer.email}</td>
-                <td className="customer-phone-cell">{customer.phone}</td>
-                <td className="status-cell">
-                  <span className={`customer-status-badge ${customer.isActive ? 'active' : 'disabled'}`}>
-                    {customer.isActive ? 'Active' : 'Disabled'}
-                  </span>
-                </td>
-                <td className="date-cell">{new Date(customer.createdAt).toLocaleDateString()}</td>
-                <td className="actions-cell">
-                  <button className="btn-action primary" onClick={() => handleEdit(customer._id)}>
-                    Edit
-                  </button>
-                  <button
-                    className={`btn-action ${customer.isActive ? 'warning' : 'primary'}`}
-                    onClick={() => toggleActiveStatus(customer._id, customer.isActive)}
-                  >
-                    {customer.isActive ? 'Disable' : 'Enable'}
-                  </button>
-                  <button className="btn-action danger" onClick={() => deleteCustomer(customer._id, customer.name)}>
-                    Delete
-                  </button>
-                </td>
+        <div className="customers-table-wrapper">
+          <table className="customers-table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Status</th>
+                <th>Created Date</th>
+                <th>Actions</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-
-      {filteredCustomers.length === 0 && (
-        <div style={{ padding: '24px', textAlign: 'center', color: 'var(--text-secondary)' }}>
-          No customers registered yet
+            </thead>
+            <tbody>
+              {filteredCustomers.map((customer) => (
+                <tr key={customer._id}>
+                  <td className="customer-name-cell">{customer.name}</td>
+                  <td className="customer-email-cell">{customer.email}</td>
+                  <td className="customer-phone-cell">{customer.phone}</td>
+                  <td className="status-cell">
+                    <span className={`customer-status-badge ${customer.isActive ? 'active' : 'disabled'}`}>
+                      {customer.isActive ? 'Active' : 'Disabled'}
+                    </span>
+                  </td>
+                  <td className="date-cell">{new Date(customer.createdAt).toLocaleDateString()}</td>
+                  <td className="actions-cell">
+                    <button className="btn-action primary" onClick={() => handleEdit(customer._id)}>
+                      Edit
+                    </button>
+                    <button
+                      className={`btn-action ${customer.isActive ? 'warning' : 'primary'}`}
+                      onClick={() => toggleActiveStatus(customer._id, customer.isActive)}
+                    >
+                      {customer.isActive ? 'Disable' : 'Enable'}
+                    </button>
+                    <button className="btn-action danger" onClick={() => deleteCustomer(customer._id, customer.name)}>
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
-      )}
-    </div>
+
+        {filteredCustomers.length === 0 && (
+          <div style={{ padding: '24px', textAlign: 'center', color: 'var(--text-secondary)' }}>
+            No customers registered yet
+          </div>
+        )}
+      </div>
     );
   }
 

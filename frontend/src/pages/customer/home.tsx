@@ -10,6 +10,7 @@ import AppLoading from './apploading';
 import { SkeletonProductCard } from '../../components/customer/SkeletonProductCard';
 import SearchBar from './search_bar';
 import { CATEGORIES as CANONICAL_CATEGORIES } from '../../constants/categories';
+import { API_BASE } from '../../config/env';
 
 const capitalize = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
 
@@ -114,7 +115,7 @@ export default function HomePage() {
         const fetchProducts = async () => {
             try {
                 setProductsLoading(true);
-                const response = await customerFetch('http://localhost:5000/api/products');
+                const response = await customerFetch(`${API_BASE}/api/products`);
 
                 if (!response.ok) {
                     throw new Error('Failed to fetch products');
@@ -151,7 +152,7 @@ export default function HomePage() {
                 const token = localStorage.getItem('auth_token');
                 if (!token) return;
 
-                const response = await fetch('http://localhost:5000/api/customers/wishlist', {
+                const response = await fetch(`${API_BASE}/api/customers/wishlist`, {
                     headers: {
                         'Authorization': `Bearer ${token}`
                     }
@@ -203,7 +204,7 @@ export default function HomePage() {
 
             if (isCurrentlyWishlisted) {
                 // Remove from wishlist
-                const response = await fetch(`http://localhost:5000/api/customers/wishlist/${id}`, {
+                const response = await fetch(`${API_BASE}/api/customers/wishlist/${id}`, {
                     method: 'DELETE',
                     headers: {
                         'Authorization': `Bearer ${token}`
@@ -216,7 +217,7 @@ export default function HomePage() {
                 enqueueToast('Removed from wishlist', 'success');
             } else {
                 // Add to wishlist
-                const response = await fetch('http://localhost:5000/api/customers/wishlist', {
+                const response = await fetch(`${API_BASE}/api/customers/wishlist`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',

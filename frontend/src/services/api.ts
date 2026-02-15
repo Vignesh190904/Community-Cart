@@ -1,4 +1,6 @@
-const API_BASE = 'http://localhost:5000/api';
+import { API_BASE as ENV_API_BASE } from '../config/env';
+
+const API_BASE = `${ENV_API_BASE}/api`;
 
 let auth_token: string | null = null;
 

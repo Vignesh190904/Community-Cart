@@ -632,7 +632,9 @@ __turbopack_context__.s([
     ()=>apiPut
 ]);
 var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$build$2f$polyfills$2f$process$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = /*#__PURE__*/ __turbopack_context__.i("[project]/Desktop/Community-Cart/frontend/node_modules/next/dist/build/polyfills/process.js [client] (ecmascript)");
-const API_BASE_URL = __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$next$2f$dist$2f$build$2f$polyfills$2f$process$2e$js__$5b$client$5d$__$28$ecmascript$29$__["default"].env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
+const API_BASE_URL = ("TURBOPACK compile-time value", "http://localhost:5000");
+if ("TURBOPACK compile-time falsy", 0) //TURBOPACK unreachable
+;
 async function apiCall(endpoint, options = {}) {
     try {
         // JWT Authentication: Attached from localStorage

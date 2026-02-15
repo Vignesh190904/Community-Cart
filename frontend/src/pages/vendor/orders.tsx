@@ -4,6 +4,7 @@ import { DragDropContext, Droppable, Draggable, DropResult } from '@hello-pangea
 import { useToast } from '../../components/ui/ToastProvider';
 import { aggregateOrderItems } from '../../utils/orderAggregation';
 import { useAuth } from '../../context/AuthContext';
+import { API_BASE } from '../../config/env';
 
 type OrderStatus = 'pending' | 'processing' | 'completed' | 'cancelled';
 
@@ -72,7 +73,7 @@ export default function VendorOrders() {
       // console.log('[vendor:loadOrders] Fetching orders');
 
       // Robustness: Pass vendorId explicitly to avoid auth middleware context issues
-      const res = await fetch(`http://localhost:5000/api/vendors/orders?vendorId=${user.id}`);
+      const res = await fetch(`${API_BASE}/api/vendors/orders?vendorId=${user.id}`);
 
       if (!res.ok) {
         throw new Error('Failed to fetch orders');
@@ -161,7 +162,7 @@ export default function VendorOrders() {
     );
 
     try {
-      const res = await fetch(`http://localhost:5000/api/orders/${orderId}`, {
+      const res = await fetch(`${API_BASE}/api/orders/${orderId}`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ status: newStatus }),

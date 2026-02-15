@@ -27,7 +27,7 @@ export default function AdminOrders() {
   const [allOrders, setAllOrders] = useState<Order[]>([]);
   const [vendors, setVendors] = useState<Vendor[]>([]);
   const [loading, setLoading] = useState(true);
-  
+
   // Filters
   const [vendorSearch, setVendorSearch] = useState<string>('');
   const [statusFilter, setStatusFilter] = useState<Set<Exclude<OrderStatus, 'all'>>>(new Set(['completed', 'cancelled', 'processing', 'pending']));
@@ -35,7 +35,7 @@ export default function AdminOrders() {
   const [customDateFrom, setCustomDateFrom] = useState<string>('');
   const [customDateTo, setCustomDateTo] = useState<string>('');
   const [minOrderValue, setMinOrderValue] = useState<string>('');
-  
+
   const { pushToast } = useToast();
 
   useEffect(() => {
@@ -62,12 +62,12 @@ export default function AdminOrders() {
       if (!res.ok) throw new Error('Failed to fetch orders');
       const data = await res.json();
       // Ensure we have an array and filter out any invalid entries
-      const validOrders = Array.isArray(data) ? data.filter(order => 
+      const validOrders = Array.isArray(data) ? data.filter(order =>
         order && order.status && ['completed', 'cancelled', 'processing', 'pending'].includes(order.status)
       ) : [];
       setAllOrders(validOrders);
     } catch (error: any) {
-      pushToast({ type: 'error', title: 'Error', message: error.message || 'Failed to load orders' });
+      pushToast({ type: 'error', message: error.message || 'Failed to load orders' });
       setAllOrders([]);
     } finally {
       setLoading(false);
@@ -108,7 +108,7 @@ export default function AdminOrders() {
       filtered = filtered.filter(order => {
         if (!order.createdAt) return false;
         const orderDate = new Date(order.createdAt);
-        
+
         if (datePreset === 'today') {
           return orderDate.toDateString() === now.toDateString();
         } else if (datePreset === 'week') {
@@ -154,7 +154,7 @@ export default function AdminOrders() {
   const stats = useMemo(() => {
     const completed = filteredOrders.filter(o => o.status === 'completed');
     const cancelled = filteredOrders.filter(o => o.status === 'cancelled');
-    
+
     const totalEarnings = completed.reduce((sum, o) => sum + o.pricing.totalAmount, 0);
     const totalOrders = filteredOrders.length;
     const completionRate = totalOrders > 0 ? (completed.length / totalOrders) * 100 : 0;
@@ -224,7 +224,7 @@ export default function AdminOrders() {
               onChange={(e) => setVendorSearch(e.target.value)}
             />
           </div>
-          
+
           <div className="status-tabs">
             <button
               className={`status-tab ${isAllSelected ? 'active' : ''}`}
@@ -384,9 +384,9 @@ export default function AdminOrders() {
                 <td className="value-cell">₹{order.pricing.totalAmount.toFixed(2)}</td>
                 <td className="status-cell">
                   <span className={`order-status-badge ${order.status}`}>
-                    {order.status === 'completed' ? 'Completed' : 
-                     order.status === 'cancelled' ? 'Cancelled' : 
-                     order.status === 'processing' ? 'Processing' : 'Pending'}
+                    {order.status === 'completed' ? 'Completed' :
+                      order.status === 'cancelled' ? 'Cancelled' :
+                        order.status === 'processing' ? 'Processing' : 'Pending'}
                   </span>
                 </td>
               </tr>

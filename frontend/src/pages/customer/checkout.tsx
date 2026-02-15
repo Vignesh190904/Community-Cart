@@ -6,6 +6,7 @@ import CustomerLayout from '../../components/customer/CustomerLayout';
 import { customerFetch } from '../../utils/customerFetch';
 import { useToast } from '../../components/ui/ToastProvider';
 import TopNavbar from './TopNavbar';
+import { API_BASE } from '../../config/env';
 
 interface Address {
     _id: string;
@@ -35,7 +36,7 @@ export default function CheckoutPage() {
         try {
             const token = localStorage.getItem('auth_token');
 
-            const res = await customerFetch('http://localhost:5000/api/customers/addresses', {
+            const res = await customerFetch(`${API_BASE}/api/customers/addresses`, {
                 headers: {
                     'Content-Type': 'application/json',
                     Authorization: `Bearer ${token}`,
@@ -118,7 +119,7 @@ export default function CheckoutPage() {
 
         try {
             const token = localStorage.getItem('auth_token');
-            const res = await customerFetch('http://localhost:5000/api/orders', {
+            const res = await customerFetch(`${API_BASE}/api/orders`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -168,7 +169,7 @@ export default function CheckoutPage() {
             // "Cart must be cleared frontend-side" -> Store update.
 
             // Let's manually call the clear cart API here to be safe, then redirect.
-            await customerFetch('http://localhost:5000/api/cart', {
+            await customerFetch(`${API_BASE}/api/cart`, {
                 method: 'DELETE',
                 headers: {
                     'Authorization': `Bearer ${token}`

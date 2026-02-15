@@ -1,4 +1,7 @@
 self.__BUILD_MANIFEST = {
+  "/": [
+    "static/chunks/pages/index.js"
+  ],
   "/_error": [
     "static/chunks/pages/_error.js"
   ],
@@ -10,6 +13,9 @@ self.__BUILD_MANIFEST = {
   ],
   "/admin/orders": [
     "static/chunks/pages/admin/orders.js"
+  ],
+  "/admin/products": [
+    "static/chunks/pages/admin/products.js"
   ],
   "/admin/vendor-edit": [
     "static/chunks/pages/admin/vendor-edit.js"
@@ -29,6 +35,12 @@ self.__BUILD_MANIFEST = {
   "/customer/category": [
     "static/chunks/pages/customer/category.js"
   ],
+  "/customer/edit-profile": [
+    "static/chunks/pages/customer/edit-profile.js"
+  ],
+  "/customer/favorites": [
+    "static/chunks/pages/customer/favorites.js"
+  ],
   "/customer/home": [
     "static/chunks/pages/customer/home.js"
   ],
@@ -40,6 +52,9 @@ self.__BUILD_MANIFEST = {
   ],
   "/customer/profile": [
     "static/chunks/pages/customer/profile.js"
+  ],
+  "/customer/signin": [
+    "static/chunks/pages/customer/signin.js"
   ],
   "/login": [
     "static/chunks/pages/login.js"

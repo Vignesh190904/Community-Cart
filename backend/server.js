@@ -1,9 +1,17 @@
+import './src/config/initEnv.js';
 import app from './app.js';
 import { connectDB, getDbStatus } from './src/config/db.js';
 import Customer from './src/models/Customer.model.js'; // Ensure correct path
 import bcrypt from 'bcryptjs';
 
-// dotenv is now configured in app.js BEFORE any imports
+const requiredEnv = ['MONGO_URI', 'JWT_SECRET', 'FRONTEND_URL', 'PORT'];
+const missingEnv = requiredEnv.filter(key => !process.env[key]);
+
+if (missingEnv.length > 0) {
+    console.error(`❌ CRITICAL ERROR: Missing environment variables: ${missingEnv.join(', ')}`);
+    process.exit(1);
+}
+
 const PORT = process.env.PORT || 5000;
 
 const start_server = async () => {

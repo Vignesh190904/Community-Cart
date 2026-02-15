@@ -21,7 +21,7 @@ export async function startSignup(
     }
 
     // Call backend
-    const result = await apiPost('/api/auth/customer/signup/start', {
+    const result = await apiPost('/auth/customer/signup/start', {
         name,
         email,
         password,
@@ -58,7 +58,7 @@ export async function verifyEmailOtp(
         return;
     }
 
-    const result = await apiPost('/api/auth/customer/signup/verify-email', {
+    const result = await apiPost('/auth/customer/signup/verify-email', {
         email,
         otp,
     });
@@ -105,7 +105,7 @@ export async function resendEmailOtp(
         return;
     }
 
-    const result = await apiPost('/api/auth/customer/signup/resend-otp', {
+    const result = await apiPost('/auth/customer/signup/resend-otp', {
         email,
     });
 
