@@ -1078,7 +1078,6 @@ function VendorsManagement() {
             console.error('Error loading vendors:', error);
             pushToast({
                 type: 'error',
-                title: 'Load Failed',
                 message: 'Failed to load vendors'
             });
         } finally{
@@ -1198,7 +1197,6 @@ function VendorsManagement() {
             await __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$src$2f$services$2f$api$2e$ts__$5b$client$5d$__$28$ecmascript$29$__["api"].vendors.delete(id);
             pushToast({
                 type: 'success',
-                title: 'Deleted',
                 message: 'Vendor deleted successfully'
             });
             loadVendors();
@@ -1206,7 +1204,6 @@ function VendorsManagement() {
             console.error('Error deleting vendor:', error);
             pushToast({
                 type: 'error',
-                title: 'Delete Failed',
                 message: 'Failed to delete vendor'
             });
         }
@@ -1220,14 +1217,12 @@ function VendorsManagement() {
             await loadVendors();
             pushToast({
                 type: 'success',
-                title: 'Status Updated',
                 message: `Vendor ${!current ? 'enabled' : 'disabled'}`
             });
         } catch (error) {
             console.error('Error updating vendor status:', error);
             pushToast({
                 type: 'error',
-                title: 'Update Failed',
                 message: 'Failed to update vendor status'
             });
         } finally{
@@ -1242,14 +1237,12 @@ function VendorsManagement() {
                 await __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$src$2f$services$2f$api$2e$ts__$5b$client$5d$__$28$ecmascript$29$__["api"].vendors.create(formData);
                 pushToast({
                     type: 'success',
-                    title: 'Saved',
                     message: 'Vendor created successfully'
                 });
             } else {
                 await __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$src$2f$services$2f$api$2e$ts__$5b$client$5d$__$28$ecmascript$29$__["api"].vendors.update(editingId, formData);
                 pushToast({
                     type: 'success',
-                    title: 'Saved',
                     message: 'Vendor updated successfully'
                 });
             }
@@ -1259,7 +1252,6 @@ function VendorsManagement() {
             console.error('Error saving vendor:', error);
             pushToast({
                 type: 'error',
-                title: 'Save Failed',
                 message: 'Failed to save vendor'
             });
         } finally{

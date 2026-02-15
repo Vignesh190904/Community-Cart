@@ -1,4 +1,5 @@
 import { createContext, useContext, useEffect, useMemo, useState } from 'react';
+import { useToast } from '../components/ui/ToastProvider';
 
 // --- Interfaces ---
 export interface ProductLite {
@@ -46,6 +47,7 @@ export function CustomerStoreProvider({ children }: { children: React.ReactNode 
   const [cart, setCart] = useState<CartItem[]>([]);
   const [customerId, setCustomerId] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
+  const { showToast } = useToast();
 
   // Helper to get token safely (prefer context, fallback to local)
   const getToken = () => {
@@ -140,12 +142,17 @@ export function CustomerStoreProvider({ children }: { children: React.ReactNode 
 
         if (res.ok) {
           await fetchCart(); // Re-sync truth
+          showToast('Added to cart', 'success');
         } else {
           const err = await res.json();
-          alert(err.message || 'Could not add to cart');
+          if (err.code === 'MIXED_VENDOR') {
+            showToast("You can only add products from one vendor per order.", 'error');
+          } else {
+            showToast(err.message || 'Could not add to cart', 'error');
+          }
         }
       } catch (err) {
-        alert('ErrorMessage: Network error adding to cart');
+        showToast('Network error adding to cart', 'error');
       }
     } else {
       // LOCAL ADD
@@ -181,9 +188,14 @@ export function CustomerStoreProvider({ children }: { children: React.ReactNode 
 
         if (res.ok) {
           await fetchCart();
+          showToast('Cart updated', 'success');
         } else {
           const err = await res.json();
-          alert(err.message);
+          if (err.code === 'MIXED_VENDOR') {
+            showToast("You can only add products from one vendor per order.", 'error');
+          } else {
+            showToast(err.message || 'Failed to update quantity', 'error');
+          }
         }
       } catch (err) {
         console.error(err);

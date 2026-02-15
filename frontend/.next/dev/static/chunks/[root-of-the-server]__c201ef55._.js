@@ -672,11 +672,17 @@ __turbopack_context__.s([
 ]);
 var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/Community-Cart/frontend/node_modules/react/jsx-dev-runtime.js [client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/Community-Cart/frontend/node_modules/react/index.js [client] (ecmascript)");
+(()=>{
+    const e = new Error("Cannot find module 'react-hot-toast'");
+    e.code = 'MODULE_NOT_FOUND';
+    throw e;
+})();
 var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$src$2f$context$2f$AuthContext$2e$tsx__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/Community-Cart/frontend/src/context/AuthContext.tsx [client] (ecmascript)");
 // ... imports
 var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$src$2f$utils$2f$customerFetch$2e$ts__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/Community-Cart/frontend/src/utils/customerFetch.ts [client] (ecmascript)");
 ;
 var _s = __turbopack_context__.k.signature(), _s1 = __turbopack_context__.k.signature();
+;
 ;
 const CustomerStoreContext = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["createContext"])(undefined);
 const API_BASE = 'http://localhost:5000/api';
@@ -784,12 +790,17 @@ function CustomerStoreProvider({ children }) {
                 });
                 if (res.ok) {
                     await fetchCart(); // Re-sync truth
+                    toast.success('Added to cart');
                 } else {
                     const err = await res.json();
-                    alert(err.message || 'Could not add to cart');
+                    if (err.code === 'MIXED_VENDOR') {
+                        toast.error("You can only add products from one vendor per order.");
+                    } else {
+                        toast.error(err.message || 'Could not add to cart');
+                    }
                 }
             } catch (err) {
-                alert('ErrorMessage: Network error adding to cart');
+                toast.error('Network error adding to cart');
             }
         } else {
             // LOCAL ADD
@@ -833,9 +844,14 @@ function CustomerStoreProvider({ children }) {
                 });
                 if (res.ok) {
                     await fetchCart();
+                    toast.success('Cart updated');
                 } else {
                     const err = await res.json();
-                    alert(err.message);
+                    if (err.code === 'MIXED_VENDOR') {
+                        toast.error("You can only add products from one vendor per order.");
+                    } else {
+                        toast.error(err.message || 'Failed to update quantity');
+                    }
                 }
             } catch (err) {
                 console.error(err);
@@ -924,7 +940,7 @@ function CustomerStoreProvider({ children }) {
         children: children
     }, void 0, false, {
         fileName: "[project]/Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx",
-        lineNumber: 266,
+        lineNumber: 277,
         columnNumber: 10
     }, this);
 }

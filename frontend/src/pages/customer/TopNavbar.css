@@ -120,7 +120,7 @@ body.theme-dark .top-navbar__back-btn:active {
   background: transparent;
   border-radius: var(--radius-sm, 6px);
   cursor: pointer;
-  color: var(--primary, #2E7D32);
+  color: var(--error, #D32F2F);
   transition: background-color var(--motion-fast, 120ms) ease,
               color var(--motion-fast, 120ms) ease;
   -webkit-tap-highlight-color: transparent;

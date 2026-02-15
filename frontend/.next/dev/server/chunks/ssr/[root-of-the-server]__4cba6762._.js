@@ -138,7 +138,6 @@ function ProductSalesPage() {
             setError(err.message || 'Failed to load data');
             pushToast({
                 type: 'error',
-                title: 'Load Failed',
                 message: err.message
             });
         } finally{

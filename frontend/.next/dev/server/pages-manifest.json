@@ -3,6 +3,9 @@
   "/_app": "pages/_app.js",
   "/_document": "pages/_document.js",
   "/_error": "pages/_error.js",
+  "/admin/dashboard": "pages/admin/dashboard.js",
+  "/admin/vendor-edit": "pages/admin/vendor-edit.js",
+  "/admin/vendors": "pages/admin/vendors.js",
   "/customer/browse-products": "pages/customer/browse-products.js",
   "/customer/cart": "pages/customer/cart.js",
   "/customer/category": "pages/customer/category.js",
@@ -13,5 +16,13 @@
   "/customer/orders": "pages/customer/orders.js",
   "/customer/product-detail": "pages/customer/product-detail.js",
   "/customer/profile": "pages/customer/profile.js",
-  "/customer/signin": "pages/customer/signin.js"
+  "/customer/signin": "pages/customer/signin.js",
+  "/login": "pages/login.js",
+  "/vendor/dashboard": "pages/vendor/dashboard.js",
+  "/vendor/earnings": "pages/vendor/earnings.js",
+  "/vendor/inventory": "pages/vendor/inventory.js",
+  "/vendor/orders": "pages/vendor/orders.js",
+  "/vendor/ordershistory": "pages/vendor/ordershistory.js",
+  "/vendor/product-sales": "pages/vendor/product-sales.js",
+  "/vendor/products": "pages/vendor/products.js"
 }

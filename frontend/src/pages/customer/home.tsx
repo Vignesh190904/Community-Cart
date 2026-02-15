@@ -264,12 +264,12 @@ export default function HomePage() {
         <CustomerLayout disablePadding={true}>
             <div className="home-container">
                 {/* Section 1: Search Bar */}
-                <section className="home-search-section">
+                {/*<section className="home-search-section">
                     <SearchBar
                         value={searchTerm}
                         onChange={setSearchTerm}
                     />
-                </section>
+                </section>*/}
 
                 {/* Section 2: Hero Banner */}
                 <section className="home-hero-section">
@@ -280,8 +280,8 @@ export default function HomePage() {
                     />
                     <div className="home-hero-overlay">
                         <h2 className="home-hero-text">
-                            Trusted Products<br />
-                            Trusted Vendors
+                            Trusted Vendors<br />
+                            Trusted Products
                         </h2>
                     </div>
                 </section>

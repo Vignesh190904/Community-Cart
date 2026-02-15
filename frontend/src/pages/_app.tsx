@@ -202,7 +202,6 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
       />
 
       <ToastProvider>
-        {/* FIX: AuthProvider must wrap CustomerStoreProvider so the store can access Auth context */}
         <AuthProvider>
           <CustomerStoreProvider>
             {content}

@@ -620,3 +620,1833 @@ https://nextjs.org/docs/messages/module-not-found
 [00:50:37.740] Server  LOG      ✓ Compiled in 62ms
 [00:50:53.720] Server  LOG      ✓ Compiled in 41ms
 [00:51:21.829] Server  LOG      ✓ Compiled in 50ms
+[00:57:58.470] Server  LOG      ✓ Compiled in 867ms
+[00:58:28.853] Server  LOG      ✓ Compiled in 213ms
+[00:58:31.352] Server  LOG      ✓ Compiled in 74ms
+[00:58:39.847] Server  LOG      ✓ Compiled in 35ms
+[00:58:40.896] Browser ERROR   ./Desktop/Community-Cart/frontend/src/pages/customer/TopNavbar.css:127:1
+Parsing CSS source code failed
+  125 |               color var(--motion-fast, 120ms) ease;
+  126 |   -webkit-tap-highlight-color: transparent;
+> 127 | }
+      | ^
+  128 |
+  129 | .top-navbar__action-btn:hover {
+  130 |   background-color: rgba(46, 125, 50, 0.08);
+
+Unexpected token CloseCurlyBracket
+
+Import trace:
+  Browser:
+    ./Desktop/Community-Cart/frontend/src/pages/customer/TopNavbar.css
+    ./Desktop/Community-Cart/frontend/src/pages/_app.tsx
+[00:58:40.897] Browser ERROR   ./Desktop/Community-Cart/frontend/src/pages/customer/TopNavbar.css:127:1
+Parsing CSS source code failed
+  125 |               color var(--motion-fast, 120ms) ease;
+  126 |   -webkit-tap-highlight-color: transparent;
+> 127 | }
+      | ^
+  128 |
+  129 | .top-navbar__action-btn:hover {
+  130 |   background-color: rgba(46, 125, 50, 0.08);
+
+Unexpected token CloseCurlyBracket
+
+Import trace:
+  Browser:
+    ./Desktop/Community-Cart/frontend/src/pages/customer/TopNavbar.css
+    ./Desktop/Community-Cart/frontend/src/pages/_app.tsx
+[00:58:44.498] Server  LOG      ✓ Compiled in 20ms
+[00:59:31.507] Server  LOG      ✓ Compiled in 212ms
+[00:59:40.262] Server  LOG      ✓ Compiled in 20ms
+[00:59:43.746] Server  LOG      ✓ Compiled in 28ms
+[00:59:48.753] Server  LOG      ✓ Compiled in 31ms
+[00:59:51.226] Server  LOG      ✓ Compiled in 26ms
+[01:02:11.400] Server  LOG      ✓ Compiled in 1405ms
+[01:02:14.151] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx:2:1
+Module not found: Can't resolve 'react-hot-toast'
+  1 | import { createContext, useContext, useEffect, useMemo, useState } from 'react';
+> 2 | import toast from 'react-hot-toast';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | // --- Interfaces ---
+  5 | export interface ProductLite {
+
+
+
+Import traces:
+  #1 [Browser]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/product-detail.tsx
+
+  #2 [SSR]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/_app.tsx
+
+  #3 [SSR]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/product-detail.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:02:14.179] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx:2:1
+Module not found: Can't resolve 'react-hot-toast'
+  1 | import { createContext, useContext, useEffect, useMemo, useState } from 'react';
+> 2 | import toast from 'react-hot-toast';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | // --- Interfaces ---
+  5 | export interface ProductLite {
+
+
+
+Import traces:
+  #1 [Browser]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/product-detail.tsx
+
+  #2 [SSR]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/_app.tsx
+
+  #3 [SSR]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/product-detail.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:02:14.188] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx:2:1
+Module not found: Can't resolve 'react-hot-toast'
+  1 | import { createContext, useContext, useEffect, useMemo, useState } from 'react';
+> 2 | import toast from 'react-hot-toast';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | // --- Interfaces ---
+  5 | export interface ProductLite {
+
+
+
+Import traces:
+  #1 [Browser]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/product-detail.tsx
+
+  #2 [SSR]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/_app.tsx
+
+  #3 [SSR]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/product-detail.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:02:14.198] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx:2:1
+Module not found: Can't resolve 'react-hot-toast'
+  1 | import { createContext, useContext, useEffect, useMemo, useState } from 'react';
+> 2 | import toast from 'react-hot-toast';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | // --- Interfaces ---
+  5 | export interface ProductLite {
+
+
+
+Import traces:
+  #1 [Browser]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/product-detail.tsx
+
+  #2 [SSR]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/_app.tsx
+
+  #3 [SSR]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/product-detail.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:02:14.210] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx:2:1
+Module not found: Can't resolve 'react-hot-toast'
+  1 | import { createContext, useContext, useEffect, useMemo, useState } from 'react';
+> 2 | import toast from 'react-hot-toast';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | // --- Interfaces ---
+  5 | export interface ProductLite {
+
+
+
+Import traces:
+  #1 [Browser]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/product-detail.tsx
+
+  #2 [SSR]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/_app.tsx
+
+  #3 [SSR]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/product-detail.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:02:14.214] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx:2:1
+Module not found: Can't resolve 'react-hot-toast'
+  1 | import { createContext, useContext, useEffect, useMemo, useState } from 'react';
+> 2 | import toast from 'react-hot-toast';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | // --- Interfaces ---
+  5 | export interface ProductLite {
+
+
+
+Import traces:
+  #1 [Browser]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/product-detail.tsx
+
+  #2 [SSR]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/_app.tsx
+
+  #3 [SSR]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/product-detail.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:02:14.221] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx:2:1
+Module not found: Can't resolve 'react-hot-toast'
+  1 | import { createContext, useContext, useEffect, useMemo, useState } from 'react';
+> 2 | import toast from 'react-hot-toast';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | // --- Interfaces ---
+  5 | export interface ProductLite {
+
+
+
+Import traces:
+  #1 [Browser]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/product-detail.tsx
+
+  #2 [SSR]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/_app.tsx
+
+  #3 [SSR]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/product-detail.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:02:14.226] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx:2:1
+Module not found: Can't resolve 'react-hot-toast'
+  1 | import { createContext, useContext, useEffect, useMemo, useState } from 'react';
+> 2 | import toast from 'react-hot-toast';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | // --- Interfaces ---
+  5 | export interface ProductLite {
+
+
+
+Import traces:
+  #1 [Browser]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/product-detail.tsx
+
+  #2 [SSR]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/_app.tsx
+
+  #3 [SSR]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/product-detail.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:02:14.235] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx:2:1
+Module not found: Can't resolve 'react-hot-toast'
+  1 | import { createContext, useContext, useEffect, useMemo, useState } from 'react';
+> 2 | import toast from 'react-hot-toast';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | // --- Interfaces ---
+  5 | export interface ProductLite {
+
+
+
+Import traces:
+  #1 [Browser]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/cart.tsx
+
+  #2 [SSR]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/_app.tsx
+
+  #3 [SSR]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/cart.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:02:14.242] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx:2:1
+Module not found: Can't resolve 'react-hot-toast'
+  1 | import { createContext, useContext, useEffect, useMemo, useState } from 'react';
+> 2 | import toast from 'react-hot-toast';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | // --- Interfaces ---
+  5 | export interface ProductLite {
+
+
+
+Import traces:
+  #1 [Browser]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/cart.tsx
+
+  #2 [SSR]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/_app.tsx
+
+  #3 [SSR]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/cart.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:02:14.248] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx:2:1
+Module not found: Can't resolve 'react-hot-toast'
+  1 | import { createContext, useContext, useEffect, useMemo, useState } from 'react';
+> 2 | import toast from 'react-hot-toast';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | // --- Interfaces ---
+  5 | export interface ProductLite {
+
+
+
+Import traces:
+  #1 [Browser]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/cart.tsx
+
+  #2 [SSR]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/_app.tsx
+
+  #3 [SSR]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/cart.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:02:14.253] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx:2:1
+Module not found: Can't resolve 'react-hot-toast'
+  1 | import { createContext, useContext, useEffect, useMemo, useState } from 'react';
+> 2 | import toast from 'react-hot-toast';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | // --- Interfaces ---
+  5 | export interface ProductLite {
+
+
+
+Import traces:
+  #1 [Browser]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/cart.tsx
+
+  #2 [SSR]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/_app.tsx
+
+  #3 [SSR]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/cart.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:02:14.260] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx:2:1
+Module not found: Can't resolve 'react-hot-toast'
+  1 | import { createContext, useContext, useEffect, useMemo, useState } from 'react';
+> 2 | import toast from 'react-hot-toast';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | // --- Interfaces ---
+  5 | export interface ProductLite {
+
+
+
+Import traces:
+  #1 [Browser]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/cart.tsx
+
+  #2 [SSR]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/_app.tsx
+
+  #3 [SSR]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/cart.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:02:14.264] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx:2:1
+Module not found: Can't resolve 'react-hot-toast'
+  1 | import { createContext, useContext, useEffect, useMemo, useState } from 'react';
+> 2 | import toast from 'react-hot-toast';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | // --- Interfaces ---
+  5 | export interface ProductLite {
+
+
+
+Import traces:
+  #1 [Browser]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/cart.tsx
+
+  #2 [SSR]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/_app.tsx
+
+  #3 [SSR]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/cart.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:02:14.269] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx:2:1
+Module not found: Can't resolve 'react-hot-toast'
+  1 | import { createContext, useContext, useEffect, useMemo, useState } from 'react';
+> 2 | import toast from 'react-hot-toast';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | // --- Interfaces ---
+  5 | export interface ProductLite {
+
+
+
+Import traces:
+  #1 [Browser]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/cart.tsx
+
+  #2 [SSR]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/_app.tsx
+
+  #3 [SSR]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/cart.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:02:14.275] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx:2:1
+Module not found: Can't resolve 'react-hot-toast'
+  1 | import { createContext, useContext, useEffect, useMemo, useState } from 'react';
+> 2 | import toast from 'react-hot-toast';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | // --- Interfaces ---
+  5 | export interface ProductLite {
+
+
+
+Import traces:
+  #1 [Browser]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/cart.tsx
+
+  #2 [SSR]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/_app.tsx
+
+  #3 [SSR]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/cart.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:02:14.277] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx:2:1
+Module not found: Can't resolve 'react-hot-toast'
+  1 | import { createContext, useContext, useEffect, useMemo, useState } from 'react';
+> 2 | import toast from 'react-hot-toast';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | // --- Interfaces ---
+  5 | export interface ProductLite {
+
+
+
+Import trace:
+  SSR:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/_app.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:02:14.281] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx:2:1
+Module not found: Can't resolve 'react-hot-toast'
+  1 | import { createContext, useContext, useEffect, useMemo, useState } from 'react';
+> 2 | import toast from 'react-hot-toast';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | // --- Interfaces ---
+  5 | export interface ProductLite {
+
+
+
+Import trace:
+  SSR:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/_app.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:02:14.285] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx:2:1
+Module not found: Can't resolve 'react-hot-toast'
+  1 | import { createContext, useContext, useEffect, useMemo, useState } from 'react';
+> 2 | import toast from 'react-hot-toast';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | // --- Interfaces ---
+  5 | export interface ProductLite {
+
+
+
+Import trace:
+  SSR:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/_app.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:02:14.287] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx:2:1
+Module not found: Can't resolve 'react-hot-toast'
+  1 | import { createContext, useContext, useEffect, useMemo, useState } from 'react';
+> 2 | import toast from 'react-hot-toast';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | // --- Interfaces ---
+  5 | export interface ProductLite {
+
+
+
+Import trace:
+  SSR:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/_app.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:02:14.291] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx:2:1
+Module not found: Can't resolve 'react-hot-toast'
+  1 | import { createContext, useContext, useEffect, useMemo, useState } from 'react';
+> 2 | import toast from 'react-hot-toast';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | // --- Interfaces ---
+  5 | export interface ProductLite {
+
+
+
+Import traces:
+  #1 [Browser]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/category.tsx
+
+  #2 [SSR]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/_app.tsx
+
+  #3 [SSR]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/category.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:02:14.296] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx:2:1
+Module not found: Can't resolve 'react-hot-toast'
+  1 | import { createContext, useContext, useEffect, useMemo, useState } from 'react';
+> 2 | import toast from 'react-hot-toast';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | // --- Interfaces ---
+  5 | export interface ProductLite {
+
+
+
+Import traces:
+  #1 [Browser]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/category.tsx
+
+  #2 [SSR]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/_app.tsx
+
+  #3 [SSR]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/category.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:02:14.297] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx:2:1
+Module not found: Can't resolve 'react-hot-toast'
+  1 | import { createContext, useContext, useEffect, useMemo, useState } from 'react';
+> 2 | import toast from 'react-hot-toast';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | // --- Interfaces ---
+  5 | export interface ProductLite {
+
+
+
+Import traces:
+  #1 [Browser]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/category.tsx
+
+  #2 [SSR]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/_app.tsx
+
+  #3 [SSR]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/category.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:02:14.300] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx:2:1
+Module not found: Can't resolve 'react-hot-toast'
+  1 | import { createContext, useContext, useEffect, useMemo, useState } from 'react';
+> 2 | import toast from 'react-hot-toast';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | // --- Interfaces ---
+  5 | export interface ProductLite {
+
+
+
+Import traces:
+  #1 [Browser]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/category.tsx
+
+  #2 [SSR]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/_app.tsx
+
+  #3 [SSR]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/category.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:02:14.303] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx:2:1
+Module not found: Can't resolve 'react-hot-toast'
+  1 | import { createContext, useContext, useEffect, useMemo, useState } from 'react';
+> 2 | import toast from 'react-hot-toast';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | // --- Interfaces ---
+  5 | export interface ProductLite {
+
+
+
+Import traces:
+  #1 [Browser]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/category.tsx
+
+  #2 [SSR]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/_app.tsx
+
+  #3 [SSR]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/category.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:02:14.306] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx:2:1
+Module not found: Can't resolve 'react-hot-toast'
+  1 | import { createContext, useContext, useEffect, useMemo, useState } from 'react';
+> 2 | import toast from 'react-hot-toast';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | // --- Interfaces ---
+  5 | export interface ProductLite {
+
+
+
+Import traces:
+  #1 [Browser]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/category.tsx
+
+  #2 [SSR]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/_app.tsx
+
+  #3 [SSR]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/category.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:02:14.309] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx:2:1
+Module not found: Can't resolve 'react-hot-toast'
+  1 | import { createContext, useContext, useEffect, useMemo, useState } from 'react';
+> 2 | import toast from 'react-hot-toast';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | // --- Interfaces ---
+  5 | export interface ProductLite {
+
+
+
+Import traces:
+  #1 [Browser]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/category.tsx
+
+  #2 [SSR]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/_app.tsx
+
+  #3 [SSR]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/category.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:02:14.310] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx:2:1
+Module not found: Can't resolve 'react-hot-toast'
+  1 | import { createContext, useContext, useEffect, useMemo, useState } from 'react';
+> 2 | import toast from 'react-hot-toast';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | // --- Interfaces ---
+  5 | export interface ProductLite {
+
+
+
+Import traces:
+  #1 [Browser]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/category.tsx
+
+  #2 [SSR]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/_app.tsx
+
+  #3 [SSR]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/category.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:02:14.314] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx:2:1
+Module not found: Can't resolve 'react-hot-toast'
+  1 | import { createContext, useContext, useEffect, useMemo, useState } from 'react';
+> 2 | import toast from 'react-hot-toast';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | // --- Interfaces ---
+  5 | export interface ProductLite {
+
+
+
+Import traces:
+  #1 [Browser]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx
+
+  #2 [SSR]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/_app.tsx
+
+  #3 [SSR]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:02:14.320] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx:2:1
+Module not found: Can't resolve 'react-hot-toast'
+  1 | import { createContext, useContext, useEffect, useMemo, useState } from 'react';
+> 2 | import toast from 'react-hot-toast';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | // --- Interfaces ---
+  5 | export interface ProductLite {
+
+
+
+Import traces:
+  #1 [Browser]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx
+
+  #2 [SSR]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/_app.tsx
+
+  #3 [SSR]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:02:14.322] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx:2:1
+Module not found: Can't resolve 'react-hot-toast'
+  1 | import { createContext, useContext, useEffect, useMemo, useState } from 'react';
+> 2 | import toast from 'react-hot-toast';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | // --- Interfaces ---
+  5 | export interface ProductLite {
+
+
+
+Import traces:
+  #1 [Browser]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx
+
+  #2 [SSR]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/_app.tsx
+
+  #3 [SSR]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:02:14.327] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx:2:1
+Module not found: Can't resolve 'react-hot-toast'
+  1 | import { createContext, useContext, useEffect, useMemo, useState } from 'react';
+> 2 | import toast from 'react-hot-toast';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | // --- Interfaces ---
+  5 | export interface ProductLite {
+
+
+
+Import traces:
+  #1 [Browser]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx
+
+  #2 [SSR]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/_app.tsx
+
+  #3 [SSR]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:02:14.330] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx:2:1
+Module not found: Can't resolve 'react-hot-toast'
+  1 | import { createContext, useContext, useEffect, useMemo, useState } from 'react';
+> 2 | import toast from 'react-hot-toast';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | // --- Interfaces ---
+  5 | export interface ProductLite {
+
+
+
+Import traces:
+  #1 [Browser]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx
+
+  #2 [SSR]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/_app.tsx
+
+  #3 [SSR]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:02:14.332] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx:2:1
+Module not found: Can't resolve 'react-hot-toast'
+  1 | import { createContext, useContext, useEffect, useMemo, useState } from 'react';
+> 2 | import toast from 'react-hot-toast';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | // --- Interfaces ---
+  5 | export interface ProductLite {
+
+
+
+Import traces:
+  #1 [Browser]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx
+
+  #2 [SSR]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/_app.tsx
+
+  #3 [SSR]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:02:14.339] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx:2:1
+Module not found: Can't resolve 'react-hot-toast'
+  1 | import { createContext, useContext, useEffect, useMemo, useState } from 'react';
+> 2 | import toast from 'react-hot-toast';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | // --- Interfaces ---
+  5 | export interface ProductLite {
+
+
+
+Import traces:
+  #1 [Browser]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx
+
+  #2 [SSR]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/_app.tsx
+
+  #3 [SSR]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:02:14.341] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx:2:1
+Module not found: Can't resolve 'react-hot-toast'
+  1 | import { createContext, useContext, useEffect, useMemo, useState } from 'react';
+> 2 | import toast from 'react-hot-toast';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | // --- Interfaces ---
+  5 | export interface ProductLite {
+
+
+
+Import traces:
+  #1 [Browser]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx
+
+  #2 [SSR]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/_app.tsx
+
+  #3 [SSR]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/home.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:02:14.344] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx:2:1
+Module not found: Can't resolve 'react-hot-toast'
+  1 | import { createContext, useContext, useEffect, useMemo, useState } from 'react';
+> 2 | import toast from 'react-hot-toast';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | // --- Interfaces ---
+  5 | export interface ProductLite {
+
+
+
+Import traces:
+  #1 [Browser]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/orders.tsx
+
+  #2 [SSR]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/_app.tsx
+
+  #3 [SSR]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/orders.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:02:14.347] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx:2:1
+Module not found: Can't resolve 'react-hot-toast'
+  1 | import { createContext, useContext, useEffect, useMemo, useState } from 'react';
+> 2 | import toast from 'react-hot-toast';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | // --- Interfaces ---
+  5 | export interface ProductLite {
+
+
+
+Import traces:
+  #1 [Browser]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/orders.tsx
+
+  #2 [SSR]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/_app.tsx
+
+  #3 [SSR]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/orders.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:02:14.349] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx:2:1
+Module not found: Can't resolve 'react-hot-toast'
+  1 | import { createContext, useContext, useEffect, useMemo, useState } from 'react';
+> 2 | import toast from 'react-hot-toast';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | // --- Interfaces ---
+  5 | export interface ProductLite {
+
+
+
+Import traces:
+  #1 [Browser]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/orders.tsx
+
+  #2 [SSR]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/_app.tsx
+
+  #3 [SSR]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/orders.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:02:14.352] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx:2:1
+Module not found: Can't resolve 'react-hot-toast'
+  1 | import { createContext, useContext, useEffect, useMemo, useState } from 'react';
+> 2 | import toast from 'react-hot-toast';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | // --- Interfaces ---
+  5 | export interface ProductLite {
+
+
+
+Import traces:
+  #1 [Browser]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/orders.tsx
+
+  #2 [SSR]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/_app.tsx
+
+  #3 [SSR]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/orders.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:02:14.356] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx:2:1
+Module not found: Can't resolve 'react-hot-toast'
+  1 | import { createContext, useContext, useEffect, useMemo, useState } from 'react';
+> 2 | import toast from 'react-hot-toast';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | // --- Interfaces ---
+  5 | export interface ProductLite {
+
+
+
+Import traces:
+  #1 [Browser]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/orders.tsx
+
+  #2 [SSR]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/_app.tsx
+
+  #3 [SSR]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/orders.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:02:14.358] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx:2:1
+Module not found: Can't resolve 'react-hot-toast'
+  1 | import { createContext, useContext, useEffect, useMemo, useState } from 'react';
+> 2 | import toast from 'react-hot-toast';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | // --- Interfaces ---
+  5 | export interface ProductLite {
+
+
+
+Import traces:
+  #1 [Browser]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/orders.tsx
+
+  #2 [SSR]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/_app.tsx
+
+  #3 [SSR]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/orders.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:02:14.359] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx:2:1
+Module not found: Can't resolve 'react-hot-toast'
+  1 | import { createContext, useContext, useEffect, useMemo, useState } from 'react';
+> 2 | import toast from 'react-hot-toast';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | // --- Interfaces ---
+  5 | export interface ProductLite {
+
+
+
+Import traces:
+  #1 [Browser]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/orders.tsx
+
+  #2 [SSR]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/_app.tsx
+
+  #3 [SSR]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/orders.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:02:14.362] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx:2:1
+Module not found: Can't resolve 'react-hot-toast'
+  1 | import { createContext, useContext, useEffect, useMemo, useState } from 'react';
+> 2 | import toast from 'react-hot-toast';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | // --- Interfaces ---
+  5 | export interface ProductLite {
+
+
+
+Import traces:
+  #1 [Browser]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/orders.tsx
+
+  #2 [SSR]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/_app.tsx
+
+  #3 [SSR]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/orders.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:02:14.365] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx:2:1
+Module not found: Can't resolve 'react-hot-toast'
+  1 | import { createContext, useContext, useEffect, useMemo, useState } from 'react';
+> 2 | import toast from 'react-hot-toast';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | // --- Interfaces ---
+  5 | export interface ProductLite {
+
+
+
+Import traces:
+  Browser:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/_app.tsx
+
+  SSR:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/_app.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:02:14.366] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx:2:1
+Module not found: Can't resolve 'react-hot-toast'
+  1 | import { createContext, useContext, useEffect, useMemo, useState } from 'react';
+> 2 | import toast from 'react-hot-toast';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | // --- Interfaces ---
+  5 | export interface ProductLite {
+
+
+
+Import traces:
+  Browser:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/_app.tsx
+
+  SSR:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/_app.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:02:14.369] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx:2:1
+Module not found: Can't resolve 'react-hot-toast'
+  1 | import { createContext, useContext, useEffect, useMemo, useState } from 'react';
+> 2 | import toast from 'react-hot-toast';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | // --- Interfaces ---
+  5 | export interface ProductLite {
+
+
+
+Import traces:
+  Browser:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/_app.tsx
+
+  SSR:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/_app.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:02:14.371] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx:2:1
+Module not found: Can't resolve 'react-hot-toast'
+  1 | import { createContext, useContext, useEffect, useMemo, useState } from 'react';
+> 2 | import toast from 'react-hot-toast';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | // --- Interfaces ---
+  5 | export interface ProductLite {
+
+
+
+Import traces:
+  Browser:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/_app.tsx
+
+  SSR:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/_app.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:02:14.374] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx:2:1
+Module not found: Can't resolve 'react-hot-toast'
+  1 | import { createContext, useContext, useEffect, useMemo, useState } from 'react';
+> 2 | import toast from 'react-hot-toast';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | // --- Interfaces ---
+  5 | export interface ProductLite {
+
+
+
+Import traces:
+  Browser:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/_app.tsx
+
+  SSR:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/_app.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:02:14.376] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx:2:1
+Module not found: Can't resolve 'react-hot-toast'
+  1 | import { createContext, useContext, useEffect, useMemo, useState } from 'react';
+> 2 | import toast from 'react-hot-toast';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | // --- Interfaces ---
+  5 | export interface ProductLite {
+
+
+
+Import traces:
+  Browser:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/_app.tsx
+
+  SSR:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/_app.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:02:14.378] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx:2:1
+Module not found: Can't resolve 'react-hot-toast'
+  1 | import { createContext, useContext, useEffect, useMemo, useState } from 'react';
+> 2 | import toast from 'react-hot-toast';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | // --- Interfaces ---
+  5 | export interface ProductLite {
+
+
+
+Import traces:
+  Browser:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/_app.tsx
+
+  SSR:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/_app.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:02:14.379] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx:2:1
+Module not found: Can't resolve 'react-hot-toast'
+  1 | import { createContext, useContext, useEffect, useMemo, useState } from 'react';
+> 2 | import toast from 'react-hot-toast';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | // --- Interfaces ---
+  5 | export interface ProductLite {
+
+
+
+Import traces:
+  Browser:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/_app.tsx
+
+  SSR:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/_app.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:02:14.385] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx:2:1
+Module not found: Can't resolve 'react-hot-toast'
+  1 | import { createContext, useContext, useEffect, useMemo, useState } from 'react';
+> 2 | import toast from 'react-hot-toast';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | // --- Interfaces ---
+  5 | export interface ProductLite {
+
+
+
+Import traces:
+  Browser:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/_app.tsx
+
+  SSR:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/_app.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:02:14.388] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx:2:1
+Module not found: Can't resolve 'react-hot-toast'
+  1 | import { createContext, useContext, useEffect, useMemo, useState } from 'react';
+> 2 | import toast from 'react-hot-toast';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | // --- Interfaces ---
+  5 | export interface ProductLite {
+
+
+
+Import traces:
+  Browser:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/_app.tsx
+
+  SSR:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/_app.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:02:14.391] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx:2:1
+Module not found: Can't resolve 'react-hot-toast'
+  1 | import { createContext, useContext, useEffect, useMemo, useState } from 'react';
+> 2 | import toast from 'react-hot-toast';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | // --- Interfaces ---
+  5 | export interface ProductLite {
+
+
+
+Import traces:
+  Browser:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/_app.tsx
+
+  SSR:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/_app.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:02:14.395] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx:2:1
+Module not found: Can't resolve 'react-hot-toast'
+  1 | import { createContext, useContext, useEffect, useMemo, useState } from 'react';
+> 2 | import toast from 'react-hot-toast';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | // --- Interfaces ---
+  5 | export interface ProductLite {
+
+
+
+Import traces:
+  Browser:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/_app.tsx
+
+  SSR:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/_app.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:02:14.398] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx:2:1
+Module not found: Can't resolve 'react-hot-toast'
+  1 | import { createContext, useContext, useEffect, useMemo, useState } from 'react';
+> 2 | import toast from 'react-hot-toast';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | // --- Interfaces ---
+  5 | export interface ProductLite {
+
+
+
+Import traces:
+  Browser:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/_app.tsx
+
+  SSR:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/_app.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:02:14.399] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx:2:1
+Module not found: Can't resolve 'react-hot-toast'
+  1 | import { createContext, useContext, useEffect, useMemo, useState } from 'react';
+> 2 | import toast from 'react-hot-toast';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | // --- Interfaces ---
+  5 | export interface ProductLite {
+
+
+
+Import traces:
+  Browser:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/_app.tsx
+
+  SSR:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/_app.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:02:14.401] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx:2:1
+Module not found: Can't resolve 'react-hot-toast'
+  1 | import { createContext, useContext, useEffect, useMemo, useState } from 'react';
+> 2 | import toast from 'react-hot-toast';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | // --- Interfaces ---
+  5 | export interface ProductLite {
+
+
+
+Import traces:
+  Browser:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/_app.tsx
+
+  SSR:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/_app.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:02:14.404] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx:2:1
+Module not found: Can't resolve 'react-hot-toast'
+  1 | import { createContext, useContext, useEffect, useMemo, useState } from 'react';
+> 2 | import toast from 'react-hot-toast';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | // --- Interfaces ---
+  5 | export interface ProductLite {
+
+
+
+Import traces:
+  Browser:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/_app.tsx
+
+  SSR:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/_app.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:02:14.408] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx:2:1
+Module not found: Can't resolve 'react-hot-toast'
+  1 | import { createContext, useContext, useEffect, useMemo, useState } from 'react';
+> 2 | import toast from 'react-hot-toast';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | // --- Interfaces ---
+  5 | export interface ProductLite {
+
+
+
+Import traces:
+  #1 [Browser]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/browse-products.tsx
+
+  #2 [SSR]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/_app.tsx
+
+  #3 [SSR]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/browse-products.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:02:14.410] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx:2:1
+Module not found: Can't resolve 'react-hot-toast'
+  1 | import { createContext, useContext, useEffect, useMemo, useState } from 'react';
+> 2 | import toast from 'react-hot-toast';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | // --- Interfaces ---
+  5 | export interface ProductLite {
+
+
+
+Import traces:
+  #1 [Browser]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/browse-products.tsx
+
+  #2 [SSR]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/_app.tsx
+
+  #3 [SSR]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/browse-products.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:02:14.415] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx:2:1
+Module not found: Can't resolve 'react-hot-toast'
+  1 | import { createContext, useContext, useEffect, useMemo, useState } from 'react';
+> 2 | import toast from 'react-hot-toast';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | // --- Interfaces ---
+  5 | export interface ProductLite {
+
+
+
+Import traces:
+  #1 [Browser]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/browse-products.tsx
+
+  #2 [SSR]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/_app.tsx
+
+  #3 [SSR]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/browse-products.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:02:14.417] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx:2:1
+Module not found: Can't resolve 'react-hot-toast'
+  1 | import { createContext, useContext, useEffect, useMemo, useState } from 'react';
+> 2 | import toast from 'react-hot-toast';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | // --- Interfaces ---
+  5 | export interface ProductLite {
+
+
+
+Import traces:
+  #1 [Browser]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/browse-products.tsx
+
+  #2 [SSR]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/_app.tsx
+
+  #3 [SSR]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/browse-products.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:02:14.419] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx:2:1
+Module not found: Can't resolve 'react-hot-toast'
+  1 | import { createContext, useContext, useEffect, useMemo, useState } from 'react';
+> 2 | import toast from 'react-hot-toast';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | // --- Interfaces ---
+  5 | export interface ProductLite {
+
+
+
+Import traces:
+  #1 [Browser]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/browse-products.tsx
+
+  #2 [SSR]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/_app.tsx
+
+  #3 [SSR]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/browse-products.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:02:14.422] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx:2:1
+Module not found: Can't resolve 'react-hot-toast'
+  1 | import { createContext, useContext, useEffect, useMemo, useState } from 'react';
+> 2 | import toast from 'react-hot-toast';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | // --- Interfaces ---
+  5 | export interface ProductLite {
+
+
+
+Import traces:
+  #1 [Browser]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/browse-products.tsx
+
+  #2 [SSR]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/_app.tsx
+
+  #3 [SSR]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/browse-products.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:02:14.427] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx:2:1
+Module not found: Can't resolve 'react-hot-toast'
+  1 | import { createContext, useContext, useEffect, useMemo, useState } from 'react';
+> 2 | import toast from 'react-hot-toast';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | // --- Interfaces ---
+  5 | export interface ProductLite {
+
+
+
+Import traces:
+  #1 [Browser]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/browse-products.tsx
+
+  #2 [SSR]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/_app.tsx
+
+  #3 [SSR]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/browse-products.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:02:14.429] Server  ERROR    ⨯ ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx:2:1
+Module not found: Can't resolve 'react-hot-toast'
+  1 | import { createContext, useContext, useEffect, useMemo, useState } from 'react';
+> 2 | import toast from 'react-hot-toast';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | // --- Interfaces ---
+  5 | export interface ProductLite {
+
+
+
+Import traces:
+  #1 [Browser]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/browse-products.tsx
+
+  #2 [SSR]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/_app.tsx
+
+  #3 [SSR]:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/customer/browse-products.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:02:14.434] Server  LOG      ✓ Compiled in 1443ms
+[01:02:14.883] Browser ERROR   ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx:2:1
+Module not found: Can't resolve 'react-hot-toast'
+  1 | import { createContext, useContext, useEffect, useMemo, useState } from 'react';
+> 2 | import toast from 'react-hot-toast';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | // --- Interfaces ---
+  5 | export interface ProductLite {
+
+Import trace:
+  SSR:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/_app.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+[01:02:14.883] Browser ERROR   ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx:2:1
+Module not found: Can't resolve 'react-hot-toast'
+  1 | import { createContext, useContext, useEffect, useMemo, useState } from 'react';
+> 2 | import toast from 'react-hot-toast';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | // --- Interfaces ---
+  5 | export interface ProductLite {
+
+Import traces:
+  Browser:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/_app.tsx
+
+  SSR:
+    ./Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx
+    ./Desktop/Community-Cart/frontend/src/pages/_app.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+[01:02:36.223] Server  LOG      ✓ Compiled in 231ms
+[01:49:41.788] Server  LOG      ✓ Compiled in 410ms
+[01:54:52.040] Server  LOG      ✓ Compiled in 754ms
+[01:54:55.961] Server  LOG      ✓ Compiled in 167ms
+[01:54:59.289] Server  LOG      ✓ Compiled in 46ms
+[01:55:01.660] Server  LOG      ✓ Compiled in 67ms
+[01:56:13.209] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[01:57:22.257] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[01:57:31.149] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[01:57:49.337] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[01:58:01.135] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[01:58:32.350] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior

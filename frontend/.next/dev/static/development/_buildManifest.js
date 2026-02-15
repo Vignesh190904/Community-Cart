@@ -5,6 +5,15 @@ self.__BUILD_MANIFEST = {
   "/_error": [
     "static/chunks/pages/_error.js"
   ],
+  "/admin/dashboard": [
+    "static/chunks/pages/admin/dashboard.js"
+  ],
+  "/admin/vendor-edit": [
+    "static/chunks/pages/admin/vendor-edit.js"
+  ],
+  "/admin/vendors": [
+    "static/chunks/pages/admin/vendors.js"
+  ],
   "/customer/browse-products": [
     "static/chunks/pages/customer/browse-products.js"
   ],
@@ -37,6 +46,30 @@ self.__BUILD_MANIFEST = {
   ],
   "/customer/signin": [
     "static/chunks/pages/customer/signin.js"
+  ],
+  "/login": [
+    "static/chunks/pages/login.js"
+  ],
+  "/vendor/dashboard": [
+    "static/chunks/pages/vendor/dashboard.js"
+  ],
+  "/vendor/earnings": [
+    "static/chunks/pages/vendor/earnings.js"
+  ],
+  "/vendor/inventory": [
+    "static/chunks/pages/vendor/inventory.js"
+  ],
+  "/vendor/orders": [
+    "static/chunks/pages/vendor/orders.js"
+  ],
+  "/vendor/ordershistory": [
+    "static/chunks/pages/vendor/ordershistory.js"
+  ],
+  "/vendor/product-sales": [
+    "static/chunks/pages/vendor/product-sales.js"
+  ],
+  "/vendor/products": [
+    "static/chunks/pages/vendor/products.js"
   ],
   "__rewrites": {
     "afterFiles": [],

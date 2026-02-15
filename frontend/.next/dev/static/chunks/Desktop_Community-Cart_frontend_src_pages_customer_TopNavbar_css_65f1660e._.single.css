@@ -99,7 +99,7 @@ body.theme-dark .top-navbar__back-btn:hover, body.theme-dark .top-navbar__back-b
   cursor: pointer;
   min-width: 40px;
   height: 32px;
-  color: var(--primary, #2e7d32);
+  color: var(--error, #d32f2f);
   transition: background-color var(--motion-fast, .12s) ease, color var(--motion-fast, .12s) ease;
   -webkit-tap-highlight-color: transparent;
   background: none;

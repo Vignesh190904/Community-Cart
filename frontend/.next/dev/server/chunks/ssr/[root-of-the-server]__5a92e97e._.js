@@ -1006,9 +1006,11 @@ __turbopack_context__.s([
 ]);
 var __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__ = __turbopack_context__.i("[externals]/react/jsx-dev-runtime [external] (react/jsx-dev-runtime, cjs)");
 var __TURBOPACK__imported__module__$5b$externals$5d2f$react__$5b$external$5d$__$28$react$2c$__cjs$29$__ = __turbopack_context__.i("[externals]/react [external] (react, cjs)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$src$2f$components$2f$ui$2f$ToastProvider$2e$tsx__$5b$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/Community-Cart/frontend/src/components/ui/ToastProvider.tsx [ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$src$2f$context$2f$AuthContext$2e$tsx__$5b$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/Community-Cart/frontend/src/context/AuthContext.tsx [ssr] (ecmascript)");
 // ... imports
 var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$src$2f$utils$2f$customerFetch$2e$ts__$5b$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/Community-Cart/frontend/src/utils/customerFetch.ts [ssr] (ecmascript)");
+;
 ;
 ;
 const CustomerStoreContext = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react__$5b$external$5d$__$28$react$2c$__cjs$29$__["createContext"])(undefined);
@@ -1022,6 +1024,7 @@ function CustomerStoreProvider({ children }) {
     const [cart, setCart] = (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react__$5b$external$5d$__$28$react$2c$__cjs$29$__["useState"])([]);
     const [customerId, setCustomerId] = (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react__$5b$external$5d$__$28$react$2c$__cjs$29$__["useState"])(null);
     const [isLoading, setIsLoading] = (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react__$5b$external$5d$__$28$react$2c$__cjs$29$__["useState"])(false);
+    const { showToast } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$src$2f$components$2f$ui$2f$ToastProvider$2e$tsx__$5b$ssr$5d$__$28$ecmascript$29$__["useToast"])();
     // Helper to get token safely (prefer context, fallback to local)
     const getToken = ()=>{
         return token || (("TURBOPACK compile-time falsy", 0) ? "TURBOPACK unreachable" : null);
@@ -1111,12 +1114,17 @@ function CustomerStoreProvider({ children }) {
                 });
                 if (res.ok) {
                     await fetchCart(); // Re-sync truth
+                    showToast('Added to cart', 'success');
                 } else {
                     const err = await res.json();
-                    alert(err.message || 'Could not add to cart');
+                    if (err.code === 'MIXED_VENDOR') {
+                        showToast("You can only add products from one vendor per order.", 'error');
+                    } else {
+                        showToast(err.message || 'Could not add to cart', 'error');
+                    }
                 }
             } catch (err) {
-                alert('ErrorMessage: Network error adding to cart');
+                showToast('Network error adding to cart', 'error');
             }
         } else {
             // LOCAL ADD
@@ -1160,9 +1168,14 @@ function CustomerStoreProvider({ children }) {
                 });
                 if (res.ok) {
                     await fetchCart();
+                    showToast('Cart updated', 'success');
                 } else {
                     const err = await res.json();
-                    alert(err.message);
+                    if (err.code === 'MIXED_VENDOR') {
+                        showToast("You can only add products from one vendor per order.", 'error');
+                    } else {
+                        showToast(err.message || 'Failed to update quantity', 'error');
+                    }
                 }
             } catch (err) {
                 console.error(err);
@@ -1243,7 +1256,7 @@ function CustomerStoreProvider({ children }) {
         children: children
     }, void 0, false, {
         fileName: "[project]/Desktop/Community-Cart/frontend/src/context/CustomerStore.tsx",
-        lineNumber: 266,
+        lineNumber: 278,
         columnNumber: 10
     }, this);
 }
@@ -1431,12 +1444,12 @@ function MyApp({ Component, pageProps }) {
                         children: content
                     }, void 0, false, {
                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/_app.tsx",
-                        lineNumber: 207,
+                        lineNumber: 206,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/_app.tsx",
-                    lineNumber: 206,
+                    lineNumber: 205,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
