@@ -2,7 +2,14 @@
   "/": "pages/index.js",
   "/_app": "pages/_app.js",
   "/_document": "pages/_document.js",
+  "/customer/browse-products": "pages/customer/browse-products.js",
+  "/customer/cart": "pages/customer/cart.js",
+  "/customer/category": "pages/customer/category.js",
+  "/customer/checkout": "pages/customer/checkout.js",
+  "/customer/edit-profile": "pages/customer/edit-profile.js",
+  "/customer/favorites": "pages/customer/favorites.js",
   "/customer/home": "pages/customer/home.js",
+  "/customer/orders": "pages/customer/orders.js",
   "/customer/profile": "pages/customer/profile.js",
   "/customer/signin": "pages/customer/signin.js"
 }

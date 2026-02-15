@@ -450,8 +450,8 @@ function CheckoutPage() {
             addressId: selectedAddrObj._id
         };
         // Requirement: Log the FULL payload being sent
-        console.log('Place Order clicked');
-        console.log('Place Order Payload:', payload);
+        // console.log('Place Order clicked');
+        // console.log('Place Order Payload:', payload);
         try {
             const token = localStorage.getItem('auth_token');
             const res = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$src$2f$utils$2f$customerFetch$2e$ts__$5b$ssr$5d$__$28$ecmascript$29$__["customerFetch"])('http://localhost:5000/api/orders', {

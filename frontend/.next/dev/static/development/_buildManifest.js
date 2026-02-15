@@ -2,8 +2,29 @@ self.__BUILD_MANIFEST = {
   "/": [
     "static/chunks/pages/index.js"
   ],
+  "/customer/browse-products": [
+    "static/chunks/pages/customer/browse-products.js"
+  ],
+  "/customer/cart": [
+    "static/chunks/pages/customer/cart.js"
+  ],
+  "/customer/category": [
+    "static/chunks/pages/customer/category.js"
+  ],
+  "/customer/checkout": [
+    "static/chunks/pages/customer/checkout.js"
+  ],
+  "/customer/edit-profile": [
+    "static/chunks/pages/customer/edit-profile.js"
+  ],
+  "/customer/favorites": [
+    "static/chunks/pages/customer/favorites.js"
+  ],
   "/customer/home": [
     "static/chunks/pages/customer/home.js"
+  ],
+  "/customer/orders": [
+    "static/chunks/pages/customer/orders.js"
   ],
   "/customer/profile": [
     "static/chunks/pages/customer/profile.js"

@@ -1,0 +1,51 @@
+/* SearchBar Component Styles */
+
+.customer-search-bar {
+    height: 50px;
+    border-radius: 25px;
+    border: 1px solid black;
+    padding: 10px 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 10px 16px;
+    width: calc(100% - 32px);
+    transition: border-color 0.3s ease;
+}
+
+/* Light theme background */
+.customer-search-bar {
+    background: #dddddd;
+}
+
+/* Dark theme background */
+body.theme-dark .customer-search-bar {
+    background: #3C3C3C;
+}
+
+/* Border hover and focus-within behavior */
+.customer-search-bar:hover,
+.customer-search-bar:focus-within {
+    border-color: var(--primary);
+}
+
+/* Search icon */
+.customer-search-icon {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+}
+
+/* Input field */
+.customer-search-input {
+    flex: 1;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 16px;
+    color: var(--text-primary);
+}
+
+.customer-search-input::placeholder {
+    color: var(--text-disabled);
+}

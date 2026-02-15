@@ -1,35 +1,5 @@
-[00:00:01.746] Server  LOG      ✓ Ready in 1216ms
-[00:00:08.552] Browser LOG     API BASE: http://192.168.1.6:5000
-[00:00:08.552] Browser LOG     API BASE: http://192.168.1.6:5000
-[00:00:25.757] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[00:01:27.771] Server  WARN     ⚠ Cross origin request detected from 192.168.1.6 to /_next/* resource. In a future major version of Next.js, you will need to explicitly configure "allowedDevOrigins" in next.config to allow this.
-Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allowedDevOrigins
-[00:04:06.276] Server  LOG      ✓ Compiled in 158ms
-[00:04:26.055] Browser ERROR   Warning: Extra attributes from the server: %s%s __gchrome_uniqueid 
-input
-div
-div
-div
-div
-SignIn@http://192.168.1.6:4646/_next/static/chunks/%5Broot-of-the-server%5D__d345a59e._.js:879:204
-CustomerStoreProvider@http://192.168.1.6:4646/_next/static/chunks/%5Broot-of-the-server%5D__9a799526._.js:1576:7
-AuthProvider@http://192.168.1.6:4646/_next/static/chunks/%5Broot-of-the-server%5D__9a799526._.js:729:7
-ToastProvider@http://192.168.1.6:4646/_next/static/chunks/%5Broot-of-the-server%5D__9a799526._.js:1390:8
-MyApp@http://192.168.1.6:4646/_next/static/chunks/%5Broot-of-the-server%5D__9a799526._.js:1907:7
-PathnameContextProviderAdapter@http://192.168.1.6:4646/_next/static/chunks/48ebd_next_dist_shared_lib_2dd775c2._.js:5052:59
-PagesDevOverlayErrorBoundary@http://192.168.1.6:4646/_next/static/chunks/48ebd_next_dist_6f9203da._.js:1142:14
-PagesDevOverlayBridge@http://192.168.1.6:4646/_next/static/chunks/48ebd_next_dist_6f9203da._.js:1920:29
-Container@
-AppContainer@http://192.168.1.6:4646/_next/static/chunks/48ebd_next_dist_client_990bb439._.js:3142:39
-Root@http://192.168.1.6:4646/_next/static/chunks/48ebd_next_dist_client_990bb439._.js:3348:26
-[00:04:26.056] Browser LOG     API BASE: http://192.168.1.6:5000
-[00:04:26.056] Browser LOG     API BASE: http://192.168.1.6:5000
-[00:04:41.971] Server  LOG      ✓ Compiled in 16ms
-[00:05:29.429] Server  LOG        Reload env: .env.local
-[00:05:29.505] Server  LOG      ✓ Compiled in 27ms
-[00:05:32.991] Server  LOG        Reload env: .env.local
-[00:05:33.053] Server  LOG      ✓ Compiled in 11ms
-[00:05:36.511] Server  LOG        Reload env: .env.local
-[00:05:36.570] Server  LOG      ✓ Compiled in 10ms
-[00:05:38.790] Server  LOG        Reload env: .env.local
-[00:05:38.819] Server  LOG      ✓ Compiled in 2ms
+[00:00:21.992] Server  LOG      ✓ Ready in 15.3s
+[00:00:25.123] Server  LOG      ○ Compiling / ...
+[00:00:49.039] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:00:49.039] Browser LOG     API BASE: http://localhost:5000
+[00:00:49.039] Browser LOG     API BASE: http://localhost:5000
