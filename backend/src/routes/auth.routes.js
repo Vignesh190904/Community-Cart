@@ -97,8 +97,14 @@ router.post('/register', async (req, res) => {
 
 router.post('/login', async (req, res) => {
   try {
-    const { email, password } = req.body;
+    const { password } = req.body;
+    let email = req.body.email;
+    if (email && typeof email === 'string') {
+      email = email.trim().toLowerCase();
+    }
+
     let user = await User.findOne({ email });
+
     let userData = null;
 
     if (user && user.isActive && await bcrypt.compare(password, user.password)) {
@@ -107,6 +113,7 @@ router.post('/login', async (req, res) => {
 
     if (!userData) {
       const vendor = await Vendor.findOne({ 'contact.email': email });
+
       if (vendor && vendor.isActive && await bcrypt.compare(password, vendor.password)) {
         userData = { id: vendor._id, name: vendor.storeName, email: vendor.contact.email, role: 'vendor' };
       }
@@ -114,6 +121,7 @@ router.post('/login', async (req, res) => {
 
     if (!userData) {
       const customer = await Customer.findOne({ email });
+
       if (customer && customer.isActive) {
         const stored = customer.password || customer.auth?.manual?.password_hash || '';
         if (await bcrypt.compare(password, stored)) {
@@ -122,13 +130,16 @@ router.post('/login', async (req, res) => {
       }
     }
 
-    if (!userData) return res.status(401).json({ success: false, message: 'Invalid credentials' });
+    if (!userData) {
+      return res.status(401).json({ success: false, message: 'Invalid credentials' });
+    }
 
     const auth_token = signToken({ _id: userData.id, role: userData.role });
 
     // Return token in body for client-side storage
     return res.json({ success: true, data: { user: userData, auth_token } });
   } catch (error) {
+    console.error("Login Error:", error);
     return res.status(500).json({ success: false, message: 'Login failed' });
   }
 });

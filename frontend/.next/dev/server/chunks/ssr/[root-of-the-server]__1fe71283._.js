@@ -417,14 +417,17 @@ const SkeletonOrderCard = ()=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$
                             className: "order-meta",
                             style: {
                                 display: 'flex',
-                                gap: '12px'
+                                gap: '12px',
+                                whiteSpace: 'nowrap',
+                                overflow: 'hidden'
                             },
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
                                     className: "skeleton skeleton-text",
                                     style: {
                                         width: '60px',
-                                        height: '1em'
+                                        height: '1em',
+                                        flexShrink: 0
                                     }
                                 }, void 0, false, {
                                     fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/orders.tsx",
@@ -777,6 +780,7 @@ function OrdersPage() {
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
                                                         className: "order-meta",
+                                                        title: `${order.totalItems} items from ${order.vendorName}`,
                                                         children: [
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("span", {
                                                                 className: "order-items",

@@ -121,6 +121,10 @@
     gap: 12px;
     font-size: 13px;
     color: #374151;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
 }
 
 .order-items {
@@ -133,6 +137,9 @@
     position: relative;
     padding-left: 13px;
     font-weight: 500;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .order-vendor::before {

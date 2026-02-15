@@ -1793,24 +1793,73 @@ body.theme-dark .filter-dropdown-chevron:before {
   resize: vertical;
 }
 
-.form-field-checkbox {
-  flex-direction: row;
+.vendor-checkbox-group {
   align-items: center;
-}
-
-.form-field-checkbox label {
-  cursor: pointer;
-  color: var(--text-primary);
-  align-items: center;
-  gap: 8px;
+  gap: 14px;
+  margin-top: 8px;
+  margin-bottom: 8px;
   display: flex;
 }
 
-.form-field-checkbox input[type="checkbox"] {
+.vendor-checkbox-label {
   cursor: pointer;
-  width: 18px;
-  height: 18px;
-  margin: 0;
+  -webkit-user-select: none;
+  user-select: none;
+  color: var(--text-primary);
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  font-weight: 500;
+  display: inline-flex;
+  position: relative;
+}
+
+.vendor-checkbox-input {
+  appearance: none;
+  border: 2px solid var(--border);
+  background-color: var(--bg-main);
+  cursor: pointer;
+  border-radius: 6px;
+  flex-shrink: 0;
+  width: 22px;
+  height: 12px;
+  transition: all .2s cubic-bezier(.4, 0, .2, 1);
+  position: relative;
+}
+
+.vendor-checkbox-input:checked {
+  background-color: var(--success);
+  border-color: var(--success);
+  box-shadow: 0 2px 5px #2e7d3233;
+}
+
+.vendor-checkbox-input:checked:after {
+  border: 2.5px solid #fff;
+  border-width: 0 2.5px 2.5px 0;
+  width: 6px;
+  height: 12px;
+  position: absolute;
+  top: 2px;
+  left: 6px;
+  transform: rotate(45deg);
+}
+
+.vendor-checkbox-input:hover {
+  border-color: var(--text-secondary);
+}
+
+.vendor-checkbox-input:checked:hover {
+  border-color: var(--success);
+  opacity: .95;
+}
+
+.vendor-checkbox-input:focus {
+  outline: 2px solid color-mix(in srgb, var(--success) 30%, transparent);
+  outline-offset: 2px;
+}
+
+.vendor-checkbox-text {
+  line-height: 1.4;
 }
 
 .form-field-full {
@@ -7958,46 +8007,6 @@ body.splash-active {
   font-weight: 700;
 }
 
-.category-search-section {
-  z-index: 10;
-  background-color: #fff;
-  padding: 0 16px;
-  position: sticky;
-  top: 0;
-}
-
-.category-search-container {
-  align-items: center;
-  display: flex;
-  position: relative;
-}
-
-.category-search-icon {
-  color: #9ca3af;
-  width: 20px;
-  height: 20px;
-  position: absolute;
-  left: 16px;
-}
-
-.category-search-input {
-  width: 100%;
-  color: var(--text-primary);
-  background-color: #f9fafb;
-  border: 1px solid #f3f4f6;
-  border-radius: 24px;
-  outline: none;
-  padding: 12px 16px 12px 48px;
-  font-size: 14px;
-  transition: all .2s;
-}
-
-.category-search-input:focus {
-  border-color: var(--primary);
-  background-color: #fff;
-  box-shadow: 0 0 0 2px #2e7d321a;
-}
-
 .category-products-section {
   padding: 0 16px;
 }
@@ -8135,10 +8144,14 @@ body.splash-active {
 
 .order-meta {
   color: #374151;
+  white-space: nowrap;
+  text-overflow: ellipsis;
   align-items: center;
   gap: 12px;
+  width: 100%;
   font-size: 13px;
   display: flex;
+  overflow: hidden;
 }
 
 .order-items {
@@ -8148,9 +8161,12 @@ body.splash-active {
 
 .order-vendor {
   color: #111827;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   padding-left: 13px;
   font-weight: 500;
   position: relative;
+  overflow: hidden;
 }
 
 .order-vendor:before {

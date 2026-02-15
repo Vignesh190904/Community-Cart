@@ -216,12 +216,10 @@ export default function CategoryPage() {
             <div className="category-page-container">
 
                 {/* Search */}
-                <section className="category-search-section">
-                    <SearchBar
-                        value={searchQuery}
-                        onChange={setSearchQuery}
-                    />
-                </section>
+                <SearchBar
+                    value={searchQuery}
+                    onChange={setSearchQuery}
+                />
 
                 {/* Featured Products Header */}
                 <section className="category-products-section">

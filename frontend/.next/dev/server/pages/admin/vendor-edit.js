@@ -1,6 +1,6 @@
 var R=require("../../chunks/ssr/[turbopack]_runtime.js")("server/pages/admin/vendor-edit.js")
 R.c("server/chunks/ssr/48ebd_next_dist_68404b24._.js")
-R.c("server/chunks/ssr/[root-of-the-server]__11273ce2._.js")
+R.c("server/chunks/ssr/[root-of-the-server]__57af5a44._.js")
 R.c("server/chunks/ssr/48ebd_20ee6e54._.js")
 R.c("server/chunks/ssr/[root-of-the-server]__e6a4d965._.js")
 R.c("server/chunks/ssr/48ebd_cd3b7d96._.js")

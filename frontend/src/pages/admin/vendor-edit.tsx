@@ -2,6 +2,9 @@ import { useEffect, useMemo, useState } from 'react';
 import { useRouter } from 'next/router';
 import { api, setAuthToken } from '../../services/api';
 import { useToast } from '../../components/ui/ToastProvider';
+import { CATEGORIES } from '../../constants/categories';
+
+const capitalize = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
 
 interface VendorForm {
   storeName: string;
@@ -46,7 +49,7 @@ export default function AdminVendorEditPage() {
     setLoading(true);
     (async () => {
       try {
-        const data = await api.vendors.getById(vendorId, { includePassword: true });
+        const data = await api.vendors.getById(vendorId); // REMOVED includePassword: true
         const extra = (data.extra || {}) as Record<string, any>;
         const next: VendorForm = {
           storeName: data.storeName || '',
@@ -64,7 +67,7 @@ export default function AdminVendorEditPage() {
           operatingHours: (extra.operatingHours as string) || '',
           weeklyOffNote: (extra.weeklyOffNote as string) || '',
           logoUrl: data.media?.logoUrl || '',
-          password: data.password || '',
+          password: '', // Initialize to empty string, DO NOT fetch existing hash
           isActive: data.isActive !== false,
         };
         setForm(next);
@@ -160,7 +163,12 @@ export default function AdminVendorEditPage() {
         },
         isActive: form.isActive,
       };
-      if (form.password) payload.password = form.password;
+
+      // Only include password if user typed a new one
+      if (form.password && form.password.trim() !== '') {
+        payload.password = form.password;
+      }
+
       const updated = await api.vendors.update(vendorId, payload);
       const extra = (updated.extra || {}) as Record<string, any>;
       const next: VendorForm = {
@@ -236,13 +244,39 @@ export default function AdminVendorEditPage() {
           </div>
           <div className="form-field">
             <label>Vendor Category</label>
-            <input type="text" value={form.vendorType} onChange={(e) => setField('vendorType', e.target.value)} aria-invalid={!!errors.vendorType} />
+            <select
+              required
+              value={form.vendorType || ''}
+              onChange={(e) => setField('vendorType', e.target.value)}
+              aria-invalid={!!errors.vendorType}
+            >
+              <option value="">Select Category</option>
+              {CATEGORIES.map(category => (
+                <option key={category} value={category}>
+                  {capitalize(category)}
+                </option>
+              ))}
+            </select>
             {errors.vendorType && <div className="field-error">{errors.vendorType}</div>}
           </div>
           <div className="form-field">
             <label>Vendor Login Email</label>
             <input type="email" value={form.contactEmail} onChange={(e) => setField('contactEmail', e.target.value)} aria-invalid={!!errors.contactEmail} />
             {errors.contactEmail && <div className="field-error">{errors.contactEmail}</div>}
+          </div>
+          <div className="form-field">
+            <label>Change Password</label>
+            <div className="password-input-wrapper">
+              <input
+                type="password"
+                autoComplete="new-password"
+                placeholder="Enter new password to change (leave blank to keep)"
+                value={form.password}
+                onChange={(e) => setField('password', e.target.value)}
+                aria-invalid={!!errors.password}
+              />
+            </div>
+            {errors.password && <div className="field-error">{errors.password}</div>}
           </div>
         </div>
       </section>

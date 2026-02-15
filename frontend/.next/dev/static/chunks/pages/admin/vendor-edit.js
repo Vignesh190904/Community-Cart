@@ -1,5 +1,5 @@
 __turbopack_load_page_chunks__("/admin/vendor-edit", [
-  "static/chunks/[root-of-the-server]__70680c78._.js",
+  "static/chunks/[root-of-the-server]__d5874e35._.js",
   "static/chunks/48ebd_next_dist_compiled_f7b2f49b._.js",
   "static/chunks/48ebd_next_dist_shared_lib_34884197._.js",
   "static/chunks/48ebd_next_dist_client_3b8c5f9d._.js",
@@ -10,5 +10,5 @@ __turbopack_load_page_chunks__("/admin/vendor-edit", [
   "static/chunks/48ebd_react-dom_43235666._.js",
   "static/chunks/48ebd_c0e1799f._.js",
   "static/chunks/Desktop_Community-Cart_frontend_src_pages_admin_vendor-edit_tsx_2da965e7._.js",
-  "static/chunks/88e7d_Community-Cart_frontend_src_pages_admin_vendor-edit_tsx_16d9f5e1._.js"
+  "static/chunks/88e7d_Community-Cart_frontend_src_pages_admin_vendor-edit_tsx_a74be165._.js"
 ])

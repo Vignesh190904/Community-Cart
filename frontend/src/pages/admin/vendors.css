@@ -413,6 +413,8 @@
   color: var(--text-secondary);
 }
 
+
+
 .form-field input,
 .form-field select,
 .form-field textarea {
@@ -441,24 +443,79 @@
   resize: vertical;
 }
 
-.form-field-checkbox {
-  flex-direction: row;
-  align-items: center;
-}
-
-.form-field-checkbox label {
+/* Custom Checkbox Design */
+.vendor-checkbox-group {
   display: flex;
+  gap: 14px;
   align-items: center;
-  gap: 8px;
-  cursor: pointer;
-  color: var(--text-primary);
+  margin-top: 8px;
+  margin-bottom: 8px;
 }
 
-.form-field-checkbox input[type='checkbox'] {
-  width: 18px;
-  height: 18px;
+.vendor-checkbox-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
   cursor: pointer;
-  margin: 0;
+  user-select: none;
+  font-size: 14px;
+  color: var(--text-primary);
+  font-weight: 500;
+  position: relative;
+}
+
+/* Hidden native input but accessible */
+.vendor-checkbox-input {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 22px;
+  height: 12px;
+  border: 2px solid var(--border);
+  border-radius: 6px;
+  background-color: var(--bg-main);
+  cursor: pointer;
+  position: relative;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  flex-shrink: 0;
+}
+
+/* Checked State - Primary Green */
+.vendor-checkbox-input:checked {
+  background-color: var(--success);
+  border-color: var(--success);
+  box-shadow: 0 2px 5px rgba(46, 125, 50, 0.2);
+}
+
+/* Checkmark Icon */
+.vendor-checkbox-input:checked::after {
+  position: absolute;
+  left: 6px;
+  top: 2px;
+  width: 6px;
+  height: 12px;
+  border: solid white;
+  border-width: 0 2.5px 2.5px 0;
+  transform: rotate(45deg);
+}
+
+/* Hover State */
+.vendor-checkbox-input:hover {
+  border-color: var(--text-secondary);
+}
+
+.vendor-checkbox-input:checked:hover {
+  border-color: var(--success);
+  opacity: 0.95;
+}
+
+/* Focus State */
+.vendor-checkbox-input:focus {
+  outline: 2px solid color-mix(in srgb, var(--success) 30%, transparent);
+  outline-offset: 2px;
+}
+
+.vendor-checkbox-text {
+  line-height: 1.4;
 }
 
 .form-field-full {
@@ -526,17 +583,21 @@
   .vendors-filters {
     gap: 12px;
   }
+
   .filters-row-1,
   .filters-row-2 {
     flex-direction: column;
     align-items: stretch;
   }
+
   .vendor-search-wrapper {
     max-width: none;
   }
+
   .vendors-stats {
     grid-template-columns: repeat(2, 1fr);
   }
+
   .form-grid {
     grid-template-columns: 1fr;
   }
@@ -548,12 +609,15 @@
     align-items: flex-start;
     gap: 12px;
   }
+
   .vendors-stats {
     grid-template-columns: 1fr;
   }
+
   .vendors-table-wrap {
     overflow-x: auto;
   }
+
   .vendors-table {
     min-width: 600px;
   }

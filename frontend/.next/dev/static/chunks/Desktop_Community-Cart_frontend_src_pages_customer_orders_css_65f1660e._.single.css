@@ -112,10 +112,14 @@
 
 .order-meta {
   color: #374151;
+  white-space: nowrap;
+  text-overflow: ellipsis;
   align-items: center;
   gap: 12px;
+  width: 100%;
   font-size: 13px;
   display: flex;
+  overflow: hidden;
 }
 
 .order-items {
@@ -125,9 +129,12 @@
 
 .order-vendor {
   color: #111827;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   padding-left: 13px;
   font-weight: 500;
   position: relative;
+  overflow: hidden;
 }
 
 .order-vendor:before {

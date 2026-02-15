@@ -35,8 +35,8 @@ const SkeletonOrderCard = () => (
             <div className="order-info" style={{ flex: 1 }}>
                 <div className="skeleton skeleton-text" style={{ width: '120px', height: '1.2em', marginBottom: '8px' }}></div>
                 <div className="skeleton skeleton-text" style={{ width: '180px', height: '1em', marginBottom: '8px' }}></div>
-                <div className="order-meta" style={{ display: 'flex', gap: '12px' }}>
-                    <div className="skeleton skeleton-text" style={{ width: '60px', height: '1em' }}></div>
+                <div className="order-meta" style={{ display: 'flex', gap: '12px', whiteSpace: 'nowrap', overflow: 'hidden' }}>
+                    <div className="skeleton skeleton-text" style={{ width: '60px', height: '1em', flexShrink: 0 }}></div>
                     <div className="skeleton skeleton-text" style={{ width: '80px', height: '1em' }}></div>
                 </div>
                 <div className="skeleton skeleton-text" style={{ width: '100px', height: '0.8em', marginTop: '4px' }}></div>
@@ -236,7 +236,7 @@ export default function OrdersPage() {
                                     <div className="order-id">{order.id}</div>
                                     <div className="order-date">{order.placedDate}</div>
 
-                                    <div className="order-meta">
+                                    <div className="order-meta" title={`${order.totalItems} items from ${order.vendorName}`}>
                                         <span className="order-items">{order.totalItems} items</span>
                                         <span className="order-vendor">{order.vendorName}</span>
                                     </div>

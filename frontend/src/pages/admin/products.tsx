@@ -1,6 +1,9 @@
 import { useState, useEffect, useMemo } from 'react';
 import { api } from '../../services/api';
 import { useToast } from '../../components/ui/ToastProvider';
+import { CATEGORIES } from '../../constants/categories';
+
+const capitalize = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
 
 interface Product {
   _id: string;
@@ -28,7 +31,7 @@ export default function AdminInventory() {
   const [products, setProducts] = useState<Product[]>([]);
   const [vendors, setVendors] = useState<Vendor[]>([]);
   const [loading, setLoading] = useState(false);
-  
+
   // Filters
   const [vendorSearch, setVendorSearch] = useState<string>('');
   const [productSearch, setProductSearch] = useState<string>('');
@@ -54,7 +57,7 @@ export default function AdminInventory() {
       setVendors(vendorsData);
     } catch (error) {
       console.error('Error loading data:', error);
-      pushToast({ type: 'error', title: 'Load Failed', message: 'Failed to load inventory data' });
+      pushToast({ type: 'error', message: 'Failed to load inventory data' });
     } finally {
       setLoading(false);
     }
@@ -258,8 +261,8 @@ export default function AdminInventory() {
                   className="filter-select"
                 >
                   <option value="all">All Categories</option>
-                  {categories.map(cat => (
-                    <option key={cat} value={cat}>{cat}</option>
+                  {CATEGORIES.map(cat => (
+                    <option key={cat} value={cat}>{capitalize(cat)}</option>
                   ))}
                 </select>
               </div>
@@ -391,9 +394,8 @@ export default function AdminInventory() {
                       <td>₹{product.price.toFixed(2)}</td>
                       <td>
                         <span
-                          className={`stock-badge ${
-                            product.stock === 0 ? 'out' : product.stock <= 10 ? 'low' : 'good'
-                          }`}
+                          className={`stock-badge ${product.stock === 0 ? 'out' : product.stock <= 10 ? 'low' : 'good'
+                            }`}
                         >
                           {product.stock}
                         </span>

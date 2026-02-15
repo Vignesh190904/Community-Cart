@@ -9,6 +9,19 @@ import { customerFetch } from '../../utils/customerFetch';
 import AppLoading from './apploading';
 import { SkeletonProductCard } from '../../components/customer/SkeletonProductCard';
 import SearchBar from './search_bar';
+import { CATEGORIES as CANONICAL_CATEGORIES } from '../../constants/categories';
+
+const capitalize = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
+
+const CATEGORY_META: Record<string, { icon: string, color: string, iconColor: string }> = {
+    grocery: { icon: '/customer/assets/icons/grocery2.svg', color: '#EDE7F6', iconColor: '#7E57C2' },
+    vegetables: { icon: '/customer/assets/icons/vegies.svg', color: '#E8F5E9', iconColor: '#4CAF50' },
+    fruits: { icon: '/customer/assets/icons/fruits.svg', color: '#FFEBEE', iconColor: '#EF5350' },
+    pharmacy: { icon: '/customer/assets/icons/pharmacy.svg', color: '#E0F7FA', iconColor: '#00ACC1' },
+    bakery: { icon: '/customer/assets/icons/bakery.svg', color: '#FCE4EC', iconColor: '#EC407A' },
+    laundry: { icon: '/customer/assets/icons/laundry.svg', color: '#E3F2FD', iconColor: '#2196F3' },
+    electronics: { icon: '/customer/assets/icons/electronics.svg', color: '#FFF3E0', iconColor: '#FF9800' },
+};
 
 // --- Product Interface ---
 
@@ -35,14 +48,11 @@ interface Product {
     updatedAt?: string;
 }
 
-const CATEGORIES = [
-    { id: '1', label: 'Grocery', icon: '/customer/assets/icons/grocery.svg', color: '#F3E8FF' },
-    { id: '2', label: 'Vegies', icon: '/customer/assets/icons/vegies.svg', color: '#DCFCE7' },
-    { id: '3', label: 'Fruits', icon: '/customer/assets/icons/fruits.svg', color: '#FFEDD5' },
-    { id: '4', label: 'Bakery', icon: '/customer/assets/icons/bakery.svg', color: '#FEE2E2' },
-    { id: '5', label: 'Pharmacy', icon: '/customer/assets/icons/pharmacy.svg', color: '#E0F7FA' },
-    { id: '6', label: 'Laundry', icon: '/customer/assets/icons/laundry.svg', color: '#F3F4F6' },
-];
+const CATEGORIES_LIST = CANONICAL_CATEGORIES.map(name => ({
+    name,
+    ...CATEGORY_META[name]
+}));
+
 
 
 
@@ -289,17 +299,17 @@ export default function HomePage() {
                 {/* Section 3: Categories */}
                 <section className="home-category-section">
                     <div className="home-category-row">
-                        {CATEGORIES.map((cat) => (
+                        {CATEGORIES_LIST.map((cat) => (
                             <Link
-                                key={cat.id}
-                                href={`/customer/category?type=${cat.label.toLowerCase()}`}
+                                key={cat.name}
+                                href={`/customer/category?type=${cat.name}`}
                                 style={{ textDecoration: 'none' }}
                             >
                                 <div className="home-category-item touchable">
                                     <div className="home-category-icon-wrapper" style={{ backgroundColor: cat.color }}>
-                                        <img src={cat.icon} alt={cat.label} style={{ width: '24px', height: '24px' }} />
+                                        <img src={cat.icon} alt={cat.name} style={{ width: '24px', height: '24px' }} />
                                     </div>
-                                    <span className="home-category-label">{cat.label}</span>
+                                    <span className="home-category-label">{capitalize(cat.name)}</span>
                                 </div>
                             </Link>
                         ))}

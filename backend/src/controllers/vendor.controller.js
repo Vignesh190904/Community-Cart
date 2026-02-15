@@ -204,10 +204,8 @@ export const getVendorEarnings = async (req, res) => {
 
 export const getVendorById = async (req, res) => {
   try {
-    const includePassword = req.query.includePassword === 'true';
-    let query = Vendor.findById(req.params.id);
-    if (!includePassword) query = query.select('-password');
-    const vendor = await query;
+    // Always exclude password, do not allow it to be requested
+    const vendor = await Vendor.findById(req.params.id).select('-password');
     if (!vendor) return res.status(404).json({ error: 'Vendor not found' });
     res.status(200).json(vendor);
   } catch (error) {
@@ -218,8 +216,12 @@ export const getVendorById = async (req, res) => {
 export const updateVendor = async (req, res) => {
   try {
     // Hash password if it's being updated
-    if (req.body.password) {
+    // Hash password ONLY if it is provided and not empty
+    if (req.body.password && req.body.password.trim() !== '') {
       req.body.password = await bcrypt.hash(req.body.password, 10);
+    } else {
+      // If password is empty or not provided, remove it from update to prevent overwriting
+      delete req.body.password;
     }
     const vendor = await Vendor.findByIdAndUpdate(
       req.params.id,

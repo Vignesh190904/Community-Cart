@@ -1,17 +1,31 @@
 import mongoose from 'mongoose';
+import CATEGORIES from '../constants/categories.js';
 
 const vendorSchema = new mongoose.Schema(
   {
     /* ---------- Basic Identity ---------- */
     storeName: String,
     ownerName: String,
-    vendorType: String, // grocery, restaurant, pharmacy, etc.
+    vendorType: {
+      type: String,
+      enum: {
+        values: CATEGORIES,
+        message: '{VALUE} is not a supported vendor category'
+      },
+      lowercase: true,
+      trim: true,
+      default: 'grocery'
+    },
 
     /* ---------- Contact ---------- */
     contact: {
       phone: String,
       alternatePhone: String,
-      email: String,
+      email: {
+        type: String,
+        lowercase: true,
+        trim: true,
+      },
       whatsapp: String,
     },
 
@@ -90,7 +104,7 @@ const vendorSchema = new mongoose.Schema(
 );
 
 // Virtual field for backward compatibility
-vendorSchema.virtual('name').get(function() {
+vendorSchema.virtual('name').get(function () {
   return this.storeName;
 });
 

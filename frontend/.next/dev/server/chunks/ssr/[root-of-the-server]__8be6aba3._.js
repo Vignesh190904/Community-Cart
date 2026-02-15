@@ -695,16 +695,9 @@ function CategoryPage() {
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
                 className: "category-page-container",
                 children: [
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("section", {
-                        className: "category-search-section",
-                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$src$2f$pages$2f$customer$2f$search_bar$2e$tsx__$5b$ssr$5d$__$28$ecmascript$29$__["default"], {
-                            value: searchQuery,
-                            onChange: setSearchQuery
-                        }, void 0, false, {
-                            fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/category.tsx",
-                            lineNumber: 220,
-                            columnNumber: 21
-                        }, this)
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$src$2f$pages$2f$customer$2f$search_bar$2e$tsx__$5b$ssr$5d$__$28$ecmascript$29$__["default"], {
+                        value: searchQuery,
+                        onChange: setSearchQuery
                     }, void 0, false, {
                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/category.tsx",
                         lineNumber: 219,
@@ -721,7 +714,7 @@ function CategoryPage() {
                                         children: "Featured Products"
                                     }, void 0, false, {
                                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/category.tsx",
-                                        lineNumber: 229,
+                                        lineNumber: 227,
                                         columnNumber: 25
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("span", {
@@ -733,18 +726,18 @@ function CategoryPage() {
                                             height: 24
                                         }, void 0, false, {
                                             fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/category.tsx",
-                                            lineNumber: 230,
+                                            lineNumber: 228,
                                             columnNumber: 67
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/category.tsx",
-                                        lineNumber: 230,
+                                        lineNumber: 228,
                                         columnNumber: 25
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/category.tsx",
-                                lineNumber: 228,
+                                lineNumber: 226,
                                 columnNumber: 21
                             }, this),
                             loading ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
@@ -753,12 +746,12 @@ function CategoryPage() {
                                     length: 8
                                 }).map((_, idx)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$Community$2d$Cart$2f$frontend$2f$src$2f$components$2f$customer$2f$SkeletonProductCard$2e$tsx__$5b$ssr$5d$__$28$ecmascript$29$__["SkeletonProductCard"], {}, `skeleton-${idx}`, false, {
                                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/category.tsx",
-                                        lineNumber: 236,
+                                        lineNumber: 234,
                                         columnNumber: 33
                                     }, this))
                             }, void 0, false, {
                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/category.tsx",
-                                lineNumber: 234,
+                                lineNumber: 232,
                                 columnNumber: 25
                             }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["Fragment"], {
                                 children: [
@@ -785,12 +778,12 @@ function CategoryPage() {
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/category.tsx",
-                                                                lineNumber: 257,
+                                                                lineNumber: 255,
                                                                 columnNumber: 53
                                                             }, this),
                                                             !hasDiscount && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("span", {}, void 0, false, {
                                                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/category.tsx",
-                                                                lineNumber: 261,
+                                                                lineNumber: 259,
                                                                 columnNumber: 66
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("button", {
@@ -806,18 +799,18 @@ function CategoryPage() {
                                                                     }
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/category.tsx",
-                                                                    lineNumber: 266,
+                                                                    lineNumber: 264,
                                                                     columnNumber: 53
                                                                 }, this)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/category.tsx",
-                                                                lineNumber: 262,
+                                                                lineNumber: 260,
                                                                 columnNumber: 49
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/category.tsx",
-                                                        lineNumber: 255,
+                                                        lineNumber: 253,
                                                         columnNumber: 45
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
@@ -829,12 +822,12 @@ function CategoryPage() {
                                                             className: product.image ? 'product-image' : 'product-image-missing'
                                                         }, void 0, false, {
                                                             fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/category.tsx",
-                                                            lineNumber: 276,
+                                                            lineNumber: 274,
                                                             columnNumber: 49
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/category.tsx",
-                                                        lineNumber: 275,
+                                                        lineNumber: 273,
                                                         columnNumber: 45
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
@@ -846,7 +839,7 @@ function CategoryPage() {
                                                                 children: product.name
                                                             }, void 0, false, {
                                                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/category.tsx",
-                                                                lineNumber: 284,
+                                                                lineNumber: 282,
                                                                 columnNumber: 49
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("p", {
@@ -854,7 +847,7 @@ function CategoryPage() {
                                                                 children: product.quantity ? `${product.quantity} ${product.unit || ''}` : product.category || 'Product'
                                                             }, void 0, false, {
                                                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/category.tsx",
-                                                                lineNumber: 285,
+                                                                lineNumber: 283,
                                                                 columnNumber: 49
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
@@ -868,7 +861,7 @@ function CategoryPage() {
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/category.tsx",
-                                                                        lineNumber: 289,
+                                                                        lineNumber: 287,
                                                                         columnNumber: 53
                                                                     }, this),
                                                                     hasDiscount && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("span", {
@@ -885,19 +878,19 @@ function CategoryPage() {
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/category.tsx",
-                                                                        lineNumber: 291,
+                                                                        lineNumber: 289,
                                                                         columnNumber: 57
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/category.tsx",
-                                                                lineNumber: 288,
+                                                                lineNumber: 286,
                                                                 columnNumber: 49
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/category.tsx",
-                                                        lineNumber: 283,
+                                                        lineNumber: 281,
                                                         columnNumber: 45
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
@@ -912,14 +905,14 @@ function CategoryPage() {
                                                                     className: "product-cart-icon"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/category.tsx",
-                                                                    lineNumber: 309,
+                                                                    lineNumber: 307,
                                                                     columnNumber: 57
                                                                 }, this),
                                                                 "Add to cart"
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/category.tsx",
-                                                            lineNumber: 305,
+                                                            lineNumber: 303,
                                                             columnNumber: 53
                                                         }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
                                                             className: "product-qty-controls",
@@ -938,12 +931,12 @@ function CategoryPage() {
                                                                         alt: "Decrease"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/category.tsx",
-                                                                        lineNumber: 324,
+                                                                        lineNumber: 322,
                                                                         columnNumber: 61
                                                                     }, this)
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/category.tsx",
-                                                                    lineNumber: 314,
+                                                                    lineNumber: 312,
                                                                     columnNumber: 57
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("span", {
@@ -951,7 +944,7 @@ function CategoryPage() {
                                                                     children: qty
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/category.tsx",
-                                                                    lineNumber: 326,
+                                                                    lineNumber: 324,
                                                                     columnNumber: 57
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("button", {
@@ -962,35 +955,35 @@ function CategoryPage() {
                                                                         alt: "Increase"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/category.tsx",
-                                                                        lineNumber: 331,
+                                                                        lineNumber: 329,
                                                                         columnNumber: 61
                                                                     }, this)
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/category.tsx",
-                                                                    lineNumber: 327,
+                                                                    lineNumber: 325,
                                                                     columnNumber: 57
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/category.tsx",
-                                                            lineNumber: 313,
+                                                            lineNumber: 311,
                                                             columnNumber: 53
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/category.tsx",
-                                                        lineNumber: 303,
+                                                        lineNumber: 301,
                                                         columnNumber: 45
                                                     }, this)
                                                 ]
                                             }, product._id, true, {
                                                 fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/category.tsx",
-                                                lineNumber: 254,
+                                                lineNumber: 252,
                                                 columnNumber: 41
                                             }, this);
                                         })
                                     }, void 0, false, {
                                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/category.tsx",
-                                        lineNumber: 242,
+                                        lineNumber: 240,
                                         columnNumber: 29
                                     }, this),
                                     filteredProducts.length === 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
@@ -1002,7 +995,7 @@ function CategoryPage() {
                                         children: "No products found in this category."
                                     }, void 0, false, {
                                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/category.tsx",
-                                        lineNumber: 341,
+                                        lineNumber: 339,
                                         columnNumber: 33
                                     }, this)
                                 ]
@@ -1010,7 +1003,7 @@ function CategoryPage() {
                         ]
                     }, void 0, true, {
                         fileName: "[project]/Desktop/Community-Cart/frontend/src/pages/customer/category.tsx",
-                        lineNumber: 227,
+                        lineNumber: 225,
                         columnNumber: 17
                     }, this)
                 ]

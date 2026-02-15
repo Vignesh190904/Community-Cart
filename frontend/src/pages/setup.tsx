@@ -1,10 +1,13 @@
 import { useState, useEffect } from 'react';
 import { api } from '../services/api';
+import { CATEGORIES } from '../constants/categories';
+
+const capitalize = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
 
 export default function Setup() {
   const [activeTab, setActiveTab] = useState('vendor');
   const [vendors, setVendors] = useState([]);
-  
+
   const [vendorForm, setVendorForm] = useState({
     storeName: '',
     ownerName: '',
@@ -89,7 +92,7 @@ export default function Setup() {
       }));
     } else {
       setProductForm(prev => ({ ...prev, [name]: value }));
-      
+
       // Auto-populate category when vendor is selected
       if (name === 'vendor' && value) {
         const selectedVendor = vendors.find((v: any) => v._id === value);
@@ -117,7 +120,15 @@ export default function Setup() {
     e.preventDefault();
     setLoading(true);
     try {
-      await api.vendors.create(vendorForm);
+      // Normalize email before sending
+      const payload = {
+        ...vendorForm,
+        contact: {
+          ...vendorForm.contact,
+          email: vendorForm.contact.email.trim().toLowerCase()
+        }
+      };
+      await api.vendors.create(payload);
       setMessage('✅ Vendor created successfully!');
       setMessageType('success');
       setVendorForm({
@@ -217,7 +228,7 @@ export default function Setup() {
       {activeTab === 'vendor' && (
         <form onSubmit={handleVendorSubmit} className="form">
           <h2>Add New Vendor</h2>
-          
+
           <input
             type="text"
             name="storeName"
@@ -226,7 +237,7 @@ export default function Setup() {
             onChange={handleVendorChange}
             required
           />
-          
+
           <input
             type="text"
             name="ownerName"
@@ -241,11 +252,11 @@ export default function Setup() {
             value={vendorForm.vendorType}
             onChange={handleVendorChange}
           >
-            <option value="grocery">Grocery</option>
-            <option value="restaurant">Restaurant</option>
-            <option value="pharmacy">Pharmacy</option>
-            <option value="clothing">Clothing</option>
-            <option value="electronics">Electronics</option>
+            {CATEGORIES.map(category => (
+              <option key={category} value={category}>
+                {capitalize(category)}
+              </option>
+            ))}
           </select>
 
           <input
@@ -429,16 +440,16 @@ export default function Setup() {
               style={{ padding: '8px' }}
             />
             {imagePreview && (
-              <img 
-                src={imagePreview} 
-                alt="Preview" 
-                style={{ 
-                  width: '50px', 
-                  height: '50px', 
-                  objectFit: 'cover', 
+              <img
+                src={imagePreview}
+                alt="Preview"
+                style={{
+                  width: '50px',
+                  height: '50px',
+                  objectFit: 'cover',
                   border: '1px solid #ddd',
                   borderRadius: '4px'
-                }} 
+                }}
               />
             )}
           </div>

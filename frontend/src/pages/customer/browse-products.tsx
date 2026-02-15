@@ -8,6 +8,19 @@ import { customerFetch } from '../../utils/customerFetch';
 import { SkeletonProductCard } from '../../components/customer/SkeletonProductCard';
 import TopNavbar from './TopNavbar';
 import SearchBar from './search_bar';
+import { CATEGORIES as CANONICAL_CATEGORIES } from '../../constants/categories';
+
+const capitalize = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
+
+const CATEGORY_META: Record<string, { icon: string, color: string, iconColor: string }> = {
+    grocery: { icon: '/customer/assets/icons/grocery2.svg', color: '#EDE7F6', iconColor: '#7E57C2' },
+    vegetables: { icon: '/customer/assets/icons/vegies.svg', color: '#E8F5E9', iconColor: '#4CAF50' },
+    fruits: { icon: '/customer/assets/icons/fruits.svg', color: '#FFEBEE', iconColor: '#EF5350' },
+    pharmacy: { icon: '/customer/assets/icons/pharmacy.svg', color: '#E0F7FA', iconColor: '#00ACC1' },
+    bakery: { icon: '/customer/assets/icons/bakery.svg', color: '#FCE4EC', iconColor: '#EC407A' },
+    laundry: { icon: '/customer/assets/icons/laundry.svg', color: '#E3F2FD', iconColor: '#2196F3' },
+    electronics: { icon: '/customer/assets/icons/electronics.svg', color: '#FFF3E0', iconColor: '#FF9800' },
+};
 
 interface Product {
     _id: string;
@@ -25,14 +38,11 @@ interface Product {
 
 const API_BASE = 'http://localhost:5000/api';
 
-const CATEGORIES = [
-    { name: 'Grocery', icon: '/customer/assets/icons/grocery.svg', color: '#EDE7F6', iconColor: '#7E57C2' },
-    { name: 'Vegies', icon: '/customer/assets/icons/vegies.svg', color: '#E8F5E9', iconColor: '#4CAF50' },
-    { name: 'Fruits', icon: '/customer/assets/icons/fruits.svg', color: '#FFEBEE', iconColor: '#EF5350' },
-    { name: 'Bakery', icon: '/customer/assets/icons/bakery.svg', color: '#FCE4EC', iconColor: '#EC407A' },
-    { name: 'Pharmacy', icon: '/customer/assets/icons/pharmacy.svg', color: '#E0F7FA', iconColor: '#00ACC1' },
-    { name: 'Laundry', icon: '/customer/assets/icons/laundry.svg', color: '#EDE7F6', iconColor: '#5E35B1' },
-];
+const CATEGORIES_LIST = CANONICAL_CATEGORIES.map(name => ({
+    name,
+    ...CATEGORY_META[name]
+}));
+
 
 export default function BrowseProducts() {
     const router = useRouter();
@@ -175,12 +185,12 @@ export default function BrowseProducts() {
 
                 {/* Categories */}
                 <div className="categories-list">
-                    {CATEGORIES.map((cat) => (
+                    {CATEGORIES_LIST.map((cat) => (
                         <div key={cat.name} className="category-item" onClick={() => router.push(`/customer/category?type=${cat.name}`)}>
                             <div className="cat-icon-circle" style={{ backgroundColor: cat.color }}>
                                 <img src={cat.icon} alt={cat.name} style={{ width: '24px', height: '24px' }} />
                             </div>
-                            <span className="cat-name">{cat.name}</span>
+                            <span className="cat-name">{capitalize(cat.name)}</span>
                         </div>
                     ))}
                 </div>

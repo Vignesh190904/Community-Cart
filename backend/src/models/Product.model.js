@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import CATEGORIES from "../constants/categories.js";
 
 const productSchema = new mongoose.Schema(
   {
@@ -21,7 +22,13 @@ const productSchema = new mongoose.Schema(
 
     category: {
       type: String,
+      enum: {
+        values: CATEGORIES,
+        message: '{VALUE} is not a supported product category'
+      },
+      lowercase: true,
       trim: true,
+      default: 'grocery'
     },
 
     // Price per sellable unit (e.g. per 500g, 1L, 1 pack)

@@ -2,6 +2,9 @@ import { useState, useEffect, useMemo } from 'react';
 import { useRouter } from 'next/router';
 import { api } from '../../services/api';
 import { useToast } from '../../components/ui/ToastProvider';
+import { CATEGORIES } from '../../constants/categories';
+
+const capitalize = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
 
 interface Vendor {
   _id: string;
@@ -236,7 +239,7 @@ export default function VendorsManagement() {
     if (!confirm('Are you sure you want to delete this vendor?')) return;
     try {
       await api.vendors.delete(id);
-      pushToast({ type: 'success',message: 'Vendor deleted successfully' });
+      pushToast({ type: 'success', message: 'Vendor deleted successfully' });
       loadVendors();
     } catch (error) {
       console.error('Error deleting vendor:', error);
@@ -249,7 +252,7 @@ export default function VendorsManagement() {
       setTogglingId(id);
       await api.vendors.update(id, { isActive: !current });
       await loadVendors();
-      pushToast({ type: 'success',message: `Vendor ${!current ? 'enabled' : 'disabled'}` });
+      pushToast({ type: 'success', message: `Vendor ${!current ? 'enabled' : 'disabled'}` });
     } catch (error) {
       console.error('Error updating vendor status:', error);
       pushToast({ type: 'error', message: 'Failed to update vendor status' });
@@ -534,11 +537,11 @@ export default function VendorsManagement() {
                 onChange={(e) => updateField('vendorType', e.target.value)}
               >
                 <option value="">Select Type</option>
-                <option value="grocery">Grocery</option>
-                <option value="restaurant">Restaurant</option>
-                <option value="pharmacy">Pharmacy</option>
-                <option value="bakery">Bakery</option>
-                <option value="other">Other</option>
+                {CATEGORIES.map(category => (
+                  <option key={category} value={category}>
+                    {capitalize(category)}
+                  </option>
+                ))}
               </select>
             </div>
           </div>
@@ -768,24 +771,24 @@ export default function VendorsManagement() {
                 }
               />
             </div>
-            <div className="form-field form-field-checkbox">
-              <label>
+            <div className="vendor-checkbox-group">
+              <label className="vendor-checkbox-label">
                 <input
                   type="checkbox"
+                  className="vendor-checkbox-input"
                   checked={formData.store?.supportsCOD || false}
                   onChange={(e) => updateField('store.supportsCOD', e.target.checked)}
                 />
-                Supports Cash on Delivery
+                <span className="vendor-checkbox-text">Supports Cash on Delivery</span>
               </label>
-            </div>
-            <div className="form-field form-field-checkbox">
-              <label>
+              <label className="vendor-checkbox-label">
                 <input
                   type="checkbox"
+                  className="vendor-checkbox-input"
                   checked={formData.store?.supportsOnlinePayment || false}
                   onChange={(e) => updateField('store.supportsOnlinePayment', e.target.checked)}
                 />
-                Supports Online Payment
+                <span className="vendor-checkbox-text">Supports Online Payment</span>
               </label>
             </div>
           </div>
@@ -816,35 +819,40 @@ export default function VendorsManagement() {
         <div className="form-section">
           <h3 className="form-section-title">Status & Settings</h3>
           <div className="form-grid">
-            <div className="form-field form-field-checkbox">
-              <label>
+            <div className="vendor-checkbox-group">
+              <label className="vendor-checkbox-label">
                 <input
                   type="checkbox"
+                  className="vendor-checkbox-input"
                   checked={formData.isActive || false}
                   onChange={(e) => updateField('isActive', e.target.checked)}
                 />
-                Active
+                <span className="vendor-checkbox-text">Active</span>
               </label>
-            </div>
-            <div className="form-field form-field-checkbox">
-              <label>
+              <label className="vendor-checkbox-label">
                 <input
                   type="checkbox"
+                  className="vendor-checkbox-input"
                   checked={formData.isVerified || false}
                   onChange={(e) => updateField('isVerified', e.target.checked)}
                 />
-                Verified
+                <span className="vendor-checkbox-text">Verified</span>
               </label>
-            </div>
-            <div className="form-field form-field-checkbox">
-              <label>
+              <label className="vendor-checkbox-label">
                 <input
                   type="checkbox"
+                  className="vendor-checkbox-input"
                   checked={formData.isBlocked || false}
                   onChange={(e) => updateField('isBlocked', e.target.checked)}
                 />
-                Blocked
+                <span className="vendor-checkbox-text">Blocked</span>
               </label>
+            </div>
+            <div className="vendor-checkbox-group">
+              
+            </div>
+            <div className="vendor-checkbox-group">
+              
             </div>
             <div className="form-field form-field-full">
               <label>Notes</label>

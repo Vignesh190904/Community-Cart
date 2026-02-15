@@ -37,7 +37,8 @@ export default function Login() {
     setMessageType('');
 
     try {
-      const res = await api.auth.login({ email, password });
+      const normalizedEmail = email.trim().toLowerCase();
+      const res = await api.auth.login({ email: normalizedEmail, password });
       const { auth_token, user } = res.data;
 
       // Update global auth state - this will trigger the useEffect above
