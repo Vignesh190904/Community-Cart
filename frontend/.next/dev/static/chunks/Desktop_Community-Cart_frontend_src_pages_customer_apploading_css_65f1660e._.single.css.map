@@ -1,6 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 1, "column": 0}, "map": {"version":3,"sources":["turbopack:///[project]/Desktop/Community-Cart/frontend/src/pages/customer/apploading.css"],"sourcesContent":["/* App Loading (Splash) Screen - Full Mobile Viewport */\r\n.app-loading {\r\n    position: fixed;\r\n    top: 0;\r\n    left: 0;\r\n    width: 100vw;\r\n    height: 100vh;\r\n    background: #FFFFFF;\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: center;\r\n    overflow: hidden;\r\n    z-index: 9999;\r\n}\r\n\r\n.loading-content {\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-items: center;\r\n    justify-content: center;\r\n    gap: 24px;\r\n    padding: 20px;\r\n}\r\n\r\n.loading-logo {\r\n    width: 120px;\r\n    height: auto;\r\n    object-fit: contain;\r\n}\r\n\r\n.loading-title {\r\n    font-size: 28px;\r\n    font-weight: 600;\r\n    color: #1A1A1A;\r\n    margin: 0;\r\n    letter-spacing: -0.5px;\r\n    text-align: center;\r\n}\r\n\r\n/* Ensure no scroll during splash */\r\nbody.splash-active {\r\n    overflow: hidden;\r\n}"],"names":[],"mappings":"AACA;;;;;;;;;;;;;;AAcA;;;;;;;;;AASA;;;;;;AAMA;;;;;;;;;AAUA"}}]
-}

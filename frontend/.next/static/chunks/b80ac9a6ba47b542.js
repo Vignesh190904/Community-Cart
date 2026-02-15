@@ -1,6 +1,0 @@
-__turbopack_load_page_chunks__("/vendor/product-sales", [
-  "static/chunks/8d7d901a73c78dae.js",
-  "static/chunks/d3340e626bf305bc.js",
-  "static/chunks/45038c067afdd029.js",
-  "static/chunks/turbopack-106d82a7e3daf16b.js"
-])

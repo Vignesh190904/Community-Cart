@@ -1,6 +1,0 @@
-__turbopack_load_page_chunks__("/vendor/ordershistory", [
-  "static/chunks/25ed6507922c6cfb.js",
-  "static/chunks/d3340e626bf305bc.js",
-  "static/chunks/8d7d901a73c78dae.js",
-  "static/chunks/turbopack-13463c2e8a5cd084.js"
-])

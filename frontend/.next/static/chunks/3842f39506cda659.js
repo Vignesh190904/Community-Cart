@@ -1,6 +1,0 @@
-__turbopack_load_page_chunks__("/customer/TopNavbar", [
-  "static/chunks/67e2fdb8ae9358fd.js",
-  "static/chunks/d3340e626bf305bc.js",
-  "static/chunks/8d7d901a73c78dae.js",
-  "static/chunks/turbopack-9b913625ec062fc3.js"
-])
