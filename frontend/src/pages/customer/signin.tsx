@@ -92,7 +92,7 @@ export default function SignIn() {
     }, [initGoogle]);
 
     useEffect(() => {
-        console.log("API BASE:", process.env.NEXT_PUBLIC_API_BASE_URL);
+        console.log("API BASE:", process.env.NEXT_PUBLIC_API_URL);
     }, []);
 
     if (loading) {
