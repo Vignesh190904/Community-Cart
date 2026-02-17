@@ -217,8 +217,6 @@ export function CustomerStoreProvider({ children }: { children: React.ReactNode 
         } else {
           showToast(err.message || 'Failed to update quantity', 'error');
         }
-      } else {
-        showToast('Cart updated', 'success');
       }
     } catch (err) {
       setCart(prevCartSnapshot); // 🔁 revert on network error
@@ -232,6 +230,8 @@ export function CustomerStoreProvider({ children }: { children: React.ReactNode 
 
     // 🔥 OPTIMISTIC REMOVE - UI updates instantly
     setCart(prev => prev.filter(i => i.product._id !== productId));
+
+    showToast("Item removed from the cart", "warning");
 
     if (!token) return;
 

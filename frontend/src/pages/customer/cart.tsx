@@ -183,7 +183,14 @@ export default function CartPage() {
                           <div className="cart-qty-control">
                             <button
                               className="qty-btn"
-                              onClick={(e) => { e.stopPropagation(); handleQuantity(productId, item.quantity, -1); }}
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                if (item.quantity === 1) {
+                                  removeFromCart(productId);
+                                } else {
+                                  updateQuantity(productId, item.quantity - 1);
+                                }
+                              }}
                             >
                               <img src="/customer/assets/icons/minus.svg" alt="Decrease" />
                             </button>

@@ -46,7 +46,7 @@ const CATEGORIES_LIST = CANONICAL_CATEGORIES.map(name => ({
 
 export default function BrowseProducts() {
     const router = useRouter();
-    const { addToCart, updateQuantity, ensureCustomerId, cart } = useCustomerStore();
+    const { addToCart, updateQuantity, removeFromCart, ensureCustomerId, cart } = useCustomerStore();
     const { pushToast } = useToast();
     const [products, setProducts] = useState<Product[]>([]);
     const [loading, setLoading] = useState(true);
@@ -264,7 +264,16 @@ export default function BrowseProducts() {
                                             <div className="product-card-footer">
                                                 {qtyInCart > 0 ? (
                                                     <div className="product-qty-controls">
-                                                        <button className="product-qty-btn" onClick={() => updateItemQty(product, -1)}>
+                                                        <button
+                                                            className="product-qty-btn"
+                                                            onClick={() => {
+                                                                if (qtyInCart === 1) {
+                                                                    removeFromCart(product._id);
+                                                                } else {
+                                                                    updateQuantity(product._id, qtyInCart - 1);
+                                                                }
+                                                            }}
+                                                        >
                                                             <img src="/customer/assets/icons/minus.svg" alt="Decrease" />
                                                         </button>
                                                         <span className="product-qty-value">{qtyInCart}</span>
