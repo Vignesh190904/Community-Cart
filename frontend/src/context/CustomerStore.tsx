@@ -125,118 +125,130 @@ export function CustomerStoreProvider({ children }: { children: React.ReactNode 
 
   // --- ACTIONS ---
 
-  const addToCart = async (product: ProductLite, maxStock?: number, quantity: number = 1) => {
+  const addToCart = async (
+    product: ProductLite,
+    maxStock?: number,
+    quantity: number = 1
+  ) => {
     const token = getToken();
+    const prevCartSnapshot = cart;
 
-    // 1. Optimistic Update (for speed)
-    const prevCart = [...cart];
-    // ... insert optimistic logic here if desired, OR just wait for server for stability.
-    // User requested "Stability", so let's Wait for Server. simpler.
+    // 🔥 OPTIMISTIC UPDATE - UI updates instantly
+    setCart(prev => {
+      const existing = prev.find(i => i.product._id === product._id);
 
-    setIsLoading(true);
-
-    if (token) {
-      // SERVER ADD
-      try {
-        const res = await customerFetch(`${API_BASE}/api/cart/add`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`
-          },
-          body: JSON.stringify({
-            productId: product._id,
-            quantity: quantity
-          })
-        });
-
-        if (res.ok) {
-          await fetchCart(); // Re-sync truth
-          showToast('Added to cart', 'success');
-        } else {
-          const err = await res.json();
-          if (err.code === 'MIXED_VENDOR') {
-            showToast("You can only add products from one vendor per order.", 'error');
-          } else {
-            showToast(err.message || 'Could not add to cart', 'error');
-          }
-        }
-      } catch (err) {
-        showToast('Network error adding to cart', 'error');
+      if (existing) {
+        return prev.map(i =>
+          i.product._id === product._id
+            ? { ...i, quantity: i.quantity + quantity }
+            : i
+        );
       }
-    } else {
-      // LOCAL ADD
-      // Simple local logic
-      setCart(prev => {
-        const existing = prev.find(i => i.product._id === product._id);
-        // Simplified stock check for guest
-        if (existing) {
-          return prev.map(i => i.product._id === product._id ? { ...i, quantity: i.quantity + quantity } : i);
-        }
-        return [...prev, { product, quantity: quantity }];
+
+      return [...prev, { product, quantity }];
+    });
+
+    if (!token) return;
+
+    try {
+      const res = await customerFetch(`${API_BASE}/api/cart/add`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify({
+          productId: product._id,
+          quantity
+        })
       });
+
+      if (!res.ok) {
+        const err = await res.json();
+        setCart(prevCartSnapshot); // 🔁 revert on error
+
+        if (err.code === 'MIXED_VENDOR') {
+          showToast("You can only add products from one vendor per order.", 'error');
+        } else {
+          showToast(err.message || 'Failed to add to cart', 'error');
+        }
+      } else {
+        showToast('Added to cart', 'success');
+      }
+    } catch (err) {
+      setCart(prevCartSnapshot); // 🔁 revert on network error
+      showToast('Network error adding to cart', 'error');
     }
-    setIsLoading(false);
   };
 
   const updateQuantity = async (productId: string, quantity: number) => {
-    if (quantity < 1) return; // Use remove instead
+    if (quantity < 1) return;
+
     const token = getToken();
-    setIsLoading(true);
+    const prevCartSnapshot = cart;
 
-    if (token) {
-      // SERVER UPDATE
-      try {
-        const res = await customerFetch(`${API_BASE}/api/cart/${productId}`, {
-          method: 'PATCH',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`
-          },
-          body: JSON.stringify({ quantity })
-        });
+    // 🔥 OPTIMISTIC UPDATE - UI updates instantly
+    setCart(prev =>
+      prev.map(i =>
+        i.product._id === productId
+          ? { ...i, quantity }
+          : i
+      )
+    );
 
-        if (res.ok) {
-          await fetchCart();
-          showToast('Cart updated', 'success');
+    if (!token) return;
+
+    try {
+      const res = await customerFetch(`${API_BASE}/api/cart/${productId}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify({ quantity })
+      });
+
+      if (!res.ok) {
+        const err = await res.json();
+        setCart(prevCartSnapshot); // 🔁 revert on error
+
+        if (err.code === 'MIXED_VENDOR') {
+          showToast("You can only add products from one vendor per order.", 'error');
         } else {
-          const err = await res.json();
-          if (err.code === 'MIXED_VENDOR') {
-            showToast("You can only add products from one vendor per order.", 'error');
-          } else {
-            showToast(err.message || 'Failed to update quantity', 'error');
-          }
+          showToast(err.message || 'Failed to update quantity', 'error');
         }
-      } catch (err) {
-        console.error(err);
+      } else {
+        showToast('Cart updated', 'success');
       }
-    } else {
-      // LOCAL UPDATE
-      setCart(prev => prev.map(i => i.product._id === productId ? { ...i, quantity } : i));
+    } catch (err) {
+      setCart(prevCartSnapshot); // 🔁 revert on network error
+      console.error(err);
     }
-    setIsLoading(false);
   };
 
   const removeFromCart = async (productId: string) => {
     const token = getToken();
-    setIsLoading(true);
+    const prevCartSnapshot = cart;
 
-    if (token) {
-      // SERVER REMOVE
-      try {
-        await customerFetch(`${API_BASE}/api/cart/${productId}`, {
-          method: 'DELETE',
-          headers: { 'Authorization': `Bearer ${token}` }
-        });
-        await fetchCart();
-      } catch (err) {
-        console.error(err);
+    // 🔥 OPTIMISTIC REMOVE - UI updates instantly
+    setCart(prev => prev.filter(i => i.product._id !== productId));
+
+    if (!token) return;
+
+    try {
+      const res = await customerFetch(`${API_BASE}/api/cart/${productId}`, {
+        method: 'DELETE',
+        headers: { 'Authorization': `Bearer ${token}` }
+      });
+
+      if (!res.ok) {
+        setCart(prevCartSnapshot); // 🔁 revert on error
+        showToast('Failed to remove item', 'error');
       }
-    } else {
-      // LOCAL REMOVE
-      setCart(prev => prev.filter(i => i.product._id !== productId));
+    } catch (err) {
+      setCart(prevCartSnapshot); // 🔁 revert on network error
+      console.error(err);
     }
-    setIsLoading(false);
   };
 
   const clearCart = async () => {
