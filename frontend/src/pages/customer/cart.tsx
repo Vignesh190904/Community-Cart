@@ -191,7 +191,9 @@ export default function CartPage() {
                         <div className="cart-item-header">
                           <h3 className="cart-item-name">{item.product.name}</h3>
                         </div>
-                        <p className="cart-item-qty-label">Unit</p>
+                        {[item.product.quantity, item.product.unit].filter(Boolean).join(' ') && (
+                          <p className="cart-item-qty-label">{[item.product.quantity, item.product.unit].filter(Boolean).join(' ')}</p>
+                        )}
 
                         <div className="cart-item-footer">
                           <span className="cart-item-price">₹{item.product.price.toFixed(2)}</span>

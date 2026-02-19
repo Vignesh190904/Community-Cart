@@ -206,7 +206,9 @@ export default function CategoryPage() {
             vendorName: product.vendor?.storeName,
             image: product.image,
             stock: product.stock,
-            category: product.category
+            category: product.category,
+            unit: product.unit,
+            quantity: product.quantity
         };
         addToCart(productLite);
     };
@@ -244,7 +246,7 @@ export default function CategoryPage() {
                                     const isWishlisted = wishlist.has(product._id);
 
                                     // Calculate discount if MRP exists and is higher than price
-                                    const hasDiscount = product.mrp && product.mrp > product.price;
+                                    const hasDiscount = (product.mrp || 0) > product.price;
                                     const discountPercent = hasDiscount
                                         ? Math.round(((product.mrp! - product.price) / product.mrp!) * 100)
                                         : 0;
@@ -257,7 +259,7 @@ export default function CategoryPage() {
                                                         -{discountPercent}%
                                                     </span>
                                                 )}
-                                                {!hasDiscount && <span></span>}
+
                                                 <button
                                                     className="product-wishlist-btn"
                                                     onClick={() => toggleWishlist(product._id)}
@@ -281,9 +283,11 @@ export default function CategoryPage() {
 
                                             <div className="product-card-body" onClick={() => router.push(`/customer/product-detail?id=${product._id}`)}>
                                                 <h4 className="product-name">{product.name}</h4>
-                                                <p className="product-qty-label">
-                                                    {product.quantity ? `${product.quantity} ${product.unit || ''}` : (product.category || 'Product')}
-                                                </p>
+                                                {[product.quantity, product.unit].filter(Boolean).join(' ') && (
+                                                    <p className="product-qty-label">
+                                                        {[product.quantity, product.unit].filter(Boolean).join(' ')}
+                                                    </p>
+                                                )}
                                                 <div className="product-price-wrapper">
                                                     <span className="product-final-price">₹{product.price.toFixed(2)}</span>
                                                     {hasDiscount && (

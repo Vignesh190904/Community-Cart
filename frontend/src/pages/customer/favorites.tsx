@@ -16,6 +16,8 @@ interface Product {
     vendor?: { name?: string };
     isAvailable?: boolean;
     stock?: number;
+    unit?: string;
+    quantity?: number;
 }
 
 const API_BASE = `${BASE_URL}/api`;
@@ -81,6 +83,8 @@ export default function FavoritesPage() {
             image: product.image,
             vendorName: product.vendor?.name,
             stock: product.stock,
+            unit: product.unit,
+            quantity: product.quantity
         }, stock);
     };
 

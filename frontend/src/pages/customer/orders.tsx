@@ -170,7 +170,9 @@ export default function OrdersPage() {
                     image: product.image,
                     vendorName: product.vendor?.name,
                     stock: product.stock,
-                    category: product.category
+                    category: product.category,
+                    unit: product.unit,
+                    quantity: product.quantity,
                 }, stock, quantityToAdd); // Passing maxStock checks constraints in store if any
 
                 itemsAdded++;

@@ -153,6 +153,8 @@ export default function BrowseProducts() {
             image: product.image,
             vendorName: product.vendor?.name,
             stock: product.stock,
+            unit: product.unit,
+            quantity: product.quantity,
         }, stock);
     };
 
@@ -213,7 +215,7 @@ export default function BrowseProducts() {
                                     const qtyInCart = cartMap.get(product._id) || 0;
 
                                     // Calculate discount if MRP exists and is higher than price
-                                    const hasDiscount = product.mrp && product.mrp > product.price;
+                                    const hasDiscount = (product.mrp || 0) > product.price;
                                     const discountPercent = hasDiscount
                                         ? Math.round(((product.mrp! - product.price) / product.mrp!) * 100)
                                         : 0;
@@ -244,9 +246,11 @@ export default function BrowseProducts() {
 
                                             <div className="product-card-body" onClick={() => router.push(`/customer/product-detail?id=${product._id}`)}>
                                                 <h4 className="product-name">{product.name}</h4>
-                                                <p className="product-qty-label">
-                                                    {product.quantity ? `${product.quantity} ${product.unit || ''}` : (product.category || 'Product')}
-                                                </p>
+                                                {[product.quantity, product.unit].filter(Boolean).join(' ') && (
+                                                    <p className="product-qty-label">
+                                                        {[product.quantity, product.unit].filter(Boolean).join(' ')}
+                                                    </p>
+                                                )}
                                                 <div className="product-price-wrapper">
                                                     <span className="product-final-price">₹{product.price.toFixed(2)}</span>
                                                     {hasDiscount && (

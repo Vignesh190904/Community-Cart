@@ -10,6 +10,8 @@ export interface ProductLite {
   image?: string;
   stock?: number;
   category?: string; // Important for consistency
+  unit?: string;
+  quantity?: number;
 }
 
 export interface CartItem {

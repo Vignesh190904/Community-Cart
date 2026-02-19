@@ -17,6 +17,7 @@ interface Product {
     stock?: number;
     description?: string; // Add description support
     unit?: string; // Add unit support
+    quantity?: number; // Add quantity support
 }
 
 const API_BASE = `${BASE_URL}/api`;
@@ -79,6 +80,8 @@ export default function ProductDetailPage() {
             image: product.image,
             vendorName: product.vendor?.name,
             stock: product.stock,
+            unit: product.unit,
+            quantity: product.quantity,
         }, stock); // Logic for cart limits handled inside store/cart or just pushed?
         // Store implementation of addToCart checks limits vs stock but not multi-vendor conflict implicitly unless store does. 
         // User request: "Respect cart rules... If conflict occurs, block add". 
@@ -138,7 +141,11 @@ export default function ProductDetailPage() {
                             </button>
                         </div>
 
-                        <p className="detail-unit">{product.unit || '500 gms'}</p> {/* Fallback unit if missing */}
+                        {(product.quantity || product.unit) && (
+                            <p className="detail-unit">
+                                {[product.quantity, product.unit].filter(Boolean).join(' ')}
+                            </p>
+                        )}
                         <p className="detail-price">₹{product.price.toFixed(2)}</p>
 
                         <div className="detail-description">

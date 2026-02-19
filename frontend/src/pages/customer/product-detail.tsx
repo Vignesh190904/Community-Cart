@@ -20,6 +20,7 @@ interface Product {
     stock?: number;
     description?: string; // Add description support
     unit?: string; // Add unit support
+    quantity?: number; // Add quantity support
 }
 
 const API_BASE = `${BASE_URL}/api`;
@@ -122,6 +123,8 @@ export default function ProductDetail() {
             image: product.image,
             vendorName: product.vendor?.name,
             stock: product.stock,
+            unit: product.unit,
+            quantity: product.quantity,
         }, stock);
 
         if (cart.length > 0) {
@@ -146,7 +149,7 @@ export default function ProductDetail() {
                 <div className="product-content-scroll">
                     {/* Image */}
                     <div className="detail-image-section">
-                        {(product.mrp && product.mrp > product.price) && (
+                        {((product.mrp || 0) > product.price) && (
                             <div className="detail-discount-badge">
                                 -{Math.round(((product.mrp - product.price) / product.mrp) * 100)}%
                             </div>
@@ -175,10 +178,14 @@ export default function ProductDetail() {
                             </button>
                         </div>
 
-                        <p className="detail-unit">{product.unit || '500 gms'}</p>
+                        {(product.quantity || product.unit) && (
+                            <p className="detail-unit">
+                                {[product.quantity, product.unit].filter(Boolean).join(' ')}
+                            </p>
+                        )}
                         <div className="detail-price-box">
                             <span className="detail-price">₹{product.price.toFixed(2)}</span>
-                            {(product.mrp && product.mrp > product.price) && (
+                            {((product.mrp || 0) > product.price) && (
                                 <span className="detail-original-price">
                                     MRP <span style={{ textDecoration: 'line-through' }}>₹{product.mrp.toFixed(2)}</span>
                                 </span>
