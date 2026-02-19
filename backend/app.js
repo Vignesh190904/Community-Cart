@@ -46,11 +46,11 @@ app.use(cors({
 }));
 
 // 2. Standard Middlewares
-app.use(express.json({ limit: '5mb' }));
+app.use(express.json({ limit: '4mb' }));
 app.use(express.urlencoded({ limit: '5mb', extended: true }));
 
 // 2.5. Static File Serving for Uploads
-app.use('/api/uploads', express.static(path.join(__dirname, 'uploads')));
+// app.use('/api/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // 3. Session Configuration (REMOVED - Using JWT)
 // app.use(session({...}));
