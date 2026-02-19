@@ -42,6 +42,10 @@ export const createOrder = async (req, res) => {
       return res.status(403).json({ error: 'Customer is disabled' });
     }
 
+    if (!customer.phone) {
+      return res.status(400).json({ error: 'Phone number is missing.' });
+    }
+
     // Find the delivery address (snapshot)
     let selectedAddress;
     if (addressId) {

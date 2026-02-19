@@ -4,10 +4,12 @@ import { useRouter } from 'next/router';
 import CustomerLayout from '../../components/customer/CustomerLayout';
 import { useCustomerStore } from '../../context/CustomerStore';
 import { useToast } from '../../components/ui/ToastProvider';
+import { useAuth } from '../../context/AuthContext';
 
 export default function PlaceOrderPage() {
   const router = useRouter();
   const { cart, totalPrice, totalItems, clearCart, customerId } = useCustomerStore();
+  const { user } = useAuth();
   const { pushToast } = useToast();
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
@@ -26,6 +28,16 @@ export default function PlaceOrderPage() {
 
     if (cart.length === 0) {
       pushToast({ type: 'warning', message: 'Cart is empty' });
+      return;
+    }
+
+    const profilePhone = user?.phone?.trim();
+
+    if (!profilePhone) {
+      pushToast({
+        type: 'warning',
+        message: 'Phone number missing'
+      });
       return;
     }
 
