@@ -11,6 +11,7 @@ import express from 'express';
 import cors from 'cors';
 
 import helmet from 'helmet';
+import { connectDB, getDbStatus } from './src/config/db.js';
 
 // Route Imports
 console.log('🔄 Importing routes...');
@@ -61,7 +62,43 @@ app.use((req, res, next) => {
   next();
 });
 
+// 4.5. DB Connection Guard (For Serverless & Safety)
+let dbReady = false;
+
+const ensureDBConnection = async () => {
+  if (!getDbStatus().connected) {
+    await connectDB();
+  }
+  dbReady = true;
+};
+
+app.use(async (req, res, next) => {
+  try {
+    if (!dbReady) {
+      await ensureDBConnection();
+    }
+    next();
+  } catch (error) {
+    console.error('❌ Database initialization failed:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Database connection failed',
+    });
+  }
+});
+
 // 5. Route Mounting (Unified prefix)
+app.get('/api/health', (req, res) => {
+  const dbStatus = getDbStatus();
+  res.status(200).json({
+    status: 'ok',
+    backend: 'running',
+    database: dbStatus.connected ? 'connected' : 'disconnected',
+    environment: process.env.NODE_ENV || 'development',
+    timestamp: new Date().toISOString(),
+  });
+});
+
 app.use('/api/auth', authRoutes);
 app.use('/api/auth/customer', authCustomerRoutes);
 app.use('/api/vendors', vendorRoutes);
