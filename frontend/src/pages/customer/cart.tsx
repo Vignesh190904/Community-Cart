@@ -4,6 +4,7 @@ import { useState, useRef } from 'react';
 import CustomerLayout from '../../components/customer/CustomerLayout';
 import { useCustomerStore } from '../../context/CustomerStore';
 import TopNavbar from './TopNavbar';
+import ConfirmDialog from '../../components/ui/ConfirmDialog';
 
 const SkeletonCartItem = () => (
   <div className="cart-item-wrapper">
@@ -34,6 +35,9 @@ export default function CartPage() {
   // Swipe State
   const [swipedItemId, setSwipedItemId] = useState<string | null>(null);
 
+  // Dialog State
+  const [isConfirmOpen, setIsConfirmOpen] = useState(false);
+
   // Actions
   const handleQuantity = (id: string, currentQty: number, delta: number) => {
     const newQty = currentQty + delta;
@@ -60,9 +64,12 @@ export default function CartPage() {
   };
 
   const handleClearCart = () => {
-    if (window.confirm("Are you sure you want to clear your cart?")) {
-      clearCart();
-    }
+    setIsConfirmOpen(true);
+  };
+
+  const confirmClearCart = () => {
+    clearCart();
+    setIsConfirmOpen(false);
   };
 
   // --- Swipe Logic (Preserved) ---
@@ -133,6 +140,14 @@ export default function CartPage() {
         } : null}
       />
       <div className="cart-page has-fixed-header">
+
+        <ConfirmDialog
+          isOpen={isConfirmOpen}
+          title="Clear Cart?"
+          message="Are you sure you want to remove all items from your cart? This action cannot be undone."
+          onConfirm={confirmClearCart}
+          onCancel={() => setIsConfirmOpen(false)}
+        />
 
         {isLoading && cart.length === 0 ? (
           <div className="cart-items-list">
