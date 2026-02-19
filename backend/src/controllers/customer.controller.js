@@ -135,6 +135,8 @@ export const deleteAddress = async (req, res) => {
   }
 };
 
+// Import at the top (I will handle imports separately or I can try to add it here but wait, `replace_file_content` is contiguous).
+// I should add the import first.
 export const uploadProfilePic = async (req, res) => {
   try {
     if (!req.file) {
@@ -146,29 +148,38 @@ export const uploadProfilePic = async (req, res) => {
       return res.status(404).json({ message: 'Customer not found' });
     }
 
-    // Delete old profile picture if exists
-    if (customer.profile_pic) {
+    // Phase 4: Cloudinary Upload
+    // 1. Upload to Cloudinary (Buffer from memory storage)
+    const { uploadBufferToCloudinary } = await import('../utils/uploadToCloudinary.js'); // Dynamic import to avoid messing up top-level file structure in this edit
+
+    // Safety check: ensure we have a buffer (memory storage)
+    if (!req.file.buffer) {
+      throw new Error('Upload failed: File buffer missing. Ensure memory storage is used.');
+    }
+
+    const result = await uploadBufferToCloudinary(req.file.buffer, 'customers');
+
+    // 2. Handle Old File Cleanup (If exists locally)
+    // Only delete if it looks like a local path (doesn't start with http)
+    if (customer.profile_pic && !customer.profile_pic.startsWith('http')) {
       const oldFilePath = path.join(__dirname, '../../', customer.profile_pic);
       if (fs.existsSync(oldFilePath)) {
         fs.unlinkSync(oldFilePath);
       }
     }
 
-    // Generate URL path for the uploaded file
-    const profilePicUrl = `/uploads/profile-pics/${req.file.filename}`;
-
-    // Update customer profile_pic field
-    customer.profile_pic = profilePicUrl;
+    // 3. Update Database with Cloudinary URL
+    customer.profile_pic = result.secure_url;
     await customer.save();
 
     res.status(200).json({
       message: 'Profile picture uploaded successfully',
-      profile_pic: profilePicUrl
+      profile_pic: customer.profile_pic
     });
 
   } catch (error) {
     console.error('Upload Profile Pic Error:', error);
-    res.status(500).json({ message: 'Server error uploading profile picture' });
+    res.status(500).json({ message: error.message || 'Server error uploading profile picture' });
   }
 };
 
@@ -179,12 +190,18 @@ export const deleteProfilePic = async (req, res) => {
       return res.status(404).json({ message: 'Customer not found' });
     }
 
-    // Delete profile picture file if exists
+    // Phase 4: Dual Mode Cleanup
     if (customer.profile_pic) {
-      const filePath = path.join(__dirname, '../../', customer.profile_pic);
-      if (fs.existsSync(filePath)) {
-        fs.unlinkSync(filePath);
+      // If it is a local file (does not start with http), delete from disk
+      if (!customer.profile_pic.startsWith('http')) {
+        const filePath = path.join(__dirname, '../../', customer.profile_pic);
+        if (fs.existsSync(filePath)) {
+          fs.unlinkSync(filePath);
+        }
       }
+      // If it is a Cloudinary URL, we *could* delete it using the utility, 
+      // but instructions say "Do NOT use it [deleteFromCloudinary] anywhere yet".
+      // So we just remove the reference from DB.
     }
 
     // Set profile_pic to null

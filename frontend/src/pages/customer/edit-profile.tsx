@@ -63,7 +63,7 @@ export default function EditProfilePage() {
                 const formData = new FormData();
                 formData.append('profile_pic', selected_file);
 
-                const upload_res = await fetch(`${API_BASE_URL}/api/customers/profile-pic`, {
+                const upload_res = await fetch(`${API_BASE_URL}/customers/profile-pic`, {
                     method: 'POST',
                     headers: {
                         'Authorization': `Bearer ${token}`
@@ -86,7 +86,7 @@ export default function EditProfilePage() {
             if (is_name_changed) updates.name = name;
             if (is_phone_changed) updates.phone = phone;
 
-            const res = await fetch(`${API_BASE_URL}/api/customers/profile`, {
+            const res = await fetch(`${API_BASE_URL}/customers/profile`, {
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json',
@@ -162,7 +162,7 @@ export default function EditProfilePage() {
         set_is_saving(true);
 
         try {
-            const res = await fetch(`${API_BASE_URL}/api/customers/profile-pic`, {
+            const res = await fetch(`${API_BASE_URL}/customers/profile-pic`, {
                 method: 'DELETE',
                 headers: {
                     'Authorization': `Bearer ${token}`

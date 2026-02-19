@@ -7,10 +7,12 @@ import {
   deleteVendor,
   forceLogoutVendor,
   getVendorMe,
+  uploadVendorMedia,
 } from '../controllers/vendor.controller.js';
 import { getVendorEarnings } from '../controllers/vendor.controller.js';
 import { getVendorOrders } from '../controllers/order.controller.js';
 import { protectVendor } from '../middlewares/auth.middleware.js';
+import { uploadSingleImage } from '../middleware/memoryUpload.js';
 
 const router = express.Router();
 
@@ -22,6 +24,7 @@ router.get('/:vendorId/earnings', getVendorEarnings);
 router.post('/:id/force-logout', forceLogoutVendor);
 router.get('/:id', getVendorById);
 router.put('/:id', updateVendor);
+router.put('/:id/media', protectVendor, uploadSingleImage('file'), uploadVendorMedia);
 router.delete('/:id', deleteVendor);
 
 export default router;

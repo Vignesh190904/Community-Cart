@@ -280,3 +280,53 @@ export const getVendorMe = async (req, res) => {
     res.status(200).json({ success: true, user: null, message: 'Vendor lookup skipped in demo mode' });
   }
 };
+
+import { uploadBufferToCloudinary } from '../utils/uploadToCloudinary.js';
+
+export const uploadVendorMedia = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { type } = req.body; // "logo" or "banner"
+
+    // 1. Validate Input
+    if (!req.file) {
+      return res.status(400).json({ error: 'No image file uploaded' });
+    }
+    if (!['logo', 'banner'].includes(type)) {
+      return res.status(400).json({ error: 'Invalid media type. Must be "logo" or "banner".' });
+    }
+
+    // 2. Find Vendor
+    const vendor = await Vendor.findById(id);
+    if (!vendor) {
+      return res.status(404).json({ error: 'Vendor not found' });
+    }
+
+    // 3. Upload to Cloudinary
+    // Using "vendors" folder as per requirement
+    const result = await uploadBufferToCloudinary(req.file.buffer, 'vendors');
+
+    // 4. Update Vendor Media
+    if (!vendor.media) {
+      vendor.media = {};
+    }
+
+    if (type === 'logo') {
+      vendor.media.logoUrl = result.secure_url;
+    } else if (type === 'banner') {
+      vendor.media.bannerUrl = result.secure_url;
+    }
+
+    const savedVendor = await vendor.save();
+
+    // 5. Respond
+    res.status(200).json({
+      message: 'Vendor media updated successfully',
+      media: savedVendor.media,
+    });
+
+  } catch (error) {
+    console.error('[vendor:upload] Error:', error);
+    res.status(500).json({ error: error.message || 'Image upload failed' });
+  }
+};

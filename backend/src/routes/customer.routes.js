@@ -20,11 +20,11 @@ import {
 import { getCustomerOrders } from '../controllers/order.controller.js';
 import { getMe as get_me } from '../controllers/authCustomer.controller.js';
 import { protect } from '../middlewares/auth.middleware.js';
-import { uploadProfilePic as uploadMiddleware } from '../config/uploadConfig.js';
+import { uploadSingleImage } from '../middleware/memoryUpload.js';
 
 const router = express.Router();
 
-router.post('/profile-pic', protect, uploadMiddleware.single('profile_pic'), uploadProfilePic);
+router.post('/profile-pic', protect, uploadSingleImage('profile_pic'), uploadProfilePic);
 router.delete('/profile-pic', protect, deleteProfilePic);
 
 router.patch('/ui-preferences', protect, updateUiPreferences);

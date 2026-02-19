@@ -186,15 +186,47 @@ export default function VendorProfilePage() {
     router.replace('/vendor/dashboard');
   };
 
-  const onFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const onFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
-    if (!file) return;
-    const reader = new FileReader();
-    reader.onload = () => {
-      const result = reader.result as string;
-      setField('mediaLogoUrl', result);
-    };
-    reader.readAsDataURL(file);
+    if (!file || !vendor) return;
+
+    // Direct upload to Cloudinary via backend
+    const formData = new FormData();
+    formData.append('file', file);
+    formData.append('type', 'logo');
+
+    try {
+      const token = localStorage.getItem('auth_token');
+      if (!token) throw new Error('Not authenticated');
+
+      pushToast({ type: 'info', message: 'Uploading logo...' });
+
+      const res = await fetch(`${API_BASE}/api/vendors/${vendor._id}/media`, {
+        method: 'PUT',
+        headers: {
+          Authorization: `Bearer ${token}`,
+          // Content-Type: 'multipart/form-data' // Do NOT set this manually, let browser handle it
+        },
+        body: formData,
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) throw new Error(data.error || 'Upload failed');
+
+      // Update state with new URL
+      const newLogoUrl = data.media?.logoUrl;
+      if (newLogoUrl) {
+        setField('mediaLogoUrl', newLogoUrl);
+        // Also update the main vendor object so the UI reflects it immediately and permanently
+        setVendor((prev) => prev ? { ...prev, media: { ...prev.media, logoUrl: newLogoUrl } } : prev);
+        pushToast({ type: 'success', message: 'Logo uploaded successfully' });
+      }
+
+    } catch (err: any) {
+      console.error('Upload Error:', err);
+      pushToast({ type: 'error', message: err.message || 'Failed to upload logo' });
+    }
   };
 
   const resetPassword = async () => {
