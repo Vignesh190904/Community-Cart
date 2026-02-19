@@ -10,9 +10,6 @@ const router = express.Router();
 
 import { signToken } from '../utils/jwt.utils.js';
 
-const JWT_SECRET = process.env.JWT_SECRET || 'change-this-secret';
-const JWT_EXPIRES_IN = process.env.JWT_EXPIRES_IN || '30d';
-
 import { verifyToken } from '../utils/jwt.utils.js';
 
 // ...

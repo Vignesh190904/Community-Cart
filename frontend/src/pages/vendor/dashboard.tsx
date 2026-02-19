@@ -1,5 +1,6 @@
 import { useState, useEffect, useMemo } from 'react';
 import { useAuth } from '../../context/AuthContext';
+import { API_BASE as BASE_URL } from '../../lib/api';
 
 interface Product {
   _id: string;
@@ -28,7 +29,7 @@ interface Order {
   createdAt: string;
 }
 
-const API_BASE = 'http://localhost:5000/api';
+const API_BASE = `${BASE_URL}/api`;
 
 const orderTotal = (order: Order) => {
   const pricingTotal = order.pricing?.totalAmount;

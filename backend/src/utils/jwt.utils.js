@@ -1,11 +1,12 @@
 import jwt from 'jsonwebtoken';
+import ENV from '../config/env.js';
 
-const JWT_SECRET = process.env.JWT_SECRET;
+const JWT_SECRET = ENV.JWT.SECRET;
 if (!JWT_SECRET) {
     console.error("FATAL: JWT_SECRET is missing in environment variables.");
     throw new Error("JWT_SECRET is missing");
 }
-const JWT_EXPIRES_IN = process.env.JWT_EXPIRES_IN || '24h';
+const JWT_EXPIRES_IN = ENV.JWT.EXPIRES_IN;
 
 /**
  * Sign a JWT token for a user

@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import { useToast } from '../../components/ui/ToastProvider';
 import { aggregateOrderItems } from '../../utils/orderAggregation';
 import { getVendorToken, getVendorId, getVendorAuthHeaders } from '../../utils/vendorAuth';
+import { buildApiUrl } from '../../lib/api';
 
 type OrderStatus = 'completed' | 'cancelled' | 'processing' | 'pending' | 'all';
 
@@ -99,7 +100,7 @@ export default function VendorOrderHistory() {
         return;
       }
 
-      const res = await fetch('http://localhost:5000/api/vendors/orders', {
+      const res = await fetch(buildApiUrl('/api/vendors/orders'), {
         headers: getVendorAuthHeaders(),
       });
 

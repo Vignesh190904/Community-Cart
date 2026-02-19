@@ -1,35 +1,26 @@
 import { v2 as cloudinary } from 'cloudinary';
-import dotenv from 'dotenv';
+import ENV from './env.js';
 
-// Ensure env vars are loaded (safety check)
-dotenv.config();
-
-const {
-  CLOUDINARY_CLOUD_NAME,
-  CLOUDINARY_API_KEY,
-  CLOUDINARY_API_SECRET,
-} = process.env;
+const { CLOUD_NAME, API_KEY, API_SECRET } = ENV.CLOUDINARY;
 
 // Runtime Validation
 const missingKeys = [];
-if (!CLOUDINARY_CLOUD_NAME) missingKeys.push('CLOUDINARY_CLOUD_NAME');
-if (!CLOUDINARY_API_KEY) missingKeys.push('CLOUDINARY_API_KEY');
-if (!CLOUDINARY_API_SECRET) missingKeys.push('CLOUDINARY_API_SECRET');
+if (!CLOUD_NAME) missingKeys.push('CLOUDINARY_CLOUD_NAME');
+if (!API_KEY) missingKeys.push('CLOUDINARY_API_KEY');
+if (!API_SECRET) missingKeys.push('CLOUDINARY_API_SECRET');
 
 if (missingKeys.length > 0) {
   console.warn(
-    `⚠️  Cloudinary Warning: Missing environment variables: ${missingKeys.join(
-      ', '
-    )}. Cloudinary upload features will be disabled.`
+    `⚠️  Cloudinary Warning: Missing environment variables. Cloudinary upload features will be disabled.`
   );
 } else {
-    // Configure Cloudinary only if keys are present
-    cloudinary.config({
-        cloud_name: CLOUDINARY_CLOUD_NAME,
-        api_key: CLOUDINARY_API_KEY,
-        api_secret: CLOUDINARY_API_SECRET,
-    });
-    console.log('✅ Cloudinary Configured Successfully');
+  // Configure Cloudinary only if keys are present
+  cloudinary.config({
+    cloud_name: CLOUD_NAME,
+    api_key: API_KEY,
+    api_secret: API_SECRET,
+  });
+  console.log('✅ Cloudinary Configured Successfully');
 }
 
 export default cloudinary;

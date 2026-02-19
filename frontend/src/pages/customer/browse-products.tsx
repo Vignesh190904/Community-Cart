@@ -9,6 +9,7 @@ import { SkeletonProductCard } from '../../components/customer/SkeletonProductCa
 import TopNavbar from './TopNavbar';
 import SearchBar from './search_bar';
 import { CATEGORIES as CANONICAL_CATEGORIES } from '../../constants/categories';
+import { API_BASE as BASE_URL } from '../../lib/api';
 
 const capitalize = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
 
@@ -36,7 +37,7 @@ interface Product {
     stock?: number;
 }
 
-const API_BASE = 'http://localhost:5000/api';
+const API_BASE = `${BASE_URL}/api`;
 
 const CATEGORIES_LIST = CANONICAL_CATEGORIES.map(name => ({
     name,

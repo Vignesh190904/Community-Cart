@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import CustomerLayout from '../../components/customer/CustomerLayout';
 import { useToast } from '../../components/ui/ToastProvider';
 import TopNavbar from './TopNavbar';
+import { buildApiUrl } from '../../lib/api';
 
 /* ===== LOCKED ADDRESS MODEL ===== */
 interface AddressPayload {
@@ -49,7 +50,9 @@ export default function EditAddressPage() {
 
         setPageLoading(true);
 
-        fetch('http://localhost:5000/api/customers/addresses', {
+        setPageLoading(true);
+
+        fetch(buildApiUrl('/api/customers/addresses'), {
             headers: {
                 'Content-Type': 'application/json',
                 Authorization: `Bearer ${token}`,
@@ -106,11 +109,13 @@ export default function EditAddressPage() {
 
         setLoading(true);
         try {
-            const url = id
-                ? `http://localhost:5000/api/customers/addresses/${id}`
-                : 'http://localhost:5000/api/customers/addresses';
+            // Ensure id is a string for API calls
+            const addressId = Array.isArray(id) ? id[0] : id;
+            const url = addressId
+                ? buildApiUrl(`/api/customers/addresses/${addressId}`)
+                : buildApiUrl('/api/customers/addresses');
 
-            const method = id ? 'PUT' : 'POST';
+            const method = addressId ? 'PUT' : 'POST';
 
             // Build payload - include is_primary only if editing
             const payload: any = {
@@ -121,7 +126,7 @@ export default function EditAddressPage() {
             };
 
             // Include is_primary only when editing and user can toggle it
-            if (id && allAddresses.length === 2) {
+            if (addressId && allAddresses.length === 2) {
                 payload.is_primary = is_primary;
             }
 

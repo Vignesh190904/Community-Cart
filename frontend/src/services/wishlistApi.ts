@@ -1,6 +1,8 @@
 import { customerFetch } from '../utils/customerFetch';
 
-const API_BASE = 'http://localhost:5000/api';
+import { API_BASE as BASE_URL } from '../lib/api';
+
+const API_BASE = `${BASE_URL}/api`;
 
 export interface WishlistItem {
     _id: string;

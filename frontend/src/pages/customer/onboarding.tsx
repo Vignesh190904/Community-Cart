@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
+import { buildApiUrl } from '../../lib/api';
 import { useAuth } from '../../context/AuthContext';
 
 export default function Onboarding() {
@@ -37,7 +38,7 @@ export default function Onboarding() {
         setError('');
 
         try {
-            const res = await fetch('http://localhost:5000/api/customers/onboarding', {
+            const res = await fetch(buildApiUrl('/api/customers/onboarding'), {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
+import { buildApiUrl } from '../../lib/api';
 import CustomerLayout from '../../components/customer/CustomerLayout';
 import { useCustomerStore } from '../../context/CustomerStore';
 
@@ -28,7 +29,7 @@ export default function TrackOrderPage() {
         return;
       }
       try {
-        const res = await fetch('http://localhost:5000/api/orders');
+        const res = await fetch(buildApiUrl('/api/orders'));
         if (!res.ok) throw new Error('Failed to fetch orders');
         const data = await res.json();
         const mine = data.filter((o: any) => o.customerId && (o.customerId._id === cid || o.customerId === cid));

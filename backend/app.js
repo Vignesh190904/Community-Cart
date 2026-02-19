@@ -1,12 +1,11 @@
-// CRITICAL: Load environment variables FIRST before any imports
-import dotenv from 'dotenv';
+// CRITICAL: Load environment variables via centralized config
+import ENV from './src/config/env.js';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-dotenv.config({ path: path.join(__dirname, '.env') });
 
-// Now import everything else AFTER dotenv is configured
+// Now import everything else
 import express from 'express';
 import cors from 'cors';
 
@@ -37,14 +36,36 @@ app.use(
   })
 );
 
-// 1. CORS - Production Aware
-const isProd = process.env.NODE_ENV === 'production';
-app.use(cors({
-  origin: isProd ? process.env.FRONTEND_URL : "http://localhost:4646",
+// 1. CORS - Production Hardened
+const corsOptions = {
+  origin: (origin, callback) => {
+    // Allow requests with no origin (like mobile apps or curl requests)
+    if (!origin) return callback(null, true);
+
+    const isProd = ENV.NODE_ENV === 'production';
+    const allowedOrigin = ENV.FRONTEND_URL;
+
+    if (isProd) {
+      // Production: Allow ONLY the specific frontend URL
+      if (origin === allowedOrigin) {
+        return callback(null, true);
+      }
+    } else {
+      // Development: Allow localhost and production URL
+      // Check if origin checks out or is a localhost
+      if (origin === allowedOrigin || origin.startsWith('http://localhost:')) {
+        return callback(null, true);
+      }
+    }
+
+    return callback(new Error('Not allowed by CORS'));
+  },
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
-}));
+};
+
+app.use(cors(corsOptions));
 
 // 2. Standard Middlewares
 app.use(express.json({ limit: '4mb' }));

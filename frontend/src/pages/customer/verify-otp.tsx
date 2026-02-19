@@ -1,6 +1,7 @@
 'use client';
 
 import { useRouter } from 'next/router';
+import { buildApiUrl } from '../../lib/api';
 import { useEffect, useRef, useState } from 'react';
 import { useAuth } from '../../context/AuthContext';
 
@@ -51,7 +52,7 @@ export default function VerifyOtp() {
 
         try {
             const res = await fetch(
-                'http://localhost:5000/api/auth/customer/signup/resend-otp',
+                buildApiUrl('/api/auth/customer/signup/resend-otp'),
                 {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
@@ -119,9 +120,9 @@ export default function VerifyOtp() {
             // Determine endpoint based on intent
             let endpoint = '';
             if (intent === 'manual_signup') {
-                endpoint = 'http://localhost:5000/api/auth/customer/signup/verify-email';
+                endpoint = buildApiUrl('/api/auth/customer/signup/verify-email');
             } else if (intent === 'google_signup') {
-                endpoint = 'http://localhost:5000/api/auth/customer/google/signup/verify-email';
+                endpoint = buildApiUrl('/api/auth/customer/google/signup/verify-email');
             } else {
                 throw new Error('Invalid signup intent. Please restart signup.');
             }

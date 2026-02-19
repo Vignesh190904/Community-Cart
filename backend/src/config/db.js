@@ -1,10 +1,11 @@
 import mongoose from 'mongoose';
+import ENV from './env.js';
 
 let isConnected = false;
 let lastError = null;
 
 export const connectDB = async () => {
-  const uri = process.env.MONGO_URI;
+  const uri = ENV.MONGO_URI;
   if (!uri) {
     console.error('MongoDB connection failed: MONGO_URI is missing in .env');
     isConnected = false;

@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import styles from './earnings.module.css';
 import { useAuth } from '../../context/AuthContext';
+import { API_BASE as BASE_URL } from '../../lib/api';
 
 interface MetricsResponse {
   filters: {
@@ -22,7 +23,7 @@ interface MetricsResponse {
 type Preset = 'today' | 'week' | 'month' | 'year' | 'all' | 'custom';
 type StatusFilter = 'both' | 'completed' | 'cancelled';
 
-const API_BASE = 'http://localhost:5000/api';
+const API_BASE = `${BASE_URL}/api`;
 
 const formatDate = (d: Date) => d.toISOString().slice(0, 10);
 

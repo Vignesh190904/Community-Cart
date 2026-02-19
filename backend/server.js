@@ -1,18 +1,24 @@
-import './src/config/initEnv.js';
+import ENV from './src/config/env.js';
 import app from './app.js';
 import { connectDB, getDbStatus } from './src/config/db.js';
 import Customer from './src/models/Customer.model.js'; // Ensure correct path
 import bcrypt from 'bcryptjs';
 
-const requiredEnv = ['MONGO_URI', 'JWT_SECRET', 'FRONTEND_URL', 'PORT'];
-const missingEnv = requiredEnv.filter(key => !process.env[key]);
+// Critical Environment Validation
+const requiredChecks = [
+    { key: 'MONGO_URI', value: ENV.MONGO_URI },
+    { key: 'JWT_SECRET', value: ENV.JWT.SECRET },
+    { key: 'FRONTEND_URL', value: ENV.FRONTEND_URL }
+];
 
-if (missingEnv.length > 0) {
-    console.error(`❌ CRITICAL ERROR: Missing environment variables: ${missingEnv.join(', ')}`);
+const missing = requiredChecks.filter(c => !c.value).map(c => c.key);
+
+if (missing.length > 0) {
+    console.error(`❌ CRITICAL ERROR: Missing environment variables: ${missing.join(', ')}`);
     process.exit(1);
 }
 
-const PORT = process.env.PORT || 5000;
+const PORT = ENV.PORT;
 
 const start_server = async () => {
     try {
@@ -23,7 +29,7 @@ const start_server = async () => {
         console.log('🔄 Starting Express server...');
         app.listen(PORT, () => {
             console.log(`🌐 Backend running on port ${PORT}`);
-            console.log(`🚀 Ready for Frontend at ${process.env.CLIENT_URL}`);
+            console.log(`🚀 Ready for Frontend at ${ENV.FRONTEND_URL}`);
         });
     } catch (error) {
         console.error('❌ Server failed to start:', error.message);

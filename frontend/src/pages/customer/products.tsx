@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
+import { buildApiUrl } from '../../lib/api';
 import { useToast } from '../../components/ui/ToastProvider';
 
 interface Product {
@@ -48,7 +49,7 @@ export default function CustomerProducts() {
 
   const loadProducts = async () => {
     try {
-      const res = await fetch('http://localhost:5000/api/products');
+      const res = await fetch(buildApiUrl('/api/products'));
       if (!res.ok) throw new Error('Failed to fetch products');
       const data = await res.json();
       // Filter only available products
@@ -63,7 +64,7 @@ export default function CustomerProducts() {
   const loadOrCreateCustomer = async () => {
     try {
       // Check if customer already exists (for demo, use first customer or create)
-      const res = await fetch('http://localhost:5000/api/customers');
+      const res = await fetch(buildApiUrl('/api/customers'));
       const customers = await res.json();
 
       if (customers.length > 0) {
@@ -71,7 +72,7 @@ export default function CustomerProducts() {
         return customers[0];
       } else {
         // Auto-create test customer
-        const createRes = await fetch('http://localhost:5000/api/customers', {
+        const createRes = await fetch(buildApiUrl('/api/customers'), {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
@@ -100,7 +101,7 @@ export default function CustomerProducts() {
     setPlacingId(productId);
 
     try {
-      const res = await fetch('http://localhost:5000/api/orders', {
+      const res = await fetch(buildApiUrl('/api/orders'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

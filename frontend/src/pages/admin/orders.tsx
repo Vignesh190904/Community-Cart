@@ -1,5 +1,6 @@
 import { useEffect, useState, useMemo, useCallback } from 'react';
 import { useToast } from '../../components/ui/ToastProvider';
+import { buildApiUrl } from '../../lib/api';
 
 type OrderStatus = 'completed' | 'cancelled' | 'processing' | 'pending' | 'all';
 
@@ -45,7 +46,7 @@ export default function AdminOrders() {
 
   const loadVendors = async () => {
     try {
-      const res = await fetch('http://localhost:5000/api/vendors');
+      const res = await fetch(buildApiUrl('/api/vendors'));
       if (!res.ok) throw new Error('Failed to fetch vendors');
       const data = await res.json();
       setVendors(data);
@@ -58,7 +59,7 @@ export default function AdminOrders() {
     try {
       setLoading(true);
       // Load all orders - fetch completed, cancelled, processing, and pending
-      const res = await fetch('http://localhost:5000/api/orders?status=completed,cancelled,processing,pending');
+      const res = await fetch(buildApiUrl('/api/orders?status=completed,cancelled,processing,pending'));
       if (!res.ok) throw new Error('Failed to fetch orders');
       const data = await res.json();
       // Ensure we have an array and filter out any invalid entries

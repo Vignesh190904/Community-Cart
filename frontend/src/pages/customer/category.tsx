@@ -7,6 +7,7 @@ import { customerFetch } from '../../utils/customerFetch';
 import { SkeletonProductCard } from '../../components/customer/SkeletonProductCard';
 import TopNavbar from './TopNavbar';
 import SearchBar from './search_bar';
+import { API_BASE as BASE_URL } from '../../lib/api';
 
 // --- Product Interface ---
 
@@ -33,7 +34,7 @@ interface Product {
     updatedAt?: string;
 }
 
-const API_BASE = 'http://localhost:5000/api';
+const API_BASE = `${BASE_URL}/api`;
 
 export default function CategoryPage() {
     const router = useRouter();

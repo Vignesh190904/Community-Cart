@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
+import { API_BASE as BASE_URL } from '../../lib/api';
 import CustomerLayout from '../../components/customer/CustomerLayout';
 import { useAuth } from '../../context/AuthContext';
 import { useCustomerStore } from '../../context/CustomerStore';
@@ -24,7 +25,7 @@ interface Order {
     vendorName: string;
 }
 
-const API_BASE = 'http://localhost:5000/api';
+const API_BASE = `${BASE_URL}/api`;
 
 const SkeletonOrderCard = () => (
     <div className="order-card">

@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react';
 import Link from 'next/link';
 import CustomerLayout from '../../components/customer/CustomerLayout';
 import { useCustomerStore } from '../../context/CustomerStore';
+import { buildApiUrl } from '../../lib/api';
 
 interface OrderSummary {
     _id: string;
@@ -23,7 +24,7 @@ export default function CustomerDashboard() {
                 return;
             }
             try {
-                const res = await fetch('http://localhost:5000/api/orders');
+                const res = await fetch(buildApiUrl('/api/orders'));
                 if (!res.ok) throw new Error('Failed to fetch orders');
                 const data = await res.json();
                 const mine = data.filter((o: any) => o.customerId && (o.customerId._id === cid || o.customerId === cid));

@@ -1,4 +1,5 @@
 import { useEffect, useState, useMemo } from 'react';
+import { API_BASE as BASE_URL } from '../../lib/api';
 
 interface Order {
   _id: string;
@@ -34,7 +35,7 @@ interface Customer {
   isActive?: boolean;
 }
 
-const API_BASE = 'http://localhost:5000/api';
+const API_BASE = `${BASE_URL}/api`;
 
 export default function AdminDashboard() {
   const [orders, setOrders] = useState<Order[]>([]);
@@ -79,7 +80,7 @@ export default function AdminDashboard() {
     const totalVendors = vendors.length;
     const totalCustomers = customers.length;
     const totalOrders = orders.length;
-    
+
     // Platform revenue is 5% of completed orders total value
     const completedOrdersTotal = orders
       .filter((o) => o.status === 'completed')

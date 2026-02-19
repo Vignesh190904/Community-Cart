@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import { useToast } from '../../components/ui/ToastProvider';
 import { aggregateOrderItems, AggregatedOrderItem } from '../../utils/orderAggregation';
 import { getVendorToken, getVendorId, getVendorAuthHeaders } from '../../utils/vendorAuth';
+import { buildApiUrl } from '../../lib/api';
 
 interface OrderItem {
   productId?: { _id?: string; name: string };
@@ -82,7 +83,7 @@ export default function VendorOrderDetails() {
         return;
       }
 
-      const res = await fetch(`http://localhost:5000/api/orders/${orderId}`, {
+      const res = await fetch(buildApiUrl(`/api/orders/${orderId}`), {
         headers: getVendorAuthHeaders(),
       });
 

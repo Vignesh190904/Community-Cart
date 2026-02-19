@@ -1,5 +1,6 @@
 import { useEffect, useState, useMemo } from 'react';
 import { useToast } from '../../components/ui/ToastProvider';
+import { buildApiUrl } from '../../lib/api';
 
 interface Customer {
   _id: string;
@@ -57,7 +58,7 @@ export default function AdminCustomers() {
 
   const loadCustomers = async () => {
     try {
-      const res = await fetch('http://localhost:5000/api/customers');
+      const res = await fetch(buildApiUrl('/api/customers'));
       if (!res.ok) throw new Error('Failed to fetch customers');
       const data = await res.json();
       setCustomers(data);
@@ -70,7 +71,7 @@ export default function AdminCustomers() {
 
   const loadOrders = async () => {
     try {
-      const res = await fetch('http://localhost:5000/api/orders');
+      const res = await fetch(buildApiUrl('/api/orders'));
       if (!res.ok) throw new Error('Failed to fetch orders');
       const data = await res.json();
       setOrders(Array.isArray(data) ? data : []);
@@ -133,7 +134,7 @@ export default function AdminCustomers() {
 
   const toggleActiveStatus = async (customerId: string, currentStatus: boolean) => {
     try {
-      const res = await fetch(`http://localhost:5000/api/customers/${customerId}`, {
+      const res = await fetch(buildApiUrl(`/api/customers/${customerId}`), {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ isActive: !currentStatus }),
@@ -169,7 +170,7 @@ export default function AdminCustomers() {
 
   const handleEdit = async (id: string) => {
     try {
-      const res = await fetch(`http://localhost:5000/api/customers/${id}`);
+      const res = await fetch(buildApiUrl(`/api/customers/${id}`));
       if (!res.ok) throw new Error('Failed to fetch customer');
       const customer: Customer = await res.json();
       setFormData({
@@ -246,7 +247,7 @@ export default function AdminCustomers() {
       }
 
       if (mode === 'create') {
-        const res = await fetch('http://localhost:5000/api/customers', {
+        const res = await fetch(buildApiUrl('/api/customers'), {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(payload),
@@ -259,7 +260,7 @@ export default function AdminCustomers() {
 
         pushToast({ type: 'success', message: 'New customer added successfully' });
       } else {
-        const res = await fetch(`http://localhost:5000/api/customers/${editingId}`, {
+        const res = await fetch(buildApiUrl(`/api/customers/${editingId}`), {
           method: 'PATCH',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(payload),
@@ -288,7 +289,7 @@ export default function AdminCustomers() {
     }
 
     try {
-      const res = await fetch(`http://localhost:5000/api/customers/${customerId}`, {
+      const res = await fetch(buildApiUrl(`/api/customers/${customerId}`), {
         method: 'DELETE',
       });
 

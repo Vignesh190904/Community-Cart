@@ -1,8 +1,23 @@
 import Product from '../models/Product.model.js';
 
+import { uploadBufferToCloudinary } from '../utils/uploadToCloudinary.js';
+
 export const createProduct = async (req, res) => {
   try {
     // console.log('[createProduct] body:', req.body);
+
+    // 1. Set Vendor from Auth Context
+    if (!req.vendor) {
+      return res.status(401).json({ error: 'Unauthorized: No vendor context' });
+    }
+    req.body.vendor = req.vendor._id;
+
+    // 2. Handle Image Upload
+    if (req.file) {
+      const result = await uploadBufferToCloudinary(req.file.buffer, 'products');
+      req.body.image = result.secure_url;
+    }
+
     const product = new Product(req.body);
     const savedProduct = await product.save();
     res.status(201).json(savedProduct);

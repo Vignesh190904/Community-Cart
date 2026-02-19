@@ -6,6 +6,7 @@ import { useToast } from '../../components/ui/ToastProvider';
 import { fetchWishlist, removeFromWishlist, WishlistItem } from '../../services/wishlistApi';
 import { SkeletonProductCard } from '../../components/customer/SkeletonProductCard';
 import TopNavbar from './TopNavbar';
+import { API_BASE as BASE_URL } from '../../lib/api';
 
 interface Product {
     _id: string;
@@ -17,7 +18,7 @@ interface Product {
     stock?: number;
 }
 
-const API_BASE = 'http://localhost:5000/api';
+const API_BASE = `${BASE_URL}/api`;
 
 export default function FavoritesPage() {
     const router = useRouter();

@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { useCustomerStore } from '../../../context/CustomerStore';
 import CustomerLayout from '../../../components/customer/CustomerLayout';
+import TopNavbar from '../TopNavbar';
+import { API_BASE as BASE_URL } from '../../../lib/api';
 import { useToast } from '../../../components/ui/ToastProvider';
 
 // Type same as browse
@@ -17,7 +19,7 @@ interface Product {
     unit?: string; // Add unit support
 }
 
-const API_BASE = 'http://localhost:5000/api';
+const API_BASE = `${BASE_URL}/api`;
 
 export default function ProductDetailPage() {
     const router = useRouter();

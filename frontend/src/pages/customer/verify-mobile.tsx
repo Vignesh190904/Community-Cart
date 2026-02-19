@@ -2,6 +2,7 @@
 
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useState } from 'react';
+import { buildApiUrl } from '../../lib/api';
 
 export default function VerifyMobile() {
     const router = useRouter();
@@ -33,7 +34,7 @@ export default function VerifyMobile() {
 
         try {
             const res = await fetch(
-                'http://localhost:5000/api/auth/customer/signup/add-mobile',
+                buildApiUrl('/api/auth/customer/signup/add-mobile'),
                 {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
