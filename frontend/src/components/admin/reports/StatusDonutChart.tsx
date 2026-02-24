@@ -7,6 +7,8 @@ interface StatusData {
 
 interface StatusDonutChartProps {
     data: StatusData[];
+    activeStatus?: string;
+    onSelect?: (status: string) => void;
 }
 
 const STATUS_COLORS: Record<string, string> = {
@@ -18,7 +20,9 @@ const STATUS_COLORS: Record<string, string> = {
 
 const DEFAULT_COLOR = '#94a3b8';
 
-export default function StatusDonutChart({ data }: StatusDonutChartProps) {
+const getStatusColor = (status: string) => STATUS_COLORS[status] ?? DEFAULT_COLOR;
+
+export default function StatusDonutChart({ data, activeStatus, onSelect }: StatusDonutChartProps) {
     return (
         <div className="chart-card">
             <h3>Order Status Distribution</h3>
@@ -33,11 +37,21 @@ export default function StatusDonutChart({ data }: StatusDonutChartProps) {
                         innerRadius={60}
                         outerRadius={100}
                         paddingAngle={3}
+                        cursor={onSelect ? 'pointer' : 'default'}
+                        isAnimationActive={true}
+                        animationDuration={400}
+                        onClick={(data: any) => onSelect?.(data.payload?.status ?? data.status)}
                     >
-                        {data.map((entry, index) => (
+                        {data.map((entry) => (
                             <Cell
-                                key={index}
-                                fill={STATUS_COLORS[entry.status] ?? DEFAULT_COLOR}
+                                key={entry.status}
+                                fill={
+                                    activeStatus
+                                        ? entry.status === activeStatus
+                                            ? getStatusColor(entry.status)
+                                            : '#e5e7eb'
+                                        : getStatusColor(entry.status)
+                                }
                             />
                         ))}
                     </Pie>

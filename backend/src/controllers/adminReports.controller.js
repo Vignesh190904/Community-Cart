@@ -1,11 +1,32 @@
+import mongoose from "mongoose";
 import Order from "../models/Order.model.js";
 
 export const getAdminDashboard = async (req, res) => {
     try {
-        const { dateFrom, dateTo, vendorId, community } = req.body;
+        const { dateFrom, dateTo, vendorId, community, category, status } = req.body;
 
         if (!dateFrom || !dateTo) {
             return res.status(400).json({ message: "dateFrom and dateTo required" });
+        }
+
+        const from = new Date(dateFrom);
+        const to = new Date(dateTo);
+
+        if (isNaN(from.getTime()) || isNaN(to.getTime())) {
+            return res.status(400).json({ message: "Invalid date format" });
+        }
+
+        if (from > to) {
+            return res.status(400).json({ message: "dateFrom cannot be after dateTo" });
+        }
+
+        const allowedStatuses = ["pending", "accepted", "completed", "cancelled"];
+        if (status && !allowedStatuses.includes(status)) {
+            return res.status(400).json({ message: "Invalid status" });
+        }
+
+        if (vendorId && !mongoose.Types.ObjectId.isValid(vendorId)) {
+            return res.status(400).json({ message: "Invalid vendorId" });
         }
 
         const filter = {
@@ -18,14 +39,25 @@ export const getAdminDashboard = async (req, res) => {
         if (vendorId) filter.vendorId = vendorId;
         if (community)
             filter["delivery_address_snapshot.community"] = community;
+        if (status) filter.status = status;
 
         const orders = await Order.find(filter)
             .populate("vendorId")
             .populate("items.productId")
             .lean();
 
+        // Apply category filter after fetch (in-memory)
+        let filteredOrders = orders;
+        if (category) {
+            filteredOrders = orders.filter(order =>
+                order.items?.some(item =>
+                    item.productId?.category === category
+                )
+            );
+        }
+
         let totalRevenue = 0;
-        let totalOrders = orders.length;
+        let totalOrders = filteredOrders.length;
 
         const vendorMap = {};
         const communityMap = {};
@@ -34,14 +66,19 @@ export const getAdminDashboard = async (req, res) => {
         const revenueTrendMap = {};
         const heatmapMap = {};
 
-        for (const order of orders) {
+        for (const order of filteredOrders) {
             const revenue = order?.pricing?.totalAmount || 0;
             totalRevenue += revenue;
 
-            // Vendor Revenue
-            const vendorName = order?.vendorId?.storeName || "Unknown";
-            if (!vendorMap[vendorName]) vendorMap[vendorName] = 0;
-            vendorMap[vendorName] += revenue;
+            // Vendor Revenue (guard with if so other maps still accumulate)
+            const vendorIdKey = order?.vendorId?._id?.toString();
+            if (vendorIdKey) {
+                const vendorName = order?.vendorId?.storeName || "Unknown";
+                if (!vendorMap[vendorIdKey]) {
+                    vendorMap[vendorIdKey] = { vendorId: vendorIdKey, name: vendorName, revenue: 0 };
+                }
+                vendorMap[vendorIdKey].revenue += revenue;
+            }
 
             // Community Revenue
             const comm =
@@ -101,7 +138,7 @@ export const getAdminDashboard = async (req, res) => {
                 : 0;
 
         const topVendorEntry =
-            Object.entries(vendorMap).sort((a, b) => b[1] - a[1])[0] || ["", 0];
+            Object.values(vendorMap).sort((a, b) => b.revenue - a.revenue)[0] || { vendorId: "", name: "", revenue: 0 };
 
         const topCommunityEntry =
             Object.entries(communityMap).sort((a, b) => b[1] - a[1])[0] || ["", 0];
@@ -109,12 +146,7 @@ export const getAdminDashboard = async (req, res) => {
         const topCategoryEntry =
             Object.entries(categoryMap).sort((a, b) => b[1] - a[1])[0] || ["", 0];
 
-        const vendorRevenue = Object.entries(vendorMap).map(
-            ([name, revenue]) => ({
-                name,
-                revenue,
-            })
-        );
+        const vendorRevenue = Object.values(vendorMap);
 
         const communityRevenue = Object.entries(communityMap).map(
             ([community, revenue]) => ({
@@ -162,8 +194,9 @@ export const getAdminDashboard = async (req, res) => {
                 aov,
                 avgVendorRevenue,
                 topVendor: {
-                    name: topVendorEntry[0],
-                    revenue: topVendorEntry[1],
+                    vendorId: topVendorEntry.vendorId,
+                    name: topVendorEntry.name,
+                    revenue: topVendorEntry.revenue,
                 },
                 topCommunity: {
                     name: topCommunityEntry[0],
@@ -183,7 +216,8 @@ export const getAdminDashboard = async (req, res) => {
             heatmap,
         });
     } catch (error) {
-        console.error("Admin Dashboard Error:", error);
-        return res.status(500).json({ message: "Internal server error" });
+        console.error("Admin Dashboard Error:", error?.message);
+        console.error(error?.stack);
+        return res.status(500).json({ message: "Internal server error", detail: error?.message });
     }
 };

@@ -7,6 +7,8 @@ interface CategoryData {
 
 interface CategoryDonutChartProps {
     data: CategoryData[];
+    activeCategory?: string;
+    onSelect?: (category: string) => void;
 }
 
 const COLORS = ['#ec4899', '#f97316', '#8b5cf6', '#14b8a6', '#3b82f6', '#f59e0b', '#22c55e', '#06b6d4'];
@@ -14,7 +16,7 @@ const COLORS = ['#ec4899', '#f97316', '#8b5cf6', '#14b8a6', '#3b82f6', '#f59e0b'
 const formatCurrency = (value: number) =>
     new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 0 }).format(value);
 
-export default function CategoryDonutChart({ data }: CategoryDonutChartProps) {
+export default function CategoryDonutChart({ data, activeCategory, onSelect }: CategoryDonutChartProps) {
     const sorted = [...data].sort((a, b) => b.revenue - a.revenue).slice(0, 8);
 
     return (
@@ -31,9 +33,22 @@ export default function CategoryDonutChart({ data }: CategoryDonutChartProps) {
                         innerRadius={60}
                         outerRadius={100}
                         paddingAngle={3}
+                        cursor={onSelect ? 'pointer' : 'default'}
+                        isAnimationActive={true}
+                        animationDuration={400}
+                        onClick={(data: any) => onSelect?.(data.payload?.category ?? data.category)}
                     >
-                        {sorted.map((_, index) => (
-                            <Cell key={index} fill={COLORS[index % COLORS.length]} />
+                        {sorted.map((entry, index) => (
+                            <Cell
+                                key={entry.category}
+                                fill={
+                                    activeCategory
+                                        ? entry.category === activeCategory
+                                            ? COLORS[index % COLORS.length]
+                                            : '#e5e7eb'
+                                        : COLORS[index % COLORS.length]
+                                }
+                            />
                         ))}
                     </Pie>
                     <Tooltip

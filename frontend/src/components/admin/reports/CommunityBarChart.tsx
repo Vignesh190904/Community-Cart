@@ -16,12 +16,14 @@ interface CommunityData {
 
 interface CommunityBarChartProps {
     data: CommunityData[];
+    activeCommunity?: string;
+    onSelect?: (community: string) => void;
 }
 
 const formatCurrency = (value: number) =>
     new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 0 }).format(value);
 
-export default function CommunityBarChart({ data }: CommunityBarChartProps) {
+export default function CommunityBarChart({ data, activeCommunity, onSelect }: CommunityBarChartProps) {
     const sorted = [...data].sort((a, b) => b.revenue - a.revenue).slice(0, 10);
 
     return (
@@ -45,9 +47,25 @@ export default function CommunityBarChart({ data }: CommunityBarChartProps) {
                         formatter={(value: number) => [formatCurrency(value), 'Revenue']}
                         contentStyle={{ borderRadius: 8, border: '1px solid #e2e8f0' }}
                     />
-                    <Bar dataKey="revenue" radius={[4, 4, 0, 0]}>
-                        {sorted.map((_, index) => (
-                            <Cell key={index} fill="#14b8a6" fillOpacity={1 - index * 0.07} />
+                    <Bar
+                        dataKey="revenue"
+                        radius={[4, 4, 0, 0]}
+                        cursor={onSelect ? 'pointer' : 'default'}
+                        isAnimationActive={true}
+                        animationDuration={400}
+                        onClick={(data: any) => onSelect?.(data.community)}
+                    >
+                        {sorted.map((entry) => (
+                            <Cell
+                                key={entry.community}
+                                fill={
+                                    activeCommunity
+                                        ? entry.community === activeCommunity
+                                            ? '#14b8a6'
+                                            : '#e5e7eb'
+                                        : '#14b8a6'
+                                }
+                            />
                         ))}
                     </Bar>
                 </BarChart>

@@ -24,13 +24,18 @@ export default function HeatmapGrid({ data }: HeatmapGridProps) {
     }
 
     const getColor = (count: number): string => {
-        if (count === 0 || maxCount === 0) return 'rgba(219,234,254,0.4)'; // light blue-50
+        if (count === 0 || maxCount === 0) return '#f1f5f9';
+
         const intensity = count / maxCount;
-        // gradient: light blue → deep blue
-        const r = Math.round(219 - intensity * 160);
-        const g = Math.round(234 - intensity * 124);
-        const b = Math.round(254 - intensity * 12);
-        return `rgb(${r},${g},${b})`;
+
+        const start = { r: 219, g: 234, b: 254 }; // #dbeafe
+        const end = { r: 29, g: 78, b: 216 };     // #1d4ed8
+
+        const r = Math.round(start.r + (end.r - start.r) * intensity);
+        const g = Math.round(start.g + (end.g - start.g) * intensity);
+        const b = Math.round(start.b + (end.b - start.b) * intensity);
+
+        return `rgb(${r}, ${g}, ${b})`;
     };
 
     return (

@@ -5,6 +5,8 @@ export interface ReportFilters {
     dateTo: string;
     vendorId?: string;
     community?: string;
+    category?: string;
+    status?: string;
 }
 
 interface FiltersBarProps {
@@ -13,10 +15,12 @@ interface FiltersBarProps {
 }
 
 export default function FiltersBar({ filters, onChange }: FiltersBarProps) {
-    const [local, setLocal] = useState<ReportFilters>({ ...filters });
+    // Local state only for date inputs (to avoid fetching on every keypress)
+    const [dateFrom, setDateFrom] = useState(filters.dateFrom);
+    const [dateTo, setDateTo] = useState(filters.dateTo);
 
-    const handleApply = () => {
-        onChange({ ...local });
+    const applyDates = () => {
+        onChange({ ...filters, dateFrom, dateTo });
     };
 
     const handleReset = () => {
@@ -25,8 +29,11 @@ export default function FiltersBar({ filters, onChange }: FiltersBarProps) {
             dateTo: filters.dateTo,
             vendorId: '',
             community: '',
+            category: '',
+            status: '',
         };
-        setLocal(reset);
+        setDateFrom(filters.dateFrom);
+        setDateTo(filters.dateTo);
         onChange(reset);
     };
 
@@ -36,8 +43,9 @@ export default function FiltersBar({ filters, onChange }: FiltersBarProps) {
                 From
                 <input
                     type="date"
-                    value={local.dateFrom}
-                    onChange={(e) => setLocal((prev) => ({ ...prev, dateFrom: e.target.value }))}
+                    value={dateFrom}
+                    onChange={(e) => setDateFrom(e.target.value)}
+                    onBlur={applyDates}
                 />
             </label>
 
@@ -45,8 +53,9 @@ export default function FiltersBar({ filters, onChange }: FiltersBarProps) {
                 To
                 <input
                     type="date"
-                    value={local.dateTo}
-                    onChange={(e) => setLocal((prev) => ({ ...prev, dateTo: e.target.value }))}
+                    value={dateTo}
+                    onChange={(e) => setDateTo(e.target.value)}
+                    onBlur={applyDates}
                 />
             </label>
 
@@ -55,8 +64,10 @@ export default function FiltersBar({ filters, onChange }: FiltersBarProps) {
                 <input
                     type="text"
                     placeholder="Optional vendor ID"
-                    value={local.vendorId ?? ''}
-                    onChange={(e) => setLocal((prev) => ({ ...prev, vendorId: e.target.value }))}
+                    value={filters.vendorId ?? ''}
+                    onChange={(e) =>
+                        onChange({ ...filters, vendorId: e.target.value })
+                    }
                 />
             </label>
 
@@ -65,17 +76,16 @@ export default function FiltersBar({ filters, onChange }: FiltersBarProps) {
                 <input
                     type="text"
                     placeholder="Optional community"
-                    value={local.community ?? ''}
-                    onChange={(e) => setLocal((prev) => ({ ...prev, community: e.target.value }))}
+                    value={filters.community ?? ''}
+                    onChange={(e) =>
+                        onChange({ ...filters, community: e.target.value })
+                    }
                 />
             </label>
 
             <div className="filters-bar-actions">
-                <button type="button" className="filters-bar-apply" onClick={handleApply}>
-                    Apply
-                </button>
                 <button type="button" className="filters-bar-reset" onClick={handleReset}>
-                    Reset
+                    Reset All
                 </button>
             </div>
         </div>

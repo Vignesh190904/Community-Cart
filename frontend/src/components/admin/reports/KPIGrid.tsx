@@ -1,3 +1,6 @@
+import { ReactNode } from 'react';
+import AnimatedNumber from './AnimatedNumber';
+
 interface KPIs {
     totalRevenue: number;
     totalOrders: number;
@@ -13,56 +16,59 @@ interface KPIGridProps {
     kpis: KPIs;
 }
 
-const inr = new Intl.NumberFormat('en-IN', {
-    style: 'currency',
-    currency: 'INR',
-    maximumFractionDigits: 2,
-});
+const fmtCurrency = (val: number) =>
+    new Intl.NumberFormat('en-IN', {
+        style: 'currency',
+        currency: 'INR',
+        maximumFractionDigits: 2,
+    }).format(val);
 
-function fmt(value: number) {
-    return inr.format(value);
+interface CardDef {
+    label: string;
+    value: ReactNode;
+    sub: ReactNode;
 }
 
 export default function KPIGrid({ kpis }: KPIGridProps) {
-    const cards = [
+    const cards: CardDef[] = [
         {
             label: 'Total Revenue',
-            value: fmt(kpis.totalRevenue),
+            value: <AnimatedNumber value={kpis.totalRevenue} formatter={fmtCurrency} />,
             sub: 'All completed + pending orders',
         },
         {
             label: 'Total Orders',
-            value: kpis.totalOrders.toLocaleString('en-IN'),
+            value: <AnimatedNumber value={kpis.totalOrders} formatter={(v) => Math.round(v).toLocaleString('en-IN')} />,
             sub: 'In date range',
         },
         {
             label: 'Avg Order Value',
-            value: fmt(kpis.aov),
+            value: <AnimatedNumber value={kpis.aov} formatter={fmtCurrency} />,
             sub: 'Revenue ÷ orders',
         },
         {
             label: 'Avg Vendor Revenue',
-            value: fmt(kpis.avgVendorRevenue),
+            value: <AnimatedNumber value={kpis.avgVendorRevenue} formatter={fmtCurrency} />,
             sub: 'Per vendor',
         },
         {
             label: 'Top Vendor',
             value: kpis.topVendor.name || '—',
-            sub: kpis.topVendor.name ? fmt(kpis.topVendor.revenue) : 'No data',
+            sub: kpis.topVendor.name ? <AnimatedNumber value={kpis.topVendor.revenue} formatter={fmtCurrency} /> : 'No data',
         },
         {
             label: 'Top Community',
             value: kpis.topCommunity.name || '—',
-            sub: kpis.topCommunity.name ? fmt(kpis.topCommunity.revenue) : 'No data',
+            sub: kpis.topCommunity.name ? <AnimatedNumber value={kpis.topCommunity.revenue} formatter={fmtCurrency} /> : 'No data',
         },
         {
             label: 'Top Category',
             value: kpis.topCategory.name || '—',
-            sub: kpis.topCategory.name ? fmt(kpis.topCategory.revenue) : 'No data',
+            sub: kpis.topCategory.name ? <AnimatedNumber value={kpis.topCategory.revenue} formatter={fmtCurrency} /> : 'No data',
         },
         {
             label: 'Success Rate',
-            value: `${kpis.successRate.toFixed(1)}%`,
+            value: <AnimatedNumber value={kpis.successRate} formatter={(v) => `${v.toFixed(1)}%`} />,
             sub: 'Completed + delivered / total',
         },
     ];
@@ -79,3 +85,4 @@ export default function KPIGrid({ kpis }: KPIGridProps) {
         </div>
     );
 }
+

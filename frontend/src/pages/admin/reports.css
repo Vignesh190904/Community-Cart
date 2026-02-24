@@ -27,6 +27,29 @@
     margin: 0;
 }
 
+/* ─── Quick Date Range Buttons ─────── */
+.quick-date-buttons {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.quick-date-buttons button {
+    padding: 6px 12px;
+    border: 1px solid #e5e7eb;
+    background: #ffffff;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: #475569;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.quick-date-buttons button:hover {
+    background: #f3f4f6;
+}
+
 /* ─── Filters Bar ──────────────────── */
 .filters-bar {
     display: flex;
@@ -109,6 +132,58 @@
 
 .filters-bar-reset:hover {
     background: #e2e8f0;
+}
+
+/* ─── Active filter chips ──────────────────── */
+.filter-chips-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.filter-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 6px 12px;
+    border-radius: 20px;
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    color: #1d4ed8;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.15s, border-color 0.15s;
+    user-select: none;
+}
+
+.filter-chip:hover {
+    background: #dbeafe;
+    border-color: #93c5fd;
+}
+
+/* ─── Reset Filters ────────────────── */
+.reset-filters-wrapper {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    text-align: right;
+}
+
+.reset-filters-btn {
+    padding: 6px 14px;
+    border: 1px solid #e5e7eb;
+    background: #ffffff;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: #475569;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.reset-filters-btn:hover {
+    background: #f3f4f6;
 }
 
 /* ─── KPI Grid ─────────────────────── */
@@ -251,7 +326,7 @@
 .heatmap-cell {
     height: 24px;
     border-radius: 3px;
-    transition: opacity 0.1s;
+    transition: background-color 0.3s ease, opacity 0.1s;
 }
 
 .heatmap-cell:hover {

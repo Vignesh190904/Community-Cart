@@ -1,0 +1,287 @@
+{
+  "vendor": {
+    "id": "6944efaab6b1390ee82362f8",
+    "name": "Pharmacy Shop",
+    "email": "pharmacy@gmail.com",
+    "role": "vendor"
+  },
+  "productKPIs": {
+    "totalUnitsSold": 3,
+    "totalRevenue": 150,
+    "bestSellingProduct": "paracetemol",
+    "zeroSalesProducts": 1,
+    "cancellationRate": 0
+  },
+  "orders": {
+    "total": 2,
+    "byStatus": {
+      "pending": 1,
+      "completed": 1
+    },
+    "successfulOrders": 1,
+    "totalRevenue": 150,
+    "avgOrderValue": 150,
+    "successRate": "50.0%",
+    "topProducts": [
+      {
+        "name": "Sugar",
+        "qty": 8
+      }
+    ],
+    "recentOrders": [
+      {
+        "id": "ORD-000016",
+        "status": "pending",
+        "amount": 250,
+        "date": "2025-12-28"
+      },
+      {
+        "id": "ORD-000013",
+        "status": "completed",
+        "amount": 150,
+        "date": "2025-12-28"
+      }
+    ]
+  },
+  "catalogue": {
+    "total": 39,
+    "available": 39,
+    "outOfStock": 0,
+    "products": [
+      {
+        "name": "Eggs",
+        "price": 270,
+        "stock": 35,
+        "available": true
+      },
+      {
+        "name": "Oil",
+        "price": 150,
+        "stock": 93,
+        "available": true
+      },
+      {
+        "name": "paracetemol",
+        "price": 50,
+        "stock": 72,
+        "available": true
+      },
+      {
+        "name": "Cough Syrup",
+        "price": 170,
+        "stock": 20,
+        "available": true
+      },
+      {
+        "name": "Tomatoes",
+        "price": 45,
+        "stock": 100,
+        "available": true
+      },
+      {
+        "name": "Red Chilli Powder",
+        "price": 60,
+        "stock": 99,
+        "available": true
+      },
+      {
+        "name": "Turmeric Powder",
+        "price": 25,
+        "stock": 50,
+        "available": true
+      },
+      {
+        "name": "Sugar",
+        "price": 50,
+        "stock": 49,
+        "available": true
+      },
+      {
+        "name": "Bread",
+        "price": 55,
+        "stock": 50,
+        "available": true
+      },
+      {
+        "name": "Butter",
+        "price": 100,
+        "stock": 23,
+        "available": true
+      },
+      {
+        "name": "Cheese",
+        "price": 150,
+        "stock": 50,
+        "available": true
+      },
+      {
+        "name": "Milk",
+        "price": 35,
+        "stock": 100,
+        "available": true
+      },
+      {
+        "name": "Brinjal",
+        "price": 40,
+        "stock": 69,
+        "available": true
+      },
+      {
+        "name": "pumpkin",
+        "price": 100,
+        "stock": 100,
+        "available": true
+      },
+      {
+        "name": "Potatoes",
+        "price": 30,
+        "stock": 100,
+        "available": true
+      },
+      {
+        "name": "Onions",
+        "price": 50,
+        "stock": 100,
+        "available": true
+      },
+      {
+        "name": "Chillies",
+        "price": 40,
+        "stock": 50,
+        "available": true
+      },
+      {
+        "name": "Red chillies",
+        "price": 50,
+        "stock": 50,
+        "available": true
+      },
+      {
+        "name": "Capsicum",
+        "price": 20,
+        "stock": 100,
+        "available": true
+      },
+      {
+        "name": "Apple",
+        "price": 25,
+        "stock": 150,
+        "available": true
+      },
+      {
+        "name": "Banana",
+        "price": 40,
+        "stock": 150,
+        "available": true
+      },
+      {
+        "name": "Guava",
+        "price": 10,
+        "stock": 120,
+        "available": true
+      },
+      {
+        "name": "Orange",
+        "price": 100,
+        "stock": 200,
+        "available": true
+      },
+      {
+        "name": "Kiwi",
+        "price": 50,
+        "stock": 49,
+        "available": true
+      },
+      {
+        "name": "Strawberry",
+        "price": 200,
+        "stock": 5,
+        "available": true
+      },
+      {
+        "name": "Shirts",
+        "price": 20,
+        "stock": 10000000,
+        "available": true
+      },
+      {
+        "name": "Pants",
+        "price": 20,
+        "stock": 10000000,
+        "available": true
+      },
+      {
+        "name": "Wired Ear Phones",
+        "price": 100,
+        "stock": 99,
+        "available": true
+      },
+      {
+        "name": "Wireless Ear Phones",
+        "price": 400,
+        "stock": 99,
+        "available": true
+      },
+      {
+        "name": "Adapter",
+        "price": 200,
+        "stock": 500,
+        "available": true
+      },
+      {
+        "name": "Type C to C cable",
+        "price": 50,
+        "stock": 500,
+        "available": true
+      },
+      {
+        "name": "Apple airpods pro",
+        "price": 20000,
+        "stock": 20,
+        "available": true
+      },
+      {
+        "name": "Power Bank",
+        "price": 1000,
+        "stock": 50,
+        "available": true
+      },
+      {
+        "name": "Headset",
+        "price": 500,
+        "stock": 100,
+        "available": true
+      },
+      {
+        "name": "Egg puff",
+        "price": 25,
+        "stock": 200,
+        "available": true
+      },
+      {
+        "name": "Chicken Burger",
+        "price": 120,
+        "stock": 100,
+        "available": true
+      },
+      {
+        "name": "Chicken Pizza",
+        "price": 250,
+        "stock": 50,
+        "available": true
+      },
+      {
+        "name": "Vanilla Ice Cream",
+        "price": 180,
+        "stock": 100,
+        "available": true
+      },
+      {
+        "name": "Cheese Cake",
+        "price": 150,
+        "stock": 80,
+        "available": true
+      }
+    ]
+  }
+}

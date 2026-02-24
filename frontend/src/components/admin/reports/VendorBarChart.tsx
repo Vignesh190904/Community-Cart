@@ -10,18 +10,21 @@ import {
 } from 'recharts';
 
 interface VendorData {
+    vendorId: string;
     name: string;
     revenue: number;
 }
 
 interface VendorBarChartProps {
     data: VendorData[];
+    activeVendorId?: string;
+    onSelect?: (vendorId: string) => void;
 }
 
 const formatCurrency = (value: number) =>
     new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 0 }).format(value);
 
-export default function VendorBarChart({ data }: VendorBarChartProps) {
+export default function VendorBarChart({ data, activeVendorId, onSelect }: VendorBarChartProps) {
     const sorted = [...data].sort((a, b) => b.revenue - a.revenue).slice(0, 10);
 
     return (
@@ -45,9 +48,25 @@ export default function VendorBarChart({ data }: VendorBarChartProps) {
                         formatter={(value: number) => [formatCurrency(value), 'Revenue']}
                         contentStyle={{ borderRadius: 8, border: '1px solid #e2e8f0' }}
                     />
-                    <Bar dataKey="revenue" radius={[4, 4, 0, 0]}>
-                        {sorted.map((_, index) => (
-                            <Cell key={index} fill="#8b5cf6" fillOpacity={1 - index * 0.07} />
+                    <Bar
+                        dataKey="revenue"
+                        radius={[4, 4, 0, 0]}
+                        cursor={onSelect ? 'pointer' : 'default'}
+                        isAnimationActive={true}
+                        animationDuration={400}
+                        onClick={(data: any) => onSelect?.(data.vendorId)}
+                    >
+                        {sorted.map((entry, index) => (
+                            <Cell
+                                key={`${entry.vendorId}-${index}`}
+                                fill={
+                                    activeVendorId
+                                        ? entry.vendorId === activeVendorId
+                                            ? '#8b5cf6'
+                                            : '#e5e7eb'
+                                        : '#8b5cf6'
+                                }
+                            />
                         ))}
                     </Bar>
                 </BarChart>
