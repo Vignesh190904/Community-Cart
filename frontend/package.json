@@ -10,9 +10,11 @@
   },
   "dependencies": {
     "@hello-pangea/dnd": "^16.6.0",
+    "dayjs": "^1.11.19",
     "next": "^16.0.10",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "recharts": "^3.7.0"
   },
   "devDependencies": {
     "@svgr/webpack": "^8.1.0",

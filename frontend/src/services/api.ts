@@ -14,6 +14,33 @@ const authHeaders = (extra: Record<string, string> = {}) => {
   return headers;
 };
 
+/**
+ * URL-aware authenticated fetch.
+ * - /api/admin/* routes → uses localStorage["adminToken"]
+ * - All other routes   → uses localStorage["token"]
+ */
+export const fetchWithAuth = async (
+  url: string,
+  options: RequestInit = {}
+): Promise<Response> => {
+  const headers: Record<string, string> = {
+    ...(options.headers as Record<string, string>),
+  };
+
+  if (typeof window !== 'undefined') {
+    const isAdminRoute = url.includes('/api/admin/');
+    const token = isAdminRoute
+      ? localStorage.getItem('adminToken')
+      : localStorage.getItem('token');
+
+    if (token) {
+      headers['Authorization'] = `Bearer ${token}`;
+    }
+  }
+
+  return fetch(url, { ...options, headers });
+};
+
 export const api = {
   // Vendors
   vendors: {

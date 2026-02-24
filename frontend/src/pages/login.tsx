@@ -44,6 +44,11 @@ export default function Login() {
       // Update global auth state - this will trigger the useEffect above
       sign_in(user, auth_token);
 
+      // Store admin token under dedicated key for admin API calls
+      if (user.role === 'admin') {
+        localStorage.setItem('adminToken', auth_token);
+      }
+
       setMessage('✅ Login successful');
       setMessageType('success');
 

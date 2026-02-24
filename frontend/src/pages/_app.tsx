@@ -9,6 +9,7 @@ import './admin/products.css';
 import './admin/orders.css';
 import './admin/customers.css';
 import './admin/vendor-edit.css';
+import './admin/reports.css';
 import './vendor/dashboard.css';
 import './vendor/products.css';
 import './vendor/orders.css';
